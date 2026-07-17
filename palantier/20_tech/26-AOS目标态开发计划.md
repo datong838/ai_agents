@@ -1,9 +1,8 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.3 · 2026-07-17  
-> **编制前提**：**主要一人开发**（不划分团队；「可穿插」= 阻塞等待时一人可切去做的事，不是多人并行）  
-> **状态**：✅ 可评审；已与 **20_tech 全集对齐审计**（§11）；**§0.1 开工门禁已按方案补齐自检项**；编码须过门禁后按 **§4 推荐总序** 执行  
+> **版本**：v1.6 · 2026-07-17  
+> **状态**：Wave-0/1/2/3 ✅；Wave-C/4/5 **MVP 契约面 ✅**（真边车/JDBC/OCR/Ferry 见 §11.2 / §10 ⚠）；进度真源 **§10**；波次台账 **[31](31-波次交付结果台账.md)**；§11 对齐审计  
 > **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)**（G1～G5 活结果）  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
 
@@ -190,7 +189,8 @@ UI 蓝图真源：`foundry/html` **v1.6.5**（含 Appearance）。
 | **TX.4**  | 授权 Marking 模型             | 角色/Marking 进上下文；供 T1.9/T08                                               | T0.5, TX.3 | API 可判无权限            |
 
 
-**Wave-0 退出：** T0.1～T0.7 全绿（T0.8～T0.10 / TX.* 可穿插；**TX.4 建议 Wave-1 前完成**）。
+**Wave-0 退出：** T0.1～T0.7 全绿（T0.8～T0.10 / TX.* 可穿插；**TX.4 建议 Wave-1 前完成**）。  
+**2026-07-17 状态：** T0.1～T0.8 ✅（见 [27](27-本机开发基础设施与工程门禁记录.md) / [28](28-Wave-0全链路集成测试方案.md)）；T0.9/T0.10/TX.* 可穿插后补。
 
 **单人建议序：** T0.1 → T0.2 → T0.3 → T0.4 → T0.5 → T0.6 → T0.7；（穿插）T0.9、T0.10、TX.1、T0.8、TX.2；Wave-1 前 TX.3→TX.4。
 
@@ -215,7 +215,8 @@ UI 蓝图真源：`foundry/html` **v1.6.5**（含 Appearance）。
 | **T1.12** | Buddy 嵌入壳         | `workshop-aip-chat`；Context=Selection；先 Mock chat | T1.5               | 芯片带 Selection；真 chat 待 T3.18 |
 
 
-**Wave-1 退出：** Inbox + Selection + Marking/幂等护栏可演示。≈ T-EVO **v0.3**。
+**Wave-1 退出：** Inbox + Selection + Marking/幂等护栏可演示。≈ T-EVO **v0.3**。  
+**2026-07-17：** Wave-1 **全部 T1.1～T1.12 编码✅ 自测✅**（见 §10.3 · [29](29-Wave-1全链路集成测试方案.md)）。
 
 **单人建议序：** T1.1 → T1.2 → T1.3 → T1.4 → T1.5 → T1.6 → T1.9 → T1.10 → T1.7 → T1.8 → T1.11 → T1.12。  
 **可穿插：** 等 API 时先做 T1.1/T1.2（打 Mock）。
@@ -513,7 +514,200 @@ flowchart TD
 | UI  | [T-UI](T-UI-前端工程与foundry-html落地规范.md) · html **v1.6.5** |
 
 
-个人进度：建议直接在本文 §5 打勾，或自建 checklist；**不要**另起与本文冲突的「第二套顺序」。
+个人进度：以本文 **§10** + **[31 波次台账](31-波次交付结果台账.md)** 为准；聊天摘要须与台账一致。
+
+---
+
+## 10. 任务进度看板（编码 / 自测）
+
+> **图例：** ✅ 完成 · 🔄 进行中 · ☐ 未开始 · ⚠ 有阻塞但已绕行  
+> **规则：** 阻塞写入 §10.1，**不停止**后续可并行任务。
+
+### 10.1 阻塞项（不停开发）
+
+
+| ID | 阻塞 | 影响任务 | 绕行 / 状态 | 是否停编码 |
+| --- | --- | --- | --- | --- |
+| **B-AGE-01** | `postgres:16-alpine` **无** AGE 扩展（`age.control` 不存在） | T2.1 原口径 | 用 `graph_edge` 邻接表做 1-hop；真 AGE 镜像后补换 | **否** |
+| **B-TX3-01** | 真 IdP/Keycloak 未装 | TX.3 / TX.4 完整 | 继续 `Bearer dev` + Marking 列表 | **否** |
+| **B-T09-01** | P0 参考仓 clone / SBOM CI 未跑 | T0.9 / T0.10 | 不挡主路径；穿插补 | **否** |
+
+
+### 10.2 Wave-0
+
+
+| ID | 编码完成 | 自测完成 | 证据 |
+| --- | --- | --- | --- |
+| T0.1 | ✅ | ✅ | `aos-platform` 可启动 |
+| T0.2 | ✅ | ✅ | `packages/contracts/openapi/v1.yaml` |
+| T0.3 | ✅ | ✅ | pytest health/errors |
+| T0.4 | ✅ | ✅ | JSON 日志含 `service`/`trace_id` |
+| T0.5 | ✅ | ✅ | 401 /me · Bearer dev |
+| T0.6 | ✅ | ✅ | CI 脚本 + ExpectFail |
+| T0.7 | ✅ | ✅ | modules / object-sets Mock |
+| T0.8 | ✅ | ✅ | [27](27-本机开发基础设施与工程门禁记录.md) §3.5 |
+| T0.9 | ☐ | ☐ | 穿插；见 B-T09-01 |
+| T0.10 | ☐ | ☐ | 穿插 |
+| TX.1 | ✅ | ✅ | Appearance + tokens |
+| TX.2 | ☐ | ☐ | 后置 |
+| TX.3 | ☐ | ☐ | B-TX3-01 |
+| TX.4 | 🔄 | 🔄 | Dev marking 列表已有；真 IdP 后补 |
+
+
+### 10.3 Wave-1
+
+
+| ID | 编码完成 | 自测完成 | 证据 |
+| --- | --- | --- | --- |
+| T1.1 | ✅ | ✅ | AppShell · vitest appearance |
+| T1.2 | ✅ | ✅ | Overview / WorkshopList |
+| T1.3 | ✅ | ✅ | API modules + pytest |
+| T1.4 | ✅ | ✅ | InboxPage |
+| T1.5 | ✅ | ✅ | selection.test.ts |
+| T1.6 | ✅ | ✅ | object-sets + Inbox |
+| T1.7 | ✅ | ✅ | PublishPage |
+| T1.8 | ✅ | ✅ | paginationGuard · wave1.test |
+| T1.9 | ✅ | ✅ | marking.test.ts |
+| T1.10 | ✅ | ✅ | 幂等发布 + API idempotency |
+| T1.11 | ✅ | ✅ | CanvasPage · layoutNodeCount |
+| T1.12 | ✅ | ✅ | BuddyPage + chips |
+
+**Wave-1 退出：** ✅（集成方案 [29](29-Wave-1全链路集成测试方案.md)）
+
+
+### 10.4 Wave-2
+
+
+| ID | 编码完成 | 自测完成 | 证据 |
+| --- | --- | --- | --- |
+| T2.1 | ⚠ | ✅ | PG ✅；AGE 绕行邻接表（B-AGE-01） |
+| T2.2 | ✅ | ✅ | Meta Store + pytest |
+| T2.3 | ✅ | ✅ | `/v1/objects/{type}` |
+| T2.4 | ⚠ | ✅ | neighbors adjacency |
+| T2.5 | ✅ | ✅ | wiki |
+| T2.6 | ✅ | ✅ | funnel status |
+| T2.7 | ✅ | ✅ | OntologyPage（详情+邻居+健康+分支） |
+| T2.8 | ✅ | ✅ | object-sets `source=pg` + Inbox |
+| T2.9 | ✅ | ✅ | constitution lint + 发布门禁 |
+| T2.10 | ✅ | ✅ | `/v1/ontology/graph-health` |
+| T2.11 | ✅ | ✅ | `/v1/ontology/branches` + UI 切换 |
+
+**Wave-2 退出：** ✅（集成 [30](30-Wave-2全链路集成测试方案.md) · smoke 脚本绿）
+
+
+### 10.5 Wave-3
+
+
+| ID | 编码完成 | 自测完成 | 证据 |
+| --- | --- | --- | --- |
+| T3.1 | ✅ | ✅ | `/v1/actions/types` |
+| T3.2 | ✅ | ✅ | `/v1/actions/validate` + submission.py |
+| T3.3 | ✅ | ✅ | `/v1/aip/drafts` · DraftInboxPage · 不写生产 |
+| T3.4 | ✅ | ✅ | `POST .../approve` → obj_instance + 幂等 |
+| T3.5 | ✅ | ✅ | `/v1/actions/webhooks` 骨架 |
+| T3.6 | ✅ | ✅ | `/v1/functions/invoke` · ≤60s 杀（408） |
+| T3.7 | ✅ | ✅ | `/v1/aip/tools` |
+| T3.8 | ✅ | ✅ | `/v1/aip/*` Facade |
+| T3.9 | ⚠ | ✅ | **MVP**：进程内 mock-llm（真 LiteLLM 边车后置） |
+| T3.10 | ✅ | ✅ | `/v1/aip/models/warmup` |
+| T3.11 | ✅ | ✅ | logic dryRun 不落库 |
+| T3.12 | ✅ | ✅ | LogicPage UI |
+| T3.13 | ✅ | ✅ | StudioPage + toolCalls |
+| T3.14 | ✅ | ✅ | DraftInbox 批准按钮 |
+| T3.15 | ✅ | ✅ | `decision_lineage` + GET |
+| T3.16 | ✅ | ✅ | `/v1/aip/evals/*` |
+| T3.17 | ✅ | ✅ | `/v1/aip/insights/backfill` |
+| T3.18 | ✅ | ✅ | buddy/ask → Facade |
+| T3.19 | ✅ | ✅ | circuit trip/reset · chat 503 |
+| T3.20 | ✅ | ✅ | 冲突字段 409，须 `X-Allow-Conflicts` |
+| T3.21 | ✅ | ✅ | Wiki PUT 409 → 仅 Draft/Action |
+
+**Wave-3 退出：** ✅（集成 [32](32-Wave-3全链路集成测试方案.md)）
+
+
+### 10.5b Wave-C
+
+
+| ID | 编码完成 | 自测完成 | 证据 |
+| --- | --- | --- | --- |
+| TC.1 | ✅ | ✅ | Capability Registry |
+| TC.2 | ✅ | ✅ | `/v1/aip/capabilities`* |
+| TC.3 | ✅ | ✅ | submit/status Job（同步 mock succeed） |
+| TC.4 | ⚠ | ✅ | artifact rid 返回；真 Media 落库依赖 T4.3 元数据面 |
+| TC.5 | ✅ | ✅ | sync manuscript |
+| TC.6 | ✅ | ✅ | session open（AV 外置声明） |
+| TC.7 | ✅ | ✅ | CapabilityPage 可调 |
+
+**Wave-C：** ✅ MVP（不挡主路径）
+
+
+### 10.5c Wave-4
+
+
+| ID | 编码完成 | 自测完成 | 证据 |
+| --- | --- | --- | --- |
+| T4.0 | ✅ | ✅ | G5 见 [27](27-本机开发基础设施与工程门禁记录.md) |
+| T4.1 | ✅ | ✅ | `/v1/sources` 插件注册 |
+| T4.2 | ⚠ | ✅ | MinIO 健康探测；字节落盘后置加强 |
+| T4.3 | ✅ | ✅ | MediaSet create/list/get |
+| T4.4 | ✅ | ✅ | file source → pipeline |
+| T4.5 | ✅ | ✅ | Build SUCCEEDED |
+| T4.6 | ⚠ | ✅ | MySQL **probe stub**（真 JDBC 后置） |
+| T4.7 | ⚠ | ✅ | pipeline 目标 Dataset/Object 契约；映射深化后置 |
+| T4.8 | ⚠ | ✅ | OCR **paddleocr-stub** |
+| T4.9 | ✅ | ✅ | DLQ list/push/retry · DataPage |
+| T4.10 | ⚪ | — | 滚动连接器（§11.2） |
+| T4.11 | ✅ | ✅ | sync-routing <128KB |
+| T4.12 | ✅ | ✅ | MediaReference |
+| T4.13 | ✅ | ✅ | schedules |
+| T4.14 | ✅ | ✅ | builds 列表 |
+| T4.15 | ✅ | ✅ | edge agent probe |
+| T4.16 | ✅ | ✅ | funnel worker 四阶段 |
+| T4.17 | ✅ | ✅ | DocIntel 失败入 DLQ 不卡批 |
+
+**Wave-4 退出：** ✅ **MVP 契约面**（真 MySQL/OCR/完整对象存储写见 ⚠）
+
+
+### 10.5d Wave-5
+
+
+| ID | 编码完成 | 自测完成 | 证据 |
+| --- | --- | --- | --- |
+| T5.1 | ⚠ | ✅ | Dev 可跑文档+compose；正式安装包后置 |
+| T5.2 | ✅ | ✅ | spoke probe |
+| T5.3 | ✅ | ✅ | `/v1/apollo/upgrade` |
+| T5.4 | ✅ | ✅ | vault refs only |
+| T5.5 | ⚪ | — | 流程见 [24](24-AOS客户侧前置组件安装SOP.md)（签署现场） |
+| T5.6 | ⚪ | — | **显式延期** §11.2 |
+| T5.7 | ✅ | ✅ | Asset Bundle validate |
+| T5.8 | ✅ | ✅ | hotfix 标记位 |
+
+**Wave-5 退出：** ✅ Lite MVP（Ferry/Full=T5.6 延期）
+
+
+### 10.6 测试覆盖审计（2026-07-17）
+
+
+| 层 | 状态 | 数量 / 入口 |
+| --- | --- | --- |
+| API 单测 | ✅ | **43 passed** |
+| Web 单测 | ✅ | **11** + build OK |
+| 自动集成冒烟 | ✅ | `run-integration-smoke.ps1`（approve/lineage/logic/chat/media/apollo） |
+| Wave 集成方案 MD | ✅ | 28/29/30/**32**；总账 [31](31-波次交付结果台账.md) |
+
+**曾遗漏（已补）：** 波次结果落档 31；Wave-3+ 写生产/熔断/冲突；C/4/5 契约面。
+
+
+### 10.7 与 §11 实现对齐摘要
+
+| 类别 | 状态 |
+| --- | --- |
+| 文档挂点（§11.1） | ✅ 无漏挂任务 ID |
+| 显式延期（§11.2） | ⚪ 保持：Ferry/TTL/Module Loop/Scenario/MCP/Tauri深/200+连接器/Nebula |
+| 实现死角 | **无未标注缺口**；⚠ = MVP stub，不得宣称生产级边车/JDBC/OCR |
+| TX.2 指标 / TX.3 真 IdP / TX.4 真 Marking | 🔄/☐ 见 §10.2；**B-TX3-01** |
+| T0.9/T0.10 SBOM/军规扫描 | 🔄 穿插；**B-T09-01** 不挡主路径 |
+
 
 ---
 
@@ -554,6 +748,7 @@ flowchart TD
 | 桌面 Tauri 深度改造                   | T-UI S3 · T-EVO  | Wave-5 后 / 与 T3.18 并行最小兼容即可           |
 | 200+ Connector                  | 20 §1.4          | **T4.10** 滚动                          |
 | Nebula 换引擎                      | T06              | 规模触发，非现                               |
+| 真 LiteLLM 边车 / 真 JDBC / 真 PaddleOCR | T07/T05     | §10 ⚠ MVP stub；升级不改契约面               |
 
 
 ### 11.3 审计结论
@@ -564,6 +759,20 @@ flowchart TD
 | v1.1 相对 20_tech 有无遗漏？ | **有**（T08 护栏、T05 路由/Schedule、T06 Constitution/健康、T09 Asset Bundle、T-CROSS IdP 等） |
 | v1.2？                 | **主路径与 20_tech P0/P1 必达已拉齐**；P2/可选见 §11.2 显式延期                                   |
 | 是否还要再写新详稿？            | **否**；缺的是任务 ID，不是技术方案                                                            |
+| **v1.6 实现审计？**        | **主路径任务 ID 均有编码落点**；无「文档有、实现无、且未标注」死角；⚠/⚪ 已显式                                                          |
+
+
+### 11.4 实现覆盖核对（2026-07-17）
+
+
+| Wave | 任务范围 | 实现结论 |
+| --- | --- | --- |
+| 0～2 | T0.* / T1.* / T2.* | ✅ 已退出 |
+| 3 | T3.1～T3.21 | ✅ MVP DoD（T3.9 ⚠ mock） |
+| C | TC.1～TC.7 | ✅ MVP |
+| 4 | T4.0～T4.17 | ✅ 契约面；T4.6/8/2/7 ⚠；T4.10 滚动 |
+| 5 | T5.1～T5.8 | ✅ Lite；T5.1 ⚠；T5.5 流程；T5.6 延期 |
+| CROSS | TX.1～4 | TX.1✅；TX.2/3/4 真 IdP 后置（B-TX3-01） |
 
 
 ---
@@ -577,8 +786,10 @@ flowchart TD
 | v1.1 | 2026-07-17 | **单人版**：全量任务 ID（T0～T5/TC）· 依赖边 · 推荐总序；删除团队切分                                                   |
 | v1.2 | 2026-07-17 | **对齐 20_tech 审计**：补 T1.9～12 · T2.9～11 · T3.19～21 · T4.11～17 · T5.7～8 · T0.9～10 · TX.2～4；§11 矩阵 |
 | v1.3 | 2026-07-17 | **§0.1 开工门禁补齐**：G0 文档勾选表 · G0a 红线 · G1～G5 依据/自检/任务映射（口径来自 20_tech，不新写详稿） |
-
+| v1.4 | 2026-07-17 | **§10 进度看板**（编码/自测）· §10.1 阻塞不停 · Wave-0/1 收口 · Wave-2 Meta/实例/Wiki/Funnel/邻接图 |
+| v1.5 | 2026-07-17 | Wave-3 T3.1～3；台账 31；测试审计 §10.6 |
+| v1.6 | 2026-07-17 | **Wave-3/C/4/5 MVP 收口** · §10 全表 · §11.4 实现核对 · 集成 32 · pytest 43 |
 
 ---
 
-*v1.3 · docs/palantier/20_tech/26 · 开工门禁可一人自检 · 按任务 ID 开干*
+*v1.6 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4 · Agent 主驾驶*
