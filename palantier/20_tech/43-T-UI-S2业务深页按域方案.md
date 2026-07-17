@@ -105,9 +105,9 @@
 
 ## 4. 自测
 
-- [ ] vitest 全绿
-- [ ] 升格 path `status===live`；仍 stub 的 path 存在
-- [ ] （可选）浏览器点开 graph-health / datasets / evals 有数据（需 API 起）
+- [x] vitest 全绿（15）
+- [x] 升格 path `status===live`；仍 stub 的 path 存在
+- [x] `GET /v1/schedules` smoke 200
 
 ---
 

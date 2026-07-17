@@ -1,8 +1,8 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.15 · 2026-07-17  
-> **状态**：Wave-0～5 MVP ✅；**G-ALIGN-01～04 ✅**；**TX.3 Dev JWT ✅**；进度 **§10**  
+> **版本**：v1.22 · 2026-07-17  
+> **状态**：Wave-0～5 MVP ✅；G-ALIGN-01～08 ✅；**TX.2/3/4 ✅**；**Module PG ✅**；JWKS 形 ✅；**Dev Keycloak 路径 ✅**；**S2 31 live**；进度 **§10**  
 > **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)**（G1～G5 活结果）  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
 
@@ -185,8 +185,8 @@ UI 蓝图真源：`foundry/html` **v1.6.5**（含 Appearance）。
 | **T0.10** | SBOM 钩子                   | 23：生成/阻断策略最小（可先 warn）                                                    | T0.6       | 流水线有 SBOM 步骤         |
 | **TX.1**  | Appearance Token 进 ui-kit | 从 demo.css 迁 `--aos-`*；React 主题 `light/dark/system`                      | T0.1       | 与 html v1.6.5 同键名    |
 | **TX.2**  | 指标/Trace 最小               | T-CROSS 可观测：请求延迟计数；可选 OTel 出口                                            | T0.4       | 一 dashboard 或日志可聚合   |
-| **TX.3**  | IdP 对接                    | Keycloak（或 Dev 等价）发真 JWT                                                 | T0.5       | 非 Dev token 可登录      |
-| **TX.4**  | 授权 Marking 模型             | 角色/Marking 进上下文；供 T1.9/T08                                               | T0.5, TX.3 | API 可判无权限            |
+| **TX.3**  | IdP 对接                    | Keycloak（或 Dev 等价）发真 JWT · **JWKS 形 ✅** [48](48-Module落PG与JWKS及OpenAPI深化方案.md) | T0.5       | 非 Dev token 可登录      |
+| **TX.4**  | 授权 Marking 模型             | 角色/Marking 进上下文；供 T1.9/T08 · **MVP ✅** [47](47-技术方案全面对齐补缺方案.md)           | T0.5, TX.3 | API 可判无权限            |
 
 
 **Wave-0 退出：** T0.1～T0.7 全绿（T0.8～T0.10 / TX.* 可穿插；**TX.4 建议 Wave-1 前完成**）。  
@@ -531,7 +531,7 @@ flowchart TD
 | **B-AGE-01**          | `postgres:16-alpine` **无** AGE 扩展（`age.control` 不存在） | T2.1 原口径       | 用 `graph_edge` 邻接表做 1-hop；真 AGE 镜像后补换                              | **否** |
 | **B-WSL-HOSTPORT-01** | Windows 访问 `127.0.0.1:5433/9000` 偶发拒绝（Docker 在 WSL）  | G5 / 本机联调      | 用 `wsl hostname -I` 首 IP 作 `AOS_DATABASE_URL`；LLM 边车用 host 模式脚本    | **否** |
 | **B-LITELLM-IMG-01**  | 官方 `litellm[proxy]` 镜像/重依赖构建过慢或不可达                   | T3.9           | Dev 用 **LiteLLM 契约形** 进程隔离边车（`deploy/dev/litellm`）；可换官方镜像不改 Facade | **否** |
-| **B-TX3-01**          | 真 Keycloak 集群未装（可选）                              | TX.3 深度 / TX.4 | **Dev JWT 形已绿**（[41](41-TX.3-IdP-OIDC对接方案.md)）；JWKS 可后插        | **否** |
+| **B-TX3-01**          | 生产 HA Keycloak 未装（可选）                              | TX.3 深度 | **Dev 单机 KC 路径 ✅**（[50](50-Dev-Keycloak联调缓解B-TX3方案.md) · profile oidc）；HA 仍可选 | **否** |
 | **B-T09-01**          | P0 参考仓 clone / SBOM CI 未跑                            | T0.9 / T0.10   | 不挡主路径；穿插补                                                          | **否** |
 | **B-OCR-PADDLE-01**   | 真 `paddleocr` 全量依赖未装入 Dev 边车                       | T4.8 深度       | 边车 shaped ✅；装 paddle 后 `engine=paddleocr` 自动升                    | **否** |
 | **G-ALIGN-01**        | Word/Excel/PDF 文本解析插件（已关闭）                   | T4.4 / T05-A1  | **T4.4b ✅** · [39](39-T4.4b-文件解析插件方案.md)                         | **否** |
@@ -553,9 +553,9 @@ flowchart TD
 | T0.9  | ☐    | ☐    | 穿插；见 B-T09-01                        |
 | T0.10 | ☐    | ☐    | 穿插                                   |
 | TX.1  | ✅    | ✅    | Appearance + tokens                  |
-| TX.2  | ☐    | ☐    | 后置                                   |
-| TX.3  | ✅    | ✅    | Dev JWT（OIDC 形）· `/v1/auth/token` · [41](41-TX.3-IdP-OIDC对接方案.md)；真 Keycloak=JWKS 后插 |
-| TX.4  | 🔄   | 🔄   | JWT claims 已带 markings；完整 Marking 引擎后置 |
+| TX.2  | ✅    | ✅    | `/v1/metrics` · RED · traceparent · [44](44-TX.2-指标Trace最小方案.md) |
+| TX.3  | ✅    | ✅    | Dev JWT · JWKS · **Dev KC** [50](50-Dev-Keycloak联调缓解B-TX3方案.md) · [41](41-TX.3-IdP-OIDC对接方案.md)/[48](48-Module落PG与JWKS及OpenAPI深化方案.md) |
+| TX.4  | ✅    | ✅    | Marking `FORBIDDEN` MVP · [47](47-技术方案全面对齐补缺方案.md)；字段级后置 |
 
 
 ### 10.3 Wave-1
@@ -708,9 +708,9 @@ flowchart TD
 | 类别                                    | 状态                                                            |
 | ------------------------------------- | ------------------------------------------------------------- |
 | 文档挂点（§11.1）                           | ✅ 无漏挂任务 ID                                                    |
-| 显式延期（§11.2）                           | ⚪ 含 Ferry/T4.10 + **T-UI S2**（G-ALIGN-01～04 已关闭） |
+| 显式延期（§11.2）                           | ⚪ 含 Ferry 气隙实现/T4.10；**S2 UI 已 31 live**（Ferry=诚实延期面 [49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)） |
 | 实现死角                                  | **无未标注缺口**；⚠=MVP stub；OCR shaped 非生产 GPU |
-| TX.2 指标 / TX.3 真 IdP / TX.4 真 Marking | 🔄/☐ 见 §10.2；**B-TX3-01**                                     |
+| **B-TX3-01**          | 生产 HA Keycloak 未装（可选）                              | TX.3 深度 | **Dev 单机 KC 路径 ✅**（[50](50-Dev-Keycloak联调缓解B-TX3方案.md) · profile oidc）；HA 仍可选 | **否** |
 | T0.9/T0.10 SBOM/军规扫描                  | 🔄 穿插；**B-T09-01** 不挡主路径                                      |
 
 
@@ -758,7 +758,9 @@ flowchart TD
 | `POST /v1/actions/execute`（OpenAPI 有、实现无） | T-API · T08 | **✅ G-ALIGN-02 关闭** · [40](40-G-ALIGN-02-actions-execute契约对齐方案.md) |
 | `/v1/ontology/link-types` CRUD | T-API · 03 ONT-002 | **✅ G-ALIGN-03 关闭** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · `LINK_SCALE_BLOCKED` |
 | `/v1/datasets/*` · `/v1/syncs` | T-API · T05 | **✅ G-ALIGN-04 关闭** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · Facade |
-| foundry/html 全页 1:1（Graph/Pipeline 多页/Evals 专页等） | T-UI S2 · 34 §3 | **⚪ S2**；主路径 S1 ✅ |
+| foundry/html 全页 1:1（Graph/Pipeline 多页/Evals 专页等） | T-UI S2 · 34 §3 | **✅ S2 31 live** · [43](43-T-UI-S2业务深页按域方案.md)+[45](45-T-UI-S2余量第二刀方案.md)+[49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)；Ferry=诚实延期面 |
+| modules publish / PATCH · evals/fleet/invoke 形变 · OpenAPI 漂移 · TX.4 | T-API · T08/T09/T-CROSS | **✅ G-ALIGN-05～08** · [47](47-技术方案全面对齐补缺方案.md) |
+
 
 
 ### 11.3 审计结论
@@ -783,7 +785,7 @@ flowchart TD
 | C     | TC.1～TC.7          | ✅ MVP                                          |
 | 4     | T4.0～T4.17         | ✅ 契约面；T4.2/T4.4b/T4.6/T4.7/T4.8 ✅；T4.10 滚动 |
 | 5     | T5.1～T5.8          | ✅ Lite；T5.1 ⚠；T5.5 流程；T5.6 延期                  |
-| CROSS | TX.1～4             | TX.1✅；**TX.3 Dev JWT ✅**；TX.4 🔄；TX.2 后置 |
+| CROSS | TX.1～4             | TX.1～4 ✅；JWKS+Module PG [48](48-Module落PG与JWKS及OpenAPI深化方案.md)；AI OS [46](46-AI操作系统实质化-模型插件模块方案.md) |
 
 
 ### 11.5 产品方案对齐（2026-07-17 · 与台账 31 §9 同步）
@@ -791,9 +793,9 @@ flowchart TD
 | 问题 | 答案 |
 | --- | --- |
 | 产品 05～09 P0 主路径是否有编码落点？ | **是**（Wave 0～5 MVP） |
-| 是否存在「文档有、实现无、且未标注」？ | **审计前有 4 项**；**G-ALIGN-01～04 均已关闭** |
-| 产品蓝图 html 全页？ | **未完成 = T-UI S2**；34 已诚实披露；不挡主路径退出 |
-| 下一刀建议？ | T-UI S2 业务深页 · TX.2 指标 · 真 Keycloak JWKS |
+| 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**（[47](47-技术方案全面对齐补缺方案.md)）；Ferry/Channel 仍 §11.2 延期 |
+| 产品蓝图 html 全页？ | **S2 31 页已接线**（含 Ferry 诚实延期面 [49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)） |
+| 下一刀建议？ | T0.9/10 · SBOM · 字段级 Marking / 真气隙 Ferry · HA Keycloak（可选） |
 
 
 ---
@@ -819,8 +821,15 @@ flowchart TD
 | v1.13 | 2026-07-17 | **G-ALIGN-02** · [40](40-G-ALIGN-02-actions-execute契约对齐方案.md) · `/v1/actions/execute` |
 | v1.14 | 2026-07-17 | **TX.3** · [41](41-TX.3-IdP-OIDC对接方案.md) · Dev JWT · `/v1/auth/token` |
 | v1.15 | 2026-07-17 | **G-ALIGN-03/04** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · link-types · datasets/syncs |
+| v1.16 | 2026-07-17 | **T-UI S2 第一刀** · [43](43-T-UI-S2业务深页按域方案.md) · 21 页 live · GET /v1/schedules |
+| v1.17 | 2026-07-17 | **TX.2** · [44](44-TX.2-指标Trace最小方案.md)；**S2 第二刀** · [45](45-T-UI-S2余量第二刀方案.md) · 24 live |
+| v1.18 | 2026-07-17 | **AI OS 实质化** · [46](46-AI操作系统实质化-模型插件模块方案.md) · plugins/models/tools.invoke · Module entryPath |
+| v1.19 | 2026-07-17 | **全面对齐补缺** · [47](47-技术方案全面对齐补缺方案.md) · G-ALIGN-05～08 · TX.4 · OpenAPI |
+| v1.20 | 2026-07-17 | **Module 落 PG · JWKS 形 · OpenAPI 深化** · [48](48-Module落PG与JWKS及OpenAPI深化方案.md) |
+| v1.21 | 2026-07-17 | **S2 余量第三刀 · Ferry 叙事** · [49](49-T-UI-S2余量第三刀与Ferry叙事方案.md) · 31 live · ferry 501 |
+| v1.22 | 2026-07-17 | **Dev Keycloak 联调** · [50](50-Dev-Keycloak联调缓解B-TX3方案.md) · profile oidc · password grant |
 
 
 ---
 
-*v1.15 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
+*v1.22 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
