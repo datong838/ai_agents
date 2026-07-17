@@ -1,0 +1,2214 @@
+{
+  "/zh/foundry/ontology/overview/": {
+    "url": "/zh/foundry/ontology/overview/",
+    "title": "Ontology搭建",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/ontology/why-ontology/": {
+    "url": "/zh/foundry/ontology/why-ontology/",
+    "title": "为什么创建Ontology？",
+    "pageId": "why-ontology",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/ontology/models/": {
+    "url": "/zh/foundry/ontology/models/",
+    "title": "Ontology中的模型",
+    "pageId": "models",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/ontology/core-concepts/": {
+    "url": "/zh/foundry/ontology/core-concepts/",
+    "title": "核心概念",
+    "pageId": "core-concepts",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/ontology/applications/": {
+    "url": "/zh/foundry/ontology/applications/",
+    "title": "基于Ontology的应用程序",
+    "pageId": "applications",
+    "parent": null,
+    "order": 4
+  },
+  "/zh/foundry/ontologies/ontologies-overview/": {
+    "url": "/zh/foundry/ontologies/ontologies-overview/",
+    "title": "概述",
+    "pageId": "ontologies-overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/ontologies/ontologies-proposals/": {
+    "url": "/zh/foundry/ontologies/ontologies-proposals/",
+    "title": "Ontology 提案",
+    "pageId": "ontologies-proposals",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/ontologies/ontology-permissions/": {
+    "url": "/zh/foundry/ontologies/ontology-permissions/",
+    "title": "权限",
+    "pageId": "ontology-permissions",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/ontologies/shared-ontologies/": {
+    "url": "/zh/foundry/ontologies/shared-ontologies/",
+    "title": "共享Ontology",
+    "pageId": "shared-ontologies",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/ontologies/ontology-migration/": {
+    "url": "/zh/foundry/ontologies/ontology-migration/",
+    "title": "在Ontologies之间迁移本体资源",
+    "pageId": "ontology-migration",
+    "parent": null,
+    "order": 4
+  },
+  "/zh/foundry/ontologies/volume-usage/": {
+    "url": "/zh/foundry/ontologies/volume-usage/",
+    "title": "Ontology 占用量",
+    "pageId": "volume-usage",
+    "parent": "group:Usage",
+    "order": 0
+  },
+  "/zh/foundry/ontologies/compute-usage/": {
+    "url": "/zh/foundry/ontologies/compute-usage/",
+    "title": "计算使用：Ontology 索引",
+    "pageId": "compute-usage",
+    "parent": "group:Usage",
+    "order": 0
+  },
+  "/zh/foundry/ontologies/query-compute-usage/": {
+    "url": "/zh/foundry/ontologies/query-compute-usage/",
+    "title": "使用Ontology查询计算使用情况",
+    "pageId": "query-compute-usage",
+    "parent": "group:Usage",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/type-reference/": {
+    "url": "/zh/foundry/object-link-types/type-reference/",
+    "title": "类型参考",
+    "pageId": "type-reference",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/object-types-overview/": {
+    "url": "/zh/foundry/object-link-types/object-types-overview/",
+    "title": "概览",
+    "pageId": "object-types-overview",
+    "parent": "group:Object types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/create-object-type/": {
+    "url": "/zh/foundry/object-link-types/create-object-type/",
+    "title": "创建 Object 类型",
+    "pageId": "create-object-type",
+    "parent": "group:Object types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/edit-object-type/": {
+    "url": "/zh/foundry/object-link-types/edit-object-type/",
+    "title": "编辑Object类型",
+    "pageId": "edit-object-type",
+    "parent": "group:Object types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/enable-gotham-integration/": {
+    "url": "/zh/foundry/object-link-types/enable-gotham-integration/",
+    "title": "通过类型映射启用 Gotham 集成",
+    "pageId": "enable-gotham-integration",
+    "parent": "group:Object types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/object-type-metadata/": {
+    "url": "/zh/foundry/object-link-types/object-type-metadata/",
+    "title": "元数据参考",
+    "pageId": "object-type-metadata",
+    "parent": "group:Object types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/properties-overview/": {
+    "url": "/zh/foundry/object-link-types/properties-overview/",
+    "title": "概览",
+    "pageId": "properties-overview",
+    "parent": "group:Properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/edit-properties/": {
+    "url": "/zh/foundry/object-link-types/edit-properties/",
+    "title": "编辑Object类型属性",
+    "pageId": "edit-properties",
+    "parent": "group:Properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/value-formatting/": {
+    "url": "/zh/foundry/object-link-types/value-formatting/",
+    "title": "支持的值格式化",
+    "pageId": "value-formatting",
+    "parent": "group:Properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/conditional-formatting/": {
+    "url": "/zh/foundry/object-link-types/conditional-formatting/",
+    "title": "添加条件格式化",
+    "pageId": "conditional-formatting",
+    "parent": "group:Properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/property-metadata/": {
+    "url": "/zh/foundry/object-link-types/property-metadata/",
+    "title": "元数据参考",
+    "pageId": "property-metadata",
+    "parent": "group:Properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/edit-only-properties/": {
+    "url": "/zh/foundry/object-link-types/edit-only-properties/",
+    "title": "仅编辑属性",
+    "pageId": "edit-only-properties",
+    "parent": "group:Properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/required-properties/": {
+    "url": "/zh/foundry/object-link-types/required-properties/",
+    "title": "必填属性",
+    "pageId": "required-properties",
+    "parent": "group:Properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/shared-property-overview/": {
+    "url": "/zh/foundry/object-link-types/shared-property-overview/",
+    "title": "概述",
+    "pageId": "shared-property-overview",
+    "parent": "group:Shared properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/create-shared-property/": {
+    "url": "/zh/foundry/object-link-types/create-shared-property/",
+    "title": "创建共享属性",
+    "pageId": "create-shared-property",
+    "parent": "group:Shared properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/edit-shared-property/": {
+    "url": "/zh/foundry/object-link-types/edit-shared-property/",
+    "title": "编辑共享属性",
+    "pageId": "edit-shared-property",
+    "parent": "group:Shared properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/use-shared-property/": {
+    "url": "/zh/foundry/object-link-types/use-shared-property/",
+    "title": "在对象类型上使用共享属性",
+    "pageId": "use-shared-property",
+    "parent": "group:Shared properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/shared-property-metadata/": {
+    "url": "/zh/foundry/object-link-types/shared-property-metadata/",
+    "title": "元数据参考",
+    "pageId": "shared-property-metadata",
+    "parent": "group:Shared properties",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/link-types-overview/": {
+    "url": "/zh/foundry/object-link-types/link-types-overview/",
+    "title": "概述",
+    "pageId": "link-types-overview",
+    "parent": "group:Link types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/create-link-type/": {
+    "url": "/zh/foundry/object-link-types/create-link-type/",
+    "title": "创建链接类型",
+    "pageId": "create-link-type",
+    "parent": "group:Link types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/edit-link-types/": {
+    "url": "/zh/foundry/object-link-types/edit-link-types/",
+    "title": "编辑链接类型",
+    "pageId": "edit-link-types",
+    "parent": "group:Link types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/link-type-metadata/": {
+    "url": "/zh/foundry/object-link-types/link-type-metadata/",
+    "title": "元数据参考",
+    "pageId": "link-type-metadata",
+    "parent": "group:Link types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/allow-editing/": {
+    "url": "/zh/foundry/object-link-types/allow-editing/",
+    "title": "允许用户编辑Objects和链接",
+    "pageId": "allow-editing",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/object-link-types/value-types-overview/": {
+    "url": "/zh/foundry/object-link-types/value-types-overview/",
+    "title": "概述",
+    "pageId": "value-types-overview",
+    "parent": "group:Value types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/create-value-type/": {
+    "url": "/zh/foundry/object-link-types/create-value-type/",
+    "title": "创建值类型",
+    "pageId": "create-value-type",
+    "parent": "group:Value types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/use-value-type/": {
+    "url": "/zh/foundry/object-link-types/use-value-type/",
+    "title": "使用值类型",
+    "pageId": "use-value-type",
+    "parent": "group:Value types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/value-types-versions/": {
+    "url": "/zh/foundry/object-link-types/value-types-versions/",
+    "title": "值类型版本",
+    "pageId": "value-types-versions",
+    "parent": "group:Value types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/value-types-permissions/": {
+    "url": "/zh/foundry/object-link-types/value-types-permissions/",
+    "title": "值类型权限",
+    "pageId": "value-types-permissions",
+    "parent": "group:Value types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/value-type-constraints/": {
+    "url": "/zh/foundry/object-link-types/value-type-constraints/",
+    "title": "值类型约束",
+    "pageId": "value-type-constraints",
+    "parent": "group:Value types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/structs-overview/": {
+    "url": "/zh/foundry/object-link-types/structs-overview/",
+    "title": "概述",
+    "pageId": "structs-overview",
+    "parent": "group:Struct types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/create-struct-type/": {
+    "url": "/zh/foundry/object-link-types/create-struct-type/",
+    "title": "创建结构属性类型",
+    "pageId": "create-struct-type",
+    "parent": "group:Struct types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/edit-struct-type/": {
+    "url": "/zh/foundry/object-link-types/edit-struct-type/",
+    "title": "编辑结构属性类型",
+    "pageId": "edit-struct-type",
+    "parent": "group:Struct types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/struct-automapping/": {
+    "url": "/zh/foundry/object-link-types/struct-automapping/",
+    "title": "自动映射结构属性",
+    "pageId": "struct-automapping",
+    "parent": "group:Struct types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/struct-shared-properties/": {
+    "url": "/zh/foundry/object-link-types/struct-shared-properties/",
+    "title": "结构属性和共享属性类型",
+    "pageId": "struct-shared-properties",
+    "parent": "group:Struct types",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/metadata-typeclasses/": {
+    "url": "/zh/foundry/object-link-types/metadata-typeclasses/",
+    "title": "类型类",
+    "pageId": "metadata-typeclasses",
+    "parent": "group:Metadata",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/metadata-render-hints/": {
+    "url": "/zh/foundry/object-link-types/metadata-render-hints/",
+    "title": "渲染提示",
+    "pageId": "metadata-render-hints",
+    "parent": "group:Metadata",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/metadata-statuses/": {
+    "url": "/zh/foundry/object-link-types/metadata-statuses/",
+    "title": "状态",
+    "pageId": "metadata-statuses",
+    "parent": "group:Metadata",
+    "order": 0
+  },
+  "/zh/foundry/object-link-types/type-groups/": {
+    "url": "/zh/foundry/object-link-types/type-groups/",
+    "title": "Object 类型组",
+    "pageId": "type-groups",
+    "parent": null,
+    "order": 9
+  },
+  "/zh/foundry/object-link-types/marketplace-ontology-types/": {
+    "url": "/zh/foundry/object-link-types/marketplace-ontology-types/",
+    "title": "将Object和链接类型添加到Marketplace产品",
+    "pageId": "marketplace-ontology-types",
+    "parent": null,
+    "order": 10
+  },
+  "/zh/foundry/action-types/overview/": {
+    "url": "/zh/foundry/action-types/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/action-types/getting-started/": {
+    "url": "/zh/foundry/action-types/getting-started/",
+    "title": "入门",
+    "pageId": "getting-started",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/action-types/use-actions/": {
+    "url": "/zh/foundry/action-types/use-actions/",
+    "title": "在平台中使用操作",
+    "pageId": "use-actions",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/action-types/rules/": {
+    "url": "/zh/foundry/action-types/rules/",
+    "title": "规则",
+    "pageId": "rules",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/action-types/parameter-overview/": {
+    "url": "/zh/foundry/action-types/parameter-overview/",
+    "title": "概述",
+    "pageId": "parameter-overview",
+    "parent": "group:Parameters",
+    "order": 0
+  },
+  "/zh/foundry/action-types/parameters-default-value/": {
+    "url": "/zh/foundry/action-types/parameters-default-value/",
+    "title": "设置参数默认值",
+    "pageId": "parameters-default-value",
+    "parent": "group:Parameters",
+    "order": 0
+  },
+  "/zh/foundry/action-types/parameters-filter/": {
+    "url": "/zh/foundry/action-types/parameters-filter/",
+    "title": "筛选参数下拉菜单的结果",
+    "pageId": "parameters-filter",
+    "parent": "group:Parameters",
+    "order": 0
+  },
+  "/zh/foundry/action-types/dropdown-security/": {
+    "url": "/zh/foundry/action-types/dropdown-security/",
+    "title": "对象下拉菜单安全注意事项",
+    "pageId": "dropdown-security",
+    "parent": "group:Parameters",
+    "order": 0
+  },
+  "/zh/foundry/action-types/parameters-override/": {
+    "url": "/zh/foundry/action-types/parameters-override/",
+    "title": "覆盖",
+    "pageId": "parameters-override",
+    "parent": "group:Parameters",
+    "order": 0
+  },
+  "/zh/foundry/action-types/submission-criteria/": {
+    "url": "/zh/foundry/action-types/submission-criteria/",
+    "title": "提交标准",
+    "pageId": "submission-criteria",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/action-types/function-actions-overview/": {
+    "url": "/zh/foundry/action-types/function-actions-overview/",
+    "title": "概述",
+    "pageId": "function-actions-overview",
+    "parent": "group:Function-backed actions",
+    "order": 0
+  },
+  "/zh/foundry/action-types/function-actions-getting-started/": {
+    "url": "/zh/foundry/action-types/function-actions-getting-started/",
+    "title": "入门",
+    "pageId": "function-actions-getting-started",
+    "parent": "group:Function-backed actions",
+    "order": 0
+  },
+  "/zh/foundry/action-types/side-effects-overview/": {
+    "url": "/zh/foundry/action-types/side-effects-overview/",
+    "title": "概述",
+    "pageId": "side-effects-overview",
+    "parent": "group:Side effects",
+    "order": 0
+  },
+  "/zh/foundry/action-types/notifications/": {
+    "url": "/zh/foundry/action-types/notifications/",
+    "title": "通知",
+    "pageId": "notifications",
+    "parent": "group:Side effects",
+    "order": 0
+  },
+  "/zh/foundry/action-types/set-up-notification/": {
+    "url": "/zh/foundry/action-types/set-up-notification/",
+    "title": "设置通知",
+    "pageId": "set-up-notification",
+    "parent": "group:Side effects",
+    "order": 0
+  },
+  "/zh/foundry/action-types/webhooks/": {
+    "url": "/zh/foundry/action-types/webhooks/",
+    "title": "Webhooks",
+    "pageId": "webhooks",
+    "parent": "group:Side effects",
+    "order": 0
+  },
+  "/zh/foundry/action-types/set-up-webhook/": {
+    "url": "/zh/foundry/action-types/set-up-webhook/",
+    "title": "设置 Webhook",
+    "pageId": "set-up-webhook",
+    "parent": "group:Side effects",
+    "order": 0
+  },
+  "/zh/foundry/action-types/configure-sections/": {
+    "url": "/zh/foundry/action-types/configure-sections/",
+    "title": "配置部分",
+    "pageId": "configure-sections",
+    "parent": null,
+    "order": 8
+  },
+  "/zh/foundry/action-types/upload-attachments/": {
+    "url": "/zh/foundry/action-types/upload-attachments/",
+    "title": "上传附件",
+    "pageId": "upload-attachments",
+    "parent": null,
+    "order": 9
+  },
+  "/zh/foundry/action-types/scale-property-limits/": {
+    "url": "/zh/foundry/action-types/scale-property-limits/",
+    "title": "规模和属性限制",
+    "pageId": "scale-property-limits",
+    "parent": null,
+    "order": 10
+  },
+  "/zh/foundry/action-types/inline-edits/": {
+    "url": "/zh/foundry/action-types/inline-edits/",
+    "title": "行内编辑",
+    "pageId": "inline-edits",
+    "parent": null,
+    "order": 11
+  },
+  "/zh/foundry/action-types/permissions/": {
+    "url": "/zh/foundry/action-types/permissions/",
+    "title": "权限",
+    "pageId": "permissions",
+    "parent": null,
+    "order": 12
+  },
+  "/zh/foundry/action-types/action-reverts/": {
+    "url": "/zh/foundry/action-types/action-reverts/",
+    "title": "撤销或取消操作",
+    "pageId": "action-reverts",
+    "parent": null,
+    "order": 13
+  },
+  "/zh/foundry/action-types/action-metrics/": {
+    "url": "/zh/foundry/action-types/action-metrics/",
+    "title": "操作指标 [测试版]",
+    "pageId": "action-metrics",
+    "parent": null,
+    "order": 14
+  },
+  "/zh/foundry/action-types/action-log/": {
+    "url": "/zh/foundry/action-types/action-log/",
+    "title": "操作日志",
+    "pageId": "action-log",
+    "parent": null,
+    "order": 15
+  },
+  "/zh/foundry/action-types/marketplace-action-types/": {
+    "url": "/zh/foundry/action-types/marketplace-action-types/",
+    "title": "将操作类型添加到Marketplace产品",
+    "pageId": "marketplace-action-types",
+    "parent": null,
+    "order": 16
+  },
+  "/zh/foundry/functions/overview/": {
+    "url": "/zh/foundry/functions/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/functions/getting-started/": {
+    "url": "/zh/foundry/functions/getting-started/",
+    "title": "入门",
+    "pageId": "getting-started",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/functions/use-functions/": {
+    "url": "/zh/foundry/functions/use-functions/",
+    "title": "在平台中使用函数",
+    "pageId": "use-functions",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/functions/input-output-types/": {
+    "url": "/zh/foundry/functions/input-output-types/",
+    "title": "输入和输出类型",
+    "pageId": "input-output-types",
+    "parent": "group:TypeScript basics",
+    "order": 0
+  },
+  "/zh/foundry/functions/decorators/": {
+    "url": "/zh/foundry/functions/decorators/",
+    "title": "装饰器",
+    "pageId": "decorators",
+    "parent": "group:TypeScript basics",
+    "order": 0
+  },
+  "/zh/foundry/functions/undefined-values/": {
+    "url": "/zh/foundry/functions/undefined-values/",
+    "title": "处理未定义值",
+    "pageId": "undefined-values",
+    "parent": "group:TypeScript basics",
+    "order": 0
+  },
+  "/zh/foundry/functions/debug/": {
+    "url": "/zh/foundry/functions/debug/",
+    "title": "调试函数",
+    "pageId": "debug",
+    "parent": "group:TypeScript basics",
+    "order": 0
+  },
+  "/zh/foundry/functions/add-dependencies/": {
+    "url": "/zh/foundry/functions/add-dependencies/",
+    "title": "添加 npm 依赖项",
+    "pageId": "add-dependencies",
+    "parent": "group:TypeScript basics",
+    "order": 0
+  },
+  "/zh/foundry/functions/python-getting-started/": {
+    "url": "/zh/foundry/functions/python-getting-started/",
+    "title": "起始步骤",
+    "pageId": "python-getting-started",
+    "parent": "group:Python functions",
+    "order": 0
+  },
+  "/zh/foundry/functions/python-function-types/": {
+    "url": "/zh/foundry/functions/python-function-types/",
+    "title": "类型参考",
+    "pageId": "python-function-types",
+    "parent": "group:Python functions",
+    "order": 0
+  },
+  "/zh/foundry/functions/python-functions-on-objects/": {
+    "url": "/zh/foundry/functions/python-functions-on-objects/",
+    "title": "对象上的函数",
+    "pageId": "python-functions-on-objects",
+    "parent": "group:Python functions",
+    "order": 0
+  },
+  "/zh/foundry/functions/python-functions-api-calls/": {
+    "url": "/zh/foundry/functions/python-functions-api-calls/",
+    "title": "从Python函数进行API调用",
+    "pageId": "python-functions-api-calls",
+    "parent": "group:Python functions",
+    "order": 0
+  },
+  "/zh/foundry/functions/python-ontology-edits/": {
+    "url": "/zh/foundry/functions/python-ontology-edits/",
+    "title": "Ontology 更改",
+    "pageId": "python-ontology-edits",
+    "parent": "group:Python functions",
+    "order": 0
+  },
+  "/zh/foundry/functions/python-functions-builder/": {
+    "url": "/zh/foundry/functions/python-functions-builder/",
+    "title": "在Pipeline Builder中使用Python函数",
+    "pageId": "python-functions-builder",
+    "parent": "group:Python functions",
+    "order": 0
+  },
+  "/zh/foundry/functions/python-functions-workshop/": {
+    "url": "/zh/foundry/functions/python-functions-workshop/",
+    "title": "在Workshop中使用Python函数",
+    "pageId": "python-functions-workshop",
+    "parent": "group:Python functions",
+    "order": 0
+  },
+  "/zh/foundry/functions/python-functions-advanced-usage/": {
+    "url": "/zh/foundry/functions/python-functions-advanced-usage/",
+    "title": "高级用法",
+    "pageId": "python-functions-advanced-usage",
+    "parent": "group:Python functions",
+    "order": 0
+  },
+  "/zh/foundry/functions/functions-on-models/": {
+    "url": "/zh/foundry/functions/functions-on-models/",
+    "title": "模型上的函数",
+    "pageId": "functions-on-models",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/functions/language-models/": {
+    "url": "/zh/foundry/functions/language-models/",
+    "title": "函数中的语言模型",
+    "pageId": "language-models",
+    "parent": null,
+    "order": 6
+  },
+  "/zh/foundry/functions/external-sources/": {
+    "url": "/zh/foundry/functions/external-sources/",
+    "title": "函数中的外部来源",
+    "pageId": "external-sources",
+    "parent": null,
+    "order": 7
+  },
+  "/zh/foundry/functions/functions-on-objects/": {
+    "url": "/zh/foundry/functions/functions-on-objects/",
+    "title": "概述",
+    "pageId": "functions-on-objects",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/foo-getting-started/": {
+    "url": "/zh/foundry/functions/foo-getting-started/",
+    "title": "入门",
+    "pageId": "foo-getting-started",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/object-identifiers/": {
+    "url": "/zh/foundry/functions/object-identifiers/",
+    "title": "Object标识符",
+    "pageId": "object-identifiers",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/create-custom-aggregation/": {
+    "url": "/zh/foundry/functions/create-custom-aggregation/",
+    "title": "创建自定义聚合",
+    "pageId": "create-custom-aggregation",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/ontology-imports/": {
+    "url": "/zh/foundry/functions/ontology-imports/",
+    "title": "导入Object和链接类型",
+    "pageId": "ontology-imports",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/api-objects-links/": {
+    "url": "/zh/foundry/functions/api-objects-links/",
+    "title": "API: Object和链接",
+    "pageId": "api-objects-links",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/api-object-sets/": {
+    "url": "/zh/foundry/functions/api-object-sets/",
+    "title": "API：对象集",
+    "pageId": "api-object-sets",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/api-attachments/": {
+    "url": "/zh/foundry/functions/api-attachments/",
+    "title": "API: 附件",
+    "pageId": "api-attachments",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/api-media/": {
+    "url": "/zh/foundry/functions/api-media/",
+    "title": "API：媒体",
+    "pageId": "api-media",
+    "parent": "group:Functions on objects",
+    "order": 0
+  },
+  "/zh/foundry/functions/overview-semantic-search/": {
+    "url": "/zh/foundry/functions/overview-semantic-search/",
+    "title": "概述",
+    "pageId": "overview-semantic-search",
+    "parent": "group:Semantic search",
+    "order": 0
+  },
+  "/zh/foundry/functions/using-palantir-provided-models-to-create-a-semantic-search-workflow/": {
+    "url": "/zh/foundry/functions/using-palantir-provided-models-to-create-a-semantic-search-workflow/",
+    "title": "使用Palantir提供的模型创建语义搜索工作流",
+    "pageId": "using-palantir-provided-models-to-create-a-semantic-search-workflow",
+    "parent": "group:Semantic search",
+    "order": 0
+  },
+  "/zh/foundry/functions/using-custom-models-to-create-a-semantic-search-workflow/": {
+    "url": "/zh/foundry/functions/using-custom-models-to-create-a-semantic-search-workflow/",
+    "title": "使用自定义模型创建语义搜索工作流",
+    "pageId": "using-custom-models-to-create-a-semantic-search-workflow",
+    "parent": "group:Semantic search",
+    "order": 0
+  },
+  "/zh/foundry/functions/chunking/": {
+    "url": "/zh/foundry/functions/chunking/",
+    "title": "分块",
+    "pageId": "chunking",
+    "parent": "group:Semantic search",
+    "order": 0
+  },
+  "/zh/foundry/functions/pdf-handling/": {
+    "url": "/zh/foundry/functions/pdf-handling/",
+    "title": "PDF处理",
+    "pageId": "pdf-handling",
+    "parent": "group:Semantic search",
+    "order": 0
+  },
+  "/zh/foundry/functions/edits-overview/": {
+    "url": "/zh/foundry/functions/edits-overview/",
+    "title": "概述",
+    "pageId": "edits-overview",
+    "parent": "group:Ontology edits",
+    "order": 0
+  },
+  "/zh/foundry/functions/edits-generate-id/": {
+    "url": "/zh/foundry/functions/edits-generate-id/",
+    "title": "为新Objects生成唯一ID",
+    "pageId": "edits-generate-id",
+    "parent": "group:Ontology edits",
+    "order": 0
+  },
+  "/zh/foundry/functions/user-facing-error/": {
+    "url": "/zh/foundry/functions/user-facing-error/",
+    "title": "抛出用户界面错误",
+    "pageId": "user-facing-error",
+    "parent": "group:Ontology edits",
+    "order": 0
+  },
+  "/zh/foundry/functions/api-ontology-edits/": {
+    "url": "/zh/foundry/functions/api-ontology-edits/",
+    "title": "API: Ontology编辑",
+    "pageId": "api-ontology-edits",
+    "parent": "group:Ontology edits",
+    "order": 0
+  },
+  "/zh/foundry/functions/query-functions/": {
+    "url": "/zh/foundry/functions/query-functions/",
+    "title": "查询",
+    "pageId": "query-functions",
+    "parent": "group:Functions called through the API gateway",
+    "order": 0
+  },
+  "/zh/foundry/functions/model-functions/": {
+    "url": "/zh/foundry/functions/model-functions/",
+    "title": "创建模型函数",
+    "pageId": "model-functions",
+    "parent": "group:Models and graphs",
+    "order": 0
+  },
+  "/zh/foundry/functions/unit-test-getting-started/": {
+    "url": "/zh/foundry/functions/unit-test-getting-started/",
+    "title": "入门指南",
+    "pageId": "unit-test-getting-started",
+    "parent": "group:Unit testing",
+    "order": 0
+  },
+  "/zh/foundry/functions/unit-test-stub-objects/": {
+    "url": "/zh/foundry/functions/unit-test-stub-objects/",
+    "title": "创建存根对象",
+    "pageId": "unit-test-stub-objects",
+    "parent": "group:Unit testing",
+    "order": 0
+  },
+  "/zh/foundry/functions/unit-test-ontology-edits/": {
+    "url": "/zh/foundry/functions/unit-test-ontology-edits/",
+    "title": "验证Ontology编辑",
+    "pageId": "unit-test-ontology-edits",
+    "parent": "group:Unit testing",
+    "order": 0
+  },
+  "/zh/foundry/functions/unit-test-object-searches/": {
+    "url": "/zh/foundry/functions/unit-test-object-searches/",
+    "title": "存根对象搜索和聚合",
+    "pageId": "unit-test-object-searches",
+    "parent": "group:Unit testing",
+    "order": 0
+  },
+  "/zh/foundry/functions/unit-test-dates-timestamps/": {
+    "url": "/zh/foundry/functions/unit-test-dates-timestamps/",
+    "title": "模拟日期、时间戳和UUID",
+    "pageId": "unit-test-dates-timestamps",
+    "parent": "group:Unit testing",
+    "order": 0
+  },
+  "/zh/foundry/functions/unit-test-users-groups/": {
+    "url": "/zh/foundry/functions/unit-test-users-groups/",
+    "title": "模拟用户和组",
+    "pageId": "unit-test-users-groups",
+    "parent": "group:Unit testing",
+    "order": 0
+  },
+  "/zh/foundry/functions/unit-test-debugging/": {
+    "url": "/zh/foundry/functions/unit-test-debugging/",
+    "title": "调试",
+    "pageId": "unit-test-debugging",
+    "parent": "group:Unit testing",
+    "order": 0
+  },
+  "/zh/foundry/functions/enforced-limits/": {
+    "url": "/zh/foundry/functions/enforced-limits/",
+    "title": "强制限制",
+    "pageId": "enforced-limits",
+    "parent": "group:Performance and limits",
+    "order": 0
+  },
+  "/zh/foundry/functions/optimize-performance/": {
+    "url": "/zh/foundry/functions/optimize-performance/",
+    "title": "优化性能",
+    "pageId": "optimize-performance",
+    "parent": "group:Performance and limits",
+    "order": 0
+  },
+  "/zh/foundry/functions/configure-notifications/": {
+    "url": "/zh/foundry/functions/configure-notifications/",
+    "title": "配置通知",
+    "pageId": "configure-notifications",
+    "parent": null,
+    "order": 15
+  },
+  "/zh/foundry/functions/permissions/": {
+    "url": "/zh/foundry/functions/permissions/",
+    "title": "权限",
+    "pageId": "permissions",
+    "parent": null,
+    "order": 16
+  },
+  "/zh/foundry/functions/marketplace-functions/": {
+    "url": "/zh/foundry/functions/marketplace-functions/",
+    "title": "将函数添加到 Marketplace 产品",
+    "pageId": "marketplace-functions",
+    "parent": null,
+    "order": 17
+  },
+  "/zh/foundry/functions/resource-imports-sidebar/": {
+    "url": "/zh/foundry/functions/resource-imports-sidebar/",
+    "title": "将资源导入代码库",
+    "pageId": "resource-imports-sidebar",
+    "parent": null,
+    "order": 18
+  },
+  "/zh/foundry/interfaces/interface-overview/": {
+    "url": "/zh/foundry/interfaces/interface-overview/",
+    "title": "概述",
+    "pageId": "interface-overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/interfaces/create-interface/": {
+    "url": "/zh/foundry/interfaces/create-interface/",
+    "title": "创建界面",
+    "pageId": "create-interface",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/interfaces/implement-interface/": {
+    "url": "/zh/foundry/interfaces/implement-interface/",
+    "title": "实现接口",
+    "pageId": "implement-interface",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/interfaces/edit-interface-definition/": {
+    "url": "/zh/foundry/interfaces/edit-interface-definition/",
+    "title": "编辑接口定义",
+    "pageId": "edit-interface-definition",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/interfaces/edit-interface-implementation/": {
+    "url": "/zh/foundry/interfaces/edit-interface-implementation/",
+    "title": "编辑接口实现",
+    "pageId": "edit-interface-implementation",
+    "parent": null,
+    "order": 4
+  },
+  "/zh/foundry/interfaces/interface-link-types-overview/": {
+    "url": "/zh/foundry/interfaces/interface-link-types-overview/",
+    "title": "接口链接类型",
+    "pageId": "interface-link-types-overview",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/interfaces/extend-interface/": {
+    "url": "/zh/foundry/interfaces/extend-interface/",
+    "title": "扩展接口",
+    "pageId": "extend-interface",
+    "parent": null,
+    "order": 6
+  },
+  "/zh/foundry/interfaces/interface-metadata/": {
+    "url": "/zh/foundry/interfaces/interface-metadata/",
+    "title": "元数据参考",
+    "pageId": "interface-metadata",
+    "parent": null,
+    "order": 7
+  },
+  "/zh/foundry/logic/overview/": {
+    "url": "/zh/foundry/logic/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/logic/concepts/": {
+    "url": "/zh/foundry/logic/concepts/",
+    "title": "核心概念",
+    "pageId": "concepts",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/logic/getting-started/": {
+    "url": "/zh/foundry/logic/getting-started/",
+    "title": "入门指南",
+    "pageId": "getting-started",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/logic/aip-logic-integration-automate/": {
+    "url": "/zh/foundry/logic/aip-logic-integration-automate/",
+    "title": "AIP Logic与自动化的集成",
+    "pageId": "aip-logic-integration-automate",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/logic/evaluations-overview/": {
+    "url": "/zh/foundry/logic/evaluations-overview/",
+    "title": "评估",
+    "pageId": "evaluations-overview",
+    "parent": "group:AIP Logic Evaluations",
+    "order": 0
+  },
+  "/zh/foundry/logic/evaluations-getting-started/": {
+    "url": "/zh/foundry/logic/evaluations-getting-started/",
+    "title": "入门",
+    "pageId": "evaluations-getting-started",
+    "parent": "group:AIP Logic Evaluations",
+    "order": 0
+  },
+  "/zh/foundry/logic/evaluations-create-suite/": {
+    "url": "/zh/foundry/logic/evaluations-create-suite/",
+    "title": "创建评估套件",
+    "pageId": "evaluations-create-suite",
+    "parent": "group:AIP Logic Evaluations",
+    "order": 0
+  },
+  "/zh/foundry/logic/evaluations-metrics-dashboard/": {
+    "url": "/zh/foundry/logic/evaluations-metrics-dashboard/",
+    "title": "评估指标仪表盘",
+    "pageId": "evaluations-metrics-dashboard",
+    "parent": "group:AIP Logic Evaluations",
+    "order": 0
+  },
+  "/zh/foundry/logic/compute-usage/": {
+    "url": "/zh/foundry/logic/compute-usage/",
+    "title": "使用 AIP Logic 计算资源消耗",
+    "pageId": "compute-usage",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/logic/faq/": {
+    "url": "/zh/foundry/logic/faq/",
+    "title": "AIP Logic 常见问题解答",
+    "pageId": "faq",
+    "parent": null,
+    "order": 6
+  },
+  "/zh/foundry/object-explorer/overview/": {
+    "url": "/zh/foundry/object-explorer/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/getting-started/": {
+    "url": "/zh/foundry/object-explorer/getting-started/",
+    "title": "入门",
+    "pageId": "getting-started",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/object-explorer/search-objects/": {
+    "url": "/zh/foundry/object-explorer/search-objects/",
+    "title": "搜索Objects",
+    "pageId": "search-objects",
+    "parent": "group:Search and explore objects",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/search-syntax/": {
+    "url": "/zh/foundry/object-explorer/search-syntax/",
+    "title": "搜索语法",
+    "pageId": "search-syntax",
+    "parent": "group:Search and explore objects",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/filter-results/": {
+    "url": "/zh/foundry/object-explorer/filter-results/",
+    "title": "筛选结果",
+    "pageId": "filter-results",
+    "parent": "group:Analyze and compare",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/explore-charts/": {
+    "url": "/zh/foundry/object-explorer/explore-charts/",
+    "title": "使用图表进行探索",
+    "pageId": "explore-charts",
+    "parent": "group:Analyze and compare",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/view-results/": {
+    "url": "/zh/foundry/object-explorer/view-results/",
+    "title": "查看结果",
+    "pageId": "view-results",
+    "parent": "group:Analyze and compare",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/pivot-linked/": {
+    "url": "/zh/foundry/object-explorer/pivot-linked/",
+    "title": "通过旋转探索关联对象",
+    "pageId": "pivot-linked",
+    "parent": "group:Analyze and compare",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/compare-object-sets/": {
+    "url": "/zh/foundry/object-explorer/compare-object-sets/",
+    "title": "比较对象集",
+    "pageId": "compare-object-sets",
+    "parent": "group:Analyze and compare",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/save-explorations/": {
+    "url": "/zh/foundry/object-explorer/save-explorations/",
+    "title": "保存探索",
+    "pageId": "save-explorations",
+    "parent": "group:Analyze and compare",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/save-lists/": {
+    "url": "/zh/foundry/object-explorer/save-lists/",
+    "title": "保存列表",
+    "pageId": "save-lists",
+    "parent": "group:Analyze and compare",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/apply-actions/": {
+    "url": "/zh/foundry/object-explorer/apply-actions/",
+    "title": "应用操作",
+    "pageId": "apply-actions",
+    "parent": "group:Analyze and compare",
+    "order": 0
+  },
+  "/zh/foundry/object-explorer/generate-urls/": {
+    "url": "/zh/foundry/object-explorer/generate-urls/",
+    "title": "生成 Object Explorer 链接",
+    "pageId": "generate-urls",
+    "parent": null,
+    "order": 4
+  },
+  "/zh/foundry/object-explorer/configure/": {
+    "url": "/zh/foundry/object-explorer/configure/",
+    "title": "配置Object Explorer",
+    "pageId": "configure",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/object-monitors/overview/": {
+    "url": "/zh/foundry/object-monitors/overview/",
+    "title": "Object Monitors",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/object-monitors/create_new_object_monitor/": {
+    "url": "/zh/foundry/object-monitors/create_new_object_monitor/",
+    "title": "创建一个新Object监视器",
+    "pageId": "create_new_object_monitor",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/object-monitors/monitor/": {
+    "url": "/zh/foundry/object-monitors/monitor/",
+    "title": "监控",
+    "pageId": "monitor",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/object-monitors/input/": {
+    "url": "/zh/foundry/object-monitors/input/",
+    "title": "输入",
+    "pageId": "input",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/object-monitors/condition/": {
+    "url": "/zh/foundry/object-monitors/condition/",
+    "title": "条件",
+    "pageId": "condition",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/object-monitors/evaluation/": {
+    "url": "/zh/foundry/object-monitors/evaluation/",
+    "title": "评估",
+    "pageId": "evaluation",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/object-monitors/activity/": {
+    "url": "/zh/foundry/object-monitors/activity/",
+    "title": "活动",
+    "pageId": "activity",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/object-monitors/notifications/": {
+    "url": "/zh/foundry/object-monitors/notifications/",
+    "title": "通知",
+    "pageId": "notifications",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/object-monitors/actions/": {
+    "url": "/zh/foundry/object-monitors/actions/",
+    "title": "操作",
+    "pageId": "actions",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/object-monitors/limits/": {
+    "url": "/zh/foundry/object-monitors/limits/",
+    "title": "限制",
+    "pageId": "limits",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/object-monitors/errors/": {
+    "url": "/zh/foundry/object-monitors/errors/",
+    "title": "错误参考",
+    "pageId": "errors",
+    "parent": null,
+    "order": 4
+  },
+  "/zh/foundry/object-views/overview/": {
+    "url": "/zh/foundry/object-views/overview/",
+    "title": "概览",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/object-views/use-object-views-in-platform/": {
+    "url": "/zh/foundry/object-views/use-object-views-in-platform/",
+    "title": "在平台中使用Object View",
+    "pageId": "use-object-views-in-platform",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/object-views/config-overview/": {
+    "url": "/zh/foundry/object-views/config-overview/",
+    "title": "概述",
+    "pageId": "config-overview",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/object-views/config-tabs/": {
+    "url": "/zh/foundry/object-views/config-tabs/",
+    "title": "配置标签页",
+    "pageId": "config-tabs",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/object-views/config-workshop-tabs/": {
+    "url": "/zh/foundry/object-views/config-workshop-tabs/",
+    "title": "配置 Workshop 标签页",
+    "pageId": "config-workshop-tabs",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/object-views/config-widgets/": {
+    "url": "/zh/foundry/object-views/config-widgets/",
+    "title": "配置微件（旧版）",
+    "pageId": "config-widgets",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/object-views/config-app-sidebar/": {
+    "url": "/zh/foundry/object-views/config-app-sidebar/",
+    "title": "配置应用程序侧边栏",
+    "pageId": "config-app-sidebar",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/object-views/config-profiles/": {
+    "url": "/zh/foundry/object-views/config-profiles/",
+    "title": "配置配置文件",
+    "pageId": "config-profiles",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/object-views/manage-versions/": {
+    "url": "/zh/foundry/object-views/manage-versions/",
+    "title": "管理Object视图版本",
+    "pageId": "manage-versions",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/object-views/widgets-properties-links/": {
+    "url": "/zh/foundry/object-views/widgets-properties-links/",
+    "title": "属性和链接",
+    "pageId": "widgets-properties-links",
+    "parent": "group:Widgets",
+    "order": 0
+  },
+  "/zh/foundry/object-views/widgets-visualization/": {
+    "url": "/zh/foundry/object-views/widgets-visualization/",
+    "title": "可视化",
+    "pageId": "widgets-visualization",
+    "parent": "group:Widgets",
+    "order": 0
+  },
+  "/zh/foundry/object-views/widgets-filtering/": {
+    "url": "/zh/foundry/object-views/widgets-filtering/",
+    "title": "筛选",
+    "pageId": "widgets-filtering",
+    "parent": "group:Widgets",
+    "order": 0
+  },
+  "/zh/foundry/object-views/widgets-layout/": {
+    "url": "/zh/foundry/object-views/widgets-layout/",
+    "title": "设计",
+    "pageId": "widgets-layout",
+    "parent": "group:Widgets",
+    "order": 0
+  },
+  "/zh/foundry/object-views/widgets-apps-files/": {
+    "url": "/zh/foundry/object-views/widgets-apps-files/",
+    "title": "应用程序和文件",
+    "pageId": "widgets-apps-files",
+    "parent": "group:Widgets",
+    "order": 0
+  },
+  "/zh/foundry/object-views/generate-urls/": {
+    "url": "/zh/foundry/object-views/generate-urls/",
+    "title": "生成Object视图URL",
+    "pageId": "generate-urls",
+    "parent": null,
+    "order": 4
+  },
+  "/zh/foundry/object-views/comment-on-objects/": {
+    "url": "/zh/foundry/object-views/comment-on-objects/",
+    "title": "对Object发表评论",
+    "pageId": "comment-on-objects",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/object-views/marketplace-object-views/": {
+    "url": "/zh/foundry/object-views/marketplace-object-views/",
+    "title": "添加Object视图到Marketplace产品",
+    "pageId": "marketplace-object-views",
+    "parent": null,
+    "order": 6
+  },
+  "/zh/foundry/ontology-manager/overview/": {
+    "url": "/zh/foundry/ontology-manager/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/ontology-manager/navigation/": {
+    "url": "/zh/foundry/ontology-manager/navigation/",
+    "title": "导航",
+    "pageId": "navigation",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/ontology-manager/view-usage/": {
+    "url": "/zh/foundry/ontology-manager/view-usage/",
+    "title": "Ontology指标",
+    "pageId": "view-usage",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/ontology-manager/ontology-roles-migration/": {
+    "url": "/zh/foundry/ontology-manager/ontology-roles-migration/",
+    "title": "Ontology 角色迁移",
+    "pageId": "ontology-roles-migration",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/ontology-manager/save-changes/": {
+    "url": "/zh/foundry/ontology-manager/save-changes/",
+    "title": "保存对Ontology的更改",
+    "pageId": "save-changes",
+    "parent": "group:Change management",
+    "order": 0
+  },
+  "/zh/foundry/ontology-manager/restore-changes/": {
+    "url": "/zh/foundry/ontology-manager/restore-changes/",
+    "title": "审查和恢复更改",
+    "pageId": "restore-changes",
+    "parent": "group:Change management",
+    "order": 0
+  },
+  "/zh/foundry/ontology-manager/export-import/": {
+    "url": "/zh/foundry/ontology-manager/export-import/",
+    "title": "导出、编辑和导入Ontology",
+    "pageId": "export-import",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/ontology-manager/cleanup/": {
+    "url": "/zh/foundry/ontology-manager/cleanup/",
+    "title": "Ontology 清理",
+    "pageId": "cleanup",
+    "parent": null,
+    "order": 6
+  },
+  "/zh/foundry/vertex/overview/": {
+    "url": "/zh/foundry/vertex/overview/",
+    "title": "概览",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/vertex/example-use-cases/": {
+    "url": "/zh/foundry/vertex/example-use-cases/",
+    "title": "示例应用案例",
+    "pageId": "example-use-cases",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/vertex/graphs-explore/": {
+    "url": "/zh/foundry/vertex/graphs-explore/",
+    "title": "探索现有图表",
+    "pageId": "graphs-explore",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/explore-object-relationships/": {
+    "url": "/zh/foundry/vertex/explore-object-relationships/",
+    "title": "探索Object关系",
+    "pageId": "explore-object-relationships",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/graphs-display-options/": {
+    "url": "/zh/foundry/vertex/graphs-display-options/",
+    "title": "Object和边显示选项",
+    "pageId": "graphs-display-options",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/save-share/": {
+    "url": "/zh/foundry/vertex/save-share/",
+    "title": "保存、共享和协作",
+    "pageId": "save-share",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/graphs-template/": {
+    "url": "/zh/foundry/vertex/graphs-template/",
+    "title": "创建图模板",
+    "pageId": "graphs-template",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/generate-graph-apps/": {
+    "url": "/zh/foundry/vertex/generate-graph-apps/",
+    "title": "从其他应用生成图表",
+    "pageId": "generate-graph-apps",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/generate-graph-functions/": {
+    "url": "/zh/foundry/vertex/generate-graph-functions/",
+    "title": "使用函数生成图表",
+    "pageId": "generate-graph-functions",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/derive-property-functions/": {
+    "url": "/zh/foundry/vertex/derive-property-functions/",
+    "title": "使用函数派生属性",
+    "pageId": "derive-property-functions",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/embed-graph-workshop/": {
+    "url": "/zh/foundry/vertex/embed-graph-workshop/",
+    "title": "在Workshop模块中嵌入图形",
+    "pageId": "embed-graph-workshop",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/read-only-mode/": {
+    "url": "/zh/foundry/vertex/read-only-mode/",
+    "title": "只读模式",
+    "pageId": "read-only-mode",
+    "parent": "group:Graphs",
+    "order": 0
+  },
+  "/zh/foundry/vertex/events-overview/": {
+    "url": "/zh/foundry/vertex/events-overview/",
+    "title": "概述",
+    "pageId": "events-overview",
+    "parent": "group:Events and time series",
+    "order": 0
+  },
+  "/zh/foundry/vertex/configure-events/": {
+    "url": "/zh/foundry/vertex/configure-events/",
+    "title": "配置事件",
+    "pageId": "configure-events",
+    "parent": "group:Events and time series",
+    "order": 0
+  },
+  "/zh/foundry/vertex/explore-related-events/": {
+    "url": "/zh/foundry/vertex/explore-related-events/",
+    "title": "探索相关事件",
+    "pageId": "explore-related-events",
+    "parent": "group:Events and time series",
+    "order": 0
+  },
+  "/zh/foundry/vertex/explore-time-series/": {
+    "url": "/zh/foundry/vertex/explore-time-series/",
+    "title": "探索相关时间序列",
+    "pageId": "explore-time-series",
+    "parent": "group:Events and time series",
+    "order": 0
+  },
+  "/zh/foundry/vertex/use-time-selection/": {
+    "url": "/zh/foundry/vertex/use-time-selection/",
+    "title": "使用时间选择",
+    "pageId": "use-time-selection",
+    "parent": "group:Events and time series",
+    "order": 0
+  },
+  "/zh/foundry/vertex/configure-thresholds/": {
+    "url": "/zh/foundry/vertex/configure-thresholds/",
+    "title": "配置阈值",
+    "pageId": "configure-thresholds",
+    "parent": "group:Events and time series",
+    "order": 0
+  },
+  "/zh/foundry/vertex/timeline/": {
+    "url": "/zh/foundry/vertex/timeline/",
+    "title": "查看和筛选时间轴上的事件",
+    "pageId": "timeline",
+    "parent": "group:Events and time series",
+    "order": 0
+  },
+  "/zh/foundry/vertex/scenarios-overview/": {
+    "url": "/zh/foundry/vertex/scenarios-overview/",
+    "title": "概览",
+    "pageId": "scenarios-overview",
+    "parent": "group:Scenarios",
+    "order": 0
+  },
+  "/zh/foundry/vertex/scenarios-getting-started/": {
+    "url": "/zh/foundry/vertex/scenarios-getting-started/",
+    "title": "入门指南",
+    "pageId": "scenarios-getting-started",
+    "parent": "group:Scenarios",
+    "order": 0
+  },
+  "/zh/foundry/vertex/scenarios-options/": {
+    "url": "/zh/foundry/vertex/scenarios-options/",
+    "title": "场景选项",
+    "pageId": "scenarios-options",
+    "parent": "group:Scenarios",
+    "order": 0
+  },
+  "/zh/foundry/vertex/chained-models/": {
+    "url": "/zh/foundry/vertex/chained-models/",
+    "title": "配置链式模型",
+    "pageId": "chained-models",
+    "parent": "group:Scenarios",
+    "order": 0
+  },
+  "/zh/foundry/vertex/vertex-settings-control-panel/": {
+    "url": "/zh/foundry/vertex/vertex-settings-control-panel/",
+    "title": "在控制面板中配置Vertex设置",
+    "pageId": "vertex-settings-control-panel",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/vertex/link-merging/": {
+    "url": "/zh/foundry/vertex/link-merging/",
+    "title": "配置链接合并",
+    "pageId": "link-merging",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/vertex/marketplace-vertex/": {
+    "url": "/zh/foundry/vertex/marketplace-vertex/",
+    "title": "将 Vertex 图模板添加到 Marketplace 产品",
+    "pageId": "marketplace-vertex",
+    "parent": null,
+    "order": 6
+  },
+  "/zh/foundry/process-mining/overview/": {
+    "url": "/zh/foundry/process-mining/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/process-mining/core-concepts/": {
+    "url": "/zh/foundry/process-mining/core-concepts/",
+    "title": "核心概念",
+    "pageId": "core-concepts",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/process-mining/process-mining-setup/": {
+    "url": "/zh/foundry/process-mining/process-mining-setup/",
+    "title": "创建机械流程",
+    "pageId": "process-mining-setup",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/process-mining/process-mining-operationalize/": {
+    "url": "/zh/foundry/process-mining/process-mining-operationalize/",
+    "title": "将流程挖掘操作化",
+    "pageId": "process-mining-operationalize",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/foundry-rules/overview/": {
+    "url": "/zh/foundry/foundry-rules/overview/",
+    "title": "Foundry Rules",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/core-concepts/": {
+    "url": "/zh/foundry/foundry-rules/core-concepts/",
+    "title": "概述",
+    "pageId": "core-concepts",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/object-model/": {
+    "url": "/zh/foundry/foundry-rules/object-model/",
+    "title": "Object模型",
+    "pageId": "object-model",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/workshop-application/": {
+    "url": "/zh/foundry/foundry-rules/workshop-application/",
+    "title": "Workshop 应用",
+    "pageId": "workshop-application",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/rule-logic/": {
+    "url": "/zh/foundry/foundry-rules/rule-logic/",
+    "title": "规则逻辑",
+    "pageId": "rule-logic",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/foundry-rules-workflow-configuration/": {
+    "url": "/zh/foundry/foundry-rules/foundry-rules-workflow-configuration/",
+    "title": "Foundry Rules 工作流配置",
+    "pageId": "foundry-rules-workflow-configuration",
+    "parent": "group:Core concepts",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/deploy-foundry-rules/": {
+    "url": "/zh/foundry/foundry-rules/deploy-foundry-rules/",
+    "title": "部署 Foundry Rules",
+    "pageId": "deploy-foundry-rules",
+    "parent": "group:Deploy",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/deploy-workflow/": {
+    "url": "/zh/foundry/foundry-rules/deploy-workflow/",
+    "title": "部署工作流",
+    "pageId": "deploy-workflow",
+    "parent": "group:Deploy",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/configure-workflow/": {
+    "url": "/zh/foundry/foundry-rules/configure-workflow/",
+    "title": "配置工作流",
+    "pageId": "configure-workflow",
+    "parent": "group:Deploy",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/author-and-run-a-rule/": {
+    "url": "/zh/foundry/foundry-rules/author-and-run-a-rule/",
+    "title": "编写并运行规则",
+    "pageId": "author-and-run-a-rule",
+    "parent": "group:Deploy",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/customization/": {
+    "url": "/zh/foundry/foundry-rules/customization/",
+    "title": "定制 Foundry Rules",
+    "pageId": "customization",
+    "parent": "group:Settings & customization",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/enable-optional-features/": {
+    "url": "/zh/foundry/foundry-rules/enable-optional-features/",
+    "title": "启用非必填功能",
+    "pageId": "enable-optional-features",
+    "parent": "group:Settings & customization",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/add-a-custom-property/": {
+    "url": "/zh/foundry/foundry-rules/add-a-custom-property/",
+    "title": "添加自定义属性",
+    "pageId": "add-a-custom-property",
+    "parent": "group:Settings & customization",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/rule-permissions/": {
+    "url": "/zh/foundry/foundry-rules/rule-permissions/",
+    "title": "编辑规则的权限",
+    "pageId": "rule-permissions",
+    "parent": "group:Settings & customization",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/permitted-and-default-output-values/": {
+    "url": "/zh/foundry/foundry-rules/permitted-and-default-output-values/",
+    "title": "允许和默认输出值",
+    "pageId": "permitted-and-default-output-values",
+    "parent": "group:Settings & customization",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/customize-foundry-rules-pipeline/": {
+    "url": "/zh/foundry/foundry-rules/customize-foundry-rules-pipeline/",
+    "title": "自定义您的 Foundry Rules 流水线",
+    "pageId": "customize-foundry-rules-pipeline",
+    "parent": "group:Settings & customization",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/timeseries-concepts/": {
+    "url": "/zh/foundry/foundry-rules/timeseries-concepts/",
+    "title": "时间序列规则",
+    "pageId": "timeseries-concepts",
+    "parent": "group:Time series",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/deploy-timeseries-foundry-rules/": {
+    "url": "/zh/foundry/foundry-rules/deploy-timeseries-foundry-rules/",
+    "title": "部署时间序列 Foundry 规则",
+    "pageId": "deploy-timeseries-foundry-rules",
+    "parent": "group:Time series",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/legacy-foundry-rules-setup-taurus/": {
+    "url": "/zh/foundry/foundry-rules/legacy-foundry-rules-setup-taurus/",
+    "title": "旧版 Foundry 规则设置 (Taurus)",
+    "pageId": "legacy-foundry-rules-setup-taurus",
+    "parent": "group:Legacy Foundry Rules Setup (Taurus)",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/migrate-to-foundry-rules/": {
+    "url": "/zh/foundry/foundry-rules/migrate-to-foundry-rules/",
+    "title": "迁移到 Foundry Rules",
+    "pageId": "migrate-to-foundry-rules",
+    "parent": "group:Legacy Foundry Rules Setup (Taurus)",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/configure-workshop-app/": {
+    "url": "/zh/foundry/foundry-rules/configure-workshop-app/",
+    "title": "配置 Workshop 应用程序",
+    "pageId": "configure-workshop-app",
+    "parent": "group:Legacy Foundry Rules Setup (Taurus)",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/configure-transforms-pipeline/": {
+    "url": "/zh/foundry/foundry-rules/configure-transforms-pipeline/",
+    "title": "配置变换管道",
+    "pageId": "configure-transforms-pipeline",
+    "parent": "group:Legacy Foundry Rules Setup (Taurus)",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/configure-rule-actions/": {
+    "url": "/zh/foundry/foundry-rules/configure-rule-actions/",
+    "title": "配置规则操作",
+    "pageId": "configure-rule-actions",
+    "parent": "group:Legacy Foundry Rules Setup (Taurus)",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/configure-timeseries-foundry-rules/": {
+    "url": "/zh/foundry/foundry-rules/configure-timeseries-foundry-rules/",
+    "title": "配置时间序列",
+    "pageId": "configure-timeseries-foundry-rules",
+    "parent": "group:Legacy Foundry Rules Setup (Taurus)",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/upgrade-to-use-rule-actions/": {
+    "url": "/zh/foundry/foundry-rules/upgrade-to-use-rule-actions/",
+    "title": "升级以使用规则操作",
+    "pageId": "upgrade-to-use-rule-actions",
+    "parent": "group:Legacy Foundry Rules Setup (Taurus)",
+    "order": 0
+  },
+  "/zh/foundry/foundry-rules/common-issues/": {
+    "url": "/zh/foundry/foundry-rules/common-issues/",
+    "title": "故障排除参考",
+    "pageId": "common-issues",
+    "parent": null,
+    "order": 6
+  },
+  "/zh/foundry/foundry-rules/marketplace/": {
+    "url": "/zh/foundry/foundry-rules/marketplace/",
+    "title": "将 Foundry Rules 添加到 Marketplace 产品",
+    "pageId": "marketplace",
+    "parent": null,
+    "order": 7
+  },
+  "/zh/foundry/map/overview/": {
+    "url": "/zh/foundry/map/overview/",
+    "title": "概览",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/map/getting-started/": {
+    "url": "/zh/foundry/map/getting-started/",
+    "title": "入门指南",
+    "pageId": "getting-started",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/map/core-concepts/": {
+    "url": "/zh/foundry/map/core-concepts/",
+    "title": "核心概念",
+    "pageId": "core-concepts",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/map/map-overview/": {
+    "url": "/zh/foundry/map/map-overview/",
+    "title": "地图界面概述",
+    "pageId": "map-overview",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/create-save-maps/": {
+    "url": "/zh/foundry/map/create-save-maps/",
+    "title": "创建、保存和导出地图",
+    "pageId": "create-save-maps",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/add-to-map/": {
+    "url": "/zh/foundry/map/add-to-map/",
+    "title": "将数据添加到地图",
+    "pageId": "add-to-map",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/layer-management/": {
+    "url": "/zh/foundry/map/layer-management/",
+    "title": "图层管理",
+    "pageId": "layer-management",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/navigation/": {
+    "url": "/zh/foundry/map/navigation/",
+    "title": "导航",
+    "pageId": "navigation",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/selection/": {
+    "url": "/zh/foundry/map/selection/",
+    "title": "选择",
+    "pageId": "selection",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/annotations/": {
+    "url": "/zh/foundry/map/annotations/",
+    "title": "注释",
+    "pageId": "annotations",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/shapes/": {
+    "url": "/zh/foundry/map/shapes/",
+    "title": "形状",
+    "pageId": "shapes",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/histogram/": {
+    "url": "/zh/foundry/map/histogram/",
+    "title": "直方图",
+    "pageId": "histogram",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/actions/": {
+    "url": "/zh/foundry/map/actions/",
+    "title": "操作",
+    "pageId": "actions",
+    "parent": "group:Interact with maps",
+    "order": 0
+  },
+  "/zh/foundry/map/time-overview/": {
+    "url": "/zh/foundry/map/time-overview/",
+    "title": "地图中的时间和时间数据",
+    "pageId": "time-overview",
+    "parent": "group:Time",
+    "order": 0
+  },
+  "/zh/foundry/map/time-selection/": {
+    "url": "/zh/foundry/map/time-selection/",
+    "title": "时间选择",
+    "pageId": "time-selection",
+    "parent": "group:Time",
+    "order": 0
+  },
+  "/zh/foundry/map/timeline/": {
+    "url": "/zh/foundry/map/timeline/",
+    "title": "时间轴",
+    "pageId": "timeline",
+    "parent": "group:Time",
+    "order": 0
+  },
+  "/zh/foundry/map/events/": {
+    "url": "/zh/foundry/map/events/",
+    "title": "事件",
+    "pageId": "events",
+    "parent": "group:Time",
+    "order": 0
+  },
+  "/zh/foundry/map/time-series/": {
+    "url": "/zh/foundry/map/time-series/",
+    "title": "时间序列",
+    "pageId": "time-series",
+    "parent": "group:Time",
+    "order": 0
+  },
+  "/zh/foundry/map/visualize-objects/": {
+    "url": "/zh/foundry/map/visualize-objects/",
+    "title": "概述",
+    "pageId": "visualize-objects",
+    "parent": "group:Visualize Ontology data",
+    "order": 0
+  },
+  "/zh/foundry/map/visualize-points/": {
+    "url": "/zh/foundry/map/visualize-points/",
+    "title": "点几何图形",
+    "pageId": "visualize-points",
+    "parent": "group:Visualize Ontology data",
+    "order": 0
+  },
+  "/zh/foundry/map/visualize-polygons-lines/": {
+    "url": "/zh/foundry/map/visualize-polygons-lines/",
+    "title": "多边形和线几何图形",
+    "pageId": "visualize-polygons-lines",
+    "parent": "group:Visualize Ontology data",
+    "order": 0
+  },
+  "/zh/foundry/map/visualize-tracks/": {
+    "url": "/zh/foundry/map/visualize-tracks/",
+    "title": "轨迹几何",
+    "pageId": "visualize-tracks",
+    "parent": "group:Visualize Ontology data",
+    "order": 0
+  },
+  "/zh/foundry/map/objects-high-scale/": {
+    "url": "/zh/foundry/map/objects-high-scale/",
+    "title": "显示高规模对象数据",
+    "pageId": "objects-high-scale",
+    "parent": "group:Visualize Ontology data",
+    "order": 0
+  },
+  "/zh/foundry/map/integrate-objects/": {
+    "url": "/zh/foundry/map/integrate-objects/",
+    "title": "Ontology Object",
+    "pageId": "integrate-objects",
+    "parent": "group:Integrate data for the map",
+    "order": 0
+  },
+  "/zh/foundry/map/integrate-searcharound-functions/": {
+    "url": "/zh/foundry/map/integrate-searcharound-functions/",
+    "title": "地图搜索周围函数",
+    "pageId": "integrate-searcharound-functions",
+    "parent": "group:Integrate data for the map",
+    "order": 0
+  },
+  "/zh/foundry/map/integrate-actions/": {
+    "url": "/zh/foundry/map/integrate-actions/",
+    "title": "Ontology 操作",
+    "pageId": "integrate-actions",
+    "parent": "group:Integrate data for the map",
+    "order": 0
+  },
+  "/zh/foundry/map/layer-editor/": {
+    "url": "/zh/foundry/map/layer-editor/",
+    "title": "地图图层编辑器",
+    "pageId": "layer-editor",
+    "parent": "group:Integrate data for the map",
+    "order": 0
+  },
+  "/zh/foundry/map/templates/": {
+    "url": "/zh/foundry/map/templates/",
+    "title": "地图模板",
+    "pageId": "templates",
+    "parent": "group:Templates & Workshop widget",
+    "order": 0
+  },
+  "/zh/foundry/map/widget/": {
+    "url": "/zh/foundry/map/widget/",
+    "title": "在 Workshop 模块中嵌入地图模板",
+    "pageId": "widget",
+    "parent": "group:Templates & Workshop widget",
+    "order": 0
+  },
+  "/zh/foundry/map/settings/": {
+    "url": "/zh/foundry/map/settings/",
+    "title": "设置",
+    "pageId": "settings",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/map/control-panel/": {
+    "url": "/zh/foundry/map/control-panel/",
+    "title": "控制面板",
+    "pageId": "control-panel",
+    "parent": "group:Configuration",
+    "order": 0
+  },
+  "/zh/foundry/map/marketplace-map-templates/": {
+    "url": "/zh/foundry/map/marketplace-map-templates/",
+    "title": "将地图模板添加到Marketplace产品",
+    "pageId": "marketplace-map-templates",
+    "parent": null,
+    "order": 9
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-overview/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-overview/",
+    "title": "概述",
+    "pageId": "scheduling-overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-getting-started/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-getting-started/",
+    "title": "起始",
+    "pageId": "scheduling-getting-started",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-concepts/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-concepts/",
+    "title": "核心概念",
+    "pageId": "scheduling-concepts",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-ontology-primitives/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-ontology-primitives/",
+    "title": "Ontology 原语和数据模型配置",
+    "pageId": "scheduling-ontology-primitives",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-gantt-chart-widget/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-gantt-chart-widget/",
+    "title": "调度甘特图微件",
+    "pageId": "scheduling-gantt-chart-widget",
+    "parent": null,
+    "order": 4
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-suggestion-functions/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-suggestion-functions/",
+    "title": "建议函数",
+    "pageId": "scheduling-suggestion-functions",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-search-functions/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-search-functions/",
+    "title": "搜索函数",
+    "pageId": "scheduling-search-functions",
+    "parent": null,
+    "order": 6
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-validation-rules/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-validation-rules/",
+    "title": "验证规则",
+    "pageId": "scheduling-validation-rules",
+    "parent": null,
+    "order": 7
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-calendar-overview/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-calendar-overview/",
+    "title": "日程安排日历微件",
+    "pageId": "scheduling-calendar-overview",
+    "parent": "group:Scheduling Calendar widget",
+    "order": 0
+  },
+  "/zh/foundry/dynamic-scheduling/scheduling-calendar-widget/": {
+    "url": "/zh/foundry/dynamic-scheduling/scheduling-calendar-widget/",
+    "title": "微件配置",
+    "pageId": "scheduling-calendar-widget",
+    "parent": "group:Scheduling Calendar widget",
+    "order": 0
+  },
+  "/zh/foundry/object-backend/overview/": {
+    "url": "/zh/foundry/object-backend/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/object-backend/object-storage-v2-breaking-changes/": {
+    "url": "/zh/foundry/object-backend/object-storage-v2-breaking-changes/",
+    "title": "Object Storage V1与Object Storage V2之间的重大变更",
+    "pageId": "object-storage-v2-breaking-changes",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/object-backend/osv1-osv2-migration/": {
+    "url": "/zh/foundry/object-backend/osv1-osv2-migration/",
+    "title": "从对象存储 V1 (Phonograph) 迁移到对象存储 V2",
+    "pageId": "osv1-osv2-migration",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/object-backend/aggregation-considerations/": {
+    "url": "/zh/foundry/object-backend/aggregation-considerations/",
+    "title": "聚合注意事项",
+    "pageId": "aggregation-considerations",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/object-permissioning/overview/": {
+    "url": "/zh/foundry/object-permissioning/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/object-permissioning/managing-object-security/": {
+    "url": "/zh/foundry/object-permissioning/managing-object-security/",
+    "title": "管理Object类型和Object实例安全性",
+    "pageId": "managing-object-security",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/object-permissioning/configuring-rv-access-controls/": {
+    "url": "/zh/foundry/object-permissioning/configuring-rv-access-controls/",
+    "title": "配置受限视图支持的对象类型",
+    "pageId": "configuring-rv-access-controls",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/object-permissioning/multi-datasource-objects/": {
+    "url": "/zh/foundry/object-permissioning/multi-datasource-objects/",
+    "title": "多数据源Object类型（MDOs）",
+    "pageId": "multi-datasource-objects",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/object-indexing/overview/": {
+    "url": "/zh/foundry/object-indexing/overview/",
+    "title": "概述",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/object-indexing/funnel-batch-pipelines/": {
+    "url": "/zh/foundry/object-indexing/funnel-batch-pipelines/",
+    "title": "Funnel批处理管道",
+    "pageId": "funnel-batch-pipelines",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/object-indexing/funnel-streaming-pipelines/": {
+    "url": "/zh/foundry/object-indexing/funnel-streaming-pipelines/",
+    "title": "Funnel流式管道",
+    "pageId": "funnel-streaming-pipelines",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/object-indexing/faq/": {
+    "url": "/zh/foundry/object-indexing/faq/",
+    "title": "常见问题解答",
+    "pageId": "faq",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/object-edits/overview/": {
+    "url": "/zh/foundry/object-edits/overview/",
+    "title": "Object编辑和物化",
+    "pageId": "overview",
+    "parent": null,
+    "order": 0
+  },
+  "/zh/foundry/object-edits/how-edits-applied/": {
+    "url": "/zh/foundry/object-edits/how-edits-applied/",
+    "title": "用户编辑的应用方式",
+    "pageId": "how-edits-applied",
+    "parent": null,
+    "order": 1
+  },
+  "/zh/foundry/object-edits/user-edit-history/": {
+    "url": "/zh/foundry/object-edits/user-edit-history/",
+    "title": "启用用户编辑历史",
+    "pageId": "user-edit-history",
+    "parent": null,
+    "order": 2
+  },
+  "/zh/foundry/object-edits/permission-checks/": {
+    "url": "/zh/foundry/object-edits/permission-checks/",
+    "title": "应用操作时的权限检查",
+    "pageId": "permission-checks",
+    "parent": null,
+    "order": 3
+  },
+  "/zh/foundry/object-edits/schema-migrations/": {
+    "url": "/zh/foundry/object-edits/schema-migrations/",
+    "title": "管理模式更改",
+    "pageId": "schema-migrations",
+    "parent": null,
+    "order": 4
+  },
+  "/zh/foundry/object-edits/materializations/": {
+    "url": "/zh/foundry/object-edits/materializations/",
+    "title": "物化",
+    "pageId": "materializations",
+    "parent": null,
+    "order": 5
+  },
+  "/zh/foundry/object-databases/object-storage-v1/": {
+    "url": "/zh/foundry/object-databases/object-storage-v1/",
+    "title": "[遗留] Object Storage V1 (Phonograph)",
+    "pageId": "object-storage-v1",
+    "parent": null,
+    "order": 0
+  }
+}

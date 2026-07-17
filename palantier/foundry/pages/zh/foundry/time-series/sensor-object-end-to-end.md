@@ -1,0 +1,38 @@
+---
+{
+  "source_url": "https://www.palantir.com/docs/zh/foundry/time-series/sensor-object-end-to-end/",
+  "title": "概述",
+  "page_id": "sensor-object-end-to-end",
+  "category_id": "data-integration",
+  "section_id": "time-series",
+  "previous": "/zh/foundry/time-series/time-series-properties-use-case-operational/",
+  "next": "/zh/foundry/time-series/sensor-object-end-to-end-pipeline/",
+  "scraped_at": "2026-07-13T06:13:53.283415+00:00"
+}
+---
+
+:::callout{theme="warning"}
+注意：以下翻译的准确性尚未经过验证。这是使用 [AIP ↗](https://www.palantir.com/platforms/aip/) 从原始英文文本进行的机器翻译。
+:::
+
+# 概述
+
+[传感器Object类型](/zh/foundry/time-series/time-series-concepts-glossary/#sensor-object-type)是时间序列数据的一种更高级配置，其中传感器Object保存其关联父级（也称为根Object）的传感器数据。请查看时间序列[文档](/zh/foundry/time-series/time-series-overview/#store-time-series-in-the-ontology)，以决定时间序列属性设置或传感器Object类型配置是否适合您的应用案例。
+
+本文档将逐步介绍如何在Pipeline Builder中编写管道，在Ontology Manager中设置传感器Object类型，并使用示例航空Ontology和Foundry中的时间序列功能创建Quiver仪表盘和Workshop模块。
+
+航空Ontology由示例`Flight`、`Carrier`、`Route`、`Airport`和`Flight Sensor` Object类型组成。`Flight`通过这些Object上的`flight_id`外键链接到`Aircraft`、`Flight Sensor`、`Route`、`Airport`和`Carrier`对象。
+
+![航空Ontology链接](../../../images/foundry/time-series/time-series-properties-flight-ontology.png)
+
+航空Ontology来自一个概念数据的参考Ontology，可能不适用于您的注册。无论您的注册是否可用，使用此参考Ontology构建的这些示例将作为您创建自己的管道、Object类型和使用传感器Object类型的Workshop模块的参考。
+
+您将通过指南制作的Workshop模块将允许您查看和与选定航班的传感器时间序列数据进行交互。
+
+![一个示例传感器Object工作流模块](../../../images/foundry/time-series/sensor-object-workshop-module.png)
+
+以下指南将引导您完成创建和支持此Workshop模块的步骤：
+
+1. [在Pipeline Builder中创建传感器Object类型数据](/zh/foundry/time-series/sensor-object-end-to-end-pipeline/)
+2. [使用Ontology Manager创建传感器Object类型](/zh/foundry/time-series/sensor-object-end-to-end-ontology/)
+3. [在Workshop和Quiver中使用传感器Object类型时间序列数据](/zh/foundry/time-series/sensor-object-end-to-end-operational/)

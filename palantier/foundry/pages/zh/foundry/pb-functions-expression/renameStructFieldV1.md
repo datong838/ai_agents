@@ -1,0 +1,60 @@
+---
+{
+  "source_url": "https://www.palantir.com/docs/zh/foundry/pb-functions-expression/renameStructFieldV1/",
+  "title": "重命名结构字段",
+  "page_id": "renameStructFieldV1",
+  "category_id": "data-integration",
+  "section_id": "pb-functions-expression",
+  "previous": "/zh/foundry/pb-functions-expression/regexReplaceV1/",
+  "next": "/zh/foundry/pb-functions-expression/rightStringV1/",
+  "scraped_at": "2026-07-13T05:57:08.399055+00:00"
+}
+---
+
+:::callout{theme="warning"}
+注意：以下翻译的准确性尚未经过验证。这是使用 [AIP ↗](https://www.palantir.com/platforms/aip/) 从原始英文文本进行的机器翻译。
+:::
+
+# 重命名结构字段
+
+> 支持于: 批处理，流处理
+
+重命名结构中的字段。
+
+**表达式类别**: 数据准备，结构
+
+## 声明的参数
+
+* **表达式** - *无描述*<br>*表达式<结构>*
+* **重命名** - *无描述*<br>*列表<元组<结构定位器, 字面量<字符串>>>*
+
+**输出类型:** *结构*
+
+## 示例
+
+### 示例 1: 基本案例
+
+**参数值:**
+
+* **表达式**: `struct`
+* **重命名**: \[(airline.id, identifier)]
+
+| struct | **输出** |
+| ----- | ----- |
+| {<br> **airline**: {<br> **id**: NA,<br>},<br>} | {<br> **airline**: {<br> **identifier**: NA,<br>},<br>} |
+| {<br> **airline**: {<br> **id**: FE,<br>},<br>} | {<br> **airline**: {<br> **identifier**: FE,<br>},<br>} |
+
+***
+
+### 示例 2: 基本案例
+
+**参数值:**
+
+* **表达式**: `struct`
+* **重命名**: \[(airline.id, identifier)]
+
+| struct | **输出** |
+| ----- | ----- |
+| *null* | *null* |
+
+***

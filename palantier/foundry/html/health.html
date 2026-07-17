@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数据健康 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成 · v1.4</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-3">
+        <span class="px-2 py-1 rounded text-[10px] border border-rose-400/30 bg-rose-400/10 text-rose-300">DLQ 死信 <strong>4</strong></span>
+        <a href="data-connection.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">返回数据连接</a>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">数据健康检查</h1>
+          <p class="text-sm text-gray-500 mt-1">L1：监控数据源连通性、同步新鲜度与 Schema 一致性。</p>
+        </div>
+
+        <div class="rounded-xl border border-violet-400/25 bg-violet-400/5 px-4 py-3 text-xs flex flex-wrap items-center justify-between gap-2">
+          <span><span class="text-violet-300 font-medium">分责：</span><span class="text-gray-500">本页只管 L1 Dataset/Source。悬空 Link、属性冲突、僵尸 Object → </span></span>
+          <a href="ontology-graph-health.html" class="text-violet-300 border border-violet-400/30 px-2 py-1 rounded-lg hover:bg-violet-400/10">图谱健康度 →</a>
+        </div>
+
+        <!-- Summary -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+            <div class="text-xs text-gray-500 mb-1">健康</div>
+            <div class="text-2xl font-semibold text-emerald-400">9</div>
+          </div>
+          <div class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-4">
+            <div class="text-xs text-gray-500 mb-1">告警</div>
+            <div class="text-2xl font-semibold text-amber-400">3</div>
+          </div>
+          <div class="rounded-xl border border-rose-400/20 bg-rose-400/5 p-4">
+            <div class="text-xs text-gray-500 mb-1">严重</div>
+            <div class="text-2xl font-semibold text-rose-400">1</div>
+          </div>
+        </div>
+
+        <!-- Health table -->
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden bg-slate-900/50">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-900/80 text-gray-500 text-left">
+              <tr>
+                <th class="px-4 py-3 font-medium">资源</th>
+                <th class="px-4 py-3 font-medium">检查项</th>
+                <th class="px-4 py-3 font-medium">状态</th>
+                <th class="px-4 py-3 font-medium">详情</th>
+                <th class="px-4 py-3 font-medium">上次检查</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="source-detail.html" class="text-gray-100 hover:text-cyan-400">prod-mysql-orders</a></td>
+                <td class="px-4 py-3 text-gray-400">连通性</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2 text-emerald-400"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>通过</span></td>
+                <td class="px-4 py-3 text-gray-500">响应 42ms</td>
+                <td class="px-4 py-3 text-gray-500">1 分钟前</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="source-detail.html" class="text-gray-100 hover:text-cyan-400">shopify-rest-api</a></td>
+                <td class="px-4 py-3 text-gray-400">凭证有效性</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2 text-amber-400"><span class="inline-block w-2 h-2 rounded-full bg-amber-400"></span>告警</span></td>
+                <td class="px-4 py-3 text-gray-500">OAuth Token 已过期</td>
+                <td class="px-4 py-3 text-gray-500">5 分钟前</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="source-detail.html" class="text-gray-100 hover:text-cyan-400">legacy-erp-oracle</a></td>
+                <td class="px-4 py-3 text-gray-400">连通性</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2 text-rose-400"><span class="inline-block w-2 h-2 rounded-full bg-rose-400"></span>失败</span></td>
+                <td class="px-4 py-3 text-gray-500">Agent 离线 · 连接超时</td>
+                <td class="px-4 py-3 text-gray-500">3 天前</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="dataset.html?raw=1" class="text-gray-100 hover:text-cyan-400">raw_orders</a></td>
+                <td class="px-4 py-3 text-gray-400">新鲜度</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2 text-emerald-400"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>通过</span></td>
+                <td class="px-4 py-3 text-gray-500">上次同步 2 分钟前</td>
+                <td class="px-4 py-3 text-gray-500">2 分钟前</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="dataset.html?curated=1" class="text-gray-100 hover:text-cyan-400">curated_orders</a></td>
+                <td class="px-4 py-3 text-gray-400">Schema 一致性</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2 text-emerald-400"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>通过</span></td>
+                <td class="px-4 py-3 text-gray-500">6 列匹配</td>
+                <td class="px-4 py-3 text-gray-500">2 分钟前</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="agents.html" class="text-gray-100 hover:text-cyan-400">agent-staging-1</a></td>
+                <td class="px-4 py-3 text-gray-400">心跳</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2 text-amber-400"><span class="inline-block w-2 h-2 rounded-full bg-amber-400"></span>告警</span></td>
+                <td class="px-4 py-3 text-gray-500">3 天无心跳</td>
+                <td class="px-4 py-3 text-gray-500">3 天前</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="sync.html" class="text-gray-100 hover:text-cyan-400">orders-batch-sync</a></td>
+                <td class="px-4 py-3 text-gray-400">同步成功率</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2 text-amber-400"><span class="inline-block w-2 h-2 rounded-full bg-amber-400"></span>告警</span></td>
+                <td class="px-4 py-3 text-gray-500">24h 成功率 99.2% (阈值 99.5%)</td>
+                <td class="px-4 py-3 text-gray-500">10 分钟前</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('health', [
+      { label: '工作区', href: 'index.html' },
+      { label: '数据健康' }
+    ]);
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+---
+{
+  "source_url": "https://www.palantir.com/docs/zh/foundry/pb-functions-expression/uuidV1/",
+  "title": "全局唯一标识符 (uuid) (不稳定)",
+  "page_id": "uuidV1",
+  "category_id": "data-integration",
+  "section_id": "pb-functions-expression",
+  "previous": "/zh/foundry/pb-functions-expression/uniformRandomV1/",
+  "next": "/zh/foundry/pb-functions-expression/uppercaseV1/",
+  "scraped_at": "2026-07-13T05:57:57.378765+00:00"
+}
+---
+
+:::callout{theme="warning"}
+注意：以下翻译的准确性尚未经过验证。这是使用 [AIP ↗](https://www.palantir.com/platforms/aip/) 从原始英文文本进行的机器翻译。
+:::
+
+# 全局唯一标识符 (uuid) (不稳定)
+
+> 支持于: 批处理, 流处理
+
+返回一列uuid。这不是确定性的，并且在重复搭建时不会产生相同的结果。这不是搭建ID列的首选方式，用户应该考虑sha256或其他确定性的方法。
+
+**表达式类别**: 字符串
+
+## 声明的参数
+
+此函数不接受任何参数。
+
+**输出类型:** *字符串*
+
+## 示例
+
+### 示例 1: 基本案例
+
+**描述**: 生成一列UUID值 (V4)。
+**参数值:**
+
+**输出:** 5c5622fe-e30e-4491-99b6-6213be506dec
+
+***

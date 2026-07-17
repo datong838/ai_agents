@@ -1,0 +1,98 @@
+---
+{
+  "source_url": "https://www.palantir.com/docs/zh/foundry/object-link-types/type-reference/",
+  "title": "类型参考",
+  "page_id": "type-reference",
+  "category_id": "ontology",
+  "section_id": "object-link-types",
+  "previous": "/zh/foundry/ontologies/query-compute-usage/",
+  "next": "/zh/foundry/object-link-types/object-types-overview/",
+  "scraped_at": "2026-07-14T04:24:20.824797+00:00"
+}
+---
+
+:::callout{theme="warning"}
+注意：以下翻译的准确性尚未经过验证。这是使用 [AIP ↗](https://www.palantir.com/platforms/aip/) 从原始英文文本进行的机器翻译。
+:::
+
+# 类型参考
+
+当您定义Ontology时，可以使用多种类型来表示您引入Foundry的数据的现实定义。Foundry中使用的类型被分类为*Ontology*类型或*数据*类型：
+
+* **Ontology类型**用于将现实世界的领域建模为Ontology。
+* **数据**类型用于表示数据值。Foundry中的数据类型受[!RDF ↗](https://w3c.github.io/rdf-concepts/spec/#section-Datatypes)、[!OWL ↗](https://www.w3.org/TR/owl-ref/#Datatype)和[!XSD ↗](https://www.w3.org/TR/xmlschema-2/#datatype)类似概念的启发。
+
+## Ontology类型
+
+以下类型可用于搭建和定义您的Ontology。
+
+### Object类型
+
+一个**Object类型**是一个真实世界实体或事件的模式定义，由单个Objects组成。例如，`JFK`和`LHR`都可以是`Airport` Object类型的Objects。
+
+[了解更多关于Object类型的信息。](/zh/foundry/object-link-types/object-types-overview/)
+
+### 属性
+
+Object类型的一个**属性**是一个通知现实世界实体或事件的特征。例如，如果`LHR`是`Airports`的一个Object类型，那么`name`和`country`是`Airports`的属性。对于`LHR` Object，属性值如下：
+
+* **name:** LHR
+* **country:** United Kingdom
+
+[了解更多关于属性的信息。](/zh/foundry/object-link-types/properties-overview/)
+
+### 共享属性
+
+一个**共享属性**是可以在您的Ontology中多个Object类型上使用的属性。共享属性允许在Object类型之间进行一致的数据建模和属性元数据的集中管理。
+
+[了解更多关于共享属性的信息。](/zh/foundry/object-link-types/shared-property-overview/)
+
+### 链接类型
+
+一个**链接类型**是两个Object类型之间关系的模式定义。一个**链接**指的是两个Objects之间该关系的一个实例。
+
+[了解更多关于链接类型的信息。](/zh/foundry/object-link-types/link-types-overview/)
+
+### 操作类型
+
+一个**操作类型**是用户可以一次性对Objects、属性值和链接进行更改或编辑的一组操作的模式定义。操作类型还包括当操作发生时的副作用行为。一旦操作类型在Ontology中配置好，终端用户可以通过应用操作来更改Objects。
+
+[了解更多关于操作类型的信息。](/zh/foundry/action-types/overview/)
+
+### 接口
+
+一个**接口**是一个描述Object类型及其能力的Ontology类型。接口提供Object类型的多态性，允许对具有共同形状的Object类型进行一致的建模和交互。
+
+了解更多关于[接口](/zh/foundry/interfaces/interface-overview/)。
+
+## 数据类型
+
+以下类型可用于表示数据值。
+
+### 字段类型
+
+**字段类型**是数据集中字段支持的一组原始类型。这些类型包括`Boolean`、`字符串`、`Integer`、`Long`、`Array`等。查看我们的文档，了解[支持的字段类型](/zh/foundry/data-integration/datasets/#supported-field-types)的完整列表。
+
+### 基础类型
+
+**基础类型**用于定义Objects上的属性。属性的基础类型决定了用户应用中可用于该属性的一组操作。所有字段类型都是有效的基础类型，除了`Map`、`Struct`、`Decimal`和`Binary`类型。
+
+基础类型还包括以下高级类型：
+
+* \*\*向量：\*\*用于在Objects上存储[向量](/zh/foundry/announcements/2023-11/#configure-a-vector-property-type)以用于语义搜索的类型。
+* \*\*Geohash：\*\*用于定义表示地理[点](/zh/foundry/map/integrate-objects/#points)的属性的类型。
+* \*\*Geoshape：\*\*用于定义表示地理[形状](/zh/foundry/map/integrate-objects/#polygons-and-lines)的属性的类型。
+* \*\*附件：\*\*用于在Objects上存储文件以用于[Objects上的函数](/zh/foundry/functions/api-attachments/)的类型。
+* \*\*时间序列：\*\*用于将属性定义为[时间序列](/zh/foundry/time-series/time-series-overview/)的类型。
+* \*\*媒体引用：\*\*用于定义[媒体文件引用](/zh/foundry/data-integration/media-sets/#media-references)的类型。
+* \*\*加密文本：\*\*用于存储使用[密码](/zh/foundry/cipher/overview/)编码的字符串值的类型。
+
+所有基础类型可以用于数组中，以表示属性的多个值，但不包括`向量`和`时间序列`类型。
+
+### 值类型
+
+**值类型**是围绕字段类型的语义包装，由可以增强类型安全性、提高表达性并提供额外上下文的元数据和约束组成。值类型封装特定领域的数据类型，并以平台可重用的方式实施数据验证。常用的值类型包括电子邮件地址、URL、UUID和枚举。
+
+虽然字段类型和基础类型是静态定义的，但值类型是在给定[空间](/zh/foundry/security/orgs-and-spaces/)的上下文中进行自定义的。因此，用户不能创建新的字段类型或基础类型，但可以动态创建**值类型**。
+
+[了解更多关于值类型的信息。](/zh/foundry/object-link-types/value-types-overview/)

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>管道提案与历史 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path stroke-linecap="round" d="M8 6h8M7 7.5L10 16M17 7.5L14 16"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <a href="pipeline.html" class="px-3 py-1.5 rounded-lg border border-cyan-400/30 text-xs text-cyan-300">打开管道画布 →</a>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">管道提案与历史</h1>
+          <p class="mt-1 text-sm text-gray-500">订单清洗管道 · 变更提案审阅与版本回溯。</p>
+        </div>
+
+        <div data-tab-group class="border-b border-white/[0.08]">
+          <div class="flex gap-6">
+            <button data-tab="proposals" class="tab-active py-2 text-sm font-medium text-gray-100 border-b-2 border-cyan-400">待审提案</button>
+            <button data-tab="history" class="py-2 text-sm text-gray-400">历史版本</button>
+          </div>
+        </div>
+
+        <div data-tabs-root class="space-y-3">
+          <div data-tab-panel="proposals">
+            <div class="rounded-xl border border-amber-400/30 bg-slate-900/60 p-5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="text-gray-100 font-medium">提案 #prop-118 · 新增 Doc Intel 节点</div>
+                  <div class="text-xs text-gray-500 mt-1">提交人：数据工程师 · 今天 11:30</div>
+                  <div class="text-xs text-gray-400 mt-2">+1 节点 Use LLM · 输出字段 summary_zh</div>
+                </div>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-amber-400/10 text-amber-300 border border-amber-400/20">待审</span>
+              </div>
+              <div class="flex gap-2 mt-4">
+                <button type="button" class="px-3 py-1.5 rounded-lg bg-cyan-400/15 border border-cyan-400/30 text-xs text-cyan-200">合并到主分支</button>
+                <button type="button" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs">预览 Diff</button>
+              </div>
+            </div>
+          </div>
+          <div data-tab-panel="history" class="hidden space-y-2">
+            <div class="rounded-lg border border-white/[0.08] px-4 py-3 flex justify-between text-sm">
+              <span class="text-gray-300">v12 · 合并提案 #prop-115</span>
+              <span class="text-xs text-gray-500">7 天前 · 张三</span>
+            </div>
+            <div class="rounded-lg border border-white/[0.08] px-4 py-3 flex justify-between text-sm">
+              <span class="text-gray-300">v11 · 修复空值过滤</span>
+              <span class="text-xs text-gray-500">14 天前 · 李四</span>
+            </div>
+            <div class="rounded-lg border border-white/[0.08] px-4 py-3 flex justify-between text-sm">
+              <span class="text-gray-300">v10 · 初始上线</span>
+              <span class="text-xs text-gray-500">30 天前</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="pipeline-list.html" class="text-xs text-gray-500 hover:text-cyan-300">← 管道列表</a>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('pipeline-proposals', [
+      { href: 'index.html', label: '工作区' },
+      { href: 'pipeline-list.html', label: '管道构建' },
+      { label: '提案与历史' }
+    ]);
+    DemoUI.initTabs('[data-tab-group]');
+  </script>
+</body>
+</html>

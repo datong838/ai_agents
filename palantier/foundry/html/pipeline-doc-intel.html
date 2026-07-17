@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>维修文档 Doc Intel 管道 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 rounded text-xs badge-media-doc">Doc Intel 五步</span>
+        <select class="rounded-lg bg-slate-900 border border-white/[0.08] px-3 py-1 text-xs text-gray-300"><option>master</option></select>
+        <a href="builds.html" class="btn-primary px-3 py-1.5 rounded-lg bg-cyan-400 text-slate-950 text-xs font-medium hover:bg-cyan-300">部署</a>
+      </div>
+    </header>
+
+    <main class="flex-1 flex min-h-0 overflow-hidden">
+      <div class="flex-1 flex flex-col min-w-0">
+        <div class="grid-pattern flex-1 relative overflow-auto min-h-[300px]">
+          <div class="relative p-6 flex items-center justify-start gap-4 min-h-[300px] flex-wrap overflow-x-auto">
+            <a href="media-sets.html" class="pipeline-node block rounded-xl border border-purple-400/30 bg-slate-900/90 px-4 py-3 min-w-[140px]">
+              <div class="text-xs text-purple-400 mb-1">输入 · 媒体集</div>
+              <div class="text-gray-100 text-sm font-medium">maintenance_scans</div>
+              <div class="text-xs text-gray-500">Document · PDF</div>
+            </a>
+            <span class="text-gray-600">→</span>
+            <div class="pipeline-node rounded-xl border border-white/[0.08] bg-slate-900/90 px-4 py-3 min-w-[120px]">
+              <div class="text-xs text-cyan-400 mb-1">变换</div>
+              <div class="text-gray-100 text-sm">Media → Rows</div>
+              <div class="text-xs text-gray-500">mediaReference</div>
+            </div>
+            <span class="text-gray-600">→</span>
+            <div class="pipeline-node rounded-xl border border-white/[0.08] bg-slate-900/90 px-4 py-3 min-w-[120px]">
+              <div class="text-xs text-cyan-400 mb-1">变换</div>
+              <div class="text-gray-100 text-sm">PDF OCR</div>
+              <div class="text-xs text-gray-500">→ Markdown</div>
+            </div>
+            <span class="text-gray-600">→</span>
+            <div id="llm-node" class="pipeline-node rounded-xl border-2 border-cyan-400/40 bg-cyan-400/5 px-4 py-3 min-w-[120px] cursor-pointer">
+              <div class="text-xs text-cyan-400 mb-1">变换 · Use LLM</div>
+              <div class="text-gray-100 text-sm">实体提取</div>
+              <div class="text-xs text-gray-500">尾号/日期/零件</div>
+            </div>
+            <span class="text-gray-600">→</span>
+            <div class="pipeline-node rounded-xl border border-white/[0.08] bg-slate-900/90 px-4 py-3 min-w-[120px]">
+              <div class="text-xs text-amber-400 mb-1">校验</div>
+              <div class="text-gray-100 text-sm">置信度抽样</div>
+              <div class="text-xs text-gray-500">≥ 92% 通过</div>
+            </div>
+            <span class="text-gray-600">→</span>
+            <a href="dataset.html?maintenance=1" class="pipeline-node block rounded-xl border-2 border-emerald-400/40 bg-emerald-400/5 px-4 py-3 min-w-[140px]">
+              <div class="text-xs text-emerald-400 mb-1">输出 · 数据集</div>
+              <div class="text-gray-100 text-sm font-medium">maintenance_clean</div>
+              <div class="text-xs text-gray-500">+ media_ref 列</div>
+            </a>
+          </div>
+        </div>
+        <div class="h-40 border-t border-white/[0.08] bg-slate-900/80 shrink-0 overflow-auto">
+          <table class="w-full text-xs font-mono">
+            <thead class="bg-slate-950/50 text-gray-500 sticky top-0"><tr>
+              <th class="px-4 py-1.5">report_id</th><th class="px-4 py-1.5">tail_no</th><th class="px-4 py-1.5">maintenance_date</th><th class="px-4 py-1.5">part_replaced</th><th class="px-4 py-1.5">confidence</th><th class="px-4 py-1.5">media_ref</th>
+            </tr></thead>
+            <tbody class="divide-y divide-white/[0.04]">
+              <tr><td class="px-4 py-1.5 text-gray-300">MR-2026-0847</td><td class="px-4 py-1.5">B-1234</td><td class="px-4 py-1.5">2026-07-08</td><td class="px-4 py-1.5">液压泵 A-7721</td><td class="px-4 py-1.5 text-emerald-400">96%</td><td class="px-4 py-1.5"><a href="media-sets.html" class="media-ref-cell">📄 scan_001.pdf</a></td></tr>
+              <tr><td class="px-4 py-1.5 text-gray-300">MR-2026-0848</td><td class="px-4 py-1.5">B-5678</td><td class="px-4 py-1.5">2026-07-09</td><td class="px-4 py-1.5">起落架衬套</td><td class="px-4 py-1.5 text-emerald-400">94%</td><td class="px-4 py-1.5"><a href="media-sets.html" class="media-ref-cell">📄 scan_002.pdf</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      
+      <aside class="w-80 shrink-0 border-l border-white/[0.08] bg-slate-900/50 overflow-y-auto">
+        <div class="p-4 space-y-4">
+          <div>
+            <h3 class="text-sm font-medium text-gray-100">Use LLM · 实体提取</h3>
+            <p class="text-xs text-gray-500 mt-1">Pipeline · Use LLM 节点</p>
+          </div>
+          <div>
+            <label class="block text-xs text-gray-500 mb-1">模板</label>
+            <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300">
+              <option selected>实体提取</option>
+              <option>空提示</option>
+              <option>分类</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs text-gray-500 mb-1">视觉列 · mediaReference</label>
+            <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300">
+              <option selected>media_ref</option>
+            </select>
+            <p class="text-xs text-gray-600 mt-1">模型：GPT-4o（多模态）</p>
+          </div>
+          <div class="rounded-lg border border-white/[0.06] bg-slate-950/50 p-3 text-xs space-y-2">
+            <div class="text-gray-500">提取实体</div>
+            <div class="flex justify-between text-gray-300"><span>tail_no</span><span class="text-gray-500">STRING</span></div>
+            <div class="flex justify-between text-gray-300"><span>maintenance_date</span><span class="text-gray-500">DATE</span></div>
+            <div class="flex justify-between text-gray-300"><span>part_replaced</span><span class="text-gray-500">STRING[]</span></div>
+          </div>
+          <button class="w-full px-3 py-2 rounded-lg border border-cyan-400/30 text-xs text-cyan-400 hover:bg-cyan-400/5">在 5 行样本上试运行 · 3s</button>
+          <label class="flex items-center gap-2 text-xs text-gray-400">
+            <input type="checkbox" checked class="rounded border-white/20" /> 保留 media_ref 列回链原件
+          </label>
+        </div>
+        <div class="border-t border-white/[0.08] pt-4 space-y-3">
+          <h3 class="text-sm font-medium text-rose-300">DLQ · 死信队列</h3>
+          <p class="text-[10px] text-gray-500">OCR/LLM 失败文件 · 可重试或跳过</p>
+          <ul class="text-xs space-y-2">
+            <li class="flex items-center justify-between rounded-lg border border-rose-400/20 bg-rose-400/5 px-3 py-2">
+              <span class="text-gray-300">scan_047.pdf</span>
+              <span class="flex gap-1"><button type="button" class="px-2 py-0.5 rounded border border-cyan-400/30 text-cyan-300 text-[10px]">重试</button><button type="button" class="px-2 py-0.5 rounded border border-white/[0.08] text-gray-400 text-[10px]">跳过</button></span>
+            </li>
+            <li class="flex items-center justify-between rounded-lg border border-rose-400/20 bg-rose-400/5 px-3 py-2">
+              <span class="text-gray-300">scan_112.pdf</span>
+              <span class="flex gap-1"><button type="button" class="px-2 py-0.5 rounded border border-cyan-400/30 text-cyan-300 text-[10px]">重试</button><button type="button" class="px-2 py-0.5 rounded border border-white/[0.08] text-gray-400 text-[10px]">跳过</button></span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('pipeline-list', [
+      { label: '工作区', href: 'index.html' },
+      { label: 'Pipeline Builder', href: 'pipeline-list.html' },
+      { label: '维修文档 Doc Intel' }
+    ]);
+  </script>
+</body>
+</html>

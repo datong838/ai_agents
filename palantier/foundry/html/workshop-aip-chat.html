@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>工作台 · Buddy · Assist | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">工作台 · AIP 嵌入</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex gap-2 items-center">
+        <button type="button" id="btn-open-buddy" class="px-3 py-1.5 rounded-lg border border-amber-400/30 text-xs text-amber-300">💬 Buddy</button>
+        <button type="button" id="btn-open-assist" class="px-3 py-1.5 rounded-lg border border-sky-400/30 text-xs text-sky-300">💡 Assist</button>
+        <a href="aip-tools.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs">Agent 工具</a>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-hidden flex min-h-0 relative">
+      <!-- Main table context -->
+      <div class="flex-1 p-6 overflow-y-auto space-y-4">
+        <div>
+          <h1 class="text-lg font-semibold text-gray-100">流程内提问 · Analysis in the flow</h1>
+          <p class="text-xs text-gray-500 mt-1">选中行 → Assist；完整对话 → Buddy 侧栏。写回仍须 Action（06b / 07）。</p>
+        </div>
+
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden relative">
+          <div class="grid grid-cols-4 gap-2 px-3 py-2 bg-slate-900 text-[10px] text-gray-500">
+            <span>订单</span><span>状态</span><span>风控分 💡</span><span></span>
+          </div>
+          <button type="button" data-pick-order="ORD-8821" class="w-full grid grid-cols-4 gap-2 px-3 py-2.5 text-left text-sm border-b border-white/[0.06] bg-sky-400/15 border border-sky-400/40">
+            <span class="text-gray-100">ORD-8821</span><span>异常</span><span class="text-rose-300">0.91</span><span class="text-[10px] text-sky-400">选中</span>
+          </button>
+          <button type="button" data-pick-order="ORD-8819" class="w-full grid grid-cols-4 gap-2 px-3 py-2.5 text-left text-sm border-b border-white/[0.06] hover:bg-white/[0.03]">
+            <span class="text-gray-100">ORD-8819</span><span>异常</span><span class="text-amber-300">0.72</span><span></span>
+          </button>
+          <button type="button" data-pick-order="ORD-8801" class="w-full grid grid-cols-4 gap-2 px-3 py-2.5 text-left text-sm hover:bg-white/[0.03]">
+            <span class="text-gray-100">ORD-8801</span><span>正常</span><span>0.21</span><span></span>
+          </button>
+
+          <!-- Assist popover -->
+          <div id="assist-popover" class="hidden absolute right-4 top-24 w-80 rounded-xl border border-sky-400/30 bg-slate-900 shadow-xl p-4 z-10 space-y-3">
+            <div class="text-xs text-sky-300 font-medium">💡 流程内提问 · Send to Assist</div>
+            <p class="text-[11px] text-gray-500">上下文随 Selection · 不离开表格</p>
+            <p class="text-sm text-gray-200">这批里哪些可能超售？</p>
+            <div class="rounded-lg bg-slate-950/80 border border-white/[0.06] p-3 text-xs text-gray-400">
+              ORD-8821 命中超售特征（退货率 + 库存）。建议高亮行并打开「冻结」Action。
+            </div>
+            <a href="workshop-module.html" class="inline-block text-xs text-amber-300 hover:underline">打开申诉 / 冻结表单 →</a>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3 text-[11px] text-gray-500">
+          <a href="aip-maturity.html" class="text-amber-300 hover:underline">成熟度 L3 Agentic 应用</a>
+          <span>·</span>
+          <a href="ontology-wiki.html" class="text-orange-300 hover:underline">Wiki 结构化字段</a>
+          <span>·</span>
+          <a href="workshop.html" class="text-sky-300 hover:underline">返回应用列表</a>
+        </div>
+      </div>
+
+      <!-- Buddy sidebar -->
+      <aside id="buddy-panel" class="w-full max-w-sm border-l border-white/[0.08] bg-slate-900/80 flex flex-col shrink-0">
+        <div class="p-4 border-b border-white/[0.08] space-y-2">
+          <div class="flex justify-between items-center">
+            <div class="text-sm text-gray-100 font-medium">AIP Chat · WorkBuddy</div>
+            <span class="text-[10px] text-amber-300">风控 Buddy</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 text-[10px]">
+            <span id="ctx-chip" class="px-2 py-0.5 rounded bg-sky-400/15 border border-sky-400/30 text-sky-200">Selection: ORD-8821</span>
+            <span class="px-2 py-0.5 rounded bg-violet-400/10 border border-violet-400/25 text-violet-200">Ontology: Order+Wiki</span>
+            <a href="aip-decision-lineage.html" class="px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/30 text-amber-200 hover:underline">查看决策谱系</a>
+          </div>
+        </div>
+        <div id="buddy-log" class="flex-1 overflow-y-auto p-4 text-sm space-y-1">
+          <div>
+            <div class="text-amber-300 text-xs">Buddy</div>
+            <div class="text-gray-300 mt-1">已注入当前 Selection。可问风控原因，或 @Buddy 委托任务。</div>
+          </div>
+        </div>
+        <div class="p-3 border-t border-white/[0.08] flex gap-2">
+          <input id="buddy-input" type="text" placeholder="@Buddy 这单为啥卡海关？" class="flex-1 rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:border-amber-400/40" />
+          <button type="button" id="buddy-send" class="px-3 py-2 rounded-lg bg-amber-400/20 border border-amber-400/40 text-xs text-amber-200 shrink-0">发送</button>
+        </div>
+      </aside>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('workshop-aip-chat', [{ href: 'index.html', label: '工作区' }, { href: 'workshop.html', label: '工作台' }, { label: 'Buddy · Assist' }]);
+    DemoUI.initWorkshopAip();
+  </script>
+</body>
+</html>

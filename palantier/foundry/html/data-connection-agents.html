@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>边缘代理 · 数据连接代理 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据连接代理</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-3">
+        <button class="btn-primary px-3 py-1.5 rounded-lg bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-xs font-medium hover:bg-cyan-400/20 transition-colors">+ 注册代理</button>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <main class="flex-1 flex min-h-0 overflow-hidden">
+      <!-- Left: Agent list -->
+      <aside class="w-64 shrink-0 border-r border-white/[0.08] bg-slate-900/50 overflow-y-auto">
+        <div class="p-3 border-b border-white/[0.08]">
+          <input type="search" placeholder="搜索代理…" class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 placeholder-gray-500 focus:outline-none focus:border-cyan-400/40" />
+        </div>
+        <div class="p-2 space-y-1">
+          <button class="agent-item active w-full text-left px-3 py-3 rounded-lg border border-transparent" data-agent="agent-prod-1">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-gray-100 font-medium">agent-prod-1</span>
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span>
+            </div>
+            <div class="text-xs text-gray-500">生产 VPC · us-east-1</div>
+            <div class="text-xs text-gray-500 mt-0.5">4 数据源 · v2.14.3</div>
+          </button>
+          <button class="agent-item w-full text-left px-3 py-3 rounded-lg border border-transparent" data-agent="agent-prod-2">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-gray-100 font-medium">agent-prod-2</span>
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span>
+            </div>
+            <div class="text-xs text-gray-500">生产 VPC · eu-west-1</div>
+            <div class="text-xs text-gray-500 mt-0.5">2 数据源 · v2.14.3</div>
+          </button>
+          <button class="agent-item w-full text-left px-3 py-3 rounded-lg border border-transparent" data-agent="agent-staging-1">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-gray-100 font-medium">agent-staging-1</span>
+              <span class="inline-block w-2 h-2 rounded-full bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.4)]"></span>
+            </div>
+            <div class="text-xs text-gray-500">预发环境 · ap-southeast-1</div>
+            <div class="text-xs text-gray-500 mt-0.5">0 数据源 · v2.13.1</div>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Right: Detail panel -->
+      <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <!-- agent-prod-1 panel -->
+        <div data-agent-panel="agent-prod-1" class="flex-1 flex flex-col min-h-0 overflow-hidden">
+          <div class="px-6 py-4 border-b border-white/[0.08] shrink-0">
+            <div class="flex items-center justify-between">
+              <div>
+                <h1 class="text-lg font-semibold text-gray-100">agent-prod-1</h1>
+                <p class="text-xs text-gray-500 mt-0.5">边缘代理 · Magritte Agent · HA 主节点 · 心跳 12s 前</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded text-xs bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">在线</span>
+                <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-gray-400 border border-white/[0.08]">v2.14.3</span>
+              </div>
+            </div>
+          </div>
+
+          <div data-tab-group class="border-b border-white/[0.08] px-6 shrink-0">
+            <div class="flex gap-6">
+              <button data-tab="status" class="tab-active py-3 text-sm font-medium text-gray-100 border-b-2 border-cyan-400">状态</button>
+              <button data-tab="sources" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors">已指派数据源</button>
+              <button data-tab="logs" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors">日志</button>
+            </div>
+          </div>
+
+          <div class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Architecture diagram -->
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-6">
+              <h2 class="text-sm font-medium text-gray-100 mb-4">网络架构</h2>
+              <div class="flex items-center justify-center gap-4 flex-wrap">
+                <div class="rounded-lg border border-cyan-400/30 bg-cyan-400/5 px-5 py-4 text-center min-w-[140px]">
+                  <div class="text-xs text-cyan-400 mb-1">Foundry Cloud</div>
+                  <div class="text-sm text-gray-100 font-medium">Data Connection</div>
+                  <div class="text-xs text-gray-500 mt-1">控制平面</div>
+                </div>
+                <div class="flex flex-col items-center gap-1">
+                  <svg class="w-16 h-8" viewBox="0 0 64 32"><path class="flow-line flow-line-active" d="M0 16 H64"/><polygon fill="rgba(34,211,238,0.6)" points="58,12 64,16 58,20"/></svg>
+                  <span class="text-xs text-gray-500">TLS 1.3 隧道</span>
+                </div>
+                <div class="rounded-lg border border-white/[0.08] bg-slate-950 px-5 py-4 text-center min-w-[140px]">
+                  <div class="text-xs text-gray-500 mb-1">Customer VPC</div>
+                  <div class="text-sm text-gray-100 font-medium">agent-prod-1</div>
+                  <div class="text-xs text-emerald-400 mt-1">Magritte Agent</div>
+                </div>
+                <div class="flex flex-col items-center gap-1">
+                  <svg class="w-16 h-8" viewBox="0 0 64 32"><path class="flow-line" d="M0 16 H64"/><polygon fill="rgba(255,255,255,0.2)" points="58,12 64,16 58,20"/></svg>
+                  <span class="text-xs text-gray-500">JDBC / Kafka</span>
+                </div>
+                <div class="rounded-lg border border-white/[0.08] bg-slate-950 px-5 py-4 text-center min-w-[140px]">
+                  <div class="text-xs text-gray-500 mb-1">内网</div>
+                  <div class="text-sm text-gray-100 font-medium">MySQL / Oracle</div>
+                  <div class="text-xs text-gray-500 mt-1">10.0.12.0/24</div>
+                </div>
+              </div>
+              <div class="mt-6 grid grid-cols-3 gap-4 text-center text-xs">
+                <div class="rounded-lg bg-slate-950/50 border border-white/[0.06] p-3">
+                  <div class="text-gray-500">CPU</div>
+                  <div class="text-gray-100 font-medium mt-1">12%</div>
+                </div>
+                <div class="rounded-lg bg-slate-950/50 border border-white/[0.06] p-3">
+                  <div class="text-gray-500">内存</div>
+                  <div class="text-gray-100 font-medium mt-1">1.2 / 4 GB</div>
+                </div>
+                <div class="rounded-lg bg-slate-950/50 border border-white/[0.06] p-3">
+                  <div class="text-gray-500">活跃连接</div>
+                  <div class="text-gray-100 font-medium mt-1">3</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Proxy config code block -->
+            <div>
+              <h2 class="text-sm font-medium text-gray-100 mb-3">代理配置 (agent-prod-1.yaml)</h2>
+              <pre class="code-block rounded-xl p-4 text-sm font-mono overflow-x-auto leading-relaxed"><code><span class="code-kw">agent</span>:
+  <span class="code-fn">name</span>: <span class="code-str">"agent-prod-1"</span>
+  <span class="code-fn">foundryUrl</span>: <span class="code-str">"https://foundry.acme-ecom.com"</span>
+  <span class="code-fn">certificatePath</span>: <span class="code-str">"/etc/magritte/agent.crt"</span>
+
+<span class="code-kw">network</span>:
+  <span class="code-fn">proxyHost</span>: <span class="code-str">"proxy.internal.acme.com"</span>
+  <span class="code-fn">proxyPort</span>: <span class="code-str">8080</span>
+  <span class="code-fn">noProxy</span>:
+    - <span class="code-str">"10.0.12.0/24"</span>
+    - <span class="code-str">"localhost"</span>
+
+<span class="code-kw">sources</span>:
+  - <span class="code-fn">id</span>: <span class="code-str">"prod-mysql-orders"</span>
+    <span class="code-fn">type</span>: <span class="code-str">"jdbc"</span>
+    <span class="code-fn">host</span>: <span class="code-str">"10.0.12.45"</span>
+    <span class="code-fn">port</span>: <span class="code-str">3306</span>
+  - <span class="code-fn">id</span>: <span class="code-str">"legacy-erp-oracle"</span>
+    <span class="code-fn">type</span>: <span class="code-str">"jdbc"</span>
+    <span class="code-fn">host</span>: <span class="code-str">"10.0.12.88"</span>
+
+<span class="code-cm"># HA 配对: agent-prod-1 ↔ agent-prod-1-standby</span></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- agent-prod-2 panel -->
+        <div data-agent-panel="agent-prod-2" class="hidden flex-1 flex flex-col min-h-0 overflow-hidden">
+          <div class="px-6 py-4 border-b border-white/[0.08] shrink-0">
+            <h1 class="text-lg font-semibold text-gray-100">agent-prod-2</h1>
+            <p class="text-xs text-gray-500 mt-0.5">Magritte Agent · 欧洲区 · 心跳 8s 前</p>
+          </div>
+          <div class="flex-1 overflow-y-auto p-6">
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-6">
+              <h2 class="text-sm font-medium text-gray-100 mb-4">已指派数据源</h2>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-center justify-between py-2 border-b border-white/[0.06]">
+                  <span class="text-gray-300">kafka-order-stream</span>
+                  <span class="text-emerald-400 text-xs">运行中</span>
+                </li>
+                <li class="flex items-center justify-between py-2">
+                  <span class="text-gray-300">prod-pg-inventory-eu</span>
+                  <span class="text-emerald-400 text-xs">在线</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- agent-staging-1 panel -->
+        <div data-agent-panel="agent-staging-1" class="hidden flex-1 flex flex-col min-h-0 overflow-hidden">
+          <div class="px-6 py-4 border-b border-white/[0.08] shrink-0">
+            <h1 class="text-lg font-semibold text-gray-100">agent-staging-1</h1>
+            <p class="text-xs text-rose-400 mt-0.5">离线 · 上次心跳 3 天前</p>
+          </div>
+          <div class="flex-1 overflow-y-auto p-6">
+            <div class="rounded-xl border border-rose-400/20 bg-rose-400/5 p-6 text-center">
+              <svg class="w-10 h-10 text-rose-400 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <p class="text-gray-300 text-sm">代理未响应。请检查 VM 状态与网络连通性。</p>
+              <button class="mt-4 px-4 py-2 rounded-lg border border-white/[0.08] text-sm text-gray-300 hover:bg-white/[0.04]">重新连接</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('data-connection-agents', [
+      { label: '工作区', href: 'index.html' },
+      { label: '数据集成', href: 'data-connection.html' },
+      { label: '边缘代理 / 数据连接代理' }
+    ]);
+    DemoUI.initAgentList();
+    DemoUI.initTabs('[data-tab-group]');
+  </script>
+</body>
+</html>

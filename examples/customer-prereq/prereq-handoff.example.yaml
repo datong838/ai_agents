@@ -1,0 +1,63 @@
+# AOS customer prerequisite handoff (EXAMPLE - no real secrets)
+# Spec: docs/palantier/20_tech/24-AOS客户侧前置组件安装SOP.md
+# Rule: passwords/keys MUST be vault refs or sealed; never commit real secrets.
+
+schemaVersion: "1"
+environment: lite # lite | standard | airgap
+customerOrg: EXAMPLE_ORG
+filledBy: customer-it
+date: "YYYY-MM-DD"
+
+postgres:
+  host: pg.example.local
+  port: 5432
+  database: aos_meta
+  user: aos_app
+  passwordRef: vault:secret/data/aos/postgres#password
+  ageExtensionReady: true
+
+objectStore:
+  provider: minio # minio | s3 | other-s3-compatible
+  endpoint: https://minio.example.local:9000
+  bucket: aos-media
+  region: us-east-1
+  pathStyle: true
+  accessKeyRef: vault:secret/data/aos/s3#access_key
+  secretKeyRef: vault:secret/data/aos/s3#secret_key
+  # NOTE: MinIO server is installed by customer (AGPL). AOS never ships it.
+
+redis:
+  urlRef: vault:secret/data/aos/redis#url
+
+oidc:
+  issuer: https://keycloak.example.local/realms/aos
+  clientId: aos-web
+  clientSecretRef: vault:secret/data/aos/oidc#client_secret
+  # desktop/spoke clients listed in SOP §3.4
+
+vault:
+  addr: https://vault.example.local:8200
+  authMethod: approle # or kubernetes / customer-kms
+  # lite alternative: sealedFilePath + unlock procedure (no plaintext in git)
+
+observability:
+  prometheusUrl: https://prometheus.example.local
+  grafanaUrl: https://grafana.example.local # optional deep link; customer-installed (AGPL)
+  # AOS ships dashboard JSON only under docs/examples/customer-prereq/grafana/
+
+network:
+  spokeEgressToHubOk: true
+  httpsProxy: "" # if any
+
+versions:
+  postgres: "16.x"
+  minio: "RELEASE.customer-installed"
+  redis: "7.4.x"
+  keycloak: "26.x"
+  vault: "1.17.x"
+  prometheus: "2.x"
+  grafana: "11.x"
+
+checklistSigned: false
+notes: |
+  Customer confirms MinIO/Grafana are NOT provided inside the AOS package.

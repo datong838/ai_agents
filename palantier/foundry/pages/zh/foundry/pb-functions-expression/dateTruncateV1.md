@@ -1,0 +1,88 @@
+---
+{
+  "source_url": "https://www.palantir.com/docs/zh/foundry/pb-functions-expression/dateTruncateV1/",
+  "title": "截断日期",
+  "page_id": "dateTruncateV1",
+  "category_id": "data-integration",
+  "section_id": "pb-functions-expression",
+  "previous": "/zh/foundry/pb-functions-expression/trimV1/",
+  "next": "/zh/foundry/pb-functions-expression/timestampTruncateV1/",
+  "scraped_at": "2026-07-13T05:58:00.788733+00:00"
+}
+---
+
+:::callout{theme="warning"}
+注意：以下翻译的准确性尚未经过验证。这是使用 [AIP ↗](https://www.palantir.com/platforms/aip/) 从原始英文文本进行的机器翻译。
+:::
+
+# 截断日期
+
+> 支持于：批处理
+
+返回向下舍入到最近的日/周/月/季度/年的日期。
+
+**表达式类别**：日期时间
+
+## 声明的参数
+
+* **起始** - 要截断的日期。<br>*表达式<日期 | 时间戳>*
+* **单位** - 用于截断的日期单位。<br>*枚举<天, 月, 季度, 周, 年>*
+
+**输出类型：** *日期*
+
+## 示例
+
+### 示例 1：基本情况
+
+**参数值：**
+
+* **起始**: 2022-02-10T10:00:00Z
+* **单位**: `DAYS`
+
+**输出：** 2022-02-10
+
+***
+
+### 示例 2：基本情况
+
+**参数值：**
+
+* **起始**: 2022-02-10
+* **单位**: `MONTHS`
+
+**输出：** 2022-02-01
+
+***
+
+### 示例 3：基本情况
+
+**参数值：**
+
+* **起始**: 2022-02-10
+* **单位**: `QUARTERS`
+
+**输出：** 2022-01-01
+
+***
+
+### 示例 4：基本情况
+
+**参数值：**
+
+* **起始**: 2022-02-10
+* **单位**: `YEARS`
+
+**输出：** 2022-01-01
+
+***
+
+### 示例 5：空值情况
+
+**参数值：**
+
+* **起始**: *null*
+* **单位**: `YEARS`
+
+**输出：** *null*
+
+***

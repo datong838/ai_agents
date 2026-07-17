@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIP Logic · 画布 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path stroke-linecap="round" d="M8 6h8M7 7.5L10 16M17 7.5L14 16"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">AIP 决策引擎</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0" data-tabs-root>
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-4 lg:px-6 gap-2 flex-wrap">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex gap-2 items-center flex-wrap">
+        <span class="text-[10px] text-gray-500">模型路由</span>
+        <select class="bg-slate-900 border border-white/[0.08] rounded px-2 py-1 text-xs text-gray-200">
+          <option>k-LLM · 私有-中</option>
+          <option>私有-小模</option>
+          <option>高能力（审批）</option>
+        </select>
+        <button type="button" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs">Eval</button>
+        <button type="button" id="btn-publish-logic" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 text-xs font-medium">发布</button>
+      </div>
+    </header>
+
+    <div data-tab-group class="border-b border-white/[0.08] px-4 lg:px-6">
+      <div class="flex gap-5 text-sm">
+        <button data-tab="edit" class="tab-active py-3 font-medium text-gray-100 border-b-2 border-amber-400">编排</button>
+        <button data-tab="auto" class="py-3 text-gray-400 border-b-2 border-transparent">自动化 Uses</button>
+        <button data-tab="hist" class="py-3 text-gray-400 border-b-2 border-transparent">运行历史</button>
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-hidden flex flex-col">
+      <div data-tab-panel="edit" class="flex-1 flex flex-col min-h-0">
+        <div class="px-3 py-2 border-b border-white/[0.06] flex flex-wrap gap-2 text-[10px]">
+          <span class="text-gray-600 self-center">块：</span>
+          <span class="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.06]">+ Create Variable</span>
+          <span class="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.06]">+ Get Attributes</span>
+          <span class="px-2 py-1 rounded bg-amber-400/15 border border-amber-400/25 text-amber-200">+ Use LLM</span>
+          <span class="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.06]">+ Transform</span>
+          <span class="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.06]">+ Apply Action</span>
+          <span class="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.06]">+ Execute</span>
+        </div>
+
+        <!-- 三栏 -->
+        <div class="flex-1 grid lg:grid-cols-12 min-h-0 overflow-hidden">
+          <!-- ① 编排 -->
+          <div class="lg:col-span-4 border-r border-white/[0.08] overflow-y-auto p-3 space-y-2 grid-pattern">
+            <div class="text-[10px] text-gray-600 uppercase mb-1">① 输入 · 块 · 输出</div>
+            <div class="pipeline-node rounded-lg border border-white/[0.1] bg-slate-900/80 p-3 text-xs">
+              <div class="text-cyan-400 font-medium">Input</div>
+              <div class="text-gray-500 mt-1 font-mono">device : Object · Device</div>
+            </div>
+            <div class="text-center text-gray-700 text-[10px]">↓</div>
+            <div class="pipeline-node rounded-lg border border-white/[0.1] bg-slate-900/80 p-3 text-xs">
+              <div class="text-violet-300 font-medium">Get Object Attributes</div>
+              <div class="text-gray-500 mt-1">status · alarm · <span class="text-orange-300">wiki.risk</span></div>
+            </div>
+            <div class="text-center text-gray-700 text-[10px]">↓</div>
+            <div class="pipeline-node rounded-lg border border-amber-400/40 bg-amber-400/10 p-3 text-xs ring-1 ring-amber-400/20">
+              <div class="text-amber-300 font-medium flex justify-between">Use LLM <span class="text-[10px] text-gray-500">块模型:私有-中</span></div>
+              <div class="mt-2 text-gray-400 leading-relaxed">你是维修助手。优先读 Wiki… 严重则提议派单。</div>
+              <div class="mt-2 flex flex-wrap gap-1">
+                <a href="aip-tools.html" class="px-1.5 py-0.5 rounded bg-white/[0.06] text-[10px] text-amber-200 hover:underline">Tools ▾</a>
+                <span class="px-1.5 py-0.5 rounded bg-white/[0.04] text-[10px]">Query</span>
+                <span class="px-1.5 py-0.5 rounded bg-white/[0.04] text-[10px]">Action</span>
+              </div>
+              <div class="mt-2 font-mono text-gray-500">out: diagnosis</div>
+            </div>
+            <div class="text-center text-gray-700 text-[10px]">↓</div>
+            <div class="pipeline-node rounded-lg border border-white/[0.1] bg-slate-900/80 p-3 text-xs">
+              <div class="text-gray-300 font-medium">Transform</div>
+              <div class="text-gray-500 mt-1">JSON → Action 参数</div>
+            </div>
+            <div class="text-center text-gray-700 text-[10px]">↓</div>
+            <div class="pipeline-node rounded-lg border border-amber-400/25 bg-slate-900/80 p-3 text-xs">
+              <div class="text-amber-200/90 font-medium">Apply Action Block 🟡</div>
+              <div class="text-gray-500 mt-1">派单维修 · 可暂存 Draft</div>
+              <a href="aip-draft-inbox.html" class="inline-block mt-2 text-[10px] text-emerald-300 hover:underline">→ Draft 审批台</a>
+            </div>
+            <div class="mt-3 rounded-lg border border-dashed border-white/[0.1] p-2 text-[10px] text-gray-500">
+              Output: ● Ontology edits &nbsp; ○ 值
+            </div>
+          </div>
+
+          <!-- ② Debugger -->
+          <div class="lg:col-span-4 border-r border-white/[0.08] overflow-y-auto p-3 bg-slate-950/80">
+            <div class="text-[10px] text-gray-600 uppercase mb-2">② 调试器 · CoT</div>
+            <div id="debug-empty" class="text-xs text-gray-600 py-8 text-center">运行后显示思维链与提议 edits<br/><span class="text-amber-400/70">试跑不落库</span></div>
+            <div id="debug-panel" class="hidden space-y-3 text-xs">
+              <div class="rounded-lg border border-white/[0.08] p-3">
+                <div class="text-amber-300 font-medium mb-1">▼ Use LLM · CoT</div>
+                <p class="text-gray-400 leading-relaxed">思考：温升超阈，Wiki.risk=高；相似工单 3 条曾夜班-3 闭环…</p>
+                <p class="text-gray-500 mt-2">工具请求：Query Objects → Device…</p>
+                <p class="text-amber-200/80 mt-2">提议 edits：🟡 create_work_order（场景预览 · 不落库）</p>
+                <p class="text-violet-300/80 mt-2 text-[10px]">Edits 合并：Logic-A + Logic-B → 合并为 1 条 Draft 提议</p>
+              </div>
+              <button type="button" class="text-[10px] text-gray-500 hover:text-gray-300">折叠块卡 · 清工具调用</button>
+            </div>
+          </div>
+
+          <!-- ③ 运行 -->
+          <div class="lg:col-span-4 overflow-y-auto p-3 space-y-3">
+            <div class="text-[10px] text-gray-600 uppercase">③ 运行面板</div>
+            <div class="rounded-lg border border-white/[0.08] p-3 text-xs space-y-2">
+              <label class="text-gray-500">示例入参 device</label>
+              <select class="w-full bg-slate-900 border border-white/[0.08] rounded px-2 py-1.5 text-gray-200">
+                <option>DEV-019</option>
+                <option>DEV-004</option>
+              </select>
+              <button type="button" id="btn-run-logic" class="w-full py-2 rounded-lg bg-amber-400 text-slate-950 text-xs font-medium">▶ 运行</button>
+            </div>
+            <div class="rounded-lg border border-white/[0.08] p-3 text-xs space-y-2">
+              <div class="text-gray-500">最近运行</div>
+              <div class="flex justify-between text-gray-400"><span>14:02 成功</span><span class="text-emerald-400">OK</span></div>
+              <div class="flex justify-between text-gray-500"><span>13:55 失败</span><span class="text-rose-400">ERR</span></div>
+              <button type="button" class="text-amber-300/90 text-[10px]">保存为单元测试</button>
+            </div>
+            <div class="rounded-lg border border-amber-400/20 bg-amber-400/5 p-3 text-xs space-y-2">
+              <div class="text-amber-200 font-medium">Uses · 自动化</div>
+              <p class="text-gray-500">须输出 Ontology edits；输入建议为 Object</p>
+              <button type="button" id="btn-create-auto" class="w-full py-1.5 rounded border border-amber-400/40 text-amber-200 text-[11px]">+ 创建自动化</button>
+              <p id="auto-msg" class="text-[10px] text-gray-600 hidden"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-white/[0.08] px-4 py-2 text-[10px] text-gray-500 flex flex-wrap gap-3">
+          <span>状态：未发布</span>
+          <span>执行范围 ●用户范围 ○项目范围(需授权)</span>
+          <span class="text-amber-400/70">试跑 edits 不落库 · 真写须经 Action / 自动化审核</span>
+        </div>
+      </div>
+
+      <div data-tab-panel="auto" class="hidden p-6 max-w-xl">
+        <div class="rounded-xl border border-white/[0.08] p-5 text-sm space-y-3">
+          <h2 class="text-gray-100 font-medium">从 Logic 创建自动化</h2>
+          <p class="text-xs text-gray-500">提案约 24h 可见 · Draft 默认暂存</p>
+          <ul class="text-xs space-y-2 text-gray-400">
+            <li>条件：新 Device 告警 Object 创建时触发</li>
+            <li>效果：跑本 Logic → Ontology edits → <span class="text-amber-300">提案审核</span></li>
+          </ul>
+          <a href="aip-maturity.html" class="text-xs text-amber-300 hover:underline">回成熟度看 L4 门控 →</a>
+        </div>
+      </div>
+
+      <div data-tab-panel="hist" class="hidden p-6">
+        <table class="w-full text-sm">
+          <thead class="text-gray-500 text-left text-xs"><tr><th class="py-2">时间</th><th>入参</th><th>结果</th></tr></thead>
+          <tbody class="text-gray-400 text-xs">
+            <tr class="border-t border-white/[0.06]"><td class="py-2">14:02</td><td>DEV-019</td><td class="text-emerald-400">提议 Draft</td></tr>
+            <tr class="border-t border-white/[0.06]"><td class="py-2">13:55</td><td>DEV-004</td><td class="text-rose-400">超时</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('aip-logic', [
+      { label: '概览', href: 'index.html' },
+      { label: 'AIP', href: 'aip-maturity.html' },
+      { label: 'Logic · dispatch_repair' },
+    ]);
+    DemoUI.initTabs('[data-tabs-root]');
+    DemoUI.initAipLogic();
+  </script>
+</body>
+</html>

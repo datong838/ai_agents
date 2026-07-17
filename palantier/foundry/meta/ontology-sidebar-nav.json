@@ -1,0 +1,3933 @@
+{
+  "items": [
+    {
+      "type": "pageLink",
+      "pageId": "overview",
+      "context": "ontology",
+      "link": {
+        "type": "urlLink",
+        "text": "Ontologyæ­å»º",
+        "url": "/zh/foundry/ontology/overview/",
+        "openInNewTab": false
+      }
+    },
+    {
+      "type": "pageLink",
+      "pageId": "why-ontology",
+      "context": "ontology",
+      "link": {
+        "type": "urlLink",
+        "text": "ä¸ºä»ä¹åå»ºOntologyï¼",
+        "url": "/zh/foundry/ontology/why-ontology/",
+        "openInNewTab": false
+      }
+    },
+    {
+      "type": "pageLink",
+      "pageId": "models",
+      "context": "ontology",
+      "link": {
+        "type": "urlLink",
+        "text": "Ontologyä¸­çæ¨¡å",
+        "url": "/zh/foundry/ontology/models/",
+        "openInNewTab": false
+      }
+    },
+    {
+      "type": "pageLink",
+      "pageId": "core-concepts",
+      "context": "ontology",
+      "link": {
+        "type": "urlLink",
+        "text": "æ ¸å¿æ¦å¿µ",
+        "url": "/zh/foundry/ontology/core-concepts/",
+        "openInNewTab": false
+      }
+    },
+    {
+      "type": "pageLink",
+      "pageId": "applications",
+      "context": "ontology",
+      "link": {
+        "type": "urlLink",
+        "text": "åºäºOntologyçåºç¨ç¨åº",
+        "url": "/zh/foundry/ontology/applications/",
+        "openInNewTab": false
+      }
+    },
+    {
+      "type": "header",
+      "text": "å®ä¹æ¬ä½"
+    },
+    {
+      "type": "section",
+      "title": "æ¬ä½",
+      "id": "ontologies",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "ontologies-overview",
+          "context": "ontologies",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/ontologies/ontologies-overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "ontologies-proposals",
+          "context": "ontologies",
+          "link": {
+            "type": "urlLink",
+            "text": "Ontology ææ¡",
+            "url": "/zh/foundry/ontologies/ontologies-proposals/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "ontology-permissions",
+          "context": "ontologies",
+          "link": {
+            "type": "urlLink",
+            "text": "æé",
+            "url": "/zh/foundry/ontologies/ontology-permissions/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "shared-ontologies",
+          "context": "ontologies",
+          "link": {
+            "type": "urlLink",
+            "text": "å±äº«Ontology",
+            "url": "/zh/foundry/ontologies/shared-ontologies/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "ontology-migration",
+          "context": "ontologies",
+          "link": {
+            "type": "urlLink",
+            "text": "å¨Ontologiesä¹é´è¿ç§»æ¬ä½èµæº",
+            "url": "/zh/foundry/ontologies/ontology-migration/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Usage",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "volume-usage",
+              "context": "ontologies",
+              "link": {
+                "type": "urlLink",
+                "text": "Ontology å ç¨é",
+                "url": "/zh/foundry/ontologies/volume-usage/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "compute-usage",
+              "context": "ontologies",
+              "link": {
+                "type": "urlLink",
+                "text": "è®¡ç®ä½¿ç¨ï¼Ontology ç´¢å¼",
+                "url": "/zh/foundry/ontologies/compute-usage/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "query-compute-usage",
+              "context": "ontologies",
+              "link": {
+                "type": "urlLink",
+                "text": "ä½¿ç¨Ontologyæ¥è¯¢è®¡ç®ä½¿ç¨æåµ",
+                "url": "/zh/foundry/ontologies/query-compute-usage/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡é¾æ¥ç±»å",
+      "id": "object-link-types",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "type-reference",
+          "context": "object-link-types",
+          "link": {
+            "type": "urlLink",
+            "text": "ç±»ååè",
+            "url": "/zh/foundry/object-link-types/type-reference/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Object types",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "object-types-overview",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è§",
+                "url": "/zh/foundry/object-link-types/object-types-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "create-object-type",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»º Object ç±»å",
+                "url": "/zh/foundry/object-link-types/create-object-type/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "edit-object-type",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¼è¾Objectç±»å",
+                "url": "/zh/foundry/object-link-types/edit-object-type/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "enable-gotham-integration",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "éè¿ç±»åæ å°å¯ç¨ Gotham éæ",
+                "url": "/zh/foundry/object-link-types/enable-gotham-integration/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "object-type-metadata",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åæ°æ®åè",
+                "url": "/zh/foundry/object-link-types/object-type-metadata/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Properties",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "properties-overview",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è§",
+                "url": "/zh/foundry/object-link-types/properties-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "edit-properties",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¼è¾Objectç±»åå±æ§",
+                "url": "/zh/foundry/object-link-types/edit-properties/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "value-formatting",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¯æçå¼æ ¼å¼å",
+                "url": "/zh/foundry/object-link-types/value-formatting/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "conditional-formatting",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ·»å æ¡ä»¶æ ¼å¼å",
+                "url": "/zh/foundry/object-link-types/conditional-formatting/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "property-metadata",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åæ°æ®åè",
+                "url": "/zh/foundry/object-link-types/property-metadata/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "edit-only-properties",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ä»ç¼è¾å±æ§",
+                "url": "/zh/foundry/object-link-types/edit-only-properties/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "required-properties",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "å¿å¡«å±æ§",
+                "url": "/zh/foundry/object-link-types/required-properties/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Shared properties",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "shared-property-overview",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/object-link-types/shared-property-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "create-shared-property",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºå±äº«å±æ§",
+                "url": "/zh/foundry/object-link-types/create-shared-property/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "edit-shared-property",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¼è¾å±äº«å±æ§",
+                "url": "/zh/foundry/object-link-types/edit-shared-property/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "use-shared-property",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "å¨å¯¹è±¡ç±»åä¸ä½¿ç¨å±äº«å±æ§",
+                "url": "/zh/foundry/object-link-types/use-shared-property/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "shared-property-metadata",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åæ°æ®åè",
+                "url": "/zh/foundry/object-link-types/shared-property-metadata/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Link types",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "link-types-overview",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/object-link-types/link-types-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "create-link-type",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºé¾æ¥ç±»å",
+                "url": "/zh/foundry/object-link-types/create-link-type/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "edit-link-types",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¼è¾é¾æ¥ç±»å",
+                "url": "/zh/foundry/object-link-types/edit-link-types/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "link-type-metadata",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åæ°æ®åè",
+                "url": "/zh/foundry/object-link-types/link-type-metadata/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "allow-editing",
+          "context": "object-link-types",
+          "link": {
+            "type": "urlLink",
+            "text": "åè®¸ç¨æ·ç¼è¾Objectsåé¾æ¥",
+            "url": "/zh/foundry/object-link-types/allow-editing/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Value types",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "value-types-overview",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/object-link-types/value-types-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "create-value-type",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºå¼ç±»å",
+                "url": "/zh/foundry/object-link-types/create-value-type/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "use-value-type",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ä½¿ç¨å¼ç±»å",
+                "url": "/zh/foundry/object-link-types/use-value-type/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "value-types-versions",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "å¼ç±»åçæ¬",
+                "url": "/zh/foundry/object-link-types/value-types-versions/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "value-types-permissions",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "å¼ç±»åæé",
+                "url": "/zh/foundry/object-link-types/value-types-permissions/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "value-type-constraints",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "å¼ç±»åçº¦æ",
+                "url": "/zh/foundry/object-link-types/value-type-constraints/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Struct types",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "structs-overview",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/object-link-types/structs-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "create-struct-type",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºç»æå±æ§ç±»å",
+                "url": "/zh/foundry/object-link-types/create-struct-type/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "edit-struct-type",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¼è¾ç»æå±æ§ç±»å",
+                "url": "/zh/foundry/object-link-types/edit-struct-type/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "struct-automapping",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "èªå¨æ å°ç»æå±æ§",
+                "url": "/zh/foundry/object-link-types/struct-automapping/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "struct-shared-properties",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç»æå±æ§åå±äº«å±æ§ç±»å",
+                "url": "/zh/foundry/object-link-types/struct-shared-properties/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Metadata",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "metadata-typeclasses",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç±»åç±»",
+                "url": "/zh/foundry/object-link-types/metadata-typeclasses/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "metadata-render-hints",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¸²ææç¤º",
+                "url": "/zh/foundry/object-link-types/metadata-render-hints/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "metadata-statuses",
+              "context": "object-link-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¶æ",
+                "url": "/zh/foundry/object-link-types/metadata-statuses/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "type-groups",
+          "context": "object-link-types",
+          "link": {
+            "type": "urlLink",
+            "text": "Object ç±»åç»",
+            "url": "/zh/foundry/object-link-types/type-groups/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "marketplace-ontology-types",
+          "context": "object-link-types",
+          "link": {
+            "type": "urlLink",
+            "text": "å°Objectåé¾æ¥ç±»åæ·»å å°Marketplaceäº§å",
+            "url": "/zh/foundry/object-link-types/marketplace-ontology-types/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¨ä½ç±»å",
+      "id": "action-types",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/action-types/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "getting-started",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "å¥é¨",
+            "url": "/zh/foundry/action-types/getting-started/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "use-actions",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "å¨å¹³å°ä¸­ä½¿ç¨æä½",
+            "url": "/zh/foundry/action-types/use-actions/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "rules",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "è§å",
+            "url": "/zh/foundry/action-types/rules/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Parameters",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "parameter-overview",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/action-types/parameter-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "parameters-default-value",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "è®¾ç½®åæ°é»è®¤å¼",
+                "url": "/zh/foundry/action-types/parameters-default-value/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "parameters-filter",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "ç­éåæ°ä¸æèåçç»æ",
+                "url": "/zh/foundry/action-types/parameters-filter/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "dropdown-security",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "å¯¹è±¡ä¸æèåå®å¨æ³¨æäºé¡¹",
+                "url": "/zh/foundry/action-types/dropdown-security/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "parameters-override",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "è¦ç",
+                "url": "/zh/foundry/action-types/parameters-override/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "submission-criteria",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "æäº¤æ å",
+            "url": "/zh/foundry/action-types/submission-criteria/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Function-backed actions",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "function-actions-overview",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/action-types/function-actions-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "function-actions-getting-started",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "å¥é¨",
+                "url": "/zh/foundry/action-types/function-actions-getting-started/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Side effects",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "side-effects-overview",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/action-types/side-effects-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "notifications",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "éç¥",
+                "url": "/zh/foundry/action-types/notifications/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "set-up-notification",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "è®¾ç½®éç¥",
+                "url": "/zh/foundry/action-types/set-up-notification/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "webhooks",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "Webhooks",
+                "url": "/zh/foundry/action-types/webhooks/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "set-up-webhook",
+              "context": "action-types",
+              "link": {
+                "type": "urlLink",
+                "text": "è®¾ç½® Webhook",
+                "url": "/zh/foundry/action-types/set-up-webhook/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "configure-sections",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "éç½®é¨å",
+            "url": "/zh/foundry/action-types/configure-sections/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "upload-attachments",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "ä¸ä¼ éä»¶",
+            "url": "/zh/foundry/action-types/upload-attachments/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "scale-property-limits",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "è§æ¨¡åå±æ§éå¶",
+            "url": "/zh/foundry/action-types/scale-property-limits/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "inline-edits",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "è¡åç¼è¾",
+            "url": "/zh/foundry/action-types/inline-edits/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "permissions",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "æé",
+            "url": "/zh/foundry/action-types/permissions/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "action-reverts",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¤éæåæ¶æä½",
+            "url": "/zh/foundry/action-types/action-reverts/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "action-metrics",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "æä½ææ  [æµè¯ç]",
+            "url": "/zh/foundry/action-types/action-metrics/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "action-log",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "æä½æ¥å¿",
+            "url": "/zh/foundry/action-types/action-log/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "marketplace-action-types",
+          "context": "action-types",
+          "link": {
+            "type": "urlLink",
+            "text": "å°æä½ç±»åæ·»å å°Marketplaceäº§å",
+            "url": "/zh/foundry/action-types/marketplace-action-types/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å½æ°",
+      "id": "functions",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/functions/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "getting-started",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "å¥é¨",
+            "url": "/zh/foundry/functions/getting-started/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "use-functions",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "å¨å¹³å°ä¸­ä½¿ç¨å½æ°",
+            "url": "/zh/foundry/functions/use-functions/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "TypeScript basics",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "input-output-types",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "è¾å¥åè¾åºç±»å",
+                "url": "/zh/foundry/functions/input-output-types/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "decorators",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "è£é¥°å¨",
+                "url": "/zh/foundry/functions/decorators/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "undefined-values",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å¤çæªå®ä¹å¼",
+                "url": "/zh/foundry/functions/undefined-values/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "debug",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "è°è¯å½æ°",
+                "url": "/zh/foundry/functions/debug/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "add-dependencies",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "æ·»å  npm ä¾èµé¡¹",
+                "url": "/zh/foundry/functions/add-dependencies/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Python functions",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "python-getting-started",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "èµ·å§æ­¥éª¤",
+                "url": "/zh/foundry/functions/python-getting-started/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "python-function-types",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "ç±»ååè",
+                "url": "/zh/foundry/functions/python-function-types/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "python-functions-on-objects",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å¯¹è±¡ä¸çå½æ°",
+                "url": "/zh/foundry/functions/python-functions-on-objects/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "python-functions-api-calls",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "ä»Pythonå½æ°è¿è¡APIè°ç¨",
+                "url": "/zh/foundry/functions/python-functions-api-calls/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "python-ontology-edits",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "Ontology æ´æ¹",
+                "url": "/zh/foundry/functions/python-ontology-edits/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "python-functions-builder",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å¨Pipeline Builderä¸­ä½¿ç¨Pythonå½æ°",
+                "url": "/zh/foundry/functions/python-functions-builder/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "python-functions-workshop",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å¨Workshopä¸­ä½¿ç¨Pythonå½æ°",
+                "url": "/zh/foundry/functions/python-functions-workshop/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "python-functions-advanced-usage",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "é«çº§ç¨æ³",
+                "url": "/zh/foundry/functions/python-functions-advanced-usage/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "functions-on-models",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¨¡åä¸çå½æ°",
+            "url": "/zh/foundry/functions/functions-on-models/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "language-models",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "å½æ°ä¸­çè¯­è¨æ¨¡å",
+            "url": "/zh/foundry/functions/language-models/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "external-sources",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "å½æ°ä¸­çå¤é¨æ¥æº",
+            "url": "/zh/foundry/functions/external-sources/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Functions on objects",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "functions-on-objects",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/functions/functions-on-objects/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "foo-getting-started",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å¥é¨",
+                "url": "/zh/foundry/functions/foo-getting-started/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "object-identifiers",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "Objectæ è¯ç¬¦",
+                "url": "/zh/foundry/functions/object-identifiers/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "create-custom-aggregation",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºèªå®ä¹èå",
+                "url": "/zh/foundry/functions/create-custom-aggregation/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "ontology-imports",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å¯¼å¥Objectåé¾æ¥ç±»å",
+                "url": "/zh/foundry/functions/ontology-imports/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "api-objects-links",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "API: Objectåé¾æ¥",
+                "url": "/zh/foundry/functions/api-objects-links/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "api-object-sets",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "APIï¼å¯¹è±¡é",
+                "url": "/zh/foundry/functions/api-object-sets/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "api-attachments",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "API: éä»¶",
+                "url": "/zh/foundry/functions/api-attachments/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "api-media",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "APIï¼åªä½",
+                "url": "/zh/foundry/functions/api-media/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Semantic search",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "overview-semantic-search",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/functions/overview-semantic-search/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "using-palantir-provided-models-to-create-a-semantic-search-workflow",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "ä½¿ç¨Palantiræä¾çæ¨¡ååå»ºè¯­ä¹æç´¢å·¥ä½æµ",
+                "url": "/zh/foundry/functions/using-palantir-provided-models-to-create-a-semantic-search-workflow/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "using-custom-models-to-create-a-semantic-search-workflow",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "ä½¿ç¨èªå®ä¹æ¨¡ååå»ºè¯­ä¹æç´¢å·¥ä½æµ",
+                "url": "/zh/foundry/functions/using-custom-models-to-create-a-semantic-search-workflow/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "chunking",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "åå",
+                "url": "/zh/foundry/functions/chunking/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "pdf-handling",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "PDFå¤ç",
+                "url": "/zh/foundry/functions/pdf-handling/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Ontology edits",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "edits-overview",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/functions/edits-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "edits-generate-id",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "ä¸ºæ°Objectsçæå¯ä¸ID",
+                "url": "/zh/foundry/functions/edits-generate-id/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "user-facing-error",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "æåºç¨æ·çé¢éè¯¯",
+                "url": "/zh/foundry/functions/user-facing-error/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "api-ontology-edits",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "API: Ontologyç¼è¾",
+                "url": "/zh/foundry/functions/api-ontology-edits/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Functions called through the API gateway",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "query-functions",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¥è¯¢",
+                "url": "/zh/foundry/functions/query-functions/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Models and graphs",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "model-functions",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºæ¨¡åå½æ°",
+                "url": "/zh/foundry/functions/model-functions/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Unit testing",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "unit-test-getting-started",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å¥é¨æå",
+                "url": "/zh/foundry/functions/unit-test-getting-started/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "unit-test-stub-objects",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºå­æ ¹å¯¹è±¡",
+                "url": "/zh/foundry/functions/unit-test-stub-objects/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "unit-test-ontology-edits",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "éªè¯Ontologyç¼è¾",
+                "url": "/zh/foundry/functions/unit-test-ontology-edits/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "unit-test-object-searches",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å­æ ¹å¯¹è±¡æç´¢åèå",
+                "url": "/zh/foundry/functions/unit-test-object-searches/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "unit-test-dates-timestamps",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¨¡ææ¥æãæ¶é´æ³åUUID",
+                "url": "/zh/foundry/functions/unit-test-dates-timestamps/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "unit-test-users-groups",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¨¡æç¨æ·åç»",
+                "url": "/zh/foundry/functions/unit-test-users-groups/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "unit-test-debugging",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "è°è¯",
+                "url": "/zh/foundry/functions/unit-test-debugging/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Performance and limits",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "enforced-limits",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "å¼ºå¶éå¶",
+                "url": "/zh/foundry/functions/enforced-limits/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "optimize-performance",
+              "context": "functions",
+              "link": {
+                "type": "urlLink",
+                "text": "ä¼åæ§è½",
+                "url": "/zh/foundry/functions/optimize-performance/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "configure-notifications",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "éç½®éç¥",
+            "url": "/zh/foundry/functions/configure-notifications/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "permissions",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "æé",
+            "url": "/zh/foundry/functions/permissions/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "marketplace-functions",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "å°å½æ°æ·»å å° Marketplace äº§å",
+            "url": "/zh/foundry/functions/marketplace-functions/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "resource-imports-sidebar",
+          "context": "functions",
+          "link": {
+            "type": "urlLink",
+            "text": "å°èµæºå¯¼å¥ä»£ç åº",
+            "url": "/zh/foundry/functions/resource-imports-sidebar/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "æ¥å£",
+      "id": "interfaces",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "interface-overview",
+          "context": "interfaces",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/interfaces/interface-overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "create-interface",
+          "context": "interfaces",
+          "link": {
+            "type": "urlLink",
+            "text": "åå»ºçé¢",
+            "url": "/zh/foundry/interfaces/create-interface/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "implement-interface",
+          "context": "interfaces",
+          "link": {
+            "type": "urlLink",
+            "text": "å®ç°æ¥å£",
+            "url": "/zh/foundry/interfaces/implement-interface/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "edit-interface-definition",
+          "context": "interfaces",
+          "link": {
+            "type": "urlLink",
+            "text": "ç¼è¾æ¥å£å®ä¹",
+            "url": "/zh/foundry/interfaces/edit-interface-definition/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "edit-interface-implementation",
+          "context": "interfaces",
+          "link": {
+            "type": "urlLink",
+            "text": "ç¼è¾æ¥å£å®ç°",
+            "url": "/zh/foundry/interfaces/edit-interface-implementation/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "interface-link-types-overview",
+          "context": "interfaces",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¥å£é¾æ¥ç±»å",
+            "url": "/zh/foundry/interfaces/interface-link-types-overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "extend-interface",
+          "context": "interfaces",
+          "link": {
+            "type": "urlLink",
+            "text": "æ©å±æ¥å£",
+            "url": "/zh/foundry/interfaces/extend-interface/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "interface-metadata",
+          "context": "interfaces",
+          "link": {
+            "type": "urlLink",
+            "text": "åæ°æ®åè",
+            "url": "/zh/foundry/interfaces/interface-metadata/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "text": "åºç¨"
+    },
+    {
+      "type": "section",
+      "title": "é»è¾",
+      "id": "logic",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "logic",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/logic/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "concepts",
+          "context": "logic",
+          "link": {
+            "type": "urlLink",
+            "text": "æ ¸å¿æ¦å¿µ",
+            "url": "/zh/foundry/logic/concepts/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "getting-started",
+          "context": "logic",
+          "link": {
+            "type": "urlLink",
+            "text": "å¥é¨æå",
+            "url": "/zh/foundry/logic/getting-started/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "aip-logic-integration-automate",
+          "context": "logic",
+          "link": {
+            "type": "urlLink",
+            "text": "AIP Logicä¸èªå¨åçéæ",
+            "url": "/zh/foundry/logic/aip-logic-integration-automate/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "AIP Logic Evaluations",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "evaluations-overview",
+              "context": "logic",
+              "link": {
+                "type": "urlLink",
+                "text": "è¯ä¼°",
+                "url": "/zh/foundry/logic/evaluations-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "evaluations-getting-started",
+              "context": "logic",
+              "link": {
+                "type": "urlLink",
+                "text": "å¥é¨",
+                "url": "/zh/foundry/logic/evaluations-getting-started/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "evaluations-create-suite",
+              "context": "logic",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºè¯ä¼°å¥ä»¶",
+                "url": "/zh/foundry/logic/evaluations-create-suite/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "evaluations-metrics-dashboard",
+              "context": "logic",
+              "link": {
+                "type": "urlLink",
+                "text": "è¯ä¼°ææ ä»ªè¡¨ç",
+                "url": "/zh/foundry/logic/evaluations-metrics-dashboard/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "compute-usage",
+          "context": "logic",
+          "link": {
+            "type": "urlLink",
+            "text": "ä½¿ç¨ AIP Logic è®¡ç®èµæºæ¶è",
+            "url": "/zh/foundry/logic/compute-usage/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "faq",
+          "context": "logic",
+          "link": {
+            "type": "urlLink",
+            "text": "AIP Logic å¸¸è§é®é¢è§£ç­",
+            "url": "/zh/foundry/logic/faq/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡æµè§å¨",
+      "id": "object-explorer",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "object-explorer",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/object-explorer/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "getting-started",
+          "context": "object-explorer",
+          "link": {
+            "type": "urlLink",
+            "text": "å¥é¨",
+            "url": "/zh/foundry/object-explorer/getting-started/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Search and explore objects",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "search-objects",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "æç´¢Objects",
+                "url": "/zh/foundry/object-explorer/search-objects/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "search-syntax",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "æç´¢è¯­æ³",
+                "url": "/zh/foundry/object-explorer/search-syntax/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Analyze and compare",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "filter-results",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "ç­éç»æ",
+                "url": "/zh/foundry/object-explorer/filter-results/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "explore-charts",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "ä½¿ç¨å¾è¡¨è¿è¡æ¢ç´¢",
+                "url": "/zh/foundry/object-explorer/explore-charts/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "view-results",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¥çç»æ",
+                "url": "/zh/foundry/object-explorer/view-results/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "pivot-linked",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "éè¿æè½¬æ¢ç´¢å³èå¯¹è±¡",
+                "url": "/zh/foundry/object-explorer/pivot-linked/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "compare-object-sets",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¯è¾å¯¹è±¡é",
+                "url": "/zh/foundry/object-explorer/compare-object-sets/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "save-explorations",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "ä¿å­æ¢ç´¢",
+                "url": "/zh/foundry/object-explorer/save-explorations/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "save-lists",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "ä¿å­åè¡¨",
+                "url": "/zh/foundry/object-explorer/save-lists/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "apply-actions",
+              "context": "object-explorer",
+              "link": {
+                "type": "urlLink",
+                "text": "åºç¨æä½",
+                "url": "/zh/foundry/object-explorer/apply-actions/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "generate-urls",
+          "context": "object-explorer",
+          "link": {
+            "type": "urlLink",
+            "text": "çæ Object Explorer é¾æ¥",
+            "url": "/zh/foundry/object-explorer/generate-urls/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "configure",
+          "context": "object-explorer",
+          "link": {
+            "type": "urlLink",
+            "text": "éç½®Object Explorer",
+            "url": "/zh/foundry/object-explorer/configure/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡çè§å¨",
+      "id": "object-monitors",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "object-monitors",
+          "link": {
+            "type": "urlLink",
+            "text": "Object Monitors",
+            "url": "/zh/foundry/object-monitors/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "create_new_object_monitor",
+          "context": "object-monitors",
+          "link": {
+            "type": "urlLink",
+            "text": "åå»ºä¸ä¸ªæ°Objectçè§å¨",
+            "url": "/zh/foundry/object-monitors/create_new_object_monitor/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Core concepts",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "monitor",
+              "context": "object-monitors",
+              "link": {
+                "type": "urlLink",
+                "text": "çæ§",
+                "url": "/zh/foundry/object-monitors/monitor/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "input",
+              "context": "object-monitors",
+              "link": {
+                "type": "urlLink",
+                "text": "è¾å¥",
+                "url": "/zh/foundry/object-monitors/input/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "condition",
+              "context": "object-monitors",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¡ä»¶",
+                "url": "/zh/foundry/object-monitors/condition/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "evaluation",
+              "context": "object-monitors",
+              "link": {
+                "type": "urlLink",
+                "text": "è¯ä¼°",
+                "url": "/zh/foundry/object-monitors/evaluation/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "activity",
+              "context": "object-monitors",
+              "link": {
+                "type": "urlLink",
+                "text": "æ´»å¨",
+                "url": "/zh/foundry/object-monitors/activity/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "notifications",
+              "context": "object-monitors",
+              "link": {
+                "type": "urlLink",
+                "text": "éç¥",
+                "url": "/zh/foundry/object-monitors/notifications/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "actions",
+              "context": "object-monitors",
+              "link": {
+                "type": "urlLink",
+                "text": "æä½",
+                "url": "/zh/foundry/object-monitors/actions/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "limits",
+          "context": "object-monitors",
+          "link": {
+            "type": "urlLink",
+            "text": "éå¶",
+            "url": "/zh/foundry/object-monitors/limits/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "errors",
+          "context": "object-monitors",
+          "link": {
+            "type": "urlLink",
+            "text": "éè¯¯åè",
+            "url": "/zh/foundry/object-monitors/errors/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡è§å¾",
+      "id": "object-views",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "object-views",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è§",
+            "url": "/zh/foundry/object-views/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "use-object-views-in-platform",
+          "context": "object-views",
+          "link": {
+            "type": "urlLink",
+            "text": "å¨å¹³å°ä¸­ä½¿ç¨Object View",
+            "url": "/zh/foundry/object-views/use-object-views-in-platform/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Configuration",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "config-overview",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/object-views/config-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "config-tabs",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®æ ç­¾é¡µ",
+                "url": "/zh/foundry/object-views/config-tabs/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "config-workshop-tabs",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½® Workshop æ ç­¾é¡µ",
+                "url": "/zh/foundry/object-views/config-workshop-tabs/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "config-widgets",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®å¾®ä»¶ï¼æ§çï¼",
+                "url": "/zh/foundry/object-views/config-widgets/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "config-app-sidebar",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®åºç¨ç¨åºä¾§è¾¹æ ",
+                "url": "/zh/foundry/object-views/config-app-sidebar/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "config-profiles",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®éç½®æä»¶",
+                "url": "/zh/foundry/object-views/config-profiles/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "manage-versions",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "ç®¡çObjectè§å¾çæ¬",
+                "url": "/zh/foundry/object-views/manage-versions/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Widgets",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "widgets-properties-links",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "å±æ§åé¾æ¥",
+                "url": "/zh/foundry/object-views/widgets-properties-links/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "widgets-visualization",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "å¯è§å",
+                "url": "/zh/foundry/object-views/widgets-visualization/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "widgets-filtering",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "ç­é",
+                "url": "/zh/foundry/object-views/widgets-filtering/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "widgets-layout",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "è®¾è®¡",
+                "url": "/zh/foundry/object-views/widgets-layout/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "widgets-apps-files",
+              "context": "object-views",
+              "link": {
+                "type": "urlLink",
+                "text": "åºç¨ç¨åºåæä»¶",
+                "url": "/zh/foundry/object-views/widgets-apps-files/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "generate-urls",
+          "context": "object-views",
+          "link": {
+            "type": "urlLink",
+            "text": "çæObjectè§å¾URL",
+            "url": "/zh/foundry/object-views/generate-urls/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "comment-on-objects",
+          "context": "object-views",
+          "link": {
+            "type": "urlLink",
+            "text": "å¯¹Objectåè¡¨è¯è®º",
+            "url": "/zh/foundry/object-views/comment-on-objects/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "marketplace-object-views",
+          "context": "object-views",
+          "link": {
+            "type": "urlLink",
+            "text": "æ·»å Objectè§å¾å°Marketplaceäº§å",
+            "url": "/zh/foundry/object-views/marketplace-object-views/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "æ¬ä½ç®¡çå¨",
+      "id": "ontology-manager",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "ontology-manager",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/ontology-manager/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "navigation",
+          "context": "ontology-manager",
+          "link": {
+            "type": "urlLink",
+            "text": "å¯¼èª",
+            "url": "/zh/foundry/ontology-manager/navigation/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "view-usage",
+          "context": "ontology-manager",
+          "link": {
+            "type": "urlLink",
+            "text": "Ontologyææ ",
+            "url": "/zh/foundry/ontology-manager/view-usage/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "ontology-roles-migration",
+          "context": "ontology-manager",
+          "link": {
+            "type": "urlLink",
+            "text": "Ontology è§è²è¿ç§»",
+            "url": "/zh/foundry/ontology-manager/ontology-roles-migration/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Change management",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "save-changes",
+              "context": "ontology-manager",
+              "link": {
+                "type": "urlLink",
+                "text": "ä¿å­å¯¹Ontologyçæ´æ¹",
+                "url": "/zh/foundry/ontology-manager/save-changes/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "restore-changes",
+              "context": "ontology-manager",
+              "link": {
+                "type": "urlLink",
+                "text": "å®¡æ¥åæ¢å¤æ´æ¹",
+                "url": "/zh/foundry/ontology-manager/restore-changes/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "export-import",
+          "context": "ontology-manager",
+          "link": {
+            "type": "urlLink",
+            "text": "å¯¼åºãç¼è¾åå¯¼å¥Ontology",
+            "url": "/zh/foundry/ontology-manager/export-import/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "cleanup",
+          "context": "ontology-manager",
+          "link": {
+            "type": "urlLink",
+            "text": "Ontology æ¸ç",
+            "url": "/zh/foundry/ontology-manager/cleanup/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "é¡¶ç¹",
+      "id": "vertex",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "vertex",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è§",
+            "url": "/zh/foundry/vertex/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "example-use-cases",
+          "context": "vertex",
+          "link": {
+            "type": "urlLink",
+            "text": "ç¤ºä¾åºç¨æ¡ä¾",
+            "url": "/zh/foundry/vertex/example-use-cases/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Graphs",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "graphs-explore",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¢ç´¢ç°æå¾è¡¨",
+                "url": "/zh/foundry/vertex/graphs-explore/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "explore-object-relationships",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¢ç´¢Objectå³ç³»",
+                "url": "/zh/foundry/vertex/explore-object-relationships/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "graphs-display-options",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "Objectåè¾¹æ¾ç¤ºéé¡¹",
+                "url": "/zh/foundry/vertex/graphs-display-options/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "save-share",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "ä¿å­ãå±äº«ååä½",
+                "url": "/zh/foundry/vertex/save-share/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "graphs-template",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºå¾æ¨¡æ¿",
+                "url": "/zh/foundry/vertex/graphs-template/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "generate-graph-apps",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "ä»å¶ä»åºç¨çæå¾è¡¨",
+                "url": "/zh/foundry/vertex/generate-graph-apps/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "generate-graph-functions",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "ä½¿ç¨å½æ°çæå¾è¡¨",
+                "url": "/zh/foundry/vertex/generate-graph-functions/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "derive-property-functions",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "ä½¿ç¨å½æ°æ´¾çå±æ§",
+                "url": "/zh/foundry/vertex/derive-property-functions/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "embed-graph-workshop",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "å¨Workshopæ¨¡åä¸­åµå¥å¾å½¢",
+                "url": "/zh/foundry/vertex/embed-graph-workshop/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "read-only-mode",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "åªè¯»æ¨¡å¼",
+                "url": "/zh/foundry/vertex/read-only-mode/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Events and time series",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "events-overview",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/vertex/events-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "configure-events",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®äºä»¶",
+                "url": "/zh/foundry/vertex/configure-events/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "explore-related-events",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¢ç´¢ç¸å³äºä»¶",
+                "url": "/zh/foundry/vertex/explore-related-events/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "explore-time-series",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¢ç´¢ç¸å³æ¶é´åºå",
+                "url": "/zh/foundry/vertex/explore-time-series/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "use-time-selection",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "ä½¿ç¨æ¶é´éæ©",
+                "url": "/zh/foundry/vertex/use-time-selection/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "configure-thresholds",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®éå¼",
+                "url": "/zh/foundry/vertex/configure-thresholds/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "timeline",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¥çåç­éæ¶é´è½´ä¸çäºä»¶",
+                "url": "/zh/foundry/vertex/timeline/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Scenarios",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "scenarios-overview",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è§",
+                "url": "/zh/foundry/vertex/scenarios-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "scenarios-getting-started",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "å¥é¨æå",
+                "url": "/zh/foundry/vertex/scenarios-getting-started/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "scenarios-options",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "åºæ¯éé¡¹",
+                "url": "/zh/foundry/vertex/scenarios-options/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "chained-models",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®é¾å¼æ¨¡å",
+                "url": "/zh/foundry/vertex/chained-models/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Configuration",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "vertex-settings-control-panel",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "å¨æ§å¶é¢æ¿ä¸­éç½®Vertexè®¾ç½®",
+                "url": "/zh/foundry/vertex/vertex-settings-control-panel/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "link-merging",
+              "context": "vertex",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®é¾æ¥åå¹¶",
+                "url": "/zh/foundry/vertex/link-merging/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "marketplace-vertex",
+          "context": "vertex",
+          "link": {
+            "type": "urlLink",
+            "text": "å° Vertex å¾æ¨¡æ¿æ·»å å° Marketplace äº§å",
+            "url": "/zh/foundry/vertex/marketplace-vertex/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "æµç¨ææ",
+      "id": "process-mining",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "process-mining",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/process-mining/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "core-concepts",
+          "context": "process-mining",
+          "link": {
+            "type": "urlLink",
+            "text": "æ ¸å¿æ¦å¿µ",
+            "url": "/zh/foundry/process-mining/core-concepts/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "process-mining-setup",
+          "context": "process-mining",
+          "link": {
+            "type": "urlLink",
+            "text": "åå»ºæºæ¢°æµç¨",
+            "url": "/zh/foundry/process-mining/process-mining-setup/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "process-mining-operationalize",
+          "context": "process-mining",
+          "link": {
+            "type": "urlLink",
+            "text": "å°æµç¨æææä½å",
+            "url": "/zh/foundry/process-mining/process-mining-operationalize/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "Foundryè§å",
+      "id": "foundry-rules",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "foundry-rules",
+          "link": {
+            "type": "urlLink",
+            "text": "Foundry Rules",
+            "url": "/zh/foundry/foundry-rules/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Core concepts",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "core-concepts",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/foundry-rules/core-concepts/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "object-model",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "Objectæ¨¡å",
+                "url": "/zh/foundry/foundry-rules/object-model/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "workshop-application",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "Workshop åºç¨",
+                "url": "/zh/foundry/foundry-rules/workshop-application/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "rule-logic",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "è§åé»è¾",
+                "url": "/zh/foundry/foundry-rules/rule-logic/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "foundry-rules-workflow-configuration",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "Foundry Rules å·¥ä½æµéç½®",
+                "url": "/zh/foundry/foundry-rules/foundry-rules-workflow-configuration/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Deploy",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "deploy-foundry-rules",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "é¨ç½² Foundry Rules",
+                "url": "/zh/foundry/foundry-rules/deploy-foundry-rules/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "deploy-workflow",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "é¨ç½²å·¥ä½æµ",
+                "url": "/zh/foundry/foundry-rules/deploy-workflow/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "configure-workflow",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®å·¥ä½æµ",
+                "url": "/zh/foundry/foundry-rules/configure-workflow/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "author-and-run-a-rule",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¼åå¹¶è¿è¡è§å",
+                "url": "/zh/foundry/foundry-rules/author-and-run-a-rule/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Settings & customization",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "customization",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "å®å¶ Foundry Rules",
+                "url": "/zh/foundry/foundry-rules/customization/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "enable-optional-features",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "å¯ç¨éå¿å¡«åè½",
+                "url": "/zh/foundry/foundry-rules/enable-optional-features/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "add-a-custom-property",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "æ·»å èªå®ä¹å±æ§",
+                "url": "/zh/foundry/foundry-rules/add-a-custom-property/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "rule-permissions",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¼è¾è§åçæé",
+                "url": "/zh/foundry/foundry-rules/rule-permissions/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "permitted-and-default-output-values",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "åè®¸åé»è®¤è¾åºå¼",
+                "url": "/zh/foundry/foundry-rules/permitted-and-default-output-values/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "customize-foundry-rules-pipeline",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "èªå®ä¹æ¨ç Foundry Rules æµæ°´çº¿",
+                "url": "/zh/foundry/foundry-rules/customize-foundry-rules-pipeline/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Time series",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "timeseries-concepts",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¶é´åºåè§å",
+                "url": "/zh/foundry/foundry-rules/timeseries-concepts/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "deploy-timeseries-foundry-rules",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "é¨ç½²æ¶é´åºå Foundry è§å",
+                "url": "/zh/foundry/foundry-rules/deploy-timeseries-foundry-rules/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Legacy Foundry Rules Setup (Taurus)",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "legacy-foundry-rules-setup-taurus",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "æ§ç Foundry è§åè®¾ç½® (Taurus)",
+                "url": "/zh/foundry/foundry-rules/legacy-foundry-rules-setup-taurus/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "migrate-to-foundry-rules",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "è¿ç§»å° Foundry Rules",
+                "url": "/zh/foundry/foundry-rules/migrate-to-foundry-rules/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "configure-workshop-app",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½® Workshop åºç¨ç¨åº",
+                "url": "/zh/foundry/foundry-rules/configure-workshop-app/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "configure-transforms-pipeline",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®åæ¢ç®¡é",
+                "url": "/zh/foundry/foundry-rules/configure-transforms-pipeline/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "configure-rule-actions",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®è§åæä½",
+                "url": "/zh/foundry/foundry-rules/configure-rule-actions/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "configure-timeseries-foundry-rules",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "éç½®æ¶é´åºå",
+                "url": "/zh/foundry/foundry-rules/configure-timeseries-foundry-rules/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "upgrade-to-use-rule-actions",
+              "context": "foundry-rules",
+              "link": {
+                "type": "urlLink",
+                "text": "åçº§ä»¥ä½¿ç¨è§åæä½",
+                "url": "/zh/foundry/foundry-rules/upgrade-to-use-rule-actions/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "common-issues",
+          "context": "foundry-rules",
+          "link": {
+            "type": "urlLink",
+            "text": "æéæé¤åè",
+            "url": "/zh/foundry/foundry-rules/common-issues/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "marketplace",
+          "context": "foundry-rules",
+          "link": {
+            "type": "urlLink",
+            "text": "å° Foundry Rules æ·»å å° Marketplace äº§å",
+            "url": "/zh/foundry/foundry-rules/marketplace/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å°å¾",
+      "id": "map",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "map",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è§",
+            "url": "/zh/foundry/map/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "getting-started",
+          "context": "map",
+          "link": {
+            "type": "urlLink",
+            "text": "å¥é¨æå",
+            "url": "/zh/foundry/map/getting-started/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "core-concepts",
+          "context": "map",
+          "link": {
+            "type": "urlLink",
+            "text": "æ ¸å¿æ¦å¿µ",
+            "url": "/zh/foundry/map/core-concepts/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Interact with maps",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "map-overview",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å°å¾çé¢æ¦è¿°",
+                "url": "/zh/foundry/map/map-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "create-save-maps",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "åå»ºãä¿å­åå¯¼åºå°å¾",
+                "url": "/zh/foundry/map/create-save-maps/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "add-to-map",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å°æ°æ®æ·»å å°å°å¾",
+                "url": "/zh/foundry/map/add-to-map/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "layer-management",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å¾å±ç®¡ç",
+                "url": "/zh/foundry/map/layer-management/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "navigation",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å¯¼èª",
+                "url": "/zh/foundry/map/navigation/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "selection",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "éæ©",
+                "url": "/zh/foundry/map/selection/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "annotations",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "æ³¨é",
+                "url": "/zh/foundry/map/annotations/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "shapes",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å½¢ç¶",
+                "url": "/zh/foundry/map/shapes/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "histogram",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "ç´æ¹å¾",
+                "url": "/zh/foundry/map/histogram/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "actions",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "æä½",
+                "url": "/zh/foundry/map/actions/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Time",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "time-overview",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å°å¾ä¸­çæ¶é´åæ¶é´æ°æ®",
+                "url": "/zh/foundry/map/time-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "time-selection",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¶é´éæ©",
+                "url": "/zh/foundry/map/time-selection/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "timeline",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¶é´è½´",
+                "url": "/zh/foundry/map/timeline/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "events",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "äºä»¶",
+                "url": "/zh/foundry/map/events/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "time-series",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¶é´åºå",
+                "url": "/zh/foundry/map/time-series/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Visualize Ontology data",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "visualize-objects",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¦è¿°",
+                "url": "/zh/foundry/map/visualize-objects/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "visualize-points",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "ç¹å ä½å¾å½¢",
+                "url": "/zh/foundry/map/visualize-points/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "visualize-polygons-lines",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å¤è¾¹å½¢åçº¿å ä½å¾å½¢",
+                "url": "/zh/foundry/map/visualize-polygons-lines/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "visualize-tracks",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "è½¨è¿¹å ä½",
+                "url": "/zh/foundry/map/visualize-tracks/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "objects-high-scale",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¾ç¤ºé«è§æ¨¡å¯¹è±¡æ°æ®",
+                "url": "/zh/foundry/map/objects-high-scale/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Integrate data for the map",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "integrate-objects",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "Ontology Object",
+                "url": "/zh/foundry/map/integrate-objects/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "integrate-searcharound-functions",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å°å¾æç´¢å¨å´å½æ°",
+                "url": "/zh/foundry/map/integrate-searcharound-functions/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "integrate-actions",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "Ontology æä½",
+                "url": "/zh/foundry/map/integrate-actions/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "layer-editor",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å°å¾å¾å±ç¼è¾å¨",
+                "url": "/zh/foundry/map/layer-editor/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Templates & Workshop widget",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "templates",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å°å¾æ¨¡æ¿",
+                "url": "/zh/foundry/map/templates/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "widget",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "å¨ Workshop æ¨¡åä¸­åµå¥å°å¾æ¨¡æ¿",
+                "url": "/zh/foundry/map/widget/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageGroup",
+          "title": "Configuration",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "settings",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "è®¾ç½®",
+                "url": "/zh/foundry/map/settings/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "control-panel",
+              "context": "map",
+              "link": {
+                "type": "urlLink",
+                "text": "æ§å¶é¢æ¿",
+                "url": "/zh/foundry/map/control-panel/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        },
+        {
+          "type": "pageLink",
+          "pageId": "marketplace-map-templates",
+          "context": "map",
+          "link": {
+            "type": "urlLink",
+            "text": "å°å°å¾æ¨¡æ¿æ·»å å°Marketplaceäº§å",
+            "url": "/zh/foundry/map/marketplace-map-templates/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¨æè°åº¦",
+      "id": "dynamic-scheduling",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "scheduling-overview",
+          "context": "dynamic-scheduling",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/dynamic-scheduling/scheduling-overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "scheduling-getting-started",
+          "context": "dynamic-scheduling",
+          "link": {
+            "type": "urlLink",
+            "text": "èµ·å§",
+            "url": "/zh/foundry/dynamic-scheduling/scheduling-getting-started/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "scheduling-concepts",
+          "context": "dynamic-scheduling",
+          "link": {
+            "type": "urlLink",
+            "text": "æ ¸å¿æ¦å¿µ",
+            "url": "/zh/foundry/dynamic-scheduling/scheduling-concepts/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "scheduling-ontology-primitives",
+          "context": "dynamic-scheduling",
+          "link": {
+            "type": "urlLink",
+            "text": "Ontology åè¯­åæ°æ®æ¨¡åéç½®",
+            "url": "/zh/foundry/dynamic-scheduling/scheduling-ontology-primitives/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "scheduling-gantt-chart-widget",
+          "context": "dynamic-scheduling",
+          "link": {
+            "type": "urlLink",
+            "text": "è°åº¦çç¹å¾å¾®ä»¶",
+            "url": "/zh/foundry/dynamic-scheduling/scheduling-gantt-chart-widget/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "scheduling-suggestion-functions",
+          "context": "dynamic-scheduling",
+          "link": {
+            "type": "urlLink",
+            "text": "å»ºè®®å½æ°",
+            "url": "/zh/foundry/dynamic-scheduling/scheduling-suggestion-functions/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "scheduling-search-functions",
+          "context": "dynamic-scheduling",
+          "link": {
+            "type": "urlLink",
+            "text": "æç´¢å½æ°",
+            "url": "/zh/foundry/dynamic-scheduling/scheduling-search-functions/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "scheduling-validation-rules",
+          "context": "dynamic-scheduling",
+          "link": {
+            "type": "urlLink",
+            "text": "éªè¯è§å",
+            "url": "/zh/foundry/dynamic-scheduling/scheduling-validation-rules/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageGroup",
+          "title": "Scheduling Calendar widget",
+          "pages": [
+            {
+              "type": "pageLink",
+              "pageId": "scheduling-calendar-overview",
+              "context": "dynamic-scheduling",
+              "link": {
+                "type": "urlLink",
+                "text": "æ¥ç¨å®ææ¥åå¾®ä»¶",
+                "url": "/zh/foundry/dynamic-scheduling/scheduling-calendar-overview/",
+                "openInNewTab": false
+              }
+            },
+            {
+              "type": "pageLink",
+              "pageId": "scheduling-calendar-widget",
+              "context": "dynamic-scheduling",
+              "link": {
+                "type": "urlLink",
+                "text": "å¾®ä»¶éç½®",
+                "url": "/zh/foundry/dynamic-scheduling/scheduling-calendar-widget/",
+                "openInNewTab": false
+              }
+            }
+          ],
+          "initialOpen": true
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "text": "æ¬ä½æ¶æ"
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡åç«¯",
+      "id": "object-backend",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "object-backend",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/object-backend/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "object-storage-v2-breaking-changes",
+          "context": "object-backend",
+          "link": {
+            "type": "urlLink",
+            "text": "Object Storage V1ä¸Object Storage V2ä¹é´çéå¤§åæ´",
+            "url": "/zh/foundry/object-backend/object-storage-v2-breaking-changes/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "osv1-osv2-migration",
+          "context": "object-backend",
+          "link": {
+            "type": "urlLink",
+            "text": "ä»å¯¹è±¡å­å¨ V1 (Phonograph) è¿ç§»å°å¯¹è±¡å­å¨ V2",
+            "url": "/zh/foundry/object-backend/osv1-osv2-migration/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "aggregation-considerations",
+          "context": "object-backend",
+          "link": {
+            "type": "urlLink",
+            "text": "èåæ³¨æäºé¡¹",
+            "url": "/zh/foundry/object-backend/aggregation-considerations/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡æéç®¡ç",
+      "id": "object-permissioning",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "object-permissioning",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/object-permissioning/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "managing-object-security",
+          "context": "object-permissioning",
+          "link": {
+            "type": "urlLink",
+            "text": "ç®¡çObjectç±»ååObjectå®ä¾å®å¨æ§",
+            "url": "/zh/foundry/object-permissioning/managing-object-security/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "configuring-rv-access-controls",
+          "context": "object-permissioning",
+          "link": {
+            "type": "urlLink",
+            "text": "éç½®åéè§å¾æ¯æçå¯¹è±¡ç±»å",
+            "url": "/zh/foundry/object-permissioning/configuring-rv-access-controls/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "multi-datasource-objects",
+          "context": "object-permissioning",
+          "link": {
+            "type": "urlLink",
+            "text": "å¤æ°æ®æºObjectç±»åï¼MDOsï¼",
+            "url": "/zh/foundry/object-permissioning/multi-datasource-objects/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡ç´¢å¼",
+      "id": "object-indexing",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "object-indexing",
+          "link": {
+            "type": "urlLink",
+            "text": "æ¦è¿°",
+            "url": "/zh/foundry/object-indexing/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "funnel-batch-pipelines",
+          "context": "object-indexing",
+          "link": {
+            "type": "urlLink",
+            "text": "Funnelæ¹å¤çç®¡é",
+            "url": "/zh/foundry/object-indexing/funnel-batch-pipelines/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "funnel-streaming-pipelines",
+          "context": "object-indexing",
+          "link": {
+            "type": "urlLink",
+            "text": "Funnelæµå¼ç®¡é",
+            "url": "/zh/foundry/object-indexing/funnel-streaming-pipelines/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "faq",
+          "context": "object-indexing",
+          "link": {
+            "type": "urlLink",
+            "text": "å¸¸è§é®é¢è§£ç­",
+            "url": "/zh/foundry/object-indexing/faq/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡ç¼è¾",
+      "id": "object-edits",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "overview",
+          "context": "object-edits",
+          "link": {
+            "type": "urlLink",
+            "text": "Objectç¼è¾åç©å",
+            "url": "/zh/foundry/object-edits/overview/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "how-edits-applied",
+          "context": "object-edits",
+          "link": {
+            "type": "urlLink",
+            "text": "ç¨æ·ç¼è¾çåºç¨æ¹å¼",
+            "url": "/zh/foundry/object-edits/how-edits-applied/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "user-edit-history",
+          "context": "object-edits",
+          "link": {
+            "type": "urlLink",
+            "text": "å¯ç¨ç¨æ·ç¼è¾åå²",
+            "url": "/zh/foundry/object-edits/user-edit-history/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "permission-checks",
+          "context": "object-edits",
+          "link": {
+            "type": "urlLink",
+            "text": "åºç¨æä½æ¶çæéæ£æ¥",
+            "url": "/zh/foundry/object-edits/permission-checks/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "schema-migrations",
+          "context": "object-edits",
+          "link": {
+            "type": "urlLink",
+            "text": "ç®¡çæ¨¡å¼æ´æ¹",
+            "url": "/zh/foundry/object-edits/schema-migrations/",
+            "openInNewTab": false
+          }
+        },
+        {
+          "type": "pageLink",
+          "pageId": "materializations",
+          "context": "object-edits",
+          "link": {
+            "type": "urlLink",
+            "text": "ç©å",
+            "url": "/zh/foundry/object-edits/materializations/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "å¯¹è±¡æ°æ®åº",
+      "id": "object-databases",
+      "items": [
+        {
+          "type": "pageLink",
+          "pageId": "object-storage-v1",
+          "context": "object-databases",
+          "link": {
+            "type": "urlLink",
+            "text": "[éç] Object Storage V1 (Phonograph)",
+            "url": "/zh/foundry/object-databases/object-storage-v1/",
+            "openInNewTab": false
+          }
+        }
+      ]
+    }
+  ]
+}

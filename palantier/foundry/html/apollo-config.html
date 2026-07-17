@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apollo · 配置覆盖 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">Apollo · 交付引擎</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <span class="text-[10px] text-gray-500">spoke-prod-sh</span>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">Config Override</h1>
+          <p class="mt-1 text-sm text-gray-500">Spoke 级配置覆盖与维护窗口；密钥仅存 Vault/KMS 引用。</p>
+        </div>
+
+        <!-- Maintenance window -->
+        <div class="rounded-xl border border-amber-400/25 bg-amber-400/5 p-5">
+          <h2 class="text-sm font-medium text-amber-200 mb-2">维护窗口</h2>
+          <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <div>
+              <label class="text-xs text-gray-500">开始</label>
+              <input type="text" value="2026-07-20 22:00" class="mt-1 w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-xs text-gray-300" readonly />
+            </div>
+            <div>
+              <label class="text-xs text-gray-500">结束</label>
+              <input type="text" value="2026-07-21 02:00" class="mt-1 w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-xs text-gray-300" readonly />
+            </div>
+          </div>
+          <p class="text-[10px] text-gray-500 mt-3">维护期内自动暂停非紧急 Plan 应用。</p>
+        </div>
+
+        <!-- Overrides -->
+        <div class="rounded-xl border border-emerald-400/25 bg-slate-900/50 p-5 space-y-4">
+          <h2 class="text-sm font-medium text-gray-100">覆盖项</h2>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center justify-between py-2 border-b border-white/[0.06]">
+              <div>
+                <div class="text-gray-200">aip.model.default</div>
+                <div class="text-xs text-gray-500">默认推理模型</div>
+              </div>
+              <span class="font-mono text-xs text-emerald-300">gpt-4o-regional</span>
+            </div>
+            <div class="flex items-center justify-between py-2 border-b border-white/[0.06]">
+              <div>
+                <div class="text-gray-200">db.connection.poolSize</div>
+                <div class="text-xs text-gray-500">连接池大小</div>
+              </div>
+              <span class="font-mono text-xs text-gray-300">48</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <div class="text-gray-200">integration.apiKey</div>
+                <div class="text-xs text-gray-500">第三方 API 密钥</div>
+              </div>
+              <span class="font-mono text-xs text-cyan-300">vault://kms/sh-prod/integration-key@v3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-cyan-400/20 bg-cyan-400/5 px-4 py-3 text-xs text-cyan-200/90">
+          🔒 禁止明文密钥：所有敏感配置须通过 Vault/KMS 引用（如 <code class="text-cyan-300">vault://kms/...</code>），Demo 不展示真实 Secret。
+        </div>
+
+        <div class="flex gap-2">
+          <button type="button" class="px-3 py-1.5 rounded-lg bg-emerald-400/15 border border-emerald-400/30 text-xs text-emerald-200">保存覆盖</button>
+          <a href="apollo-spoke.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs">← Spoke 详情</a>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('apollo-config', [{ href: 'index.html', label: '工作区' }, { href: 'apollo-hub.html', label: 'Apollo' }, { label: '配置覆盖' }]);</script>
+</body>
+</html>

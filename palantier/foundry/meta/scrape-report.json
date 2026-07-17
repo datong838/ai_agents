@@ -1,0 +1,11 @@
+{
+  "finished_at": "2026-07-13T06:56:16.329133+00:00",
+  "total": 992,
+  "stats": {
+    "ok": 1,
+    "fail": 0,
+    "skipped": 991,
+    "images": 2
+  },
+  "failures": []
+}

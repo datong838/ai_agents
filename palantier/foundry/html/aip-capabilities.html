@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIP · 重能力接入 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">AIP · Capability</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-2">
+        <a href="aip-tools.html" class="px-3 py-1.5 rounded-lg border border-amber-400/30 text-xs text-amber-300">工具面板 →</a>
+        <a href="media-sets.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300">MediaSet →</a>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">重能力接入（Capability）</h1>
+          <p class="mt-1 text-sm text-gray-500">Studio 编剧本，重代码出肌肉。先选能力类型再填配置；运行时走 Facade，写回经 Action；UI 不直连厂商 SDK。</p>
+        </div>
+
+        <section class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-4 text-xs text-gray-400 space-y-1">
+          <div class="text-amber-200 font-medium text-sm">大脑 vs 肌肉</div>
+          <p>C0 同步轻能力可进 Function；C1 Job / C2 Session（短视频、可交互数字人）外置 Adapter，超 FUNC-03（60s/2GB）禁止塞进沙箱。</p>
+        </section>
+
+        <section class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-medium text-gray-100">已接入</h2>
+            <span class="text-[10px] text-gray-500">kind · 健康 · 配额</span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="rounded-xl border border-emerald-400/25 bg-slate-900/50 p-4 flex flex-col gap-3">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <div class="text-gray-100 font-medium">短视频生成</div>
+                  <div class="text-xs text-gray-500 mt-1">C1 Job · GPU · → MediaSet</div>
+                </div>
+                <span class="text-[10px] px-2 py-0.5 rounded border border-emerald-400/30 text-emerald-300">就绪</span>
+              </div>
+              <div class="flex gap-2">
+                <button type="button" data-type="job" class="js-cfg px-2.5 py-1 rounded-lg border border-white/[0.08] text-xs hover:bg-white/[0.04]">配置</button>
+                <button type="button" class="px-2.5 py-1 rounded-lg border border-white/[0.08] text-xs text-gray-500">查看 Job</button>
+              </div>
+            </div>
+            <div class="rounded-xl border border-emerald-400/25 bg-slate-900/50 p-4 flex flex-col gap-3">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <div class="text-gray-100 font-medium">直播稿引擎</div>
+                  <div class="text-xs text-gray-500 mt-1">C0 sync / 可升 C1 · → LiveScript</div>
+                </div>
+                <span class="text-[10px] px-2 py-0.5 rounded border border-emerald-400/30 text-emerald-300">就绪</span>
+              </div>
+              <div class="flex gap-2">
+                <button type="button" data-type="script" class="js-cfg px-2.5 py-1 rounded-lg border border-white/[0.08] text-xs hover:bg-white/[0.04]">配置</button>
+                <button type="button" class="px-2.5 py-1 rounded-lg border border-white/[0.08] text-xs text-gray-500">测连通</button>
+              </div>
+            </div>
+            <div class="rounded-xl border border-cyan-400/25 bg-slate-900/50 p-4 flex flex-col gap-3">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <div class="text-gray-100 font-medium">电商可交互数字人</div>
+                  <div class="text-xs text-gray-500 mt-1">C2 Session · AV 外置 · AvatarSession</div>
+                </div>
+                <span class="text-[10px] px-2 py-0.5 rounded border border-cyan-400/30 text-cyan-300">会话中</span>
+              </div>
+              <div class="flex gap-2">
+                <button type="button" data-type="session" class="js-cfg px-2.5 py-1 rounded-lg border border-white/[0.08] text-xs hover:bg-white/[0.04]">配置</button>
+                <button type="button" class="px-2.5 py-1 rounded-lg border border-white/[0.08] text-xs text-gray-500">场次 Object</button>
+              </div>
+            </div>
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-4 flex flex-col gap-3">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <div class="text-gray-100 font-medium">教育可交互数字人</div>
+                  <div class="text-xs text-gray-500 mt-1">C2 Session · 课纲 Wiki · CourseSession</div>
+                </div>
+                <span class="text-[10px] px-2 py-0.5 rounded border border-white/20 text-gray-400">停用</span>
+              </div>
+              <div class="flex gap-2">
+                <button type="button" data-type="session" class="js-cfg px-2.5 py-1 rounded-lg border border-white/[0.08] text-xs hover:bg-white/[0.04]">配置</button>
+                <button type="button" class="px-2.5 py-1 rounded-lg border border-white/[0.08] text-xs text-gray-500">启用</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-sm font-medium text-gray-100">可接入类型</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <button type="button" data-type="job" class="js-cfg text-left rounded-xl border border-dashed border-white/[0.12] bg-slate-900/30 p-4 hover:border-amber-400/40 transition-colors">
+              <div class="text-gray-100 text-sm font-medium">Media Job</div>
+              <div class="text-[11px] text-gray-500 mt-1">C1 · submit / status / artifact</div>
+            </button>
+            <button type="button" data-type="script" class="js-cfg text-left rounded-xl border border-dashed border-white/[0.12] bg-slate-900/30 p-4 hover:border-amber-400/40 transition-colors">
+              <div class="text-gray-100 text-sm font-medium">Script Engine</div>
+              <div class="text-[11px] text-gray-500 mt-1">C0 sync · 或短 Job</div>
+            </button>
+            <button type="button" data-type="session" class="js-cfg text-left rounded-xl border border-dashed border-white/[0.12] bg-slate-900/30 p-4 hover:border-amber-400/40 transition-colors">
+              <div class="text-gray-100 text-sm font-medium">Avatar Session</div>
+              <div class="text-[11px] text-gray-500 mt-1">C2 · open / push / close</div>
+            </button>
+            <button type="button" data-type="http" class="js-cfg text-left rounded-xl border border-dashed border-white/[0.12] bg-slate-900/30 p-4 hover:border-amber-400/40 transition-colors">
+              <div class="text-gray-100 text-sm font-medium">HTTP Adapter</div>
+              <div class="text-[11px] text-gray-500 mt-1">自定义重包契约</div>
+            </button>
+          </div>
+        </section>
+
+        <section id="panel-cfg" class="hidden rounded-xl border border-white/[0.08] bg-slate-900/50 p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 id="cfg-title" class="text-sm font-medium text-gray-100">配置</h2>
+            <span class="text-[10px] text-gray-500">Manifest · Vault ref · 回调验签</span>
+          </div>
+
+          <div id="form-job" class="cfg-form hidden grid md:grid-cols-2 gap-3 text-xs">
+            <label class="space-y-1"><span class="text-gray-500">Adapter 端点</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="https://cap.internal/video/v1" /></label>
+            <label class="space-y-1"><span class="text-gray-500">并发配额</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="4" /></label>
+            <label class="space-y-1 md:col-span-2"><span class="text-gray-500">密钥 secret ref</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="vault://aip/capabilities/short-video#token" /></label>
+            <label class="space-y-1 md:col-span-2"><span class="text-gray-500">回调 Webhook（验签）</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="https://aos-api/v1/aip/capabilities/cb/video" /></label>
+            <p class="md:col-span-2 text-gray-500">产物写入 MediaSet；MediaJob Object 仅存状态与 RID。Logic 挂 Call Capability → Action 盖章。</p>
+          </div>
+
+          <div id="form-script" class="cfg-form hidden grid md:grid-cols-2 gap-3 text-xs">
+            <label class="space-y-1"><span class="text-gray-500">模式</span>
+              <select class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5"><option>sync（C0）</option><option>job（C1）</option></select>
+            </label>
+            <label class="space-y-1"><span class="text-gray-500">超时提示 (s)</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="15" /></label>
+            <label class="space-y-1 md:col-span-2"><span class="text-gray-500">输出 Object Type</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="LiveScript" /></label>
+          </div>
+
+          <div id="form-session" class="cfg-form hidden grid md:grid-cols-2 gap-3 text-xs">
+            <label class="space-y-1"><span class="text-gray-500">Session Gateway</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="wss://avatar.internal/session" /></label>
+            <label class="space-y-1"><span class="text-gray-500">会话 Object</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="AvatarSession" /></label>
+            <label class="flex items-center gap-2 text-gray-300 mt-5"><input type="checkbox" checked /> AV 流外置（平台不进沙箱）</label>
+            <label class="flex items-center gap-2 text-gray-300 mt-5"><input type="checkbox" checked /> 开播须 Draft / Action</label>
+            <p class="md:col-span-2 text-gray-500">Agent 只推话术与 Wiki；实时音视频在数字人引擎。对齐 07b 旅程 P3。</p>
+          </div>
+
+          <div id="form-http" class="cfg-form hidden grid md:grid-cols-2 gap-3 text-xs">
+            <label class="space-y-1"><span class="text-gray-500">kind</span>
+              <select class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5"><option>job</option><option>session</option><option>sync</option></select>
+            </label>
+            <label class="space-y-1"><span class="text-gray-500">Base URL</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="https://pkg.example/api" /></label>
+            <label class="space-y-1 md:col-span-2"><span class="text-gray-500">Manifest JSON / 包路径</span><input class="w-full rounded bg-slate-950 border border-white/[0.08] px-2 py-1.5" value="capability://org/custom-pkg@1.0" /></label>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            <button type="button" class="px-3 py-1.5 rounded-lg border border-emerald-400/30 text-xs text-emerald-200">测连通 / 健康</button>
+            <button type="button" class="px-3 py-1.5 rounded-lg bg-amber-400/20 border border-amber-400/40 text-xs text-amber-100">保存并启用</button>
+            <a href="aip-tools.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-400">去工具面板挂载 →</a>
+          </div>
+        </section>
+
+        <p class="text-[11px] text-gray-500">蓝图口径：07b · CAP-01～07 · T07 §5.3。登记 ≠ Marketplace；GPU 服务优先客户前置（23/24）。</p>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('aip-capabilities', [{ href: 'index.html', label: '概览' }, { href: 'aip-maturity.html', label: 'AIP' }, { label: '重能力接入' }]);
+    const titles = { job: 'Media Job（C1）', script: 'Script Engine（C0/C1）', session: 'Avatar Session（C2）', http: 'HTTP Adapter（自定义）' };
+    const panel = document.getElementById('panel-cfg');
+    function openCfg(type) {
+      document.querySelectorAll('.cfg-form').forEach((el) => el.classList.add('hidden'));
+      const form = document.getElementById('form-' + type);
+      if (form) form.classList.remove('hidden');
+      document.getElementById('cfg-title').textContent = titles[type] || type;
+      panel.classList.remove('hidden');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    document.querySelectorAll('.js-cfg').forEach((btn) => btn.addEventListener('click', () => openCfg(btn.dataset.type)));
+  </script>
+</body>
+</html>

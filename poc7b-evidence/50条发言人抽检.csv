@@ -1,0 +1,51 @@
+﻿序号,时间,群名,真实发言人,真实微信号,系统识别发言人,系统wxid,消息摘要,卡片发言人,wxid是否命中,摘要是否正确,通过Y/N,备注
+1,2026-06-24 15:02:40,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,,(len=22),,N,,Y,group_fallback
+2,2026-06-24 15:02:40,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,,(len=12),,N,,Y,group_fallback
+3,2026-06-24 15:02:40,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,,(len=8),,N,,Y,group_fallback
+4,2026-06-24 15:02:40,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,,这个是对的，他微信号的配置就是女,,N,,Y,group_fallback
+5,2026-06-24 15:06:51,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,(len=9),,Y,,Y,remark_as_display
+6,2026-06-24 15:06:51,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,(len=17),,Y,,Y,remark_as_display
+7,2026-06-24 15:06:51,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,真对 学习资料的分享  可以做一些,,Y,,Y,remark_as_display
+8,2026-06-24 15:10:22,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,(len=16),,Y,,Y,remark_as_display
+9,2026-06-24 15:10:22,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,(len=11),,Y,,Y,remark_as_display
+10,2026-06-24 15:10:22,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,我有防晒衣防晒帽要不要,,Y,,Y,remark_as_display
+11,2026-06-24 15:30:15,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,(len=34),,Y,,Y,remark_as_display
+12,2026-06-24 15:30:15,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,夏天晒黑了，有没有好用的防晒霜推荐一下,杜昊宇,Y,Y,Y,remark_as_display
+13,2026-06-24 15:30:32,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,我也想要,,Y,,Y,remark_as_display
+14,2026-06-24 15:31:35,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,(len=17),,Y,,Y,remark_as_display
+15,2026-06-24 15:31:35,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,(len=4),,Y,,Y,owner_account
+16,2026-06-24 15:31:35,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,(len=19),,Y,,Y,remark_as_display
+17,2026-06-24 15:31:35,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,我这里也热呀，太阳也大，都晒脱皮了,李林霞,Y,Y,Y,remark_as_display
+18,2026-06-24 15:38:48,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,(len=9),,Y,,Y,owner_account
+19,2026-06-24 15:38:48,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,(len=13),,Y,,Y,owner_account
+20,2026-06-24 15:38:48,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,(len=27),,Y,,Y,remark_as_display
+21,2026-06-24 15:38:48,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,这个不一定立即挣钱,,Y,,Y,owner_account
+22,2026-06-24 15:40:16,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,肯定有它使用的场景的，能做就先做出来，以备不时之需[鼓掌][鼓掌][鼓掌],,Y,,Y,remark_as_display
+23,2026-06-24 15:40:16,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,你可以把大模型优化改造成自己的产品，推广到其他公司使用,,Y,,Y,remark_as_display
+24,2026-06-24 15:42:49,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,他现在和星星有合作,,Y,,Y,remark_as_display
+25,2026-06-24 15:42:49,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,可以,,Y,,Y,owner_account
+26,2026-06-24 15:44:13,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,(len=19),,Y,,Y,owner_account
+27,2026-06-24 15:44:13,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,你现在已经在用了，可以向外推广了[偷笑][偷笑],,Y,,Y,remark_as_display
+28,2026-06-24 15:44:49,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,知识库 还没建好,,Y,,Y,remark_as_display
+29,2026-06-24 15:45:09,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,正在开发中,,Y,,Y,remark_as_display
+30,2026-06-24 15:45:39,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,嗯，没事，慢慢做，也不影响推广,,Y,,Y,remark_as_display
+31,2026-06-24 15:45:39,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,产品都是在使用过程中得到优化和完善的,,Y,,Y,remark_as_display
+32,2026-06-24 15:45:39,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,有时候自己发现不了的问题，别人能发现,,Y,,Y,remark_as_display
+33,2026-06-24 15:45:39,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,我昨天加入了 主动学习,,Y,,Y,remark_as_display
+34,2026-06-24 15:45:39,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,嗯好棒棒哒👍👍,,Y,,Y,remark_as_display
+35,2026-06-24 15:45:39,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,我不一定去喂养它 让它自己去群里找资料学习,,Y,,Y,remark_as_display
+36,2026-06-24 15:45:39,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,嗯，使用过程中也会学习思考,,Y,,Y,remark_as_display
+37,2026-06-24 15:45:39,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,[鼓掌][鼓掌][鼓掌][强][强][强],,Y,,Y,remark_as_display
+38,2026-06-24 14:27:18,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,夏天要防晒，有推荐的吗,杜昊宇,Y,Y,Y,remark_as_display
+39,2026-06-24 14:27:18,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,敏感肌用什么面膜好,,Y,,Y,owner_account
+40,2026-06-24 14:27:18,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,我没有，我这里也热的很，紫外线还强，皮都晒脱了,,Y,,Y,remark_as_display
+41,2026-06-24 14:27:18,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,敏感肌需要无刺激的，防过敏的，我也需要,,Y,,Y,remark_as_display
+42,2026-06-24 14:27:18,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,我这里有防晒衣，必要时候也可以用,,Y,,Y,remark_as_display
+43,2026-06-24 14:27:18,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,现在测试是让 AI  负责测试，我作配合,,Y,,Y,owner_account
+44,2026-06-24 14:27:18,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,那把AI请进来,,Y,,Y,remark_as_display
+45,2026-06-24 14:45:11,谛听测试群 (6),本人,wxid_1dnxcssha37m12,本人,wxid_1dnxcssha37m12,还不行，现在开始制造噪音,,Y,,Y,owner_account
+46,2026-06-24 14:45:25,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,(len=2),,Y,,Y,remark_as_display
+47,2026-06-24 14:45:56,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,限时促销，加微信领券，错过等一年,,Y,,Y,remark_as_display
+48,2026-06-24 14:45:56,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,什么时候,,Y,,Y,remark_as_display
+49,2026-06-24 14:45:56,谛听测试群 (6),李林霞,wxid_4tcrrvzizmzg21,李林霞,wxid_4tcrrvzizmzg21,咋进进去呀,,Y,,Y,remark_as_display
+50,2026-06-24 14:45:56,谛听测试群 (6),杜昊宇,wxid_xgkmpd88syyd22,杜昊宇,wxid_xgkmpd88syyd22,我在乱说话 制造噪音,,Y,,Y,remark_as_display

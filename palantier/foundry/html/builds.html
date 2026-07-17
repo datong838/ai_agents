@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>搭建历史 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成 · v1.4</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+    </header>
+
+    <main class="flex-1 flex min-h-0 overflow-hidden">
+      <!-- Build list -->
+      <aside class="w-72 shrink-0 border-r border-white/[0.08] bg-slate-900/50 overflow-y-auto">
+        <div class="p-4 border-b border-white/[0.08]">
+          <h2 class="text-sm font-medium text-gray-100">搭建历史</h2>
+          <p class="text-xs text-gray-500 mt-0.5">订单清洗管道 · master</p>
+        </div>
+        <div class="p-2 space-y-1">
+          <button class="w-full text-left px-3 py-3 rounded-lg bg-white/[0.04] border border-cyan-400/20">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-gray-100 font-medium">Build #847</span>
+              <span class="text-xs text-emerald-400">成功</span>
+            </div>
+            <div class="text-xs text-gray-500">2 分钟前 · 部署者: zhang.wei</div>
+            <div class="text-xs text-gray-500">耗时 4m 12s</div>
+          </button>
+          <button class="w-full text-left px-3 py-3 rounded-lg hover:bg-white/[0.03] border border-transparent">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-gray-300">Build #846</span>
+              <span class="text-xs text-emerald-400">成功</span>
+            </div>
+            <div class="text-xs text-gray-500">1 小时前 · 部署者: zhang.wei</div>
+          </button>
+          <button class="w-full text-left px-3 py-3 rounded-lg hover:bg-white/[0.03] border border-transparent">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-gray-300">Build #845</span>
+              <span class="text-xs text-rose-400">失败</span>
+            </div>
+            <div class="text-xs text-gray-500">3 小时前 · Schema 不匹配</div>
+          </button>
+          <button class="w-full text-left px-3 py-3 rounded-lg hover:bg-white/[0.03] border border-transparent">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm text-gray-300">Build #844</span>
+              <span class="text-xs text-emerald-400">成功</span>
+            </div>
+            <div class="text-xs text-gray-500">昨天 · 部署者: li.ming</div>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Task graph + logs -->
+      <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <div class="p-4 border-b border-white/[0.08] shrink-0 flex items-center justify-between">
+          <div>
+            <h1 class="text-lg font-semibold text-gray-100">Build #847</h1>
+            <p class="text-xs text-gray-500 mt-0.5">
+              <a href="pipeline.html" class="text-cyan-400 hover:underline">订单清洗管道</a> · master · 4m 12s
+            </p>
+          </div>
+          <a href="dataset.html?curated=1" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">查看输出数据集 →</a>
+        </div>
+
+        <!-- Task graph -->
+        <div class="p-6 border-b border-white/[0.08] shrink-0">
+          <h2 class="text-xs font-medium text-gray-500 uppercase tracking-wide mb-4">任务图</h2>
+          <div class="flex items-center gap-3 flex-wrap">
+            <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 px-4 py-2 text-xs">
+              <div class="text-emerald-400 mb-0.5">COMPUTE</div>
+              <div class="text-gray-100">Filter</div>
+              <div class="text-gray-500">42s</div>
+            </div>
+            <svg class="w-8 h-4" viewBox="0 0 32 16"><path class="flow-line flow-line-active" d="M0 8 H32"/></svg>
+            <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 px-4 py-2 text-xs">
+              <div class="text-emerald-400 mb-0.5">COMPUTE</div>
+              <div class="text-gray-100">Join</div>
+              <div class="text-gray-500">1m 18s</div>
+            </div>
+            <svg class="w-8 h-4" viewBox="0 0 32 16"><path class="flow-line flow-line-active" d="M0 8 H32"/></svg>
+            <div class="rounded-lg border border-emerald-400/30 bg-emerald-400/5 px-4 py-2 text-xs">
+              <div class="text-emerald-400 mb-0.5">WRITE</div>
+              <div class="text-gray-100">curated_orders</div>
+              <div class="text-gray-500">2m 12s</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live logs -->
+        <div class="flex-1 flex flex-col min-h-0 overflow-hidden">
+          <div class="px-4 py-2 border-b border-white/[0.08] shrink-0 flex items-center justify-between">
+            <span class="text-xs text-gray-400">实时日志</span>
+            <span class="inline-flex items-center gap-1.5 text-xs text-emerald-400">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              已完成
+            </span>
+          </div>
+          <pre class="flex-1 overflow-auto p-4 text-xs font-mono leading-relaxed code-block border-0 rounded-none"><code><span class="code-cm">[2026-07-13 17:28:01]</span> <span class="code-fn">INFO</span>  Build #847 started — pipeline: 订单清洗管道
+<span class="code-cm">[2026-07-13 17:28:02]</span> <span class="code-fn">INFO</span>  Resolving inputs: raw_orders (SNAPSHOT v12)
+<span class="code-cm">[2026-07-13 17:28:05]</span> <span class="code-fn">INFO</span>  Task Filter: scanning 1,284,392 rows
+<span class="code-cm">[2026-07-13 17:28:47]</span> <span class="code-fn">INFO</span>  Task Filter: complete — 892,104 rows passed (42s)
+<span class="code-cm">[2026-07-13 17:28:48]</span> <span class="code-fn">INFO</span>  Task Join: joining customers on customer_id
+<span class="code-cm">[2026-07-13 17:30:06]</span> <span class="code-fn">INFO</span>  Task Join: complete — 892,104 rows (1m 18s)
+<span class="code-cm">[2026-07-13 17:30:07]</span> <span class="code-fn">INFO</span>  Task WRITE: writing curated_orders (Parquet + Iceberg)
+<span class="code-cm">[2026-07-13 17:32:19]</span> <span class="code-fn">INFO</span>  Iceberg snapshot created: snap-847-a3f2
+<span class="code-cm">[2026-07-13 17:32:19]</span> <span class="code-fn">INFO</span>  Build #847 <span class="code-str">SUCCESS</span> — total 4m 12s
+<span class="code-cm">[2026-07-13 17:32:20]</span> <span class="code-fn">INFO</span>  Output: <span class="code-str">/Curated/Ecom/orders</span> — 892,104 rows, 128 MB</code></pre>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('builds', [
+      { label: '工作区', href: 'index.html' },
+      { label: 'Pipeline Builder', href: 'pipeline-list.html' },
+      { label: '搭建历史' }
+    ]);
+  </script>
+</body>
+</html>

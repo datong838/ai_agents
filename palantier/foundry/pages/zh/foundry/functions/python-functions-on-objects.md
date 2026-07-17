@@ -1,0 +1,70 @@
+---
+{
+  "source_url": "https://www.palantir.com/docs/zh/foundry/functions/python-functions-on-objects/",
+  "title": "对象上的函数",
+  "page_id": "python-functions-on-objects",
+  "category_id": "ontology",
+  "section_id": "functions",
+  "previous": "/zh/foundry/functions/python-function-types/",
+  "next": "/zh/foundry/functions/python-functions-api-calls/",
+  "scraped_at": "2026-07-14T04:29:09.693194+00:00"
+}
+---
+
+:::callout{theme="warning"}
+注意：以下翻译的准确性尚未经过验证。这是使用 [AIP ↗](https://www.palantir.com/platforms/aip/) 从原始英文文本进行的机器翻译。
+:::
+
+# 对象上的函数
+
+您可以使用Python Ontology SDK编写与Ontology交互的函数。
+
+## 生成Python Ontology SDK
+
+要生成Python Ontology SDK客户端，请导航到[**资源导入**侧边栏](/zh/foundry/functions/resource-imports-sidebar/)并选择 **添加 > Ontology**。从那里，选择您想要的Ontology，并导入您希望在函数中交互的任何对象和链接。在保存以确认您的选择后，将为您生成一个Python OSDK客户端，以便您在函数中使用。
+
+## 示例
+
+对于一个名为`Aircraft`的示例对象类型，具有属性`brand`和`capacity`，您可以编写一个接受`Aircraft`对象并总结它的函数，如下所示：
+
+```python
+from functions.api import function
+from ontology_sdk.ontology.objects import Aircraft
+
+@function
+def aircraft_input_example(aircraft: Aircraft) -> str:
+    # 返回字符串，包含飞机品牌和乘客容量信息
+    return f"{aircraft.brand} aircraft, holds {aircraft.capacity} passengers"
+```
+
+此外，如果您想搜索满足某个容量阈值的`Aircraft`对象，您可以编写以下内容：
+
+```python
+from functions.api import function
+from ontology_sdk import FoundryClient
+from ontology_sdk.ontology.objects import Aircraft
+from ontology_sdk.ontology.object_sets import AircraftObjectSet
+
+@function
+def aircraft_search_example() -> AircraftObjectSet:
+    # 创建FoundryClient实例
+    client = FoundryClient()
+    # 查询载客量大于100的飞机对象集合
+    return client.ontology.objects.Aircraft.where(Aircraft.capacity > 100)
+```
+
+Python OSDK还提供了测试功能，例如与pandas DataFrame的互操作性：
+
+```python
+from functions.api import function
+from ontology_sdk.ontology.object_sets import AircraftObjectSet
+
+@function
+def aircraft_dataframe_example(aircrafts: AircraftObjectSet) -> int:
+    # 将AircraftObjectSet转换为DataFrame
+    df = aircrafts.to_dataframe()
+    # 返回'capacity'列的总和
+    return df['capacity'].sum()
+```
+
+请查看[Python Ontology SDK 文档](/zh/foundry/ontology-sdk/python-osdk/)以获取更多信息。

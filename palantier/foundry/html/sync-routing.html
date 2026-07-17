@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>存储路由 · 新建同步 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-2xl mx-auto space-y-6">
+        <div>
+          <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+            <span class="px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-400 border border-cyan-400/20">步骤 3/4</span>
+            <span>存储路由</span>
+          </div>
+          <h1 class="text-xl font-semibold text-gray-100">选择存储目标</h1>
+          <p class="mt-1 text-sm text-gray-500">源：<span id="source-label" class="text-gray-300">sharepoint-maintenance-docs</span> · 入库第一决策</p>
+        </div>
+
+        <form id="storage-router-form" class="rounded-xl border border-white/[0.08] bg-slate-900 p-6 space-y-5">
+          <p id="storage-hint" class="text-xs text-gray-500 rounded-lg bg-slate-950/50 border border-white/[0.06] px-3 py-2"></p>
+
+          <div class="space-y-3">
+            <label class="storage-option flex items-start gap-3 p-4 rounded-lg border border-white/[0.08] cursor-pointer hover:border-white/[0.12] transition-colors">
+              <input type="radio" name="storage-target" value="dataset" class="mt-1" />
+              <div>
+                <div class="text-gray-100 text-sm font-medium">数据集（表格 / 半结构化）</div>
+                <div class="text-xs text-gray-500 mt-1">CSV · JSON · JDBC 表 · API JSON</div>
+              </div>
+            </label>
+            <label class="storage-option flex items-start gap-3 p-4 rounded-lg border border-white/[0.08] cursor-pointer hover:border-white/[0.12] transition-colors">
+              <input type="radio" name="storage-target" value="media_doc" class="mt-1" checked />
+              <div>
+                <div class="text-gray-100 text-sm font-medium">媒体集 · 文档</div>
+                <div class="text-xs text-gray-500 mt-1">PDF · 图像 · 音视频 · Word / PPT</div>
+              </div>
+            </label>
+            <label class="storage-option flex items-start gap-3 p-4 rounded-lg border border-white/[0.08] cursor-pointer hover:border-white/[0.12] transition-colors">
+              <input type="radio" name="storage-target" value="media_sheet" class="mt-1" />
+              <div>
+                <div class="text-gray-100 text-sm font-medium">媒体集 · 电子表格</div>
+                <div class="text-xs text-gray-500 mt-1">.xlsx / .xlsm · schema: spreadsheet</div>
+              </div>
+            </label>
+            <label class="storage-option flex items-start gap-3 p-4 rounded-lg border border-white/[0.08] cursor-pointer hover:border-white/[0.12] transition-colors">
+              <input type="radio" name="storage-target" value="smallfile" class="mt-1" />
+              <div>
+                <div class="text-gray-100 text-sm font-medium">小文件短路 · Dataset 直入</div>
+                <div class="text-xs text-gray-500 mt-1">&lt;128KB · md / txt / csv · 不建 MediaSet</div>
+              </div>
+            </label>
+            <label class="storage-option flex items-start gap-3 p-4 rounded-lg border border-white/[0.08] cursor-pointer hover:border-white/[0.12] transition-colors">
+              <input type="radio" name="storage-target" value="stream" class="mt-1" />
+              <div>
+                <div class="text-gray-100 text-sm font-medium">流数据集</div>
+                <div class="text-xs text-gray-500 mt-1">Kafka · IoT · MQTT(β)</div>
+              </div>
+            </label>
+          </div>
+
+          <div id="xlsx-warn" class="hidden rounded-lg border border-amber-400/30 bg-amber-400/5 px-4 py-3 text-xs text-amber-200/90">
+            ⚠ <strong>.xlsx 不可选「文档」媒体集</strong> — Pipeline Builder 将无法识别。请改选「媒体集 · 电子表格」。
+          </div>
+
+          <div>
+            <label class="block text-xs text-gray-500 mb-1.5">默认解析路径（Pipeline 侧执行）</label>
+            <select id="parse-path" class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-sm text-gray-300 focus:outline-none focus:border-cyan-400/40">
+              <option value="structured">结构化 · Apply Schema + 拖拽清洗</option>
+              <option value="semistructured">半结构化 · Explode 炸开</option>
+              <option value="unstructured" selected>非结构化 · AIP Doc Intel 五步</option>
+              <option value="timeseries">时序 · Stream + CDC</option>
+            </select>
+          </div>
+        </form>
+
+        <div class="flex items-center justify-between">
+          <a id="back-link" href="source-detail.html?source=docs" class="px-4 py-2 rounded-lg border border-white/[0.08] text-sm text-gray-300 hover:bg-white/[0.04] transition-colors">上一步</a>
+          <a id="continue-link" href="sync.html?target=media_doc&path=unstructured&source=docs" class="btn-primary px-6 py-2 rounded-lg bg-cyan-400 text-slate-950 text-sm font-medium hover:bg-cyan-300 shadow-lg shadow-cyan-400/10">创建同步 →</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const source = params.get('source') || 'docs';
+    const sourceNames = {
+      mysql: 'prod-mysql-orders',
+      docs: 'sharepoint-maintenance-docs',
+      s3: 's3-raw-events',
+    };
+    document.getElementById('source-label').textContent = sourceNames[source] || source;
+    document.getElementById('back-link').href = source === 'docs'
+      ? 'source-detail.html?source=docs'
+      : 'source-detail.html';
+
+    const form = document.getElementById('storage-router-form');
+    const continueLink = document.getElementById('continue-link');
+
+    function updateContinue() {
+      const target = form.querySelector('[name="storage-target"]:checked')?.value || 'dataset';
+      const path = document.getElementById('parse-path').value;
+      continueLink.href = `sync.html?target=${target}&path=${path}&source=${source}`;
+    }
+
+    form.querySelectorAll('[name="storage-target"], #parse-path').forEach((el) => {
+      el.addEventListener('change', () => { DemoUI.initStorageRouter(); updateContinue(); });
+    });
+
+    DemoUI.initShell('data-connection', [
+      { label: '工作区', href: 'index.html' },
+      { label: '数据连接', href: 'data-connection.html' },
+      { label: sourceNames[source] || source, href: document.getElementById('back-link').href },
+      { label: '存储路由' }
+    ]);
+    DemoUI.initStorageRouter();
+    updateContinue();
+  </script>
+</body>
+</html>

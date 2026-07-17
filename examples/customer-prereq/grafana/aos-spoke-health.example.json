@@ -1,0 +1,10 @@
+{
+  "title": "AOS Spoke Health (example)",
+  "description": "Import into customer-managed Grafana. AOS does not ship Grafana binaries (AGPL). See SOP 24.",
+  "tags": ["aos", "customer-prereq", "example"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [],
+  "__aosNote": "Replace panels with Prometheus queries for Spoke Probe / RED when metrics names stabilize."
+}

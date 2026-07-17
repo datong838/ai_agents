@@ -1,0 +1,50 @@
+---
+{
+  "source_url": "https://www.palantir.com/docs/zh/foundry/pb-functions-expression/dateSequenceV1/",
+  "title": "日期序列",
+  "page_id": "dateSequenceV1",
+  "category_id": "data-integration",
+  "section_id": "pb-functions-expression",
+  "previous": "/zh/foundry/pb-functions-expression/currentTimestampV1/",
+  "next": "/zh/foundry/pb-functions-expression/geobufToGeometryExpressionV1/",
+  "scraped_at": "2026-07-13T05:54:23.996560+00:00"
+}
+---
+
+:::callout{theme="warning"}
+注意：以下翻译的准确性尚未经过验证。这是使用 [AIP ↗](https://www.palantir.com/platforms/aip/) 从原始英文文本进行的机器翻译。
+:::
+
+# 日期序列
+
+> 支持于: 批处理
+
+创建一个包含从起始到结束范围内日期的数组。
+
+**表达式类别**: 日期时间
+
+## 声明的参数
+
+* **结束日期** - 结束的日期（包括在内）。<br>*表达式<日期>*
+* **起始日期** - 开始的日期（包括在内）。<br>*表达式<日期>*
+* **步长单位** - 步长的单位。<br>*枚举<天, 月, 季度, 周, 年>*
+* *非必填* **步长大小** - 数字之间步长的大小。默认为1。<br>*表达式<数字>*
+
+**输出类型:** *数组<日期>*
+
+## 示例
+
+### 示例 1: 基本情况
+
+**参数值:**
+
+* **结束日期**: `last_planned_flight`
+* **起始日期**: `first_planned_flight`
+* **步长单位**: `DAYS`
+* **步长大小**: *null*
+
+| first\_planned\_flight | last\_planned\_flight | **输出** |
+| ----- | ----- | ----- |
+| 2023-01-01 | 2023-01-03 | \[ 2023-01-01, 2023-01-02, 2023-01-03 ] |
+| 2023-01-31 | 2023-02-02 | \[ 2023-01-31, 2023-02-01, 2023-02-02 ] |
+| 2023-02-28 | 2023-03-01 | \[ 2023-02-28, 2023-03-01 ] |

@@ -1,0 +1,473 @@
+# 26 · AOS 目标态开发计划（单人版）
+
+> **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
+> **版本**：v1.2 · 2026-07-17  
+> **编制前提**：**主要一人开发**（不划分团队；「可穿插」= 阻塞等待时一人可切去做的事，不是多人并行）  
+> **状态**：✅ 可评审；已与 **20_tech 全集对齐审计**（§11）；编码须过 §0 门禁后按 **§4 推荐总序** 执行  
+> **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md)  
+> **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
+
+---
+
+## 使用的 Rules
+
+| Rule | 应用 |
+| --- | --- |
+| 中文 | 全文中文 |
+| 先方案后代码 | 方案齐；本文定**任务与依赖** |
+| 单人可执行 | 无「小组」编制；顺序以关键路径为准 |
+| 契约优先 | 只经 `aos-api`（T-API） |
+| 军规/前置 | 23/24 随里程碑加严 |
+| 最小烟囱 | 无 DoD 不宣称 Wave 完成 |
+
+---
+
+## 0. 可以开干吗？
+
+| 问题 | 答案 |
+| --- | --- |
+| 方案是否够实现？ | **是**（20 + T-API～T09 + 21～25 + 07b） |
+| 一人能否开干？ | **能**，严格按任务 ID 依赖；禁止跳过写路径先做数字人 |
+| Capability / 重智能体？ | **Wave-C**，须 Action+Draft 绿；C1 还须 MediaSet |
+| v0.1？ | **不推倒**；契约兼容 `/v1/buddy/ask` |
+
+### 0.1 开工门禁（一人自检）
+
+| ID | 门禁 | 未过 |
+| --- | --- | --- |
+| **G0** | 本文 v1.1 + 20/T-EVO 自己确认采纳 | 不开主干 |
+| **G1** | 自有仓骨架：`aos-api` + `apps/web`（见 T-UI） | 不开 |
+| **G2** | OpenAPI 从 T-API 落仓 | 前端只用 Mock |
+| **G3** | 23：CI 禁 UI 引上游 SDK | 不得合入污染依赖 |
+| **G4** | Logger（T-CROSS §3.2）进脚手架 | Wave-1 起强制 |
+| **G5** | 24 Lite Dev 前置（PG/对象存储） | **最迟 Wave-4 前绿** |
+
+**开干 = G0～G4 绿；G5 可推迟到做 L1/Media 前。**
+
+---
+
+## 1. 层级地图（仍有效）
+
+```text
+Apollo(T09)
+  ↑
+工作台 L3(T08) + 前端(T-UI)
+  ↑
+AIP(T07) + Capability(07b)*
+  ↑
+Ontology L2(T06)
+  ↑
+数据 L1(T05)
+  ↑
+横切 T-CROSS + 契约 T-API
+```
+
+\* Capability 不得早于 L2 **写路径**（Action/Draft）。
+
+UI 蓝图真源：`foundry/html` **v1.6.5**（含 Appearance）。
+
+---
+
+## 2. 任务编号约定
+
+| 前缀 | Wave | 含义 |
+| --- | --- | --- |
+| **T0.*** | Wave-0 | 地基 |
+| **T1.*** | Wave-1 / M1 | 工作台可见 |
+| **T2.*** | Wave-2 / M2 | Ontology 读 |
+| **T3.*** | Wave-3 / M3 | 写回 + AIP |
+| **TC.*** | Wave-C | 重能力（增强，不挡主路径） |
+| **T4.*** | Wave-4 / M4 | L1 供数 |
+| **T5.*** | Wave-5 / M5 | Apollo Lite |
+| **TX.*** | 横切常驻 | 贯穿多 Wave，随主任务带做 |
+
+**依赖写法：** `依赖: T0.2, T0.4` = 所列任务均须 **DoD 完成** 后才能开工本任务。  
+**单人穿插：** 标「可穿插」的任务，仅在**等待**（装环境、跑构建、等评审）时切入，**不可**打乱 §4 关键串行链。
+
+---
+
+## 3. 全部开发任务细节
+
+### 3.0 Wave-0 · 地基
+
+| ID | 任务 | 细节（做到什么） | 依赖 | 产出 / DoD |
+| --- | --- | --- | --- | --- |
+| **T0.1** | 仓与脚手架 | monorepo 或约定多仓；`aos-api`、`apps/web` 可 `build`；README 启动命令 | G0 | 空服务可本地启动 |
+| **T0.2** | OpenAPI 落仓 | 按 [T-API](T-API-aos-api稳定契约.md) 写/生成 `openapi.yaml`；含 `/v1/buddy/ask` 兼容 | T0.1 | 契约文件进仓；路径表与 T-API 一致 |
+| **T0.3** | aos-api 路由骨架 | 健康检查、统一错误体、`traceId`、Idempotency-Key 中间件占位 | T0.2 | `GET /health` 绿 |
+| **T0.4** | Logger | T-CROSS §3.2：开发 DEBUG / 可配；Audit 通道预留 | T0.3 | 请求日志带 trace |
+| **T0.5** | Auth 占位 | Bearer 解析占位或 Dev token；Org/Project 上下文进 request | T0.3 | 受保护路由无 token 401 |
+| **T0.6** | 军规 CI 最小 | 23：扫 UI 禁 import 上游 SDK；refs 不进编译（钩子可先 warn→error） | T0.1 | 故意违规样例 CI 红 |
+| **T0.7** | API Mock | 按契约返回与 html Demo 同构的 JSON（Module/Inbox 等） | T0.2 | `apps/web` 可脱后端点通壳 |
+| **T0.8** | Dev 数据面备忘 | 记录 PG/AGE/对象存储是否本机或 Docker；对照 24 Lite 列缺口 | — | 文档一页；**不阻塞** T0 退出 |
+| **T0.9** | 开源参考仓对齐 | 按 21/22 跑 `clone_aos_deps`（P0 OCR/MinIO 等）；记本地路径 | T0.1 | P0 仓可浏览；不进客户包 |
+| **T0.10** | SBOM 钩子 | 23：生成/阻断策略最小（可先 warn） | T0.6 | 流水线有 SBOM 步骤 |
+| **TX.1** | Appearance Token 进 ui-kit | 从 demo.css 迁 `--aos-*`；React 主题 `light/dark/system` | T0.1 | 与 html v1.6.5 同键名 |
+| **TX.2** | 指标/Trace 最小 | T-CROSS 可观测：请求延迟计数；可选 OTel 出口 | T0.4 | 一 dashboard 或日志可聚合 |
+| **TX.3** | IdP 对接 | Keycloak（或 Dev 等价）发真 JWT | T0.5 | 非 Dev token 可登录 |
+| **TX.4** | 授权 Marking 模型 | 角色/Marking 进上下文；供 T1.9/T08 | T0.5, TX.3 | API 可判无权限 |
+
+
+**Wave-0 退出：** T0.1～T0.7 全绿（T0.8～T0.10 / TX.* 可穿插；**TX.4 建议 Wave-1 前完成**）。
+
+**单人建议序：** T0.1 → T0.2 → T0.3 → T0.4 → T0.5 → T0.6 → T0.7；（穿插）T0.9、T0.10、TX.1、T0.8、TX.2；Wave-1 前 TX.3→TX.4。
+
+---
+
+### 3.1 Wave-1 · M1 · 工作台看得见
+
+| ID | 任务 | 细节 | 依赖 | DoD |
+| --- | --- | --- | --- | --- |
+| **T1.1** | ui-kit + AppShell | 侧栏=DEMO_PAGES 叙事；顶栏；Appearance；路由骨架 | T0.7 或 T0.3+Mock | 打开 Web 见壳 |
+| **T1.2** | 迁「概览+应用列表」 | `index` / `workshop` 信息架构落地为路由页 | T1.1 | 侧栏可进工作台 |
+| **T1.3** | Module API | `GET/POST /v1/modules`、`GET .../runtime`（可先内存/PG） | T0.3, T0.5 | 契约测绿 |
+| **T1.4** | Inbox 运营台页 | 对齐 `workshop-module.html`：列表+筛选条 | T1.1, T1.3（或 Mock） | 有数据可点 |
+| **T1.5** | Selection ≤10 | 维数计数；超限禁加；驱动 object-sets/query | T1.4 | 超 10 维 UI 拒绝 |
+| **T1.6** | object-sets/query | filters≤10、分页；接 Inbox | T1.3, T1.5 | 翻页/筛选可用 |
+| **T1.7** | 发布入口壳 | 按钮→占位路由（不接真 Apollo） | T1.2 | 可点不报错 |
+| **T1.8** | 护栏：Table 分页提示 | >1万示意/强制分页标记（可先 UI） | T1.4 | 蓝图行为可见 |
+| **T1.9** | Widget Marking | 无权限不挂载 Widget（T08 §3.3） | T1.4, T0.5 | 无 Marking 用户看不到受限区 |
+| **T1.10** | 事件幂等 | 按钮/`idempotencyKey` 与 ACT-07 同源 | T1.4 | 连点一次成功 |
+| **T1.11** | 画布编辑最小 | `workshop-canvas`：Layout 树+一页预览 | T1.3 | 可打开构建态 |
+| **T1.12** | Buddy 嵌入壳 | `workshop-aip-chat`；Context=Selection；先 Mock chat | T1.5 | 芯片带 Selection；真 chat 待 T3.18 |
+
+
+**Wave-1 退出：** Inbox + Selection + Marking/幂等护栏可演示。≈ T-EVO **v0.3**。
+
+**单人建议序：** T1.1 → T1.2 → T1.3 → T1.4 → T1.5 → T1.6 → T1.9 → T1.10 → T1.7 → T1.8 → T1.11 → T1.12。  
+**可穿插：** 等 API 时先做 T1.1/T1.2（打 Mock）。
+
+---
+
+### 3.2 Wave-2 · M2 · Ontology 可读
+
+| ID | 任务 | 细节 | 依赖 | DoD |
+| --- | --- | --- | --- | --- |
+| **T2.1** | PG + AGE 就绪 | 本地/Dev 库；AGE 扩展可用 | T0.8 或等价 | 可跑简单 Cypher/AGE |
+| **T2.2** | Meta Store | Object/Link/Property 类型 CRUD；发布门禁占位 | T0.3, T2.1 | 至少 1 个 Object Type |
+| **T2.3** | 实例读 API | `GET /v1/objects/{type}` · `/{id}` | T2.2 | 列表+详情 |
+| **T2.4** | Graph 读最小 | 1-hop 邻居或固定示例图 | T2.2, T2.3 | Object View 可展一层 |
+| **T2.5** | Wiki 只读 | `GET /v1/wiki/...` 结构化字段 | T2.3 | 字段非空可展 |
+| **T2.6** | Funnel 状态只读 | 四阶段展示 API+页 | T2.2 | 状态条可见 |
+| **T2.7** | Object View 页 | 对齐 `workshop-object-view`；接真 Object | T1.1, T2.3, T2.4 | 「点到真对象」 |
+| **T2.8** | Inbox 绑真 Object | Selection → 真 query（替 Mock） | T1.6, T2.3 | 工作台读真数 |
+| **T2.9** | Constitution Lint 子集 | OKF `constitution/` 校验；失败不可 Publish（25/T06） | T2.2 | Lint 红不可发 |
+| **T2.10** | 图谱健康只读 | GH 指标扫描+页（≠ L1 health） | T2.3, T2.4 | `ontology-graph-health` 有数 |
+| **T2.11** | Branch 只读 | 分支列表/切换查看（写合并后置） | T2.2 | 分支页可打开 |
+
+
+**Wave-2 退出：** 1 个 Object Type 只读闭环 + Constitution Lint 子集。≈ **v0.2～v0.3**。
+
+**单人建议序：** T2.1 → T2.2 → T2.3 → T2.5 → T2.4 → T2.6 → T2.9 → T2.7 → T2.8 → T2.10 → T2.11。  
+**禁止：** 无 Schema 盲写；一上来 Nebula；向量库冒充 Ontology。
+
+---
+
+### 3.3 Wave-3 · M3 · 写回 + AIP（顺序强制）
+
+> **硬规则：** 未完成 **T3.1～T3.3**，不得宣称 Logic「可写生产」。
+
+| ID | 任务 | 细节 | 依赖 | DoD |
+| --- | --- | --- | --- | --- |
+| **T3.1** | Action Type 元数据 | Action 定义、参数、权限声明 | T2.2 | 可配置 1 个 Action |
+| **T3.2** | Submission Criteria | 不可空声明；校验引擎最小 | T3.1 | 不满足则拒写 |
+| **T3.3** | Draft Dataset | 与生产隔离；CRUD drafts | T3.1, T0.5 | 提案可存可列 |
+| **T3.4** | Action Runtime 执行 | 批准后写 Object；幂等键 | T3.2, T3.3, T2.3 | 批准→落库 |
+| **T3.5** | Side Effect / Webhook 骨架 | 声明式；失败重试/DLQ 占位（ACT-10） | T3.4 | 可挂 1 个回调 URL |
+| **T3.6** | Function Runtime | TS/Python 二选一先落地；**≤60s/2GB** 强制杀 | T2.2 | 超时可证 |
+| **T3.7** | Tool Registry | Query / Function / Action / Wiki；写必落 Action | T3.4, T3.6, T2.5 | Agent 只「请求」工具 |
+| **T3.8** | Model Gateway Facade | 仅 `/v1/aip/*`；插件注册表 | T0.3, T0.5 | UI 不直连厂商 |
+| **T3.9** | LiteLLM 边车 | 进程隔离；密钥 Vault ref | T3.8 | chat 通 1 个 Provider |
+| **T3.10** | 预热 + 路由策略 | 冷模型状态；任务类型路由最小 | T3.9 | UI 可见预热/就绪 |
+| **T3.11** | Logic Runtime | 图执行；**试跑 dryRun 不落库**（A-07） | T3.7, T3.8 | 试跑出提议 edits |
+| **T3.12** | Logic 画布页 | 对齐 `aip-logic.html` 三栏最小 | T1.1, T3.11 | 可跑通示例图 |
+| **T3.13** | Chatbot Studio 最小 | 绑 Tool；试对话 | T3.7, T3.9 | 一轮工具调用可复盘 |
+| **T3.14** | Draft 审批台页 | 批准/拒绝 → T3.4 | T3.3, T3.4 | HITL 闭环 |
+| **T3.15** | Decision Lineage | 读→模型→工具→输出；熔断事件位 | T3.11 | 一条谱系可打开 |
+| **T3.16** | Evals 门控 | 未绿不可勾 L4 | T3.11 | L4 开关受控 |
+| **T3.17** | Insight Backfill 最小 | 高置信→Draft→Insight（25）；可后置本 Wave 末 | T3.14, T2.5 | 1 条 Backfill 可演示 |
+| **T3.18** | buddy/ask 切 Facade | 桌面/Web 走 aos-api，上游可仍 Dify Adapter | T3.8, T3.9 | 试用路径不破 |
+| **T3.19** | L4 熔断 | 失败率>5% 降 L3；入 Lineage（T07） | T3.15, T3.16 | 可演练降级 |
+| **T3.20** | Ontology Edits 合并 | 多 Logic 并发字段冲突策略（07 §3.5.1） | T3.4, T3.11 | 同字段冲突不静默盖 |
+| **T3.21** | Wiki 提议写 | PUT 仅经 Action/Draft，禁直写（WIKI） | T3.4, T2.5 | 提议可审可落 |
+
+
+**Wave-3 退出：** Draft 批准 → Object 变更 + Lineage + L4 门控/熔断位。≈ **v0.4**。
+
+**单人强制序（关键链）：**  
+`T3.1 → T3.2 → T3.3 → T3.4 → T3.7`（中段可穿插 T3.6）  
+同时段可穿插：`T3.8 → T3.9 → T3.10`  
+然后：`T3.11 → T3.12 → T3.14 → T3.15 → T3.16 → T3.19`；`T3.5/13/17/18/20/21` 收尾穿插。
+
+---
+
+### 3.4 Wave-C · Capability（增强 · 不挡 M4/M5 主退出）
+
+| ID | 任务 | 细节 | 依赖 | DoD |
+| --- | --- | --- | --- | --- |
+| **TC.1** | Capability Registry | Manifest；kind=sync\|job\|session | T3.4 | 可登记 1 个 Adapter |
+| **TC.2** | Facade API | `/v1/aip/capabilities*`；禁 UI 直连 SDK | TC.1, T3.8 | 契约测绿 |
+| **TC.3** | Job 状态机 | submit/status/cancel/artifact；回调验签 | TC.2, T3.5 | 1 Job 跑完 |
+| **TC.4** | Job→MediaSet | 产物 RID 经 **Action** 写入 | TC.3, **T4.3** | Media 可打开 |
+| **TC.5** | C0 稿件 sync | LiveScript Object + Action | TC.2, T3.4 | 稿件落 Object |
+| **TC.6** | Session 网关 | open/push/close；AV 外置 | TC.2, T3.4 | 场次 Object 状态对 |
+| **TC.7** | 工具面板挂 Capability | Call Capability | TC.2, T3.7 | Studio 可调 |
+
+**最早：** T3.4 绿后可做 TC.1～TC.2。  
+**C1 成片：** 必须 **T4.3 MediaSet MVP** 后做 TC.4。  
+**禁止：** GPU/数字人进 Function 沙箱。
+
+---
+
+### 3.5 Wave-4 · M4 · L1 供数
+
+| ID | 任务 | 细节 | 依赖 | DoD |
+| --- | --- | --- | --- | --- |
+| **T4.0** | G5 闭环 | 24 Lite Dev 总检绿或书面豁免 | G5 | 检查表勾完 |
+| **T4.1** | Connector 插件框架 | 注册/配置/运行接口；禁把 Airbyte monorepo 当产品 | T0.3, T0.5 | 可装「空插件」 |
+| **T4.2** | 对象存储适配 | S3/MinIO；客户前置优先（23/24） | T4.0 | 可 put/get |
+| **T4.3** | MediaSet MVP | 创建/列表/预览；RID | T4.2 | 上传文件可见 |
+| **T4.4** | 文件 P0 接入 | 格式按 20 §1.4；进 MediaSet/Dataset | T4.1, T4.3 | P0 格式抽检过 |
+| **T4.5** | Pipeline 最小 | 跑通「文件→Dataset」一条 | T4.4 | Build 成功 |
+| **T4.6** | JDBC/MySQL | 抽数+映射 | T4.1, T2.2 | MySQL→Object/Dataset |
+| **T4.7** | Dataset→Object 映射 | 防两张皮 | T4.5 或 T4.6, T2.2 | 供数可被 T2.3 读到 |
+| **T4.8** | OCR 边车 | PaddleOCR 独立进程 | T4.4 | 一页 OCR 结果入链路 |
+| **T4.9** | DLQ | 失败可见、可重试（含 DocIntel） | T4.5 | 死信列表页 |
+| **T4.10** | 其它连接器滚动 | 不挡退出；维护 21/T05 §3.3 清单 | T4.1 | 按客户加，非必达 |
+| **T4.11** | &lt;128KB 存储短路 | sync-routing：小文件可进 Dataset | T4.1, T4.3 | 选项可用（T05 A3） |
+| **T4.12** | MediaReference | Dataset 列→原件指针+预览 | T4.3, T4.5 | 单元格可点开原件 |
+| **T4.13** | Schedule | Cron / 上游触发与 Sync 对齐 | T4.5 | 一条定时跑通 |
+| **T4.14** | Builds 可观测 | Task 状态·日志·失败钻取 | T4.5 | builds 页可用 |
+| **T4.15** | 边缘 Agent 最小 | 出站上报/拉配置（WF-DC-05） | T4.1 | 一节点 Probe |
+| **T4.16** | Funnel Worker 最小 | Changelog→Merge→Index→Hydration 可观测（≠ Backfill） | T4.7, T2.6 | 四阶段有进度 |
+| **T4.17** | DocIntel 管线 | 解析/OCR/抽取；失败进 DLQ | T4.8, T4.9 | 单文件失败不卡批 |
+
+
+**Wave-4 退出：** 文件 P0 + MySQL + MediaSet + 128KB/MediaReference/Schedule/DLQ。≈ **v0.5**。
+
+**单人建议序：** T4.0 → T4.1 → T4.2 → T4.3 → T4.4 → T4.5 → T4.14 → T4.13 → T4.7 → T4.11 → T4.12 → T4.6 → T4.8 → T4.17 → T4.9 → T4.16 → T4.15。
+
+---
+
+### 3.6 Wave-5 · M5 · Apollo Lite
+
+| ID | 任务 | 细节 | 依赖 | DoD |
+| --- | --- | --- | --- | --- |
+| **T5.1** | 可安装构建 | 版本号、产物包 | Wave-3 或 Wave-4 主路径可演示 | 一键/文档可装 Dev |
+| **T5.2** | Spoke Probe | 版本/心跳上报 | T5.1 | Hub 或本地可见 Probe |
+| **T5.3** | Lite 升级通道 | Catalog + 升级 | T5.2 | 一次升级演练 |
+| **T5.4** | Vault ref | 配置无明文密钥 | T5.1, T0.5 | 密钥只 ref |
+| **T5.5** | 现场 24 签署流程 | 检查表+禁止无签安装 | T4.0, T5.3 | 流程文档可执行 |
+| **T5.6** | Ferry / Full 舰队 / Channel 全集 | **P2/P1 延期**（T09） | — | 不进 M5 必达 |
+| **T5.7** | Asset Bundle 最小 | OKF/Module 与版本同绑（OPS-008 · T09 **P0**） | T5.3, T2.9 | 一次打包+校验 |
+| **T5.8** | hotfix 通道占位 | 紧急发布标记+事后审计位（OPS-009） | T5.3 | 可标记 hotfix |
+
+≈ T-EVO **v1.0**（Lite + Asset Bundle；Ferry 仍延期）。
+
+---
+
+## 4. 单人推荐总序（照着做）
+
+```text
+【地基】
+T0.1 → T0.2 → T0.3 → T0.4 → T0.5 → T0.6 → T0.7
+        └─(穿插) TX.1, T0.8
+
+【工作台】
+T1.1 → T1.2 → T1.3 → T1.4 → T1.5 → T1.6 → T1.7 → T1.8
+
+【本体读】
+T2.1 → T2.2 → T2.3 → T2.5 → T2.4 → T2.6 → T2.7 → T2.8
+
+【写回 · 不可跳】
+T3.1 → T3.2 → T3.3 → T3.4 → T3.6 → T3.7
+【网关 · 可在等 T3.1～3 时穿插】
+T3.8 → T3.9 → T3.10
+【编排与治理】
+T3.11 → T3.12 → T3.14 → T3.15 → T3.16
+        └─ T3.5, T3.13, T3.17, T3.18
+
+【L1】
+T4.0 → T4.1 → T4.2 → T4.3 → T4.4 → T4.5 → T4.7 → T4.6 → T4.8 → T4.9
+
+【重能力 · 可选增强】
+T3.4 后: TC.1 → TC.2 → TC.5
+T4.3 后: TC.3 → TC.4 → TC.7
+更后: TC.6
+
+【交付】
+T5.1 → T5.2 → T5.3 → T5.4 → T5.7 → T5.8 → T5.5
+```
+
+### 4.1 依赖总图（关键边）
+
+```mermaid
+flowchart TD
+  T01[T0.1 脚手架] --> T02[T0.2 OpenAPI]
+  T02 --> T03[T0.3 api骨架]
+  T03 --> T04[T0.4 Logger]
+  T03 --> T05[T0.5 Auth]
+  T01 --> T06[T0.6 CI军规]
+  T02 --> T07[T0.7 Mock]
+  T07 --> T11[T1.1 Shell]
+  T03 --> T13[T1.3 Module API]
+  T11 --> T14[T1.4 Inbox]
+  T13 --> T14
+  T14 --> T15[T1.5 Selection]
+  T15 --> T16[T1.6 query]
+  T03 --> T21[T2.1 PG/AGE]
+  T21 --> T22[T2.2 Meta]
+  T22 --> T23[T2.3 实例读]
+  T23 --> T27[T2.7 ObjectView]
+  T22 --> T31[T3.1 Action元数据]
+  T31 --> T32[T3.2 Criteria]
+  T31 --> T33[T3.3 Draft]
+  T32 --> T34[T3.4 ActionRuntime]
+  T33 --> T34
+  T34 --> T37[T3.7 ToolRegistry]
+  T03 --> T38[T3.8 Gateway]
+  T38 --> T39[T3.9 LiteLLM]
+  T37 --> T311[T3.11 Logic]
+  T39 --> T311
+  T34 --> T314[T3.14 审批台]
+  T34 --> TC1[TC.1 Capability]
+  T40[T4.0 G5] --> T42[T4.2 对象存储]
+  T42 --> T43[T4.3 MediaSet]
+  T43 --> TC4[TC.4 Job产物]
+  TC1 --> TC2[TC.2 Facade]
+  TC2 --> TC3[TC.3 Job]
+  TC3 --> TC4
+```
+
+### 4.2 绝对不能反的串行链
+
+```text
+契约/api → Auth/Logger → Meta读 → Action/Draft写 → Logic真写回 / Capability回调写
+```
+
+---
+
+## 5. Wave 进出检查（一人勾选）
+
+| Wave | 进入 | 退出勾选 |
+| --- | --- | --- |
+| 0 | G0～G4 | ☐ T0.1～T0.7 |
+| 1 | Wave-0 | ☐ Inbox+Selection 可演示 |
+| 2 | T2.1 | ☐ 1 个 Object Type 只读闭环 |
+| 3 | T2.2 + Vault/密钥方案 | ☐ Draft 批准落库 + Lineage |
+| C | T3.4；（C1）T4.3 | ☐ 1 Job 或 1 Session 按 07b |
+| 4 | T4.0 | ☐ 文件 P0 + MySQL + MediaSet |
+| 5 | 可演示主路径 | ☐ Lite 升级 + 24 签署流程 |
+
+---
+
+## 6. 现在不要干
+
+| 事项 | 原因 |
+| --- | --- |
+| Dify 内核堆 Ontology | 20 非目标 · 23 |
+| UI 直连 LiteLLM/厂商 | R-ARCH-01 |
+| 无 Draft 自动写库 | A-02 |
+| 先 Full Apollo/Ferry | T5.6 延期 |
+| 凑 200+ Connector | 20 §1.4 |
+| 数字人/短视频进 Function | CAP-01 |
+| 跳过 T3.1～T3.4 做 Logic 写生产 | 写路径必经 Action |
+
+---
+
+## 7. 与 T-EVO / 里程碑对照
+
+| Wave | 里程碑 | 用户可见 | 主详稿 |
+| --- | --- | --- | --- |
+| 0 | M0 | — | T-API · T-CROSS · 23 |
+| 1 | M1 | ≈ v0.3 工作台 | T-UI · T08 |
+| 2 | M2 | ≈ v0.2 Object | T06 |
+| 3 | M3 | ≈ v0.4 Draft | T06 · T07 · 25 |
+| C | 增强 | 重能力 | 07b |
+| 4 | M4 | ≈ v0.5 L1 | T05 · 24 |
+| 5 | M5 | ≈ v1.0 Lite | T09 · 24 |
+
+---
+
+## 8. 风险（单人向）
+
+| ID | 风险 | 缓解 |
+| --- | --- | --- |
+| E1 | 前后端互相等 | 先 T0.7 Mock，UI 不阻塞 |
+| E2 | 先做 AIP 导致直写 | 无 T3.4 不接生产写 |
+| E3 | L1 与 Ontology 两张皮 | **T4.7** 为 Wave-4 必达 |
+| E4 | 重能力分心 | TC.* 仅主路径阻塞或演示需要时做 |
+| E5 | 开源污染包 | T0.6 尽早 error 级 |
+| E6 | 一人范围膨胀 | 每 Wave 只盯「退出勾选」；T4.10/T5.6 永不抢主路径 |
+
+---
+
+## 9. 文档落点
+
+| 项 | 路径 |
+| --- | --- |
+| 本计划 | `docs/palantier/20_tech/26-AOS目标态开发计划.md` |
+| 阶梯 | [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) |
+| 契约 | [T-API](T-API-aos-api稳定契约.md) |
+| UI | [T-UI](T-UI-前端工程与foundry-html落地规范.md) · html **v1.6.5** |
+
+个人进度：建议直接在本文 §5 打勾，或自建 checklist；**不要**另起与本文冲突的「第二套顺序」。
+
+---
+
+## 11. 与 20_tech 对齐审计（v1.2）
+
+### 11.1 文档覆盖（有无挂上）
+
+| 20_tech 文档 | 26 中落点 | 结论 |
+| --- | --- | --- |
+| 20 总纲 | 门禁·层级·非目标 | ✅ |
+| T-API | T0.2～T0.3 · 各 Wave API | ✅ |
+| T-CROSS | T0.4/5 · TX.2～TX.4 | ✅（v1.2 补齐 IdP/Marking/指标） |
+| T-UI | T1.1 · TX.1 Appearance | ✅ |
+| T08 | T1.* · T1.9～T1.12 | ✅（v1.2 补 Marking/幂等/Canvas/Buddy） |
+| T06 | T2.* · T3.1～T3.6 · T2.9～T2.11 · T4.16 | ✅（v1.2 补 Constitution/健康/Branch/Funnel Worker） |
+| T07 | T3.8～T3.21 · TC.* | ✅（v1.2 补熔断/Edits 合并/Wiki 写） |
+| T05 | T4.* | ✅（v1.2 补 128KB/MediaRef/Schedule/Builds/边缘/DocIntel） |
+| T09 | T5.* · T5.7～T5.8 | ✅（v1.2 补 Asset Bundle；Ferry 显式延期） |
+| T-EVO | §7 对照表 | ✅ |
+| 21/22 | T0.9 | ✅（v1.2） |
+| 23 | T0.6 · T0.10 | ✅ |
+| 24 | G5 · T4.0 · T5.5 | ✅ |
+| 25 | T2.9/T2.10 · T3.17 · TTL 见下 | ✅/⚠ |
+| 一致性自检 | 不单独编码；发版前人工对照 | ⚪ 流程项 |
+
+### 11.2 仍为「显式延期 / 后置」（不是漏写）
+
+| 项 | 出处 | 26 处理 |
+| --- | --- | --- |
+| Ferry 气隙 / Full 舰队 / Channel 全集 | T09 P1/P2 | **T5.6** |
+| TTL/遗忘归档作业 | 25 P2 · T06 §7.5 | **T2.x+** 后置：规模痛点再开（建议 ID `T2.12` 待立） |
+| Module interface / Loop 嵌套 | T08 P2 | 后置 v1.1 执行器 |
+| Scenario 沙箱分叉 | 07 | 后置 |
+| MCP 供数附录 | T05 §4.5 | 可选，不进主路径 |
+| 桌面 Tauri 深度改造 | T-UI S3 · T-EVO | Wave-5 后 / 与 T3.18 并行最小兼容即可 |
+| 200+ Connector | 20 §1.4 | **T4.10** 滚动 |
+| Nebula 换引擎 | T06 | 规模触发，非现 |
+
+### 11.3 审计结论
+
+| 问题 | 答案 |
+| --- | --- |
+| v1.1 相对 20_tech 有无遗漏？ | **有**（T08 护栏、T05 路由/Schedule、T06 Constitution/健康、T09 Asset Bundle、T-CROSS IdP 等） |
+| v1.2？ | **主路径与 20_tech P0/P1 必达已拉齐**；P2/可选见 §11.2 显式延期 |
+| 是否还要再写新详稿？ | **否**；缺的是任务 ID，不是技术方案 |
+
+---
+
+## 12. 变更记录
+
+| 版本 | 日期 | 变更 |
+| --- | --- | --- |
+| v1.0 | 2026-07-17 | 初稿：Wave · 门禁 · 多组并行示意 |
+| v1.1 | 2026-07-17 | **单人版**：全量任务 ID（T0～T5/TC）· 依赖边 · 推荐总序；删除团队切分 |
+| v1.2 | 2026-07-17 | **对齐 20_tech 审计**：补 T1.9～12 · T2.9～11 · T3.19～21 · T4.11～17 · T5.7～8 · T0.9～10 · TX.2～4；§11 矩阵 |
+
+---
+
+*v1.2 · docs/palantier/20_tech/26 · 与 20_tech 拉齐 · 一人按任务 ID 开干*

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AOS 概览 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <!-- 侧栏 -->
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">AOS · v1.6.5</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-3">
+        <div class="relative hidden sm:block">
+          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3-3"/></svg>
+          <input type="search" placeholder="搜索资源…" class="w-64 pl-9 pr-3 py-1.5 rounded-lg bg-slate-900 border border-white/[0.08] text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-cyan-400/40 transition-colors" />
+        </div>
+        <button class="p-2 rounded-lg hover:bg-white/[0.04] transition-colors text-gray-400" aria-label="通知">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5"/></svg>
+        </button>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-6xl mx-auto space-y-8">
+        <div>
+          <h1 class="text-2xl font-semibold text-gray-100 tracking-tight">数据操作系统 · 本体数字孪生 · AIP 人工智能平台 · 工作台</h1>
+          <p class="mt-2 text-gray-400 leading-relaxed whitespace-nowrap overflow-x-auto">日常从 <span class="text-sky-300">工作台</span> 进入；建设路径：Connector → Pipeline → Dataset → OKF / Ontology → <span class="text-amber-300">AIP</span> → <span class="text-sky-300">工作台（操作台）</span>。</p>
+        </div>
+
+        <!-- ① 工作台 L3：应用列表是入口；其下 Module 为列表内示例 -->
+        <div class="rounded-xl border border-sky-400/25 bg-sky-400/5 p-6 shadow-sm shadow-black/20 space-y-5">
+          <div>
+            <h2 class="text-sm font-medium text-gray-100 mb-2">工作台</h2>
+            <p class="text-xs text-gray-500">入口只有「应用列表」；运营台 / 知识图谱 / Buddy 都是列表里打开的 Module，不是并列产品。</p>
+          </div>
+          <a href="workshop.html" class="group flex items-center justify-between rounded-lg border border-sky-400/40 bg-slate-950/50 p-4 hover:border-sky-400/60 transition-all">
+            <div>
+              <div class="text-xs text-sky-300 mb-1">唯一入口</div>
+              <div class="text-gray-100 font-medium group-hover:text-sky-300 transition-colors text-lg">应用列表</div>
+              <p class="text-xs text-gray-500 mt-2">按业务场景打开 Module · 含运营台、知识图谱、Buddy…</p>
+            </div>
+            <span class="text-sky-400 text-sm shrink-0">进入列表 →</span>
+          </a>
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-gray-600 mb-3">列表内 Module 示例（勿与入口平级理解）</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <a href="workshop-module.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-sky-400/30 transition-all">
+                <div class="text-xs text-sky-300/80 mb-2">运营 Inbox</div>
+                <div class="text-gray-100 font-medium group-hover:text-sky-300 transition-colors">运营台</div>
+                <p class="text-xs text-gray-500 mt-2">Filter · Table · Object View · 变量条</p>
+              </a>
+              <a href="workshop-object-view.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
+                <div class="text-xs text-violet-300/80 mb-2">本体前端</div>
+                <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">知识图谱</div>
+                <p class="text-xs text-gray-500 mt-2">Object+Link 图谱 · Wiki · Action</p>
+              </a>
+              <a href="workshop-aip-chat.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+                <div class="text-xs text-amber-300/80 mb-2">AIP 嵌入</div>
+                <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">Buddy · Assist</div>
+                <p class="text-xs text-gray-500 mt-2">挂在任意 Module 侧栏 / 表旁</p>
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 text-[11px] text-gray-500">
+            <a href="workshop-canvas.html" class="text-sky-400 hover:underline">画布编辑</a>
+            <span>·</span>
+            <a href="workshop-cop.html" class="text-sky-400 hover:underline">态势大屏</a>
+            <span>·</span>
+            <a href="workshop-publish.html" class="text-sky-400 hover:underline">发布入口</a>
+          </div>
+        </div>
+
+        <!-- ② AIP -->
+        <div class="rounded-xl border border-amber-400/25 bg-amber-400/5 p-6 shadow-sm shadow-black/20">
+          <h2 class="text-sm font-medium text-gray-100 mb-2">AIP 人工智能平台 · k-LLM（核心调度） + Logic（编排引擎） + Agent Studio（Agent 开发工坊） + Assist（智能助手）</h2>
+          <p class="text-xs text-gray-500 mb-6">成熟度楼梯 → 工具面板 → Logic 三栏（试跑不落库）</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <a href="aip-maturity.html" class="group rounded-lg border border-amber-400/30 bg-slate-950/40 p-4 hover:border-amber-400/50 transition-all">
+              <div class="text-xs text-amber-300 mb-2">成熟度</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">成熟度楼梯</div>
+              <p class="text-xs text-gray-500 mt-2">Threads → Agent → Workshop → 自动化门控</p>
+            </a>
+            <a href="aip-tools.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">工具</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">Agent 工具面板</div>
+              <p class="text-xs text-gray-500 mt-2">六类工具 · Wiki 子集 · HITL Action</p>
+            </a>
+            <a href="aip-logic.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">Logic</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">AIP Logic 画布</div>
+              <p class="text-xs text-gray-500 mt-2">三栏 · CoT Debugger · Uses Automate</p>
+            </a>
+            <a href="aip-capabilities.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-cyan-400/30 transition-all">
+              <div class="text-xs text-cyan-300 mb-2">Capability</div>
+              <div class="text-gray-100 font-medium group-hover:text-cyan-300 transition-colors">重能力接入</div>
+              <p class="text-xs text-gray-500 mt-2">短视频 / 数字人 · Job·Session</p>
+            </a>
+            <a href="aip-model-providers.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">接入</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">模型供应商</div>
+              <p class="text-xs text-gray-500 mt-2">卡片 · 类型化表单 · Adapter</p>
+            </a>
+            <a href="aip-model-router.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">路由</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">模型路由</div>
+              <p class="text-xs text-gray-500 mt-2">任务类型 · 出境 · 预热熔断</p>
+            </a>
+            <a href="aip-draft-inbox.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-emerald-400/30 transition-all">
+              <div class="text-xs text-emerald-300 mb-2">Draft</div>
+              <div class="text-gray-100 font-medium group-hover:text-emerald-300 transition-colors">提案审批台</div>
+              <p class="text-xs text-gray-500 mt-2">Draft Dataset · HITL 批准/拒绝</p>
+            </a>
+            <a href="aip-evals.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">Evals</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">评测门控</div>
+              <p class="text-xs text-gray-500 mt-2">L4 须 Eval 绿 · 未通过禁上线</p>
+            </a>
+            <a href="aip-decision-lineage.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
+              <div class="text-xs text-violet-300 mb-2">谱系</div>
+              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">决策谱系</div>
+              <p class="text-xs text-gray-500 mt-2">读 Wiki → 模型 → Action/Draft 复盘</p>
+            </a>
+            <a href="agents.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">Studio</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">Chatbot Studio</div>
+              <p class="text-xs text-gray-500 mt-2">Prompt · Agent 配置 · 非边缘代理</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- ②b Apollo 交付 -->
+        <div class="rounded-xl border border-indigo-400/25 bg-indigo-400/5 p-6 shadow-sm shadow-black/20">
+          <h2 class="text-sm font-medium text-gray-100 mb-2">Apollo 交付引擎</h2>
+          <p class="text-xs text-gray-500 mb-6">Hub 舰队 · Release Channel · FDE 资产包</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="apollo-hub.html" class="group rounded-lg border border-indigo-400/30 bg-slate-950/40 p-4 hover:border-indigo-400/50 transition-all">
+              <div class="text-xs text-indigo-300 mb-2">Hub</div>
+              <div class="text-gray-100 font-medium group-hover:text-indigo-300 transition-colors">舰队视图</div>
+              <p class="text-xs text-gray-500 mt-2">Spoke 健康 · Probe · 出站轮询</p>
+            </a>
+            <a href="apollo-release.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-indigo-400/30 transition-all">
+              <div class="text-xs text-indigo-300 mb-2">Release</div>
+              <div class="text-gray-100 font-medium group-hover:text-indigo-300 transition-colors">发布通道</div>
+              <p class="text-xs text-gray-500 mt-2">rc → beta → stable · Recall · hotfix</p>
+            </a>
+            <a href="apollo-assets.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-indigo-400/30 transition-all">
+              <div class="text-xs text-indigo-300 mb-2">Assets</div>
+              <div class="text-gray-100 font-medium group-hover:text-indigo-300 transition-colors">FDE 资产包</div>
+              <p class="text-xs text-gray-500 mt-2">Asset Bundle · SemVer · Channel 绑定</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- ③ 本体 -->
+        <div class="rounded-xl border border-violet-400/20 bg-violet-400/5 p-6 shadow-sm shadow-black/20">
+          <h2 class="text-sm font-medium text-gray-100 mb-2">语义本体 Ontology · 数字孪生</h2>
+          <p class="text-xs text-gray-500 mb-6">OKF / Constitution → Overview → Funnel 水合 · 图谱健康</p>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <a href="ontology.html" class="group rounded-lg border border-violet-400/25 bg-slate-950/40 p-4 hover:border-violet-400/50 transition-all">
+              <div class="text-xs text-violet-300 mb-2">Discover</div>
+              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">本体管理（数字孪生）</div>
+              <p class="text-xs text-gray-500 mt-2">Discover · 收藏 / 最近 / 重要 Object</p>
+            </a>
+            <a href="ontology-object.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
+              <div class="text-xs text-violet-300 mb-2">Object</div>
+              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">对象概览</div>
+              <p class="text-xs text-gray-500 mt-2">7 Tab · Properties / Links / Data</p>
+            </a>
+            <a href="ontology-funnel.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
+              <div class="text-xs text-violet-300 mb-2">Funnel</div>
+              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">漏斗管道</div>
+              <p class="text-xs text-gray-500 mt-2">Changelog → Merge → Index → Hydration</p>
+            </a>
+            <a href="ontology-graph-health.html" class="group rounded-lg border border-violet-400/25 bg-violet-400/5 p-4 hover:border-violet-400/50 transition-all">
+              <div class="text-xs text-violet-300 mb-2">健康 · 25</div>
+              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">图谱健康度</div>
+              <p class="text-xs text-gray-500 mt-2">悬空 / 冲突 / 僵尸 / 规则 · TTL 候选</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- ④ 数据集成链路 -->
+        <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-6 shadow-sm shadow-black/20">
+          <h2 class="text-sm font-medium text-gray-100 mb-6">数据集成 · 三阶段链路 + OKF</h2>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <a href="data-connection.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/50 p-4 hover:border-cyan-400/30 transition-all">
+              <div class="text-xs text-cyan-400 mb-2">① Connector</div>
+              <div class="text-gray-100 font-medium group-hover:text-cyan-400 transition-colors">数据连接</div>
+              <p class="text-xs text-gray-500 mt-2">200+ 连接器 · 存储路由 · Dataset / MediaSet / Stream</p>
+            </a>
+            <a href="pipeline.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/50 p-4 hover:border-cyan-400/30 transition-all">
+              <div class="text-xs text-cyan-400 mb-2">② Pipeline</div>
+              <div class="text-gray-100 font-medium group-hover:text-cyan-400 transition-colors">管道构建</div>
+              <p class="text-xs text-gray-500 mt-2">DAG 清洗 · Text/Avro → Parquet</p>
+            </a>
+            <a href="dataset.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/50 p-4 hover:border-cyan-400/30 transition-all">
+              <div class="text-xs text-cyan-400 mb-2">③ Dataset</div>
+              <div class="text-gray-100 font-medium group-hover:text-cyan-400 transition-colors">Lakehouse</div>
+              <p class="text-xs text-gray-500 mt-2">Iceberg 事务 · Git for Data</p>
+            </a>
+            <a href="funnel.html" class="group rounded-lg border border-emerald-400/20 bg-emerald-400/5 p-4 hover:border-emerald-400/40 transition-all">
+              <div class="text-xs text-emerald-400 mb-2">④ OKF · 行业定制</div>
+              <div class="text-gray-100 font-medium group-hover:text-emerald-400 transition-colors">Funnel 映射</div>
+              <p class="text-xs text-gray-500 mt-2">列 → Object Property 自动映射</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- 快速入口：使用优先 → 底座 -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a href="workshop.html" class="rounded-xl border border-sky-400/25 bg-sky-400/5 p-5 hover:border-sky-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">工作台 · 应用列表</span>
+            <span class="text-sm">入口 · 内含运营台 / 知识图谱 / Buddy</span>
+            <span class="text-sky-300 text-sm mt-auto">打开应用列表 →</span>
+          </a>
+          <a href="aip-maturity.html" class="rounded-xl border border-amber-400/25 bg-amber-400/5 p-5 hover:border-amber-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">Agent 成熟度</span>
+            <span class="text-sm">L1→L4 楼梯 · 门控 L4 · 对接工具 / Logic</span>
+            <span class="text-amber-300 text-sm mt-auto">打开楼梯 →</span>
+          </a>
+          <a href="aip-logic.html" class="rounded-xl border border-amber-400/20 bg-slate-900 p-5 hover:border-amber-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">Logic 派单（人工审批）</span>
+            <span class="text-sm">Get+Wiki → Use LLM → Draft 提议 · A-07 试跑不落库</span>
+            <span class="text-amber-300 text-sm mt-auto">打开 Logic →</span>
+          </a>
+          <a href="ontology.html" class="rounded-xl border border-violet-400/25 bg-violet-400/5 p-5 hover:border-violet-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">Ontology 水合</span>
+            <span class="text-sm">OKF → Order Overview → Funnel 四阶段</span>
+            <span class="text-violet-300 text-sm mt-auto">打开 OMA →</span>
+          </a>
+          <a href="funnel.html" class="rounded-xl border border-emerald-400/25 bg-emerald-400/5 p-5 hover:border-emerald-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">OKF 行业垂直定制</span>
+            <span class="text-sm">电商 / 环科 / 生物模板 · 智能映射 · 数据质量清洗</span>
+            <span class="text-emerald-300 text-sm mt-auto">打开 OKF Funnel →</span>
+          </a>
+          <a href="ontology-wiki.html" class="rounded-xl border border-orange-400/25 bg-orange-400/5 p-5 hover:border-orange-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">LLM Wiki 双向绑定</span>
+            <span class="text-sm">活知识卡片 · Object↔Wiki · Agent 读字段</span>
+            <span class="text-orange-300 text-sm mt-auto">打开 Wiki →</span>
+          </a>
+          <a href="data-connection.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">数据连接</span>
+            <span class="text-sm">12 个数据源 · 3 个同步失败</span>
+            <span class="text-cyan-400 text-sm mt-auto">进入应用 →</span>
+          </a>
+          <a href="pipeline.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">订单清洗管道</span>
+            <span class="text-sm">上次搭建：2 分钟前 · 已完成</span>
+            <span class="text-cyan-400 text-sm mt-auto">打开画布 →</span>
+          </a>
+          <a href="agents.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">Chatbot Studio</span>
+            <span class="text-sm">AIP Agent 开发工坊 · Prompt · 工具配置</span>
+            <span class="text-amber-300 text-sm mt-auto">打开 Studio →</span>
+          </a>
+          <a href="data-connection-agents.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">边缘代理</span>
+            <span class="text-sm">数据连接代理 · 2 在线 · 1 离线 · VPC 隧道</span>
+            <span class="text-cyan-400 text-sm mt-auto">查看边缘代理 →</span>
+          </a>
+          <a href="schedules.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">计划编辑器</span>
+            <span class="text-sm">Cron · 上游触发 · 同步/管道调度</span>
+            <span class="text-cyan-400 text-sm mt-auto">打开计划 →</span>
+          </a>
+          <a href="pipeline-proposals.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">管道提案</span>
+            <span class="text-sm">Diff · 历史时间线 · 与画布互跳</span>
+            <span class="text-cyan-400 text-sm mt-auto">查看提案 →</span>
+          </a>
+          <a href="media-sets.html" class="rounded-xl border border-purple-400/20 bg-purple-400/5 p-5 hover:border-purple-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">媒体集 · 维修 PDF</span>
+            <span class="text-sm">248 扫描件 · Document MediaSet · OCR/LLM</span>
+            <span class="text-purple-300 text-sm mt-auto">打开媒体集 →</span>
+          </a>
+          <a href="sync-routing.html?source=docs" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">存储路由向导</span>
+            <span class="text-sm">Dataset / MediaSet / Stream 入库决策</span>
+            <span class="text-cyan-400 text-sm mt-auto">存储路由 →</span>
+          </a>
+          <a href="pipeline-doc-intel.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
+            <span class="text-gray-100 font-medium">Doc Intel 文档智能管道</span>
+            <span class="text-sm">PDF → OCR → LLM → maintenance_clean + media_ref</span>
+            <span class="text-cyan-400 text-sm mt-auto">打开画布 →</span>
+          </a>
+        </div>
+
+        <!-- 三 Zone + 媒体集（底座说明，置底） -->
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-900/80 text-gray-500 text-left">
+              <tr><th class="px-4 py-3 font-medium">分区</th><th class="px-4 py-3 font-medium">格式 / 容器</th><th class="px-4 py-3 font-medium">用途</th></tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr class="table-row-hover"><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-amber-400/10 text-amber-300 border border-amber-400/20">原始区</span></td><td class="px-4 py-3 text-gray-300">Text / CSV · Dataset</td><td class="px-4 py-3">As-Is 贴源 · 可追溯</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-media-doc">媒体集</span></td><td class="px-4 py-3 text-gray-300">Document / Spreadsheet · MediaSet</td><td class="px-4 py-3">PDF · XLSX 原件 · MediaReference 回链</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-sky-400/10 text-sky-300 border border-sky-400/20">流式区</span></td><td class="px-4 py-3 text-gray-300">Avro · Stream</td><td class="px-4 py-3">Kafka · IoT · Schema 演进</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">精修区</span></td><td class="px-4 py-3 text-gray-300">Parquet + Iceberg · Dataset</td><td class="px-4 py-3">Funnel / 分析 · 含 media_ref 列</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('index', [{ label: '工作区' }, { label: 'AOS 概览' }]);</script>
+</body>
+</html>
