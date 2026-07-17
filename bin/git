@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+REAL_GIT="/c/Program Files/Git/cmd/git.exe"
+ROOT="$("$REAL_GIT" rev-parse --show-toplevel 2>/dev/null || true)"
+case "$ROOT" in
+  */wchat/docs|*/wchat/docs/) ;;
+  *) exec "$REAL_GIT" "$@" ;;
+esac
+case "$1" in
+  pull|merge|rebase) ;;
+  reset)
+    if [[ " $* " == *" --hard "* ]]; then :; else exec "$REAL_GIT" "$@"; fi
+    ;;
+  *) exec "$REAL_GIT" "$@" ;;
+esac
+if [[ "$ALLOW_PULL" == "1" ]]; then
+  exec "$REAL_GIT" "$@"
+fi
+echo "[blocked] Local docs is the source of truth. Emergency: ALLOW_PULL=1 $0 $*"
+exit 1
