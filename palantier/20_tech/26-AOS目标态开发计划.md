@@ -1,8 +1,8 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.10 · 2026-07-17  
-> **状态**：Wave-0～3 ✅；T3.9 Agnes ✅；T4.2 MinIO ✅；T4.6/T4.7 MySQL ✅；**T4.8 OCR 边车 ✅**；进度 **§10**  
+> **版本**：v1.15 · 2026-07-17  
+> **状态**：Wave-0～5 MVP ✅；**G-ALIGN-01～04 ✅**；**TX.3 Dev JWT ✅**；进度 **§10**  
 > **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)**（G1～G5 活结果）  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
 
@@ -42,15 +42,15 @@
 #### 0.1.1 总表
 
 
-| ID | 门禁（一句话） | 未过 |
-| --- | --- | --- |
-| **G0** | 方案采纳：本文 **v1.3** + 20_tech 全集口径已确认 | **不开主干** |
-| **G0a** | 非目标 / 军规 / 话术红线已内化（见下表勾选） | 不开写路径大功能 |
-| **G1** | 自有仓骨架：`aos-api` + `apps/web`（[T-UI](T-UI-前端工程与foundry-html落地规范.md) §3） | 不开 |
-| **G2** | OpenAPI 从 [T-API](T-API-aos-api稳定契约.md) 落仓（含 `/v1/buddy/ask`） | 前端只用 Mock |
-| **G3** | [23](23-AOS开源引用与交付军规.md)：CI 禁 UI 引上游 SDK + refs 不进编译 | 不得合入污染依赖 |
-| **G4** | Logger（[T-CROSS](T-CROSS-横切能力详细技术方案.md) §3.2）进脚手架 | Wave-1 起强制 |
-| **G5** | [24](24-AOS客户侧前置组件安装SOP.md) §4 Dev 缩小版前置（PG/对象存储等） | **最迟 Wave-4 前绿** |
+| ID      | 门禁（一句话）                                                                | 未过               |
+| ------- | ---------------------------------------------------------------------- | ---------------- |
+| **G0**  | 方案采纳：本文 **v1.3** + 20_tech 全集口径已确认                                     | **不开主干**         |
+| **G0a** | 非目标 / 军规 / 话术红线已内化（见下表勾选）                                              | 不开写路径大功能         |
+| **G1**  | 自有仓骨架：`aos-api` + `apps/web`（[T-UI](T-UI-前端工程与foundry-html落地规范.md) §3） | 不开               |
+| **G2**  | OpenAPI 从 [T-API](T-API-aos-api稳定契约.md) 落仓（含 `/v1/buddy/ask`）          | 前端只用 Mock        |
+| **G3**  | [23](23-AOS开源引用与交付军规.md)：CI 禁 UI 引上游 SDK + refs 不进编译                   | 不得合入污染依赖         |
+| **G4**  | Logger（[T-CROSS](T-CROSS-横切能力详细技术方案.md) §3.2）进脚手架                      | Wave-1 起强制       |
+| **G5**  | [24](24-AOS客户侧前置组件安装SOP.md) §4 Dev 缩小版前置（PG/对象存储等）                     | **最迟 Wave-4 前绿** |
 
 
 **开干主干 = G0 + G0a + G1～G4 绿；G5 可推迟到做 L1/Media 前（与 T0.8 备忘联动）。**
@@ -60,24 +60,24 @@
 对照 [00](00-技术方案索引.md)「阅读与开工顺序」；**已阅且无异议打 ✅**（不要求再写新详稿）。
 
 
-| ☐ | 文档 | 自检要点（来自方案，非新口径） |
-| --- | --- | --- |
-| ☐ | [20](20-AOS整体技术方案.md) | 层级 L1→L3+AIP+Apollo；契约只经 `aos-api`；v0.1 **不推倒**；§1.4 非目标（不凑 200+ Connector、不以 Dify 为永久内核等） |
-| ☐ | [00 索引](00-技术方案索引.md) | 全集状态 ✅；关键已决（React、AGE、LiteLLM Facade、OCR 独立进程、Ferry 格式、Org/Project） |
-| ☐ | [T-API](T-API-aos-api稳定契约.md) | `/v1` 基线；错误体/`traceId`/`Idempotency-Key`；**`POST /v1/buddy/ask` 永久兼容** |
-| ☐ | [T-CROSS](T-CROSS-横切能力详细技术方案.md) | Bearer/OIDC；多租户 Org/Project；**§3.2** 开发 DEBUG / 生产 INFO；Audit/WARN+ 不可关 |
-| ☐ | [T-UI](T-UI-前端工程与foundry-html落地规范.md) | React 18+TS 已决；蓝图真源 `foundry/html` **v1.6.5**；侧栏叙事不可改；Appearance `light/dark/system` |
-| ☐ | [T08](T08-Workshop工作台详细技术方案.md) | Module/Inbox/Selection≤10；Marking；事件幂等；先 M1 可见 |
-| ☐ | [T06](T06-Ontology与Action-Function详细技术方案.md) | Meta→读→Action/Draft 写；HR-02 发布门禁；AGE 已决 |
-| ☐ | [T07](T07-AIP人工智能平台详细技术方案.md) + [07b](../07b-Capability-Adapter重能力接入.md) | Studio=脑；重能力走 Capability **Wave-C**，不得早于 Action+Draft |
-| ☐ | [T05](T05-L1数据集成详细技术方案.md) | P0 文件+MySQL+MediaSet；OCR 独立进程；供数对齐 Ontology |
-| ☐ | [T09](T09-Apollo交付引擎详细技术方案.md) | 先 Lite；Ferry/Full 舰队按本文 **T5.6 延期** |
-| ☐ | [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) | M0～M5 与本文 §7 对照；替换缝合件而非推倒 |
-| ☐ | [21](21-AOS开源选型与功能清单.md) · [22](22-AOS开源产品维护清单.md) | 抄/不抄已决；P0 参考仓路径；`clone_aos_deps`；**不进客户包** |
-| ☐ | [23](23-AOS开源引用与交付军规.md) | R-DIR / R-LIC / R-ARCH / R-INST；AGPL 服务端不进包；UI 只调 aos-api |
-| ☐ | [24](24-AOS客户侧前置组件安装SOP.md) | 先客户前置后 AOS；Dev≈Prod 形状（§4）；现场装机最迟 Wave-4/5 |
-| ☐ | [25](25-LLM-Wiki启示与L2演进补丁.md) | Insight Backfill / Constitution / 图谱健康：**知悉排期**（见本文 T2.9+ / T3.17），不挡 G0 |
-| ☐ | 本文 **26 v1.3** | §4 推荐总序；§6「现在不要干」；§11.2 显式延期不抢主路径 |
+| ☐   | 文档                                                                       | 自检要点（来自方案，非新口径）                                                                            |
+| --- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| ☐   | [20](20-AOS整体技术方案.md)                                                    | 层级 L1→L3+AIP+Apollo；契约只经 `aos-api`；v0.1 **不推倒**；§1.4 非目标（不凑 200+ Connector、不以 Dify 为永久内核等） |
+| ☐   | [00 索引](00-技术方案索引.md)                                                    | 全集状态 ✅；关键已决（React、AGE、LiteLLM Facade、OCR 独立进程、Ferry 格式、Org/Project）                        |
+| ☐   | [T-API](T-API-aos-api稳定契约.md)                                            | `/v1` 基线；错误体/`traceId`/`Idempotency-Key`；`**POST /v1/buddy/ask` 永久兼容**                     |
+| ☐   | [T-CROSS](T-CROSS-横切能力详细技术方案.md)                                         | Bearer/OIDC；多租户 Org/Project；**§3.2** 开发 DEBUG / 生产 INFO；Audit/WARN+ 不可关                    |
+| ☐   | [T-UI](T-UI-前端工程与foundry-html落地规范.md)                                    | React 18+TS 已决；蓝图真源 `foundry/html` **v1.6.5**；侧栏叙事不可改；Appearance `light/dark/system`       |
+| ☐   | [T08](T08-Workshop工作台详细技术方案.md)                                          | Module/Inbox/Selection≤10；Marking；事件幂等；先 M1 可见                                             |
+| ☐   | [T06](T06-Ontology与Action-Function详细技术方案.md)                             | Meta→读→Action/Draft 写；HR-02 发布门禁；AGE 已决                                                    |
+| ☐   | [T07](T07-AIP人工智能平台详细技术方案.md) + [07b](../07b-Capability-Adapter重能力接入.md) | Studio=脑；重能力走 Capability **Wave-C**，不得早于 Action+Draft                                      |
+| ☐   | [T05](T05-L1数据集成详细技术方案.md)                                               | P0 文件+MySQL+MediaSet；OCR 独立进程；供数对齐 Ontology                                                |
+| ☐   | [T09](T09-Apollo交付引擎详细技术方案.md)                                           | 先 Lite；Ferry/Full 舰队按本文 **T5.6 延期**                                                        |
+| ☐   | [T-EVO](T-EVO-v0.1到目标态替换阶梯.md)                                           | M0～M5 与本文 §7 对照；替换缝合件而非推倒                                                                  |
+| ☐   | [21](21-AOS开源选型与功能清单.md) · [22](22-AOS开源产品维护清单.md)                       | 抄/不抄已决；P0 参考仓路径；`clone_aos_deps`；**不进客户包**                                                 |
+| ☐   | [23](23-AOS开源引用与交付军规.md)                                                 | R-DIR / R-LIC / R-ARCH / R-INST；AGPL 服务端不进包；UI 只调 aos-api                                  |
+| ☐   | [24](24-AOS客户侧前置组件安装SOP.md)                                              | 先客户前置后 AOS；Dev≈Prod 形状（§4）；现场装机最迟 Wave-4/5                                                 |
+| ☐   | [25](25-LLM-Wiki启示与L2演进补丁.md)                                            | Insight Backfill / Constitution / 图谱健康：**知悉排期**（见本文 T2.9+ / T3.17），不挡 G0                   |
+| ☐   | 本文 **26 v1.3**                                                           | §4 推荐总序；§6「现在不要干」；§11.2 显式延期不抢主路径                                                          |
 
 
 **G0 通过条件：** 上表全部 ✅（或书面注明「跳过项 + 理由」，且不得与 §6 / 23 冲突）。
@@ -85,15 +85,15 @@
 #### 0.1.3 G0a · 红线内化（开干前必答）
 
 
-| ☐ | 红线 | 方案出处 | 自检问句（答「是」才过） |
-| --- | --- | --- | --- |
-| ☐ | 业务进自有目录 | 20 · 23 R-DIR | 默认合入 `aos-platform`（或约定自有仓），**不以**改 `dify/api` / 上游 monorepo 为主开发？ |
-| ☐ | UI 不直连上游 | 23 R-ARCH-01 · T-UI | `apps/web` **绝不** import LiteLLM/厂商 LLM/Airbyte/OpenFGA/Vault SDK？ |
-| ☐ | 参考仓 ≠ 产品 | 20 · 21/22 · 23 | `mybuddy-v01` / `refs` 只参考，**不进**客户交付编译与镜像？ |
-| ☐ | 试用脑不扩张 | 23 R-ARCH-05 · T-EVO | 目标态新功能**不**扩大对 Dify/OpenOcta UI 依赖？ |
-| ☐ | 无 Draft 不自动写库 | T06 · 本文 §6 | 生产写回必经 Action/Draft（A-02）？ |
-| ☐ | 重能力不进 Function | 07b CAP-01 | 短视频/数字人等走 Capability Adapter，**不**塞进 ≤60s Function？ |
-| ☐ | 话术 | T-EVO §4 | 不因 RAG Chatbot 可用就宣称「已建成 Ontology/Workshop」？ |
+| ☐   | 红线             | 方案出处                 | 自检问句（答「是」才过）                                                       |
+| --- | -------------- | -------------------- | ------------------------------------------------------------------ |
+| ☐   | 业务进自有目录        | 20 · 23 R-DIR        | 默认合入 `aos-platform`（或约定自有仓），**不以**改 `dify/api` / 上游 monorepo 为主开发？ |
+| ☐   | UI 不直连上游       | 23 R-ARCH-01 · T-UI  | `apps/web` **绝不** import LiteLLM/厂商 LLM/Airbyte/OpenFGA/Vault SDK？ |
+| ☐   | 参考仓 ≠ 产品       | 20 · 21/22 · 23      | `mybuddy-v01` / `refs` 只参考，**不进**客户交付编译与镜像？                        |
+| ☐   | 试用脑不扩张         | 23 R-ARCH-05 · T-EVO | 目标态新功能**不**扩大对 Dify/OpenOcta UI 依赖？                                |
+| ☐   | 无 Draft 不自动写库  | T06 · 本文 §6          | 生产写回必经 Action/Draft（A-02）？                                         |
+| ☐   | 重能力不进 Function | 07b CAP-01           | 短视频/数字人等走 Capability Adapter，**不**塞进 ≤60s Function？                |
+| ☐   | 话术             | T-EVO §4             | 不因 RAG Chatbot 可用就宣称「已建成 Ontology/Workshop」？                       |
 
 
 #### 0.1.4 G1～G5 · 工程门禁（对照任务）
@@ -103,13 +103,13 @@
 > **2026-07-17：** G1～G5 **全部 ✅**（见 27 v0.2）。
 
 
-| ID | 依据 | 自检要点 | 对应任务 | 状态 |
-| --- | --- | --- | --- | --- |
-| **G1** | T-UI §3 · 20 仓结构 | 存在可 `build` 的 `aos-api` + `apps/web`；README 有启动命令；目录在自有仓非上游树内 | **T0.1** | ✅ |
-| **G2** | T-API 全文 | 仓内 `openapi.yaml`（或生成物）路径表与 T-API 一致；含 `/v1/buddy/ask`；错误体字段约定一致 | **T0.2** | ✅ |
-| **G3** | 23 §3/§5 | CI（可先 warn→error）：禁 UI 上游 SDK import；黑名单路径/refs 不进编译产物；故意违规样例能红 | **T0.6**（**T0.10** SBOM 可后加严） | ✅ |
-| **G4** | T-CROSS §3.2 · T-EVO §6.0 | 统一 Logger；请求带 `trace_id`；开发默认 debug、可配；禁裸 print 当生产日志；Audit 通道预留 | **T0.4** | ✅ |
-| **G5** | 24 §4 Dev 缩小版 · §2 Lite 矩阵 | 本机/Docker：**PostgreSQL** 可连；**对象存储**（MinIO 或 S3 兼容）经探针可通；缺口记 27；**不**把 MinIO Server 打进客户包 | **T0.8** → Wave-4 **T4.0** | ✅ |
+| ID     | 依据                         | 自检要点                                                                                      | 对应任务                          | 状态  |
+| ------ | -------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------- | --- |
+| **G1** | T-UI §3 · 20 仓结构           | 存在可 `build` 的 `aos-api` + `apps/web`；README 有启动命令；目录在自有仓非上游树内                             | **T0.1**                      | ✅   |
+| **G2** | T-API 全文                   | 仓内 `openapi.yaml`（或生成物）路径表与 T-API 一致；含 `/v1/buddy/ask`；错误体字段约定一致                          | **T0.2**                      | ✅   |
+| **G3** | 23 §3/§5                   | CI（可先 warn→error）：禁 UI 上游 SDK import；黑名单路径/refs 不进编译产物；故意违规样例能红                           | **T0.6**（**T0.10** SBOM 可后加严） | ✅   |
+| **G4** | T-CROSS §3.2 · T-EVO §6.0  | 统一 Logger；请求带 `trace_id`；开发默认 debug、可配；禁裸 print 当生产日志；Audit 通道预留                          | **T0.4**                      | ✅   |
+| **G5** | 24 §4 Dev 缩小版 · §2 Lite 矩阵 | 本机/Docker：**PostgreSQL** 可连；**对象存储**（MinIO 或 S3 兼容）经探针可通；缺口记 27；**不**把 MinIO Server 打进客户包 | **T0.8** → Wave-4 **T4.0**    | ✅   |
 
 
 #### 0.1.5 与 Wave-0 关系
@@ -290,15 +290,15 @@ UI 蓝图真源：`foundry/html` **v1.6.5**（含 Appearance）。
 ### 3.4 Wave-C · Capability（增强 · 不挡 M4/M5 主退出）
 
 
-| ID       | 任务                  | 细节                                  | 依赖             | DoD             |
-| -------- | ------------------- | ----------------------------------- | -------------- | --------------- |
-| **TC.1** | Capability Registry | Manifest；kind=sync|job|session      | T3.4           | 可登记 1 个 Adapter |
-| **TC.2** | Facade API          | `/v1/aip/capabilities`*；禁 UI 直连 SDK | TC.1, T3.8     | 契约测绿            |
-| **TC.3** | Job 状态机             | submit/status/cancel/artifact；回调验签  | TC.2, T3.5     | 1 Job 跑完        |
-| **TC.4** | Job→MediaSet        | 产物 RID 经 **Action** 写入              | TC.3, **T4.3** | Media 可打开       |
-| **TC.5** | C0 稿件 sync          | LiveScript Object + Action          | TC.2, T3.4     | 稿件落 Object      |
-| **TC.6** | Session 网关          | open/push/close；AV 外置               | TC.2, T3.4     | 场次 Object 状态对   |
-| **TC.7** | 工具面板挂 Capability    | Call Capability                     | TC.2, T3.7     | Studio 可调       |
+| ID       | 任务                  | 细节                                  | 依赖             | DoD           |
+| -------- | ------------------- | ----------------------------------- | -------------- | ------------- |
+| **TC.1** | Capability Registry | Manifest；kind=sync                  | job            | session       |
+| **TC.2** | Facade API          | `/v1/aip/capabilities`*；禁 UI 直连 SDK | TC.1, T3.8     | 契约测绿          |
+| **TC.3** | Job 状态机             | submit/status/cancel/artifact；回调验签  | TC.2, T3.5     | 1 Job 跑完      |
+| **TC.4** | Job→MediaSet        | 产物 RID 经 **Action** 写入              | TC.3, **T4.3** | Media 可打开     |
+| **TC.5** | C0 稿件 sync          | LiveScript Object + Action          | TC.2, T3.4     | 稿件落 Object    |
+| **TC.6** | Session 网关          | open/push/close；AV 外置               | TC.2, T3.4     | 场次 Object 状态对 |
+| **TC.7** | 工具面板挂 Capability    | Call Capability                     | TC.2, T3.7     | Studio 可调     |
 
 
 **最早：** T3.4 绿后可做 TC.1～TC.2。  
@@ -526,189 +526,192 @@ flowchart TD
 ### 10.1 阻塞项（不停开发）
 
 
-| ID | 阻塞 | 影响任务 | 绕行 / 状态 | 是否停编码 |
-| --- | --- | --- | --- | --- |
-| **B-AGE-01** | `postgres:16-alpine` **无** AGE 扩展（`age.control` 不存在） | T2.1 原口径 | 用 `graph_edge` 邻接表做 1-hop；真 AGE 镜像后补换 | **否** |
-| **B-WSL-HOSTPORT-01** | Windows 访问 `127.0.0.1:5433/9000` 偶发拒绝（Docker 在 WSL） | G5 / 本机联调 | 用 `wsl hostname -I` 首 IP 作 `AOS_DATABASE_URL`；LLM 边车用 host 模式脚本 | **否** |
-| **B-LITELLM-IMG-01** | 官方 `litellm[proxy]` 镜像/重依赖构建过慢或不可达 | T3.9 | Dev 用 **LiteLLM 契约形** 进程隔离边车（`deploy/dev/litellm`）；可换官方镜像不改 Facade | **否** |
-| **B-TX3-01** | 真 IdP/Keycloak 未装 | TX.3 / TX.4 完整 | 继续 `Bearer dev` + Marking 列表 | **否** |
-| **B-T09-01** | P0 参考仓 clone / SBOM CI 未跑 | T0.9 / T0.10 | 不挡主路径；穿插补 | **否** |
+| ID                    | 阻塞                                                   | 影响任务           | 绕行 / 状态                                                            | 是否停编码 |
+| --------------------- | ---------------------------------------------------- | -------------- | ------------------------------------------------------------------ | ----- |
+| **B-AGE-01**          | `postgres:16-alpine` **无** AGE 扩展（`age.control` 不存在） | T2.1 原口径       | 用 `graph_edge` 邻接表做 1-hop；真 AGE 镜像后补换                              | **否** |
+| **B-WSL-HOSTPORT-01** | Windows 访问 `127.0.0.1:5433/9000` 偶发拒绝（Docker 在 WSL）  | G5 / 本机联调      | 用 `wsl hostname -I` 首 IP 作 `AOS_DATABASE_URL`；LLM 边车用 host 模式脚本    | **否** |
+| **B-LITELLM-IMG-01**  | 官方 `litellm[proxy]` 镜像/重依赖构建过慢或不可达                   | T3.9           | Dev 用 **LiteLLM 契约形** 进程隔离边车（`deploy/dev/litellm`）；可换官方镜像不改 Facade | **否** |
+| **B-TX3-01**          | 真 Keycloak 集群未装（可选）                              | TX.3 深度 / TX.4 | **Dev JWT 形已绿**（[41](41-TX.3-IdP-OIDC对接方案.md)）；JWKS 可后插        | **否** |
+| **B-T09-01**          | P0 参考仓 clone / SBOM CI 未跑                            | T0.9 / T0.10   | 不挡主路径；穿插补                                                          | **否** |
+| **B-OCR-PADDLE-01**   | 真 `paddleocr` 全量依赖未装入 Dev 边车                       | T4.8 深度       | 边车 shaped ✅；装 paddle 后 `engine=paddleocr` 自动升                    | **否** |
+| **G-ALIGN-01**        | Word/Excel/PDF 文本解析插件（已关闭）                   | T4.4 / T05-A1  | **T4.4b ✅** · [39](39-T4.4b-文件解析插件方案.md)                         | **否** |
 
 
 ### 10.2 Wave-0
 
 
-| ID | 编码完成 | 自测完成 | 证据 |
-| --- | --- | --- | --- |
-| T0.1 | ✅ | ✅ | `aos-platform` 可启动 |
-| T0.2 | ✅ | ✅ | `packages/contracts/openapi/v1.yaml` |
-| T0.3 | ✅ | ✅ | pytest health/errors |
-| T0.4 | ✅ | ✅ | JSON 日志含 `service`/`trace_id` |
-| T0.5 | ✅ | ✅ | 401 /me · Bearer dev |
-| T0.6 | ✅ | ✅ | CI 脚本 + ExpectFail |
-| T0.7 | ✅ | ✅ | modules / object-sets Mock |
-| T0.8 | ✅ | ✅ | [27](27-本机开发基础设施与工程门禁记录.md) §3.5 |
-| T0.9 | ☐ | ☐ | 穿插；见 B-T09-01 |
-| T0.10 | ☐ | ☐ | 穿插 |
-| TX.1 | ✅ | ✅ | Appearance + tokens |
-| TX.2 | ☐ | ☐ | 后置 |
-| TX.3 | ☐ | ☐ | B-TX3-01 |
-| TX.4 | 🔄 | 🔄 | Dev marking 列表已有；真 IdP 后补 |
+| ID    | 编码完成 | 自测完成 | 证据                                   |
+| ----- | ---- | ---- | ------------------------------------ |
+| T0.1  | ✅    | ✅    | `aos-platform` 可启动                   |
+| T0.2  | ✅    | ✅    | `packages/contracts/openapi/v1.yaml` |
+| T0.3  | ✅    | ✅    | pytest health/errors                 |
+| T0.4  | ✅    | ✅    | JSON 日志含 `service`/`trace_id`        |
+| T0.5  | ✅    | ✅    | 401 /me · Bearer dev                 |
+| T0.6  | ✅    | ✅    | CI 脚本 + ExpectFail                   |
+| T0.7  | ✅    | ✅    | modules / object-sets Mock           |
+| T0.8  | ✅    | ✅    | [27](27-本机开发基础设施与工程门禁记录.md) §3.5     |
+| T0.9  | ☐    | ☐    | 穿插；见 B-T09-01                        |
+| T0.10 | ☐    | ☐    | 穿插                                   |
+| TX.1  | ✅    | ✅    | Appearance + tokens                  |
+| TX.2  | ☐    | ☐    | 后置                                   |
+| TX.3  | ✅    | ✅    | Dev JWT（OIDC 形）· `/v1/auth/token` · [41](41-TX.3-IdP-OIDC对接方案.md)；真 Keycloak=JWKS 后插 |
+| TX.4  | 🔄   | 🔄   | JWT claims 已带 markings；完整 Marking 引擎后置 |
 
 
 ### 10.3 Wave-1
 
 
-| ID | 编码完成 | 自测完成 | 证据 |
-| --- | --- | --- | --- |
-| T1.1 | ✅ | ✅ | AppShell · vitest appearance |
-| T1.2 | ✅ | ✅ | Overview / WorkshopList |
-| T1.3 | ✅ | ✅ | API modules + pytest |
-| T1.4 | ✅ | ✅ | InboxPage |
-| T1.5 | ✅ | ✅ | selection.test.ts |
-| T1.6 | ✅ | ✅ | object-sets + Inbox |
-| T1.7 | ✅ | ✅ | PublishPage |
-| T1.8 | ✅ | ✅ | paginationGuard · wave1.test |
-| T1.9 | ✅ | ✅ | marking.test.ts |
-| T1.10 | ✅ | ✅ | 幂等发布 + API idempotency |
-| T1.11 | ✅ | ✅ | CanvasPage · layoutNodeCount |
-| T1.12 | ✅ | ✅ | BuddyPage + chips |
+| ID    | 编码完成 | 自测完成 | 证据                           |
+| ----- | ---- | ---- | ---------------------------- |
+| T1.1  | ✅    | ✅    | AppShell · vitest appearance |
+| T1.2  | ✅    | ✅    | Overview / WorkshopList      |
+| T1.3  | ✅    | ✅    | API modules + pytest         |
+| T1.4  | ✅    | ✅    | InboxPage                    |
+| T1.5  | ✅    | ✅    | selection.test.ts            |
+| T1.6  | ✅    | ✅    | object-sets + Inbox          |
+| T1.7  | ✅    | ✅    | PublishPage                  |
+| T1.8  | ✅    | ✅    | paginationGuard · wave1.test |
+| T1.9  | ✅    | ✅    | marking.test.ts              |
+| T1.10 | ✅    | ✅    | 幂等发布 + API idempotency       |
+| T1.11 | ✅    | ✅    | CanvasPage · layoutNodeCount |
+| T1.12 | ✅    | ✅    | BuddyPage + chips            |
+
 
 **Wave-1 退出：** ✅（集成方案 [29](29-Wave-1全链路集成测试方案.md)）
-
 
 ### 10.4 Wave-2
 
 
-| ID | 编码完成 | 自测完成 | 证据 |
-| --- | --- | --- | --- |
-| T2.1 | ⚠ | ✅ | PG ✅；AGE 绕行邻接表（B-AGE-01） |
-| T2.2 | ✅ | ✅ | Meta Store + pytest |
-| T2.3 | ✅ | ✅ | `/v1/objects/{type}` |
-| T2.4 | ⚠ | ✅ | neighbors adjacency |
-| T2.5 | ✅ | ✅ | wiki |
-| T2.6 | ✅ | ✅ | funnel status |
-| T2.7 | ✅ | ✅ | OntologyPage（详情+邻居+健康+分支） |
-| T2.8 | ✅ | ✅ | object-sets `source=pg` + Inbox |
-| T2.9 | ✅ | ✅ | constitution lint + 发布门禁 |
-| T2.10 | ✅ | ✅ | `/v1/ontology/graph-health` |
-| T2.11 | ✅ | ✅ | `/v1/ontology/branches` + UI 切换 |
+| ID    | 编码完成 | 自测完成 | 证据                              |
+| ----- | ---- | ---- | ------------------------------- |
+| T2.1  | ⚠    | ✅    | PG ✅；AGE 绕行邻接表（B-AGE-01）        |
+| T2.2  | ✅    | ✅    | Meta Store + pytest             |
+| T2.3  | ✅    | ✅    | `/v1/objects/{type}`            |
+| T2.4  | ⚠    | ✅    | neighbors adjacency             |
+| T2.5  | ✅    | ✅    | wiki                            |
+| T2.6  | ✅    | ✅    | funnel status                   |
+| T2.7  | ✅    | ✅    | OntologyPage（详情+邻居+健康+分支）       |
+| T2.8  | ✅    | ✅    | object-sets `source=pg` + Inbox |
+| T2.9  | ✅    | ✅    | constitution lint + 发布门禁        |
+| T2.10 | ✅    | ✅    | `/v1/ontology/graph-health`     |
+| T2.11 | ✅    | ✅    | `/v1/ontology/branches` + UI 切换 |
+
 
 **Wave-2 退出：** ✅（集成 [30](30-Wave-2全链路集成测试方案.md) · smoke 脚本绿）
-
 
 ### 10.5 Wave-3
 
 
-| ID | 编码完成 | 自测完成 | 证据 |
-| --- | --- | --- | --- |
-| T3.1 | ✅ | ✅ | `/v1/actions/types` |
-| T3.2 | ✅ | ✅ | `/v1/actions/validate` + submission.py |
-| T3.3 | ✅ | ✅ | `/v1/aip/drafts` · DraftInboxPage · 不写生产 |
-| T3.4 | ✅ | ✅ | `POST .../approve` → obj_instance + 幂等 |
-| T3.5 | ✅ | ✅ | `/v1/actions/webhooks` 骨架 |
-| T3.6 | ✅ | ✅ | `/v1/functions/invoke` · ≤60s 杀（408） |
-| T3.7 | ✅ | ✅ | `/v1/aip/tools` |
-| T3.8 | ✅ | ✅ | `/v1/aip/*` Facade |
-| T3.9 | ✅ | ✅ | LiteLLM 形边车进程隔离 · `llm_gateway` · vault ref；见 [33](33-T3.9-LiteLLM边车去stub方案.md) |
-| T3.10 | ✅ | ✅ | `/v1/aip/models/warmup` |
-| T3.11 | ✅ | ✅ | logic dryRun 不落库 |
-| T3.12 | ✅ | ✅ | LogicPage UI |
-| T3.13 | ✅ | ✅ | StudioPage + toolCalls |
-| T3.14 | ✅ | ✅ | DraftInbox 批准按钮 |
-| T3.15 | ✅ | ✅ | `decision_lineage` + GET |
-| T3.16 | ✅ | ✅ | `/v1/aip/evals/*` |
-| T3.17 | ✅ | ✅ | `/v1/aip/insights/backfill` |
-| T3.18 | ✅ | ✅ | buddy/ask → Facade |
-| T3.19 | ✅ | ✅ | circuit trip/reset · chat 503 |
-| T3.20 | ✅ | ✅ | 冲突字段 409，须 `X-Allow-Conflicts` |
-| T3.21 | ✅ | ✅ | Wiki PUT 409 → 仅 Draft/Action |
+| ID    | 编码完成 | 自测完成 | 证据                                                                              |
+| ----- | ---- | ---- | ------------------------------------------------------------------------------- |
+| T3.1  | ✅    | ✅    | `/v1/actions/types`                                                             |
+| T3.2  | ✅    | ✅    | `/v1/actions/validate` + submission.py                                          |
+| T3.3  | ✅    | ✅    | `/v1/aip/drafts` · DraftInboxPage · 不写生产                                        |
+| T3.4  | ✅    | ✅    | `POST .../approve` → obj_instance + 幂等                                          |
+| T3.5  | ✅    | ✅    | `/v1/actions/webhooks` 骨架                                                       |
+| T3.6  | ✅    | ✅    | `/v1/functions/invoke` · ≤60s 杀（408）                                            |
+| T3.7  | ✅    | ✅    | `/v1/aip/tools`                                                                 |
+| T3.8  | ✅    | ✅    | `/v1/aip/`* Facade                                                              |
+| T3.9  | ✅    | ✅    | LiteLLM 形边车进程隔离 · `llm_gateway` · vault ref；见 [33](33-T3.9-LiteLLM边车去stub方案.md) |
+| T3.10 | ✅    | ✅    | `/v1/aip/models/warmup`                                                         |
+| T3.11 | ✅    | ✅    | logic dryRun 不落库                                                                |
+| T3.12 | ✅    | ✅    | LogicPage UI                                                                    |
+| T3.13 | ✅    | ✅    | StudioPage + toolCalls                                                          |
+| T3.14 | ✅    | ✅    | DraftInbox 批准按钮                                                                 |
+| T3.15 | ✅    | ✅    | `decision_lineage` + GET                                                        |
+| T3.16 | ✅    | ✅    | `/v1/aip/evals/*`                                                               |
+| T3.17 | ✅    | ✅    | `/v1/aip/insights/backfill`                                                     |
+| T3.18 | ✅    | ✅    | buddy/ask → Facade                                                              |
+| T3.19 | ✅    | ✅    | circuit trip/reset · chat 503                                                   |
+| T3.20 | ✅    | ✅    | 冲突字段 409，须 `X-Allow-Conflicts`                                                  |
+| T3.21 | ✅    | ✅    | Wiki PUT 409 → 仅 Draft/Action                                                   |
+
 
 **Wave-3 退出：** ✅（集成 [32](32-Wave-3全链路集成测试方案.md)）
-
 
 ### 10.5b Wave-C
 
 
-| ID | 编码完成 | 自测完成 | 证据 |
-| --- | --- | --- | --- |
-| TC.1 | ✅ | ✅ | Capability Registry |
-| TC.2 | ✅ | ✅ | `/v1/aip/capabilities`* |
-| TC.3 | ✅ | ✅ | submit/status Job（同步 mock succeed） |
-| TC.4 | ⚠ | ✅ | artifact rid 返回；真 Media 落库依赖 T4.3 元数据面 |
-| TC.5 | ✅ | ✅ | sync manuscript |
-| TC.6 | ✅ | ✅ | session open（AV 外置声明） |
-| TC.7 | ✅ | ✅ | CapabilityPage 可调 |
+| ID   | 编码完成 | 自测完成 | 证据                                     |
+| ---- | ---- | ---- | -------------------------------------- |
+| TC.1 | ✅    | ✅    | Capability Registry                    |
+| TC.2 | ✅    | ✅    | `/v1/aip/capabilities`*                |
+| TC.3 | ✅    | ✅    | submit/status Job（同步 mock succeed）     |
+| TC.4 | ⚠    | ✅    | artifact rid 返回；真 Media 落库依赖 T4.3 元数据面 |
+| TC.5 | ✅    | ✅    | sync manuscript                        |
+| TC.6 | ✅    | ✅    | session open（AV 外置声明）                  |
+| TC.7 | ✅    | ✅    | CapabilityPage 可调                      |
+
 
 **Wave-C：** ✅ MVP（不挡主路径）
-
 
 ### 10.5c Wave-4
 
 
-| ID | 编码完成 | 自测完成 | 证据 |
-| --- | --- | --- | --- |
-| T4.0 | ✅ | ✅ | G5 见 [27](27-本机开发基础设施与工程门禁记录.md) |
-| T4.1 | ✅ | ✅ | `/v1/sources` 插件注册 |
-| T4.2 | ✅ | ✅ | MinIO 真 put/get · `/v1/object-store/health` · content 往返（[35](35-T4.2-MinIO真put-get方案.md)） |
-| T4.3 | ✅ | ✅ | MediaSet create/list/get |
-| T4.4 | ✅ | ✅ | file source → pipeline |
-| T4.5 | ✅ | ✅ | Build SUCCEEDED |
-| T4.6 | ✅ | ✅ | PyMySQL live probe/ingest · [36](36-T4.6-MySQL去stub方案.md) · `aos-dev-mysql:3307` |
-| T4.7 | ✅ | ✅ | MySQL 行 → `obj_instance` 映射（ingest） |
-| T4.8 | ✅ | ✅ | OCR 边车 · [37](37-T4.8-OCR边车去stub方案.md) · `sidecar=ocr`（shaped；真 paddle 可选） |
-| T4.9 | ✅ | ✅ | DLQ list/push/retry · DataPage |
-| T4.10 | ⚪ | — | 滚动连接器（§11.2） |
-| T4.11 | ✅ | ✅ | sync-routing <128KB |
-| T4.12 | ✅ | ✅ | MediaReference |
-| T4.13 | ✅ | ✅ | schedules |
-| T4.14 | ✅ | ✅ | builds 列表 |
-| T4.15 | ✅ | ✅ | edge agent probe |
-| T4.16 | ✅ | ✅ | funnel worker 四阶段 |
-| T4.17 | ✅ | ✅ | DocIntel 失败入 DLQ 不卡批 |
+| ID    | 编码完成 | 自测完成 | 证据                                                                                         |
+| ----- | ---- | ---- | ------------------------------------------------------------------------------------------ |
+| T4.0  | ✅    | ✅    | G5 见 [27](27-本机开发基础设施与工程门禁记录.md)                                                           |
+| T4.1  | ✅    | ✅    | `/v1/sources` 插件注册                                                                         |
+| T4.2  | ✅    | ✅    | MinIO 真 put/get · `/v1/object-store/health` · content 往返（[35](35-T4.2-MinIO真put-get方案.md)） |
+| T4.3  | ✅    | ✅    | MediaSet create/list/get                                                                   |
+| T4.4 | ✅ | ✅ | 文件→MediaSet/pipeline + **T4.4b 解析**（txt/md/csv/docx/xlsx/pdf）· [39](39-T4.4b-文件解析插件方案.md) · G-ALIGN-01 关闭 |
+| T4.5  | ✅    | ✅    | Build SUCCEEDED                                                                            |
+| T4.6  | ✅    | ✅    | PyMySQL live probe/ingest · [36](36-T4.6-MySQL去stub方案.md) · `aos-dev-mysql:3307`           |
+| T4.7  | ✅    | ✅    | MySQL 行 → `obj_instance` 映射（ingest）                                                        |
+| T4.8  | ✅    | ✅    | OCR 边车 · [37](37-T4.8-OCR边车去stub方案.md) · `sidecar=ocr`（shaped；真 paddle 可选）                 |
+| T4.9  | ✅    | ✅    | DLQ list/push/retry · DataPage                                                             |
+| T4.10 | ⚪    | —    | 滚动连接器（§11.2）                                                                               |
+| T4.11 | ✅    | ✅    | sync-routing <128KB                                                                        |
+| T4.12 | ✅    | ✅    | MediaReference                                                                             |
+| T4.13 | ✅    | ✅    | schedules                                                                                  |
+| T4.14 | ✅    | ✅    | builds 列表                                                                                  |
+| T4.15 | ✅    | ✅    | edge agent probe                                                                           |
+| T4.16 | ✅    | ✅    | funnel worker 四阶段                                                                          |
+| T4.17 | ✅    | ✅    | DocIntel 失败入 DLQ 不卡批                                                                       |
 
-**Wave-4 退出：** ✅ **MVP 契约面**（T4.2 MinIO ✅ · T4.6/T4.7 MySQL→Object ✅ · **T4.8 OCR 边车 ✅**）
 
+**Wave-4 退出：** ✅ **MVP 契约面**（T4.2/T4.4b/T4.6/T4.7/T4.8 ✅）
 
 ### 10.5d Wave-5
 
 
-| ID | 编码完成 | 自测完成 | 证据 |
-| --- | --- | --- | --- |
-| T5.1 | ⚠ | ✅ | Dev 可跑文档+compose；正式安装包后置 |
-| T5.2 | ✅ | ✅ | spoke probe |
-| T5.3 | ✅ | ✅ | `/v1/apollo/upgrade` |
-| T5.4 | ✅ | ✅ | vault refs only |
-| T5.5 | ⚪ | — | 流程见 [24](24-AOS客户侧前置组件安装SOP.md)（签署现场） |
-| T5.6 | ⚪ | — | **显式延期** §11.2 |
-| T5.7 | ✅ | ✅ | Asset Bundle validate |
-| T5.8 | ✅ | ✅ | hotfix 标记位 |
+| ID   | 编码完成 | 自测完成 | 证据                                    |
+| ---- | ---- | ---- | ------------------------------------- |
+| T5.1 | ⚠    | ✅    | Dev 可跑文档+compose；正式安装包后置              |
+| T5.2 | ✅    | ✅    | spoke probe                           |
+| T5.3 | ✅    | ✅    | `/v1/apollo/upgrade`                  |
+| T5.4 | ✅    | ✅    | vault refs only                       |
+| T5.5 | ⚪    | —    | 流程见 [24](24-AOS客户侧前置组件安装SOP.md)（签署现场） |
+| T5.6 | ⚪    | —    | **显式延期** §11.2                        |
+| T5.7 | ✅    | ✅    | Asset Bundle validate                 |
+| T5.8 | ✅    | ✅    | hotfix 标记位                            |
+
 
 **Wave-5 退出：** ✅ Lite MVP（Ferry/Full=T5.6 延期）
-
 
 ### 10.6 测试覆盖审计（2026-07-17）
 
 
-| 层 | 状态 | 数量 / 入口 |
-| --- | --- | --- |
-| API 单测 | ✅ | **56 相关绿**（OCR +4；偶发 object-sets 计数污染 2 条与 OCR 无关） |
-| Web 单测 | ✅ | **11** + build OK |
-| 自动集成冒烟 | ✅ | `run-integration-smoke.ps1`（approve/lineage/logic/chat/media/apollo） |
-| Wave 集成方案 MD | ✅ | 28/29/30/**32**；总账 [31](31-波次交付结果台账.md) |
+| 层            | 状态  | 数量 / 入口                                                              |
+| ------------ | --- | -------------------------------------------------------------------- |
+| API 单测       | ✅   | **56 相关绿**（OCR +4；偶发 object-sets 计数污染 2 条与 OCR 无关）                   |
+| Web 单测       | ✅   | **11** + build OK                                                    |
+| 自动集成冒烟       | ✅   | `run-integration-smoke.ps1`（approve/lineage/logic/chat/media/apollo） |
+| Wave 集成方案 MD | ✅   | 28/29/30/**32**；总账 [31](31-波次交付结果台账.md)                              |
+
 
 **曾遗漏（已补）：** 波次结果落档 31；Wave-3+ 写生产/熔断/冲突；C/4/5 契约面。
 
-
 ### 10.7 与 §11 实现对齐摘要
 
-| 类别 | 状态 |
-| --- | --- |
-| 文档挂点（§11.1） | ✅ 无漏挂任务 ID |
-| 显式延期（§11.2） | ⚪ 保持：Ferry/TTL/Module Loop/Scenario/MCP/Tauri深/200+连接器/Nebula |
-| 实现死角 | **无未标注缺口**；⚠ = MVP stub；OCR 边车 ✅ 但不得宣称生产级真 PaddleOCR GPU |
-| TX.2 指标 / TX.3 真 IdP / TX.4 真 Marking | 🔄/☐ 见 §10.2；**B-TX3-01** |
-| T0.9/T0.10 SBOM/军规扫描 | 🔄 穿插；**B-T09-01** 不挡主路径 |
+
+| 类别                                    | 状态                                                            |
+| ------------------------------------- | ------------------------------------------------------------- |
+| 文档挂点（§11.1）                           | ✅ 无漏挂任务 ID                                                    |
+| 显式延期（§11.2）                           | ⚪ 含 Ferry/T4.10 + **T-UI S2**（G-ALIGN-01～04 已关闭） |
+| 实现死角                                  | **无未标注缺口**；⚠=MVP stub；OCR shaped 非生产 GPU |
+| TX.2 指标 / TX.3 真 IdP / TX.4 真 Marking | 🔄/☐ 见 §10.2；**B-TX3-01**                                     |
+| T0.9/T0.10 SBOM/军规扫描                  | 🔄 穿插；**B-T09-01** 不挡主路径                                      |
 
 
 ---
@@ -734,23 +737,28 @@ flowchart TD
 | 23         | T0.6 · T0.10                          | ✅                                                    |
 | 24         | G5 · T4.0 · T5.5                      | ✅                                                    |
 | 25         | T2.9/T2.10 · T3.17 · TTL 见下           | ✅/⚠                                                  |
-| 一致性自检      | 不单独编码；发版前人工对照；**G0 勾选可代替重复自检** | ⚪ 流程项 |
+| 一致性自检      | 不单独编码；发版前人工对照；**G0 勾选可代替重复自检**        | ⚪ 流程项                                                |
 
 
 ### 11.2 仍为「显式延期 / 后置」（不是漏写）
 
 
-| 项                               | 出处               | 26 处理                                 |
-| ------------------------------- | ---------------- | ------------------------------------- |
-| Ferry 气隙 / Full 舰队 / Channel 全集 | T09 P1/P2        | **T5.6**                              |
-| TTL/遗忘归档作业                      | 25 P2 · T06 §7.5 | **T2.x+** 后置：规模痛点再开（建议 ID `T2.12` 待立） |
-| Module interface / Loop 嵌套      | T08 P2           | 后置 v1.1 执行器                           |
-| Scenario 沙箱分叉                   | 07               | 后置                                    |
-| MCP 供数附录                        | T05 §4.5         | 可选，不进主路径                              |
-| 桌面 Tauri 深度改造                   | T-UI S3 · T-EVO  | Wave-5 后 / 与 T3.18 并行最小兼容即可           |
-| 200+ Connector                  | 20 §1.4          | **T4.10** 滚动                          |
-| Nebula 换引擎                      | T06              | 规模触发，非现                               |
-| 真 LiteLLM 官方 proxy 镜像 / 真 Java JDBC 驱动 / 真 PaddleOCR pip 全量 | T07/T05 | T3.9 边车+Agnes ✅；T4.6 PyMySQL ✅；T4.8 边车 shaped ✅（**B-OCR-PADDLE-01**） |
+| 项                                                           | 出处               | 26 处理                                                                |
+| ----------------------------------------------------------- | ---------------- | -------------------------------------------------------------------- |
+| Ferry 气隙 / Full 舰队 / Channel 全集                             | T09 P1/P2        | **T5.6**                                                             |
+| TTL/遗忘归档作业                                                  | 25 P2 · T06 §7.5 | **T2.x+** 后置：规模痛点再开（建议 ID `T2.12` 待立）                                |
+| Module interface / Loop 嵌套                                  | T08 P2           | 后置 v1.1 执行器                                                          |
+| Scenario 沙箱分叉                                               | 07               | 后置                                                                   |
+| MCP 供数附录                                                    | T05 §4.5         | 可选，不进主路径                                                             |
+| 桌面 Tauri 深度改造                                               | T-UI S3 · T-EVO  | Wave-5 后 / 与 T3.18 并行最小兼容即可                                          |
+| 200+ Connector                                              | 20 §1.4          | **T4.10** 滚动                                                         |
+| Nebula 换引擎                                                  | T06              | 规模触发，非现                                                              |
+| 真 LiteLLM 官方 proxy 镜像 / 真 Java JDBC 驱动 / 真 PaddleOCR pip 全量 | T07/T05          | T3.9 边车+Agnes ✅；T4.6 PyMySQL ✅；T4.8 边车 shaped ✅（**B-OCR-PADDLE-01**） |
+| Word/Excel/PDF 文本解析插件 | T05-A1 · 20 §1.4 | **✅ T4.4b** · [39](39-T4.4b-文件解析插件方案.md)（G-ALIGN-01 关闭） |
+| `POST /v1/actions/execute`（OpenAPI 有、实现无） | T-API · T08 | **✅ G-ALIGN-02 关闭** · [40](40-G-ALIGN-02-actions-execute契约对齐方案.md) |
+| `/v1/ontology/link-types` CRUD | T-API · 03 ONT-002 | **✅ G-ALIGN-03 关闭** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · `LINK_SCALE_BLOCKED` |
+| `/v1/datasets/*` · `/v1/syncs` | T-API · T05 | **✅ G-ALIGN-04 关闭** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · Facade |
+| foundry/html 全页 1:1（Graph/Pipeline 多页/Evals 专页等） | T-UI S2 · 34 §3 | **⚪ S2**；主路径 S1 ✅ |
 
 
 ### 11.3 审计结论
@@ -761,20 +769,31 @@ flowchart TD
 | v1.1 相对 20_tech 有无遗漏？ | **有**（T08 护栏、T05 路由/Schedule、T06 Constitution/健康、T09 Asset Bundle、T-CROSS IdP 等） |
 | v1.2？                 | **主路径与 20_tech P0/P1 必达已拉齐**；P2/可选见 §11.2 显式延期                                   |
 | 是否还要再写新详稿？            | **否**；缺的是任务 ID，不是技术方案                                                            |
-| **v1.6 实现审计？**        | **主路径任务 ID 均有编码落点**；无「文档有、实现无、且未标注」死角；⚠/⚪ 已显式                                                          |
+| **v1.6 实现审计？**        | **主路径任务 ID 均有编码落点**；无「文档有、实现无、且未标注」死角；⚠/⚪ 已显式                                    |
+| **v1.11 产品对齐？**       | 审计发现 4 项虚标/未标 → 已收 **G-ALIGN-01～04**；详见 §11.5 / [31 §9](31-波次交付结果台账.md) |
 
 
 ### 11.4 实现覆盖核对（2026-07-17）
 
 
-| Wave | 任务范围 | 实现结论 |
-| --- | --- | --- |
-| 0～2 | T0.* / T1.* / T2.* | ✅ 已退出 |
-| 3 | T3.1～T3.21 | ✅ DoD（T3.9 边车 ✅；官方 proxy 镜像见 B-LITELLM-IMG-01） |
-| C | TC.1～TC.7 | ✅ MVP |
-| 4 | T4.0～T4.17 | ✅ 契约面；T4.2/T4.6/T4.7/T4.8 ✅；T4.10 滚动 |
-| 5 | T5.1～T5.8 | ✅ Lite；T5.1 ⚠；T5.5 流程；T5.6 延期 |
-| CROSS | TX.1～4 | TX.1✅；TX.2/3/4 真 IdP 后置（B-TX3-01） |
+| Wave  | 任务范围               | 实现结论                                           |
+| ----- | ------------------ | ---------------------------------------------- |
+| 0～2   | T0.* / T1.* / T2.* | ✅ 已退出                                          |
+| 3     | T3.1～T3.21         | ✅ DoD（T3.9 边车 ✅；官方 proxy 镜像见 B-LITELLM-IMG-01） |
+| C     | TC.1～TC.7          | ✅ MVP                                          |
+| 4     | T4.0～T4.17         | ✅ 契约面；T4.2/T4.4b/T4.6/T4.7/T4.8 ✅；T4.10 滚动 |
+| 5     | T5.1～T5.8          | ✅ Lite；T5.1 ⚠；T5.5 流程；T5.6 延期                  |
+| CROSS | TX.1～4             | TX.1✅；**TX.3 Dev JWT ✅**；TX.4 🔄；TX.2 后置 |
+
+
+### 11.5 产品方案对齐（2026-07-17 · 与台账 31 §9 同步）
+
+| 问题 | 答案 |
+| --- | --- |
+| 产品 05～09 P0 主路径是否有编码落点？ | **是**（Wave 0～5 MVP） |
+| 是否存在「文档有、实现无、且未标注」？ | **审计前有 4 项**；**G-ALIGN-01～04 均已关闭** |
+| 产品蓝图 html 全页？ | **未完成 = T-UI S2**；34 已诚实披露；不挡主路径退出 |
+| 下一刀建议？ | T-UI S2 业务深页 · TX.2 指标 · 真 Keycloak JWKS |
 
 
 ---
@@ -782,19 +801,26 @@ flowchart TD
 ## 12. 变更记录
 
 
-| 版本   | 日期         | 变更                                                                                             |
-| ---- | ---------- | ---------------------------------------------------------------------------------------------- |
-| v1.0 | 2026-07-17 | 初稿：Wave · 门禁 · 多组并行示意                                                                          |
-| v1.1 | 2026-07-17 | **单人版**：全量任务 ID（T0～T5/TC）· 依赖边 · 推荐总序；删除团队切分                                                   |
-| v1.2 | 2026-07-17 | **对齐 20_tech 审计**：补 T1.9～12 · T2.9～11 · T3.19～21 · T4.11～17 · T5.7～8 · T0.9～10 · TX.2～4；§11 矩阵 |
-| v1.3 | 2026-07-17 | **§0.1 开工门禁补齐**：G0 文档勾选表 · G0a 红线 · G1～G5 依据/自检/任务映射（口径来自 20_tech，不新写详稿） |
-| v1.4 | 2026-07-17 | **§10 进度看板**（编码/自测）· §10.1 阻塞不停 · Wave-0/1 收口 · Wave-2 Meta/实例/Wiki/Funnel/邻接图 |
-| v1.5 | 2026-07-17 | Wave-3 T3.1～3；台账 31；测试审计 §10.6 |
-| v1.6 | 2026-07-17 | **Wave-3/C/4/5 MVP 收口** · §10 全表 · §11.4 实现核对 · 集成 32 · pytest 43 |
-| v1.7 | 2026-07-17 | **T3.9 去 stub**：LiteLLM 形边车 · llm_gateway · [33](33-T3.9-LiteLLM边车去stub方案.md) · B-WSL-HOSTPORT / B-LITELLM-IMG |
-| v1.8 | 2026-07-17 | **T4.2 MinIO 真 put/get** · [35](35-T4.2-MinIO真put-get方案.md) · object_store · smoke content 往返 |
-| v1.9 | 2026-07-17 | **T4.6/T4.7 MySQL→Object** · [36](36-T4.6-MySQL去stub方案.md) · aos-dev-mysql · ingest |
+| 版本    | 日期         | 变更                                                                                                             |
+| ----- | ---------- | -------------------------------------------------------------------------------------------------------------- |
+| v1.0  | 2026-07-17 | 初稿：Wave · 门禁 · 多组并行示意                                                                                          |
+| v1.1  | 2026-07-17 | **单人版**：全量任务 ID（T0～T5/TC）· 依赖边 · 推荐总序；删除团队切分                                                                   |
+| v1.2  | 2026-07-17 | **对齐 20_tech 审计**：补 T1.9～12 · T2.9～11 · T3.19～21 · T4.11～17 · T5.7～8 · T0.9～10 · TX.2～4；§11 矩阵                 |
+| v1.3  | 2026-07-17 | **§0.1 开工门禁补齐**：G0 文档勾选表 · G0a 红线 · G1～G5 依据/自检/任务映射（口径来自 20_tech，不新写详稿）                                       |
+| v1.4  | 2026-07-17 | **§10 进度看板**（编码/自测）· §10.1 阻塞不停 · Wave-0/1 收口 · Wave-2 Meta/实例/Wiki/Funnel/邻接图                                 |
+| v1.5  | 2026-07-17 | Wave-3 T3.1～3；台账 31；测试审计 §10.6                                                                                 |
+| v1.6  | 2026-07-17 | **Wave-3/C/4/5 MVP 收口** · §10 全表 · §11.4 实现核对 · 集成 32 · pytest 43                                              |
+| v1.7  | 2026-07-17 | **T3.9 去 stub**：LiteLLM 形边车 · llm_gateway · [33](33-T3.9-LiteLLM边车去stub方案.md) · B-WSL-HOSTPORT / B-LITELLM-IMG |
+| v1.8  | 2026-07-17 | **T4.2 MinIO 真 put/get** · [35](35-T4.2-MinIO真put-get方案.md) · object_store · smoke content 往返                  |
+| v1.9  | 2026-07-17 | **T4.6/T4.7 MySQL→Object** · [36](36-T4.6-MySQL去stub方案.md) · aos-dev-mysql · ingest                            |
+| v1.10 | 2026-07-17 | **T4.8 OCR 边车** · [37](37-T4.8-OCR边车去stub方案.md) · ocr_gateway · pipeline 入链路 · B-OCR-PADDLE-01                 |
+| v1.11 | 2026-07-17 | **产品/技术方案对齐**：G-ALIGN-01～04 · T4.4→⚠ · §11.5 · 台账 [31](31-波次交付结果台账.md)→v1.7 |
+| v1.12 | 2026-07-17 | **T4.4b 文件解析** · [39](39-T4.4b-文件解析插件方案.md) · G-ALIGN-01 关闭 · parsers/extract |
+| v1.13 | 2026-07-17 | **G-ALIGN-02** · [40](40-G-ALIGN-02-actions-execute契约对齐方案.md) · `/v1/actions/execute` |
+| v1.14 | 2026-07-17 | **TX.3** · [41](41-TX.3-IdP-OIDC对接方案.md) · Dev JWT · `/v1/auth/token` |
+| v1.15 | 2026-07-17 | **G-ALIGN-03/04** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · link-types · datasets/syncs |
+
 
 ---
 
-*v1.9 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4 · Agent 主驾驶*
+*v1.15 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
