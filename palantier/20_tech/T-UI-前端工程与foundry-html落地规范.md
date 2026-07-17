@@ -38,7 +38,8 @@
 | 外观 | `localStorage aos-appearance`：`light` \| `dark` \| `system`；解析后写 `html[data-aos-theme]` |
 | 映射表 | [html README](../foundry/html/README.md) · [补页清单](../foundry/html/HTML补页改页任务清单.md) |
 
-**侧栏叙事（强制）：** 工作台 L3 → AIP → 本体 → 数据集成 → 交付 Apollo  
+**侧栏 / 概览分区叙事（强制）：** 工作台 L3 → AIP → 本体 → 数据集成 → 交付 Apollo  
+（Apollo 为运维发布，概览卡片不得插在业务链中间。） 
 
 **命名陷阱：** `agents.html` = Chatbot Studio；边缘代理 = `data-connection-agents.html`。
 
