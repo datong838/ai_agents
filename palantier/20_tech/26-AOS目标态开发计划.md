@@ -1,7 +1,7 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.38 · 2026-07-17  
+> **版本**：v1.39 · 2026-07-17  
 > **状态**：Wave-0～5 MVP ✅；G-ALIGN-01～08 ✅；**TX.2/3/4 ✅**；**Module PG ✅**；JWKS 形 ✅；**Dev Keycloak / HA 路径 ✅**；**OpenFGA 边车路径 ✅**；**Ferry skopeo archive 演练 ✅**；**T0.9/T0.10 ✅**；**syft/trivy 加严 ✅**；**Marking 继承+OpenFGA Facade ✅**；**Ferry 镜像层 ✅**；**字段级 Marking ✅**；**Ferry MVP ✅**；**S2 31 live**；进度 **§10**  
 > **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)**（G1～G5 活结果）  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
@@ -348,7 +348,7 @@ UI 蓝图真源：`foundry/html` **v1.6.5**（含 Appearance）。
 | **T5.3** | Lite 升级通道                    | Catalog + 升级                           | T5.2                   | 一次升级演练          |
 | **T5.4** | Vault ref                    | 配置无明文密钥                                | T5.1, T0.5             | 密钥只 ref         |
 | **T5.5** | 现场 24 签署流程                   | 检查表+禁止无签安装                             | T4.0, T5.3             | 流程文档可执行         |
-| **T5.6** | Ferry / Full 舰队 / Channel 全集 | **MVP+镜像层 ✅**；**Channel/Spoke 目录 ✅** [66](66-Apollo-Channel与Spoke目录骨架方案.md)；Full **运行时**仍后置 | — | 缺签拒导 · 目录可演示 |
+| **T5.6** | Ferry / Full 舰队 / Channel 全集 | **MVP+镜像层 ✅**；**Channel/Spoke 目录 ✅** [66]；**Release/Change UI ✅** [67](67-Apollo-Change与Release通道UI方案.md)；Full **运行时**仍后置 | — | 缺签拒导 · 目录+UI 可演示 |
 | **T5.7** | Asset Bundle 最小              | OKF/Module 与版本同绑（OPS-008 · T09 **P0**） | T5.3, T2.9             | 一次打包+校验         |
 | **T5.8** | hotfix 通道占位                  | 紧急发布标记+事后审计位（OPS-009）                  | T5.3                   | 可标记 hotfix      |
 
@@ -795,7 +795,7 @@ flowchart TD
 | 产品 05～09 P0 主路径是否有编码落点？ | **是**（Wave 0～5 MVP） |
 | 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**；Ferry **MVP+镜像层 ✅**；Full Channel / 真 skopeo 现场仍后置 |
 | 产品蓝图 html 全页？ | **S2 31 页已接线**；Ferry 页 = MVP 签名包 [53](53-T5.6-Ferry气隙MVP方案.md) |
-| 下一刀建议？ | 现场 IdP 真 token · Full Spoke **运行时**（Channel 目录 ✅ [66]；运行时仍延期） |
+| 下一刀建议？ | 现场 IdP 真 token · Full Spoke **运行时**（Channel 目录+UI ✅ [66]/[67]；运行时仍延期） |
 
 
 ---
