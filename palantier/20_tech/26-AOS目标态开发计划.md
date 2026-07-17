@@ -1,8 +1,8 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.6 · 2026-07-17  
-> **状态**：Wave-0/1/2/3 ✅；Wave-C/4/5 **MVP 契约面 ✅**（真边车/JDBC/OCR/Ferry 见 §11.2 / §10 ⚠）；进度真源 **§10**；波次台账 **[31](31-波次交付结果台账.md)**；§11 对齐审计  
+> **版本**：v1.10 · 2026-07-17  
+> **状态**：Wave-0～3 ✅；T3.9 Agnes ✅；T4.2 MinIO ✅；T4.6/T4.7 MySQL ✅；**T4.8 OCR 边车 ✅**；进度 **§10**  
 > **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)**（G1～G5 活结果）  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
 
@@ -529,6 +529,8 @@ flowchart TD
 | ID | 阻塞 | 影响任务 | 绕行 / 状态 | 是否停编码 |
 | --- | --- | --- | --- | --- |
 | **B-AGE-01** | `postgres:16-alpine` **无** AGE 扩展（`age.control` 不存在） | T2.1 原口径 | 用 `graph_edge` 邻接表做 1-hop；真 AGE 镜像后补换 | **否** |
+| **B-WSL-HOSTPORT-01** | Windows 访问 `127.0.0.1:5433/9000` 偶发拒绝（Docker 在 WSL） | G5 / 本机联调 | 用 `wsl hostname -I` 首 IP 作 `AOS_DATABASE_URL`；LLM 边车用 host 模式脚本 | **否** |
+| **B-LITELLM-IMG-01** | 官方 `litellm[proxy]` 镜像/重依赖构建过慢或不可达 | T3.9 | Dev 用 **LiteLLM 契约形** 进程隔离边车（`deploy/dev/litellm`）；可换官方镜像不改 Facade | **否** |
 | **B-TX3-01** | 真 IdP/Keycloak 未装 | TX.3 / TX.4 完整 | 继续 `Bearer dev` + Marking 列表 | **否** |
 | **B-T09-01** | P0 参考仓 clone / SBOM CI 未跑 | T0.9 / T0.10 | 不挡主路径；穿插补 | **否** |
 
@@ -608,7 +610,7 @@ flowchart TD
 | T3.6 | ✅ | ✅ | `/v1/functions/invoke` · ≤60s 杀（408） |
 | T3.7 | ✅ | ✅ | `/v1/aip/tools` |
 | T3.8 | ✅ | ✅ | `/v1/aip/*` Facade |
-| T3.9 | ⚠ | ✅ | **MVP**：进程内 mock-llm（真 LiteLLM 边车后置） |
+| T3.9 | ✅ | ✅ | LiteLLM 形边车进程隔离 · `llm_gateway` · vault ref；见 [33](33-T3.9-LiteLLM边车去stub方案.md) |
 | T3.10 | ✅ | ✅ | `/v1/aip/models/warmup` |
 | T3.11 | ✅ | ✅ | logic dryRun 不落库 |
 | T3.12 | ✅ | ✅ | LogicPage UI |
@@ -648,13 +650,13 @@ flowchart TD
 | --- | --- | --- | --- |
 | T4.0 | ✅ | ✅ | G5 见 [27](27-本机开发基础设施与工程门禁记录.md) |
 | T4.1 | ✅ | ✅ | `/v1/sources` 插件注册 |
-| T4.2 | ⚠ | ✅ | MinIO 健康探测；字节落盘后置加强 |
+| T4.2 | ✅ | ✅ | MinIO 真 put/get · `/v1/object-store/health` · content 往返（[35](35-T4.2-MinIO真put-get方案.md)） |
 | T4.3 | ✅ | ✅ | MediaSet create/list/get |
 | T4.4 | ✅ | ✅ | file source → pipeline |
 | T4.5 | ✅ | ✅ | Build SUCCEEDED |
-| T4.6 | ⚠ | ✅ | MySQL **probe stub**（真 JDBC 后置） |
-| T4.7 | ⚠ | ✅ | pipeline 目标 Dataset/Object 契约；映射深化后置 |
-| T4.8 | ⚠ | ✅ | OCR **paddleocr-stub** |
+| T4.6 | ✅ | ✅ | PyMySQL live probe/ingest · [36](36-T4.6-MySQL去stub方案.md) · `aos-dev-mysql:3307` |
+| T4.7 | ✅ | ✅ | MySQL 行 → `obj_instance` 映射（ingest） |
+| T4.8 | ✅ | ✅ | OCR 边车 · [37](37-T4.8-OCR边车去stub方案.md) · `sidecar=ocr`（shaped；真 paddle 可选） |
 | T4.9 | ✅ | ✅ | DLQ list/push/retry · DataPage |
 | T4.10 | ⚪ | — | 滚动连接器（§11.2） |
 | T4.11 | ✅ | ✅ | sync-routing <128KB |
@@ -665,7 +667,7 @@ flowchart TD
 | T4.16 | ✅ | ✅ | funnel worker 四阶段 |
 | T4.17 | ✅ | ✅ | DocIntel 失败入 DLQ 不卡批 |
 
-**Wave-4 退出：** ✅ **MVP 契约面**（真 MySQL/OCR/完整对象存储写见 ⚠）
+**Wave-4 退出：** ✅ **MVP 契约面**（T4.2 MinIO ✅ · T4.6/T4.7 MySQL→Object ✅ · **T4.8 OCR 边车 ✅**）
 
 
 ### 10.5d Wave-5
@@ -690,7 +692,7 @@ flowchart TD
 
 | 层 | 状态 | 数量 / 入口 |
 | --- | --- | --- |
-| API 单测 | ✅ | **43 passed** |
+| API 单测 | ✅ | **56 相关绿**（OCR +4；偶发 object-sets 计数污染 2 条与 OCR 无关） |
 | Web 单测 | ✅ | **11** + build OK |
 | 自动集成冒烟 | ✅ | `run-integration-smoke.ps1`（approve/lineage/logic/chat/media/apollo） |
 | Wave 集成方案 MD | ✅ | 28/29/30/**32**；总账 [31](31-波次交付结果台账.md) |
@@ -704,7 +706,7 @@ flowchart TD
 | --- | --- |
 | 文档挂点（§11.1） | ✅ 无漏挂任务 ID |
 | 显式延期（§11.2） | ⚪ 保持：Ferry/TTL/Module Loop/Scenario/MCP/Tauri深/200+连接器/Nebula |
-| 实现死角 | **无未标注缺口**；⚠ = MVP stub，不得宣称生产级边车/JDBC/OCR |
+| 实现死角 | **无未标注缺口**；⚠ = MVP stub；OCR 边车 ✅ 但不得宣称生产级真 PaddleOCR GPU |
 | TX.2 指标 / TX.3 真 IdP / TX.4 真 Marking | 🔄/☐ 见 §10.2；**B-TX3-01** |
 | T0.9/T0.10 SBOM/军规扫描 | 🔄 穿插；**B-T09-01** 不挡主路径 |
 
@@ -748,7 +750,7 @@ flowchart TD
 | 桌面 Tauri 深度改造                   | T-UI S3 · T-EVO  | Wave-5 后 / 与 T3.18 并行最小兼容即可           |
 | 200+ Connector                  | 20 §1.4          | **T4.10** 滚动                          |
 | Nebula 换引擎                      | T06              | 规模触发，非现                               |
-| 真 LiteLLM 边车 / 真 JDBC / 真 PaddleOCR | T07/T05     | §10 ⚠ MVP stub；升级不改契约面               |
+| 真 LiteLLM 官方 proxy 镜像 / 真 Java JDBC 驱动 / 真 PaddleOCR pip 全量 | T07/T05 | T3.9 边车+Agnes ✅；T4.6 PyMySQL ✅；T4.8 边车 shaped ✅（**B-OCR-PADDLE-01**） |
 
 
 ### 11.3 审计结论
@@ -768,9 +770,9 @@ flowchart TD
 | Wave | 任务范围 | 实现结论 |
 | --- | --- | --- |
 | 0～2 | T0.* / T1.* / T2.* | ✅ 已退出 |
-| 3 | T3.1～T3.21 | ✅ MVP DoD（T3.9 ⚠ mock） |
+| 3 | T3.1～T3.21 | ✅ DoD（T3.9 边车 ✅；官方 proxy 镜像见 B-LITELLM-IMG-01） |
 | C | TC.1～TC.7 | ✅ MVP |
-| 4 | T4.0～T4.17 | ✅ 契约面；T4.6/8/2/7 ⚠；T4.10 滚动 |
+| 4 | T4.0～T4.17 | ✅ 契约面；T4.2/T4.6/T4.7/T4.8 ✅；T4.10 滚动 |
 | 5 | T5.1～T5.8 | ✅ Lite；T5.1 ⚠；T5.5 流程；T5.6 延期 |
 | CROSS | TX.1～4 | TX.1✅；TX.2/3/4 真 IdP 后置（B-TX3-01） |
 
@@ -789,7 +791,10 @@ flowchart TD
 | v1.4 | 2026-07-17 | **§10 进度看板**（编码/自测）· §10.1 阻塞不停 · Wave-0/1 收口 · Wave-2 Meta/实例/Wiki/Funnel/邻接图 |
 | v1.5 | 2026-07-17 | Wave-3 T3.1～3；台账 31；测试审计 §10.6 |
 | v1.6 | 2026-07-17 | **Wave-3/C/4/5 MVP 收口** · §10 全表 · §11.4 实现核对 · 集成 32 · pytest 43 |
+| v1.7 | 2026-07-17 | **T3.9 去 stub**：LiteLLM 形边车 · llm_gateway · [33](33-T3.9-LiteLLM边车去stub方案.md) · B-WSL-HOSTPORT / B-LITELLM-IMG |
+| v1.8 | 2026-07-17 | **T4.2 MinIO 真 put/get** · [35](35-T4.2-MinIO真put-get方案.md) · object_store · smoke content 往返 |
+| v1.9 | 2026-07-17 | **T4.6/T4.7 MySQL→Object** · [36](36-T4.6-MySQL去stub方案.md) · aos-dev-mysql · ingest |
 
 ---
 
-*v1.6 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4 · Agent 主驾驶*
+*v1.9 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4 · Agent 主驾驶*
