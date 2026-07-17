@@ -1,7 +1,7 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.39 · 2026-07-17  
+> **版本**：v1.40 · 2026-07-17  
 > **状态**：Wave-0～5 MVP ✅；G-ALIGN-01～08 ✅；**TX.2/3/4 ✅**；**Module PG ✅**；JWKS 形 ✅；**Dev Keycloak / HA 路径 ✅**；**OpenFGA 边车路径 ✅**；**Ferry skopeo archive 演练 ✅**；**T0.9/T0.10 ✅**；**syft/trivy 加严 ✅**；**Marking 继承+OpenFGA Facade ✅**；**Ferry 镜像层 ✅**；**字段级 Marking ✅**；**Ferry MVP ✅**；**S2 31 live**；进度 **§10**  
 > **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)**（G1～G5 活结果）  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
@@ -760,6 +760,7 @@ flowchart TD
 | `/v1/datasets/*` · `/v1/syncs` | T-API · T05 | **✅ G-ALIGN-04 关闭** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · Facade |
 | foundry/html 全页 1:1（Graph/Pipeline 多页/Evals 专页等） | T-UI S2 · 34 §3 | **✅ S2 31 live** · [43](43-T-UI-S2业务深页按域方案.md)+[45](45-T-UI-S2余量第二刀方案.md)+[49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)；Ferry=MVP 签名包 [53] |
 | modules publish / PATCH · evals/fleet/invoke 形变 · OpenAPI 漂移 · TX.4 | T-API · T08/T09/T-CROSS | **✅ G-ALIGN-05～08** · [47](47-技术方案全面对齐补缺方案.md) |
+| **产品模块 1.3 分析与建模**（Jupyter/R/SQL · Contour/Quiver/Vertex） | [02 §1.3](../02-四大金刚与子产品拆解.md) | ⚪ **G-ALIGN-09 显式后置** · [68](68-产品1.3分析建模与技术缺口对齐.md)；**≠** Workshop 画布（1.4 / T1.11） |
 
 
 
@@ -793,9 +794,9 @@ flowchart TD
 | 问题 | 答案 |
 | --- | --- |
 | 产品 05～09 P0 主路径是否有编码落点？ | **是**（Wave 0～5 MVP） |
-| 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**；Ferry **MVP+镜像层 ✅**；Full Channel / 真 skopeo 现场仍后置 |
+| 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**；**产品 1.3 = G-ALIGN-09 已标注后置** [68](68-产品1.3分析建模与技术缺口对齐.md)；Ferry Full 运行时仍后置 |
 | 产品蓝图 html 全页？ | **S2 31 页已接线**；Ferry 页 = MVP 签名包 [53](53-T5.6-Ferry气隙MVP方案.md) |
-| 下一刀建议？ | 现场 IdP 真 token · Full Spoke **运行时**（Channel 目录+UI ✅ [66]/[67]；运行时仍延期） |
+| 下一刀建议？ | 现场 IdP 真 token · Full Spoke **运行时**（Channel 目录+UI ✅ [66]/[67]；运行时仍延期）；**勿**用画布冒充产品 1.3（[68](68-产品1.3分析建模与技术缺口对齐.md)） |
 
 
 ---
@@ -912,4 +913,14 @@ flowchart TD
 
 ---
 
-*v1.38 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
+| v1.39 | 2026-07-17 | **Apollo Change/Release 通道 UI** · [67](67-Apollo-Change与Release通道UI方案.md) · promote/recall 接线 |
+
+
+---
+
+| v1.40 | 2026-07-17 | **G-ALIGN-09** 产品 1.3↔技术缺口 · [68](68-产品1.3分析建模与技术缺口对齐.md) · §11.2 显式后置 |
+
+
+---
+
+*v1.40 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*

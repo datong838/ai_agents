@@ -66,10 +66,10 @@ Promote/Recall 成功后刷新 channels + fleet；失败展示 `status · code �
 
 ## 4. 自测
 
-- [ ] 前端 `npm test`（nav）绿  
-- [ ] 手工/逻辑：Promote 按钮对 `stable` 隐藏；Recall 对 `dev` 隐藏  
-- [ ] 后端契约不变：`pytest tests/test_apollo_channels.py` 仍绿  
-- [ ] 文案含 `fullSpokeRuntimeDeferred` / 运行时延期诚实句  
+- [x] 前端 `npm test`（nav 等 15）绿  
+- [x] Promote 对 `stable` 无下一档按钮；Recall 对 `dev` 无上一档按钮  
+- [x] 后端契约不变：`pytest tests/test_apollo_channels.py` 绿  
+- [x] 文案含 Full 运行时延期诚实句  
 
 ---
 
