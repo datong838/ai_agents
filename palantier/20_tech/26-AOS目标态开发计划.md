@@ -1,9 +1,9 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.40 · 2026-07-17  
-> **状态**：Wave-0～5 MVP ✅；G-ALIGN-01～08 ✅；**TX.2/3/4 ✅**；**Module PG ✅**；JWKS 形 ✅；**Dev Keycloak / HA 路径 ✅**；**OpenFGA 边车路径 ✅**；**Ferry skopeo archive 演练 ✅**；**T0.9/T0.10 ✅**；**syft/trivy 加严 ✅**；**Marking 继承+OpenFGA Facade ✅**；**Ferry 镜像层 ✅**；**字段级 Marking ✅**；**Ferry MVP ✅**；**S2 31 live**；进度 **§10**  
-> **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)**（G1～G5 活结果）  
+> **版本**：v1.42 · 2026-07-17  
+> **状态**：Wave-0～5 MVP ✅；**后续主路径 = 业务平台可演示（§12 / TB.*）**；Apollo 运维加深后置；目标态差距见 §11.6  
+> **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)** · **[70 业务演示优先](70-业务平台可演示优先计划.md)**  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
 
 ---
@@ -464,10 +464,11 @@ flowchart TD
 | Dify 内核堆 Ontology        | 20 非目标 · 23  |
 | UI 直连 LiteLLM/厂商         | R-ARCH-01    |
 | 无 Draft 自动写库             | A-02         |
-| 先 Full Apollo/Ferry      | T5.6 延期      |
+| **Apollo 运维加深**（Full Spoke/Helm、现场 Ferry 加严、Channel 运维深水、生产 IdP 真 token） | **§12 决策**：先保业务平台客户演示；Lite/Ferry MVP **保持不回退**即可 |
 | 凑 200+ Connector         | 20 §1.4      |
 | 数字人/短视频进 Function        | CAP-01       |
 | 跳过 T3.1～T3.4 做 Logic 写生产 | 写路径必经 Action |
+| 用 Workshop 画布宣称「分析建模 1.3」 | G-ALIGN-09 · [68](68-产品1.3分析建模与技术缺口对齐.md) |
 
 
 ---
@@ -498,7 +499,7 @@ flowchart TD
 | E3  | L1 与 Ontology 两张皮 | **T4.7** 为 Wave-4 必达              |
 | E4  | 重能力分心             | TC.* 仅主路径阻塞或演示需要时做                |
 | E5  | 开源污染包             | T0.6 尽早 error 级                   |
-| E6  | 一人范围膨胀            | 每 Wave 只盯「退出勾选」；T4.10/T5.6 永不抢主路径 |
+| E6  | 一人范围膨胀            | 每阶段只盯 §12 TB 退出勾选；**Apollo 运维 / T4.10 永不抢业务演示主路径** |
 
 
 ---
@@ -796,12 +797,148 @@ flowchart TD
 | 产品 05～09 P0 主路径是否有编码落点？ | **是**（Wave 0～5 MVP） |
 | 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**；**产品 1.3 = G-ALIGN-09 已标注后置** [68](68-产品1.3分析建模与技术缺口对齐.md)；Ferry Full 运行时仍后置 |
 | 产品蓝图 html 全页？ | **S2 31 页已接线**；Ferry 页 = MVP 签名包 [53](53-T5.6-Ferry气隙MVP方案.md) |
-| 下一刀建议？ | 现场 IdP 真 token · Full Spoke **运行时**（Channel 目录+UI ✅ [66]/[67]；运行时仍延期）；**勿**用画布冒充产品 1.3（[68](68-产品1.3分析建模与技术缺口对齐.md)） |
+| 下一刀建议？ | **按 §12 TB.0 起**：业务平台本地可演示（数据→本体→写回→Workshop→AIP）；Apollo 运维进停车场 · [70](70-业务平台可演示优先计划.md) |
+
+
+### 11.6 与目标态差距（工程结构 + 能力 · 2026-07-17）
+
+> **详稿**：[69](69-与目标态差距台账.md) · 产品 1.3 专节 [68](68-产品1.3分析建模与技术缺口对齐.md) · 工程树真源 [20 §3](20-AOS整体技术方案.md)  
+> **诚实口径：** 目录未拆 ≠ 能力为零；`workshop-canvas` ≠ 分析建模（1.3）
+
+#### 11.6.1 三把尺子
+
+| 尺子 | 完成度（粗估） | 含义 |
+| --- | --- | --- |
+| Wave 退出 / 可演示 MVP | **约 70%～80%** | Wave-0～5 主路径已通；剩现场联调 + Full 运行时 |
+| 20 §3 目录树一字不差 | **约 1/3 目录角色** | 现状 = `apps/web` + `services/aos-api` 单体 BFF + 薄 packages + `deploy/dev`·`ferry` |
+| 完整产品（含 1.3 分析建模） | **明显偏低** | Jupyter/R/SQL 等大块空白（**G-ALIGN-09**） |
+
+#### 11.6.2 工程结构对照（20 §3 vs 现状）
+
+| 目标（20 §3） | 现状 `aos-platform/` | 差距 |
+| --- | --- | --- |
+| `apps/web` | ✅ | 小（组件化可加深） |
+| `apps/desktop` | ❌（仍在 `mybuddy-v01`） | **大** |
+| `services/aos-api` | ✅ BFF/契约面 | 小 |
+| `data-connection` / `pipeline` / `ontology` / `action-runtime` / `aip-logic` / `aip-model-gateway` / `apollo-control` | ❌ **无独立服务目录** | **大（形态）**：能力在 `aos-api` **包内模块** + `deploy/dev` 边车（LiteLLM/OCR/OpenFGA/KC 等） |
+| `packages/ui-kit` | ✅ tokens 级 | 中 |
+| `packages/ontology-sdk` | ❌ | **大** |
+| `packages/contracts` | ✅ OpenAPI | 中（AsyncAPI/事件 schema 弱） |
+| `deploy/compose` · `helm` · `ferry` | `deploy/dev`（compose）+ `deploy/ferry`；**无 helm** | **中～大** |
+
+**口径：** 多服务拆仓属 T-EVO **后期**目标，**不是**当前 Wave 退出条件；禁止把「目录空」报成「系统没做」。
+
+#### 11.6.3 能力成熟度
+
+| 层 | 目标意图 | 现状 | 档 |
+| --- | --- | --- | --- |
+| L3 Workshop | 低代码应用 | S2 深页 + Module/Canvas MVP | **高** |
+| L2 Ontology | 对象/写回 | 读/写/Draft/Action 主路径通 | **高（MVP）** |
+| AIP | Logic / Agent / 路由 | Facade + LiteLLM **边车形** | **中** |
+| L1 数据 | 连接器 / Pipeline / Dataset | 文件+MySQL+MediaSet MVP；T4.10 滚动 | **中** |
+| Apollo | Hub / Spoke / Ferry / Channel | Lite + Ferry 镜像层 + Channel 目录/UI；Full **运行时**延期 | **中高 / Full 低** |
+| 横切 | IdP / Marking / 指标 | Dev KC+HA、OpenFGA、字段 marking ✅；生产 JWT 待客户 | **中高** |
+| 产品 1.3 | Jupyter / R / SQL | **G-ALIGN-09 显式后置**；仅 code-repos 目录壳 | **≈0** |
+
+#### 11.6.4 差距分档（不自动开工）
+
+| 档 | 项 |
+| --- | --- |
+| **近** | 生产 IdP 真 token 联调；现场 Ferry 大镜像 / skopeo |
+| **中** | Full Spoke 运行时（K8s/Helm）；正式安装包（T5.1）；可选拆服务；`ontology-sdk`；desktop 迁入策略 |
+| **远** | 产品 1.3（另立 T-ANALYTICS）；200+ Connector；真 PaddleOCR GPU；Iceberg；Scenario；Module Loop |
 
 
 ---
 
-## 12. 变更记录
+## 12. 下一阶段计划：业务平台可演示优先（Apollo 运维后置）
+
+> **决策日**：2026-07-17 · **详稿**：[70](70-业务平台可演示优先计划.md)  
+> **背景**：Wave-0～5 MVP 已通；目标态差距见 §11.6 / [69](69-与目标态差距台账.md)。客户价值在 **Foundry 业务平台 + AIP**，须 **本地部署即可展示**，不能遗漏。  
+> **硬规则**：Apollo **运维/交付加深**先放一放（Full Spoke、Helm、现场 Ferry 加严、生产 IdP、Channel 运维深水）；已有 Lite/Ferry/Channel **目录与 UI 不回退**。
+
+### 12.1 为什么重排
+
+| 客户要看的 | 对应产品（02） | 现状 | 风险若继续冲 Apollo |
+| --- | --- | --- | --- |
+| 数据怎么进来变成对象 | 1.1 Pipeline · 1.2 Ontology | MVP 有，演示故事弱 | 客户看不到「业务世界」 |
+| 业务人员怎么操作对象 | 1.4 Workshop | S2 live，运行态浅 | 被当成「只有壳」 |
+| 怎么审批写回、谁改过 | Action/Draft · 谱系 | 主路径有，缺彩排包 | 合规故事讲不清 |
+| AI 怎么帮决策 | AIP Assist/Logic | 边车形可用，缺绑对象故事 | 像聊天机器人 |
+| 怎么装到客户笔记本演示 | Local-First | deploy/dev 散 | 现场装不起 → 丢单 |
+
+### 12.2 客户演示总 DoD（本阶段退出）
+
+本地（本机 Docker / 既有 `deploy/dev`）必须同时满足：
+
+1. **≤10 分钟** 拉起 API + Web + PG + 对象存储（边车按需）  
+2. **一条行业故事**（默认 **WorkOrder 工单**）走通：  
+   `数据进 → Dataset/Object 可见 → Inbox/Action → Draft 批准写回 → Workshop 运营台可见变化 → AIP 辅助一句决策 → 谱系/Marking 可指`  
+3. **不依赖**：Full Spoke、客户生产 IdP、现场 Ferry 气隙包  
+4. 交付物：《客户演示脚本》15～20 分钟 + 故障回退说明（TB.8）
+
+### 12.3 任务包 TB.*（详细计划）
+
+| ID | 主题 | 客户可见 DoD | 主要落点（现有能力上加深） | 状态 |
+| --- | --- | --- | --- | --- |
+| **TB.0** | 演示基建 | 一键/一脚本启动；健康检查清单绿；README「10 分钟路径」 | `scripts/demo/` · `deploy/dev` · 27 | ☐ |
+| **TB.1** | 行业种子 | 固定 Org/Project；WorkOrder 类型+样例对象+Dataset；演示账号（含 Marking） | seed/PG · Mock→真种子 | ☐ |
+| **TB.2** | 数据进故事 | 文件或 MySQL → Dataset → Object **可指屏讲解**；Build 成功/失败(DLQ)可见 | T4.* · Data 深页 | ☐ |
+| **TB.3** | 本体运营 | 对象详情/链接/Funnel 状态/分支或健康度 **可点可讲** | T2.* · Ontology S2 | ☐ |
+| **TB.4** | 写回闭环 | Inbox→Action→Draft 批准→对象变→Lineage **一条连续故事** | T3.* · AIP Draft | ☐ |
+| **TB.5** | Workshop | Module→画布含 Object Table+Filter→**预览运行态**→发布标记 | T1.* · Canvas | ☐ |
+| **TB.6** | AIP 演示 | Buddy/Assist 带对象上下文；Logic 一次建议；Providers/Evals 非空壳话术 | T07 · AIP 页 | ☐ |
+| **TB.7** | 治理可见 | Marking 拒绝可演示；字段脱敏一眼懂；谱系页讲合规 | TX.4 · Lineage | ☐ |
+| **TB.8** | 彩排包 | 《演示脚本》定稿；禁止演示 Apollo 运维深水；回退页 | docs + scripts | ☐ |
+
+**可穿插（不挡 TB.8）：** Capability 一镜（07b）；MediaSet/OCR 一页（有故事才开）。  
+**仍后置：** 产品 1.3 Jupyter/R/SQL（[68](68-产品1.3分析建模与技术缺口对齐.md)）；Contour/Quiver/Vertex 全集；200+ Connector。
+
+### 12.4 单人推荐序（照着做）
+
+```text
+【业务演示主链 — 取代旧「下一刀=Apollo」】
+TB.0 演示基建
+  → TB.1 行业种子
+  → TB.2 数据进故事
+  → TB.3 本体运营
+  → TB.4 写回闭环
+  → TB.5 Workshop 运行态
+  → TB.6 AIP 决策演示
+  → TB.7 治理可见
+  → TB.8 客户彩排包（本阶段退出）
+
+【停车场 — 明确不做直至 TB.8 ✅】
+Full Spoke / Helm · 生产 IdP 真 token · Ferry 现场加严 · Channel 运维深水 · 多 Spoke 舰队
+```
+
+**串行红线（不变）：** `契约 → Auth → Meta 读 → Action/Draft 写 → Logic/Capability 写回`（§4.2）。
+
+### 12.5 每刀验收模板（防遗漏）
+
+每完成一个 TB.*，必须在 [31](31-波次交付结果台账.md) 增一行，且勾：
+
+| 勾选 | 含义 |
+| --- | --- |
+| ☐ 编码落点 | 文件/路由/页路径写明 |
+| ☐ 本地可跑 | 按 TB.0 脚本复现 |
+| ☐ 客户可见 | 演示脚本中有对应分钟段 |
+| ☐ 不碰停车场 | 本刀未开 Apollo 运维新需求 |
+| ☐ 话术诚实 | 无「1.3 已交付」「Full Spoke 已交付」 |
+
+### 12.6 与 §10 / §11 关系
+
+| 区块 | 关系 |
+| --- | --- |
+| §10 Wave-0～5 | **历史完成真源**，不改结论 |
+| §11.2 / §11.6 | 延期项与目标态差距仍有效；Apollo Full 等继续 ⚪ |
+| **§12 TB.*** | **自 v1.42 起的后续主驾驶计划** |
+| §6 | Apollo 运维加深列入「现在不要干」 |
+
+
+---
+
+## 13. 变更记录
 
 
 | 版本    | 日期         | 变更                                                                                                             |
@@ -923,4 +1060,14 @@ flowchart TD
 
 ---
 
-*v1.40 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
+| v1.41 | 2026-07-17 | **§11.6 与目标态差距** · [69](69-与目标态差距台账.md) · 工程结构+能力三把尺子 |
+
+
+---
+
+| v1.42 | 2026-07-17 | **§12 业务平台可演示优先** · [70](70-业务平台可演示优先计划.md) · TB.0～TB.8 · Apollo 运维后置 |
+
+
+---
+
+*v1.42 · docs/palantier/20_tech/26 · 后续主路径见 §12 · 进度见 §10 · 差距见 §11.6 · Agent 主驾驶*
