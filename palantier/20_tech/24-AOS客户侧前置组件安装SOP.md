@@ -150,8 +150,8 @@ prereq-handoff.yaml  （或等价表格）
 | 版本建议 | Keycloak **25.x/26.x**（钉定后更新）或客户 Azure AD / 企业 IdP |
 | 安装要点 | 建 Realm（或客户租户）；Client：`aos-web` / `aos-desktop` / `aos-spoke`；回调 URL 按环境填 |
 | 验收 | OIDC discovery `/.well-known/openid-configuration` 可访问；测试账号拿得到 access_token |
-| 交给 AOS | `OIDC_ISSUER` · `CLIENT_ID` · `CLIENT_SECRET_REF` · 可选 group/role 映射说明 |
-| 已知坑 | 时钟同步；HTTPS 终结位置 |
+| 交给 AOS | `AOS_OIDC_ISSUER` · `AOS_OIDC_JWKS_URL` · `AOS_OIDC_AUDIENCE` · `CLIENT_ID_REF`；**联调规程**见 [60-生产IdP联调手册](60-生产IdP联调手册.md) |
+| 已知坑 | 时钟同步；HTTPS 终结位置；`iss` 与配置字节级一致 |
 
 ### 3.5 密钥 · Vault / KMS / Lite 密封文件
 

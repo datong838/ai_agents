@@ -55,7 +55,7 @@
 | --- | --- |
 | 模型 | **OpenFGA 关系元组** + 自有 **Markings** 标签 |
 | 参考 | `F2_Authz/openfga` |
-| Object 级 | `user` → `viewer/editor/owner` → `object` |
+| Object 级 | `user` → `viewer/editor/owner` → `object`（实现见 [61](61-OpenFGA生产模型扩展.md)） |
 | Widget / Module | 绑定 Marking；运行态无关系则不渲染（T08） |
 | Wiki 方向 B | 写权限 = 可调用对应 Action，而非 Wiki 引擎特权 |
 

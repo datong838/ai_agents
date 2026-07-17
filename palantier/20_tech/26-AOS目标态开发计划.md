@@ -1,8 +1,8 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.22 · 2026-07-17  
-> **状态**：Wave-0～5 MVP ✅；G-ALIGN-01～08 ✅；**TX.2/3/4 ✅**；**Module PG ✅**；JWKS 形 ✅；**Dev Keycloak 路径 ✅**；**S2 31 live**；进度 **§10**  
+> **版本**：v1.38 · 2026-07-17  
+> **状态**：Wave-0～5 MVP ✅；G-ALIGN-01～08 ✅；**TX.2/3/4 ✅**；**Module PG ✅**；JWKS 形 ✅；**Dev Keycloak / HA 路径 ✅**；**OpenFGA 边车路径 ✅**；**Ferry skopeo archive 演练 ✅**；**T0.9/T0.10 ✅**；**syft/trivy 加严 ✅**；**Marking 继承+OpenFGA Facade ✅**；**Ferry 镜像层 ✅**；**字段级 Marking ✅**；**Ferry MVP ✅**；**S2 31 live**；进度 **§10**  
 > **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)**（G1～G5 活结果）  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
 
@@ -348,7 +348,7 @@ UI 蓝图真源：`foundry/html` **v1.6.5**（含 Appearance）。
 | **T5.3** | Lite 升级通道                    | Catalog + 升级                           | T5.2                   | 一次升级演练          |
 | **T5.4** | Vault ref                    | 配置无明文密钥                                | T5.1, T0.5             | 密钥只 ref         |
 | **T5.5** | 现场 24 签署流程                   | 检查表+禁止无签安装                             | T4.0, T5.3             | 流程文档可执行         |
-| **T5.6** | Ferry / Full 舰队 / Channel 全集 | **P2/P1 延期**（T09）                      | —                      | 不进 M5 必达        |
+| **T5.6** | Ferry / Full 舰队 / Channel 全集 | **MVP+镜像层 ✅**（[53](53-T5.6-Ferry气隙MVP方案.md)/[56](56-T5.6-Ferry镜像层Skopeo-cosign方案.md)）；真 skopeo archive / Full 后置 | — | 缺签拒导 |
 | **T5.7** | Asset Bundle 最小              | OKF/Module 与版本同绑（OPS-008 · T09 **P0**） | T5.3, T2.9             | 一次打包+校验         |
 | **T5.8** | hotfix 通道占位                  | 紧急发布标记+事后审计位（OPS-009）                  | T5.3                   | 可标记 hotfix      |
 
@@ -531,8 +531,8 @@ flowchart TD
 | **B-AGE-01**          | `postgres:16-alpine` **无** AGE 扩展（`age.control` 不存在） | T2.1 原口径       | 用 `graph_edge` 邻接表做 1-hop；真 AGE 镜像后补换                              | **否** |
 | **B-WSL-HOSTPORT-01** | Windows 访问 `127.0.0.1:5433/9000` 偶发拒绝（Docker 在 WSL）  | G5 / 本机联调      | 用 `wsl hostname -I` 首 IP 作 `AOS_DATABASE_URL`；LLM 边车用 host 模式脚本    | **否** |
 | **B-LITELLM-IMG-01**  | 官方 `litellm[proxy]` 镜像/重依赖构建过慢或不可达                   | T3.9           | Dev 用 **LiteLLM 契约形** 进程隔离边车（`deploy/dev/litellm`）；可换官方镜像不改 Facade | **否** |
-| **B-TX3-01**          | 生产 HA Keycloak 未装（可选）                              | TX.3 深度 | **Dev 单机 KC 路径 ✅**（[50](50-Dev-Keycloak联调缓解B-TX3方案.md) · profile oidc）；HA 仍可选 | **否** |
-| **B-T09-01**          | P0 参考仓 clone / SBOM CI 未跑                            | T0.9 / T0.10   | 不挡主路径；穿插补                                                          | **否** |
+| **B-TX3-01**          | 生产 HA Keycloak 未装（可选）                              | TX.3 深度 | **✅ 关闭（Dev）**：[50] 单机 · [57](57-Dev-HA-Keycloak缓解B-TX3方案.md) 双节点+JWKS 故障切换；生产联调规程 [60](60-生产IdP联调手册.md)（IdP 仍客户自备） | **否** |
+| **B-T09-01**          | P0 参考仓 clone / SBOM CI 未跑                            | T0.9 / T0.10   | **✅ 关闭**（[51](51-T0.9参考仓与T0.10-SBOM钩子方案.md) · inventory + sbom gate） | **否** |
 | **B-OCR-PADDLE-01**   | 真 `paddleocr` 全量依赖未装入 Dev 边车                       | T4.8 深度       | 边车 shaped ✅；装 paddle 后 `engine=paddleocr` 自动升                    | **否** |
 | **G-ALIGN-01**        | Word/Excel/PDF 文本解析插件（已关闭）                   | T4.4 / T05-A1  | **T4.4b ✅** · [39](39-T4.4b-文件解析插件方案.md)                         | **否** |
 
@@ -550,12 +550,12 @@ flowchart TD
 | T0.6  | ✅    | ✅    | CI 脚本 + ExpectFail                   |
 | T0.7  | ✅    | ✅    | modules / object-sets Mock           |
 | T0.8  | ✅    | ✅    | [27](27-本机开发基础设施与工程门禁记录.md) §3.5     |
-| T0.9  | ☐    | ☐    | 穿插；见 B-T09-01                        |
-| T0.10 | ☐    | ☐    | 穿插                                   |
+| T0.9  | ✅    | ✅    | P0 inventory · [51](51-T0.9参考仓与T0.10-SBOM钩子方案.md) |
+| T0.10 | ✅    | ✅    | SBOM + gate · [51](51-T0.9参考仓与T0.10-SBOM钩子方案.md) |
 | TX.1  | ✅    | ✅    | Appearance + tokens                  |
 | TX.2  | ✅    | ✅    | `/v1/metrics` · RED · traceparent · [44](44-TX.2-指标Trace最小方案.md) |
-| TX.3  | ✅    | ✅    | Dev JWT · JWKS · **Dev KC** [50](50-Dev-Keycloak联调缓解B-TX3方案.md) · [41](41-TX.3-IdP-OIDC对接方案.md)/[48](48-Module落PG与JWKS及OpenAPI深化方案.md) |
-| TX.4  | ✅    | ✅    | Marking `FORBIDDEN` MVP · [47](47-技术方案全面对齐补缺方案.md)；字段级后置 |
+| TX.3  | ✅    | ✅    | Dev JWT · JWKS · Dev KC [50] · **HA Dev [57]** · **生产手册 [60](60-生产IdP联调手册.md)** · [41]/[48] |
+| TX.4  | ✅    | ✅    | 对象+字段+**继承/OpenFGA Facade** · [52](52-TX.4字段级Marking-MVP方案.md)/[55](55-TX.4-Marking继承与OpenFGA-Facade方案.md) |
 
 
 ### 10.3 Wave-1
@@ -682,12 +682,12 @@ flowchart TD
 | T5.3 | ✅    | ✅    | `/v1/apollo/upgrade`                  |
 | T5.4 | ✅    | ✅    | vault refs only                       |
 | T5.5 | ⚪    | —    | 流程见 [24](24-AOS客户侧前置组件安装SOP.md)（签署现场） |
-| T5.6 | ⚪    | —    | **显式延期** §11.2                        |
+| T5.6 | ✅    | ✅    | **MVP+镜像层** [53](53-T5.6-Ferry气隙MVP方案.md)/[56](56-T5.6-Ferry镜像层Skopeo-cosign方案.md) |
 | T5.7 | ✅    | ✅    | Asset Bundle validate                 |
 | T5.8 | ✅    | ✅    | hotfix 标记位                            |
 
 
-**Wave-5 退出：** ✅ Lite MVP（Ferry/Full=T5.6 延期）
+**Wave-5 退出：** ✅ Lite MVP；**Ferry MVP+镜像层 ✅**（真 skopeo archive / Full 仍后置）
 
 ### 10.6 测试覆盖审计（2026-07-17）
 
@@ -708,10 +708,10 @@ flowchart TD
 | 类别                                    | 状态                                                            |
 | ------------------------------------- | ------------------------------------------------------------- |
 | 文档挂点（§11.1）                           | ✅ 无漏挂任务 ID                                                    |
-| 显式延期（§11.2）                           | ⚪ 含 Ferry 气隙实现/T4.10；**S2 UI 已 31 live**（Ferry=诚实延期面 [49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)） |
+| 显式延期（§11.2）                           | ⚪ 含 T4.10 · Full Channel；**Ferry 镜像层+skopeo 演练 ✅** [56]/[59]（大镜像策略客户自配） |
 | 实现死角                                  | **无未标注缺口**；⚠=MVP stub；OCR shaped 非生产 GPU |
-| **B-TX3-01**          | 生产 HA Keycloak 未装（可选）                              | TX.3 深度 | **Dev 单机 KC 路径 ✅**（[50](50-Dev-Keycloak联调缓解B-TX3方案.md) · profile oidc）；HA 仍可选 | **否** |
-| T0.9/T0.10 SBOM/军规扫描                  | 🔄 穿插；**B-T09-01** 不挡主路径                                      |
+| TX.2 指标 / TX.3 真 IdP / TX.4 真 Marking | **TX.2 ✅** · TX.3 Dev KC+**HA ✅**（[57]；**B-TX3-01 关**）· **生产联调手册 ✅**（[60]）· **TX.4 ✅**（[55]）· **OpenFGA 模型 ✅**（[61]）· **对象级 JWT∪bearer ✅**（[63]）· **字段级 JWT∪bearer ✅**（[65](65-字段级Marking与FGA-bearer方案.md)） |
+| T0.9/T0.10 SBOM/军规扫描                  | **✅** · [51](51-T0.9参考仓与T0.10-SBOM钩子方案.md)；**syft/trivy ✅** [54](54-syft-trivy-SBOM加严方案.md)；**B-T09-01 关闭** |
 
 
 ---
@@ -745,7 +745,7 @@ flowchart TD
 
 | 项                                                           | 出处               | 26 处理                                                                |
 | ----------------------------------------------------------- | ---------------- | -------------------------------------------------------------------- |
-| Ferry 气隙 / Full 舰队 / Channel 全集                             | T09 P1/P2        | **T5.6**                                                             |
+| Ferry 气隙 / Full 舰队 / Channel 全集                             | T09 P1/P2        | **T5.6 MVP+镜像层 ✅** [56](56-T5.6-Ferry镜像层Skopeo-cosign方案.md)；Full 后置 |
 | TTL/遗忘归档作业                                                  | 25 P2 · T06 §7.5 | **T2.x+** 后置：规模痛点再开（建议 ID `T2.12` 待立）                                |
 | Module interface / Loop 嵌套                                  | T08 P2           | 后置 v1.1 执行器                                                          |
 | Scenario 沙箱分叉                                               | 07               | 后置                                                                   |
@@ -758,7 +758,7 @@ flowchart TD
 | `POST /v1/actions/execute`（OpenAPI 有、实现无） | T-API · T08 | **✅ G-ALIGN-02 关闭** · [40](40-G-ALIGN-02-actions-execute契约对齐方案.md) |
 | `/v1/ontology/link-types` CRUD | T-API · 03 ONT-002 | **✅ G-ALIGN-03 关闭** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · `LINK_SCALE_BLOCKED` |
 | `/v1/datasets/*` · `/v1/syncs` | T-API · T05 | **✅ G-ALIGN-04 关闭** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · Facade |
-| foundry/html 全页 1:1（Graph/Pipeline 多页/Evals 专页等） | T-UI S2 · 34 §3 | **✅ S2 31 live** · [43](43-T-UI-S2业务深页按域方案.md)+[45](45-T-UI-S2余量第二刀方案.md)+[49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)；Ferry=诚实延期面 |
+| foundry/html 全页 1:1（Graph/Pipeline 多页/Evals 专页等） | T-UI S2 · 34 §3 | **✅ S2 31 live** · [43](43-T-UI-S2业务深页按域方案.md)+[45](45-T-UI-S2余量第二刀方案.md)+[49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)；Ferry=MVP 签名包 [53] |
 | modules publish / PATCH · evals/fleet/invoke 形变 · OpenAPI 漂移 · TX.4 | T-API · T08/T09/T-CROSS | **✅ G-ALIGN-05～08** · [47](47-技术方案全面对齐补缺方案.md) |
 
 
@@ -784,7 +784,7 @@ flowchart TD
 | 3     | T3.1～T3.21         | ✅ DoD（T3.9 边车 ✅；官方 proxy 镜像见 B-LITELLM-IMG-01） |
 | C     | TC.1～TC.7          | ✅ MVP                                          |
 | 4     | T4.0～T4.17         | ✅ 契约面；T4.2/T4.4b/T4.6/T4.7/T4.8 ✅；T4.10 滚动 |
-| 5     | T5.1～T5.8          | ✅ Lite；T5.1 ⚠；T5.5 流程；T5.6 延期                  |
+| 5     | T5.1～T5.8          | ✅ Lite；T5.1 ⚠；T5.5 流程；**T5.6 MVP ✅** [53](53-T5.6-Ferry气隙MVP方案.md) |
 | CROSS | TX.1～4             | TX.1～4 ✅；JWKS+Module PG [48](48-Module落PG与JWKS及OpenAPI深化方案.md)；AI OS [46](46-AI操作系统实质化-模型插件模块方案.md) |
 
 
@@ -793,9 +793,9 @@ flowchart TD
 | 问题 | 答案 |
 | --- | --- |
 | 产品 05～09 P0 主路径是否有编码落点？ | **是**（Wave 0～5 MVP） |
-| 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**（[47](47-技术方案全面对齐补缺方案.md)）；Ferry/Channel 仍 §11.2 延期 |
-| 产品蓝图 html 全页？ | **S2 31 页已接线**（含 Ferry 诚实延期面 [49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)） |
-| 下一刀建议？ | T0.9/10 · SBOM · 字段级 Marking / 真气隙 Ferry · HA Keycloak（可选） |
+| 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**；Ferry **MVP+镜像层 ✅**；Full Channel / 真 skopeo 现场仍后置 |
+| 产品蓝图 html 全页？ | **S2 31 页已接线**；Ferry 页 = MVP 签名包 [53](53-T5.6-Ferry气隙MVP方案.md) |
+| 下一刀建议？ | 现场 IdP 真 token · Full Spoke **运行时**（Channel 目录 ✅ [66]；运行时仍延期） |
 
 
 ---
@@ -832,4 +832,79 @@ flowchart TD
 
 ---
 
-*v1.22 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
+| v1.23 | 2026-07-17 | **T0.9/T0.10** · [51](51-T0.9参考仓与T0.10-SBOM钩子方案.md) · SBOM 钩子 · 关 B-T09-01 |
+
+
+---
+
+| v1.24 | 2026-07-17 | **字段级 Marking MVP** · [52](52-TX.4字段级Marking-MVP方案.md) · redact + write FORBIDDEN |
+
+
+---
+
+| v1.25 | 2026-07-17 | **Ferry 气隙 MVP** · [53](53-T5.6-Ferry气隙MVP方案.md) · HMAC tar.gz · 缺签拒导 |
+
+
+---
+
+| v1.26 | 2026-07-17 | **syft/trivy SBOM 加严** · [54](54-syft-trivy-SBOM加严方案.md) · WSL `/mnt` bind · license 扫描 |
+
+
+---
+
+| v1.27 | 2026-07-17 | **Marking 继承 + OpenFGA Facade** · [55](55-TX.4-Marking继承与OpenFGA-Facade方案.md) · authz/check |
+
+
+---
+
+| v1.28 | 2026-07-17 | **Ferry 镜像层** · [56](56-T5.6-Ferry镜像层Skopeo-cosign方案.md) · images.json + cosign-dev |
+
+
+---
+
+| v1.29 | 2026-07-17 | **Dev HA Keycloak** · [57](57-Dev-HA-Keycloak缓解B-TX3方案.md) · JWKS 故障切换 · 关 B-TX3-01 |
+
+
+---
+
+| v1.30 | 2026-07-17 | **OpenFGA 真边车** · [58](58-OpenFGA真边车Dev方案.md) · profile openfga · remote Check |
+
+
+---
+
+| v1.31 | 2026-07-17 | **Ferry skopeo archive 演练** · [59](59-Ferry-skopeo-archive现场演练方案.md) · Docker 回落 · alpine |
+
+
+---
+
+| v1.32 | 2026-07-17 | **生产 IdP 联调手册** · [60](60-生产IdP联调手册.md) · claim 别名 · probe-prod-idp |
+
+
+---
+
+| v1.33 | 2026-07-17 | **OpenFGA 生产模型扩展** · [61](61-OpenFGA生产模型扩展.md) · org/project/editor·owner/marking |
+
+
+---
+
+| v1.34 | 2026-07-17 | **Ferry 大镜像现场打包** · [62](62-Ferry大镜像现场打包策略.md) · 清单/onsite pack · MAX_MIB · 修 trivy skip-dirs |
+
+
+---
+
+| v1.35 | 2026-07-17 | **OpenFGA↔Markings 组合** · [63](63-OpenFGA与Markings组合判定方案.md) · JWT∪bearer · AND viewer |
+
+
+---
+
+| v1.36 | 2026-07-17 | **Ferry 真 cosign 密钥链** · [64](64-Ferry真cosign密钥链方案.md) · PATH/docker · REQUIRED · Full 仍延期 |
+
+
+---
+
+| v1.37 | 2026-07-17 | **字段级 Marking↔FGA bearer** · [65](65-字段级Marking与FGA-bearer方案.md) · 读/写 JWT∪bearer |
+
+
+---
+
+*v1.37 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
