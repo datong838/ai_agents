@@ -1,9 +1,9 @@
 # 26 · AOS 目标态开发计划（单人版）
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
-> **版本**：v1.42 · 2026-07-17  
-> **状态**：Wave-0～5 MVP ✅；**后续主路径 = 业务平台可演示（§12 / TB.*）**；Apollo 运维加深后置；目标态差距见 §11.6  
-> **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)** · **[70 业务演示优先](70-业务平台可演示优先计划.md)**  
+> **版本**：v1.47 · 2026-07-18  
+> **状态**：Wave-0～5 MVP ✅；**§12 自验收关闭**；**71 Capability/OCR 一镜 ✅**；Apollo 运维加深后置；目标态差距见 §11.6  
+> **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27 本机门禁记录](27-本机开发基础设施与工程门禁记录.md)** · **[70 业务演示优先](70-业务平台可演示优先计划.md)** · **[72 启停与健康](72-系统启停与健康检查手册.md)**  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
 
 ---
@@ -797,19 +797,19 @@ flowchart TD
 | 产品 05～09 P0 主路径是否有编码落点？ | **是**（Wave 0～5 MVP） |
 | 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**；**产品 1.3 = G-ALIGN-09 已标注后置** [68](68-产品1.3分析建模与技术缺口对齐.md)；Ferry Full 运行时仍后置 |
 | 产品蓝图 html 全页？ | **S2 31 页已接线**；Ferry 页 = MVP 签名包 [53](53-T5.6-Ferry气隙MVP方案.md) |
-| 下一刀建议？ | **按 §12 TB.0 起**：业务平台本地可演示（数据→本体→写回→Workshop→AIP）；Apollo 运维进停车场 · [70](70-业务平台可演示优先计划.md) |
+| 下一刀建议？ | **§12 + 71 ✅ 已收口**；启停见 [72](72-系统启停与健康检查手册.md)；下一阶段须人点名；默认停 |
 
 
-### 11.6 与目标态差距（工程结构 + 能力 · 2026-07-17）
+### 11.6 与目标态差距（工程结构 + 能力 · 2026-07-18）
 
-> **详稿**：[69](69-与目标态差距台账.md) · 产品 1.3 专节 [68](68-产品1.3分析建模与技术缺口对齐.md) · 工程树真源 [20 §3](20-AOS整体技术方案.md)  
+> **详稿**：[69](69-与目标态差距台账.md) **v1.1** · 产品 1.3 专节 [68](68-产品1.3分析建模与技术缺口对齐.md) · 工程树真源 [20 §3](20-AOS整体技术方案.md) · **本机启停**：[72](72-系统启停与健康检查手册.md)  
 > **诚实口径：** 目录未拆 ≠ 能力为零；`workshop-canvas` ≠ 分析建模（1.3）
 
 #### 11.6.1 三把尺子
 
 | 尺子 | 完成度（粗估） | 含义 |
 | --- | --- | --- |
-| Wave 退出 / 可演示 MVP | **约 70%～80%** | Wave-0～5 主路径已通；剩现场联调 + Full 运行时 |
+| Wave 退出 / 可演示 MVP | **约 80%～85%** | Wave-0～5 + §12 TB.* 自验收关闭 + 71；剩现场联调 + Full 运行时 |
 | 20 §3 目录树一字不差 | **约 1/3 目录角色** | 现状 = `apps/web` + `services/aos-api` 单体 BFF + 薄 packages + `deploy/dev`·`ferry` |
 | 完整产品（含 1.3 分析建模） | **明显偏低** | Jupyter/R/SQL 等大块空白（**G-ALIGN-09**） |
 
@@ -839,6 +839,7 @@ flowchart TD
 | Apollo | Hub / Spoke / Ferry / Channel | Lite + Ferry 镜像层 + Channel 目录/UI；Full **运行时**延期 | **中高 / Full 低** |
 | 横切 | IdP / Marking / 指标 | Dev KC+HA、OpenFGA、字段 marking ✅；生产 JWT 待客户 | **中高** |
 | 产品 1.3 | Jupyter / R / SQL | **G-ALIGN-09 显式后置**；仅 code-repos 目录壳 | **≈0** |
+| 本机可运行性 | 一键启停+健康 | **[72](72-系统启停与健康检查手册.md)** · `scripts/demo` smoke | **高（Dev）** |
 
 #### 11.6.4 差距分档（不自动开工）
 
@@ -881,15 +882,15 @@ flowchart TD
 
 | ID | 主题 | 客户可见 DoD | 主要落点（现有能力上加深） | 状态 |
 | --- | --- | --- | --- | --- |
-| **TB.0** | 演示基建 | 一键/一脚本启动；健康检查清单绿；README「10 分钟路径」 | `scripts/demo/` · `deploy/dev` · 27 | ☐ |
-| **TB.1** | 行业种子 | 固定 Org/Project；WorkOrder 类型+样例对象+Dataset；演示账号（含 Marking） | seed/PG · Mock→真种子 | ☐ |
-| **TB.2** | 数据进故事 | 文件或 MySQL → Dataset → Object **可指屏讲解**；Build 成功/失败(DLQ)可见 | T4.* · Data 深页 | ☐ |
-| **TB.3** | 本体运营 | 对象详情/链接/Funnel 状态/分支或健康度 **可点可讲** | T2.* · Ontology S2 | ☐ |
-| **TB.4** | 写回闭环 | Inbox→Action→Draft 批准→对象变→Lineage **一条连续故事** | T3.* · AIP Draft | ☐ |
-| **TB.5** | Workshop | Module→画布含 Object Table+Filter→**预览运行态**→发布标记 | T1.* · Canvas | ☐ |
-| **TB.6** | AIP 演示 | Buddy/Assist 带对象上下文；Logic 一次建议；Providers/Evals 非空壳话术 | T07 · AIP 页 | ☐ |
-| **TB.7** | 治理可见 | Marking 拒绝可演示；字段脱敏一眼懂；谱系页讲合规 | TX.4 · Lineage | ☐ |
-| **TB.8** | 彩排包 | 《演示脚本》定稿；禁止演示 Apollo 运维深水；回退页 | docs + scripts | ☐ |
+| **TB.0** | 演示基建 | 一键/一脚本启动；健康检查清单绿；README「10 分钟路径」 | `scripts/demo/` · **[72](72-系统启停与健康检查手册.md)** · 27 | ✅ |
+| **TB.1** | 行业种子 | 固定 Org/Project；WorkOrder 类型+样例对象+Dataset；演示账号（含 Marking） | `POST /v1/demo/ensure-seed` · seed/PG | ✅ |
+| **TB.2** | 数据进故事 | 文件或 MySQL → Dataset → Object **可指屏讲解**；Build 成功/失败(DLQ)可见 | `ensure_demo_data_seed` · `DataPage` · `/demo` | ✅ |
+| **TB.3** | 本体运营 | 对象详情/链接/Funnel 状态/分支或健康度 **可点可讲** | Ontology hub→Funnel · `/ontology/funnel` | ✅ |
+| **TB.4** | 写回闭环 | Inbox→Action→Draft 批准→对象变→Lineage **一条连续故事** | T3.* · `/demo` 步骤链 | ✅ |
+| **TB.5** | Workshop | Module→画布含 Object Table+Filter→**预览运行态**→发布标记 | Canvas 真 query · Publish | ✅ |
+| **TB.6** | AIP 演示 | Buddy/Assist 带对象上下文；Logic 一次建议；Providers/Evals 非空壳话术 | Buddy context · smoke | ✅ |
+| **TB.7** | 治理可见 | Marking 拒绝可演示；字段脱敏一眼懂；谱系页讲合规 | `GET /v1/demo/governance` · TX.4 · `/demo` | ✅ |
+| **TB.8** | 彩排包 | 《演示脚本》定稿；禁止演示 Apollo 运维深水；回退页 | `CUSTOMER-DEMO.md` · `/demo` | ✅ |
 
 **可穿插（不挡 TB.8）：** Capability 一镜（07b）；MediaSet/OCR 一页（有故事才开）。  
 **仍后置：** 产品 1.3 Jupyter/R/SQL（[68](68-产品1.3分析建模与技术缺口对齐.md)）；Contour/Quiver/Vertex 全集；200+ Connector。
@@ -934,6 +935,20 @@ Full Spoke / Helm · 生产 IdP 真 token · Ferry 现场加严 · Channel 运�
 | §11.2 / §11.6 | 延期项与目标态差距仍有效；Apollo Full 等继续 ⚪ |
 | **§12 TB.*** | **自 v1.42 起的后续主驾驶计划** |
 | §6 | Apollo 运维加深列入「现在不要干」 |
+
+### 12.7 本机启停与健康（运行手册）
+
+日常启 / 停 / 健康 / 演示冒烟的**操作真源**：[72 · 系统启停与健康检查手册](72-系统启停与健康检查手册.md)。
+
+```powershell
+cd c:\work\projects\wchat\aos-platform
+powershell -File scripts\demo\start-local.ps1      # → DEMO HEALTH OK
+powershell -File scripts\demo\health-check.ps1
+powershell -File scripts\demo\run-demo-smoke.ps1   # → DEMO SMOKE OK
+powershell -File scripts\demo\stop-local.ps1
+```
+
+与 [34](34-系统启动与蓝图符合性检查记录.md)（蓝图符合性）分工见 72 §7。
 
 
 ---
@@ -1070,4 +1085,25 @@ Full Spoke / Helm · 生产 IdP 真 token · Ferry 现场加严 · Channel 运�
 
 ---
 
-*v1.42 · docs/palantier/20_tech/26 · 后续主路径见 §12 · 进度见 §10 · 差距见 §11.6 · Agent 主驾驶*
+| v1.43 | 2026-07-17 | **TB.0～TB.8 落地** · demo story/API · Canvas 运行态 · CUSTOMER-DEMO · smoke OK |
+
+---
+
+| v1.44 | 2026-07-18 | **TB.7 收口** · `GET /v1/demo/governance` · 治理探针 UI · 阶段退出待人验收 |
+
+---
+
+| v1.45 | 2026-07-18 | **§8 收口三刀** · data 预置 · Ontology→Funnel · web build 绿 · **COMPLETE 待人验收** |
+
+---
+
+| v1.46 | 2026-07-18 | **§12 自验收关闭** · [71](71-演示加镜Capability与OCR方案.md) Capability/OCR 一镜 ✅ · **默认停** |
+
+---
+
+| v1.47 | 2026-07-18 | **[72](72-系统启停与健康检查手册.md)** 启停/健康手册 · [69](69-与目标态差距台账.md)→v1.1 · §11.6/§12.7 同步 |
+
+
+---
+
+*v1.47 · docs/palantier/20_tech/26 · §12+71 收口 · 启停见 72 · 差距见 §11.6 · Agent 主驾驶*
