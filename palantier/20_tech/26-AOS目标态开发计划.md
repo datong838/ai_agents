@@ -348,7 +348,7 @@ UI 蓝图真源：`foundry/html` **v1.6.5**（含 Appearance）。
 | **T5.3** | Lite 升级通道                    | Catalog + 升级                           | T5.2                   | 一次升级演练          |
 | **T5.4** | Vault ref                    | 配置无明文密钥                                | T5.1, T0.5             | 密钥只 ref         |
 | **T5.5** | 现场 24 签署流程                   | 检查表+禁止无签安装                             | T4.0, T5.3             | 流程文档可执行         |
-| **T5.6** | Ferry / Full 舰队 / Channel 全集 | **MVP+镜像层 ✅**（[53](53-T5.6-Ferry气隙MVP方案.md)/[56](56-T5.6-Ferry镜像层Skopeo-cosign方案.md)）；真 skopeo archive / Full 后置 | — | 缺签拒导 |
+| **T5.6** | Ferry / Full 舰队 / Channel 全集 | **MVP+镜像层 ✅**；**Channel/Spoke 目录 ✅** [66](66-Apollo-Channel与Spoke目录骨架方案.md)；Full **运行时**仍后置 | — | 缺签拒导 · 目录可演示 |
 | **T5.7** | Asset Bundle 最小              | OKF/Module 与版本同绑（OPS-008 · T09 **P0**） | T5.3, T2.9             | 一次打包+校验         |
 | **T5.8** | hotfix 通道占位                  | 紧急发布标记+事后审计位（OPS-009）                  | T5.3                   | 可标记 hotfix      |
 
@@ -907,4 +907,9 @@ flowchart TD
 
 ---
 
-*v1.37 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
+| v1.38 | 2026-07-17 | **Apollo Channel/Spoke 目录骨架** · [66](66-Apollo-Channel与Spoke目录骨架方案.md) · promote/recall · Full 元数据 |
+
+
+---
+
+*v1.38 · docs/palantier/20_tech/26 · 进度见 §10 · 实现审计见 §11.4/§11.5 · Agent 主驾驶*
