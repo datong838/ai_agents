@@ -1,10 +1,10 @@
 # 24 · AOS 客户侧前置组件安装 SOP
 
 > **文档性质**：**活文档 SOP**（开发期 / 实施期持续补全；禁止「到现场再写」）  
-> **版本**：v0.1 · 2026-07-17（骨架已生效；细节随联调追加）  
+> **版本**：v0.2 · 2026-07-18（补 **macOS Dev 缩小版** 启动路径；Windows 仍可用 `scripts/demo/*.ps1`）  
 > **状态**：实施门禁真源 · 对齐军规 [23](23-AOS开源引用与交付军规.md) **R-INST-***  
 > **读者**：客户 IT · FDE · 实施 · 研发（Dev 环境同样走一遍缩小版）  
-> **配套**：[22](22-AOS开源产品维护清单.md) · [T05](T05-L1数据集成详细技术方案.md) · [T09](T09-Apollo交付引擎详细技术方案.md) · [T-CROSS](T-CROSS-横切能力详细技术方案.md)
+> **配套**：[22](22-AOS开源产品维护清单.md) · [27](27-本机开发基础设施与工程门禁记录.md) · [72](72-系统启停与健康检查手册.md) · [T05](T05-L1数据集成详细技术方案.md) · [T09](T09-Apollo交付引擎详细技术方案.md) · [T-CROSS](T-CROSS-横切能力详细技术方案.md)
 
 ---
 
@@ -108,7 +108,7 @@ prereq-handoff.yaml  （或等价表格）
 | 安装要点 | 独立实例或客户标准 PG；建库 `aos_meta` / `aos_app`（名可配）；UTF8 |
 | 验收 | `psql` 可连；`CREATE EXTENSION IF NOT EXISTS age;` 在约定库成功（若本阶段启用图） |
 | 交给 AOS | `DATABASE_URL` 或分项 host/port/db + **密码进 Vault ref** |
-| 已知坑 | （开发期追加） |
+| 已知坑 | **macOS Dev（2026-07-18）**：Docker Hub 拉 `postgres:16-alpine` 超时 → 用 micromamba `postgresql=16` 原生装，`initdb` + `port=5433` 对齐 Compose 端口；TCP 用 `scram-sha-256`，本机 socket 可 `trust` 便于建库 |
 
 ### 3.2 对象存储 · MinIO / 客户 S3（MediaSet）
 
@@ -120,7 +120,7 @@ prereq-handoff.yaml  （或等价表格）
 | 验收 | `mc ls` 或 S3 ListBucket 成功；上传 1KB 探测对象可 Get |
 | 交给 AOS | `S3_ENDPOINT` · `S3_BUCKET` · `S3_REGION` · `S3_ACCESS_KEY_REF` · `S3_SECRET_KEY_REF` · `S3_PATH_STYLE=true`（MinIO 常见） |
 | **军规** | AOS 仅 `S3Adapter`；切换客户云 S3 **不改**业务代码 |
-| 已知坑 | 路径风格 / 证书 / 时钟偏差导致签名失败 — 记 §9 |
+| 已知坑 | 路径风格 / 证书 / 时钟偏差导致签名失败 — 记 §9；**macOS Dev**：Docker Hub 拉 MinIO 镜像超时 → 客户/研发可改下官方 **darwin-arm64 二进制**（`minio server … --address 127.0.0.1:9000`），bucket `aos-media`，验收仍按 Put/Get；**勿**把该二进制打进 AOS 客户包 |
 
 **客户自装 MinIO（示意 · 非交付包内容）：**
 
@@ -218,9 +218,150 @@ prereq-handoff.yaml  （或等价表格）
 | 步骤 | Dev 做法 |
 | --- | --- |
 | 1 | `deploy/dev/` 或文档示例 Compose **仅用于本机**，路径禁止打进客户包 |
-| 2 | 仍填写一份缩小版 `prereq-handoff.yaml` |
+| 2 | 仍填写一份缩小版 `prereq-handoff.yaml`（参考 `aos-platform/deploy/dev/prereq-handoff.local.yaml`） |
 | 3 | 跑通 §5 总检中 Lite 必选项 |
 | 4 | 联调坑记入 §9 |
+
+### 4.1 跨 OS 对照（Windows / macOS / Linux）· **分轨原则**
+
+> **强制分轨：** 三大系统的 **安装前置 · 本机启动 · 打包交付** 可各自维护，**互不覆盖**。  
+> - Windows 继续只用 `*.ps1`（已证路径，**本次未改**）。  
+> - macOS / Linux 新增 `*.sh`（并列，不替换 ps1）。  
+> - 客户包 / Ferry 打包脚本仍按目标 OS 分目录或分脚本；禁止「一个脚本通吃三端」硬改 Windows 现网流程。
+
+| 维度 | Windows | macOS | Linux |
+| --- | --- | --- | --- |
+| 安装前置 | Docker Desktop + 本机 Python/Node（见 27） | Docker Desktop / 原生降级（§4.2～§4.4） | Docker Engine 或发行版包；脚本可复用 `*.sh` |
+| 一键启动 | `scripts\demo\start-local.ps1` | `scripts/demo/start-local.sh`（Hub 不通 → `start-local-native.sh`） | 同 mac：`*.sh` |
+| 健康检查 | `health-check.ps1` | `health-check.sh` | `health-check.sh` |
+| 停止 | `stop-local.ps1` | `stop-local.sh` | `stop-local.sh` |
+| 打包 / 交付 | 既有 `scripts/ci/*.ps1`（Ferry/SBOM 等）**保持不动** | 另开 mac 打包清单（待补，不改 Win 脚本） | 另开 linux 打包清单（待补） |
+| 工程根示例 | `c:\work\projects\wchat\aos-platform\` | `~/work/projects/ai_agent/aos-platform/` | 按现场约定 |
+
+| 项 | Windows（已证） | macOS（Apple Silicon · 2026-07-18 联调） |
+| --- | --- | --- |
+| Docker / 数据面 | Compose：`aos-dev-pg` · MinIO · MySQL · LLM/OCR | **优先**同 Compose；Hub 超时则 §4.4 原生 PG+MinIO |
+| 运行时 | Python 3.11+ · Node 18+/22 | **≥3.11**（系统 3.9 不够）· Node **18+** |
+| 端口 | PG `5433` · MinIO `9000/9001` · API `8080` · Web `5173` · LiteLLM `4001` · OCR `8082` · MySQL `3307` | **同** |
+
+**金句：** *客户侧仍按 §0.3 自装发行包；Dev 用 Compose 只是缩小版同构，禁止把 MinIO 打进客户包。Win / Mac / Linux 脚本分轨，改一端不碰另外两端。*
+
+### 4.2 macOS 工具链安装（无 Homebrew / 无 sudo 时）
+
+> 若本机有管理员密码，优先：`brew install --cask docker` + `brew install node python@3.12`。  
+> 以下为 **无 sudo** 时用户目录安装（本机联调实证路径）。
+
+| 组件 | 建议落点 | 安装要点 | 验收 |
+| --- | --- | --- | --- |
+| Node 22 | `~/tools/node-v22.*/bin` | 官方 `darwin-arm64` tarball 解压 | `node -v` ≥ 18 |
+| Python 3.12 | micromamba env `aos` | `micromamba create -n aos python=3.12 pip` | `python --version` ≥ 3.11 |
+| Docker 引擎 | Docker Desktop → `~/Applications/Docker.app` | 官网 `Docker.dmg`；**拖到用户 Applications**（避免 `/Applications` 需 sudo） | `docker version` · `docker compose version` |
+| Colima 备选 | `~/tools/bin/colima` + Lima | 无 Desktop 时用；仍需 **docker CLI** 与 compose 插件 | `colima start` 后 `docker ps` |
+
+**PATH 示例（写入 `~/.zshrc`）：**
+
+```bash
+export PATH="$HOME/tools/bin:$HOME/tools/node-v22.17.0-darwin-arm64/bin:$PATH"
+# micromamba
+export MAMBA_ROOT_PREFIX="$HOME/tools/micromamba-root"
+eval "$("$HOME/tools/bin/micromamba" shell hook -s zsh)"
+```
+
+**Docker Desktop（用户目录）示意：**
+
+```bash
+# 1) 下载 https://desktop.docker.com/mac/main/arm64/Docker.dmg
+# 2) hdiutil attach Docker.dmg
+# 3) cp -R "/Volumes/Docker/Docker.app" "$HOME/Applications/"
+# 4) open "$HOME/Applications/Docker.app"   # 等 whale 就绪
+# 5) docker version && docker compose version
+```
+
+### 4.3 macOS / Linux 手工启动顺序（对齐 TB.0）
+
+工作目录：`aos-platform/`。口令与 Windows 一致（仅 Dev，见 compose / `.secrets.env`）。
+
+```bash
+# 0) 环境
+export PATH="$HOME/tools/bin:$HOME/tools/node-v22.17.0-darwin-arm64/bin:$PATH"
+eval "$("$HOME/tools/bin/micromamba" shell hook -s bash)"
+micromamba activate aos
+cd "$HOME/work/projects/ai_agent/aos-platform"   # 按本机改路径
+
+# 1) 可选：创建 Dev secrets（gitignored；与 compose 默认口令对齐）
+cat > deploy/dev/.secrets.env <<'EOF'
+POSTGRES_PASSWORD=aos_dev_only_change_me
+MINIO_ROOT_USER=aosdev
+MINIO_ROOT_PASSWORD=aos_dev_only_change_me
+AOS_LLM_MASTER_KEY=aos_dev_litellm_master
+EOF
+
+# 2) 前置组件（§0.3 缩小版 · 客户现场则自装发行包，不走这步）
+docker compose -f deploy/dev/docker-compose.yml up -d \
+  aos-dev-pg aos-dev-minio aos-dev-minio-init \
+  aos-dev-mysql aos-dev-llm-echo aos-dev-litellm aos-dev-ocr
+
+# 3) 探针（Lite 必）
+docker exec aos-dev-pg pg_isready -U aos_app -d aos_meta
+curl -sf http://127.0.0.1:9000/minio/health/live   # 期望 HTTP 200
+
+# 4) aos-api
+cd services/aos-api
+pip install -e .
+export AOS_LOG_LEVEL=debug AOS_LOG_FORMAT=json AOS_AUTH_ALLOW_DEV=1
+export AOS_DATABASE_URL="postgresql://aos_app:aos_dev_only_change_me@127.0.0.1:5433/aos_meta"
+export AOS_S3_ENDPOINT=http://127.0.0.1:9000 AOS_S3_BUCKET=aos-media
+nohup python -m uvicorn aos_api.main:app --host 127.0.0.1 --port 8080 \
+  > ../../deploy/dev/aos-api.out.log 2> ../../deploy/dev/aos-api.err.log &
+curl -sf http://127.0.0.1:8080/v1/health
+
+# 5) Web
+cd ../../apps/web
+npm install
+nohup npm run dev -- --host 127.0.0.1 --port 5173 \
+  > ../../deploy/dev/aos-web.out.log 2> ../../deploy/dev/aos-web.err.log &
+curl -sf -o /dev/null -w "%{http_code}\n" http://127.0.0.1:5173/
+```
+
+**成功标志：**
+
+| 检查 | 期望 |
+| --- | --- |
+| `GET /v1/health` | HTTP 200 |
+| Web `http://127.0.0.1:5173/` | 可打开（演示导航 `/demo`） |
+| PG / MinIO | `pg_isready` 成功 · MinIO live 200 |
+| 鉴权（演示） | `Authorization: Bearer dev`（`AOS_AUTH_ALLOW_DEV=1`） |
+
+日常启停细节另见 [72](72-系统启停与健康检查手册.md)（原偏 Windows；mac 命令以本节为准）。
+
+### 4.4 Docker Hub 不可达时的 Dev 原生降级（macOS 实证）
+
+> **触发条件**：`docker pull` / `compose up` 对 `registry-1.docker.io` **context deadline exceeded**。  
+> **原则**：仍满足 §5 Lite 必检（PG + 对象仓 Put/Get）；边车（LiteLLM/OCR/MySQL）可 WARN；**不改变**客户现场「自装发行包」责任。
+
+| 组件 | 降级做法（本机） | 端口对齐 |
+| --- | --- | --- |
+| PostgreSQL 16 | micromamba `postgresql=16` → `initdb`（建议 `locale UTF-8` / 库 `ENCODING UTF8`）→ `port=5433` | `:5433` |
+| MinIO | 官网/GitHub **darwin-arm64** 二进制：`minio server $DATA --address 127.0.0.1:9000 --console-address 127.0.0.1:9001` | `:9000` / `:9001` |
+| bucket | Python `minio` 客户端或 `mc`：`aos-media` + Put/Get 探针 | — |
+| aos-api / Web | 同 §4.3；`AOS_AUTH_ALLOW_DEV=1` | `:8080` / `:5173` |
+| Compose 边车 | 可暂缓；健康检查 WARN 不挡 DEMO | `:4001` / `:8082` |
+
+**initdb / 库编码（踩坑必记）：**
+
+```bash
+# 集群初始化时 locale 若为 C → SQL_ASCII，seed 含中文会 UnicodeEncodeError
+# 建库务必：
+createdb -p 5433 -U aos_app -E UTF8 -T template0 aos_meta
+```
+
+**脚本（aos-platform）：**
+
+| 脚本 | 用途 |
+| --- | --- |
+| `scripts/demo/start-local.sh` | macOS/Linux 一键（优先 Compose；失败见日志） |
+| `scripts/demo/start-local-native.sh` | **无镜像时** 启原生 PG（若已起可跳过）+ MinIO + API + Web |
+| `scripts/demo/health-check.sh` | 探活；PG 支持 `docker exec` **或** 本机 `pg_isready` |
 
 ---
 
@@ -305,6 +446,12 @@ load handoff
 | --- | --- | --- | --- | --- |
 | 2026-07-17 | — | SOP | 骨架发布；总顺序与总检生效 | AOS 架构 |
 | 2026-07-17 | Dev 参考树 | PaddleOCR / MinIO / minio-py | 研发侧 `refs/` 已 clone（≠ 客户环境已装）；客户仍须按 §3.2 自装 MinIO 发行包 | 核盘 |
+| 2026-07-18 | macOS arm64 Dev | 工具链 | 无 Homebrew sudo → 用户目录 Node 22 tarball + micromamba Python 3.12；Docker Desktop 装到 `~/Applications` | Agent |
+| 2026-07-18 | macOS arm64 Dev | Docker Hub | `postgres`/`minio`/`mysql` pull **context deadline exceeded** → 启用 §4.4 原生降级 | Agent |
+| 2026-07-18 | macOS arm64 Dev | PostgreSQL | micromamba PG16 · `:5433`；`createdb -E UTF8` 否则 seed 中文触发 `UnicodeEncodeError`（日志 `startup_meta_store_failed_continue`） | Agent |
+| 2026-07-18 | macOS arm64 Dev | MinIO | 二进制 `RELEASE.2025-09-07…` · bucket `aos-media` · Put/Get `dev-probe.txt` OK；Console `:9001` | Agent |
+| 2026-07-18 | macOS arm64 Dev | aos-api / Web | `GET /v1/health` 200 · Web `/` `/demo` 200 · `Bearer dev`；成功标志对齐 TB.0 | Agent |
+| 2026-07-18 | 文档 | OS 分轨 | 明确 Win/Mac/Linux **安装·启动·打包可分开**；本次只增 `*.sh`，**零改动**全部 `*.ps1` | Agent |
 
 ---
 
@@ -313,6 +460,7 @@ load handoff
 | 版本 | 日期 | 说明 |
 | --- | --- | --- |
 | v0.1 | 2026-07-17 | 首版骨架：总顺序 · 矩阵 · 分组件结构 · 总检 · 安装器契约 · 变更日志机制 |
+| v0.2 | 2026-07-18 | 补 macOS Dev §4.1～§4.4；Docker Hub 不可达原生降级；UTF8 建库坑；脚本指针 |
 
 ---
 
