@@ -10,8 +10,8 @@
 
 **目标（DoD）**
 
-- `/analytics` 内 **三块子集一屏**：Contour（分组探索）· Quiver（时序）· Vertex（实验登记）。
-- Facade API 真读/真写（KV 实验登记）；数据来自 ObjectSet / decision_lineage；**话术标明子集**。
+- `/analytics` 内 **探索分析**三块：分组 · 时序 · 实验登记（产品面无「演示 / TA.*」文案）。
+- Facade API 真读/真写（KV 实验登记）；数据来自 ObjectSet / decision_lineage。
 - 不进包：Superset / Metabase / Grafana / MLflow Server / 分布式训练。
 
 **非目标**

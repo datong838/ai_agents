@@ -31,7 +31,7 @@ const APPEARANCE_OPTS = [
 /** 侧栏：概览 → 工作台 → AIP → 本体 → 数据 → Apollo（使用优先 · 中文为主） */
 const DEMO_PAGES = [
   { id: 'index', href: 'index.html', label: '概览', icon: 'home' },
-  { section: '工作台 L3' },
+  { section: '工作台' },
   { id: 'workshop', href: 'workshop.html', label: '应用列表', icon: 'apps' },
   { id: 'workshop-canvas', href: 'workshop-canvas.html', label: '画布编辑', icon: 'layers' },
   { id: 'workshop-module', href: 'workshop-module.html', label: '运营台', icon: 'inbox' },
