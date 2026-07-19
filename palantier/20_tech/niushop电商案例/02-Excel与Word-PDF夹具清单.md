@@ -3,7 +3,7 @@
 | 字段 | 内容 |
 |------|------|
 | 状态 | **数字孪生数据源**（线上真实数据 · 全字段）· 非测试抽样 |
-| 版本 | **v1.2** · 2026-07-19 |
+| 版本 | **v1.3** · 2026-07-19（表头中文名 + `_字段词典`；重导全字段） |
 | 目录 | `docs/palantier/20_tech/niushop电商案例/` |
 | 关联 | [00 整体孪生主方案 v2.0](00-Niushop微商城AOS对接方案.md) · [01 JOIN与路径](01-Pipeline多表JOIN能力核查与接入路径调整.md) |
 
@@ -61,18 +61,30 @@ python docs/palantier/20_tech/niushop电商案例/export_fixtures_excel.py
 
 ---
 
-## 2. Excel · 订单孪生（全字段）
+## 2. Excel · 订单孪生（全字段 · 中文表头）
 
 | Sheet | 表 | 列数（实导） | 行数（实导） |
 |-------|-----|--------------|--------------|
-| `orders` | `ns_order` | **130** | **167** |
-| `order_lines` | `ns_order_goods` | **71** | **216** |
+| `订单` | `ns_order` | **130** | **167** |
+| `订单行` | `ns_order_goods` | **71** | **216** |
+| `_字段词典` | — | 英文字段↔中文名 | 供 Ontology 中文显示 |
 
 文件：`fixtures/excel/mall-order.xlsx`
 
-含支付、履约、分享/分润扩展、发票等全部业务列；与线上表结构一致。
+### 2.1 表头约定（数字孪生）
 
-> Excel 单格约 32KB 上限：若某 HTML 超长会截断并写 `twin-excel-truncations.txt`（本次全字段导出 **无截断**）。超长正文以 JDBC/Media 为准。
+每个数据 Sheet：
+
+| 行 | 内容 | 用途 |
+|----|------|------|
+| **第 1 行** | **中文名**（取自 MySQL `COLUMN COMMENT`；无 COMMENT 则用英文字段名） | 孪生属性中文显示名 |
+| **第 2 行** | 英文字段名（`order_id` 等） | 稳定技术键 / OKF 映射 |
+| **第 3 行起** | 真实数据 | 全量行、全量列 |
+
+另有 `_字段词典`（工作簿首页）：`物理表 · Sheet · 英文字段 · 中文名 · 类型 · COMMENT原文 · 无中文COMMENT`。
+
+> Excel 单格约 32KB 上限：超长会截断并写 `twin-excel-truncations.txt`。  
+> 少数列库内无 COMMENT（如部分主键）→ 中文名暂等于英文字段，可在词典中人工补中文后再进 Ontology。
 
 ---
 
@@ -80,10 +92,11 @@ python docs/palantier/20_tech/niushop电商案例/export_fixtures_excel.py
 
 | Sheet | 表 | 列数 | 行数 |
 |-------|-----|------|------|
-| `goods` | `ns_goods` | 90 | 65 |
-| `goods_sku` | `ns_goods_sku` | 87 | 73 |
-| `goods_weapp` | `ns_goods_weapp` | 7 | 93 |
-| `goods_category` | `ns_goods_category` | 22 | 11 |
+| `商品` | `ns_goods` | 90 | 65 |
+| `商品SKU` | `ns_goods_sku` | 87 | 73 |
+| `商品端可见` | `ns_goods_weapp` | 7 | 93 |
+| `商品分类` | `ns_goods_category` | 22 | 11 |
+| `_字段词典` | — | 同上 | |
 
 文件：`fixtures/excel/mall-goods.xlsx`  
 运行态孪生主路径仍建议 **JDBC**（见 01）；本文件用于离线包与对照。
@@ -94,7 +107,7 @@ python docs/palantier/20_tech/niushop电商案例/export_fixtures_excel.py
 
 | Sheet | 表 |
 |-------|-----|
-| `articles` / `help` / `documents` / `stores` / `notices` | 对应 `ns_*` 全列 |
+| `文章` / `帮助` / `协议文档` / `门店` / `公告` | 对应 `ns_*` 全列 + `_字段词典` |
 
 文件：`fixtures/excel/mall-catalog.xlsx`
 
@@ -120,6 +133,7 @@ python docs/palantier/20_tech/niushop电商案例/export_fixtures_excel.py
 | v1.0 | 2026-07-19 | 初版抽样列 SQL |
 | v1.1 | 2026-07-19 | 隧道导出（抽样列） |
 | v1.2 | 2026-07-19 | **纠正口径**：数字孪生全字段；订单 130+71 列实导 |
+| v1.3 | 2026-07-19 | 表头中文名（COMMENT）+ 第2行英文字段 + `_字段词典`；Sheet 中文名 |
 
 ---
 

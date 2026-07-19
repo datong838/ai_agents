@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-线上 Niushop → Excel：数字孪生用真实全量字段导出（非测试抽样）。
+线上 Niushop → Excel：数字孪生用真实全量字段导出。
 
-- 凭据：同目录 .env（不打印密码）
-- 订单/订单行：ns_order / ns_order_goods 全部列、全部行
-- 商品：ns_goods / ns_goods_sku 全部列（分 Sheet）
-- Excel 单格上限约 32767：超长 HTML 截断并记 meta 表
-- 默认保留真实 PII（本机孪生私有文件）；NIUSHOP_EXCEL_MASK_PII=1 时对敏感列打码
+表头优先使用 MySQL COLUMN COMMENT（中文名）；无 COMMENT 时回退英文字段名。
+每个工作簿含 `_字段词典` Sheet：英文字段 ↔ 中文名，供 Ontology 属性中文显示映射。
+
+凭据：同目录 .env（不打印密码）
 """
 from __future__ import annotations
 
@@ -19,8 +18,6 @@ from openpyxl import Workbook
 ROOT = Path(__file__).resolve().parent
 ENV_PATH = ROOT / ".env"
 OUT_DIR = ROOT / "fixtures" / "excel"
-
-# Excel 单元格安全上限（留余量）
 CELL_MAX = 32000
 
 DEFAULTS = {
@@ -31,7 +28,6 @@ DEFAULTS = {
     "NIUSHOP_EXCEL_MASK_PII": "0",
 }
 
-# 仅当 MASK_PII=1 时处理；列名保留，值打码
 PII_COLUMNS = {
     "mobile",
     "telephone",
@@ -75,10 +71,25 @@ def connect(cfg: dict[str, str], database: str | None = None):
     )
 
 
-def table_columns(conn, table: str) -> list[str]:
+def table_meta(conn, table: str) -> list[dict]:
+    """返回 [{field, type, comment, zh_name}, ...]"""
     with conn.cursor() as cur:
-        cur.execute(f"SHOW COLUMNS FROM `{table}`")
-        return [r["Field"] for r in cur.fetchall()]
+        cur.execute(f"SHOW FULL COLUMNS FROM `{table}`")
+        rows = cur.fetchall()
+    out = []
+    for r in rows:
+        field = r["Field"]
+        comment = (r.get("Comment") or "").strip()
+        zh = comment if comment else field
+        out.append(
+            {
+                "field": field,
+                "type": r.get("Type") or "",
+                "comment": comment,
+                "zh_name": zh,
+            }
+        )
+    return out
 
 
 def fetch_all(conn, sql: str) -> list[dict]:
@@ -94,11 +105,11 @@ def mask_phone(v: str) -> str:
     return s[:3] + "****" + s[-4:]
 
 
-def apply_pii_mask(rows: list[dict], columns: list[str]) -> list[dict]:
+def apply_pii_mask(rows: list[dict], fields: list[str]) -> list[dict]:
     out = []
     for r in rows:
         nr = dict(r)
-        for c in columns:
+        for c in fields:
             if c not in PII_COLUMNS or nr.get(c) in (None, ""):
                 continue
             if c in ("mobile", "telephone"):
@@ -122,20 +133,46 @@ def sanitize_cell(val, truncations: list, table: str, col: str, row_key: str):
     return val
 
 
-def write_sheet(
+def write_data_sheet(
     wb: Workbook,
-    title: str,
+    sheet_title: str,
+    meta: list[dict],
     rows: list[dict],
-    columns: list[str],
     truncations: list,
     table: str,
     pk: str,
 ):
-    ws = wb.create_sheet(title)
-    ws.append(columns)
+    """第1行：中文名；第2行：英文字段名（孪生映射键）；第3行起：数据。"""
+    ws = wb.create_sheet(sheet_title)
+    fields = [m["field"] for m in meta]
+    zh_headers = [m["zh_name"] for m in meta]
+    ws.append(zh_headers)
+    ws.append(fields)
     for r in rows:
         key = str(r.get(pk, ""))
-        ws.append([sanitize_cell(r.get(c), truncations, table, c, key) for c in columns])
+        ws.append(
+            [sanitize_cell(r.get(c), truncations, table, c, key) for c in fields]
+        )
+
+
+def append_dict_sheet(wb: Workbook, table_sheets: list[tuple[str, str, list[dict]]]):
+    """_字段词典：表名 / Sheet / 英文字段 / 中文名 / 类型 / COMMENT原文"""
+    ws = wb.create_sheet("_字段词典", 0)
+    ws.append(["物理表", "Sheet", "英文字段", "中文名", "类型", "COMMENT原文", "无中文COMMENT"])
+    for table, sheet, meta in table_sheets:
+        for m in meta:
+            missing = "Y" if not m["comment"] else ""
+            ws.append(
+                [
+                    table,
+                    sheet,
+                    m["field"],
+                    m["zh_name"],
+                    m["type"],
+                    m["comment"],
+                    missing,
+                ]
+            )
 
 
 def export_full_table(
@@ -147,111 +184,119 @@ def export_full_table(
     mask_pii: bool,
     truncations: list,
     pk: str,
-) -> tuple[int, int]:
-    cols = table_columns(conn, table)
-    col_sql = ", ".join(f"`{c}`" for c in cols)
+) -> tuple[int, int, list[dict]]:
+    meta = table_meta(conn, table)
+    fields = [m["field"] for m in meta]
+    col_sql = ", ".join(f"`{c}`" for c in fields)
     rows = fetch_all(conn, f"SELECT {col_sql} FROM `{table}` ORDER BY {order_by}")
     if mask_pii:
-        rows = apply_pii_mask(rows, cols)
-    write_sheet(wb, sheet, rows, cols, truncations, table, pk)
-    return len(rows), len(cols)
+        rows = apply_pii_mask(rows, fields)
+    write_data_sheet(wb, sheet, meta, rows, truncations, table, pk)
+    return len(rows), len(fields), meta
+
+
+def build_workbook(
+    conn,
+    specs: list[tuple[str, str, str, str]],
+    mask_pii: bool,
+    truncations: list,
+) -> tuple[Workbook, list[str]]:
+    """specs: (table, sheet, order_by, pk)"""
+    wb = Workbook()
+    wb.remove(wb.active)
+    dict_entries: list[tuple[str, str, list[dict]]] = []
+    summaries: list[str] = []
+    for table, sheet, order_by, pk in specs:
+        try:
+            n, c, meta = export_full_table(
+                conn, wb, table, sheet, order_by, mask_pii, truncations, pk
+            )
+            dict_entries.append((table, sheet, meta))
+            no_zh = sum(1 for m in meta if not m["comment"])
+            summaries.append(f"{sheet}: {n}行×{c}列(无COMMENT={no_zh})")
+        except Exception as e:
+            summaries.append(f"{sheet}: SKIP {e}")
+    if dict_entries:
+        append_dict_sheet(wb, dict_entries)
+    return wb, summaries
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8")
+        except Exception:
+            pass
+
     cfg = load_env(ENV_PATH)
     mask_pii = cfg.get("NIUSHOP_EXCEL_MASK_PII", "0").strip() in ("1", "true", "True", "yes")
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     db = cfg.get("NIUSHOP_DB_NAME") or "niushop_b2c_v5"
     print(f"连接 {cfg['NIUSHOP_DB_HOST']}:{cfg['NIUSHOP_DB_PORT']} user={cfg['NIUSHOP_DB_USER']}")
-    print(f"数据库: {db} · 模式: 数字孪生全字段 · MASK_PII={int(mask_pii)}")
+    print(f"数据库: {db} · 全字段+中文表头 · MASK_PII={int(mask_pii)}")
 
     truncations: list[str] = []
     conn = connect(cfg, db)
     try:
-        # —— 订单孪生（全字段）——
-        wb_o = Workbook()
-        wb_o.remove(wb_o.active)
-        n_o, c_o = export_full_table(
-            conn, wb_o, "ns_order", "orders", "order_id", mask_pii, truncations, "order_id"
-        )
-        n_l, c_l = export_full_table(
+        # 订单
+        wb_o, sums = build_workbook(
             conn,
-            wb_o,
-            "ns_order_goods",
-            "order_lines",
-            "order_id, order_goods_id",
+            [
+                ("ns_order", "订单", "order_id", "order_id"),
+                ("ns_order_goods", "订单行", "order_id, order_goods_id", "order_goods_id"),
+            ],
             mask_pii,
             truncations,
-            "order_goods_id",
         )
         p_order = OUT_DIR / "mall-order.xlsx"
         wb_o.save(p_order)
-        print(f"写入 {p_order.name}: orders={n_o}x{c_o}cols · lines={n_l}x{c_l}cols")
+        wb_o.save(OUT_DIR / "mall-order-sample.xlsx")
+        print(f"写入 {p_order.name}: " + " · ".join(sums))
 
-        # 兼容旧文件名：同步一份（同内容）
-        p_legacy = OUT_DIR / "mall-order-sample.xlsx"
-        wb_o.save(p_legacy)
-
-        # —— 商品孪生（全字段分表）——
-        wb_g = Workbook()
-        wb_g.remove(wb_g.active)
-        n_g, c_g = export_full_table(
-            conn, wb_g, "ns_goods", "goods", "goods_id", False, truncations, "goods_id"
+        # 商品
+        wb_g, sums = build_workbook(
+            conn,
+            [
+                ("ns_goods", "商品", "goods_id", "goods_id"),
+                ("ns_goods_sku", "商品SKU", "goods_id, sku_id", "sku_id"),
+                ("ns_goods_weapp", "商品端可见", "goods_id, weapp_id", "goods_id"),
+                ("ns_goods_category", "商品分类", "category_id", "category_id"),
+            ],
+            False,
+            truncations,
         )
-        n_s, c_s = export_full_table(
-            conn, wb_g, "ns_goods_sku", "goods_sku", "goods_id, sku_id", False, truncations, "sku_id"
-        )
-        # 端可见 / 分类（孪生主链相关）
-        for table, sheet, order, pk in (
-            ("ns_goods_weapp", "goods_weapp", "goods_id, weapp_id", "goods_id"),
-            ("ns_goods_category", "goods_category", "category_id", "category_id"),
-        ):
-            try:
-                n, c = export_full_table(
-                    conn, wb_g, table, sheet, order, False, truncations, pk
-                )
-                print(f"  + {sheet}: {n}x{c}cols")
-            except Exception as e:
-                print(f"  skip {table}: {e}")
         p_goods = OUT_DIR / "mall-goods.xlsx"
         wb_g.save(p_goods)
-        # 旧名对照
         wb_g.save(OUT_DIR / "mall-sku-master.xlsx")
-        print(f"写入 {p_goods.name}: goods={n_g}x{c_g}cols · sku={n_s}x{c_s}cols")
+        print(f"写入 {p_goods.name}: " + " · ".join(sums))
 
-        # —— CMS / 门店（全字段，文案孪生）——
-        wb_c = Workbook()
-        wb_c.remove(wb_c.active)
-        for table, sheet, order, pk in (
-            ("ns_article", "articles", "article_id", "article_id"),
-            ("ns_help", "help", "id", "id"),
-            ("ns_document", "documents", "id", "id"),
-            ("ns_store", "stores", "store_id", "store_id"),
-            ("ns_notice", "notices", "id", "id"),
-        ):
-            try:
-                n, c = export_full_table(
-                    conn, wb_c, table, sheet, order, mask_pii, truncations, pk
-                )
-                print(f"  catalog {sheet}: {n}x{c}cols")
-            except Exception as e:
-                print(f"  skip {table}: {e}")
+        # 内容/门店
+        wb_c, sums = build_workbook(
+            conn,
+            [
+                ("ns_article", "文章", "article_id", "article_id"),
+                ("ns_help", "帮助", "id", "id"),
+                ("ns_document", "协议文档", "id", "id"),
+                ("ns_store", "门店", "store_id", "store_id"),
+                ("ns_notice", "公告", "id", "id"),
+            ],
+            mask_pii,
+            truncations,
+        )
         p_cat = OUT_DIR / "mall-catalog.xlsx"
         wb_c.save(p_cat)
         wb_c.save(OUT_DIR / "mall-catalog-index.xlsx")
-        print(f"写入 {p_cat.name}")
+        print(f"写入 {p_cat.name}: " + " · ".join(sums))
 
         if truncations:
-            meta = wb_o.create_sheet("_truncation_meta") if False else None
-            # 单独写截断清单
             meta_path = OUT_DIR / "twin-excel-truncations.txt"
             meta_path.write_text("\n".join(truncations), encoding="utf-8")
-            print(f"注意: {len(truncations)} 处单元格因 Excel 上限截断 → {meta_path.name}")
+            print(f"注意: {len(truncations)} 处截断 → {meta_path.name}")
         else:
             print("无 Excel 单元格截断")
     finally:
         conn.close()
-    print("完成 · 数字孪生全字段导出")
+    print("完成 · 中文表头孪生导出")
     return 0
 
 

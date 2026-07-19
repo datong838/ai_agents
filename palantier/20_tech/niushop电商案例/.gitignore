@@ -1,6 +1,8 @@
 ﻿# 本机孪生数据与凭据 — 勿提交
 .env
 fixtures/excel/*.xlsx
+fixtures/excel/_header_preview.txt
+fixtures/excel/twin-excel-truncations.txt
 fixtures/word/**
 fixtures/ppt/**
 fixtures/pdf/**
