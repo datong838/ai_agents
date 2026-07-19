@@ -3,7 +3,7 @@
 > **版本**：v1.0 · 2026-07-17  
 > **任务**：台账下一刀 #1 — Ferry 大镜像现场打包策略  
 > **对齐**：[53](53-T5.6-Ferry气隙MVP方案.md) · [56](56-T5.6-Ferry镜像层Skopeo-cosign方案.md) · [59](59-Ferry-skopeo-archive现场演练方案.md) · T09  
-> **工程**：客户清单 · `pack-ferry-images-onsite.ps1` · ferry 超时/体积门禁 · 预检探针  
+> **工程**：客户清单 · `pack-ferry-images-onsite.ps1` · **`pack-ferry-images-onsite.sh` / `probe-ferry-large-images.sh`（mac/Linux · [153](153-Ferry大镜像打包分轨方案.md)）** · **现场加严 [162](162-Ferry现场加严MVP方案.md)** · ferry 超时/体积门禁 · 预检探针  
 > **硬规则**：默认 `AOS_FERRY_SKOPEO=0`；默认 archive 仍仅 alpine 演练；**大镜像不进默认 API export base64**；客户包不含强制大镜像
 
 ---
@@ -105,11 +105,17 @@ Env：`AOS_FERRY_IMAGES_MANIFEST=<path>` → 合并进 `_image_refs` / archive �
 - [x] MAX_MIB 门禁：超限不嵌入  
 - [x] pack 脚本无 Docker → SKIP 或清晰错误；本机 alpine archive ~8.7MB OK  
 - [x] probe 预检无参可用  
-- [x] 默认 export 行为不变（alpine 演练路径）  
-- [x] 与 [53]/[56]/[59] 交叉一致  
-- [x] 顺带修复 trivy `--skip-dirs` 逗号被 PS 拆参 + 180s 超时
+- [x] pack/probe **mac/Linux `.sh` 分轨** [153](153-Ferry大镜像打包分轨方案.md)（不改 ps1）
 
 ---
+
+## 6b. Unix 用法（153）
+
+```bash
+bash scripts/ci/probe-ferry-large-images.sh
+bash scripts/ci/pack-ferry-images-onsite.sh --skip-archive --out-dir deploy/dev/_ferry_onsite_sh
+# 有 Docker 时去掉 --skip-archive；缺镜像加 --pull
+```
 
 ## 7. 风险
 

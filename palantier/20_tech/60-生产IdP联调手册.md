@@ -3,8 +3,9 @@
 > **版本**：v1.0 · 2026-07-17  
 > **任务**：台账下一刀 #1 — 生产 IdP 联调手册  
 > **对齐**：[41](41-TX.3-IdP-OIDC对接方案.md) · [50](50-Dev-Keycloak联调缓解B-TX3方案.md) · [57](57-Dev-HA-Keycloak缓解B-TX3方案.md) · [24](24-AOS客户侧前置组件安装SOP.md) §3.4  
-> **工程**：手册本文 · `scripts/ci/probe-prod-idp.ps1` · `aos_api/auth.py`（claim 别名）  
-> **硬规则**：Keycloak/客户 IdP **不进客户包**；生产 `AOS_AUTH_ALLOW_DEV=0`；密钥只走 vault/env ref；UI 只打 aos-api
+> **工程**：手册本文 · `scripts/ci/probe-prod-idp.ps1` · **`scripts/ci/probe-prod-idp.sh`**（含 `--reject-dev`）· **`probe-keycloak-oidc.sh` / `drill-prod-idp-via-dev-kc.sh`（[154](154-生产IdP-Dev演练分轨方案.md)）** · **`drill-local-pseudo-prod-idp.sh`（[156](156-本地伪生产IdP加固方案.md)）** · `aos_api/auth.py`（claim 别名）  
+> **硬规则**：Keycloak/客户 IdP **不进客户包**；生产 `AOS_AUTH_ALLOW_DEV=0`；密钥只走 vault/env ref；UI 只打 aos-api  
+> **版本注记**：§6.1 Dev 演练 · §6.2 本地伪生产 · §6.3 微商城验收规程（[161](161-客户生产IdP验收规程-微商城案例.md) · 2026-07-19）
 
 ---
 
@@ -128,8 +129,85 @@ Client  Authorization: Bearer <IdP JWT> → /v1/me
 .\scripts\ci\probe-prod-idp.ps1 ... -AccessToken $tok -ApiBase http://aos-api:8080
 ```
 
+```bash
+# macOS / Linux（并列，不替代 ps1）
+bash scripts/ci/probe-prod-idp.sh \
+  --issuer "https://idp.example.com/realms/aos" \
+  --jwks "https://idp.example.com/realms/aos/protocol/openid-connect/certs" \
+  --audience "aos-api"
+# 有样例 token：加 --token "$tok" --api-base http://aos-api:8080
+```
+
 4. 期望：discovery/JWKS **200**；带 token 时 `/v1/me` **200** 且 `tokenKind` 反映 OIDC。  
 5. 失败对照 §8。
+
+### 6.1 Dev 可复现演练（非客户现场 · [154](154-生产IdP-Dev演练分轨方案.md)）
+
+用本机 Dev Keycloak 拿到 **真 OIDC JWT**，再走同一套 `probe-prod-idp`：
+
+```bash
+# 起 KC（有 Docker 时）
+docker compose -f deploy/dev/docker-compose.yml --profile oidc up -d aos-dev-keycloak
+
+# 单探针（对齐 probe-keycloak-oidc.ps1）
+bash scripts/ci/probe-keycloak-oidc.sh
+
+# 串联：KC token → probe-prod-idp.sh（手册 60 路径）
+bash scripts/ci/drill-prod-idp-via-dev-kc.sh
+# 要求 /v1/me 必须绿：加 --require-me（aos-api 须已配 OIDC env）
+```
+
+**口径：** 演练通过 ≠ 客户生产 IdP 已验收；客户现场仍按 §6 要样例 token。
+
+### 6.2 本地伪生产加固（关 Dev · [156](156-本地伪生产IdP加固方案.md)）
+
+在开发机把 aos-api 配成 **生产同构门禁**（`AOS_AUTH_ALLOW_DEV=0` + Dev KC 真 JWT），**不等于**客户现场签收。
+
+```bash
+# 常绿单测（无需 Docker）
+cd services/aos-api && PYTHONPATH=. python -m pytest tests/test_local_pseudo_prod_idp.py -q
+
+# 有 Dev Keycloak 时：临时起 :18080 伪生产 API（不碰演示 :8080）
+docker compose -f deploy/dev/docker-compose.yml --profile oidc up -d aos-dev-keycloak
+bash scripts/ci/drill-local-pseudo-prod-idp.sh
+# 无 KC → SKIP；要强制失败：加 --require
+```
+
+矩阵：`allowDevToken=false` · `Bearer dev`→401 · OIDC JWT `/v1/me`→200 · `probe-prod-idp.sh --reject-dev`。
+
+**客户现场（后序）**：含微商城等线上案例，按 §6 / §6.3 换客户 issuer/JWKS/样例 token；勿把本机伪生产标成客户验收。
+
+### 6.3 微商城线上案例验收规程（[161](161-客户生产IdP验收规程-微商城案例.md)）
+
+面向「用微商城线上 IdP 做客户验收」的采集与探针编排。**规程就绪 ≠ 已签收。**
+
+#### 采集清单（给集成商）
+
+| # | 项 | 填入 |
+| --- | --- | --- |
+| 1 | 案例名 | 如 `mall-online` |
+| 2 | Issuer | 与 JWT `iss` 字节级一致 |
+| 3 | JWKS URL | 可达 aos-api |
+| 4 | Audience | 默认 `aos-api` 或客户约定 |
+| 5 | 样例 access_token | 可脱敏；勿入库 |
+| 6 | Claim 对照 | `org_id`/`project_id`/`roles`/`markings`（或别名） |
+| 7 | aos-api 基址 | 已配 §4 且 `AOS_AUTH_ALLOW_DEV=0` |
+
+#### 一键验收（macOS/Linux）
+
+```bash
+cp deploy/dev/customer-idp.mall.example.env deploy/dev/customer-idp.mall.env
+# 编辑 mall.env：issuer/jwks/（可选）token
+bash scripts/ci/accept-customer-idp.sh --env deploy/dev/customer-idp.mall.env
+# 无配置 → SKIP；有 token → probe --reject-dev --require-me
+# 报告：deploy/dev/_idp_accept/<case>-*.md（gitignore · 人工签收表）
+```
+
+| 层 | 含义 |
+| --- | --- |
+| A 规程就绪 | 清单 + 脚本可跑（本刀） |
+| B 联调绿 | 样例 token `/v1/me` 200 |
+| C 客户签收 | 书面确认（人） |
 
 ---
 

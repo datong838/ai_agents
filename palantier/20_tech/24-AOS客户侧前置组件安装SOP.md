@@ -1,7 +1,7 @@
 # 24 · AOS 客户侧前置组件安装 SOP
 
 > **文档性质**：**活文档 SOP**（开发期 / 实施期持续补全；禁止「到现场再写」）  
-> **版本**：v0.2 · 2026-07-18（补 **macOS Dev 缩小版** 启动路径；Windows 仍可用 `scripts/demo/*.ps1`）  
+> **版本**：v0.4 · 2026-07-19（补 **Linux 打包清单** [152](152-Linux打包清单与pack脚本方案.md)；mac [151]；Windows `*.ps1` 未改）  
 > **状态**：实施门禁真源 · 对齐军规 [23](23-AOS开源引用与交付军规.md) **R-INST-***  
 > **读者**：客户 IT · FDE · 实施 · 研发（Dev 环境同样走一遍缩小版）  
 > **配套**：[22](22-AOS开源产品维护清单.md) · [27](27-本机开发基础设施与工程门禁记录.md) · [72](72-系统启停与健康检查手册.md) · [T05](T05-L1数据集成详细技术方案.md) · [T09](T09-Apollo交付引擎详细技术方案.md) · [T-CROSS](T-CROSS-横切能力详细技术方案.md)
@@ -236,7 +236,7 @@ prereq-handoff.yaml  （或等价表格）
 | 一键启动 | `scripts\demo\start-local.ps1` | `scripts/demo/start-local.sh`（Hub 不通 → `start-local-native.sh`） | 同 mac：`*.sh` |
 | 健康检查 | `health-check.ps1` | `health-check.sh` | `health-check.sh` |
 | 停止 | `stop-local.ps1` | `stop-local.sh` | `stop-local.sh` |
-| 打包 / 交付 | 既有 `scripts/ci/*.ps1`（Ferry/SBOM 等）**保持不动** | 另开 mac 打包清单（待补，不改 Win 脚本） | 另开 linux 打包清单（待补） |
+| 打包 / 交付 | 既有 `scripts/ci/*.ps1`（Ferry/SBOM 等）**保持不动** | **[151](151-macOS打包清单与pack脚本方案.md)** · `scripts/pack/macos-desktop.md` · `pack-desktop-mac.sh` · `probe-prod-idp.sh` | **[152](152-Linux打包清单与pack脚本方案.md)** · `scripts/pack/linux-desktop.md` · `pack-desktop-linux.sh` |
 | 工程根示例 | `c:\work\projects\wchat\aos-platform\` | `~/work/projects/ai_agent/aos-platform/` | 按现场约定 |
 
 | 项 | Windows（已证） | macOS（Apple Silicon · 2026-07-18 联调） |

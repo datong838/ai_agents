@@ -3,7 +3,7 @@
 > **版本**：v1.0 · 2026-07-17  
 > **任务**：台账下一刀 #2 — Ferry Full Channel / 真 cosign（本刀只收 **真 cosign 密钥链**）  
 > **对齐**：[53](53-T5.6-Ferry气隙MVP方案.md) · [56](56-T5.6-Ferry镜像层Skopeo-cosign方案.md) · [62](62-Ferry大镜像现场打包策略.md) · T09  
-> **工程**：密钥脚本 · ferry cosign Docker 回落 · `AOS_FERRY_COSIGN_REQUIRED` · probe · 单测  
+> **工程**：密钥脚本（**ps1 + [162](162-Ferry现场加严MVP方案.md) `.sh`**）· ferry cosign Docker 回落 · `AOS_FERRY_COSIGN_REQUIRED` · probe · 单测  
 > **硬规则**：密钥不进 Git；默认仍可 `cosign-dev-hmac`；**Full Spoke/Channel 产品仍延期**（诚实标注）
 
 ---
