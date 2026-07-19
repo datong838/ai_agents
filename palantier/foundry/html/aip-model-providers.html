@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AIP · 模型供应商 | AI操作系统</title>
+  <title>AIP · 大模型接入(插件) | AI操作系统</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/demo.css" />
 </head>
@@ -36,7 +36,7 @@
     <main class="flex-1 overflow-y-auto p-6 lg:p-8">
       <div class="max-w-5xl mx-auto space-y-6">
         <div>
-          <h1 class="text-xl font-semibold text-gray-100">模型供应商（接入）</h1>
+          <h1 class="text-xl font-semibold text-gray-100">大模型接入(插件)</h1>
           <p class="mt-1 text-sm text-gray-500">先选供应商类型，再填该类型配置；运行时经 Facade → LiteLLM（T07），UI 不直连厂商 SDK。</p>
         </div>
 
@@ -186,7 +186,7 @@
   </div>
   <script src="assets/demo.js"></script>
   <script>
-    DemoUI.initShell('aip-model-providers', [{ href: 'index.html', label: '概览' }, { href: 'aip-maturity.html', label: 'AIP' }, { label: '模型供应商' }]);
+    DemoUI.initShell('aip-model-providers', [{ href: 'index.html', label: '概览' }, { href: 'aip-maturity.html', label: 'AIP' }, { label: '大模型接入(插件)' }]);
     const titles = { openai: 'OpenAI 兼容', azure: 'Azure OpenAI', anthropic: 'Anthropic', vllm: '本地 vLLM / Ollama', adapter: '自定义 Adapter 包' };
     const panel = document.getElementById('panel-cfg');
     function openCfg(type) {

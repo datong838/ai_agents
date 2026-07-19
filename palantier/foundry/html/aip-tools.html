@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AIP · Agent 工具面板 | AI操作系统</title>
+  <title>AIP · 智能体管理工作台 | AI操作系统</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/demo.css" />
 </head>
@@ -43,28 +43,30 @@
 
     <main class="flex-1 overflow-y-auto p-4 lg:p-6">
       <div class="mb-4 px-1">
-        <h1 class="text-lg font-semibold text-gray-100">Agent 工具面板 · 维修派单 Buddy</h1>
-        <p class="text-xs text-gray-500 mt-1">LLM 只「请求」工具；平台以调用用户权限代调（A-08）。写路径默认可提案。</p>
+        <h1 class="text-lg font-semibold text-gray-100">智能体管理工作台</h1>
+        <p class="text-xs text-gray-500 mt-1">配置当前智能体可用工具类型与细项。LLM 只「请求」工具；平台以调用用户权限代调（A-08）。写路径默认可提案。</p>
       </div>
 
       <div class="grid lg:grid-cols-12 gap-4 min-h-[28rem]">
         <!-- 目录 -->
         <div class="lg:col-span-3 rounded-xl border border-white/[0.08] bg-slate-900/50 p-3 space-y-1">
-          <div class="text-[10px] uppercase tracking-wider text-gray-600 px-2 mb-2">工具目录 · 六类</div>
-          <label class="tool-cat flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="action" class="rounded border-white/20" /> Action</label>
-          <label class="tool-cat flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="query" class="rounded border-white/20" /> Object Query</label>
-          <label class="tool-cat flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="function" class="rounded border-white/20" /> Function</label>
-          <label class="tool-cat flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" data-tool-cat="var" class="rounded border-white/20" /> Update App Var</label>
-          <label class="tool-cat flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" data-tool-cat="cmd" class="rounded border-white/20" /> Command</label>
-          <label class="tool-cat flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="clarify" class="rounded border-white/20" /> Request Clarification</label>
-          <label class="tool-cat flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="capability" class="rounded border-white/20" /> Capability</label>
+          <div class="text-[10px] uppercase tracking-wider text-gray-600 px-2 mb-2">工具目录</div>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="action" class="rounded border-white/20 mt-0.5" /><span><span class="block">Action</span><span class="block text-[10px] text-gray-600">写回动作（可 HITL）</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="query" class="rounded border-white/20 mt-0.5" /><span><span class="block">Object Query</span><span class="block text-[10px] text-gray-600">对象属性查询</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="function" class="rounded border-white/20 mt-0.5" /><span><span class="block">Function</span><span class="block text-[10px] text-gray-600">函数 / 已发布 Logic</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" data-tool-cat="var" class="rounded border-white/20 mt-0.5" /><span><span class="block">Update App Var</span><span class="block text-[10px] text-gray-600">更新应用变量</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" data-tool-cat="cmd" class="rounded border-white/20 mt-0.5" /><span><span class="block">Command</span><span class="block text-[10px] text-gray-600">命令类工具</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="clarify" class="rounded border-white/20 mt-0.5" /><span><span class="block">Request Clarification</span><span class="block text-[10px] text-gray-600">向用户澄清</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="capability" class="rounded border-white/20 mt-0.5" /><span><span class="block">Capability</span><span class="block text-[10px] text-gray-600">重能力（平台代调）</span></span></label>
           <div class="border-t border-white/[0.06] my-2"></div>
-          <label class="tool-cat flex items-center gap-2 px-2 py-1.5 rounded-lg bg-orange-400/5 border border-orange-400/20 text-sm cursor-pointer">
-            <input type="checkbox" checked data-tool-cat="wiki" class="rounded border-white/20" />
-            <span class="text-orange-300">Wiki Field Tool</span>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg bg-orange-400/5 border border-orange-400/20 text-sm cursor-pointer">
+            <input type="checkbox" checked data-tool-cat="wiki" class="rounded border-white/20 mt-0.5" />
+            <span><span class="block text-orange-300">Wiki Field Tool</span><span class="block text-[10px] text-orange-300/70">Wiki 结构化字段</span></span>
           </label>
           <p class="text-[10px] text-gray-600 px-2 pt-1">优先 Wiki 结构化字段 · Query 属性子集</p>
-          <p class="text-[10px] text-gray-600 px-2"><a href="aip-capabilities.html" class="text-amber-300/80 hover:underline">登记重能力 Adapter →</a></p>
+          <a href="aip-capabilities.html" class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg bg-cyan-400/5 border border-cyan-400/20 text-sm mt-1">
+            <span><span class="block text-cyan-300">登记重能力 Adapter →</span><span class="block text-[10px] text-cyan-300/70">登记 Adapter · 写回经 Action</span></span>
+          </a>
         </div>
 
         <!-- 已启用 -->
@@ -152,7 +154,7 @@
 
       <div class="mt-4 rounded-xl border border-white/[0.06] p-3 text-[11px] text-gray-500 flex flex-wrap gap-3 justify-between">
         <span>Logic：Apply Action · Call Function · Call Capability · Query · Calculator。重能力见 07b。</span>
-        <button type="button" id="btn-save-tools" class="px-3 py-1 rounded-lg bg-amber-400 text-slate-950 text-xs font-medium">保存工具配置</button>
+        <button type="button" id="btn-save-tools" class="px-3 py-1 rounded-lg bg-amber-400 text-slate-950 text-xs font-medium">保存智能体配置</button>
       </div>
       <p id="tools-toast" class="text-[11px] text-emerald-400/90 mt-2 hidden"></p>
     </main>
@@ -163,7 +165,7 @@
     DemoUI.initShell('aip-tools', [
       { label: '概览', href: 'index.html' },
       { label: 'AIP', href: 'aip-maturity.html' },
-      { label: 'Agent 工具面板' },
+      { label: '智能体管理工作台' },
     ]);
     DemoUI.initAipTools();
   </script>

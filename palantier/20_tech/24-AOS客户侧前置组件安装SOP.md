@@ -87,6 +87,7 @@ prereq-handoff.yaml  （或等价表格）
 | Vault 或客户 KMS | Lite 可用密封文件 | **必**其一 | **必**其一 | 客户 | Vault **BSL：发行包** |
 | Prometheus | 建议 | **必** | 建议 | 客户 | Apache2 |
 | Grafana | 可选深链 | 建议 | 可选 | 客户 | **AGPL：客户自装；AOS 只交 Dashboard JSON** |
+| Metabase / Superset（可选 BI） | 不捆绑 | 可选 | 可选 | 客户 | **客户如需 BI，自行部署 Superset/Metabase；AOS 仅提供数据源配置指引** |
 | Kafka/Redpanda | 无 CDC 则跳过 | 有 CDC 再装 | 按需 | 客户 | Redpanda BSL |
 | OCR 运行时（Paddle 依赖） | 随 AOS 插件进程 | 同左 | 离线轮需模型文件 | AOS 侧进程，但 **系统库/GPU 驱动** 客户准备 | Paddle Apache2 |
 

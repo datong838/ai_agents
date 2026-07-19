@@ -6,7 +6,7 @@
 > **军规（强制）**：**[23 开源引用与交付军规](23-AOS开源引用与交付军规.md)**  
 > **安装 SOP（活文档）**：**[24 客户侧前置组件安装 SOP](24-AOS客户侧前置组件安装SOP.md)** · 示例 `[docs/examples/customer-prereq/](../../examples/customer-prereq/)`  
 > **本地根**：`mybuddy-v01/`  
-> **补拉脚本**：`[clone_aos_deps.ps1](../../../mybuddy-v01/clone_aos_deps.ps1)`（P0/P1/P2）· 另见 `clone_mybuddy_repos.ps1` · `clone_airbyte_refs.ps1`
+> **补拉脚本**：`[clone_aos_deps.ps1](../../../mybuddy-v01/clone_aos_deps.ps1)`（P0/P1/P2）· `[clone_analytics_refs.ps1](../../../mybuddy-v01/clone_analytics_refs.ps1)`（1.3 refs · [77](77-产品1.3分析建模refs克隆清单.md)）· 另见 `clone_mybuddy_repos.ps1` · `clone_airbyte_refs.ps1`
 
 ---
 
@@ -33,6 +33,7 @@ mybuddy-v01/
 ├── A1_ETL/ … F2_Authz/                      # Apache2/MIT 等：可留作参考 submodule 区
 ├── refs/                                    # 参考/二开时看；BSL·AGPL 与补拉依赖优先放此
 │   ├── ocr/ · objstore/ · objstore-sdk/ · seaweedfs/ · tesseract/ · cache/ · ferry/ · obs/ · mcp/ · eval/ …
+│   └── analytics/   # 1.3 Notebook/SQL/图 · clone_analytics_refs.ps1 · 见 77
 └── ClaudeSkills/（仓库平级）                 # 工程技能；不进交付包
 ```
 

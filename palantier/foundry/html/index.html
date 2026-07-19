@@ -43,41 +43,41 @@
     <main class="flex-1 overflow-y-auto p-6 lg:p-8">
       <div class="max-w-6xl mx-auto space-y-8">
         <div>
-          <h1 class="text-2xl font-semibold text-gray-100 tracking-tight">数据操作系统 · 本体数字孪生 · AIP 人工智能平台 · 工作台</h1>
-          <p class="mt-2 text-gray-400 leading-relaxed whitespace-nowrap overflow-x-auto">日常从 <span class="text-sky-300">工作台</span> 进入；建设路径：Connector → Pipeline → Dataset → OKF / Ontology → <span class="text-amber-300">AIP</span> → <span class="text-sky-300">工作台（操作台）</span>。</p>
+          <h1 class="text-sm font-medium text-gray-100 tracking-tight leading-snug">数据操作系统 · 本体数字孪生 · AIP 人工智能平台 · 工作台</h1>
+          <p class="mt-2 text-gray-400 leading-relaxed whitespace-nowrap overflow-x-auto">日常从 <span class="text-sky-300">工作台</span> 进入；建设路径：连接器 → 管道 → 数据集 → OKF / 本体 → <span class="text-amber-300">AIP</span> → <span class="text-sky-300">工作台（操作台）</span>。</p>
         </div>
 
-        <!-- ① 工作台 L3：应用列表是入口；其下 Module 为列表内示例 -->
+        <!-- ① 工作台 L3：应用列表是入口；其下模块为列表内示例 -->
         <div class="rounded-xl border border-sky-400/25 bg-sky-400/5 p-6 shadow-sm shadow-black/20 space-y-5">
           <div>
             <h2 class="text-sm font-medium text-gray-100 mb-2">工作台</h2>
-            <p class="text-xs text-gray-500">入口只有「应用列表」；运营台 / 知识图谱 / Buddy 都是列表里打开的 Module，不是并列产品。</p>
+            <p class="text-xs text-gray-500">入口只有「应用列表」；运营台 / 知识图谱 / 智能助手 都是列表里打开的模块，不是并列产品。</p>
           </div>
           <a href="workshop.html" class="group flex items-center justify-between rounded-lg border border-sky-400/40 bg-slate-950/50 p-4 hover:border-sky-400/60 transition-all">
             <div>
               <div class="text-xs text-sky-300 mb-1">唯一入口</div>
               <div class="text-gray-100 font-medium group-hover:text-sky-300 transition-colors text-lg">应用列表</div>
-              <p class="text-xs text-gray-500 mt-2">按业务场景打开 Module · 含运营台、知识图谱、Buddy…</p>
+              <p class="text-xs text-gray-500 mt-2">按业务场景打开模块 · 含运营台、知识图谱、智能助手…</p>
             </div>
             <span class="text-sky-400 text-sm shrink-0">进入列表 →</span>
           </a>
           <div>
-            <div class="text-[10px] uppercase tracking-wider text-gray-600 mb-3">列表内 Module 示例（勿与入口平级理解）</div>
+            <div class="text-[10px] uppercase tracking-wider text-gray-600 mb-3">列表内模块示例（勿与入口平级理解）</div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
               <a href="workshop-module.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-sky-400/30 transition-all">
-                <div class="text-xs text-sky-300/80 mb-2">运营 Inbox</div>
+                <div class="text-xs text-sky-300/80 mb-2">运营收件箱</div>
                 <div class="text-gray-100 font-medium group-hover:text-sky-300 transition-colors">运营台</div>
-                <p class="text-xs text-gray-500 mt-2">Filter · Table · Object View · 变量条</p>
+                <p class="text-xs text-gray-500 mt-2">筛选 · 表格 · 对象视图 · 变量条</p>
               </a>
               <a href="workshop-object-view.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
                 <div class="text-xs text-violet-300/80 mb-2">本体前端</div>
                 <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">知识图谱</div>
-                <p class="text-xs text-gray-500 mt-2">Object+Link 图谱 · Wiki · Action</p>
+                <p class="text-xs text-gray-500 mt-2">对象+关系图谱 · Wiki · 动作</p>
               </a>
               <a href="workshop-aip-chat.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-                <div class="text-xs text-amber-300/80 mb-2">AIP 嵌入</div>
-                <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">Buddy · Assist</div>
-                <p class="text-xs text-gray-500 mt-2">挂在任意 Module 侧栏 / 表旁</p>
+                <div class="text-xs text-amber-300/80 mb-2">智能嵌入</div>
+                <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">智能助手</div>
+                <p class="text-xs text-gray-500 mt-2">挂在任意模块侧栏 / 表旁</p>
               </a>
             </div>
           </div>
@@ -93,37 +93,27 @@
         <!-- ② AIP -->
         <div class="rounded-xl border border-amber-400/25 bg-amber-400/5 p-6 shadow-sm shadow-black/20">
           <h2 class="text-sm font-medium text-gray-100 mb-2">AIP 人工智能平台 · k-LLM（核心调度） + Logic（编排引擎） + Agent Studio（Agent 开发工坊） + Assist（智能助手）</h2>
-          <p class="text-xs text-gray-500 mb-6">成熟度楼梯 → 工具面板 → Logic 三栏（试跑不落库）</p>
+          <p class="text-xs text-gray-500 mb-6">业务工作室 → 逻辑/工具 → 提案决策 → 模型配置</p>
           <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <a href="aip-maturity.html" class="group rounded-lg border border-amber-400/30 bg-slate-950/40 p-4 hover:border-amber-400/50 transition-all">
-              <div class="text-xs text-amber-300 mb-2">成熟度</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">成熟度楼梯</div>
-              <p class="text-xs text-gray-500 mt-2">Threads → Agent → Workshop → 自动化门控</p>
-            </a>
-            <a href="aip-tools.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">工具</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">Agent 工具面板</div>
-              <p class="text-xs text-gray-500 mt-2">六类工具 · Wiki 子集 · HITL Action</p>
+            <a href="agents.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">Studio</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">Chatbot Studio</div>
+              <p class="text-xs text-gray-500 mt-2">Prompt · Agent 配置 · 非边缘代理</p>
             </a>
             <a href="aip-logic.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
               <div class="text-xs text-amber-300 mb-2">Logic</div>
               <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">AIP Logic 画布</div>
               <p class="text-xs text-gray-500 mt-2">三栏 · CoT Debugger · Uses Automate</p>
             </a>
+            <a href="aip-tools.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">工具</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">智能体管理工作台</div>
+              <p class="text-xs text-gray-500 mt-2">六类工具 · Wiki 子集 · HITL Action</p>
+            </a>
             <a href="aip-capabilities.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-cyan-400/30 transition-all">
               <div class="text-xs text-cyan-300 mb-2">Capability</div>
               <div class="text-gray-100 font-medium group-hover:text-cyan-300 transition-colors">重能力接入</div>
               <p class="text-xs text-gray-500 mt-2">短视频 / 数字人 · Job·Session</p>
-            </a>
-            <a href="aip-model-providers.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">接入</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">模型供应商</div>
-              <p class="text-xs text-gray-500 mt-2">卡片 · 类型化表单 · Adapter</p>
-            </a>
-            <a href="aip-model-router.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">路由</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">模型路由</div>
-              <p class="text-xs text-gray-500 mt-2">任务类型 · 出境 · 预热熔断</p>
             </a>
             <a href="aip-draft-inbox.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-emerald-400/30 transition-all">
               <div class="text-xs text-emerald-300 mb-2">Draft</div>
@@ -140,10 +130,20 @@
               <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">决策谱系</div>
               <p class="text-xs text-gray-500 mt-2">读 Wiki → 模型 → Action/Draft 复盘</p>
             </a>
-            <a href="agents.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">Studio</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">Chatbot Studio</div>
-              <p class="text-xs text-gray-500 mt-2">Prompt · Agent 配置 · 非边缘代理</p>
+            <a href="aip-model-providers.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">接入</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">大模型接入(插件)</div>
+              <p class="text-xs text-gray-500 mt-2">卡片 · 类型化表单 · Adapter</p>
+            </a>
+            <a href="aip-model-router.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
+              <div class="text-xs text-amber-300 mb-2">路由</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">模型路由</div>
+              <p class="text-xs text-gray-500 mt-2">任务类型 · 出境 · 预热熔断</p>
+            </a>
+            <a href="aip-maturity.html" class="group rounded-lg border border-amber-400/30 bg-slate-950/40 p-4 hover:border-amber-400/50 transition-all">
+              <div class="text-xs text-amber-300 mb-2">成熟度</div>
+              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">成熟度楼梯</div>
+              <p class="text-xs text-gray-500 mt-2">Threads → Agent → Workshop → 自动化门控</p>
             </a>
           </div>
         </div>

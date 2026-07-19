@@ -2,7 +2,7 @@
 
 > **文档性质**：**可开工判定** + **全部开发任务细节** + **任务点依赖**（实现排期真源）  
 > **版本**：v1.48 · 2026-07-18  
-> **状态**：Wave-0～5 MVP ✅；§12 自验收关闭；**下一阶段：产品 1.3 方案 [73]（暂不编码）**；Apollo 运维仍后置；差距见 §11.6  
+> **状态**：Wave-0～5 MVP ✅；§12 自验收关闭；**产品 1.3 分析建模 MVP 阶段退出** [118](118-产品1.3分析建模阶段退出收口.md)；Apollo 运维仍后置；差距见 §11.6  
 > **对齐**：[20](20-AOS整体技术方案.md) · [T-EVO](T-EVO-v0.1到目标态替换阶梯.md) · [00 索引](00-技术方案索引.md) · [23](23-AOS开源引用与交付军规.md) · [24](24-AOS客户侧前置组件安装SOP.md) · [07b](../07b-Capability-Adapter重能力接入.md) · [T-UI](T-UI-前端工程与foundry-html落地规范.md) · **[27](27-本机开发基础设施与工程门禁记录.md)** · **[70](70-业务平台可演示优先计划.md)** · **[72](72-系统启停与健康检查手册.md)** · **[73 产品1.3](73-产品1.3分析建模下一阶段方案.md)**  
 > **不替代**：各 T0x / 07b 技术详稿（本文只定任务切分与先后）
 
@@ -761,7 +761,7 @@ flowchart TD
 | `/v1/datasets/*` · `/v1/syncs` | T-API · T05 | **✅ G-ALIGN-04 关闭** · [42](42-G-ALIGN-03-04-link-types与datasets契约补齐方案.md) · Facade |
 | foundry/html 全页 1:1（Graph/Pipeline 多页/Evals 专页等） | T-UI S2 · 34 §3 | **✅ S2 31 live** · [43](43-T-UI-S2业务深页按域方案.md)+[45](45-T-UI-S2余量第二刀方案.md)+[49](49-T-UI-S2余量第三刀与Ferry叙事方案.md)；Ferry=MVP 签名包 [53] |
 | modules publish / PATCH · evals/fleet/invoke 形变 · OpenAPI 漂移 · TX.4 | T-API · T08/T09/T-CROSS | **✅ G-ALIGN-05～08** · [47](47-技术方案全面对齐补缺方案.md) |
-| **产品模块 1.3 分析与建模**（Jupyter/R/SQL · Contour/Quiver/Vertex） | [02 §1.3](../02-四大金刚与子产品拆解.md) | 🟡 **G-ALIGN-09 → 方案已开** · [68](68-产品1.3分析建模与技术缺口对齐.md) · **[73](73-产品1.3分析建模下一阶段方案.md)**（TA.* · **暂不编码**）；**≠** Workshop 画布（1.4 / T1.11） |
+| **产品模块 1.3 分析与建模**（Jupyter/SQL · Notebook 7） | [02 §1.3](../02-四大金刚与子产品拆解.md) | 🟢 **G-ALIGN-09 → 评审通过** · [68](68-产品1.3分析建模与技术缺口对齐.md) · **[73](73-产品1.3分析建模下一阶段方案.md) v1.1**（TA.0 可开；首波不含 R/Contour；≠ Workshop） |
 
 
 
@@ -797,7 +797,7 @@ flowchart TD
 | 产品 05～09 P0 主路径是否有编码落点？ | **是**（Wave 0～5 MVP） |
 | 是否存在「文档有、实现无、且未标注」？ | **G-ALIGN-01～08 已关闭**；**产品 1.3 = G-ALIGN-09 已标注后置** [68](68-产品1.3分析建模与技术缺口对齐.md)；Ferry Full 运行时仍后置 |
 | 产品蓝图 html 全页？ | **S2 31 页已接线**；Ferry 页 = MVP 签名包 [53](53-T5.6-Ferry气隙MVP方案.md) |
-| 下一刀建议？ | **审 [73](73-产品1.3分析建模下一阶段方案.md)**（开源矩阵 + TA.*）；通过后立 TA.0 契约再编码；Apollo 运维仍后置 |
+| 下一刀建议？ | **须人点名**（1.3 MVP 已退出 [118](118-产品1.3分析建模阶段退出收口.md)）；Apollo / 真 Notebook / BI 全集后置 |
 
 
 ### 11.6 与目标态差距（工程结构 + 能力 · 2026-07-18）
@@ -811,7 +811,7 @@ flowchart TD
 | --- | --- | --- |
 | Wave 退出 / 可演示 MVP | **约 80%～85%** | Wave-0～5 + §12 TB.* 自验收关闭 + 71；剩现场联调 + Full 运行时 |
 | 20 §3 目录树一字不差 | **约 1/3 目录角色** | 现状 = `apps/web` + `services/aos-api` 单体 BFF + 薄 packages + `deploy/dev`·`ferry` |
-| 完整产品（含 1.3 分析建模） | **方案已立 / 实现≈0** | [73](73-产品1.3分析建模下一阶段方案.md) 已开；Jupyter 运行时未编码 |
+| 完整产品（含 1.3 分析建模） | **评审通过 / 实现自 TA.0** | [73](73-产品1.3分析建模下一阶段方案.md) v1.1；Notebook 运行时未编码 |
 
 #### 11.6.2 工程结构对照（20 §3 vs 现状）
 
@@ -952,32 +952,39 @@ powershell -File scripts\demo\stop-local.ps1
 
 ---
 
-## 13. 下一阶段：产品 1.3 分析与建模（方案门禁）
+## 13. 下一阶段：产品 1.3 分析与建模（编码门禁）
 
-> **详稿**：[73](73-产品1.3分析建模下一阶段方案.md) · 缺口口径 [68](68-产品1.3分析建模与技术缺口对齐.md)  
-> **状态**：📝 **方案稿 · 暂不编码**（人审通过后再开 TA.0）
+> **详稿**：[73](73-产品1.3分析建模下一阶段方案.md) **v1.1** · 缺口口径 [68](68-产品1.3分析建模与技术缺口对齐.md) · refs [77](77-产品1.3分析建模refs克隆清单.md)  
+> **状态**：✅ **评审通过（2026-07-18）** · **下一刀 = TA.0 契约** · 边车实现自 TA.1
 
-### 13.1 硬规则
+### 13.1 硬规则（决议锁定）
 
 | 规则 | 说明 |
 | --- | --- |
 | 1.3 ≠ 1.4 | 禁止用 Workshop 画布声称分析建模已交付 |
 | Facade | Web → aos-api → Jupyter 边车（同 OCR/LiteLLM） |
-| 写回 | 只走 Draft/Action + lineage（复用 TB.4） |
-| 开源 | 见 73 §5 矩阵；AGPL 服务端不进客户包 |
-| 编码门禁 | **未勾选 73 §10 评审清单前，禁止合并 Notebook 运行时代码** |
+| UI | **Notebook 7**；JupyterLab = 二期 |
+| 写回 | **仅 Draft → Approve**；分析员 **不自批**（复用 TB.4） |
+| 首波不含 | **R 内核** · **Contour 子集页**（TA.8 可选非阻塞） |
+| 开源 | 73 §5；**SBOM 阻断 AGPL 服务端入库**；BI 仅客户自装参考 |
+| 编码门禁 | 73 §10 已勾选；**允许合并 TA.0 契约**；TA.1+ 按波次 |
 
-### 13.2 波次预览（TA.*）
+### 13.2 波次（TA.*）
 
 | ID | 主题 | 编码？ |
 | --- | --- | --- |
-| TA.0 | 契约骨架 OpenAPI | 评审通过后 |
-| TA.1～TA.2 | 边车 + Facade 会话 | 后 |
-| TA.3～TA.5 | Ontology 左栏 · 读数 · Draft 写回 | 后 |
-| TA.6～TA.7 | 治理 · 演示/smoke | 后 |
-| TA.8 | Contour/Quiver/Vertex 子集（可选） | 不挡退出 |
+| **TA.0** | 契约骨架 OpenAPI | ✅ **已落地** [109](109-TA0分析建模契约骨架方案.md) |
+| **TA.1** | analytics-runtime 边车健康 | ✅ **已落地** [110](110-TA1-analytics-runtime边车方案.md) |
+| **TA.2** | Facade 会话票据 + uiUrl | ✅ **已落地** [111](111-TA2-Facade会话票据方案.md) |
+| **TA.3** | Ontology 左栏插片段 | ✅ **已落地** [112](112-TA3-Ontology左栏插片段方案.md) |
+| **TA.4** | Dataset/ObjectSet 读数 | ✅ **已落地** [113](113-TA4-分析读数方案.md) |
+| **TA.5** | 分析→Draft 写回 | ✅ **已落地** [114](114-TA5-分析Draft写回方案.md) |
+| **TA.6** | Marking/导出治理 | ✅ **已落地** [115](115-TA6-分析治理方案.md) |
+| **TA.7** | 演示故事 / smoke | ✅ **已落地** [116](116-TA7-分析演示故事方案.md) |
+| **TA.8** | Contour/Quiver/Vertex 子集 | ✅ **已落地** [117](117-TA8-Contour-Quiver-Vertex子集方案.md) |
+| TA.R | R 内核 | 后置 |
 
-开源主参考（摘要）：**Jupyter Server + Notebook 7/Lab** · **ipykernel** · **DuckDB/pandas/Arrow** · **papermill/nbclient** · Contour 参考 **Superset（Apache）** · Vertex 参考 **MLflow** · 禁 **Metabase/Grafana 服务端进包**。详见 73 §5。
+开源主参考：**Jupyter Server + Notebook 7** · **ipykernel** · **DuckDB/pandas/Arrow** · **papermill/nbclient** · Vertex 参考 **MLflow（TA.8）** · 禁 **Metabase/Grafana 服务端进包**。详见 73 §5。
 
 
 ---
@@ -1136,7 +1143,10 @@ powershell -File scripts\demo\stop-local.ps1
 
 | v1.48 | 2026-07-18 | **开产品 1.3 方案** · [73](73-产品1.3分析建模下一阶段方案.md) · §13 TA.* 门禁 · **暂不编码** |
 
+---
+
+| v1.49 | 2026-07-18 | **73 评审通过** · 不含 R/Contour · NB7 · 仅 Draft 无自批 · §13 开 TA.0 |
 
 ---
 
-*v1.48 · docs/palantier/20_tech/26 · 下一阶段=1.3 方案 73 · 启停见 72 · Agent 主驾驶*
+*v1.52 · docs/palantier/20_tech/26 · 1.3 MVP 已退出 [118] · 下一刀须人点名 · 启停见 72 · Agent 主驾驶*

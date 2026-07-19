@@ -58,8 +58,9 @@ AOS 交付包只含自有软件 + 适配配置 + 安装/对接指引；
 
 | ID | 军规 | 适用 |
 | --- | --- | --- |
-| **R-LIC-01** | **AGPL 服务端**（MinIO Server、Grafana 等）**不得**进入 AOS 客户交付包（含镜像、安装器、离线包） | 发版门禁 |
+| **R-LIC-01** | **AGPL 服务端**（MinIO Server、Grafana、**Metabase** 等）**不得**进入 AOS 客户交付包（含镜像、安装器、离线包） | 发版门禁 · `check-sbom-gate.ps1` |
 | **R-LIC-02** | AGPL 组件采用：**客户自装发行包** + AOS **适配层/配置**；交付物可含安装指引与 Dashboard JSON（配置≠衍生作品） | 24 SOP |
+| **R-LIC-02a** | **BI 口径**：客户如需 BI，**自行部署** Apache Superset / Metabase / Grafana；AOS **仅提供数据源配置指引**，不捆绑 AGPL BI 服务端 | 73 · 24 |
 | **R-LIC-03** | **BSL**（Vault、Outline、Memgraph、Redpanda 等）：不嵌源码进产品；生产用发行包/客户侧部署；商用条款法务备案后再签合同 | 法务 |
 | **R-LIC-04** | 允许链路：Apache2 / MIT / BSD 等组件作 **边车或库依赖** 时，须登记进 [22](22-AOS开源产品维护清单.md) 并做 SBOM | 发版 |
 | **R-LIC-05** | 「顺手把 MinIO/Grafana 打进 AOS 包方便客户」= **违规**；一律改为 24 SOP 前置安装 | 实施 |
@@ -96,8 +97,8 @@ AOS 交付包只含自有软件 + 适配配置 + 安装/对接指引；
 | 门禁 | 动作 | 阻断级 |
 | --- | --- | --- |
 | **路径黑名单** | PR 若新增对 §1 黑名单路径的引用/COPY | v0.5+ 失败 |
-| **SBOM** | 发版产物生成 SBOM；命中 AGPL **服务端**组件名/镜像 | 失败 |
-| **镜像扫描** | 客户交付镜像禁止 `minio/minio`、`grafana/grafana` 等作为 **必选层**（文档示例 Compose 可放 `docs/examples`，标注「客户侧」） | 失败 |
+| **SBOM** | 发版产物生成 SBOM；命中 AGPL **服务端**组件名/镜像（`agpl-denied-images.txt` · `agpl-denied-packages.txt`） | 失败 |
+| **镜像扫描** | 客户交付镜像禁止 `minio/minio`、`grafana/grafana`、`metabase/metabase` 等作为 **必选层**（文档示例 Compose 可放 `docs/examples`，标注「客户侧」） | 失败 |
 | **import 扫描** | 禁止 UI 直连上游 SDK（R-ARCH-01） | v0.3+ 失败 |
 | **文案扫描** | 发布说明禁止「基于 ToolJet/MinIO/Dify 的平台」类表述 | 人工+关键词 |
 
@@ -135,6 +136,7 @@ AOS 交付包只含自有软件 + 适配配置 + 安装/对接指引；
 | 版本 | 日期 | 说明 |
 | --- | --- | --- |
 | v1.0 | 2026-07-17 | 首版军规：目录/License/架构/安装顺序/CI 门禁 |
+| v1.1 | 2026-07-18 | R-LIC-02a BI 客户自装；SBOM 显式拦 Metabase/Grafana 等 AGPL 服务端 |
 
 ---
 
