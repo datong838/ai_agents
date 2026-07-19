@@ -1,0 +1,309 @@
+path	server_params_scanned
+/aliapp/api/aliapp/authcodetouserid	
+/aliapp/api/aliapp/messagetmplids	
+/api/address/analysesaddress	address
+/api/address/lists	pid
+/api/adv/detail	keyword
+/api/article/category	
+/api/article/info	article_id
+/api/article/lists	article_id_arr,category_id,num
+/api/article/page	article_id_arr,category_id,page,page_size
+/api/captcha/captcha	
+/api/cart/add	num,sku_id
+/api/cart/delete	cart_id
+/api/cart/edit	cart_id,num
+/api/cart/editcartsku	
+/api/cart/goodslists	
+/api/cart/goodsnum	
+/api/cart/lists	
+/api/cartcalculate/calculate	
+/api/config/gemapconfig	
+/api/config/getapiconfig	
+/api/config/getcaptchaconfig	
+/api/config/init	
+/api/config/promotionzoneconfig	name
+/api/diyview/info	id,name,weapp_id
+/api/financecost/mylist	page,page_size
+/api/financecost/pendingconfirmcount	
+/api/financecost/wxconfirmpackage	expense_id,id
+/api/findpassword/mobile	
+/api/findpassword/mobilecode	
+/api/goods/aftersale	
+/api/goods/defaultsearchwords	
+/api/goods/goodsbarrage	goods_id
+/api/goods/hotsearchwords	
+/api/goods/modifyclicks	sku_id
+/api/goods/poster	
+/api/goods/shareimg	
+/api/goodsbrand/page	
+/api/goodsbrowse/add	goods_id,sku_id
+/api/goodsbrowse/delete	id
+/api/goodsbrowse/page	page,page_size
+/api/goodscategory/tree	categoryId,category_id,level,weapp_id
+/api/goodscollect/add	goods_id,sku_id,sku_image,sku_name,sku_price
+/api/goodscollect/delete	goods_id
+/api/goodscollect/page	page,page_size
+/api/goodsevaluate/add	goods_evaluate,is_anonymous,member_headimg,member_name,order_id,order_no
+/api/goodsevaluate/again	goods_evaluate,order_id
+/api/goodsevaluate/config	
+/api/goodsevaluate/getgoodsevaluate	goods_id
+/api/goodsevaluate/page	goods_id,page,page_size
+/api/goodssku/components	category_id,goods_id_arr,num,order
+/api/goodssku/detail	goods_id,share_member,sku_id
+/api/goodssku/getinfoforcategory	sku_id
+/api/goodssku/goodssku	goods_id
+/api/goodssku/goodsskubycategory	goods_id
+/api/goodssku/page	category_id,coupon,goods_id_arr,is_free_shipping,max_price,min_price,order,page,page_size,sort
+/api/goodssku/pagebycategory	category_id,category_ids,order,page,page_size,sort
+/api/goodssku/pagecomponents	category_id,category_ids,goods_id_arr,order,page,page_size
+/api/goodssku/recommend	page,page_size,route
+/api/help/info	id
+/api/helpclass/lists	
+/api/login/auth	weapp_openid
+/api/login/authonlylogin	
+/api/login/login	
+/api/login/mobile	code,mobile
+/api/login/mobilecode	
+/api/member/accountrule	
+/api/member/altersharerelation	
+/api/member/bindmobliecode	
+/api/member/checkmobile	mobile
+/api/member/info	
+/api/member/logsharebind	from_page,goods_id,share_path,share_type,sharer_member_id
+/api/member/membereqrcode	
+/api/member/mobileauth	mobile
+/api/member/modifyaddress	
+/api/member/modifybirthday	birthday
+/api/member/modifyheadimg	headimg
+/api/member/modifymobile	code,mobile
+/api/member/modifynickname	nickname
+/api/member/modifypassword	new_password,old_password
+/api/member/modifypaypassword	code
+/api/member/modifyrealname	realname
+/api/member/modifysex	sex
+/api/member/modifyusername	username
+/api/member/paypwdcode	
+/api/member/pwdmobliecode	
+/api/member/verifypaypwdcode	code
+/api/memberaccount/fromtype	
+/api/memberaccount/info	account_type
+/api/memberaccount/monthdata	
+/api/memberaccount/page	account_type,app_type,from_type,page,page_size,related_id
+/api/memberaccount/point	
+/api/memberaccount/sum	
+/api/memberaccount/usablebalance	
+/api/memberaddress/addthreeparties	
+/api/memberaddress/delete	id
+/api/memberaddress/info	default,id
+/api/memberaddress/page	page,page_size,store_id,type
+/api/memberaddress/setdefault	id
+/api/memberaddress/tranaddressinfo	
+/api/memberbankaccount/defaultinfo	
+/api/memberbankaccount/delete	id
+/api/memberbankaccount/info	id
+/api/memberbankaccount/page	page,page_size
+/api/memberbankaccount/setdefault	id
+/api/memberlevel/lists	
+/api/membernotice/info	id
+/api/membernotice/page	page,page_size
+/api/membershop/commissionincome	page,page_size
+/api/membershop/commissionwxconfirmpackage	commission_log_id,id,income_type
+/api/membershop/customerlist	page,page_size
+/api/membershop/qrcode	env_version,member_id,weapp_id,width
+/api/membershop/shoptitle	member_id
+/api/membersignin/award	
+/api/membersignin/getsignstatus	
+/api/membersignin/issign	
+/api/membersignin/signin	
+/api/memberwithdraw/apply	account_number,apply_money,bank_name,mobile,realname,transfer_type
+/api/memberwithdraw/config	
+/api/memberwithdraw/detail	id
+/api/memberwithdraw/info	
+/api/memberwithdraw/page	page,page_size
+/api/memberwithdraw/transfertype	
+/api/notice/info	id
+/api/notice/page	id_arr,page,page_size
+/api/order/close	order_id
+/api/order/delete	order_id
+/api/order/detail	merchant_trade_no,order_id
+/api/order/evluateinfo	order_id
+/api/order/lists	order_id,order_status,page,page_size,searchText
+/api/order/membervirtualtakedelivery	
+/api/order/num	
+/api/order/package	order_id
+/api/order/pay	order_ids
+/api/order/takedelivery	order_id
+/api/order/tracepluginclicklog	order_id,package_id,trace_plugin_token
+/api/order/transactionagreement	
+/api/ordercreate/calculate	
+/api/ordercreate/create	_share_member_debug
+/api/ordercreate/getcouponlist	
+/api/ordercreate/payment	
+/api/orderrefund/cancel	order_goods_id
+/api/orderrefund/delivery	order_goods_id,refund_delivery_name,refund_delivery_no,refund_delivery_remark
+/api/orderrefund/detail	order_goods_id
+/api/orderrefund/lists	page,page_size,refund_status
+/api/orderrefund/refund	
+/api/orderrefund/refunddata	order_goods_id
+/api/orderrefund/refunddatabatch	order_goods_ids
+/api/pay/getbalanceconfig	
+/api/pay/info	
+/api/pay/memberpaycode	
+/api/pay/outtradenotoorderdetailpath	
+/api/pay/pay	order_ids
+/api/pay/resetpay	
+/api/pay/status	
+/api/pay/type	
+/api/register/aggrement	type
+/api/register/config	
+/api/register/mobile	code,mobile
+/api/register/mobilecode	
+/api/register/username	
+/api/shareexperience/ownergiftorderlist	page,page_size
+/api/shareexperience/ownergiftship	delivery_no,delivery_type,express_company_id,order_id,template_id
+/api/shareexperience/ownerlist	page,page_size
+/api/shareexperience/ownerqrcode	env_version,instance_id,refresh,weapp_id
+/api/shareexperience/resolve	share_token,token
+/api/shareexperience/submit	app_type,delivery_mode,member_address,member_address_json,order_from_name,order_type,share_token
+/api/site/shopcontact	
+/api/site/status	
+/api/store/getlocation	latitude,longitude
+/api/store/getstorepage	latitude,longitude,page,page_size,store_ids,type
+/api/store/info	latitude,longitude,store_id
+/api/store/neareststore	latitude,longitude
+/api/store/page	keyword,latitude,longitude,status,store_ids
+/api/supercard/cardorderbrief	order_id
+/api/supercard/createorder	app_type,card_share_bind_source,card_share_member,card_share_member_ts,level_id
+/api/supercard/levellist	
+/api/supercard/mycardorders	
+/api/supercard/myholdings	
+/api/supercardevaluate/add	content,explain_type,images,is_anonymous,order_id,scores,videos
+/api/supercardevaluate/detailbyorder	order_id
+/api/supercardevaluate/page	explain_type,level_id,page,page_size
+/api/supercardevaluate/summary	level_id
+/api/tripartite/getphonenumber	
+/api/tripartite/mobile	mobile
+/api/tripartite/mobileauth	_qyh_sm_trace
+/api/tripartite/mobilecode	
+/api/upload/headimg	
+/api/upload/headimgbase64	images
+/api/upload/headimgpull	path
+/api/verify/checkisverifier	
+/api/verify/getverifytype	
+/api/verify/lists	page,page_size,verify_type
+/api/verify/verify	verify_code
+/api/verify/verifyinfo	verify_code
+/bargain/api/bargain/bargain	
+/bargain/api/bargain/browse	
+/bargain/api/bargain/detail	
+/bargain/api/bargain/launch	
+/bargain/api/bargain/launchpage	
+/bargain/api/bargain/record	
+/bargain/api/bargain/share	
+/bargain/api/goods/bargaininglist	
+/bargain/api/goods/goodssku	goods_id
+/bargain/api/goods/lists	level,weapp_id
+/bargain/api/goods/page	
+/bargain/api/goods/poster	
+/bargain/api/goods/shareimg	
+/bargain/api/ordercreate/calculate	is_balance,order_key
+/bargain/api/ordercreate/create	is_balance,order_key
+/bargain/api/ordercreate/payment	launch_id
+/birthdaygift/api/config/config	
+/birthdaygift/api/config/receive	
+/bundling/api/bundling/detail	bl_id
+/bundling/api/bundling/lists	sku_id
+/bundling/api/ordercreate/calculate	is_balance,order_key
+/bundling/api/ordercreate/create	is_balance,order_key
+/bundling/api/ordercreate/payment	bl_id,num
+/cardservice/api/card/getrelationcardgoods	
+/coupon/api/coupon/couponbyid	
+/coupon/api/coupon/giftcancel	gift_id
+/coupon/api/coupon/giftclaim	gift_token
+/coupon/api/coupon/giftcreate	coupon_id,gift_mode,mobile,to_member_id
+/coupon/api/coupon/giftdetail	gift_token
+/coupon/api/coupon/giftreceivedpage	page,page_size
+/coupon/api/coupon/giftresolvemember	mobile
+/coupon/api/coupon/giftsentpage	page,page_size,status
+/coupon/api/coupon/memberpage	
+/coupon/api/coupon/num	
+/coupon/api/coupon/receive	
+/coupon/api/coupon/receivednum	
+/coupon/api/coupon/typeinfo	
+/coupon/api/coupon/typelists	
+/coupon/api/coupon/typepagelists	
+/fenxiao/api/config/words	
+/fenxiao/api/goods/page	
+/fenxiao/api/goodscollect/add	goods_id,sku_id,sku_image,sku_name,sku_price
+/fenxiao/api/goodscollect/delete	goods_id
+/fenxiao/api/withdraw/transfertype	
+/form/api/form/create	
+/form/api/form/goodsform	
+/form/api/form/info	
+/goodscircle/api/goods/sync	
+/groupbuy/api/goods/goodssku	goods_id
+/groupbuy/api/goods/lists	level,weapp_id
+/live/api/live/info	
+/live/api/live/modifylivestatus	
+/membercancel/api/membercancel/accountinfo	
+/membercancel/api/membercancel/agreement	
+/membercancel/api/membercancel/apply	
+/membercancel/api/membercancel/cancelapply	
+/membercancel/api/membercancel/config	
+/membercancel/api/membercancel/info	
+/memberconsume/api/config/info	out_trade_no
+/memberrecharge/api/memberrecharge/config	
+/memberrecharge/api/memberrecharge/page	
+/memberrecharge/api/order/page	
+/memberrecharge/api/ordercreate/create	_share_member_debug
+/memberrecommend/api/memberrecommend/info	
+/memberrecommend/api/memberrecommend/lists	
+/memberrecommend/api/memberrecommend/poster	
+/memberregister/api/config/config	
+/notes/api/notes/lists	
+/notes/api/record/add	
+/notes/api/record/delete	
+/offlinepay/api/pay/config	
+/offlinepay/api/pay/info	out_trade_no
+/offlinepay/api/pay/pay	desc,imgs,out_trade_no
+/offlinepay/api/pay/uploadimg	
+/pinfan/api/goods/goodssku	goods_id
+/pinfan/api/goods/lists	level,weapp_id
+/pintuan/api/goods/goodssku	goods_id
+/pintuan/api/goods/lists	level,weapp_id
+/pintuan/api/order/pintuanmember	
+/pointexchange/api/goods/goodssku	goods_id
+/pointexchange/api/order/close	order_id
+/pointexchange/api/order/info	
+/presale/api/goods/goodssku	goods_id
+/presale/api/goods/lists	level,weapp_id
+/scenefestival/api/config/config	
+/scenefestival/api/config/receive	
+/seckill/api/seckill/lists	
+/seckill/api/seckillgoods/goodssku	
+/seckill/api/seckillgoods/lists	
+/servicer/api/chat/bind	
+/servicer/api/chat/bye	
+/servicer/api/chat/chatimg	
+/servicer/api/chat/dialogs	
+/servicer/api/chat/keyword	
+/servicer/api/chat/say	
+/shopcomponent/api/weapp/scenecheck	
+/store/api/config/config	
+/store/api/store/labelpage	
+/supermember/api/membercard/agreement	
+/supermember/api/membercard/firstcard	
+/supermember/api/membercard/lists	
+/supermember/api/ordercreate/create	_share_member_debug
+/topic/api/topicgoods/goodssku	
+/weapp/api/weapp/authcodetoopenid	
+/weapp/api/weapp/messagetmplids	
+/weapp/api/weapp/share	
+/wechat/api/wechat/authcode	
+/wechat/api/wechat/authcodetoopenid	
+/wechat/api/wechat/followqrcode	
+/wechat/api/wechat/jssdkconfig	
+/wechat/api/wechat/share	
+/wechatpay/api/transfer/getwithdrawconfig	
+/wechatpay/api/transfer/inprocess	from_type,relate_tag
+/wechatpay/api/transfer/transfer	app_type,id,transfer_type
