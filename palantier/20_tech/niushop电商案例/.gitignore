@@ -1,0 +1,10 @@
+﻿# 本机孪生数据与凭据 — 勿提交
+.env
+fixtures/excel/*.xlsx
+fixtures/word/**
+fixtures/ppt/**
+fixtures/pdf/**
+!fixtures/**/.gitkeep
+!fixtures/**/README.md
+!fixtures/pdf/**/
+!fixtures/pdf/**/.gitkeep
