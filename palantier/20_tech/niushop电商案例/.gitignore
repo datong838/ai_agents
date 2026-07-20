@@ -1,5 +1,7 @@
 ﻿# 本机孪生数据与凭据 — 勿提交
 .env
+fixtures/bootstrap-report.json
+fixtures/e2e-bootstrap-report.json
 fixtures/excel/*.xlsx
 fixtures/excel/_header_preview.txt
 fixtures/excel/twin-excel-truncations.txt

@@ -5,8 +5,8 @@
 > **文档性质**：对标 Palantir Foundry **Ontology / Hydration** 层的产品设计 · 含 Funnel 四阶段 · OMA 六视图 · 页面 Backlog  
 > **版本**：v1.3 · 2026-07-17  
 > **状态**：可直接作为 [03 PRD §3.2](03-对标Palantir-AOS-PRD框架.md) 子章节 / 研发 UI 规格 / PPT 素材  
-> **对标来源**：[Ontology Overview](https://www.palantir.com/docs/foundry/ontology/overview) · [Ontology Manager](https://www.palantir.com/docs/foundry/ontology-manager/overview) · [Object Indexing / Funnel](https://www.palantir.com/docs/foundry/object-indexing/overview) · 本地镜像 `[foundry/pages/](foundry/pages/)`（Ontology 专章：`python scrape_foundry_docs.py --ontology` · meta 前缀 `ontology-*` · 见 §14）  
-> **关联**：[03 PRD §3.2](03-对标Palantir-AOS-PRD框架.md) · [05 L1](05-数据集成Connectors-Pipeline-Dataset产品方案.md) · [06a 线框](06a-语义本体Ontology-Mapping产品设计线框图.md) · [**06b Action/Function**](06b-Action与Function产品设计.md) · [**20_tech/25 演进补丁**](20_tech/25-LLM-Wiki启示与L2演进补丁.md) · [HTML Demo](foundry/html/ontology.html) · [01 全链路](01-Palantir全链路总览.md)
+> **对标来源**：[Ontology Overview](https://www.palantir.com/docs/foundry/ontology/overview) · [Ontology Manager](https://www.palantir.com/docs/foundry/ontology-manager/overview) · [Object Indexing / Funnel](https://www.palantir.com/docs/foundry/object-indexing/overview) · 本地镜像 `[foundry/pages/](foundry/pages/)`（Ontology 专章：`python scrape_foundry_docs.py --ontology` · meta 前缀 `ontology-`* · 见 §14）  
+> **关联**：[03 PRD §3.2](03-对标Palantir-AOS-PRD框架.md) · [05 L1](05-数据集成Connectors-Pipeline-Dataset产品方案.md) · [06a 线框](06a-语义本体Ontology-Mapping产品设计线框图.md) · **[06b Action/Function](06b-Action与Function产品设计.md)** · **[20_tech/25 演进补丁](20_tech/25-LLM-Wiki启示与L2演进补丁.md)** · [HTML Demo](foundry/html/ontology.html) · [01 全链路](01-Palantir全链路总览.md)
 
 ---
 
@@ -32,12 +32,14 @@
 
 ### 1.2 身体比喻（神经系统）
 
-| 组件 | 比喻 | 职责 |
-|------|------|------|
-| **Object** | 骨头与肌肉 | 构成形态 |
-| **Link** | 血管与经络 | 输送关系 |
-| **Function** | 肠胃与肝脏 | 静默计算（读） |
-| **Action** | 大脑指令与嘴巴 | 对外交互、驱动现实（写） |
+
+| 组件           | 比喻      | 职责           |
+| ------------ | ------- | ------------ |
+| **Object**   | 骨头与肌肉   | 构成形态         |
+| **Link**     | 血管与经络   | 输送关系         |
+| **Function** | 肠胃与肝脏   | 静默计算（读）      |
+| **Action**   | 大脑指令与嘴巴 | 对外交互、驱动现实（写） |
+
 
 > **深度规范** → **[06b · Action 与 Function 产品设计](06b-Action与Function产品设计.md)**（壳核模式 · Submission Criteria · 乐观 UI · FUNC/ACT 条款）
 
@@ -314,27 +316,31 @@ flowchart TB
 
 
 
-| 解法                          | 做法                                 | 适用                    | 限制                       |
-| --------------------------- | ---------------------------------- | --------------------- | ------------------------ |
-| **A · L1 Join**             | PB 合成 **单宽表** · 单 backing dataset  | 同域 · 同更新频率 · **性能最好** | 宽表维护在 L1                 |
-| **B · Link Type**           | 多 Object · FK Link · searchAround  | 跨团队归属 · 更新频率差异大       | MDO 不支持流式 · 跨表查询较慢；**见性能红线** |
-| **C · Computed + Function** | Property 不在 backing · Function 实时拉 | **仅低频派生** · 外部 API         | **禁止**高频查询字段；**不能**当主建模 · Workshop 易卡 |
+| 解法                          | 做法                                 | 适用                    | 限制                                    |
+| --------------------------- | ---------------------------------- | --------------------- | ------------------------------------- |
+| **A · L1 Join**             | PB 合成 **单宽表** · 单 backing dataset  | 同域 · 同更新频率 · **性能最好** | 宽表维护在 L1                              |
+| **B · Link Type**           | 多 Object · FK Link · searchAround  | 跨团队归属 · 更新频率差异大       | MDO 不支持流式 · 跨表查询较慢；**见性能红线**          |
+| **C · Computed + Function** | Property 不在 backing · Function 实时拉 | **仅低频派生** · 外部 API    | **禁止**高频查询字段；**不能**当主建模 · Workshop 易卡 |
 
 
 #### 6.1 解法 B 性能红线（官方最佳实践）
 
-| 红线 | 规则 |
-| --- | --- |
+
+| 红线          | 规则                                                                                                  |
+| ----------- | --------------------------------------------------------------------------------------------------- |
 | **Link 规模** | 当某 Object Type 相关 **Link 条数 > 100 万** 时，必须启用 **MDO（多域对象）优化** 或回退解法 A 预聚合；否则 searchAround / 图谱查询性能雪崩 |
-| **流式** | MDO **不支持流式** Object；流式场景优先解法 A |
-| **验收** | OMA 在 Link 规模接近阈值时告警，并阻断「无优化方案」的发布 |
+| **流式**      | MDO **不支持流式** Object；流式场景优先解法 A                                                                     |
+| **验收**      | OMA 在 Link 规模接近阈值时告警，并阻断「无优化方案」的发布                                                                  |
+
 
 #### 6.2 解法 C 禁用场景
 
-| 允许 | 禁止 |
-| --- | --- |
-| 低频派生：展示名、偶发外部只读增强、报表侧计算 | **高频查询字段**（列表筛选/排序/聚合的主路径） |
-| 被 Action Logic 偶尔调用 | Workshop 主表列依赖实时 Function 全量扫描 |
+
+| 允许                      | 禁止                             |
+| ----------------------- | ------------------------------ |
+| 低频派生：展示名、偶发外部只读增强、报表侧计算 | **高频查询字段**（列表筛选/排序/聚合的主路径）     |
+| 被 Action Logic 偶尔调用     | Workshop 主表列依赖实时 Function 全量扫描 |
+
 
 > 研发误用代价：Worker 打满、页面卡死。规范见约束 **C-12 / C-13**。
 
@@ -353,55 +359,72 @@ L1 Dataset ──Funnel──► L2 Object ──Workshop 选中──► Action
 ```
 
 
-| 环节            | 说明                                                       |
-| ------------- | -------------------------------------------------------- |
-| **场景**        | 地图选中「故障设备」Object → 点击「派单维修」Action                        |
-| **Funnel 逆向** | Action 写回 L1 Write-back Dataset 或声明 Webhook 副作用         |
-| **Merge 联动**  | 用户编辑在 Merge 阶段与 Changelog **按 PK join**（6h 持久化）       |
-| **完整闭环**      | L1 → Funnel → L2 → Action → L1                           |
-| **乐观 UI**     | Workshop 先本地改态；后台失败回滚（06b §3.2）                           |
-| **壳与核**       | Action = 交互壳；Function = 算力核（06b §4）                       |
+| 环节            | 说明                                              |
+| ------------- | ----------------------------------------------- |
+| **场景**        | 地图选中「故障设备」Object → 点击「派单维修」Action               |
+| **Funnel 逆向** | Action 写回 L1 Write-back Dataset 或声明 Webhook 副作用 |
+| **Merge 联动**  | 用户编辑在 Merge 阶段与 Changelog **按 PK join**（6h 持久化） |
+| **完整闭环**      | L1 → Funnel → L2 → Action → L1                  |
+| **乐观 UI**     | Workshop 先本地改态；后台失败回滚（06b §3.2）                 |
+| **壳与核**       | Action = 交互壳；Function = 算力核（06b §4）             |
 
 
 #### 7.0 生产必备：幂等与软删除
 
-| 要求 | 规则 | 验收 |
-| --- | --- | --- |
-| **Action 幂等** | 同一业务意图重复提交（双击「派单维修」）**不得**产生重复 Object；以幂等键（客户端 `idempotencyKey` 或业务自然键）去重 | 连点 10 次只生成 1 张工单 |
-| **Object 软删除** | 删除 = 打 `is_deleted`（或官方 tombstone）标记，**非物理删行**；与 Iceberg 事务/审计对齐，支持回滚与血缘 | 删除后查询默认过滤；审计可还原 |
+
+| 要求             | 规则                                                                        | 验收               |
+| -------------- | ------------------------------------------------------------------------- | ---------------- |
+| **Action 幂等**  | 同一业务意图重复提交（双击「派单维修」）**不得**产生重复 Object；以幂等键（客户端 `idempotencyKey` 或业务自然键）去重 | 连点 10 次只生成 1 张工单 |
+| **Object 软删除** | 删除 = 打 `is_deleted`（或官方 tombstone）标记，**非物理删行**；与 Iceberg 事务/审计对齐，支持回滚与血缘  | 删除后查询默认过滤；审计可还原  |
+
 
 详条款见 [06b ACT-07/08](06b-Action与Function产品设计.md)。
 
-**镜像提示**：流式 Object 类型 **不支持编辑**（[`funnel-streaming-pipelines`](foundry/pages/zh/foundry/object-indexing/funnel-streaming-pipelines.md)）。
+**镜像提示**：流式 Object 类型 **不支持编辑**（`[funnel-streaming-pipelines](foundry/pages/zh/foundry/object-indexing/funnel-streaming-pipelines.md)`）。
 
 ### 7.1 Function 摘要（算力核）
 
-| 要点 | 内容 |
-|------|------|
-| 定位 | 跨域动态聚合 · Workshop 派生指标 · 合规路径下的外部只读增强 |
-| 精髓 | Object Schema → TS 接口 · **类型不一致保存即失败** |
-| 规范 | [06b §2.3 FUNC-01~05](06b-Action与Function产品设计.md) |
+
+| 要点  | 内容                                                |
+| --- | ------------------------------------------------- |
+| 定位  | 跨域动态聚合 · Workshop 派生指标 · 合规路径下的外部只读增强             |
+| 精髓  | Object Schema → TS 接口 · **类型不一致保存即失败**            |
+| 规范  | [06b §2.3 FUNC-01~05](06b-Action与Function产品设计.md) |
+
 
 ### 7.2 Action 摘要（交互壳）
 
-| 要点 | 内容 |
-|------|------|
-| 定位 | 受控 CRUD · 状态流转 · 防呆 · 跨系统 Side Effects |
-| 精髓 | **Submission Criteria**（提交标准）+ Optimistic UI + 写回协议 |
-| 规范 | [06b §3.3 ACT-01~06](06b-Action与Function产品设计.md) |
+
+| 要点  | 内容                                                  |
+| --- | --------------------------------------------------- |
+| 定位  | 受控 CRUD · 状态流转 · 防呆 · 跨系统 Side Effects              |
+| 精髓  | **Submission Criteria**（提交标准）+ Optimistic UI + 写回协议 |
+| 规范  | [06b §3.3 ACT-01~06](06b-Action与Function产品设计.md)    |
+
 
 ---
 
 ## 8. Ontology 官方子产品矩阵（Hydration 全家桶）
 
 
-| 子产品                         | 官方定位                                            | 对应谛听架构                                                                     |
+| 子产品                         | 官方定位                                            | 对应现有实现架构（忽略此列）                                                             |
 | --------------------------- | ----------------------------------------------- | -------------------------------------------------------------------------- |
 | **Pipeline Builder Native** | PB 点选映射 Column → Property · 后端生成 Transform      | L1 PB ↔ L2 Funnel **映射配置入口**                                               |
 | **Object Data Funnel**      | L1 Txn → OSv2 Hydration 四阶段                     | **L2 核心引擎**（本文 §4–§5）                                                      |
 | **Ontology Manager (OMA)**  | 定义 Object / Link / Property / Action / Function | **L2 主应用**                                                                 |
 | **Model Hydration**         | 外部模型绑定 Object/Action · 版本/安全/血缘                 | L2 Function / Action 扩展                                                    |
 | **Native Federation**       | 外部湖仓联邦进 Ontology 不搬迁                            | L1 **Virtual Table**（[05 §2.3](05-数据集成Connectors-Pipeline-Dataset产品方案.md)） |
+
+
+
+|                                                     |                                          |
+| --------------------------------------------------- | ---------------------------------------- |
+| **Model Objectives**​                               | 把模型绑定到具体业务目标（如"降低停机率"），让模型输出可直接触发 Action |
+| **Ontology Process Orchestration / Foundry Rules**​ | 编排多步 Action 流程 + 自动触发规则（阈值触发、定时触发等）      |
+
+
+
+
 
 
 ---
@@ -447,22 +470,22 @@ L1 Dataset ──Funnel──► L2 Object ──Workshop 选中──► Action
 ## 10. 约束与规则（Constraints）
 
 
-| ID       | 规则                                                           | 原因                        |
-| -------- | ------------------------------------------------------------ | ------------------------- |
-| **C-01** | **单一 backing dataset**：一个 Object Type 只挂载 **一张** L1 表        | Funnel 单源水合 · 多表须 L1 Join |
-| **C-02** | **主键唯一**：backing dataset **有且仅有一个** PK · 无重复                 | 重复 PK → OSv2 报错或状态错乱      |
-| **C-03** | **禁止 Funnel 内业务计算**：汇率换算 · 多表打分等 → L1 Pipeline 或 L2 Function | Funnel 只做映射与水合            |
-| **C-04** | **类型严格**：L1/L2 Schema 冲突则丢弃并告警                               | Type Coherence            |
-| **C-05** | **Iceberg 前置**：无 Txn Log 无增量 Funnel                          | OSv2 默认增量索引               |
-| **C-06** | **Schema 变更走 Replacement**                                   | 不中断 Live 查询               |
-| **C-07** | Function 默认只读；写走 Action / 官方 Edits                         | [06b](06b-Action与Function产品设计.md) |
-| **C-08** | Action 写回 L1 Write-back / Edits，禁直写底层                      | 06b ACT-03                  |
-| **C-09** | Action 必须配置 Submission Criteria                            | 官方提交标准                    |
-| **C-10** | 外部写/通知走 Action Webhook，TS Function 不裸调 HTTP               | 官方 input-output-types     |
-| **C-11** | 复杂派生用 Function；主建模优先 L1 Join                              | 对齐 §6                      |
-| **C-12** | 解法 B：Link > **100 万** 须 MDO/预聚合，否则禁发生产                    | §6.1 性能红线                 |
-| **C-13** | 解法 C：禁止用作高频查询/筛选/排序主字段                                      | §6.2 禁用场景                 |
-| **C-14** | Action 必须幂等；Object 删除必须软删                                    | §7.0 · 06b ACT-07/08        |
+| ID       | 规则                                                           | 原因                                |
+| -------- | ------------------------------------------------------------ | --------------------------------- |
+| **C-01** | **单一 backing dataset**：一个 Object Type 只挂载 **一张** L1 表        | Funnel 单源水合 · 多表须 L1 Join         |
+| **C-02** | **主键唯一**：backing dataset **有且仅有一个** PK · 无重复                 | 重复 PK → OSv2 报错或状态错乱              |
+| **C-03** | **禁止 Funnel 内业务计算**：汇率换算 · 多表打分等 → L1 Pipeline 或 L2 Function | Funnel 只做映射与水合                    |
+| **C-04** | **类型严格**：L1/L2 Schema 冲突则丢弃并告警                               | Type Coherence                    |
+| **C-05** | **Iceberg 前置**：无 Txn Log 无增量 Funnel                          | OSv2 默认增量索引                       |
+| **C-06** | **Schema 变更走 Replacement**                                   | 不中断 Live 查询                       |
+| **C-07** | Function 默认只读；写走 Action / 官方 Edits                           | [06b](06b-Action与Function产品设计.md) |
+| **C-08** | Action 写回 L1 Write-back / Edits，禁直写底层                        | 06b ACT-03                        |
+| **C-09** | Action 必须配置 Submission Criteria                              | 官方提交标准                            |
+| **C-10** | 外部写/通知走 Action Webhook，TS Function 不裸调 HTTP                  | 官方 input-output-types             |
+| **C-11** | 复杂派生用 Function；主建模优先 L1 Join                                 | 对齐 §6                             |
+| **C-12** | 解法 B：Link > **100 万** 须 MDO/预聚合，否则禁发生产                       | §6.1 性能红线                         |
+| **C-13** | 解法 C：禁止用作高频查询/筛选/排序主字段                                       | §6.2 禁用场景                         |
+| **C-14** | Action 必须幂等；Object 删除必须软删                                    | §7.0 · 06b ACT-07/08              |
 
 
 ---
@@ -545,21 +568,21 @@ Workshop 选中 Device Object → Action「派单」
 > 索引：`foundry/meta/ontology-url-index.json` · 报告：`ontology-scrape-report.json`（不覆盖 L1 的 `url-index.json`）
 
 
-| 主题                       | 镜像路径                                              | 状态                      |
-| ------------------------ | ------------------------------------------------- | ----------------------- |
-| PB Ontology 输出           | `pipeline-builder/outputs-add-ontology-output.md` | ✅                       |
-| Dataset → OM 搭建          | `pipeline-builder/outputs-add-dataset-output.md`  | ✅                       |
-| CDC → OSv2               | `data-integration/change-data-capture.md`         | ✅                       |
-| Virtual Table            | `data-integration/virtual-tables.md`              | ✅                       |
-| Ontology / Ontologies 概览 | `ontology/*` · `ontologies/*`                     | ✅ 已落盘                   |
-| Object / Link Types      | `object-link-types/*`（39 页）                     | ✅                         |
-| Action Types             | `action-types/*`（26 页）                          | ✅                         |
-| Functions                | `functions/*`（52 页）                             | ✅                         |
-| Ontology Manager         | `ontology-manager/*`（8 页）                       | ✅                         |
-| Object Indexing / Funnel | `object-indexing/*` · **含 `funnel-batch-pipelines.md`** | ✅ · 对标 OM-07      |
-| Object Explorer / Views  | `object-explorer/*` · `object-views/*`            | ✅                         |
-| Map Timeline             | `map/timeline.md`                                 | ⚠ stub（官方 hang · 可重试） |
-| TSP / 传感器 OT             | `time-series/*` + OM 引用                           | ✅ 部分（多在 L1 TOC）         |
+| 主题                       | 镜像路径                                                    | 状态                    |
+| ------------------------ | ------------------------------------------------------- | --------------------- |
+| PB Ontology 输出           | `pipeline-builder/outputs-add-ontology-output.md`       | ✅                     |
+| Dataset → OM 搭建          | `pipeline-builder/outputs-add-dataset-output.md`        | ✅                     |
+| CDC → OSv2               | `data-integration/change-data-capture.md`               | ✅                     |
+| Virtual Table            | `data-integration/virtual-tables.md`                    | ✅                     |
+| Ontology / Ontologies 概览 | `ontology/*` · `ontologies/*`                           | ✅ 已落盘                 |
+| Object / Link Types      | `object-link-types/*`（39 页）                             | ✅                     |
+| Action Types             | `action-types/*`（26 页）                                  | ✅                     |
+| Functions                | `functions/*`（52 页）                                     | ✅                     |
+| Ontology Manager         | `ontology-manager/*`（8 页）                               | ✅                     |
+| Object Indexing / Funnel | `object-indexing/*` · **含 `funnel-batch-pipelines.md`** | ✅ · 对标 OM-07          |
+| Object Explorer / Views  | `object-explorer/*` · `object-views/*`                  | ✅                     |
+| Map Timeline             | `map/timeline.md`                                       | ⚠ stub（官方 hang · 可重试） |
+| TSP / 传感器 OT             | `time-series/*` + OM 引用                                 | ✅ 部分（多在 L1 TOC）       |
 
 
 ---
@@ -577,11 +600,11 @@ Workshop 选中 Device Object → Action「派单」
 ## 16. 变更记录
 
 
-| 版本   | 日期         | 变更                                                                       |
-| ---- | ---------- | ------------------------------------------------------------------------ |
-| v1.0 | 2026-07-13 | 初稿：定位 · Iceberg 契约 · Funnel 四阶段 · 多源解法 · OMA 六视图 · OM Backlog · 旅程 E/F/G |
-| v1.1 | 2026-07-14 | HTML Demo OM+Funnel；03 §3.2 回写；Ontology 专章镜像 `--ontology`；§14 更新         |
-| v1.2 | 2026-07-14 | 神经系统比喻 · §7/C-07~11 · 链 [06b](06b-Action与Function产品设计.md)               |
+| 版本   | 日期         | 变更                                                                           |
+| ---- | ---------- | ---------------------------------------------------------------------------- |
+| v1.0 | 2026-07-13 | 初稿：定位 · Iceberg 契约 · Funnel 四阶段 · 多源解法 · OMA 六视图 · OM Backlog · 旅程 E/F/G     |
+| v1.1 | 2026-07-14 | HTML Demo OM+Funnel；03 §3.2 回写；Ontology 专章镜像 `--ontology`；§14 更新             |
+| v1.2 | 2026-07-14 | 神经系统比喻 · §7/C-07~11 · 链 [06b](06b-Action与Function产品设计.md)                    |
 | v1.3 | 2026-07-17 | 吸收 [25](20_tech/25-LLM-Wiki启示与L2演进补丁.md)：图谱健康 · Constitution · Insight · TTL |
 
 
@@ -591,12 +614,14 @@ Workshop 选中 Device Object → Action「派单」
 
 > 详细规则与验收见 [25](20_tech/25-LLM-Wiki启示与L2演进补丁.md) · 技术 [T06](20_tech/T06-Ontology与Action-Function详细技术方案.md)。
 
-| 能力 | 产品一句话 | 优先级 | Demo |
-| --- | --- | --- | --- |
-| **AOS Constitution** | OKF 升级为可执行、版本化契约（语义·推理·伦理）；Git + Apollo 同绑 | P0 | `funnel.html` |
-| **图谱健康度** | 悬空 Link / 属性冲突 / 僵尸 Object / 规则冲突（≠ L1 数据健康） | P1 | `ontology-graph-health.html` |
-| **Insight Object** | AIP 回填沉淀的可链接知识对象（写入仍经 Draft/Action） | P0（与 07 共担） | Draft / Lineage |
-| **生命周期 / TTL** | Insight 归档与时序 Property 聚合；可审计 | P2 | 合于图谱健康「归档候选」 |
+
+| 能力                   | 产品一句话                                        | 优先级         | Demo                         |
+| -------------------- | -------------------------------------------- | ----------- | ---------------------------- |
+| **AOS Constitution** | OKF 升级为可执行、版本化契约（语义·推理·伦理）；Git + Apollo 同绑   | P0          | `funnel.html`                |
+| **图谱健康度**            | 悬空 Link / 属性冲突 / 僵尸 Object / 规则冲突（≠ L1 数据健康） | P1          | `ontology-graph-health.html` |
+| **Insight Object**   | AIP 回填沉淀的可链接知识对象（写入仍经 Draft/Action）          | P0（与 07 共担） | Draft / Lineage              |
+| **生命周期 / TTL**       | Insight 归档与时序 Property 聚合；可审计                | P2          | 合于图谱健康「归档候选」                 |
+
 
 **口径：** Funnel = 数据水合；**不是** Insight Backfill。
 

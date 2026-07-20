@@ -49,14 +49,14 @@
 ### 1.2 与上下游边界
 
 
-| 层级    | 产品                                           | 本方案覆盖                          | 不覆盖                      |
-| ----- | -------------------------------------------- | ------------------------------ | ------------------------ |
-| L0 接入 | **Data Connection** · Connectors             | ✅                              | —                        |
-| L0 变换 | **Pipeline Builder** · **Code Repositories** | ✅                              | —                        |
-| L0 存储 | **Dataset** · **MediaSet** · **MediaReference** · Transaction · Branch | ✅ | — |
-| L1 语义 | Ontology · Funnel · **OKF**                  | Curated → Funnel 闭环 · OKF 自动映射 | Object/Action 运行时细节 → 另文 |
-| L2 决策 | AIP · Agent                                  | —                              | —                        |
-| L3 交互 | Workshop                                     | —                              | —                        |
+| 层级    | 产品                                                                     | 本方案覆盖                          | 不覆盖                      |
+| ----- | ---------------------------------------------------------------------- | ------------------------------ | ------------------------ |
+| L0 接入 | **Data Connection** · Connectors                                       | ✅                              | —                        |
+| L0 变换 | **Pipeline Builder** · **Code Repositories**                           | ✅                              | —                        |
+| L0 存储 | **Dataset** · **MediaSet** · **MediaReference** · Transaction · Branch | ✅                              | —                        |
+| L1 语义 | Ontology · Funnel · **OKF**                                            | Curated → Funnel 闭环 · OKF 自动映射 | Object/Action 运行时细节 → 另文 |
+| L2 决策 | AIP · Agent                                                            | —                              | —                        |
+| L3 交互 | Workshop                                                               | —                              | —                        |
 
 
 ### 1.3 官方设计三原则（Data Connection）
@@ -208,11 +208,11 @@ flowchart TB
 > 大图对应：`① Connectors · Data Connection` → Raw Zone / Streaming Zone
 
 
-|          | 内容                                                    |
-| -------- | ----------------------------------------------------- |
-| **阶段目标** | 把数据**原样、安全、可审计**地拉进平台边界；Sync 侧不做业务变换                  |
-| **输入**   | ERP · 数据库 · Blob · Kafka · REST API · 内网文件共享          |
-| **输出**   | Raw Zone Dataset（Text）或 Streaming Zone（Avro / Stream） |
+|          | 内容                                                     |
+| -------- | ------------------------------------------------------ |
+| **阶段目标** | 把数据**原样、安全、可审计**地拉进平台边界；Sync 侧不做业务变换                   |
+| **输入**   | ERP · 数据库 · Blob · Kafka · REST API · 内网文件（office,pdf） |
+| **输出**   | Raw Zone Dataset（Text）或 Streaming Zone（Avro / Stream）  |
 
 
 🔵 **共用机制（Platform Shared）**
@@ -233,7 +233,7 @@ flowchart TB
 | 配置项                | 谁配            | 示例                                                                |
 | ------------------ | ------------- | ----------------------------------------------------------------- |
 | **Source 实例化**     | 数据工程师 / 业务 IT | Oracle ERP vs SAP ERP；Kafka `topic.sensors.env` vs `topic.orders` |
-| **Runtime 选择**     | 架构师           | 公网 S3 → Direct；内网 SAP → Agent Proxy                               |
+| **Runtime 选择**     | 架构师           | 公网 S3 → 直连；内网 SAP → 代理转发 https                                   |
 | **抽取频率与触发**        | 业务 + 运维       | ERP 库存表 **每 5 分钟** Batch SNAPSHOT；IoT 传感器 **毫秒级** Stream Push     |
 | **Sync 目标路径**      | 项目规范          | `/Raw/ERP/Inventory` · `/Streaming/IoT/temperature`               |
 | **Transaction 策略** | 按数据特性         | 全量表 SNAPSHOT；日志型 APPEND                                           |
@@ -395,7 +395,7 @@ Foundry 官方 `[datasets.md](foundry/pages/zh/foundry/data-integration/datasets
 | Zone               | 接入方式                                     | **存储格式**                                            | Schema 策略                                  | Transaction                    | 设计意图                                                                                                              |
 | ------------------ | ---------------------------------------- | --------------------------------------------------- | ------------------------------------------ | ------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
 | **Raw Zone**       | Connector Batch Sync · 文件/表原样拉取          | **Text**（CSV · JSON · 日志行 · 原始 API 响应）              | 可选弱 Schema；半结构化建议下游推断                      | 通常 **SNAPSHOT**                | **保留原始态、可追溯**；Data Connection 设计原则「原样摄取、不在 Sync 侧做变换」                                                             |
-| **Raw Zone（非结构化）** | **Media Sync** · 拖拽上传 · Pipeline 输出     | **MediaSet**（Document：PDF/图/音视频；Spreadsheet：XLSX）   | 创建时选定 schema；**XLSX 须 Spreadsheet 型**         | 媒体集事务 / 非事务两种               | PDF/Excel 等 **不推荐** 仅当普通 Dataset 文件；原件经 **MediaReference** 与 Curated 表关联（[05b §2](05b-非结构化数据存储与接入路径补充方案.md)） |
+| **Raw Zone（非结构化）** | **Media Sync** · 拖拽上传 · Pipeline 输出      | **MediaSet**（Document：PDF/图/音视频；Spreadsheet：XLSX）   | 创建时选定 schema；**XLSX 须 Spreadsheet 型**      | 媒体集事务 / 非事务两种                  | PDF/Excel 等 **不推荐** 仅当普通 Dataset 文件；原件经 **MediaReference** 与 Curated 表关联（[05b §2](05b-非结构化数据存储与接入路径补充方案.md)）      |
 | **Streaming Zone** | Kafka · Event Hub · Kinesis · CDC Stream | **Avro**（行式 + Schema Registry）                      | **Schema 演进**（add field · compatible read） | Stream 追加；落地后可 **APPEND**      | **低延迟 + 业务模型迭代**；官方 Schema 文件格式含 Avro `[datasets.md#文件格式](foundry/pages/zh/foundry/data-integration/datasets.md)` |
 | **Curated Zone**   | Pipeline Builder / Code Repos 输出         | **Parquet**（列式数据文件）+ **Iceberg**（事务 / 快照 / 增量元数据封装） | 强类型表格 Schema；PK · 期望检查                     | **SNAPSHOT / APPEND / UPDATE** | **列式 + 谓词下推**；供 Ontology Funnel · 分析 · ML 消费                                                                      |
 
@@ -423,7 +423,7 @@ Foundry 官方 `[datasets.md](foundry/pages/zh/foundry/data-integration/datasets
 | ---------------------- | ------------- | ------------------------------------- |
 | Batch Sync · 文件        | Raw           | Text（CSV/JSON/日志）                     |
 | Batch Sync · 表         | Raw 或 Curated | JDBC 可读 Parquet；首接建议 Raw 保留审计         |
-| **Media Sync · 媒体**    | **Raw**       | **MediaSet**（Document / Spreadsheet）   |
+| **Media Sync · 媒体**    | **Raw**       | **MediaSet**（Document / Spreadsheet）  |
 | Streaming Sync / CDC   | Streaming     | Avro（或 Stream 原生格式 → Pipeline 转 Avro） |
 | Virtual Table · S3/GCS | 联邦            | Iceberg / Parquet / Delta 外表          |
 
@@ -432,12 +432,14 @@ Foundry 官方 `[datasets.md](foundry/pages/zh/foundry/data-integration/datasets
 
 > 完整规格见 [05b](05b-非结构化数据存储与接入路径补充方案.md) · 线框见 [05a §3.0 / WF-DC-04b / WF-MS-01 / WF-PB-03](05a-数据集成Connectors-Pipeline-Dataset产品设计线框图.md)
 
-| 容器 | 职责 | 典型格式 |
-|------|------|---------|
-| **Dataset** | 通用表格资产 · Git-for-Data | CSV/JSON/Parquet · **含 media_ref 列** |
-| **MediaSet · Document** | 非结构化原件 | PDF · Word* · PPTX* · 图 · 音视频 |
-| **MediaSet · Spreadsheet** | 不规则 Excel | XLSX（`schema_type: spreadsheet`） |
-| **MediaReference** | Dataset 列 → MediaSet 文件指针 | 维修表 `media_ref` → 原始 PDF |
+
+| 容器                         | 职责                        | 典型格式                                 |
+| -------------------------- | ------------------------- | ------------------------------------ |
+| **Dataset**                | 通用表格资产 · Git-for-Data     | CSV/JSON/Parquet · **含 media_ref 列** |
+| **MediaSet · Document**    | 非结构化原件                    | PDF · Word* · PPTX* · 图 · 音视频        |
+| **MediaSet · Spreadsheet** | 不规则 Excel                 | XLSX（`schema_type: spreadsheet`）     |
+| **MediaReference**         | Dataset 列 → MediaSet 文件指针 | 维修表 `media_ref` → 原始 PDF             |
+
 
 **数据连接 · 存储路由（入库第一决策）**：
 
@@ -463,7 +465,6 @@ Foundry 官方 `[datasets.md](foundry/pages/zh/foundry/data-integration/datasets
 **小文件短路（补强）：** 单文件 **< 128KB** 且无需原件预览时，可直接落入 Dataset（文本/二进制列或附件字段），**不必**创建 MediaSet 条目，避免元数据碎片化。
 
 **DocIntel 异常 / 死信（补强）：** OCR/解析失败的文件进入 **死信队列（DLQ）**，Pipeline 不因单文件失败整批卡死；支持人工重试/跳过；失败原因写入血缘与健康检查。
-
 
 ### 2.4 3.1 子图闭环 · OKF Funnel 增强
 
@@ -509,10 +510,10 @@ flowchart LR
 
 
 
-**Foundry 通用路径 vs 谛听 OKF 增强**：
+**Foundry 通用路径 vs  OKF 增强**：
 
 
-| 步骤                       | Palantir Foundry（通用）                                               | 谛听增强（OKF）                                                                                                |
+| 步骤                       | Palantir Foundry（通用）                                               | 增强（OKF）                                                                                                  |
 | ------------------------ | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
 | Curated Dataset → Object | Ontology Manager 中**人工**配置 Funnel：逐列映射 Dataset 列 → Object Property | **OKF 垂直 Schema 预训练**：Curated Parquet 列名/类型与 OKF Concept 对齐，Funnel **自动提议** Property 映射                  |
 | 映射维护                     | 源 Schema 变更 → 人工改 Funnel                                           | OKF Lint：列漂移检测 · 映射建议 diff · 与 `[knowledge/schema/OKF_ECOM.md](../../knowledge/schema/OKF_ECOM.md)` 契约校验 |
@@ -539,7 +540,7 @@ flowchart LR
 | **Curated Zone 物理文件**     | **Parquet**                  | Pipeline 输出默认；列式 + 谓词下推                                      |
 | **Curated Zone 事务层**      | **Iceberg 元数据**              | SNAPSHOT/APPEND/UPDATE · 版本回溯 · 增量读                          |
 | **虚拟表 / 联邦**（S3·ABFS·GCS） | Iceberg · Delta · Parquet 外表 | Connector 文档 · Glue / Unity Catalog                          |
-| 谛听对外宣讲                    | **Parquet + Iceberg**        | Curated 标准交付物；与 [03 PRD §3.1](03-对标Palantir-AOS-PRD框架.md) 一致 |
+| 对外宣讲                      | **Parquet + Iceberg**        | Curated 标准交付物；与 [03 PRD §3.1](03-对标Palantir-AOS-PRD框架.md) 一致 |
 
 
 > **产品默认策略**：Raw Sync → **Text**；Stream Sync → **Avro**；Pipeline Sink → **Parquet 文件 + Iceberg 事务封装**；Funnel → **OKF 预训练映射**（可人工 override）。
@@ -582,13 +583,13 @@ erDiagram
 核心术语（`[data-connection/core-concepts.md](foundry/pages/zh/foundry/data-connection/core-concepts.md)`）：
 
 
-| 术语                          | 定义                                                  |
-| --------------------------- | --------------------------------------------------- |
-| **Connector / Source Type** | 连接器类型模板（200+）                                       |
-| **Source**                  | 一次具体连接实例 = Connector + 凭证 + Runtime                 |
-| **Runtime**                 | 网络与执行位置：Direct / Agent Proxy / Agent Worker         |
+| 术语                          | 定义                                                                 |
+| --------------------------- | ------------------------------------------------------------------ |
+| **Connector / Source Type** | 连接器类型模板（200+）                                                      |
+| **Source**                  | 一次具体连接实例 = Connector + 凭证 + Runtime                                |
+| **Runtime**                 | 网络与执行位置：Direct / Agent Proxy / Agent Worker                        |
 | **Capability**              | 源上可执行能力：Batch Sync、**Media Sync**、Stream、CDC、Virtual Table、Export… |
-| **Sync**                    | 将外部数据写入 Foundry **Dataset / MediaSet / Stream** 的配置单元                |
+| **Sync**                    | 将外部数据写入 Foundry **Dataset / MediaSet / Stream** 的配置单元              |
 
 
 ### 3.2 三种 Runtime（接入模式）
@@ -719,14 +720,16 @@ Step 3/4  Explore (可选)            Step 4/4  Create Sync
 
 #### 3.5.1 存储路由表
 
-| 数据源 | 存储位 | 默认解析路径 |
-|--------|--------|-------------|
-| 小文件 <128KB（无需原件预览） | Dataset（短路） | 不建 MediaSet · 避免元数据碎片 |
-| CSV / DB 表 / SAP 宽表 | Dataset | 结构化 · Apply Schema → Clean 表（宽表须拆） |
-| JSON / XML / API / 日志 | Dataset | 半结构化 · **Explode** → 多表 + Link |
-| PDF / Word* / PPTX* / 图 / 音视频 | MediaSet · Document | 非结构化 · **AIP Doc Intel 五步** → Clean 表 + media_ref |
-| XLSX | MediaSet · Spreadsheet | LLM 提取 → JSON · Workshop 预览/注解 |
-| IoT / OPC-UA / Kafka | Stream + Dataset | 时序 · CDC → Time Series Object |
+
+| 数据源                           | 存储位                    | 默认解析路径                                            |
+| ----------------------------- | ---------------------- | ------------------------------------------------- |
+| 小文件 <128KB（无需原件预览）            | Dataset（短路）            | 不建 MediaSet · 避免元数据碎片                             |
+| CSV / DB 表 / SAP 宽表           | Dataset                | 结构化 · Apply Schema → Clean 表（宽表须拆）                |
+| JSON / XML / API / 日志         | Dataset                | 半结构化 · **Explode** → 多表 + Link                    |
+| PDF / Word* / PPTX* / 图 / 音视频 | MediaSet · Document    | 非结构化 · **AIP Doc Intel 五步** → Clean 表 + media_ref |
+| XLSX                          | MediaSet · Spreadsheet | LLM 提取 → JSON · Workshop 预览/注解                    |
+| IoT / OPC-UA / Kafka          | Stream + Dataset       | 时序 · CDC → Time Series Object                     |
+
 
 #### 3.5.2 AIP Document Intelligence 五步（非结构化）
 
@@ -785,12 +788,14 @@ Input → Transform → Preview → Deliver(Build) → Output(Dataset/Ontology)
 
 **四类解析路径**（与 §3.5 对应）：
 
-| 路径 | Pipeline 核心操作 | 输出 |
-|------|-------------------|------|
-| 结构化 | Apply Schema · filter · dedupe | Curated Parquet |
-| 半结构化 | inferSchema · **explode** · join | 多 Curated 表 + Link 键 |
+
+| 路径   | Pipeline 核心操作                                | 输出                      |
+| ---- | -------------------------------------------- | ----------------------- |
+| 结构化  | Apply Schema · filter · dedupe               | Curated Parquet         |
+| 半结构化 | inferSchema · **explode** · join             | 多 Curated 表 + Link 键    |
 | 非结构化 | PDF OCR · **Use LLM** · Get media references | Curated + **media_ref** |
-| 时序 | 窗口聚合 · CDC 落地 | Stream/Curated · TSP |
+| 时序   | 窗口聚合 · CDC 落地                                | Stream/Curated · TSP    |
+
 
 ### 4.3 Pipeline Builder 画布 · 文字 UI 还原（核心页）
 
@@ -1093,7 +1098,7 @@ shopify_sync ──► raw_orders (Text) ──► PB:orders_pipeline ──► 
 
 ---
 
-## 8. 谛听对标实施分期（建议）
+## 8. 对标实施分期（建议）
 
 
 | 阶段     | 范围                                                          | 交付物            | 优先级 |
@@ -1114,28 +1119,29 @@ shopify_sync ──► raw_orders (Text) ──► PB:orders_pipeline ──► 
 
 ## 9. 页面清单（研发 Backlog）
 
-> **UI 线框规格**：详见 [`05a 产品设计线框图`](05a-数据集成Connectors-Pipeline-Dataset产品设计线框图.md)（WF-DC/PB/DS/MS/LN/FN · 含存储路由与非结构化 · 对标 Foundry 官方布局）  
+> **UI 线框规格**：详见 `[05a 产品设计线框图](05a-数据集成Connectors-Pipeline-Dataset产品设计线框图.md)`（WF-DC/PB/DS/MS/LN/FN · 含存储路由与非结构化 · 对标 Foundry 官方布局）  
 > **非结构化专项**：[05b 补充方案](05b-非结构化数据存储与接入路径补充方案.md)  
-> **客户演示 HTML**：[`foundry/html/index.html`](foundry/html/index.html) · **v1.6.0** · 全模块（含 MediaSet · 存储路由 · Doc Intel · Apollo · AIP 门控）· 见 [`foundry/html/README.md`](foundry/html/README.md)
+> **客户演示 HTML**：`[foundry/html/index.html](foundry/html/index.html)` · **v1.6.0** · 全模块（含 MediaSet · 存储路由 · Doc Intel · Apollo · AIP 门控）· 见 `[foundry/html/README.md](foundry/html/README.md)`
 
-| 页面 ID | 名称                 | 路由建议                           | 线框 ID | 关键组件                      |
-| ------- | ------------------ | ------------------------------ | ------- | ------------------------- |
-| DC-01 | Data Connection 首页 | `/data-connection`             | WF-DC-01 | Source 列表 · 存储类型标签 · Health |
-| DC-02 | New Source 向导      | `/data-connection/new`         | WF-DC-02 | Connector 卡片 · Runtime 选择 |
-| DC-03 | Source 详情          | `/data-connection/sources/:id` | WF-DC-03 | Explore · 媒体集同步入口      |
-| DC-04 | Sync 编辑器           | `/data-connection/syncs/:id`   | WF-DC-04 | Schedule · Target · 解析路径提示 |
-| DC-04b | **存储路由向导**      | `/data-connection/syncs/new/routing` | WF-DC-04b | Dataset/MediaSet/Stream 选择 |
-| DC-05 | Agent 管理           | `/data-connection/agents`      | WF-DC-05 | 注册状态 · 日志                 |
-| PB-01 | Pipeline 列表        | `/pipeline-builder`            | WF-PB-01 | 文件夹 · Dataset+MediaSet 树 |
-| PB-02 | Pipeline 画布        | `/pipeline-builder/:id`        | WF-PB-02 | DAG · 三型输入 · Preview      |
-| PB-03 | **Use LLM 节点**     | （画布内面板）                    | WF-PB-03 | 实体提取 · 视觉 · mediaReference |
-| BL-01 | Build 控制台          | `/builds`                      | WF-BL-01 | Task 状态 · Live Logs       |
-| SC-01 | Schedule 编辑器       | `/schedules/:id`               | WF-SC-01 | Cron · 上游触发               |
-| DS-01 | Dataset Preview    | `/datasets/:rid`               | WF-DS-01 | 表格预览 · Schema · media_ref 列 |
-| DS-02 | Dataset History    | `/datasets/:rid/history`       | WF-DS-02 | Transaction 时间线           |
-| MS-01 | **MediaSet 浏览器**  | `/media-sets/:rid`             | WF-MS-01 | Document/Spreadsheet · 预览  |
-| LN-01 | Lineage            | `/lineage`                     | WF-LN-01 | 有向图                       |
-| — | OKF Funnel Mapper | `/okf-funnel` | WF-FN-01 | 自动列映射 · Lint · Publish |
+
+| 页面 ID  | 名称                 | 路由建议                                 | 线框 ID     | 关键组件                        |
+| ------ | ------------------ | ------------------------------------ | --------- | --------------------------- |
+| DC-01  | Data Connection 首页 | `/data-connection`                   | WF-DC-01  | Source 列表 · 存储类型标签 · Health |
+| DC-02  | New Source 向导      | `/data-connection/new`               | WF-DC-02  | Connector 卡片 · Runtime 选择   |
+| DC-03  | Source 详情          | `/data-connection/sources/:id`       | WF-DC-03  | Explore · 媒体集同步入口           |
+| DC-04  | Sync 编辑器           | `/data-connection/syncs/:id`         | WF-DC-04  | Schedule · Target · 解析路径提示  |
+| DC-04b | **存储路由向导**         | `/data-connection/syncs/new/routing` | WF-DC-04b | Dataset/MediaSet/Stream 选择  |
+| DC-05  | Agent 管理           | `/data-connection/agents`            | WF-DC-05  | 注册状态 · 日志                   |
+| PB-01  | Pipeline 列表        | `/pipeline-builder`                  | WF-PB-01  | 文件夹 · Dataset+MediaSet 树    |
+| PB-02  | Pipeline 画布        | `/pipeline-builder/:id`              | WF-PB-02  | DAG · 三型输入 · Preview        |
+| PB-03  | **Use LLM 节点**     | （画布内面板）                              | WF-PB-03  | 实体提取 · 视觉 · mediaReference  |
+| BL-01  | Build 控制台          | `/builds`                            | WF-BL-01  | Task 状态 · Live Logs         |
+| SC-01  | Schedule 编辑器       | `/schedules/:id`                     | WF-SC-01  | Cron · 上游触发                 |
+| DS-01  | Dataset Preview    | `/datasets/:rid`                     | WF-DS-01  | 表格预览 · Schema · media_ref 列 |
+| DS-02  | Dataset History    | `/datasets/:rid/history`             | WF-DS-02  | Transaction 时间线             |
+| MS-01  | **MediaSet 浏览器**   | `/media-sets/:rid`                   | WF-MS-01  | Document/Spreadsheet · 预览   |
+| LN-01  | Lineage            | `/lineage`                           | WF-LN-01  | 有向图                         |
+| —      | OKF Funnel Mapper  | `/okf-funnel`                        | WF-FN-01  | 自动列映射 · Lint · Publish      |
 
 
 ---
@@ -1158,23 +1164,23 @@ shopify_sync ──► raw_orders (Text) ──► PB:orders_pipeline ──► 
 ### 10.2 本地镜像（`docs/palantier/foundry/pages/`）
 
 
-| 文件                                                          | 内容                            |
-| ----------------------------------------------------------- | ----------------------------- |
-| `zh/foundry/data-integration/overview.md`                   | 集成层总述                         |
-| `zh/foundry/data-integration/datasets.md`                   | Transaction · Schema · 分支     |
+| 文件                                                          | 内容                               |
+| ----------------------------------------------------------- | -------------------------------- |
+| `zh/foundry/data-integration/overview.md`                   | 集成层总述                            |
+| `zh/foundry/data-integration/datasets.md`                   | Transaction · Schema · 分支        |
 | `zh/foundry/data-integration/media-sets.md`                 | MediaSet · MediaReference · 支持格式 |
-| `zh/foundry/data-connection/media-set-sync.md`              | 媒体集同步                       |
-| `zh/foundry/pipeline-builder/pipeline-builder-llm.md`       | Use LLM · 实体提取 · 视觉        |
-| `zh/foundry/building-pipelines/infer-schema.md`             | Apply Schema · CSV/JSON        |
-| `zh/foundry/data-integration/builds.md`                     | Build 生命周期                    |
-| `zh/foundry/data-integration/branching.md`                  | Git for Data                  |
-| `zh/foundry/data-connection/core-concepts.md`               | Source · Runtime · Capability |
-| `zh/foundry/data-connection/architecture.md`                | Agent 架构图                     |
-| `zh/foundry/pipeline-builder/overview.md`                   | PB 工作流                        |
-| `zh/foundry/pipeline-builder/outputs-add-dataset-output.md` | 输出 · Write Mode               |
-| `zh/foundry/code-repositories/overview.md`                  | 代码库 IDE                       |
-| `zh/foundry/data-integration/source-type-overview.md`       | 200+ 连接器目录                    |
-| `zh/foundry/available-connectors/amazon-s3.md`              | Iceberg Catalog 配置示例          |
+| `zh/foundry/data-connection/media-set-sync.md`              | 媒体集同步                            |
+| `zh/foundry/pipeline-builder/pipeline-builder-llm.md`       | Use LLM · 实体提取 · 视觉              |
+| `zh/foundry/building-pipelines/infer-schema.md`             | Apply Schema · CSV/JSON          |
+| `zh/foundry/data-integration/builds.md`                     | Build 生命周期                       |
+| `zh/foundry/data-integration/branching.md`                  | Git for Data                     |
+| `zh/foundry/data-connection/core-concepts.md`               | Source · Runtime · Capability    |
+| `zh/foundry/data-connection/architecture.md`                | Agent 架构图                        |
+| `zh/foundry/pipeline-builder/overview.md`                   | PB 工作流                           |
+| `zh/foundry/pipeline-builder/outputs-add-dataset-output.md` | 输出 · Write Mode                  |
+| `zh/foundry/code-repositories/overview.md`                  | 代码库 IDE                          |
+| `zh/foundry/data-integration/source-type-overview.md`       | 200+ 连接器目录                       |
+| `zh/foundry/available-connectors/amazon-s3.md`              | Iceberg Catalog 配置示例             |
 
 
 ---

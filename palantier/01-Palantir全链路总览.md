@@ -105,7 +105,7 @@ Pilot（$1-5M）
 
 ---
 
-## 5. 与谛听架构的映射（请忽略）
+## 5. 与谛听架构的映射（废弃）
 
 > Gotham：客户问「你们有没有 Gotham？」→ **关系分析 / Link Analysis 能力已下沉到 Foundry Ontology + Workshop 图谱**；企业侧按场景用 Ontology Link，不必单独采购「Gotham 产品名」。
 
