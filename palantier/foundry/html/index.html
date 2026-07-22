@@ -7,322 +7,288 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/demo.css" />
 </head>
-<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
-  <!-- 侧栏 -->
-  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
-    <div class="p-4 border-b border-white/[0.08]">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
-          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
-        </div>
-        <div>
-          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
-          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+<body>
+<div class="p-app">
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+<div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item is-active" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+<div class="p-nav-g-item" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="用户"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+    </div>
+  </nav>
+  <div class="p-main">
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>概览</span></div>
+      </div>
+      <div class="p-header-center">
+        <div class="p-search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="搜索资源…" />
         </div>
       </div>
-    </div>
-    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
-    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">AOS · v1.6.5</div>
-  </aside>
-
-  <div class="flex-1 flex flex-col min-w-0">
-    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
-      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
-      <div class="flex items-center gap-3">
-        <div class="relative hidden sm:block">
-          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3-3"/></svg>
-          <input type="search" placeholder="搜索资源…" class="w-64 pl-9 pr-3 py-1.5 rounded-lg bg-slate-900 border border-white/[0.08] text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-cyan-400/40 transition-colors" />
-        </div>
-        <button class="p-2 rounded-lg hover:bg-white/[0.04] transition-colors text-gray-400" aria-label="通知">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5"/></svg>
-        </button>
-        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+      <div class="p-header-right">
+        <button class="p-btn p-btn-secondary p-btn-sm">Discard</button>
+        <button class="p-btn p-btn-primary p-btn-sm">Save to branch</button>
       </div>
     </header>
+    <div class="p-body">
+      <aside class="p-sidebar">
+<a href="index.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+<div class="p-sidebar-section-title">工作台</div>
+<div class="p-sidebar-section">
+<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>运营台</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>知识图谱</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+<a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+<a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+<a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+</div>
+<div class="p-sidebar-section-title">AIP 决策引擎</div>
+<div class="p-sidebar-section">
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Chatbot Studio</span></a>
+<a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Agent 工具面板</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>重能力接入</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
+<a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+</div>
+<div class="p-sidebar-section-title">本体 · 数字孪生</div>
+<div class="p-sidebar-section">
+<a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>漏斗管道</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF 行业漏斗</span></a>
+<a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
+<a href="ontology-wiki.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
+</div>
+<div class="p-sidebar-section-title">数据集成</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据连接</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+<a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+<a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
+<a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+<a href="builds.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>搭建</span></a>
+<a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+<a href="code-repositories.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>代码库</span></a>
+<a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+<a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
+</div>
+<div class="p-sidebar-section-title">交付 Apollo</div>
+<div class="p-sidebar-section">
+<a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
+<a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
+<a href="apollo-spoke.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Spoke 详情</span></a>
+<a href="apollo-ferry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>Ferry 摆渡</span></a>
+<a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
+<a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
+<a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+</div>
 
-    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
-      <div class="max-w-6xl mx-auto space-y-8">
+      </aside>
+      <main class="p-content">
+<div class="max-w-[900px] mx-auto space-y-6">
+
+        <!-- 顶部标题区 -->
         <div>
-          <h1 class="text-sm font-medium text-gray-100 tracking-tight leading-snug">数据操作系统 · 本体数字孪生 · AIP 人工智能平台 · 工作台</h1>
-          <p class="mt-2 text-gray-400 leading-relaxed whitespace-nowrap overflow-x-auto">日常从 <span class="text-sky-300">工作台</span> 进入；建设路径：连接器 → 管道 → 数据集 → OKF / 本体 → <span class="text-amber-300">AIP</span> → <span class="text-sky-300">工作台（操作台）</span>。</p>
+          <h1 class="text-[13px] font-medium text-gray-900 tracking-tight leading-snug">数据操作系统 · 本体数字孪生 · AIP 人工智能平台 · 工作台</h1>
+          <p class="mt-2 text-gray-600 text-[13px] leading-relaxed">日常从 <span class="text-blue-700">工作台</span> 进入；建设路径：连接器 → 管道 → 数据集 → OKF / 本体 → <span class="text-yellow-600">AIP</span> → <span class="text-blue-700">工作台（操作台）</span>。</p>
         </div>
 
-        <!-- ① 工作台：应用列表是入口；其下模块为列表内示例；分析建模挂同组（产品 1.3≠Workshop 运行态） -->
-        <div class="rounded-xl border border-sky-400/25 bg-sky-400/5 p-6 shadow-sm shadow-black/20 space-y-5">
+        <!-- ===== 工作台区域 ===== -->
+        <div class="aos-panel p-5 space-y-4">
           <div>
-            <h2 class="text-sm font-medium text-gray-100 mb-2">工作台</h2>
-            <p class="text-xs text-gray-500">入口只有「应用列表」；运营台 / 知识图谱 / 智能助手 都是列表里打开的模块，不是并列产品。</p>
+            <h2 class="text-[13px] font-medium text-gray-900 mb-1">工作台</h2>
+            <p class="text-[11px] text-gray-500">入口只有「应用列表」；运营台 / 知识图谱 / 智能助手 都是列表里打开的模块，不是并列产品。</p>
           </div>
-          <a href="workshop.html" class="group flex items-center justify-between rounded-lg border border-sky-400/40 bg-slate-950/50 p-4 hover:border-sky-400/60 transition-all">
+
+          <!-- 唯一入口：应用列表 -->
+          <a href="workshop.html" class="aos-workspace-card group">
             <div>
-              <div class="text-xs text-sky-300 mb-1">唯一入口</div>
-              <div class="text-gray-100 font-medium group-hover:text-sky-300 transition-colors text-lg">应用列表</div>
-              <p class="text-xs text-gray-500 mt-2">按业务场景打开模块 · 含运营台、知识图谱、智能助手…</p>
+              <div class="text-[11px] text-blue-700 mb-0.5">唯一入口</div>
+              <div class="text-gray-900 font-medium text-[15px] group-hover:text-blue-700 transition-colors">应用列表</div>
+              <p class="text-[11px] text-gray-500 mt-1.5">按业务场景打开模块 · 含运营台、知识图谱、智能助手…</p>
             </div>
-            <span class="text-sky-400 text-sm shrink-0">进入列表 →</span>
+            <span class="text-blue-700 text-[13px] shrink-0">进入列表 →</span>
           </a>
+
+          <!-- 列表内模块示例 -->
           <div>
-            <div class="text-[10px] uppercase tracking-wider text-gray-600 mb-3">列表内模块示例（勿与入口平级理解）</div>
+            <div class="text-[10px] uppercase tracking-wider text-gray-400 mb-2.5">列表内模块示例（勿与入口平级理解）</div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <a href="workshop-module.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-sky-400/30 transition-all">
-                <div class="text-xs text-sky-300/80 mb-2">运营收件箱</div>
-                <div class="text-gray-100 font-medium group-hover:text-sky-300 transition-colors">运营台</div>
-                <p class="text-xs text-gray-500 mt-2">筛选 · 表格 · 对象视图 · 变量条</p>
+              <a href="workshop-module.html" class="aos-module-card group">
+                <div class="text-[11px] text-blue-700/80 mb-1.5">运营收件箱</div>
+                <div class="text-gray-900 font-medium text-[13px] group-hover:text-blue-700 transition-colors">运营台</div>
+                <p class="text-[11px] text-gray-500 mt-1.5">筛选 · 表格 · 对象视图 · 变量条</p>
               </a>
-              <a href="workshop-object-view.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
-                <div class="text-xs text-violet-300/80 mb-2">本体前端</div>
-                <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">知识图谱</div>
-                <p class="text-xs text-gray-500 mt-2">对象+关系图谱 · Wiki · 动作</p>
+              <a href="workshop-object-view.html" class="aos-module-card group">
+                <div class="text-[11px] text-purple-700/80 mb-1.5">本体前端</div>
+                <div class="text-gray-900 font-medium text-[13px] group-hover:text-purple-700 transition-colors">知识图谱</div>
+                <p class="text-[11px] text-gray-500 mt-1.5">对象+关系图谱 · Wiki · 动作</p>
               </a>
-              <a href="workshop-aip-chat.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-                <div class="text-xs text-amber-300/80 mb-2">智能嵌入</div>
-                <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">智能助手</div>
-                <p class="text-xs text-gray-500 mt-2">挂在任意模块侧栏 / 表旁</p>
+              <a href="workshop-aip-chat.html" class="aos-module-card group">
+                <div class="text-[11px] text-yellow-600/80 mb-1.5">智能嵌入</div>
+                <div class="text-gray-900 font-medium text-[13px] group-hover:text-yellow-600 transition-colors">智能助手</div>
+                <p class="text-[11px] text-gray-500 mt-1.5">挂在任意模块侧栏 / 表旁</p>
               </a>
             </div>
           </div>
-          <div class="flex flex-wrap gap-3 text-[11px] text-gray-500">
-            <a href="workshop-canvas.html" class="text-sky-400 hover:underline">画布编辑</a>
+
+          <!-- 快捷链接 -->
+          <div class="flex flex-wrap gap-2 text-[11px] text-gray-500">
+            <a href="workshop-canvas.html" class="text-blue-700 hover:underline">画布编辑</a>
             <span>·</span>
-            <a href="workshop-cop.html" class="text-sky-400 hover:underline">态势大屏</a>
+            <a href="workshop-cop.html" class="text-blue-700 hover:underline">态势大屏</a>
             <span>·</span>
-            <a href="workshop-publish.html" class="text-sky-400 hover:underline">发布入口</a>
+            <a href="workshop-publish.html" class="text-blue-700 hover:underline">发布入口</a>
           </div>
         </div>
 
-        <!-- ② AIP -->
-        <div class="rounded-xl border border-amber-400/25 bg-amber-400/5 p-6 shadow-sm shadow-black/20">
-          <h2 class="text-sm font-medium text-gray-100 mb-2">AIP 人工智能平台 · k-LLM（核心调度） + Logic（编排引擎） + Agent Studio（Agent 开发工坊） + Assist（智能助手）</h2>
-          <p class="text-xs text-gray-500 mb-6">业务工作室 → 逻辑/工具 → 提案决策 → 模型配置</p>
-          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <a href="agents.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">Studio</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">Chatbot Studio</div>
-              <p class="text-xs text-gray-500 mt-2">Prompt · Agent 配置 · 非边缘代理</p>
+        <!-- ===== AIP 平台介绍条 ===== -->
+        <div class="aos-footer-bar rounded-lg">
+          <div class="text-[13px] font-medium text-gray-900 mb-1">AIP 人工智能平台 · k-LLM（核心调度） + Logic（编排引擎） + Agent Studio（Agent 开发工坊） + Assist（智能助手）</div>
+          <p class="text-[11px] text-gray-500">业务工作室 → 逻辑/工具 → 提案决策 → 模型配置</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+            <a href="agents.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-yellow-600 mb-1">Studio</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-yellow-600 transition-colors">Chatbot Studio</div>
             </a>
-            <a href="aip-logic.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">Logic</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">AIP Logic 画布</div>
-              <p class="text-xs text-gray-500 mt-2">三栏 · CoT Debugger · Uses Automate</p>
+            <a href="aip-logic.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-yellow-600 mb-1">Logic</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-yellow-600 transition-colors">AIP 逻辑画布</div>
             </a>
-            <a href="aip-tools.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">工具</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">智能体管理工作台</div>
-              <p class="text-xs text-gray-500 mt-2">六类工具 · Wiki 子集 · HITL Action</p>
+            <a href="aip-tools.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-yellow-600 mb-1">Tools</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-yellow-600 transition-colors">Agent 工具面板</div>
             </a>
-            <a href="aip-capabilities.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-cyan-400/30 transition-all">
-              <div class="text-xs text-cyan-300 mb-2">Capability</div>
-              <div class="text-gray-100 font-medium group-hover:text-cyan-300 transition-colors">重能力接入</div>
-              <p class="text-xs text-gray-500 mt-2">短视频 / 数字人 · Job·Session</p>
+            <a href="aip-capabilities.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-yellow-600 mb-1">Capabilities</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-yellow-600 transition-colors">重能力接入</div>
             </a>
-            <a href="aip-draft-inbox.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-emerald-400/30 transition-all">
-              <div class="text-xs text-emerald-300 mb-2">Draft</div>
-              <div class="text-gray-100 font-medium group-hover:text-emerald-300 transition-colors">提案审批台</div>
-              <p class="text-xs text-gray-500 mt-2">Draft Dataset · HITL 批准/拒绝</p>
-            </a>
-            <a href="aip-evals.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">Evals</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">评测门控</div>
-              <p class="text-xs text-gray-500 mt-2">L4 须 Eval 绿 · 未通过禁上线</p>
-            </a>
-            <a href="aip-decision-lineage.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
-              <div class="text-xs text-violet-300 mb-2">谱系</div>
-              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">决策谱系</div>
-              <p class="text-xs text-gray-500 mt-2">读 Wiki → 模型 → Action/Draft 复盘</p>
-            </a>
-            <a href="aip-model-providers.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">接入</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">大模型接入(插件)</div>
-              <p class="text-xs text-gray-500 mt-2">卡片 · 类型化表单 · Adapter</p>
-            </a>
-            <a href="aip-model-router.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-amber-400/30 transition-all">
-              <div class="text-xs text-amber-300 mb-2">路由</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">模型路由</div>
-              <p class="text-xs text-gray-500 mt-2">任务类型 · 出境 · 预热熔断</p>
-            </a>
-            <a href="aip-maturity.html" class="group rounded-lg border border-amber-400/30 bg-slate-950/40 p-4 hover:border-amber-400/50 transition-all">
-              <div class="text-xs text-amber-300 mb-2">成熟度</div>
-              <div class="text-gray-100 font-medium group-hover:text-amber-300 transition-colors">成熟度楼梯</div>
-              <p class="text-xs text-gray-500 mt-2">Threads → Agent → Workshop → 自动化门控</p>
-            </a>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3 text-[11px]">
+            <a href="aip-draft-inbox.html" class="text-gray-600 hover:text-gray-900 transition-colors">Draft 审批台</a>
+            <span class="text-gray-400">·</span>
+            <a href="aip-evals.html" class="text-gray-600 hover:text-gray-900 transition-colors">Evals 门控</a>
+            <span class="text-gray-400">·</span>
+            <a href="aip-decision-lineage.html" class="text-gray-600 hover:text-gray-900 transition-colors">决策谱系</a>
+            <span class="text-gray-400">·</span>
+            <a href="aip-model-providers.html" class="text-gray-600 hover:text-gray-900 transition-colors">模型供应商</a>
+            <span class="text-gray-400">·</span>
+            <a href="aip-model-router.html" class="text-gray-600 hover:text-gray-900 transition-colors">模型路由</a>
+            <span class="text-gray-400">·</span>
+            <a href="aip-maturity.html" class="text-gray-600 hover:text-gray-900 transition-colors">成熟度楼梯</a>
           </div>
         </div>
 
-        <!-- ③ 本体 -->
-        <div class="rounded-xl border border-violet-400/20 bg-violet-400/5 p-6 shadow-sm shadow-black/20">
-          <h2 class="text-sm font-medium text-gray-100 mb-2">语义本体 Ontology · 数字孪生</h2>
-          <p class="text-xs text-gray-500 mb-6">OKF / Constitution → Overview → Funnel 水合 · 图谱健康</p>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <a href="ontology.html" class="group rounded-lg border border-violet-400/25 bg-slate-950/40 p-4 hover:border-violet-400/50 transition-all">
-              <div class="text-xs text-violet-300 mb-2">Discover</div>
-              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">本体管理（数字孪生）</div>
-              <p class="text-xs text-gray-500 mt-2">Discover · 收藏 / 最近 / 重要 Object</p>
+        <!-- ===== 本体 · 数字孪生 ===== -->
+        <div class="aos-panel p-5">
+          <h2 class="text-[13px] font-medium text-gray-900 mb-1">本体 · 数字孪生</h2>
+          <p class="text-[11px] text-gray-500 mb-4">Ontology Manager · Discover · 收藏 / 最近 / 重要 Object</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <a href="ontology.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-purple-700 mb-1">Manager</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-purple-700 transition-colors">本体管理</div>
             </a>
-            <a href="ontology-object.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
-              <div class="text-xs text-violet-300 mb-2">Object</div>
-              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">对象概览</div>
-              <p class="text-xs text-gray-500 mt-2">7 Tab · Properties / Links / Data</p>
+            <a href="ontology-funnel.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-purple-700 mb-1">Pipeline</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-purple-700 transition-colors">漏斗管道</div>
             </a>
-            <a href="ontology-funnel.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-violet-400/30 transition-all">
-              <div class="text-xs text-violet-300 mb-2">Funnel</div>
-              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">漏斗管道</div>
-              <p class="text-xs text-gray-500 mt-2">Changelog → Merge → Index → Hydration</p>
+            <a href="ontology-wiki.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-purple-700 mb-1">Wiki</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-purple-700 transition-colors">活知识 Wiki</div>
             </a>
-            <a href="ontology-graph-health.html" class="group rounded-lg border border-violet-400/25 bg-violet-400/5 p-4 hover:border-violet-400/50 transition-all">
-              <div class="text-xs text-violet-300 mb-2">健康 · 25</div>
-              <div class="text-gray-100 font-medium group-hover:text-violet-300 transition-colors">图谱健康度</div>
-              <p class="text-xs text-gray-500 mt-2">悬空 / 冲突 / 僵尸 / 规则 · TTL 候选</p>
+            <a href="ontology-graph-health.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-purple-700 mb-1">Health</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-purple-700 transition-colors">图谱健康度</div>
             </a>
           </div>
         </div>
 
-        <!-- ④ 数据集成链路 -->
-        <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-6 shadow-sm shadow-black/20">
-          <h2 class="text-sm font-medium text-gray-100 mb-6">数据集成 · 三阶段链路 + OKF</h2>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <a href="data-connection.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/50 p-4 hover:border-cyan-400/30 transition-all">
-              <div class="text-xs text-cyan-400 mb-2">① Connector</div>
-              <div class="text-gray-100 font-medium group-hover:text-cyan-400 transition-colors">数据连接</div>
-              <p class="text-xs text-gray-500 mt-2">200+ 连接器 · 存储路由 · Dataset / MediaSet / Stream</p>
+        <!-- ===== 数据集成 ===== -->
+        <div class="aos-panel p-5">
+          <h2 class="text-[13px] font-medium text-gray-900 mb-1">数据集成</h2>
+          <p class="text-[11px] text-gray-500 mb-4">连接器 → 管道 → 数据集 → 搭建 → 健康监控</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <a href="data-connection.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-blue-700 mb-1">Connect</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-blue-700 transition-colors">数据连接</div>
             </a>
-            <a href="pipeline.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/50 p-4 hover:border-cyan-400/30 transition-all">
-              <div class="text-xs text-cyan-400 mb-2">② Pipeline</div>
-              <div class="text-gray-100 font-medium group-hover:text-cyan-400 transition-colors">管道构建</div>
-              <p class="text-xs text-gray-500 mt-2">DAG 清洗 · Text/Avro → Parquet</p>
+            <a href="pipeline-list.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-blue-700 mb-1">Pipeline</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-blue-700 transition-colors">管道构建</div>
             </a>
-            <a href="dataset.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/50 p-4 hover:border-cyan-400/30 transition-all">
-              <div class="text-xs text-cyan-400 mb-2">③ Dataset</div>
-              <div class="text-gray-100 font-medium group-hover:text-cyan-400 transition-colors">Lakehouse</div>
-              <p class="text-xs text-gray-500 mt-2">Iceberg 事务 · Git for Data</p>
+            <a href="dataset.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-blue-700 mb-1">Dataset</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-blue-700 transition-colors">数据集预览</div>
             </a>
-            <a href="funnel.html" class="group rounded-lg border border-emerald-400/20 bg-emerald-400/5 p-4 hover:border-emerald-400/40 transition-all">
-              <div class="text-xs text-emerald-400 mb-2">④ OKF · 行业定制</div>
-              <div class="text-gray-100 font-medium group-hover:text-emerald-400 transition-colors">Funnel 映射</div>
-              <p class="text-xs text-gray-500 mt-2">列 → Object Property 自动映射</p>
+            <a href="lineage.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-blue-700 mb-1">Lineage</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-blue-700 transition-colors">数据沿袭</div>
             </a>
           </div>
         </div>
 
-        <!-- ⑤ Apollo 交付（运维发布 · 与侧栏同序，不插业务链中间） -->
-        <div class="rounded-xl border border-indigo-400/25 bg-indigo-400/5 p-6 shadow-sm shadow-black/20">
-          <h2 class="text-sm font-medium text-gray-100 mb-2">Apollo 交付引擎</h2>
-          <p class="text-xs text-gray-500 mb-6">Hub 舰队 · Release Channel · FDE 资产包</p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <a href="apollo-hub.html" class="group rounded-lg border border-indigo-400/30 bg-slate-950/40 p-4 hover:border-indigo-400/50 transition-all">
-              <div class="text-xs text-indigo-300 mb-2">Hub</div>
-              <div class="text-gray-100 font-medium group-hover:text-indigo-300 transition-colors">舰队视图</div>
-              <p class="text-xs text-gray-500 mt-2">Spoke 健康 · Probe · 出站轮询</p>
+        <!-- ===== 交付 Apollo ===== -->
+        <div class="aos-panel p-5">
+          <h2 class="text-[13px] font-medium text-gray-900 mb-1">交付 Apollo</h2>
+          <p class="text-[11px] text-gray-500 mb-4">Hub 舰队 → Release 通道 → Spoke 详情 → Ferry 摆渡 → 资产包</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <a href="apollo-hub.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-green-600 mb-1">Hub</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-green-600 transition-colors">Hub 舰队</div>
             </a>
-            <a href="apollo-release.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-indigo-400/30 transition-all">
-              <div class="text-xs text-indigo-300 mb-2">Release</div>
-              <div class="text-gray-100 font-medium group-hover:text-indigo-300 transition-colors">发布通道</div>
-              <p class="text-xs text-gray-500 mt-2">rc → beta → stable · Recall · hotfix</p>
+            <a href="apollo-release.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-green-600 mb-1">Release</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-green-600 transition-colors">Release 通道</div>
             </a>
-            <a href="apollo-assets.html" class="group rounded-lg border border-white/[0.08] bg-slate-950/40 p-4 hover:border-indigo-400/30 transition-all">
-              <div class="text-xs text-indigo-300 mb-2">Assets</div>
-              <div class="text-gray-100 font-medium group-hover:text-indigo-300 transition-colors">FDE 资产包</div>
-              <p class="text-xs text-gray-500 mt-2">Asset Bundle · SemVer · Channel 绑定</p>
+            <a href="apollo-ferry.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-green-600 mb-1">Ferry</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-green-600 transition-colors">Ferry 摆渡</div>
+            </a>
+            <a href="apollo-config.html" class="aos-card-item p-3 group">
+              <div class="text-[11px] text-green-600 mb-1">Config</div>
+              <div class="text-gray-900 text-[13px] font-medium group-hover:text-green-600 transition-colors">配置与密钥</div>
             </a>
           </div>
         </div>
 
-        <!-- 快速入口：使用优先 → 底座 -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a href="workshop.html" class="rounded-xl border border-sky-400/25 bg-sky-400/5 p-5 hover:border-sky-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">工作台 · 应用列表</span>
-            <span class="text-sm">入口 · 内含运营台 / 知识图谱 / Buddy</span>
-            <span class="text-sky-300 text-sm mt-auto">打开应用列表 →</span>
-          </a>
-          <a href="aip-maturity.html" class="rounded-xl border border-amber-400/25 bg-amber-400/5 p-5 hover:border-amber-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">Agent 成熟度</span>
-            <span class="text-sm">L1→L4 楼梯 · 门控 L4 · 对接工具 / Logic</span>
-            <span class="text-amber-300 text-sm mt-auto">打开楼梯 →</span>
-          </a>
-          <a href="aip-logic.html" class="rounded-xl border border-amber-400/20 bg-slate-900 p-5 hover:border-amber-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">Logic 派单（人工审批）</span>
-            <span class="text-sm">Get+Wiki → Use LLM → Draft 提议 · A-07 试跑不落库</span>
-            <span class="text-amber-300 text-sm mt-auto">打开 Logic →</span>
-          </a>
-          <a href="ontology.html" class="rounded-xl border border-violet-400/25 bg-violet-400/5 p-5 hover:border-violet-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">Ontology 水合</span>
-            <span class="text-sm">OKF → Order Overview → Funnel 四阶段</span>
-            <span class="text-violet-300 text-sm mt-auto">打开 OMA →</span>
-          </a>
-          <a href="funnel.html" class="rounded-xl border border-emerald-400/25 bg-emerald-400/5 p-5 hover:border-emerald-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">OKF 行业垂直定制</span>
-            <span class="text-sm">电商 / 环科 / 生物模板 · 智能映射 · 数据质量清洗</span>
-            <span class="text-emerald-300 text-sm mt-auto">打开 OKF Funnel →</span>
-          </a>
-          <a href="ontology-wiki.html" class="rounded-xl border border-orange-400/25 bg-orange-400/5 p-5 hover:border-orange-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">LLM Wiki 双向绑定</span>
-            <span class="text-sm">活知识卡片 · Object↔Wiki · Agent 读字段</span>
-            <span class="text-orange-300 text-sm mt-auto">打开 Wiki →</span>
-          </a>
-          <a href="data-connection.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">数据连接</span>
-            <span class="text-sm">12 个数据源 · 3 个同步失败</span>
-            <span class="text-cyan-400 text-sm mt-auto">进入应用 →</span>
-          </a>
-          <a href="pipeline.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">订单清洗管道</span>
-            <span class="text-sm">上次搭建：2 分钟前 · 已完成</span>
-            <span class="text-cyan-400 text-sm mt-auto">打开画布 →</span>
-          </a>
-          <a href="agents.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">Chatbot Studio</span>
-            <span class="text-sm">AIP Agent 开发工坊 · Prompt · 工具配置</span>
-            <span class="text-amber-300 text-sm mt-auto">打开 Studio →</span>
-          </a>
-          <a href="data-connection-agents.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">边缘代理</span>
-            <span class="text-sm">数据连接代理 · 2 在线 · 1 离线 · VPC 隧道</span>
-            <span class="text-cyan-400 text-sm mt-auto">查看边缘代理 →</span>
-          </a>
-          <a href="schedules.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">计划编辑器</span>
-            <span class="text-sm">Cron · 上游触发 · 同步/管道调度</span>
-            <span class="text-cyan-400 text-sm mt-auto">打开计划 →</span>
-          </a>
-          <a href="pipeline-proposals.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">管道提案</span>
-            <span class="text-sm">Diff · 历史时间线 · 与画布互跳</span>
-            <span class="text-cyan-400 text-sm mt-auto">查看提案 →</span>
-          </a>
-          <a href="media-sets.html" class="rounded-xl border border-purple-400/20 bg-purple-400/5 p-5 hover:border-purple-400/40 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">媒体集 · 维修 PDF</span>
-            <span class="text-sm">248 扫描件 · Document MediaSet · OCR/LLM</span>
-            <span class="text-purple-300 text-sm mt-auto">打开媒体集 →</span>
-          </a>
-          <a href="sync-routing.html?source=docs" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">存储路由向导</span>
-            <span class="text-sm">Dataset / MediaSet / Stream 入库决策</span>
-            <span class="text-cyan-400 text-sm mt-auto">存储路由 →</span>
-          </a>
-          <a href="pipeline-doc-intel.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 hover:bg-slate-900/80 transition-colors shadow-sm shadow-black/20 flex flex-col gap-3">
-            <span class="text-gray-100 font-medium">Doc Intel 文档智能管道</span>
-            <span class="text-sm">PDF → OCR → LLM → maintenance_clean + media_ref</span>
-            <span class="text-cyan-400 text-sm mt-auto">打开画布 →</span>
-          </a>
-        </div>
-
-        <!-- 三 Zone + 媒体集（底座说明，置底） -->
-        <div class="rounded-xl border border-white/[0.08] overflow-hidden">
-          <table class="w-full text-sm">
-            <thead class="bg-slate-900/80 text-gray-500 text-left">
-              <tr><th class="px-4 py-3 font-medium">分区</th><th class="px-4 py-3 font-medium">格式 / 容器</th><th class="px-4 py-3 font-medium">用途</th></tr>
-            </thead>
-            <tbody class="divide-y divide-white/[0.06]">
-              <tr class="table-row-hover"><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-amber-400/10 text-amber-300 border border-amber-400/20">原始区</span></td><td class="px-4 py-3 text-gray-300">Text / CSV · Dataset</td><td class="px-4 py-3">As-Is 贴源 · 可追溯</td></tr>
-              <tr class="table-row-hover"><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-media-doc">媒体集</span></td><td class="px-4 py-3 text-gray-300">Document / Spreadsheet · MediaSet</td><td class="px-4 py-3">PDF · XLSX 原件 · MediaReference 回链</td></tr>
-              <tr class="table-row-hover"><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-sky-400/10 text-sky-300 border border-sky-400/20">流式区</span></td><td class="px-4 py-3 text-gray-300">Avro · Stream</td><td class="px-4 py-3">Kafka · IoT · Schema 演进</td></tr>
-              <tr class="table-row-hover"><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">精修区</span></td><td class="px-4 py-3 text-gray-300">Parquet + Iceberg · Dataset</td><td class="px-4 py-3">Funnel / 分析 · 含 media_ref 列</td></tr>
-            </tbody>
-          </table>
-        </div>
       </div>
-    </main>
+      </main>
+    </div>
   </div>
-  <script src="assets/demo.js"></script>
-  <script>DemoUI.initShell('index', [{ label: '工作区' }, { label: 'AOS 概览' }]);</script>
+</div>
+<script src="assets/demo.js"></script>
+<script>
+  DemoUI.initTabs('[data-tabs-root]');
+  DemoUI.initAgentList();
+  DemoUI.initStorageRouter();
+  DemoUI.applySyncRoutingParams();
+  DemoUI.initAipMaturity();
+  DemoUI.initAipTools();
+  DemoUI.initAipLogic();
+  DemoUI.initWorkshopModule();
+  DemoUI.initWorkshopGraph();
+  DemoUI.initWorkshopAip();
+</script>
 </body>
 </html>

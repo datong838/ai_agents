@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apollo · Ferry 向导 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M12 3v18M3 12h18"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">Apollo · 交付引擎</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">Ferry / Bundle 向导</h1>
+          <p class="mt-1 text-sm text-gray-500">气隙环境手动导出/导入资产包，无需 Hub 直连。</p>
+        </div>
+
+        <!-- Steps -->
+        <div class="flex items-center gap-2 text-xs">
+          <span class="px-3 py-1.5 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-400/30 font-medium">1 选择 Bundle</span>
+          <span class="text-gray-600">—</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/[0.06] text-gray-300 border border-white/[0.08]">2 校验签名</span>
+          <span class="text-gray-600">—</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/[0.04] text-gray-500 border border-white/[0.06]">3 导出介质</span>
+          <span class="text-gray-600">—</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/[0.04] text-gray-500 border border-white/[0.06]">4 目标 Spoke 导入</span>
+        </div>
+
+        <div class="rounded-xl border border-emerald-400/25 bg-slate-900/50 p-6 space-y-4">
+          <h2 class="text-sm font-medium text-gray-100">步骤 1 · 选择要 Ferry 的 Bundle</h2>
+          <label class="flex items-start gap-3 p-3 rounded-lg border border-emerald-400/30 bg-emerald-400/5 cursor-pointer">
+            <input type="radio" name="bundle" checked class="mt-1" />
+            <div>
+              <div class="text-gray-100 text-sm">apollo-core + FDE 维修派单</div>
+              <div class="text-xs text-gray-500 mt-1">SemVer 2.14.1 · 含 Ontology · Pipeline · Workshop Module</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3 rounded-lg border border-white/[0.08] cursor-pointer hover:bg-white/[0.02]">
+            <input type="radio" name="bundle" class="mt-1" />
+            <div>
+              <div class="text-gray-100 text-sm">仅 Config Override 增量</div>
+              <div class="text-xs text-gray-500 mt-1">SemVer patch · 12 KB</div>
+            </div>
+          </label>
+          <div class="pt-2 flex gap-2">
+            <button type="button" class="px-4 py-2 rounded-lg bg-emerald-400/20 border border-emerald-400/30 text-xs text-emerald-200">下一步：校验签名</button>
+            <a href="apollo-assets.html" class="px-4 py-2 rounded-lg border border-white/[0.08] text-xs">浏览资产包</a>
+          </div>
+        </div>
+
+        <p class="text-[10px] text-gray-600 border border-white/[0.06] rounded-lg px-3 py-2">气隙 Spoke 须通过物理介质或单向网闸传输 Ferry 包；导入后自动进入 Plan 预览。</p>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('apollo-ferry', [{ href: 'index.html', label: '工作区' }, { href: 'apollo-hub.html', label: 'Apollo' }, { label: 'Ferry 向导' }]);</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>工作台 · 事件配置 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-sky-400/10 border border-sky-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">工作台</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <a href="workshop-canvas.html" class="px-3 py-1.5 rounded-lg border border-sky-400/30 text-xs text-sky-300">画布配置</a>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">Events 配置面板</h1>
+          <p class="mt-1 text-sm text-gray-500">Widget 事件绑定、变量写入与幂等键配置。</p>
+        </div>
+
+        <div class="rounded-xl border border-sky-400/25 bg-slate-900/50 overflow-hidden">
+          <div class="px-4 py-3 border-b border-white/[0.08] flex justify-between items-center">
+            <span class="text-sm font-medium text-gray-100">已注册事件</span>
+            <button type="button" class="text-xs text-sky-300">+ 添加事件</button>
+          </div>
+          <table class="w-full text-sm">
+            <thead class="text-xs text-gray-500 uppercase bg-slate-950/50">
+              <tr>
+                <th class="text-left px-4 py-2 font-medium">触发器</th>
+                <th class="text-left px-4 py-2 font-medium">动作</th>
+                <th class="text-left px-4 py-2 font-medium">目标变量</th>
+                <th class="text-left px-4 py-2 font-medium">幂等</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr>
+                <td class="px-4 py-3 text-gray-300">表格行选中 onSelect</td>
+                <td class="px-4 py-3 text-sky-300">写入变量</td>
+                <td class="px-4 py-3 font-mono text-xs">selectedWorkOrderId</td>
+                <td class="px-4 py-3 text-emerald-400 text-xs">● 已启用</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-gray-300">按钮「派单」onClick</td>
+                <td class="px-4 py-3 text-sky-300">调用 Action</td>
+                <td class="px-4 py-3 font-mono text-xs">assignWorkOrder</td>
+                <td class="px-4 py-3 text-emerald-400 text-xs">● idempotencyKey</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-gray-300">筛选器 onChange</td>
+                <td class="px-4 py-3 text-sky-300">刷新数据集</td>
+                <td class="px-4 py-3 font-mono text-xs">inboxFilter</td>
+                <td class="px-4 py-3 text-gray-500 text-xs">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-4 text-xs">
+          <span class="text-amber-200 font-medium">幂等护栏：</span>
+          <span class="text-gray-500">写操作事件须配置 idempotencyKey，防止双击重复提交（对齐 ACT-07）。</span>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('workshop-events', [{ href: 'index.html', label: '工作区' }, { href: 'workshop.html', label: '工作台' }, { label: '事件配置' }]);</script>
+</body>
+</html>

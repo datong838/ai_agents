@@ -7,263 +7,210 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/demo.css" />
 </head>
-<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
-  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
-    <div class="p-4 border-b border-white/[0.08]">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
-          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
-        </div>
-        <div>
-          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
-          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+<body>
+<div class="p-app">
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+<div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+<div class="p-nav-g-item" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="用户"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+    </div>
+  </nav>
+  <div class="p-main">
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>OKF 行业漏斗</span></div>
+      </div>
+      <div class="p-header-center">
+        <div class="p-search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="搜索资源…" />
         </div>
       </div>
-    </div>
-    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
-    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">本体 · OKF Funnel</div>
-  </aside>
-
-  <div class="flex-1 flex flex-col min-w-0">
-    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
-      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
-      <div class="flex items-center gap-2">
-        <span class="px-2 py-1 rounded text-[10px] border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">行业垂直定制</span>
-        <button type="button" id="btn-auto-map" class="px-3 py-1.5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 text-emerald-400 text-xs font-medium hover:bg-emerald-400/20">自动映射</button>
-        <button type="button" id="btn-lint" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04]">Lint 检查</button>
-        <a href="ontology-object.html" id="btn-publish" class="btn-primary px-3 py-1.5 rounded-lg bg-emerald-400 text-slate-950 text-xs font-medium hover:bg-emerald-300 shadow-lg shadow-emerald-400/10" title="Lint 失败不可 Publish">发布</a>
-        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400/30 to-cyan-500/20 border border-white/[0.08]"></div>
+      <div class="p-header-right">
+        <button class="p-btn p-btn-secondary p-btn-sm">Discard</button>
+        <button class="p-btn p-btn-primary p-btn-sm">Save to branch</button>
       </div>
     </header>
+    <div class="p-body">
+      <aside class="p-sidebar">
+<a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+<div class="p-sidebar-section-title">工作台</div>
+<div class="p-sidebar-section">
+<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>运营台</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>知识图谱</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+<a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+<a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+<a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+</div>
+<div class="p-sidebar-section-title">AIP 决策引擎</div>
+<div class="p-sidebar-section">
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Chatbot Studio</span></a>
+<a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Agent 工具面板</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>重能力接入</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
+<a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+</div>
+<div class="p-sidebar-section-title">本体 · 数字孪生</div>
+<div class="p-sidebar-section">
+<a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>漏斗管道</span></a>
+<a href="funnel.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF 行业漏斗</span></a>
+<a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
+<a href="ontology-wiki.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
+</div>
+<div class="p-sidebar-section-title">数据集成</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据连接</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+<a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+<a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
+<a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+<a href="builds.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>搭建</span></a>
+<a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+<a href="code-repositories.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>代码库</span></a>
+<a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+<a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
+</div>
+<div class="p-sidebar-section-title">交付 Apollo</div>
+<div class="p-sidebar-section">
+<a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
+<a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
+<a href="apollo-spoke.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Spoke 详情</span></a>
+<a href="apollo-ferry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>Ferry 摆渡</span></a>
+<a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
+<a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
+<a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+</div>
 
-    <main class="flex-1 flex min-h-0 overflow-hidden">
-      <!-- Left -->
-      <aside class="w-72 shrink-0 border-r border-white/[0.08] bg-slate-900/50 overflow-y-auto flex flex-col">
-        <div class="p-4 border-b border-white/[0.08]">
-          <h2 class="text-sm font-medium text-gray-100">OKF · 行业垂直定制</h2>
-          <p class="text-[11px] text-gray-500 mt-1">行业 Schema 模板 · 加速列 → Object 属性映射</p>
-          <div class="mt-3 space-y-1.5" id="industry-picker">
-            <button type="button" data-industry="ecom" class="industry-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-emerald-400/40 bg-emerald-400/10 text-emerald-200">跨境电商 · Product / Listing / Order</button>
-            <button type="button" data-industry="env" class="industry-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-white/[0.08] text-gray-400 hover:bg-white/[0.03]">环科院 · Pollutant / Regulation</button>
-            <button type="button" data-industry="bio" class="industry-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-white/[0.08] text-gray-400 hover:bg-white/[0.03]">湃肽/生物 · Peptide / Batch</button>
+      </aside>
+      <main class="p-content">
+<!-- 左侧面板 -->
+      <aside class="w-72 shrink-0 border-r border-gray-200 bg-white overflow-y-auto flex flex-col">
+        <div class="px-4 py-3.5 border-b border-gray-200">
+          <h2 class="text-sm font-medium text-gray-900">OKF · 行业垂直定制</h2>
+          <p class="text-[11px] text-gray-500 mt-1">行业 Schema 模板 · 加速列 → 属性映射</p>
+          <div class="mt-3 space-y-1.5">
+            <button class="industry-btn w-full text-left px-3 py-2 rounded-md text-xs border border-green-600/40 bg-green-100 text-emerald-200 font-medium">跨境电商 · Product / Order / Shop</button>
+            <button class="industry-btn w-full text-left px-3 py-2 rounded-md text-xs border border-gray-200 text-gray-600 hover:bg-gray-50">环科院 · Pollutant / Regulation</button>
+            <button class="industry-btn w-full text-left px-3 py-2 rounded-md text-xs border border-gray-200 text-gray-600 hover:bg-gray-50">湃肽/生物 · Peptide / Batch</button>
           </div>
         </div>
-        <div class="p-4 border-b border-white/[0.08]">
-          <h2 class="text-sm font-medium text-gray-100">源 Schema</h2>
-          <p class="text-xs text-gray-500 mt-0.5" id="src-dataset-label">
-            <a href="dataset.html?curated=1" class="text-emerald-400 hover:underline">curated_orders</a>
-          </p>
+        <div class="px-4 py-3.5 border-b border-gray-200">
+          <h2 class="text-sm font-medium text-gray-900">源 Schema</h2>
+          <p class="text-xs text-green-600 mt-0.5"><a href="dataset.html" class="hover:underline">curated_orders</a> · 6 列</p>
         </div>
-        <ul class="p-2 space-y-1 text-sm flex-1" id="src-columns"></ul>
-        <div class="p-4 border-t border-white/[0.08]">
-          <div class="rounded-lg border border-emerald-400/20 bg-emerald-400/5 p-3 text-xs">
-            <div class="text-emerald-400 font-medium mb-1">谛听 vs Palantir</div>
-            <p class="text-gray-500">手工逐字段映射成本高；OKF 基于行业模板自动推荐列 → Property。</p>
+        <ul class="p-2 space-y-1 text-xs flex-1">
+          <li class="px-2 py-1.5 rounded text-gray-900 bg-green-50 border border-green-200">order_id → order_id <span class="text-green-600 ml-1">✓</span></li>
+          <li class="px-2 py-1.5 rounded text-gray-900 bg-green-50 border border-green-200">order_no → order_no <span class="text-green-600 ml-1">✓</span></li>
+          <li class="px-2 py-1.5 rounded text-gray-600">amount → ? <span class="text-yellow-600 ml-1">▲ 待确认</span></li>
+          <li class="px-2 py-1.5 rounded text-gray-900 bg-green-50 border border-green-200">currency → currency <span class="text-green-600 ml-1">✓</span></li>
+          <li class="px-2 py-1.5 rounded text-gray-900 bg-green-50 border border-green-200">status → status <span class="text-green-600 ml-1">✓</span></li>
+          <li class="px-2 py-1.5 rounded text-gray-600">region → ? <span class="text-yellow-600 ml-1">▲ 待确认</span></li>
+        </ul>
+        <div class="p-4 border-t border-gray-200">
+          <div class="rounded-lg border border-green-200 bg-green-50 p-3 text-xs">
+            <div class="text-green-600 font-medium mb-1">OKF 优势</div>
+            <p class="text-gray-500">手工逐字段映射成本高；OKF 基于行业模板自动推荐列 → Property 映射，覆盖率 80%+。</p>
           </div>
         </div>
       </aside>
 
-      <!-- Right -->
+      <!-- 右侧映射区 -->
       <div class="flex-1 overflow-y-auto p-6 space-y-6">
         <div class="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 class="text-lg font-semibold text-gray-100" id="map-title">Order → Object Type 映射</h1>
-            <p class="text-xs text-gray-500 mt-1" id="map-sub">OKF · 智能属性映射 · 完成度 <span id="map-pct">83%</span></p>
+            <h1 class="text-lg font-semibold text-gray-900">Order → Object Type 映射</h1>
+            <p class="text-xs text-gray-500 mt-1">完成度 <span class="text-green-600 font-medium">83%</span> · 6 列中 5 已映射</p>
           </div>
           <div class="flex gap-2 text-[10px]">
-            <span class="px-2 py-1 rounded border border-emerald-400/20 text-emerald-300">行业垂直定制</span>
-            <span class="px-2 py-1 rounded border border-emerald-400/20 text-emerald-300">智能属性映射</span>
-            <span class="px-2 py-1 rounded border border-amber-400/20 text-amber-300">数据质量清洗</span>
+            <span class="px-2 py-1 rounded border border-green-200 text-green-600">垂直定制</span>
+            <span class="px-2 py-1 rounded border border-green-200 text-green-600">智能映射</span>
+            <span class="px-2 py-1 rounded border border-yellow-200 text-yellow-600">质量清洗</span>
           </div>
         </div>
 
-        <div class="rounded-xl border border-white/[0.08] overflow-hidden bg-slate-900/50">
+        <!-- 映射表 -->
+        <div class="aos-panel overflow-hidden">
           <table class="w-full text-sm">
-            <thead class="bg-slate-900/80 text-gray-500 text-left">
-              <tr>
-                <th class="px-4 py-3 font-medium">源列</th>
-                <th class="px-4 py-3 font-medium w-8"></th>
-                <th class="px-4 py-3 font-medium">Object Property</th>
-                <th class="px-4 py-3 font-medium">类型</th>
-                <th class="px-4 py-3 font-medium">置信度</th>
-              </tr>
+            <thead class="bg-gray-50 text-gray-500 text-left">
+              <tr><th class="px-4 py-3 font-medium">源列</th><th class="px-4 py-3 font-medium">目标属性</th><th class="px-4 py-3 font-medium">类型</th><th class="px-4 py-3 font-medium">映射方式</th><th class="px-4 py-3 font-medium">置信度</th><th class="px-4 py-3 font-medium">操作</th></tr>
             </thead>
-            <tbody class="divide-y divide-white/[0.06]" id="map-tbody"></tbody>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="table-row-hover bg-green-50"><td class="px-4 py-3 text-gray-900 font-mono">order_id</td><td class="px-4 py-3 text-gray-900 font-mono">order_id</td><td class="px-4 py-3 text-gray-600">STRING</td><td class="px-4 py-3"><span class="aos-badge aos-badge-green text-[10px]">自动</span></td><td class="px-4 py-3 text-green-600">100%</td><td class="px-4 py-3 text-[10px] text-gray-500">已确认</td></tr>
+              <tr class="table-row-hover bg-green-50"><td class="px-4 py-3 text-gray-900 font-mono">order_no</td><td class="px-4 py-3 text-gray-900 font-mono">order_no</td><td class="px-4 py-3 text-gray-600">STRING</td><td class="px-4 py-3"><span class="aos-badge aos-badge-green text-[10px]">自动</span></td><td class="px-4 py-3 text-green-600">100%</td><td class="px-4 py-3 text-[10px] text-gray-500">已确认</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-3 text-gray-900 font-mono">amount</td><td class="px-4 py-3 text-yellow-600 font-mono">待选择 →</td><td class="px-4 py-3 text-gray-600">DECIMAL</td><td class="px-4 py-3"><span class="aos-badge aos-badge-amber text-[10px]">待确认</span></td><td class="px-4 py-3 text-yellow-600">87%</td><td class="px-4 py-3"><button class="text-yellow-600 hover:underline text-[10px]">建议 amount</button></td></tr>
+              <tr class="table-row-hover bg-green-50"><td class="px-4 py-3 text-gray-900 font-mono">currency</td><td class="px-4 py-3 text-gray-900 font-mono">currency</td><td class="px-4 py-3 text-gray-600">STRING</td><td class="px-4 py-3"><span class="aos-badge aos-badge-green text-[10px]">自动</span></td><td class="px-4 py-3 text-green-600">100%</td><td class="px-4 py-3 text-[10px] text-gray-500">已确认</td></tr>
+              <tr class="table-row-hover bg-green-50"><td class="px-4 py-3 text-gray-900 font-mono">status</td><td class="px-4 py-3 text-gray-900 font-mono">status</td><td class="px-4 py-3 text-gray-600">ENUM</td><td class="px-4 py-3"><span class="aos-badge aos-badge-green text-[10px]">自动</span></td><td class="px-4 py-3 text-green-600">100%</td><td class="px-4 py-3 text-[10px] text-gray-500">已确认</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-3 text-gray-900 font-mono">region</td><td class="px-4 py-3 text-yellow-600 font-mono">待选择 →</td><td class="px-4 py-3 text-gray-600">STRING</td><td class="px-4 py-3"><span class="aos-badge aos-badge-amber text-[10px]">待确认</span></td><td class="px-4 py-3 text-yellow-600">72%</td><td class="px-4 py-3"><button class="text-yellow-600 hover:underline text-[10px]">建议 region</button></td></tr>
+            </tbody>
           </table>
         </div>
 
-        <!-- OKF-003 -->
-        <div class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-5">
-          <div class="flex items-center justify-between mb-3">
-            <h2 class="text-sm font-medium text-amber-200">OKF · 行业数据质量清洗</h2>
-            <span class="text-[10px] text-gray-500">Pipeline 落地前纠错</span>
-          </div>
-          <ul class="text-xs space-y-2" id="clean-rules"></ul>
-        </div>
-
-        <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-gray-500">
-          <span id="lint-msg">上次 Lint: 无错误 · 1 条警告 · Constitution 伦理 1 条提示</span>
-          <p class="text-amber-300/90 text-[11px]">Lint / Constitution 失败不可 Publish</p>
-          <div class="flex gap-4">
-            <a href="ontology-wiki.html" class="text-orange-300 hover:underline">挂载 LLM Wiki →</a>
-            <a href="ontology-object.html" class="text-violet-300 hover:underline">Publish → Overview</a>
-            <a href="ontology-funnel.html" class="text-violet-300 hover:underline font-medium">Funnel 四阶段水合 →</a>
-            <a href="ontology-graph-health.html" class="text-violet-300 hover:underline">图谱健康 →</a>
-          </div>
-        </div>
-
-        <div class="mt-4 rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-4 space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-medium text-gray-100">AOS Constitution（可执行契约）</h3>
-            <span class="text-[10px] px-2 py-0.5 rounded border border-emerald-400/30 text-emerald-300">Bundle /constitution</span>
-          </div>
-          <div class="grid md:grid-cols-3 gap-3 text-xs">
-            <div class="rounded-lg border border-white/[0.08] bg-slate-950/40 p-3">
-              <div class="text-emerald-300 mb-1">语义契约</div>
-              <p class="text-gray-500">Order.total_amount == sum(Item.price × Item.quantity)</p>
-              <span class="inline-block mt-2 text-[10px] text-emerald-400">Lint ✅</span>
+        <!-- 四阶段进度条 -->
+        <div class="aos-panel p-5">
+          <h3 class="text-sm font-medium text-gray-900 mb-4">OKF 四阶段</h3>
+          <div class="grid grid-cols-4 gap-3">
+            <div class="text-center p-3 rounded-lg border border-green-600/40 bg-green-50">
+              <div class="text-lg font-semibold text-green-600">①</div>
+              <div class="text-xs text-gray-900 mt-1">Schema 加载</div>
+              <div class="text-[10px] text-green-600 mt-0.5">完成</div>
             </div>
-            <div class="rounded-lg border border-white/[0.08] bg-slate-950/40 p-3">
-              <div class="text-emerald-300 mb-1">推理边界</div>
-              <p class="text-gray-500">RiskScore 仅 Function-X · 输入须 Dataset-Y</p>
-              <span class="inline-block mt-2 text-[10px] text-emerald-400">Lint ✅</span>
+            <div class="text-center p-3 rounded-lg border border-green-600/40 bg-green-50">
+              <div class="text-lg font-semibold text-green-600">②</div>
+              <div class="text-xs text-gray-900 mt-1">智能映射</div>
+              <div class="text-[10px] text-green-600 mt-0.5">83%</div>
             </div>
-            <div class="rounded-lg border border-amber-400/20 bg-slate-950/40 p-3">
-              <div class="text-amber-300 mb-1">伦理护栏</div>
-              <p class="text-gray-500">改 FinancialRecord 须 Human-Approval Action</p>
-              <span class="inline-block mt-2 text-[10px] text-amber-300">须 HITL ⚠</span>
+            <div class="text-center p-3 rounded-lg border border-gray-200 bg-yellow-50">
+              <div class="text-lg font-semibold text-yellow-600">③</div>
+              <div class="text-xs text-gray-900 mt-1">质量清洗</div>
+              <div class="text-[10px] text-yellow-600 mt-0.5">待执行</div>
+            </div>
+            <div class="text-center p-3 rounded-lg border border-gray-200">
+              <div class="text-lg font-semibold text-gray-500">④</div>
+              <div class="text-xs text-gray-900 mt-1">索引发布</div>
+              <div class="text-[10px] text-gray-500 mt-0.5">待执行</div>
             </div>
           </div>
-          <p class="text-[11px] text-gray-500">Git 管理 · Apollo Channel 同绑 · 对齐方案 25 / T06 §7.2</p>
         </div>
       </div>
-    </main>
+      </main>
+    </div>
   </div>
-
-  <script src="assets/demo.js"></script>
-  <script>
-    DemoUI.initShell('funnel', [
-      { label: '工作区', href: 'index.html' },
-      { label: 'OKF Funnel' }
-    ]);
-
-    const INDUSTRIES = {
-      ecom: {
-        title: 'Order → Object Type 映射',
-        sub: '跨境电商行业模板 · Product / Listing / Order',
-        dataset: '<a href="dataset.html?curated=1" class="text-emerald-400 hover:underline">curated_orders</a> · 6 列',
-        pct: '83%',
-        cols: [
-          ['order_id', 'STRING'], ['amount', 'DECIMAL'], ['currency', 'STRING'],
-          ['customer_name', 'STRING'], ['region', 'STRING'], ['created_at', 'TIMESTAMP']
-        ],
-        maps: [
-          ['order_id', 'orderId', 'String · PK', '98%', false],
-          ['amount', 'totalAmount', 'Double', '95%', false],
-          ['currency', 'currencyCode', 'String · ISO', '92%', false],
-          ['customer_name', 'customer.displayName', 'String · Link', '88%', true],
-          ['region', 'shippingRegion', 'String · Enum', '72%', false],
-          ['created_at', 'orderDate', 'Timestamp', '96%', false],
-        ],
-        clean: [
-          '✅ SKU / 订单号首尾空格自动去除',
-          '✅ currency 非 ISO 码 → 告警并默认 CNY',
-          '⚠ region 枚举外取值：Northwest → 记入 Data Health',
-        ],
-        lint: '上次 Lint: 无错误 · 1 条警告 (region 枚举)'
-      },
-      env: {
-        title: 'Pollutant → Object Type 映射',
-        sub: '环科院行业模板 · Pollutant / Regulation / Enterprise',
-        dataset: '<span class="text-emerald-400">raw_emissions.xlsx</span> · 导入识别',
-        pct: '91%',
-        cols: [
-          ['CAS No.', 'STRING'], ['排放限值', 'DOUBLE'], ['污染物名称', 'STRING'],
-          ['适用法规', 'STRING'], ['企业信用代码', 'STRING'], ['采样时间', 'TIMESTAMP']
-        ],
-        maps: [
-          ['CAS No.', 'Pollutant.cas_no', 'String · PK', '99%', true],
-          ['排放限值', 'Pollutant.limit_value', 'Double · mg/m³', '96%', true],
-          ['污染物名称', 'Pollutant.displayName', 'String · Title', '94%', true],
-          ['适用法规', 'Regulation.code', 'String · Link', '90%', true],
-          ['企业信用代码', 'Enterprise.uscc', 'String · FK', '88%', true],
-          ['采样时间', 'Pollutant.sampled_at', 'Timestamp', '97%', false],
-        ],
-        clean: [
-          '✅ CAS 号格式纠错：50-00-0 ↔ 50000（补连字符）',
-          '✅ 分子式大小写自动纠正：h2so4 → H₂SO₄',
-          '✅ 排放限值单位统一为 mg/m³',
-        ],
-        lint: '上次 Lint: 全部通过 · CAS No. → cas_no 自动识别'
-      },
-      bio: {
-        title: 'Peptide → Object Type 映射',
-        sub: '湃肽/生物行业模板 · Peptide / AminoAcid / Batch',
-        dataset: '<span class="text-emerald-400">peptide_batches.csv</span>',
-        pct: '89%',
-        cols: [
-          ['序列', 'STRING'], ['纯度%', 'DOUBLE'], ['批号', 'STRING'],
-          ['氨基酸列表', 'STRING'], ['合成日期', 'DATE'], ['备注', 'STRING']
-        ],
-        maps: [
-          ['批号', 'Batch.lot_no', 'String · PK', '98%', true],
-          ['序列', 'Peptide.sequence', 'String', '97%', true],
-          ['纯度%', 'Peptide.purity', 'Double · 0–1', '93%', true],
-          ['氨基酸列表', 'AminoAcid.codes', 'String[] · Link', '86%', true],
-          ['合成日期', 'Batch.synthesized_at', 'Date', '95%', false],
-          ['备注', 'Peptide.remark', 'String', '70%', false],
-        ],
-        clean: [
-          '✅ 序列字母大写 / 非法字符剥离',
-          '✅ 纯度% → 0–1 小数归一',
-          '✅ 批号空白与全角数字纠正',
-        ],
-        lint: '上次 Lint: 无错误 · 备注列置信度偏低（可选映射）'
-      }
-    };
-
-    function render(key) {
-      const d = INDUSTRIES[key];
-      document.getElementById('map-title').textContent = d.title;
-      document.getElementById('map-sub').innerHTML = 'OKF · 智能属性映射 · ' + d.sub + ' · 完成度 <span id="map-pct">' + d.pct + '</span>';
-      document.getElementById('src-dataset-label').innerHTML = d.dataset;
-      document.getElementById('src-columns').innerHTML = d.cols.map(([n, t], i) =>
-        `<li class="px-3 py-2 rounded-lg ${i===0?'bg-white/[0.04]':'hover:bg-white/[0.03]'} flex items-center justify-between">
-          <span class="font-mono text-gray-200 text-xs">${n}</span><span class="text-xs text-gray-500">${t}</span></li>`
-      ).join('');
-      document.getElementById('map-tbody').innerHTML = d.maps.map(([src, prop, typ, conf, tid]) =>
-        `<tr class="table-row-hover">
-          <td class="px-4 py-3 font-mono text-gray-200 text-xs">${src}</td>
-          <td class="px-4 py-3 text-gray-600">→</td>
-          <td class="px-4 py-3 text-gray-100 text-xs">${prop}</td>
-          <td class="px-4 py-3 text-gray-400 text-xs">${typ}</td>
-          <td class="px-4 py-3"><span class="${conf.startsWith('7')?'text-amber-400':'text-emerald-400'}">${conf}</span>${tid?' <span class="text-xs text-emerald-400/70">谛听</span>':''}</td>
-        </tr>`
-      ).join('');
-      document.getElementById('clean-rules').innerHTML = d.clean.map(c => `<li class="text-gray-300">${c}</li>`).join('');
-      document.getElementById('lint-msg').textContent = d.lint;
-      document.querySelectorAll('.industry-btn').forEach(b => {
-        const on = b.dataset.industry === key;
-        b.className = 'industry-btn w-full text-left px-3 py-2 rounded-lg text-xs border ' +
-          (on ? 'border-emerald-400/40 bg-emerald-400/10 text-emerald-200' : 'border-white/[0.08] text-gray-400 hover:bg-white/[0.03]');
-      });
-    }
-
-    document.getElementById('industry-picker').addEventListener('click', (e) => {
-      const btn = e.target.closest('[data-industry]');
-      if (btn) render(btn.dataset.industry);
-    });
-    document.getElementById('btn-lint').addEventListener('click', () => {
-      const el = document.getElementById('lint-msg');
-      el.textContent = 'Lint 完成 · ' + new Date().toLocaleTimeString() + ' · 见下方数据质量规则面板';
-    });
-    document.getElementById('btn-auto-map').addEventListener('click', () => {
-      const el = document.getElementById('map-pct') || document.querySelector('#map-sub span');
-      if (el) el.textContent = '96%';
-    });
-
-    const q = new URLSearchParams(location.search).get('industry');
-    render(q && INDUSTRIES[q] ? q : 'ecom');
-  </script>
+</div>
+<script src="assets/demo.js"></script>
+<script>
+  DemoUI.initTabs('[data-tabs-root]');
+  DemoUI.initAgentList();
+  DemoUI.initStorageRouter();
+  DemoUI.applySyncRoutingParams();
+  DemoUI.initAipMaturity();
+  DemoUI.initAipTools();
+  DemoUI.initAipLogic();
+  DemoUI.initWorkshopModule();
+  DemoUI.initWorkshopGraph();
+  DemoUI.initWorkshopAip();
+</script>
 </body>
 </html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIP · Evals 门控 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M9 12l2 2 4-4M7 20h10a2 2 0 002-2V6a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">AIP 决策引擎</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <button type="button" class="px-3 py-1.5 rounded-lg bg-amber-400/15 border border-amber-400/30 text-xs text-amber-200">运行 Eval 套件</button>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">Evals 门控</h1>
+          <p class="mt-1 text-sm text-gray-500">L4 自动化上线前须通过 Eval；未达标禁止发布为 Function / Automate。</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-emerald-400/30 bg-emerald-400/5 p-5 text-center">
+            <div class="text-3xl font-semibold text-emerald-300">87%</div>
+            <div class="text-xs text-gray-500 mt-1">总体通过率</div>
+            <div class="text-[10px] text-gray-600 mt-2">上次运行：今天 09:00</div>
+          </div>
+          <div class="rounded-xl border border-amber-400/30 bg-amber-400/5 p-5 text-center">
+            <div class="text-3xl font-semibold text-amber-300">42</div>
+            <div class="text-xs text-gray-500 mt-1">测试用例</div>
+            <div class="text-[10px] text-gray-600 mt-2">含 8 条回归黄金集</div>
+          </div>
+          <div class="rounded-xl border border-rose-400/30 bg-rose-400/5 p-5 text-center">
+            <div class="text-lg font-semibold text-rose-300">L4 未达标</div>
+            <div class="text-xs text-gray-500 mt-1">门槛 ≥ 92%</div>
+            <div class="text-[10px] text-rose-300/80 mt-2">差 5 个百分点</div>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden">
+          <div class="px-4 py-3 border-b border-white/[0.08] text-sm font-medium text-gray-100">分项结果</div>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr><td class="px-4 py-3 text-gray-300">派单准确性</td><td class="px-4 py-3 text-emerald-400">94%</td><td class="px-4 py-3 text-xs text-emerald-400/80">通过</td></tr>
+              <tr><td class="px-4 py-3 text-gray-300">工具调用合规</td><td class="px-4 py-3 text-emerald-400">91%</td><td class="px-4 py-3 text-xs text-emerald-400/80">通过</td></tr>
+              <tr><td class="px-4 py-3 text-gray-300">幻觉率（事实性）</td><td class="px-4 py-3 text-rose-300">78%</td><td class="px-4 py-3 text-xs text-rose-300">未达标</td></tr>
+              <tr><td class="px-4 py-3 text-gray-300">延迟 p95</td><td class="px-4 py-3 text-amber-300">3.2s</td><td class="px-4 py-3 text-xs text-amber-300">警告</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-4 flex items-center justify-between text-sm">
+          <div>
+            <div class="text-amber-200 font-medium">L4 门控状态</div>
+            <div class="text-xs text-gray-500 mt-1">须 Eval ≥ 92% 且 Draft 审批通过后方可申请 L4 上线</div>
+          </div>
+          <a href="aip-draft-inbox.html" class="px-3 py-1.5 rounded-lg border border-amber-400/30 text-xs text-amber-300 shrink-0">查看 Draft →</a>
+        </div>
+
+        <a href="aip-maturity.html" class="text-xs text-gray-500 hover:text-amber-300">← 成熟度楼梯</a>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('aip-evals', [{ href: 'index.html', label: '概览' }, { href: 'aip-maturity.html', label: 'AIP' }, { label: 'Evals 门控' }]);</script>
+</body>
+</html>

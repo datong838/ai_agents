@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>prod-mysql-orders | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成 · v1.4</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-2 text-xs px-2 py-1 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>在线
+        </span>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <div data-tab-group class="border-b border-white/[0.08] bg-slate-950/50 px-6 shrink-0">
+      <div class="flex gap-6">
+        <button data-tab="overview" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors">概览</button>
+        <button data-tab="explore" class="tab-active py-3 text-sm font-medium text-gray-100 border-b-2 border-cyan-400">探索</button>
+        <button data-tab="sync" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors">同步</button>
+        <button data-tab="credentials" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors">凭证</button>
+      </div>
+    </div>
+
+    <main class="flex-1 flex min-h-0 overflow-hidden">
+      <!-- Left: Schema tree -->
+      <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/50 overflow-y-auto">
+        <div class="p-3 border-b border-white/[0.08]">
+          <input type="search" placeholder="搜索表…" class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 placeholder-gray-500 focus:outline-none focus:border-cyan-400/40" />
+        </div>
+        <nav class="p-2 text-sm">
+          <div class="px-2 py-1.5 text-xs text-gray-500 uppercase tracking-wide">ecom_orders</div>
+          <ul class="space-y-0.5">
+            <li>
+              <button class="w-full text-left px-2 py-1.5 rounded-lg bg-white/[0.04] text-gray-100 flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18"/></svg>
+                orders
+              </button>
+              <ul class="ml-4 mt-0.5 space-y-0.5 text-xs text-gray-500">
+                <li class="px-2 py-0.5">order_id · BIGINT</li>
+                <li class="px-2 py-0.5">customer_id · BIGINT</li>
+                <li class="px-2 py-0.5">amount · DECIMAL</li>
+                <li class="px-2 py-0.5">currency · VARCHAR</li>
+                <li class="px-2 py-0.5">status · VARCHAR</li>
+                <li class="px-2 py-0.5">created_at · TIMESTAMP</li>
+              </ul>
+            </li>
+            <li>
+              <button class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-gray-400 flex items-center gap-2">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18"/></svg>
+                order_items
+              </button>
+            </li>
+            <li>
+              <button class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-gray-400 flex items-center gap-2">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18"/></svg>
+                customers
+              </button>
+            </li>
+            <li>
+              <button class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-gray-400 flex items-center gap-2">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18"/></svg>
+                shipments
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Center: Preview -->
+      <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <div class="p-4 border-b border-white/[0.08] flex items-center justify-between shrink-0">
+          <div>
+            <h2 class="text-gray-100 font-medium">orders</h2>
+            <p class="text-xs text-gray-500 mt-0.5">1,284,392 行 · 6 列 · 上次采样 2 分钟前</p>
+          </div>
+          <button class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">刷新采样</button>
+        </div>
+        <div class="flex-1 overflow-auto">
+          <table class="w-full text-xs">
+            <thead class="bg-slate-900/80 text-gray-500 text-left sticky top-0">
+              <tr>
+                <th class="px-4 py-2 font-medium">order_id</th>
+                <th class="px-4 py-2 font-medium">customer_id</th>
+                <th class="px-4 py-2 font-medium">amount</th>
+                <th class="px-4 py-2 font-medium">currency</th>
+                <th class="px-4 py-2 font-medium">status</th>
+                <th class="px-4 py-2 font-medium">created_at</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.04] font-mono">
+              <tr class="table-row-hover"><td class="px-4 py-2 text-gray-300">ORD-20260713-001</td><td class="px-4 py-2 text-gray-400">C-88421</td><td class="px-4 py-2 text-gray-300">129.99</td><td class="px-4 py-2 text-gray-400">USD</td><td class="px-4 py-2"><span class="text-emerald-400">completed</span></td><td class="px-4 py-2 text-gray-500">2026-07-13 08:12:04</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-2 text-gray-300">ORD-20260713-002</td><td class="px-4 py-2 text-gray-400">C-77203</td><td class="px-4 py-2 text-gray-300">45.50</td><td class="px-4 py-2 text-gray-400">EUR</td><td class="px-4 py-2"><span class="text-cyan-400">processing</span></td><td class="px-4 py-2 text-gray-500">2026-07-13 08:15:22</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-2 text-gray-300">ORD-20260713-003</td><td class="px-4 py-2 text-gray-400">C-55102</td><td class="px-4 py-2 text-gray-300">899.00</td><td class="px-4 py-2 text-gray-400">GBP</td><td class="px-4 py-2"><span class="text-emerald-400">completed</span></td><td class="px-4 py-2 text-gray-500">2026-07-13 08:18:47</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-2 text-gray-300">ORD-20260713-004</td><td class="px-4 py-2 text-gray-400">C-33987</td><td class="px-4 py-2 text-gray-300">23.75</td><td class="px-4 py-2 text-gray-400">USD</td><td class="px-4 py-2"><span class="text-amber-400">pending</span></td><td class="px-4 py-2 text-gray-500">2026-07-13 08:22:11</td></tr>
+              <tr class="table-row-hover"><td class="px-4 py-2 text-gray-300">ORD-20260713-005</td><td class="px-4 py-2 text-gray-400">C-11209</td><td class="px-4 py-2 text-gray-300">156.20</td><td class="px-4 py-2 text-gray-400">CAD</td><td class="px-4 py-2"><span class="text-emerald-400">completed</span></td><td class="px-4 py-2 text-gray-500">2026-07-13 08:25:33</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Right panel -->
+      <aside class="w-72 shrink-0 border-l border-white/[0.08] bg-slate-900/50 overflow-y-auto">
+        <div class="p-4 space-y-5">
+          <div>
+            <h3 class="text-sm font-medium text-gray-100 mb-3">数据源信息</h3>
+            <dl class="space-y-2 text-xs">
+              <div class="flex justify-between"><dt class="text-gray-500">连接器</dt><dd class="text-gray-300">MySQL JDBC</dd></div>
+              <div class="flex justify-between"><dt class="text-gray-500">运行时</dt><dd class="text-gray-300">代理 · agent-prod-1</dd></div>
+              <div class="flex justify-between"><dt class="text-gray-500">主机</dt><dd class="text-gray-300 font-mono">10.0.12.45:3306</dd></div>
+              <div class="flex justify-between"><dt class="text-gray-500">数据库</dt><dd class="text-gray-300">ecom_orders</dd></div>
+            </dl>
+          </div>
+          <div class="border-t border-white/[0.08] pt-4">
+            <h3 class="text-sm font-medium text-gray-100 mb-3">同步任务</h3>
+            <div class="rounded-lg border border-white/[0.08] bg-slate-950/50 p-3 text-xs space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-gray-300">orders-batch-sync</span>
+                <span class="text-emerald-400">成功</span>
+              </div>
+              <div class="text-gray-500">目标: /Raw/Ecom/orders</div>
+              <div class="text-gray-500">上次: 2 分钟前 · SNAPSHOT</div>
+            </div>
+          </div>
+          <div class="border-t border-white/[0.08] pt-4 space-y-2" id="sync-actions">
+            <a id="btn-batch-sync" href="sync-routing.html" class="btn-primary w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-cyan-400 text-slate-950 text-sm font-medium hover:bg-cyan-300 shadow-lg shadow-cyan-400/10">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              创建批量同步
+            </a>
+            <a id="btn-media-sync" href="sync-routing.html?source=docs" class="hidden w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-purple-400/30 text-sm text-purple-300 hover:bg-purple-400/5 transition-colors">
+              创建媒体集同步
+            </a>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const isDocs = params.get('source') === 'docs';
+    const sourceName = isDocs ? 'sharepoint-maintenance-docs' : 'prod-mysql-orders';
+
+    if (isDocs) {
+      document.title = sourceName + ' | AI操作系统';
+      document.querySelector('header .text-emerald-400')?.closest('span')?.replaceWith('');
+      const h2 = document.querySelector('main h2');
+      if (h2) { h2.textContent = '/Maintenance/Scans'; h2.nextElementSibling.textContent = '248 个 PDF · 1.2 GB · 上次采样 30 分钟前'; }
+      const tree = document.querySelector('aside nav');
+      if (tree) tree.innerHTML = `
+        <div class="px-2 py-1.5 text-xs text-gray-500 uppercase tracking-wide">SharePoint · 文档库</div>
+        <ul class="space-y-0.5">
+          <li><button class="w-full text-left px-2 py-1.5 rounded-lg bg-white/[0.04] text-gray-100 text-sm">/Maintenance/Scans/</button></li>
+          <li><button class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-gray-400 text-sm">/Maintenance/Reports/</button></li>
+        </ul>`;
+      const table = document.querySelector('main table tbody');
+      if (table) table.innerHTML = `
+        <tr class="table-row-hover"><td class="px-4 py-2 text-gray-300">scan_001.pdf</td><td class="px-4 py-2 text-gray-400">2.4 MB</td><td class="px-4 py-2 text-gray-500">PDF</td><td class="px-4 py-2 text-gray-500">2026-07-13</td></tr>
+        <tr class="table-row-hover"><td class="px-4 py-2 text-gray-300">scan_002.pdf</td><td class="px-4 py-2 text-gray-400">1.8 MB</td><td class="px-4 py-2 text-gray-500">PDF</td><td class="px-4 py-2 text-gray-500">2026-07-12</td></tr>`;
+      const thead = document.querySelector('main table thead tr');
+      if (thead) thead.innerHTML = '<th class="px-4 py-2 font-medium">文件名</th><th class="px-4 py-2 font-medium">大小</th><th class="px-4 py-2 font-medium">类型</th><th class="px-4 py-2 font-medium">修改时间</th>';
+      document.getElementById('btn-batch-sync').classList.add('hidden');
+      document.getElementById('btn-media-sync').classList.remove('hidden');
+      const info = document.querySelector('aside dl');
+      if (info) info.innerHTML = `
+        <div class="flex justify-between"><dt class="text-gray-500">连接器</dt><dd class="text-gray-300">SharePoint Online</dd></div>
+        <div class="flex justify-between"><dt class="text-gray-500">运行时</dt><dd class="text-gray-300">直接连接</dd></div>
+        <div class="flex justify-between"><dt class="text-gray-500">站点</dt><dd class="text-gray-300 font-mono text-right">maintenance.sharepoint.com</dd></div>
+        <div class="flex justify-between"><dt class="text-gray-500">存储路由</dt><dd><span class="px-1.5 py-0.5 rounded badge-media-doc text-xs">媒体集·文档</span></dd></div>`;
+    } else {
+      document.getElementById('btn-batch-sync').href = 'sync-routing.html?source=mysql';
+    }
+
+    DemoUI.initShell('data-connection', [
+      { label: '工作区', href: 'index.html' },
+      { label: '数据连接', href: 'data-connection.html' },
+      { label: sourceName }
+    ]);
+    DemoUI.initTabs('[data-tab-group]');
+  </script>
+</body>
+</html>

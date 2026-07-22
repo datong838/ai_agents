@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apollo · FDE 资产包 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">Apollo · 交付引擎</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <button type="button" class="px-3 py-1.5 rounded-lg bg-emerald-400/15 border border-emerald-400/30 text-xs text-emerald-200">+ 新建资产包</button>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">FDE Asset Bundle</h1>
+          <p class="mt-1 text-sm text-gray-500">可交付资产版本化打包；绑定 Release Channel 同步推进。</p>
+        </div>
+
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-900/80 text-xs text-gray-500 uppercase">
+              <tr>
+                <th class="text-left px-4 py-3 font-medium">资产包</th>
+                <th class="text-left px-4 py-3 font-medium">SemVer</th>
+                <th class="text-left px-4 py-3 font-medium">绑定通道</th>
+                <th class="text-left px-4 py-3 font-medium">内容</th>
+                <th class="text-left px-4 py-3 font-medium">状态</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr class="hover:bg-white/[0.02]">
+                <td class="px-4 py-3 text-gray-100 font-medium">apollo-core</td>
+                <td class="px-4 py-3 font-mono text-emerald-300">2.14.1</td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">stable</span></td>
+                <td class="px-4 py-3 text-xs text-gray-500">平台运行时</td>
+                <td class="px-4 py-3 text-emerald-400 text-xs">已发布</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="px-4 py-3 text-gray-100 font-medium">fde-维修派单</td>
+                <td class="px-4 py-3 font-mono text-amber-300">1.8.0-rc.2</td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] bg-amber-400/10 text-amber-300 border border-amber-400/20">beta</span></td>
+                <td class="px-4 py-3 text-xs text-gray-500">Ontology · Workshop · AIP Logic</td>
+                <td class="px-4 py-3 text-amber-300 text-xs">试点中</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="px-4 py-3 text-gray-100 font-medium">fde-库存预警</td>
+                <td class="px-4 py-3 font-mono text-gray-400">0.9.4</td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] bg-white/[0.06] text-gray-400 border border-white/[0.08]">rc</span></td>
+                <td class="px-4 py-3 text-xs text-gray-500">Pipeline · Function</td>
+                <td class="px-4 py-3 text-gray-500 text-xs">开发中</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="px-4 py-3 text-gray-100 font-medium">config-overrides-sh</td>
+                <td class="px-4 py-3 font-mono text-gray-300">2.14.1+local.3</td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] bg-emerald-400/10 text-emerald-400 border border-emerald-400/20">stable</span></td>
+                <td class="px-4 py-3 text-xs text-gray-500">Spoke 局部覆盖</td>
+                <td class="px-4 py-3 text-emerald-400 text-xs">已绑定 spoke-prod-sh</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex gap-2">
+          <a href="apollo-release.html" class="px-3 py-1.5 rounded-lg border border-emerald-400/30 text-xs text-emerald-300">发布通道 →</a>
+          <a href="apollo-ferry.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs">Ferry 导出</a>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('apollo-assets', [{ href: 'index.html', label: '工作区' }, { href: 'apollo-hub.html', label: 'Apollo' }, { label: 'FDE 资产包' }]);</script>
+</body>
+</html>

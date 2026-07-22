@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>工作台 · 应用列表 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-sky-400/10 border border-sky-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">工作台 · L3 · v1.5.1</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex gap-2 items-center">
+        <a href="workshop-canvas.html" class="px-3 py-1.5 rounded-lg bg-sky-400/15 border border-sky-400/30 text-xs text-sky-200">+ 新建 Module</a>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">工作台 · 应用列表</h1>
+          <p class="mt-1 text-sm text-gray-500">业务人员从这里打开 Module。运营台、知识图谱都是列表里的条目，不是并列壳。</p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="px-2 py-1 rounded bg-sky-400/10 border border-sky-400/20 text-sky-300">全部</span>
+          <span class="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.08]">电商</span>
+          <span class="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.08]">知识图谱</span>
+          <span class="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.08]">供应链</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="workshop-module.html" class="group rounded-xl border border-sky-400/30 bg-sky-400/5 p-5 hover:border-sky-400/50 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="text-xs text-sky-300 mb-1">Module · Inbox</div>
+                <div class="text-gray-100 font-medium group-hover:text-sky-300">运营台（电商示例）</div>
+              </div>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">已发布</span>
+            </div>
+            <p class="text-xs text-gray-500 mt-3">Filter → Table → Object View · Selection → Action</p>
+            <div class="mt-4 text-sky-400 text-sm">打开 Module →</div>
+          </a>
+
+          <a href="workshop-object-view.html" class="group rounded-xl border border-violet-400/25 bg-violet-400/5 p-5 hover:border-violet-400/45 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="text-xs text-violet-300 mb-1">Module · 图谱</div>
+                <div class="text-gray-100 font-medium group-hover:text-violet-300">知识图谱</div>
+              </div>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-violet-400/10 text-violet-200 border border-violet-400/20">本体前端</span>
+            </div>
+            <p class="text-xs text-gray-500 mt-3">Ontology Object + Link 的页面展示 · 嵌 Wiki · 可触发 Action</p>
+            <div class="mt-4 text-violet-300 text-sm">打开 Module →</div>
+          </a>
+
+          <a href="workshop-aip-chat.html" class="group rounded-xl border border-amber-400/25 bg-amber-400/5 p-5 hover:border-amber-400/40 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="text-xs text-amber-300 mb-1">AIP 嵌入</div>
+                <div class="text-gray-100 font-medium group-hover:text-amber-300">Buddy · Assist 演示</div>
+              </div>
+              <span class="text-[10px] px-2 py-0.5 rounded border border-amber-400/30 text-amber-200">可挂任意 Module</span>
+            </div>
+            <p class="text-xs text-gray-500 mt-3">非独立业务台 · AIP Chatbot / Assist 嵌在工作台内</p>
+            <div class="mt-4 text-amber-300 text-sm">打开演示 →</div>
+          </a>
+
+          <a href="workshop-cop.html" class="group rounded-xl border border-white/[0.08] bg-slate-900/50 p-5 hover:border-sky-400/30 transition-all">
+            <div class="text-xs text-gray-500 mb-1">Module · 态势大屏 · P2</div>
+            <div class="text-gray-100 font-medium group-hover:text-sky-300">供应链态势大屏</div>
+            <p class="text-xs text-gray-500 mt-3">全屏布局模式 · 非独立大屏产品</p>
+            <div class="mt-4 text-sky-400 text-sm">打开态势大屏 →</div>
+          </a>
+        </div>
+
+        <div class="rounded-xl border border-white/[0.08] bg-slate-900/40 p-4 text-xs text-gray-500 flex flex-wrap gap-4">
+          <a href="workshop-canvas.html" class="text-sky-400 hover:underline">画布编辑</a>
+          <a href="workshop-publish.html" class="text-sky-400 hover:underline">发布入口</a>
+          <span>本体配置仍在 <a href="ontology.html" class="text-violet-300 hover:underline">OMA</a>；这里只做展示与操作</span>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('workshop', [{ href: 'index.html', label: '工作区' }, { label: '工作台' }, { label: '应用列表' }]);</script>
+</body>
+</html>

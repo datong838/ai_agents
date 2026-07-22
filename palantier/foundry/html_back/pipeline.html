@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>订单清洗管道 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成 · v1.4</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-2">
+        <select class="rounded-lg bg-slate-900 border border-white/[0.08] px-3 py-1 text-xs text-gray-300 focus:outline-none">
+          <option>master</option>
+          <option>feature/currency-normalize</option>
+        </select>
+        <button class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">保存</button>
+        <button class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">提议</button>
+        <a href="schedules.html" class="px-3 py-1.5 rounded-lg border border-cyan-400/30 text-xs text-cyan-300 hover:bg-cyan-400/5">打开计划编辑器</a>
+        <a href="builds.html" class="btn-primary px-3 py-1.5 rounded-lg bg-cyan-400 text-slate-950 text-xs font-medium hover:bg-cyan-300 shadow-lg shadow-cyan-400/10">部署</a>
+        <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 ml-2">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          Build #847 成功
+        </span>
+      </div>
+    </header>
+
+    <main class="flex-1 flex flex-col min-h-0 overflow-hidden">
+      <div class="flex-1 flex min-h-0 overflow-hidden">
+        <!-- Canvas -->
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+          <div class="grid-pattern flex-1 relative overflow-auto min-h-[320px]">
+            <!-- SVG flow lines -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 900 280">
+              <path class="flow-line flow-line-active" d="M 200 140 C 260 140, 280 140, 320 140" />
+              <path class="flow-line flow-line-active" d="M 480 140 C 540 140, 560 140, 600 140" />
+              <path class="flow-line flow-line-active" d="M 760 140 C 820 140, 840 140, 880 140" />
+            </svg>
+
+            <!-- Pipeline nodes -->
+            <div class="relative p-8 flex items-center justify-center gap-8 min-h-[280px] flex-wrap">
+              <a href="dataset.html?raw=1" class="pipeline-node block rounded-xl border border-amber-400/30 bg-slate-900/90 backdrop-blur px-5 py-4 min-w-[160px] shadow-lg shadow-black/30">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-6 h-6 rounded bg-amber-400/10 border border-amber-400/20 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M4 12V7a3 3 0 013-3h10a3 3 0 013 3v5M12 4v16"/></svg>
+                  </span>
+                  <span class="text-xs text-amber-400">输入</span>
+                </div>
+                <div class="text-gray-100 font-medium text-sm">raw_orders</div>
+                <div class="text-xs text-gray-500 mt-1">/Raw/Ecom/orders</div>
+              </a>
+
+              <div class="pipeline-node rounded-xl border border-white/[0.08] bg-slate-900/90 backdrop-blur px-5 py-4 min-w-[160px] shadow-lg shadow-black/30">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-6 h-6 rounded bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M3 4h18M7 8h10M11 12h6M9 16h8M5 20h14"/></svg>
+                  </span>
+                  <span class="text-xs text-cyan-400">变换</span>
+                </div>
+                <div class="text-gray-100 font-medium text-sm">Filter</div>
+                <div class="text-xs text-gray-500 mt-1">status = 'completed'</div>
+              </div>
+
+              <div class="pipeline-node rounded-xl border border-white/[0.08] bg-slate-900/90 backdrop-blur px-5 py-4 min-w-[160px] shadow-lg shadow-black/30">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-6 h-6 rounded bg-purple-400/10 border border-purple-400/20 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12M8 12h8M8 17h4M4 7h.01M4 12h.01M4 17h.01"/></svg>
+                  </span>
+                  <span class="text-xs text-purple-400">变换</span>
+                </div>
+                <div class="text-gray-100 font-medium text-sm">Join</div>
+                <div class="text-xs text-gray-500 mt-1">customers · order_id</div>
+              </div>
+
+              <a href="dataset.html?curated=1" class="pipeline-node block rounded-xl border-2 border-cyan-400/40 bg-cyan-400/5 backdrop-blur px-5 py-4 min-w-[160px] shadow-lg shadow-cyan-400/10">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-6 h-6 rounded bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                  </span>
+                  <span class="text-xs text-emerald-400">输出</span>
+                </div>
+                <div class="text-gray-100 font-medium text-sm">curated_orders</div>
+                <div class="text-xs text-gray-500 mt-1">/Curated/Ecom/orders</div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bottom preview panel -->
+          <div class="h-48 border-t border-white/[0.08] bg-slate-900/80 shrink-0 overflow-hidden flex flex-col">
+            <div class="px-4 py-2 border-b border-white/[0.08] flex items-center justify-between shrink-0">
+              <span class="text-xs text-gray-400">输出预览 · curated_orders</span>
+              <span class="text-xs text-gray-500">1,024 行采样</span>
+            </div>
+            <div class="flex-1 overflow-auto">
+              <table class="w-full text-xs font-mono">
+                <thead class="bg-slate-950/50 text-gray-500 text-left sticky top-0">
+                  <tr>
+                    <th class="px-4 py-1.5 font-medium">order_id</th>
+                    <th class="px-4 py-1.5 font-medium">amount</th>
+                    <th class="px-4 py-1.5 font-medium">currency</th>
+                    <th class="px-4 py-1.5 font-medium">customer_name</th>
+                    <th class="px-4 py-1.5 font-medium">region</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-white/[0.04]">
+                  <tr class="table-row-hover"><td class="px-4 py-1.5 text-gray-300">ORD-20260713-001</td><td class="px-4 py-1.5 text-gray-300">129.99</td><td class="px-4 py-1.5 text-gray-400">USD</td><td class="px-4 py-1.5 text-gray-400">Alice Chen</td><td class="px-4 py-1.5 text-gray-500">NA</td></tr>
+                  <tr class="table-row-hover"><td class="px-4 py-1.5 text-gray-300">ORD-20260713-003</td><td class="px-4 py-1.5 text-gray-300">899.00</td><td class="px-4 py-1.5 text-gray-400">GBP</td><td class="px-4 py-1.5 text-gray-400">James Wright</td><td class="px-4 py-1.5 text-gray-500">EU</td></tr>
+                  <tr class="table-row-hover"><td class="px-4 py-1.5 text-gray-300">ORD-20260713-005</td><td class="px-4 py-1.5 text-gray-300">156.20</td><td class="px-4 py-1.5 text-gray-400">CAD</td><td class="px-4 py-1.5 text-gray-400">Marie Dubois</td><td class="px-4 py-1.5 text-gray-500">EU</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right sidebar: output config -->
+        <aside class="w-72 shrink-0 border-l border-white/[0.08] bg-slate-900/50 overflow-y-auto">
+          <div class="p-4 space-y-5">
+            <div>
+              <h3 class="text-sm font-medium text-gray-100 mb-1">输出数据集</h3>
+              <p class="text-xs text-gray-500">curated_orders · 精修区</p>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-xs text-gray-500 mb-1">格式</label>
+                <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-cyan-400/40">
+                  <option selected>Parquet</option>
+                  <option>Avro</option>
+                  <option>CSV</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs text-gray-500 mb-1">表格式</label>
+                <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-cyan-400/40">
+                  <option selected>Apache Iceberg</option>
+                  <option>Delta Lake</option>
+                  <option>无 (文件集)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs text-gray-500 mb-1">写入模式</label>
+                <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-cyan-400/40">
+                  <option selected>SNAPSHOT</option>
+                  <option>APPEND</option>
+                  <option>UPDATE</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="border-t border-white/[0.08] pt-4">
+              <h4 class="text-xs font-medium text-gray-400 mb-2 uppercase tracking-wide">Schema</h4>
+              <table class="w-full text-xs">
+                <thead class="text-gray-500 text-left">
+                  <tr><th class="pb-1 font-medium">列</th><th class="pb-1 font-medium">类型</th></tr>
+                </thead>
+                <tbody class="text-gray-300 divide-y divide-white/[0.04]">
+                  <tr><td class="py-1 font-mono">order_id</td><td class="py-1 text-gray-500">STRING</td></tr>
+                  <tr><td class="py-1 font-mono">amount</td><td class="py-1 text-gray-500">DECIMAL(12,2)</td></tr>
+                  <tr><td class="py-1 font-mono">currency</td><td class="py-1 text-gray-500">STRING</td></tr>
+                  <tr><td class="py-1 font-mono">customer_name</td><td class="py-1 text-gray-500">STRING</td></tr>
+                  <tr><td class="py-1 font-mono">region</td><td class="py-1 text-gray-500">STRING</td></tr>
+                  <tr><td class="py-1 font-mono">created_at</td><td class="py-1 text-gray-500">TIMESTAMP</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <a href="builds.html" class="btn-primary block w-full text-center px-4 py-2 rounded-lg bg-cyan-400 text-slate-950 text-xs font-medium hover:bg-cyan-300 shadow-lg shadow-cyan-400/10">部署并搭建</a>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('pipeline-list', [
+      { label: '工作区', href: 'index.html' },
+      { label: 'Pipeline Builder', href: 'pipeline-list.html' },
+      { label: '订单清洗管道' }
+    ]);
+  </script>
+</body>
+</html>

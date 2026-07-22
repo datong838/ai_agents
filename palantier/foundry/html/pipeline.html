@@ -3,199 +3,384 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>订单清洗管道 | AI操作系统</title>
+  <title>订单清洗管道 · Pipeline Builder | AI操作系统</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/demo.css" />
 </head>
-<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
-  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
-    <div class="p-4 border-b border-white/[0.08]">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
-          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
-        </div>
-        <div>
-          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
-          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+<body>
+<div class="p-app">
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+<div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+<div class="p-nav-g-item" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="用户"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+    </div>
+  </nav>
+  <div class="p-main">
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>订单清洗管道 · Pipeline Builder</span></div>
+      </div>
+      <div class="p-header-center">
+        <div class="p-search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="搜索资源…" />
         </div>
       </div>
-    </div>
-    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
-    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成 · v1.4</div>
-  </aside>
-
-  <div class="flex-1 flex flex-col min-w-0">
-    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
-      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
-      <div class="flex items-center gap-2">
-        <select class="rounded-lg bg-slate-900 border border-white/[0.08] px-3 py-1 text-xs text-gray-300 focus:outline-none">
-          <option>master</option>
-          <option>feature/currency-normalize</option>
-        </select>
-        <button class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">保存</button>
-        <button class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">提议</button>
-        <a href="schedules.html" class="px-3 py-1.5 rounded-lg border border-cyan-400/30 text-xs text-cyan-300 hover:bg-cyan-400/5">打开计划编辑器</a>
-        <a href="builds.html" class="btn-primary px-3 py-1.5 rounded-lg bg-cyan-400 text-slate-950 text-xs font-medium hover:bg-cyan-300 shadow-lg shadow-cyan-400/10">部署</a>
-        <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 ml-2">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          Build #847 成功
-        </span>
+      <div class="p-header-right">
+        <button class="p-btn p-btn-secondary p-btn-sm">Discard</button>
+        <button class="p-btn p-btn-primary p-btn-sm">Save to branch</button>
       </div>
     </header>
+    <div class="p-body">
+      <aside class="p-sidebar">
+<a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+<div class="p-sidebar-section-title">工作台</div>
+<div class="p-sidebar-section">
+<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>运营台</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>知识图谱</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+<a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+<a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+<a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+</div>
+<div class="p-sidebar-section-title">AIP 决策引擎</div>
+<div class="p-sidebar-section">
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Chatbot Studio</span></a>
+<a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Agent 工具面板</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>重能力接入</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
+<a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+</div>
+<div class="p-sidebar-section-title">本体 · 数字孪生</div>
+<div class="p-sidebar-section">
+<a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>漏斗管道</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF 行业漏斗</span></a>
+<a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
+<a href="ontology-wiki.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
+</div>
+<div class="p-sidebar-section-title">数据集成</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据连接</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+<a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+<a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
+<a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+<a href="builds.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>搭建</span></a>
+<a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+<a href="code-repositories.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>代码库</span></a>
+<a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+<a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
+</div>
+<div class="p-sidebar-section-title">交付 Apollo</div>
+<div class="p-sidebar-section">
+<a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
+<a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
+<a href="apollo-spoke.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Spoke 详情</span></a>
+<a href="apollo-ferry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>Ferry 摆渡</span></a>
+<a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
+<a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
+<a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+</div>
 
-    <main class="flex-1 flex flex-col min-h-0 overflow-hidden">
-      <div class="flex-1 flex min-h-0 overflow-hidden">
-        <!-- Canvas -->
-        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
-          <div class="grid-pattern flex-1 relative overflow-auto min-h-[320px]">
-            <!-- SVG flow lines -->
-            <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 900 280">
-              <path class="flow-line flow-line-active" d="M 200 140 C 260 140, 280 140, 320 140" />
-              <path class="flow-line flow-line-active" d="M 480 140 C 540 140, 560 140, 600 140" />
-              <path class="flow-line flow-line-active" d="M 760 140 C 820 140, 840 140, 880 140" />
-            </svg>
+      </aside>
+      <main class="p-content" style="padding:0;overflow:hidden">
+  <div class="p-pb">
 
-            <!-- Pipeline nodes -->
-            <div class="relative p-8 flex items-center justify-center gap-8 min-h-[280px] flex-wrap">
-              <a href="dataset.html?raw=1" class="pipeline-node block rounded-xl border border-amber-400/30 bg-slate-900/90 backdrop-blur px-5 py-4 min-w-[160px] shadow-lg shadow-black/30">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="w-6 h-6 rounded bg-amber-400/10 border border-amber-400/20 flex items-center justify-center">
-                    <svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M4 12V7a3 3 0 013-3h10a3 3 0 013 3v5M12 4v16"/></svg>
-                  </span>
-                  <span class="text-xs text-amber-400">输入</span>
-                </div>
-                <div class="text-gray-100 font-medium text-sm">raw_orders</div>
-                <div class="text-xs text-gray-500 mt-1">/Raw/Ecom/orders</div>
-              </a>
+    <!-- ===== 顶部工具栏 ===== -->
+    <div class="p-pb-toolbar">
+      <div class="p-pb-toolbar-left">
+        <button class="p-btn p-btn-ghost p-btn-xs" title="撤销">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 14l-4-4 4-4M5 10h9a5 5 0 010 10h-1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="p-btn p-btn-ghost p-btn-xs" title="重做">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 14l4-4-4-4M19 10h-9a5 5 0 000 10h1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="p-pb-toolbar-sep"></div>
+        <div class="p-pb-branch">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8"/></svg>
+          <span>feat/order-enrichment</span>
+          <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="p-pb-toolbar-sep"></div>
+        <button class="p-btn p-btn-secondary p-btn-xs">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 13l4 4L19 7"/></svg>
+          已保存
+        </button>
+        <button class="p-btn p-btn-secondary p-btn-xs">提议</button>
+        <button class="p-btn p-btn-primary p-btn-xs">部署</button>
+      </div>
 
-              <div class="pipeline-node rounded-xl border border-white/[0.08] bg-slate-900/90 backdrop-blur px-5 py-4 min-w-[160px] shadow-lg shadow-black/30">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="w-6 h-6 rounded bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
-                    <svg class="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M3 4h18M7 8h10M11 12h6M9 16h8M5 20h14"/></svg>
-                  </span>
-                  <span class="text-xs text-cyan-400">变换</span>
-                </div>
-                <div class="text-gray-100 font-medium text-sm">Filter</div>
-                <div class="text-xs text-gray-500 mt-1">status = 'completed'</div>
+      <div class="p-pb-toolbar-center">
+        <!-- 视图切换: 编辑/提案/历史记录 -->
+        <div class="p-pb-views">
+          <button class="p-pb-view is-active">编辑</button>
+          <button class="p-pb-view">提案 <span class="p-tab-count">3</span></button>
+          <button class="p-pb-view">历史记录</button>
+        </div>
+      </div>
+
+      <div class="p-pb-toolbar-right">
+        <span class="p-badge p-badge-green">搭建 ✓</span>
+        <span class="p-badge p-badge-gray">检查 5/5</span>
+        <button class="p-btn p-btn-ghost p-btn-xs">搭建设置</button>
+        <button class="p-btn p-btn-ghost p-btn-xs" title="分享">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+        </button>
+        <button class="p-btn p-btn-ghost p-btn-xs" title="详细信息">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== 主体: 画布 + 右侧输出侧栏 ===== -->
+    <div class="p-pb-body">
+
+      <!-- 画布区 -->
+      <div class="p-pb-canvas-wrap">
+        <!-- 画布工具栏 -->
+        <div class="p-pb-canvas-tools">
+          <span class="p-pb-tools-label">变换:</span>
+          <button class="p-pb-tool">Filter</button>
+          <button class="p-pb-tool">Join</button>
+          <button class="p-pb-tool">Aggregate</button>
+          <button class="p-pb-tool">Cast</button>
+          <button class="p-pb-tool">Expression</button>
+          <button class="p-pb-tool">Window</button>
+          <button class="p-pb-tool">Union</button>
+          <button class="p-pb-tool">Distinct</button>
+          <div class="p-pb-toolbar-sep"></div>
+          <button class="p-pb-tool p-pb-tool-add">+ 添加数据集</button>
+          <button class="p-pb-tool">参数</button>
+        </div>
+
+        <!-- 图表区 -->
+        <div class="p-pb-graph">
+          <!-- 节点 + 连线 SVG -->
+          <svg class="p-pb-svg" preserveAspectRatio="none" viewBox="0 0 1100 420">
+            <!-- 主线: orders → join → enrich → output -->
+            <path class="p-pb-edge p-pb-edge-active" d="M200 180 C260 180, 280 180, 340 180"/>
+            <path class="p-pb-edge p-pb-edge-active" d="M520 180 C580 180, 600 180, 660 180"/>
+            <path class="p-pb-edge p-pb-edge-active" d="M840 180 C900 180, 920 180, 980 180"/>
+            <!-- 分支: customers → join -->
+            <path class="p-pb-edge" d="M420 60 C480 60, 480 140, 440 160"/>
+          </svg>
+
+          <div class="p-pb-nodes">
+            <!-- 数据源 1 -->
+            <div class="p-pb-node p-pb-node-source" style="left:40px;top:140px">
+              <div class="p-pb-node-head">
+                <span class="p-pb-node-icon p-pb-icon-yellow">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5"/></svg>
+                </span>
+                <span class="p-pb-node-type">DATASET</span>
               </div>
+              <div class="p-pb-node-title">orders_raw</div>
+              <div class="p-pb-node-meta">12,847 行 · 14 列</div>
+            </div>
 
-              <div class="pipeline-node rounded-xl border border-white/[0.08] bg-slate-900/90 backdrop-blur px-5 py-4 min-w-[160px] shadow-lg shadow-black/30">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="w-6 h-6 rounded bg-purple-400/10 border border-purple-400/20 flex items-center justify-center">
-                    <svg class="w-3.5 h-3.5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12M8 12h8M8 17h4M4 7h.01M4 12h.01M4 17h.01"/></svg>
-                  </span>
-                  <span class="text-xs text-purple-400">变换</span>
-                </div>
-                <div class="text-gray-100 font-medium text-sm">Join</div>
-                <div class="text-xs text-gray-500 mt-1">customers · order_id</div>
+            <!-- 数据源 2 -->
+            <div class="p-pb-node p-pb-node-source" style="left:280px;top:20px">
+              <div class="p-pb-node-head">
+                <span class="p-pb-node-icon p-pb-icon-yellow">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5"/></svg>
+                </span>
+                <span class="p-pb-node-type">DATASET</span>
               </div>
+              <div class="p-pb-node-title">customers</div>
+              <div class="p-pb-node-meta">8,102 行 · 9 列</div>
+            </div>
 
-              <a href="dataset.html?curated=1" class="pipeline-node block rounded-xl border-2 border-cyan-400/40 bg-cyan-400/5 backdrop-blur px-5 py-4 min-w-[160px] shadow-lg shadow-cyan-400/10">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="w-6 h-6 rounded bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
-                    <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-                  </span>
-                  <span class="text-xs text-emerald-400">输出</span>
-                </div>
-                <div class="text-gray-100 font-medium text-sm">curated_orders</div>
-                <div class="text-xs text-gray-500 mt-1">/Curated/Ecom/orders</div>
-              </a>
+            <!-- Join -->
+            <div class="p-pb-node p-pb-node-transform" style="left:340px;top:140px">
+              <div class="p-pb-node-head">
+                <span class="p-pb-node-icon p-pb-icon-blue">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></svg>
+                </span>
+                <span class="p-pb-node-type">JOIN</span>
+              </div>
+              <div class="p-pb-node-title">Join on customer_id</div>
+              <div class="p-pb-node-meta">Inner · 12,847 → 12,847</div>
+            </div>
+
+            <!-- Expression -->
+            <div class="p-pb-node p-pb-node-transform p-pb-node-selected" style="left:660px;top:140px">
+              <div class="p-pb-node-head">
+                <span class="p-pb-node-icon p-pb-icon-purple">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
+                </span>
+                <span class="p-pb-node-type">EXPRESSION</span>
+              </div>
+              <div class="p-pb-node-title">enrich_order</div>
+              <div class="p-pb-node-meta">+ LTV, segment, is_vip</div>
+              <div class="p-pb-node-selected-badge">已选</div>
+            </div>
+
+            <!-- 输出 -->
+            <div class="p-pb-node p-pb-node-output" style="left:980px;top:140px">
+              <div class="p-pb-node-head">
+                <span class="p-pb-node-icon p-pb-icon-green">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                </span>
+                <span class="p-pb-node-type">OBJECT TYPE</span>
+              </div>
+              <div class="p-pb-node-title">Order</div>
+              <div class="p-pb-node-meta">输出 → Ontology</div>
             </div>
           </div>
 
-          <!-- Bottom preview panel -->
-          <div class="h-48 border-t border-white/[0.08] bg-slate-900/80 shrink-0 overflow-hidden flex flex-col">
-            <div class="px-4 py-2 border-b border-white/[0.08] flex items-center justify-between shrink-0">
-              <span class="text-xs text-gray-400">输出预览 · curated_orders</span>
-              <span class="text-xs text-gray-500">1,024 行采样</span>
-            </div>
-            <div class="flex-1 overflow-auto">
-              <table class="w-full text-xs font-mono">
-                <thead class="bg-slate-950/50 text-gray-500 text-left sticky top-0">
-                  <tr>
-                    <th class="px-4 py-1.5 font-medium">order_id</th>
-                    <th class="px-4 py-1.5 font-medium">amount</th>
-                    <th class="px-4 py-1.5 font-medium">currency</th>
-                    <th class="px-4 py-1.5 font-medium">customer_name</th>
-                    <th class="px-4 py-1.5 font-medium">region</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-white/[0.04]">
-                  <tr class="table-row-hover"><td class="px-4 py-1.5 text-gray-300">ORD-20260713-001</td><td class="px-4 py-1.5 text-gray-300">129.99</td><td class="px-4 py-1.5 text-gray-400">USD</td><td class="px-4 py-1.5 text-gray-400">Alice Chen</td><td class="px-4 py-1.5 text-gray-500">NA</td></tr>
-                  <tr class="table-row-hover"><td class="px-4 py-1.5 text-gray-300">ORD-20260713-003</td><td class="px-4 py-1.5 text-gray-300">899.00</td><td class="px-4 py-1.5 text-gray-400">GBP</td><td class="px-4 py-1.5 text-gray-400">James Wright</td><td class="px-4 py-1.5 text-gray-500">EU</td></tr>
-                  <tr class="table-row-hover"><td class="px-4 py-1.5 text-gray-300">ORD-20260713-005</td><td class="px-4 py-1.5 text-gray-300">156.20</td><td class="px-4 py-1.5 text-gray-400">CAD</td><td class="px-4 py-1.5 text-gray-400">Marie Dubois</td><td class="px-4 py-1.5 text-gray-500">EU</td></tr>
-                </tbody>
-              </table>
-            </div>
+          <!-- 画布右下角控制 -->
+          <div class="p-pb-zoom">
+            <button title="缩小"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3M8 11h6"/></svg></button>
+            <span class="p-pb-zoom-val">100%</span>
+            <button title="放大"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3M11 8v6M8 11h6"/></svg></button>
+            <button title="适应"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg></button>
+          </div>
+
+          <!-- 画布图例 -->
+          <div class="p-pb-legend">
+            <div class="p-pb-legend-title">图例</div>
+            <div class="p-pb-legend-item"><span class="p-pb-legend-dot" style="background:#D69E2E"></span>数据集</div>
+            <div class="p-pb-legend-item"><span class="p-pb-legend-dot" style="background:#3182CE"></span>变换</div>
+            <div class="p-pb-legend-item"><span class="p-pb-legend-dot" style="background:#38A169"></span>输出</div>
           </div>
         </div>
 
-        <!-- Right sidebar: output config -->
-        <aside class="w-72 shrink-0 border-l border-white/[0.08] bg-slate-900/50 overflow-y-auto">
-          <div class="p-4 space-y-5">
-            <div>
-              <h3 class="text-sm font-medium text-gray-100 mb-1">输出数据集</h3>
-              <p class="text-xs text-gray-500">curated_orders · 精修区</p>
+        <!-- 底部预览面板 -->
+        <div class="p-pb-preview">
+          <div class="p-pb-preview-header">
+            <div class="p-pb-preview-title">
+              <span>预览 · enrich_order</span>
+              <span class="p-badge p-badge-gray p-badge-xs">12,847 行</span>
             </div>
-
-            <div class="space-y-3">
-              <div>
-                <label class="block text-xs text-gray-500 mb-1">格式</label>
-                <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-cyan-400/40">
-                  <option selected>Parquet</option>
-                  <option>Avro</option>
-                  <option>CSV</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs text-gray-500 mb-1">表格式</label>
-                <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-cyan-400/40">
-                  <option selected>Apache Iceberg</option>
-                  <option>Delta Lake</option>
-                  <option>无 (文件集)</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs text-gray-500 mb-1">写入模式</label>
-                <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-cyan-400/40">
-                  <option selected>SNAPSHOT</option>
-                  <option>APPEND</option>
-                  <option>UPDATE</option>
-                </select>
-              </div>
+            <div class="p-pb-preview-search">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+              <input placeholder="搜索列名…" />
             </div>
-
-            <div class="border-t border-white/[0.08] pt-4">
-              <h4 class="text-xs font-medium text-gray-400 mb-2 uppercase tracking-wide">Schema</h4>
-              <table class="w-full text-xs">
-                <thead class="text-gray-500 text-left">
-                  <tr><th class="pb-1 font-medium">列</th><th class="pb-1 font-medium">类型</th></tr>
-                </thead>
-                <tbody class="text-gray-300 divide-y divide-white/[0.04]">
-                  <tr><td class="py-1 font-mono">order_id</td><td class="py-1 text-gray-500">STRING</td></tr>
-                  <tr><td class="py-1 font-mono">amount</td><td class="py-1 text-gray-500">DECIMAL(12,2)</td></tr>
-                  <tr><td class="py-1 font-mono">currency</td><td class="py-1 text-gray-500">STRING</td></tr>
-                  <tr><td class="py-1 font-mono">customer_name</td><td class="py-1 text-gray-500">STRING</td></tr>
-                  <tr><td class="py-1 font-mono">region</td><td class="py-1 text-gray-500">STRING</td></tr>
-                  <tr><td class="py-1 font-mono">created_at</td><td class="py-1 text-gray-500">TIMESTAMP</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <a href="builds.html" class="btn-primary block w-full text-center px-4 py-2 rounded-lg bg-cyan-400 text-slate-950 text-xs font-medium hover:bg-cyan-300 shadow-lg shadow-cyan-400/10">部署并搭建</a>
+            <button class="p-btn p-btn-ghost p-btn-xs">在数据集预览中打开 →</button>
           </div>
-        </aside>
+          <div class="p-pb-preview-table">
+            <table class="p-table p-table-sm">
+              <thead>
+                <tr>
+                  <th>order_id</th>
+                  <th>customer_id</th>
+                  <th>total_amount</th>
+                  <th>status</th>
+                  <th>customer_ltv</th>
+                  <th>segment</th>
+                  <th>is_vip</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="p-mono">O-20260722-001</td><td class="p-mono">C-3421</td><td>¥299.00</td><td><span class="p-badge p-badge-green">paid</span></td><td>¥4,829</td><td><span class="p-badge p-badge-blue">高价值</span></td><td><span class="p-badge p-badge-green">是</span></td></tr>
+                <tr><td class="p-mono">O-20260722-002</td><td class="p-mono">C-1102</td><td>¥1,299.00</td><td><span class="p-badge p-badge-amber">pending</span></td><td>¥12,401</td><td><span class="p-badge p-badge-purple">VIP</span></td><td><span class="p-badge p-badge-green">是</span></td></tr>
+                <tr><td class="p-mono">O-20260722-003</td><td class="p-mono">C-8821</td><td>¥49.00</td><td><span class="p-badge p-badge-green">paid</span></td><td>¥218</td><td><span class="p-badge p-badge-gray">普通</span></td><td><span class="p-badge p-badge-gray">否</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </main>
-  </div>
 
-  <script src="assets/demo.js"></script>
-  <script>
-    DemoUI.initShell('pipeline-list', [
-      { label: '工作区', href: 'index.html' },
-      { label: 'Pipeline Builder', href: 'pipeline-list.html' },
-      { label: '订单清洗管道' }
-    ]);
-  </script>
+      <!-- 右侧输出侧栏 -->
+      <aside class="p-pb-outputs">
+        <div class="p-pb-outputs-header">
+          <span>输出</span>
+          <button class="p-btn p-btn-ghost p-btn-xs" title="折叠">›</button>
+        </div>
+
+        <div class="p-pb-outputs-section">
+          <div class="p-pb-outputs-section-title">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5"/></svg>
+            <span>数据集 (1)</span>
+          </div>
+          <div class="p-pb-output-item">
+            <div class="p-pb-output-name">orders_enriched</div>
+            <div class="p-pb-output-meta">APPEND · 14 → 17 列</div>
+            <span class="p-badge p-badge-green">已配置</span>
+          </div>
+          <button class="p-pb-output-add">+ 添加数据集输出</button>
+        </div>
+
+        <div class="p-pb-outputs-section">
+          <div class="p-pb-outputs-section-title">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span>Object 类型 (1)</span>
+          </div>
+          <div class="p-pb-output-item p-pb-output-active">
+            <div class="p-pb-output-name">Order</div>
+            <div class="p-pb-output-meta">Write Mode: Update by PK</div>
+            <span class="p-badge p-badge-green">已部署</span>
+          </div>
+          <button class="p-pb-output-add">+ 添加 Object 类型输出</button>
+        </div>
+
+        <div class="p-pb-outputs-section">
+          <div class="p-pb-outputs-section-title">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg>
+            <span>链接类型 (1)</span>
+          </div>
+          <div class="p-pb-output-item">
+            <div class="p-pb-output-name">Order → Customer</div>
+            <div class="p-pb-output-meta">1:N · placed_by</div>
+            <span class="p-badge p-badge-green">已部署</span>
+          </div>
+          <button class="p-pb-output-add">+ 添加链接类型输出</button>
+        </div>
+
+        <!-- 详细信息 -->
+        <div class="p-pb-outputs-section p-pb-details">
+          <div class="p-pb-outputs-section-title">详细信息</div>
+          <div class="p-kv"><span class="p-kv-k">描述</span><span class="p-kv-v">订单 enriched 主管道</span></div>
+          <div class="p-kv"><span class="p-kv-k">查看次数</span><span class="p-kv-v">142 (30d)</span></div>
+          <div class="p-pb-outputs-section-title" style="margin-top:12px">协作者</div>
+          <div class="p-pb-collab">
+            <span class="p-pb-avatar">张</span>
+            <span class="p-pb-avatar">李</span>
+            <span class="p-pb-avatar">王</span>
+            <span class="p-pb-avatar p-pb-avatar-more">+2</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+    </div>
+  </div>
+</div>
+<script src="assets/demo.js"></script>
+<script>
+  DemoUI.initTabs('[data-tabs-root]');
+  DemoUI.initAgentList();
+  DemoUI.initStorageRouter();
+  DemoUI.applySyncRoutingParams();
+  DemoUI.initAipMaturity();
+  DemoUI.initAipTools();
+  DemoUI.initAipLogic();
+  DemoUI.initWorkshopModule();
+  DemoUI.initWorkshopGraph();
+  DemoUI.initWorkshopAip();
+</script>
 </body>
 </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数据沿袭 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成 · v1.4</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-3">
+        <span class="px-2 py-1 rounded text-[10px] border border-rose-400/30 bg-rose-400/10 text-rose-300">DLQ 死信 <strong>2</strong></span>
+        <select class="rounded-lg bg-slate-900 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:border-cyan-400/40">
+          <option selected>master</option>
+          <option>feature/currency-normalize</option>
+          <option>dev</option>
+        </select>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <main class="flex-1 flex min-h-0 overflow-hidden">
+      <!-- Side panel -->
+      <aside class="w-64 shrink-0 border-r border-white/[0.08] bg-slate-900/50 overflow-y-auto">
+        <div class="p-4 border-b border-white/[0.08]">
+          <h2 class="text-sm font-medium text-gray-100">沿袭详情</h2>
+          <p class="text-xs text-gray-500 mt-0.5">curated_orders · 上游 3 · 下游 1</p>
+        </div>
+        <div class="p-4 space-y-4 text-xs">
+          <div>
+            <div class="text-gray-500 uppercase tracking-wide mb-2">上游</div>
+            <ul class="space-y-1.5">
+              <li><a href="sync.html" class="text-cyan-400 hover:underline">orders-batch-sync</a></li>
+              <li><a href="dataset.html?raw=1" class="text-gray-300 hover:text-cyan-400">raw_orders</a></li>
+              <li><a href="source-detail.html" class="text-gray-300 hover:text-cyan-400">prod-mysql-orders</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="text-gray-500 uppercase tracking-wide mb-2">变换</div>
+            <ul class="space-y-1.5">
+              <li><a href="pipeline.html" class="text-cyan-400 hover:underline">订单清洗管道</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="text-gray-500 uppercase tracking-wide mb-2">下游</div>
+            <ul class="space-y-1.5">
+              <li><a href="funnel.html" class="text-emerald-400 hover:underline">Order Funnel 映射</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Lineage graph -->
+      <div class="flex-1 grid-pattern overflow-auto p-8">
+        <div class="max-w-4xl mx-auto">
+          <svg class="w-full h-auto mb-4" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+            <!-- Edges -->
+            <path class="flow-line" d="M 120 80 C 200 80, 200 120, 280 120" />
+            <path class="flow-line flow-line-active" d="M 120 200 C 200 200, 200 120, 280 120" />
+            <path class="flow-line flow-line-active" d="M 420 120 C 500 120, 500 200, 580 200" />
+            <path class="flow-line" d="M 680 200 C 720 200, 720 280, 680 320" />
+          </svg>
+
+          <div class="relative" style="height: 360px;">
+            <!-- Source -->
+            <a href="source-detail.html" class="absolute left-0 top-12 block rounded-xl border border-white/[0.08] bg-slate-900/90 px-4 py-3 w-44 hover:border-cyan-400/30 transition-colors">
+              <div class="text-xs text-gray-500 mb-1">数据源</div>
+              <div class="text-sm text-gray-100 font-medium">prod-mysql-orders</div>
+              <div class="text-xs text-gray-500 mt-0.5">MySQL JDBC</div>
+            </a>
+
+            <!-- Sync -->
+            <a href="sync.html" class="absolute left-0 top-44 block rounded-xl border border-white/[0.08] bg-slate-900/90 px-4 py-3 w-44 hover:border-cyan-400/30 transition-colors">
+              <div class="text-xs text-gray-500 mb-1">同步</div>
+              <div class="text-sm text-gray-100 font-medium">orders-batch-sync</div>
+              <div class="text-xs text-gray-500 mt-0.5">SNAPSHOT · 每小时</div>
+            </a>
+
+            <!-- Raw dataset -->
+            <a href="dataset.html?raw=1" class="absolute left-64 top-24 block rounded-xl border border-amber-400/30 bg-amber-400/5 px-4 py-3 w-44 hover:border-amber-400/50 transition-colors">
+              <div class="text-xs text-amber-400 mb-1">原始区</div>
+              <div class="text-sm text-gray-100 font-medium">raw_orders</div>
+              <div class="text-xs text-gray-500 mt-0.5">1.28M 行</div>
+            </a>
+
+            <!-- Pipeline -->
+            <a href="pipeline.html" class="absolute left-[420px] top-24 block rounded-xl border border-cyan-400/30 bg-cyan-400/5 px-4 py-3 w-44 hover:border-cyan-400/50 transition-colors">
+              <div class="text-xs text-cyan-400 mb-1">管道</div>
+              <div class="text-sm text-gray-100 font-medium">订单清洗管道</div>
+              <div class="text-xs text-gray-500 mt-0.5">Filter → Join</div>
+            </a>
+
+            <!-- Curated dataset (center focus) -->
+            <a href="dataset.html?curated=1" class="absolute left-[580px] top-36 block rounded-xl border-2 border-cyan-400/50 bg-cyan-400/10 px-4 py-3 w-44 shadow-lg shadow-cyan-400/10">
+              <div class="text-xs text-emerald-400 mb-1">精修区 · 焦点</div>
+              <div class="text-sm text-gray-100 font-medium">curated_orders</div>
+              <div class="text-xs text-gray-500 mt-0.5">892K 行 · Iceberg</div>
+            </a>
+
+            <!-- Funnel -->
+            <a href="funnel.html" class="absolute left-[580px] top-72 block rounded-xl border border-emerald-400/30 bg-emerald-400/5 px-4 py-3 w-44 hover:border-emerald-400/50 transition-colors">
+              <div class="text-xs text-emerald-400 mb-1">OKF Funnel</div>
+              <div class="text-sm text-gray-100 font-medium">Order 映射</div>
+              <div class="text-xs text-gray-500 mt-0.5">列 → Object Property</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    const isMaint = new URLSearchParams(window.location.search).get('view') === 'maintenance';
+    if (isMaint) {
+      document.querySelector('aside h2').textContent = '沿袭详情';
+      document.querySelector('aside p').textContent = 'maintenance_clean · 上游 4 · media_ref 回链';
+      document.querySelector('aside .space-y-4').innerHTML = `
+        <div><div class="text-gray-500 uppercase tracking-wide mb-2">上游</div><ul class="space-y-1.5">
+          <li><a href="sync-routing.html?source=docs" class="text-cyan-400 hover:underline">docs-media-sync</a></li>
+          <li><a href="media-sets.html" class="text-purple-300 hover:text-purple-200">maintenance_scans</a></li>
+          <li><a href="source-detail.html?source=docs" class="text-gray-300 hover:text-cyan-400">sharepoint-maintenance-docs</a></li>
+        </ul></div>
+        <div><div class="text-gray-500 uppercase tracking-wide mb-2">变换</div><ul class="space-y-1.5">
+          <li><a href="pipeline-doc-intel.html" class="text-cyan-400 hover:underline">维修文档 Doc Intel</a></li>
+        </ul></div>
+        <div><div class="text-gray-500 uppercase tracking-wide mb-2">下游</div><ul class="space-y-1.5">
+          <li><a href="funnel.html" class="text-emerald-400 hover:underline">Maintenance Funnel</a></li>
+        </ul></div>`;
+      document.querySelector('.relative[style]').innerHTML = `
+        <a href="source-detail.html?source=docs" class="absolute left-0 top-12 block rounded-xl border border-purple-400/30 bg-purple-400/5 px-4 py-3 w-44"><div class="text-xs text-gray-500 mb-1">数据源</div><div class="text-sm text-gray-100">sharepoint-docs</div></a>
+        <a href="media-sets.html" class="absolute left-0 top-44 block rounded-xl border border-purple-400/30 bg-purple-400/5 px-4 py-3 w-44"><div class="text-xs text-purple-400 mb-1">媒体集</div><div class="text-sm text-gray-100">maintenance_scans</div></a>
+        <a href="pipeline-doc-intel.html" class="absolute left-64 top-24 block rounded-xl border border-cyan-400/30 bg-cyan-400/5 px-4 py-3 w-48"><div class="text-xs text-cyan-400 mb-1">管道</div><div class="text-sm text-gray-100">Doc Intel 五步</div></a>
+        <a href="dataset.html?maintenance=1" class="absolute left-[420px] top-36 block rounded-xl border-2 border-emerald-400/50 bg-emerald-400/10 px-4 py-3 w-48"><div class="text-xs text-emerald-400 mb-1">精修区 + media_ref</div><div class="text-sm text-gray-100">maintenance_clean</div></a>
+        <a href="media-sets.html" class="absolute left-[420px] top-72 block rounded-xl border border-purple-400/20 bg-purple-400/5 px-3 py-2 w-36 text-xs text-purple-300">↩ media_ref 回链</a>`;
+    }
+    DemoUI.initShell('lineage', [
+      { label: '工作区', href: 'index.html' },
+      { label: '数据沿袭' }
+    ]);
+  </script>
+</body>
+</html>

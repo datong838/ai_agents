@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>代码库 IDE | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <button type="button" class="px-3 py-1.5 rounded-lg bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-xs font-medium">+ 新建仓库</button>
+    </header>
+
+    <main class="flex-1 flex min-h-0 overflow-hidden">
+      <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/50 p-3 text-xs text-gray-500">
+        <div class="uppercase tracking-wide mb-2 px-2">仓库</div>
+        <div class="px-2 py-1.5 rounded text-gray-400">（暂无仓库）</div>
+      </aside>
+
+      <div class="flex-1 flex flex-col items-center justify-center p-8 text-center">
+        <div class="w-16 h-16 rounded-2xl border border-cyan-400/20 bg-cyan-400/5 flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-cyan-400/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+        </div>
+        <h1 class="text-lg font-semibold text-gray-100">代码库 IDE</h1>
+        <p class="mt-2 text-sm text-gray-500 max-w-md">变换仓库用于编写 Python/SQL 变换，与 Pipeline、Function 关联发布。</p>
+        <div class="mt-6 flex flex-wrap gap-2 justify-center">
+          <button type="button" class="px-4 py-2 rounded-lg bg-cyan-400/15 border border-cyan-400/30 text-xs text-cyan-200">创建第一个仓库</button>
+          <a href="pipeline.html" class="px-4 py-2 rounded-lg border border-white/[0.08] text-xs text-gray-300">从管道跳转</a>
+          <a href="ontology-function.html" class="px-4 py-2 rounded-lg border border-white/[0.08] text-xs text-gray-300">从 Function 跳转</a>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('code-repositories', [{ href: 'index.html', label: '工作区' }, { href: 'pipeline-list.html', label: '数据集成' }, { label: '代码库 IDE' }]);</script>
+</body>
+</html>

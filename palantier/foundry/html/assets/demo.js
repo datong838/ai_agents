@@ -1,34 +1,10 @@
 /**
- * 谛听 Data Integration · 客户演示 Demo
- * 共享导航、图标与轻量交互
+ * AOS Demo v4.0 · Palantir Foundry 1:1 复刻
  */
 
-const DEMO_VERSION = 'v1.6.5';
+const DEMO_VERSION = 'v4.0';
 
-const APPEARANCE_KEY = 'aos-appearance';
-const APPEARANCE_OPTS = [
-  { id: 'light', label: '浅色', icon: 'sun' },
-  { id: 'dark', label: '深色', icon: 'moon' },
-  { id: 'system', label: '跟随系统', icon: 'monitor' },
-];
-
-/** 尽早上色，减少闪烁 */
-(function bootstrapAppearance() {
-  try {
-    const v = localStorage.getItem(APPEARANCE_KEY);
-    const pref = v === 'light' || v === 'dark' || v === 'system' ? v : 'dark';
-    const resolved =
-      pref === 'system'
-        ? window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
-          ? 'light'
-          : 'dark'
-        : pref;
-    document.documentElement.setAttribute('data-aos-theme', resolved);
-    document.documentElement.setAttribute('data-aos-appearance', pref);
-  } catch (_) { /* ignore */ }
-})();
-
-/** 侧栏：概览 → 工作台 → AIP → 本体 → 数据 → Apollo（使用优先 · 中文为主） */
+/** 侧栏导航结构 */
 const DEMO_PAGES = [
   { id: 'index', href: 'index.html', label: '概览', icon: 'home' },
   { section: '工作台' },
@@ -53,7 +29,7 @@ const DEMO_PAGES = [
   { id: 'aip-model-router', href: 'aip-model-router.html', label: '模型路由', icon: 'spark' },
   { id: 'aip-maturity', href: 'aip-maturity.html', label: '成熟度楼梯', icon: 'stairs' },
   { section: '本体 · 数字孪生' },
-  { id: 'ontology', href: 'ontology.html', label: '本体管理（数字孪生）', icon: 'ontology' },
+  { id: 'ontology', href: 'ontology.html', label: '本体管理', icon: 'ontology' },
   { id: 'ontology-funnel', href: 'ontology-funnel.html', label: '漏斗管道', icon: 'funnel' },
   { id: 'funnel', href: 'funnel.html', label: 'OKF 行业漏斗', icon: 'spark' },
   { id: 'ontology-graph-health', href: 'ontology-graph-health.html', label: '图谱健康度', icon: 'heart' },
@@ -82,34 +58,41 @@ const DEMO_PAGES = [
 ];
 
 const ICONS = {
-  home: '<path stroke-linecap="round" stroke-linejoin="round" d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z"/>',
-  plug: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z"/>',
+  home: '<path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/>',
+  plug: '<path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>',
   server: '<rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/>',
-  workflow: '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path stroke-linecap="round" d="M8 6h8M7 7.5L10 16M17 7.5L14 16"/>',
-  layers: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>',
+  workflow: '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/>',
+  layers: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>',
   table: '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/>',
-  git: '<circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path stroke-linecap="round" d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8"/>',
-  spark: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/>',
-  heart: '<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z"/>',
-  film: '<rect x="3" y="5" width="18" height="14" rx="1"/><path stroke-linecap="round" d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4"/>',
-  ontology: '<circle cx="12" cy="12" r="3"/><path stroke-linecap="round" d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
-  funnel: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16l-5 7v5l-6 4v-9L4 4z"/>',
-  wiki: '<path stroke-linecap="round" d="M4 5h16v14H4zM8 9h8M8 13h5"/>',
-  stairs: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4V8h4"/>',
-  wrench: '<path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>',
+  git: '<circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/>',
+  spark: '<path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/>',
+  heart: '<path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/>',
+  film: '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/>',
+  ontology: '<circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/>',
+  funnel: '<path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/>',
+  wiki: '<path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/>',
+  stairs: '<path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/>',
+  wrench: '<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/>',
   apps: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
-  inbox: '<path stroke-linecap="round" stroke-linejoin="round" d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8"/>',
-  graph: '<circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path stroke-linecap="round" d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3"/>',
-  chat: '<path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z"/>',
-  search: '<circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3-3"/>',
-  bell: '<path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z"/>',
-  chevron: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>',
-  back: '<path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>',
-  plus: '<path stroke-linecap="round" d="M12 5v14M5 12h14"/>',
-  check: '<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>',
-  sun: '<circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
-  moon: '<path stroke-linecap="round" stroke-linejoin="round" d="M21 14.5A8.5 8.5 0 1111.5 3 7 7 0 0021 14.5z"/>',
-  monitor: '<rect x="3" y="4" width="18" height="12" rx="1"/><path stroke-linecap="round" d="M8 20h8M12 16v4"/>',
+  inbox: '<path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/>',
+  graph: '<circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/>',
+  chat: '<path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/>',
+  bell: '<path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>',
+  chevron: '<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>',
+  back: '<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>',
+  plus: '<path d="M12 5v14M5 12h14" stroke-linecap="round"/>',
+  check: '<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>',
+  menu: '<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>',
+  database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/>',
+  folder: '<path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/>',
+  grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/>',
+  star: '<path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z" stroke-linecap="round" stroke-linejoin="round"/>',
+  x: '<path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>',
+  trash: '<path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6" stroke-linecap="round" stroke-linejoin="round"/>',
+  edit: '<path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4 12.5-12.5z" stroke-linecap="round" stroke-linejoin="round"/>',
 };
 
 function svgIcon(name, cls = 'w-4 h-4') {
@@ -119,139 +102,141 @@ function svgIcon(name, cls = 'w-4 h-4') {
 
 function statusDot(status) {
   const colors = {
-    ok: 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]',
-    warn: 'bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.4)]',
-    err: 'bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.4)]',
-    run: 'bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.5)]',
+    ok: 'background:#38A169;box-shadow:0 0 6px rgba(56,161,105,0.4)',
+    warn: 'background:#D69E2E;box-shadow:0 0 6px rgba(214,158,46,0.4)',
+    err: 'background:#E53E3E;box-shadow:0 0 6px rgba(229,62,62,0.4)',
+    run: 'background:#2B6CB0;box-shadow:0 0 6px rgba(43,108,176,0.4)',
   };
-  return `<span class="inline-block w-2 h-2 rounded-full ${colors[status] || colors.ok}"></span>`;
+  return `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;${colors[status] || colors.ok}"></span>`;
 }
 
-function getAppearancePref() {
-  try {
-    const v = localStorage.getItem(APPEARANCE_KEY);
-    if (v === 'light' || v === 'dark' || v === 'system') return v;
-  } catch (_) { /* ignore */ }
-  return 'dark';
-}
+/** ===== 构建 Palantir 风格页面壳 ===== */
+function buildShell(activeId, breadcrumbs, pageTitle, mainContent) {
+  const page = DEMO_PAGES.find(p => p.id === activeId);
+  const pageLabel = page ? page.label : (pageTitle || 'AOS');
 
-function resolveTheme(pref) {
-  if (pref === 'light' || pref === 'dark') return pref;
-  if (typeof window !== 'undefined' && window.matchMedia) {
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  }
-  return 'dark';
-}
+  // 全局深色导航图标
+  const globalNavItems = [
+    { icon: 'menu', label: '菜单', active: false },
+    { icon: 'home', label: '首页', active: activeId === 'index' },
+    { icon: 'search', label: '搜索', active: false },
+    { icon: 'bell', label: '通知', active: false },
+    { icon: 'clock', label: '历史', active: false },
+    { icon: 'folder', label: '项目', active: false },
+    { icon: 'grid', label: '应用', active: activeId === 'workshop' },
+    { icon: 'database', label: '数据', active: ['data-connection','pipeline-list','dataset'].includes(activeId) },
+  ];
 
-function applyAppearance(pref) {
-  const resolved = resolveTheme(pref);
-  document.documentElement.setAttribute('data-aos-theme', resolved);
-  document.documentElement.setAttribute('data-aos-appearance', pref);
-  document.documentElement.style.colorScheme = resolved;
-  const btn = document.getElementById('aos-appearance-btn');
-  if (btn) {
-    const opt = APPEARANCE_OPTS.find((o) => o.id === pref) || APPEARANCE_OPTS[1];
-    btn.innerHTML = `${svgIcon(opt.icon, 'w-3.5 h-3.5')} 外观`;
-  }
-  document.querySelectorAll('[data-appearance]').forEach((el) => {
-    el.classList.toggle('is-selected', el.dataset.appearance === pref);
-  });
-}
+  const globalNavHTML = globalNavItems.map(item =>
+    `<div class="p-nav-g-item ${item.active ? 'is-active' : ''}" title="${item.label}">${svgIcon(item.icon, 'w-5 h-5')}</div>`
+  ).join('');
 
-function setAppearance(pref) {
-  try {
-    localStorage.setItem(APPEARANCE_KEY, pref);
-  } catch (_) { /* ignore */ }
-  applyAppearance(pref);
-}
-
-function initAppearance() {
-  const pref = getAppearancePref();
-  applyAppearance(pref);
-  if (window.matchMedia) {
-    const mq = window.matchMedia('(prefers-color-scheme: light)');
-    const onChange = () => {
-      if (getAppearancePref() === 'system') applyAppearance('system');
-    };
-    if (mq.addEventListener) mq.addEventListener('change', onChange);
-    else if (mq.addListener) mq.addListener(onChange);
-  }
-}
-
-function mountAppearanceControl(host) {
-  if (!host || host.querySelector('#aos-appearance')) return;
-  const wrap = document.createElement('div');
-  wrap.id = 'aos-appearance';
-  wrap.className = 'aos-appearance';
-  wrap.innerHTML = `
-    <button type="button" id="aos-appearance-btn" class="aos-appearance-btn" aria-haspopup="menu" aria-expanded="false">外观</button>
-    <div class="aos-appearance-menu" role="menu">
-      ${APPEARANCE_OPTS.map(
-        (o) => `<button type="button" role="menuitemradio" class="aos-appearance-item" data-appearance="${o.id}">
-          ${svgIcon(o.icon, 'w-3.5 h-3.5')}<span>${o.label}</span>
-          <span class="aos-check">${svgIcon('check', 'w-3.5 h-3.5')}</span>
-        </button>`
-      ).join('')}
-    </div>`;
-  host.insertBefore(wrap, host.firstChild);
-  const btn = wrap.querySelector('#aos-appearance-btn');
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const open = wrap.classList.toggle('is-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  wrap.querySelectorAll('[data-appearance]').forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setAppearance(el.dataset.appearance);
-      wrap.classList.remove('is-open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  });
-  document.addEventListener('click', () => {
-    wrap.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-  });
-  applyAppearance(getAppearancePref());
-}
-
-/** 注入全局侧栏 */
-function initShell(activeId, breadcrumbs) {
-  initAppearance();
-  const navEl = document.getElementById('app-nav');
-  const bcEl = document.getElementById('app-breadcrumb');
-  if (navEl) {
-    navEl.innerHTML = DEMO_PAGES.map((p) => {
-      if (p.section) {
-        return `<div class="aos-nav-section">${p.section}</div>`;
-      }
-      const active = p.id === activeId;
-      return `<a href="${p.href}" class="aos-nav-link${active ? ' is-active' : ''}">${svgIcon(p.icon, 'w-4 h-4 shrink-0')}<span>${p.label}</span></a>`;
-    }).join('');
-  }
-  if (bcEl && breadcrumbs) {
-    bcEl.innerHTML = breadcrumbs
-      .map((b, i) => {
-        if (b.href && i < breadcrumbs.length - 1) {
-          return `<a href="${b.href}" class="hover:opacity-80 transition-opacity" style="color:var(--aos-accent)">${b.label}</a>`;
-        }
-        return `<span class="aos-text">${b.label}</span>`;
-      })
-      .join(`<span class="aos-faint mx-1.5">${svgIcon('chevron', 'w-3 h-3 inline opacity-50')}</span>`);
-  }
-  const header = document.querySelector('header');
-  if (header) {
-    let actions = header.querySelector('.flex.items-center.gap-2, .flex.items-center.gap-3, .flex.gap-2.items-center, .flex.gap-2');
-    if (!actions) {
-      actions = document.createElement('div');
-      actions.className = 'flex items-center gap-2';
-      header.appendChild(actions);
+  // 侧边栏导航
+  let sidebarHTML = '';
+  let inSection = false;
+  DEMO_PAGES.forEach(p => {
+    if (p.section) {
+      if (inSection) sidebarHTML += '</div>';
+      sidebarHTML += `<div class="p-sidebar-section-title">${p.section}</div><div class="p-sidebar-section">`;
+      inSection = true;
+    } else {
+      const isActive = p.id === activeId;
+      sidebarHTML += `<a href="${p.href}" class="p-sidebar-item ${isActive ? 'is-active' : ''}">${svgIcon(p.icon)}<span>${p.label}</span></a>`;
     }
-    mountAppearanceControl(actions);
+  });
+  if (inSection) sidebarHTML += '</div>';
+
+  // 面包屑
+  let breadcrumbHTML = '';
+  if (breadcrumbs && breadcrumbs.length) {
+    breadcrumbHTML = breadcrumbs.map((b, i) => {
+      if (b.href && i < breadcrumbs.length - 1) {
+        return `<a href="${b.href}">${b.label}</a>`;
+      }
+      return `<span>${b.label}</span>`;
+    }).join(`<span class="p-breadcrumb-sep">/</span>`);
+  } else {
+    breadcrumbHTML = `<a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>${pageLabel}</span>`;
   }
+
+  return `<div class="p-app">
+    <!-- 全局深色导航 -->
+    <nav class="p-nav-global">
+      <div class="p-nav-global-top">${globalNavHTML}</div>
+      <div class="p-nav-global-bottom">
+        <div class="p-nav-g-item" title="帮助">${svgIcon('wrench', 'w-5 h-5')}</div>
+        <div class="p-nav-g-item" title="用户">${svgIcon('user', 'w-5 h-5')}</div>
+      </div>
+    </nav>
+
+    <!-- 主区域 -->
+    <div class="p-main">
+      <!-- 顶部栏 -->
+      <header class="p-header">
+        <div class="p-header-left">
+          <div class="p-breadcrumb">${breadcrumbHTML}</div>
+        </div>
+        <div class="p-header-center">
+          <div class="p-search">
+            ${svgIcon('search', 'w-4 h-4')}
+            <input type="search" placeholder="搜索资源…" />
+          </div>
+        </div>
+        <div class="p-header-right">
+          <button class="p-btn p-btn-secondary p-btn-sm">Discard</button>
+          <button class="p-btn p-btn-primary p-btn-sm">Save to branch</button>
+        </div>
+      </header>
+
+      <!-- 页面主体 -->
+      <div class="p-body">
+        <!-- 侧边栏 -->
+        <aside class="p-sidebar">
+          ${sidebarHTML}
+        </aside>
+
+        <!-- 内容区 -->
+        <main class="p-content">${mainContent}</main>
+      </div>
+    </div>
+  </div>`;
 }
 
-/** Tab 切换 · 面板可在 tab-group 外（如 main 内），向上找 scope */
+/** ===== 自动转换旧布局为新 Palantir 布局 ===== */
+function transformToPalantir(activeId, breadcrumbs) {
+  const body = document.body;
+
+  // 已经转换过则跳过
+  if (document.querySelector('.p-app')) return;
+
+  // 提取内容：优先找 <main>，其次找 #p-root，最后取 body 全部
+  let content = '';
+  const mainEl = body.querySelector('main');
+  const rootEl = body.querySelector('#p-root');
+  if (mainEl) {
+    content = mainEl.innerHTML;
+  } else if (rootEl) {
+    content = rootEl.innerHTML;
+  } else {
+    // 提取 body 内除 script 外的内容
+    const scripts = [];
+    body.querySelectorAll('script').forEach(s => scripts.push(s.outerHTML));
+    content = body.innerHTML;
+    scripts.forEach(s => { content = content.replace(s, ''); });
+  }
+
+  // 构建新壳
+  const shell = buildShell(activeId, breadcrumbs, document.title, content);
+
+  // 替换整个 body
+  body.innerHTML = shell;
+  body.className = '';
+  body.style.background = '#F0F2F5';
+  body.style.margin = '0';
+  body.style.padding = '0';
+}
+
+/** ===== Tab 切换 ===== */
 function initTabs(containerSelector) {
   document.querySelectorAll(`${containerSelector} [data-tab]`).forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -261,23 +246,17 @@ function initTabs(containerSelector) {
 
       group.querySelectorAll('[data-tab]').forEach((t) => {
         const active = t.dataset.tab === target;
-        t.classList.toggle('tab-active', active);
-        t.classList.toggle('text-gray-400', !active);
-        t.classList.toggle('text-gray-100', active);
-        t.classList.toggle('font-medium', active);
-        t.classList.toggle('border-b-2', active);
-        t.classList.toggle('border-cyan-400', active);
-        t.classList.toggle('border-transparent', !active);
+        t.classList.toggle('is-active', active);
       });
 
       scope.querySelectorAll('[data-tab-panel]').forEach((p) => {
-        p.classList.toggle('hidden', p.dataset.tabPanel !== target);
+        p.classList.toggle('p-hidden', p.dataset.tabPanel !== target);
       });
     });
   });
 }
 
-/** 代理列表选中 */
+/** ===== 代理列表 ===== */
 function initAgentList() {
   document.querySelectorAll('.agent-item').forEach((item) => {
     item.addEventListener('click', () => {
@@ -285,29 +264,26 @@ function initAgentList() {
       item.classList.add('active');
       const id = item.dataset.agent;
       document.querySelectorAll('[data-agent-panel]').forEach((p) => {
-        p.classList.toggle('hidden', p.dataset.agentPanel !== id);
+        p.classList.toggle('p-hidden', p.dataset.agentPanel !== id);
       });
     });
   });
 }
 
-/** 存储路由向导 · 单选与解析路径联动 */
+/** ===== 存储路由 ===== */
 function initStorageRouter() {
   const form = document.getElementById('storage-router-form');
   if (!form) return;
-
   const targets = form.querySelectorAll('[name="storage-target"]');
   const pathSelect = form.querySelector('#parse-path');
   const hint = form.querySelector('#storage-hint');
   const xlsxWarn = form.querySelector('#xlsx-warn');
-
   const pathByTarget = {
     dataset: 'structured',
     media_doc: 'unstructured',
     media_sheet: 'unstructured',
     stream: 'timeseries',
   };
-
   const hints = {
     dataset: 'CSV · JSON · JDBC 表 · API 响应 → Dataset（Text/Parquet）',
     media_doc: 'PDF · 图像 · 音视频 · Word/PPT → Document 型媒体集',
@@ -315,23 +291,20 @@ function initStorageRouter() {
     stream: 'Kafka · IoT · MQTT → 流数据集（Avro）',
     smallfile: '单文件 <128KB 且无需原件预览 → 直入 Dataset，不建 MediaSet（避免元数据碎片）',
   };
-
   const pathByTargetExt = { ...pathByTarget, smallfile: 'structured' };
-
   function update() {
     const selected = form.querySelector('[name="storage-target"]:checked');
     if (!selected) return;
     const val = selected.value;
     if (pathSelect) pathSelect.value = pathByTargetExt[val] || 'structured';
     if (hint) hint.textContent = hints[val] || '';
-    if (xlsxWarn) xlsxWarn.classList.toggle('hidden', val !== 'media_doc');
+    if (xlsxWarn) xlsxWarn.classList.toggle('p-hidden', val !== 'media_doc');
   }
-
   targets.forEach((r) => r.addEventListener('change', update));
   update();
 }
 
-/** 同步页 · 读取路由 query 预填 */
+/** ===== 同步页路由 ===== */
 function applySyncRoutingParams() {
   const params = new URLSearchParams(window.location.search);
   const target = params.get('target');
@@ -340,7 +313,6 @@ function applySyncRoutingParams() {
   const elPath = document.querySelector('[data-sync-path]');
   const elTitle = document.querySelector('[data-sync-title]');
   if (!target) return;
-
   const labels = {
     dataset: '数据集',
     media_doc: '媒体集 · 文档',
@@ -353,15 +325,12 @@ function applySyncRoutingParams() {
     unstructured: '非结构化 · Doc Intel 五步',
     timeseries: '时序 · Stream + CDC',
   };
-
   if (elTarget) elTarget.textContent = labels[target] || target;
   if (elPath && path) elPath.textContent = paths[path] || path;
-  if (elTitle && target.startsWith('media')) {
-    elTitle.textContent = '创建媒体集同步';
-  }
+  if (elTitle && target.startsWith('media')) elTitle.textContent = '创建媒体集同步';
 }
 
-/** AIP 成熟度楼梯 · WF-AIP-00 */
+/** ===== AIP 成熟度 ===== */
 function initAipMaturity() {
   const root = document.getElementById('maturity-stairs');
   if (!root) return;
@@ -375,39 +344,31 @@ function initAipMaturity() {
     4: 'L4：失败率>5% 自动熔断降 L3；冷模型须预热。须 Eval 绿 + Draft 默认。',
   };
   const labels = {
-    1: '○ L1 临时分析',
-    2: '◆ L2 任务 Agent',
-    3: '◆ L3 Agentic 应用',
-    4: '⚠ L4 自动化（熔断护栏）',
+    1: 'L1 临时分析',
+    2: 'L2 任务 Agent',
+    3: 'L3 Agentic 应用',
+    4: 'L4 自动化（熔断护栏）',
   };
-
   function setLevel(n) {
     root.dataset.level = String(n);
     root.querySelectorAll('[data-mat]').forEach((card) => {
       const on = Number(card.dataset.mat) === n;
-      card.classList.toggle('maturity-active', on);
-      card.classList.toggle('border-amber-400/50', on);
-      card.classList.toggle('bg-amber-400/10', on);
-      card.classList.toggle('ring-1', on);
-      card.classList.toggle('ring-amber-400/30', on);
-      card.classList.toggle('border-white/[0.08]', !on);
-      card.classList.toggle('bg-slate-900/50', !on);
+      card.style.borderColor = on ? '#D69E2E' : '#E2E8F0';
+      card.style.background = on ? '#FFFAF0' : '#FFFFFF';
     });
     if (label) label.textContent = labels[n] || '';
     if (hint) hint.textContent = hints[n] || '';
   }
-
   root.querySelectorAll('[data-mat]').forEach((card) => {
     card.addEventListener('click', () => setLevel(Number(card.dataset.mat)));
   });
-
   const btnL3 = document.getElementById('btn-mark-l3');
   if (btnL3) {
     btnL3.addEventListener('click', () => {
       setLevel(3);
       if (toast) {
         toast.textContent = '已标记 L3：请打开工作台绑定 Agent（Demo → workshop.html）。';
-        toast.classList.remove('hidden');
+        toast.classList.remove('p-hidden');
       }
     });
   }
@@ -417,8 +378,7 @@ function initAipMaturity() {
       setLevel(4);
       if (toast) {
         toast.textContent = 'L4 评审示意：Eval 未绿 → 拦截。若已上线且失败率>5% → 熔断降级 L3。';
-        toast.classList.remove('hidden');
-        toast.classList.add('text-rose-300');
+        toast.classList.remove('p-hidden');
       }
     });
   }
@@ -427,32 +387,28 @@ function initAipMaturity() {
     btnBreak.addEventListener('click', () => {
       setLevel(3);
       toast.textContent = '模拟熔断：失败率 7.2% > 5% → 已自动降级到 L3，须人工确认后恢复。';
-      toast.classList.remove('hidden');
-      toast.classList.add('text-rose-300');
+      toast.classList.remove('p-hidden');
     });
   }
 }
 
-/** AIP Agent 工具面板 · WF-AIP-05T */
+/** ===== AIP 工具面板 ===== */
 function initAipTools() {
   const detailRoot = document.getElementById('tool-detail');
   if (!detailRoot) return;
-
   document.querySelectorAll('[data-tool-card]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const id = btn.dataset.toolCard;
       document.querySelectorAll('[data-tool-card]').forEach((b) => {
         const on = b === btn;
-        b.classList.toggle('border-amber-400/40', on);
-        b.classList.toggle('bg-amber-400/10', on);
-        b.classList.toggle('border-white/[0.08]', !on);
+        b.style.borderColor = on ? '#D69E2E' : '#E2E8F0';
+        b.style.background = on ? '#FFFAF0' : '#FFFFFF';
       });
       detailRoot.querySelectorAll('[data-detail]').forEach((p) => {
-        p.classList.toggle('hidden', p.dataset.detail !== id);
+        p.classList.toggle('p-hidden', p.dataset.detail !== id);
       });
     });
   });
-
   const save = document.getElementById('btn-save-tools');
   const toast = document.getElementById('tools-toast');
   const mode = document.getElementById('tool-mode');
@@ -460,20 +416,20 @@ function initAipTools() {
     save.addEventListener('click', () => {
       const m = mode ? mode.value : 'native';
       toast.textContent = `已保存（示意）· 调用模式=${m} · 写路径仍受 Draft / 提交标准约束`;
-      toast.classList.remove('hidden');
+      toast.classList.remove('p-hidden');
     });
   }
 }
 
-/** AIP Logic 画布轻交互 · WF-AIP-02 */
+/** ===== AIP Logic ===== */
 function initAipLogic() {
   const run = document.getElementById('btn-run-logic');
   const empty = document.getElementById('debug-empty');
   const panel = document.getElementById('debug-panel');
   if (run && empty && panel) {
     run.addEventListener('click', () => {
-      empty.classList.add('hidden');
-      panel.classList.remove('hidden');
+      empty.classList.add('p-hidden');
+      panel.classList.remove('p-hidden');
     });
   }
   const autoBtn = document.getElementById('btn-create-auto');
@@ -481,20 +437,19 @@ function initAipLogic() {
   if (autoBtn && autoMsg) {
     autoBtn.addEventListener('click', () => {
       autoMsg.textContent = '已预填自动化（示意）：输出=Ontology edits → 提案审核。开放提案约 24h。';
-      autoMsg.classList.remove('hidden');
-      autoMsg.classList.add('text-amber-200');
+      autoMsg.classList.remove('p-hidden');
     });
   }
   const pub = document.getElementById('btn-publish-logic');
   if (pub) {
     pub.addEventListener('click', () => {
       pub.textContent = '已发布（示意）';
-      pub.classList.add('opacity-80');
+      pub.style.opacity = '0.8';
     });
   }
 }
 
-/** 工作台 Inbox · Selection 联动 WF-WS-03 */
+/** ===== 工作台 Inbox ===== */
 function initWorkshopModule() {
   const rows = document.querySelectorAll('[data-order-row]');
   const selEl = document.getElementById('ws-selection');
@@ -504,19 +459,16 @@ function initWorkshopModule() {
   const shopEl = document.getElementById('ws-obj-shop');
   const toast = document.getElementById('ws-toast');
   if (!rows.length) return;
-
   const data = {
     'ORD-8821': { title: 'ORD-8821', meta: '类型：Order · 状态：异常', score: '0.91', shop: '店铺A' },
     'ORD-8819': { title: 'ORD-8819', meta: '类型：Order · 状态：异常', score: '0.72', shop: '店铺B' },
     'ORD-8801': { title: 'ORD-8801', meta: '类型：Order · 状态：正常', score: '0.21', shop: '店铺C' },
   };
-
   function select(id) {
     rows.forEach((r) => {
       const on = r.dataset.orderRow === id;
-      r.classList.toggle('bg-sky-400/10', on);
-      r.classList.toggle('border-l-2', on);
-      r.classList.toggle('border-sky-400', on);
+      r.style.background = on ? '#EBF4FF' : '';
+      r.style.borderLeft = on ? '3px solid #2B6CB0' : '';
     });
     const d = data[id];
     if (selEl) selEl.textContent = id;
@@ -525,13 +477,10 @@ function initWorkshopModule() {
     if (scoreEl && d) scoreEl.textContent = d.score;
     if (shopEl && d) shopEl.textContent = d.shop;
   }
-
   rows.forEach((r) => r.addEventListener('click', () => select(r.dataset.orderRow)));
   select('ORD-8821');
-
   const dimEl = document.getElementById('ws-sel-dims');
   if (dimEl) dimEl.textContent = '3 / 10';
-
   let lastKey = '';
   const actionBtn = document.getElementById('ws-btn-appeal');
   if (actionBtn && toast) {
@@ -540,34 +489,32 @@ function initWorkshopModule() {
       const key = `appeal:${id}`;
       if (key === lastKey) {
         toast.textContent = `幂等命中：同一 idempotencyKey，不重复执行（ACT-07）`;
-        toast.classList.remove('hidden');
+        toast.classList.remove('p-hidden');
         return;
       }
       lastKey = key;
       toast.textContent = `Action「发起申诉」· key=${key} · HITL / Draft Dataset（示意）`;
-      toast.classList.remove('hidden');
+      toast.classList.remove('p-hidden');
     });
   }
 }
 
-/** 工作台图谱 · 点节点换 Selection WF-WS-04 */
+/** ===== 工作台图谱 ===== */
 function initWorkshopGraph() {
   const nodes = document.querySelectorAll('[data-graph-node]');
   const sel = document.getElementById('graph-selection');
   const view = document.getElementById('graph-obj-view');
   const modal = document.getElementById('ws-action-modal');
   if (!nodes.length) return;
-
   const info = {
     pollutant: { name: '污染物 · PM2.5超标事件', wiki: '排放限值 35µg/m³ · 适用《大气法》§42' },
     enterprise: { name: '企业 · 环科示范厂', wiki: '信用代码 91xxxxx · Wiki：排污许可有效期 2027-03' },
     law: { name: '法规 · 大气污染防治法', wiki: '条款 §42–§45 · 行业定制 Wiki 已挂载' },
   };
-
   nodes.forEach((n) => {
     n.addEventListener('click', () => {
-      nodes.forEach((x) => x.classList.remove('ring-2', 'ring-sky-400'));
-      n.classList.add('ring-2', 'ring-sky-400');
+      nodes.forEach((x) => x.style.boxShadow = '');
+      n.style.boxShadow = '0 0 0 2px #2B6CB0';
       const id = n.dataset.graphNode;
       const d = info[id];
       if (sel) sel.textContent = d ? d.name : id;
@@ -577,11 +524,10 @@ function initWorkshopGraph() {
       }
     });
   });
-
   const openAct = document.getElementById('btn-open-action');
   const closeAct = document.getElementById('btn-close-action');
-  if (openAct && modal) openAct.addEventListener('click', () => modal.classList.remove('hidden'));
-  if (closeAct && modal) closeAct.addEventListener('click', () => modal.classList.add('hidden'));
+  if (openAct && modal) openAct.addEventListener('click', () => modal.classList.remove('p-hidden'));
+  if (closeAct && modal) closeAct.addEventListener('click', () => modal.classList.add('p-hidden'));
   const submit = document.getElementById('btn-submit-action');
   const toast = document.getElementById('graph-toast');
   let graphKey = '';
@@ -591,39 +537,35 @@ function initWorkshopGraph() {
       const key = `case:${selName}`;
       if (key === graphKey) {
         toast.textContent = '幂等：重复提交已忽略（ACT-07）';
-        toast.classList.remove('hidden');
+        toast.classList.remove('p-hidden');
         return;
       }
       graphKey = key;
-      modal.classList.add('hidden');
+      modal.classList.add('p-hidden');
       toast.textContent = '立案 Action 已送审（示意）· Draft 隔离 · 非直调 Logic';
-      toast.classList.remove('hidden');
+      toast.classList.remove('p-hidden');
     });
   }
   const dimG = document.getElementById('graph-sel-dims');
   if (dimG) dimG.textContent = 'Selection 维 2 / 10';
 }
 
-/** Buddy 侧栏 + Assist 浮层 WF-WS-06/07 */
+/** ===== Buddy 助手 ===== */
 function initWorkshopAip() {
   const chat = document.getElementById('buddy-panel');
   const assist = document.getElementById('assist-popover');
   const chip = document.getElementById('ctx-chip');
   const openBuddy = document.getElementById('btn-open-buddy');
   const openAssist = document.getElementById('btn-open-assist');
-  if (openBuddy && chat) {
-    openBuddy.addEventListener('click', () => chat.classList.toggle('hidden'));
-  }
-  if (openAssist && assist) {
-    openAssist.addEventListener('click', () => assist.classList.toggle('hidden'));
-  }
+  if (openBuddy && chat) openBuddy.addEventListener('click', () => chat.classList.toggle('p-hidden'));
+  if (openAssist && assist) openAssist.addEventListener('click', () => assist.classList.toggle('p-hidden'));
   document.querySelectorAll('[data-pick-order]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const id = btn.dataset.pickOrder;
       if (chip) chip.textContent = `Selection: ${id}`;
       document.querySelectorAll('[data-pick-order]').forEach((b) => {
-        b.classList.toggle('bg-sky-400/15', b === btn);
-        b.classList.toggle('border-sky-400/40', b === btn);
+        b.style.background = b === btn ? '#EBF4FF' : '';
+        b.style.borderColor = b === btn ? '#BEE3F8' : '';
       });
     });
   });
@@ -634,8 +576,8 @@ function initWorkshopAip() {
     send.addEventListener('click', () => {
       const q = input.value.trim() || '这单为啥卡海关？';
       const ctx = chip ? chip.textContent : 'Selection';
-      log.innerHTML += `<div class="mt-3"><div class="text-sky-300 text-xs">你 · ${ctx}</div><div class="text-gray-200 text-sm mt-1">${q}</div></div>`;
-      log.innerHTML += `<div class="mt-3"><div class="text-amber-300 text-xs">Buddy</div><div class="text-gray-300 text-sm mt-1">已读 Order + Wiki「清关规则」。建议发起申诉 Action（须 HITL）。</div><button type="button" class="mt-2 text-xs text-sky-400 hover:underline" id="buddy-suggest-action">打开申诉表单 →</button></div>`;
+      log.innerHTML += `<div style="margin-top:12px"><div style="color:#2B6CB0;font-size:11px">你 · ${ctx}</div><div style="color:#1A202C;font-size:13px;margin-top:4px">${q}</div></div>`;
+      log.innerHTML += `<div style="margin-top:12px"><div style="color:#D69E2E;font-size:11px">Buddy</div><div style="color:#4A5568;font-size:13px;margin-top:4px">已读 Order + Wiki「清关规则」。建议发起申诉 Action（须 HITL）。</div><button type="button" style="margin-top:8px;font-size:11px;color:#2B6CB0;background:none;border:none;cursor:pointer;text-decoration:underline" id="buddy-suggest-action">打开申诉表单 →</button></div>`;
       input.value = '';
       const sug = document.getElementById('buddy-suggest-action');
       if (sug) sug.addEventListener('click', () => { window.location.href = 'workshop-module.html'; });
@@ -643,10 +585,49 @@ function initWorkshopAip() {
   }
 }
 
+/** 兼容旧页面的 initShell 调用（已废弃，由 autoInit 替代） */
+function initShell() {
+  // 空函数：旧页面底部的 initShell 调用不再生效
+  // 布局转换由 autoInit 统一处理
+}
+
+/** ===== 自动检测页面并转换布局 ===== */
+function autoInit() {
+  // 从 URL 提取页面 ID
+  const path = window.location.pathname;
+  const filename = path.split('/').pop() || 'index.html';
+  const pageId = filename.replace(/\.html$/, '') || 'index';
+
+  // 查找匹配的导航项
+  const page = DEMO_PAGES.find(p => p.href === filename);
+  const activeId = page ? page.id : pageId;
+
+  // 检查是否已经转换过（避免重复）
+  if (document.querySelector('.p-app')) return;
+
+  // 转换布局
+  transformToPalantir(activeId);
+
+  // 初始化各功能模块
+  initTabs('[data-tabs-root]');
+  initAgentList();
+  initStorageRouter();
+  applySyncRoutingParams();
+  initAipMaturity();
+  initAipTools();
+  initAipLogic();
+  initWorkshopModule();
+  initWorkshopGraph();
+  initWorkshopAip();
+}
+
 window.DemoUI = {
   svgIcon,
   statusDot,
+  buildShell,
+  transformToPalantir,
   initShell,
+  autoInit,
   initTabs,
   initAgentList,
   initStorageRouter,
@@ -657,7 +638,5 @@ window.DemoUI = {
   initWorkshopModule,
   initWorkshopGraph,
   initWorkshopAip,
-  setAppearance,
-  getAppearancePref,
   DEMO_VERSION,
 };

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>计划编辑器 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 2"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <button type="button" class="px-3 py-1.5 rounded-lg bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 text-xs font-medium">保存计划</button>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">同步计划编辑器</h1>
+          <p class="mt-1 text-sm text-gray-500">为数据源或管道配置 Cron 调度与上游触发。</p>
+        </div>
+
+        <div class="rounded-xl border border-cyan-400/25 bg-slate-900/50 p-6 space-y-5">
+          <div>
+            <label class="text-xs text-gray-500">计划名称</label>
+            <input type="text" value="订单清洗 · 每日增量" class="mt-1 w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-sm text-gray-200" />
+          </div>
+
+          <div data-tab-group class="border-b border-white/[0.08]">
+            <div class="flex gap-6">
+              <button data-tab="cron" class="tab-active py-2 text-sm font-medium text-gray-100 border-b-2 border-cyan-400">Cron 表达式</button>
+              <button data-tab="upstream" class="py-2 text-sm text-gray-400">上游触发</button>
+            </div>
+          </div>
+
+          <div data-tabs-root>
+            <div data-tab-panel="cron" class="space-y-4">
+              <div>
+                <label class="text-xs text-gray-500">Cron</label>
+                <input type="text" value="0 2 * * *" class="mt-1 w-full rounded-lg bg-slate-950 border border-cyan-400/30 px-3 py-2 text-sm font-mono text-cyan-200" />
+                <p class="text-[10px] text-gray-500 mt-1">每天 02:00 UTC+8 执行</p>
+              </div>
+              <div class="grid grid-cols-4 gap-2 text-xs">
+                <button type="button" class="px-2 py-1.5 rounded border border-white/[0.08] hover:border-cyan-400/30">每小时</button>
+                <button type="button" class="px-2 py-1.5 rounded border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">每天</button>
+                <button type="button" class="px-2 py-1.5 rounded border border-white/[0.08] hover:border-cyan-400/30">每周一</button>
+                <button type="button" class="px-2 py-1.5 rounded border border-white/[0.08] hover:border-cyan-400/30">自定义</button>
+              </div>
+            </div>
+            <div data-tab-panel="upstream" class="hidden space-y-3">
+              <p class="text-xs text-gray-500">当上游数据集或管道构建成功时触发本计划。</p>
+              <label class="flex items-center gap-2 text-sm"><input type="checkbox" checked /> raw_orders 同步完成</label>
+              <label class="flex items-center gap-2 text-sm"><input type="checkbox" /> 库存聚合管道 #build-8842</label>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-white/[0.06] text-xs text-gray-500">
+            关联：<a href="sync.html" class="text-cyan-400 hover:underline">prod-mysql-orders 同步</a> · <a href="pipeline.html" class="text-cyan-400 hover:underline">订单清洗管道</a>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-white/[0.08] p-4 text-sm">
+          <div class="text-gray-400 text-xs mb-2">下次运行</div>
+          <div class="text-gray-200">2026-07-17 02:00:00 · 时区 Asia/Shanghai</div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('schedules', [
+      { href: 'index.html', label: '工作区' },
+      { href: 'data-connection.html', label: '数据集成' },
+      { label: '计划编辑器' }
+    ]);
+    DemoUI.initTabs('[data-tab-group]');
+  </script>
+</body>
+</html>

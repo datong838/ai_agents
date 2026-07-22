@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apollo · Spoke 详情 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" d="M12 2v2M12 20v2"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">Apollo · 交付引擎</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex gap-2">
+        <button type="button" class="px-3 py-1.5 rounded-lg bg-emerald-400/15 border border-emerald-400/30 text-xs text-emerald-200">生成 Plan</button>
+        <button type="button" class="px-3 py-1.5 rounded-lg border border-rose-400/30 text-xs text-rose-300">Rollback</button>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-100">spoke-prod-sh</h1>
+          <p class="mt-1 text-sm text-gray-500">上海生产区 · Entity 同步目标 · 通道 stable</p>
+        </div>
+
+        <!-- Outbound polling callout -->
+        <div class="rounded-xl border border-cyan-400/30 bg-cyan-400/5 px-4 py-3 flex gap-3 text-sm">
+          <span class="text-cyan-400 shrink-0">↗</span>
+          <div>
+            <div class="text-cyan-200 font-medium">出站轮询（Outbound Polling）</div>
+            <p class="text-xs text-gray-500 mt-1">Spoke 主动拉取 Hub 变更队列；气隙环境无入站时仅此路径可用。轮询间隔 5 分钟 · 最近同步 2 分钟前。</p>
+          </div>
+        </div>
+
+        <!-- Full vs Lite toggle -->
+        <div class="rounded-xl border border-emerald-400/25 bg-slate-900/50 p-5">
+          <h2 class="text-sm font-medium text-gray-100 mb-4">Spoke 形态</h2>
+          <div class="flex gap-2 p-1 rounded-lg bg-slate-950 border border-white/[0.08] w-fit">
+            <button type="button" class="px-4 py-2 rounded-md text-xs font-medium bg-emerald-400/20 text-emerald-200 border border-emerald-400/30">Full Spoke</button>
+            <button type="button" class="px-4 py-2 rounded-md text-xs text-gray-500 hover:text-gray-300">Lite Spoke</button>
+          </div>
+          <div class="mt-4 grid md:grid-cols-2 gap-4 text-xs">
+            <div class="rounded-lg border border-emerald-400/20 p-3 bg-emerald-400/5">
+              <div class="text-emerald-300 font-medium mb-1">Full · 当前</div>
+              <ul class="text-gray-500 space-y-1">
+                <li>● 完整 Foundry 运行时</li>
+                <li>● 双向同步 + 出站轮询</li>
+                <li>● Ontology / Pipeline 本地执行</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-white/[0.08] p-3 opacity-70">
+              <div class="text-gray-400 font-medium mb-1">Lite Spoke</div>
+              <ul class="text-gray-500 space-y-1">
+                <li>○ 轻量代理 · 仅出站轮询</li>
+                <li>○ 无本地计算平面</li>
+                <li>○ 适合边缘 / 高合规区</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plan / status -->
+        <div class="rounded-xl border border-white/[0.08] bg-slate-900/40 p-5 space-y-4">
+          <h2 class="text-sm font-medium text-gray-100">部署计划</h2>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center justify-between py-2 border-b border-white/[0.06]">
+              <span class="text-gray-300">Bundle apollo-core</span>
+              <span class="text-emerald-400 text-xs">已应用 2.14.1</span>
+            </div>
+            <div class="flex items-center justify-between py-2 border-b border-white/[0.06]">
+              <span class="text-gray-300">FDE 维修派单资产包</span>
+              <span class="text-amber-300 text-xs">待应用 1.8.0</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span class="text-gray-300">Config Override</span>
+              <span class="text-gray-500 text-xs">2 项覆盖</span>
+            </div>
+          </div>
+          <div class="flex gap-2 pt-2">
+            <button type="button" class="px-3 py-1.5 rounded-lg bg-sky-400/15 border border-sky-400/30 text-xs text-sky-200">预览 Plan Diff</button>
+            <a href="apollo-config.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs">配置覆盖 →</a>
+          </div>
+        </div>
+
+        <a href="apollo-hub.html" class="text-xs text-gray-500 hover:text-emerald-300">← 返回 Hub 舰队</a>
+      </div>
+    </main>
+  </div>
+  <script src="assets/demo.js"></script>
+  <script>DemoUI.initShell('apollo-spoke', [{ href: 'index.html', label: '工作区' }, { href: 'apollo-hub.html', label: 'Apollo' }, { label: 'Spoke 详情' }]);</script>
+</body>
+</html>

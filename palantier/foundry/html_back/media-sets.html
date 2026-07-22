@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>维修扫描件 · 媒体集 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-2">
+        <a href="pipeline-doc-intel.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">在 Pipeline 中打开</a>
+        <a href="lineage.html?view=maintenance" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">在沿袭中打开</a>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <div data-tab-group class="border-b border-white/[0.08] bg-slate-950/50 px-6 shrink-0">
+      <div class="flex gap-6">
+        <button data-tab="browse" class="tab-active py-3 text-sm font-medium text-gray-100 border-b-2 border-cyan-400">浏览</button>
+        <button data-tab="sync" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors border-b-2 border-transparent">同步</button>
+        <button data-tab="transform" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors border-b-2 border-transparent">变换</button>
+        <button data-tab="settings" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors border-b-2 border-transparent">设置</button>
+      </div>
+    </div>
+
+    <main class="flex-1 flex min-h-0 overflow-hidden">
+      <div data-tab-panel="browse" class="flex-1 flex min-h-0">
+        <aside class="w-72 shrink-0 border-r border-white/[0.08] bg-slate-900/50 flex flex-col">
+          <div class="p-3 border-b border-white/[0.08] flex items-center justify-between gap-2">
+            <select class="flex-1 rounded-lg bg-slate-950 border border-white/[0.08] px-2 py-1.5 text-xs text-gray-300 focus:outline-none">
+              <option selected>文档</option>
+              <option>电子表格</option>
+            </select>
+            <span class="px-2 py-0.5 rounded text-xs badge-media-doc shrink-0">document</span>
+          </div>
+          <div class="p-3 border-b border-white/[0.08]">
+            <input type="search" placeholder="筛选文件…" class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-1.5 text-xs text-gray-300 placeholder-gray-500 focus:outline-none focus:border-cyan-400/40" />
+          </div>
+          <ul class="flex-1 overflow-y-auto p-2 space-y-0.5 text-sm">
+            <li>
+              <button class="w-full text-left px-3 py-2 rounded-lg bg-purple-400/10 border border-purple-400/20 text-gray-100 flex items-center gap-2">
+                <svg class="w-4 h-4 text-red-400 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z"/></svg>
+                scan_001.pdf
+              </button>
+            </li>
+            <li>
+              <button class="w-full text-left px-3 py-2 rounded-lg hover:bg-white/[0.03] text-gray-400 flex items-center gap-2">
+                <svg class="w-4 h-4 text-red-400 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z"/></svg>
+                scan_002.pdf
+              </button>
+            </li>
+            <li>
+              <button class="w-full text-left px-3 py-2 rounded-lg hover:bg-white/[0.03] text-gray-400 flex items-center gap-2">
+                <svg class="w-4 h-4 text-red-400 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z"/></svg>
+                scan_003.pdf
+              </button>
+            </li>
+          </ul>
+          <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">248 个文件 · 1.2 GB</div>
+        </aside>
+
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+          <div class="p-4 border-b border-white/[0.08] flex items-center justify-between shrink-0">
+            <div>
+              <h2 class="text-gray-100 font-medium">scan_001.pdf</h2>
+              <p class="text-xs text-gray-500 mt-0.5">/Media/Maintenance/scans/scan_001.pdf · 2.4 MB · 12 页</p>
+            </div>
+            <div class="flex gap-2">
+              <a href="dataset.html?maintenance=1" class="px-3 py-1.5 rounded-lg border border-purple-400/30 text-xs text-purple-300 hover:bg-purple-400/5 transition-colors">获取媒体引用</a>
+              <button class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04] transition-colors">OCR 预览</button>
+            </div>
+          </div>
+          <div class="flex-1 overflow-auto p-6">
+            <div class="max-w-lg mx-auto rounded-xl border border-white/[0.08] bg-slate-900 aspect-[3/4] flex flex-col items-center justify-center p-8 text-center">
+              <svg class="w-16 h-16 text-red-400/60 mb-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z"/></svg>
+              <div class="text-gray-100 text-sm font-medium">维修记录扫描件 · 第 1 页</div>
+              <p class="text-xs text-gray-500 mt-2 leading-relaxed">飞机尾号 B-1234 · 维修日期 2026-07-08<br/>更换零件：液压泵组件 A-7721</p>
+              <div class="mt-6 w-full rounded-lg border border-white/[0.06] bg-slate-950/50 p-3 text-left text-xs text-gray-400 font-mono">
+                OCR 摘要（Markdown）：<br/>
+                <span class="text-gray-300"># 维修报告 MR-2026-0847</span><br/>
+                Tail: B-1234 · Date: 2026-07-08
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-tab-panel="sync" class="hidden flex-1 overflow-y-auto p-6 lg:p-8">
+        <div class="max-w-3xl mx-auto space-y-6">
+          <div>
+            <h2 class="text-lg font-medium text-gray-100">媒体集同步</h2>
+            <p class="text-sm text-gray-500 mt-1">从 SharePoint 增量拉取 PDF 至 Document 型媒体集</p>
+          </div>
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900 divide-y divide-white/[0.06]">
+            <div class="p-4 grid sm:grid-cols-2 gap-4 text-sm">
+              <div><span class="text-gray-500 text-xs block mb-1">数据源</span><a href="source-detail.html?source=docs" class="text-cyan-400 hover:underline">sharepoint-maintenance-docs</a></div>
+              <div><span class="text-gray-500 text-xs block mb-1">同步名称</span><span class="text-gray-300">docs-maintenance-scans</span></div>
+              <div><span class="text-gray-500 text-xs block mb-1">源路径</span><span class="text-gray-300 font-mono text-xs">/Maintenance/Scans/**/*.pdf</span></div>
+              <div><span class="text-gray-500 text-xs block mb-1">目标媒体集</span><span class="text-gray-300">/Media/Maintenance/scans</span></div>
+              <div><span class="text-gray-500 text-xs block mb-1">Schema</span><span class="px-2 py-0.5 rounded text-xs badge-media-doc">document</span></div>
+              <div><span class="text-gray-500 text-xs block mb-1">写入模式</span><span class="text-gray-300">APPEND · 增量追加</span></div>
+            </div>
+            <div class="p-4 flex items-center justify-between text-sm">
+              <div>
+                <span class="text-gray-500">上次运行 </span>
+                <span class="text-emerald-400">30 分钟前 · 成功</span>
+                <span class="text-gray-500 ml-2">· 新增 3 文件</span>
+              </div>
+              <button class="px-3 py-1.5 rounded-lg bg-cyan-400/10 text-cyan-400 text-xs border border-cyan-400/20 hover:bg-cyan-400/15">立即运行</button>
+            </div>
+          </div>
+          <div class="rounded-xl border border-white/[0.08] overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-slate-900/80 text-gray-500 text-left"><tr>
+                <th class="px-4 py-2 font-medium">开始时间</th><th class="px-4 py-2 font-medium">文件数</th><th class="px-4 py-2 font-medium">状态</th>
+              </tr></thead>
+              <tbody class="divide-y divide-white/[0.06]">
+                <tr><td class="px-4 py-2 text-gray-400">2026-07-13 19:02</td><td class="px-4 py-2 text-gray-300">248</td><td class="px-4 py-2 text-emerald-400">成功</td></tr>
+                <tr><td class="px-4 py-2 text-gray-500">2026-07-13 07:00</td><td class="px-4 py-2 text-gray-500">245</td><td class="px-4 py-2 text-emerald-400/80">成功</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="sync-routing.html?source=docs" class="inline-flex items-center gap-1 text-cyan-400 text-sm hover:underline">编辑同步配置 →</a>
+        </div>
+      </div>
+
+      <div data-tab-panel="transform" class="hidden flex-1 overflow-y-auto p-6 lg:p-8">
+        <div class="max-w-3xl mx-auto space-y-6">
+          <div>
+            <h2 class="text-lg font-medium text-gray-100">可用变换 · Access Mode</h2>
+            <p class="text-sm text-gray-500 mt-1">文档类媒体集支持的按需变换（Foundry media-sets.md）</p>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+              <div class="text-gray-100 text-sm font-medium">提取文本（原始）</div>
+              <p class="text-xs text-gray-500 mt-1">PDF 页面纯文本 · 75 计算秒/GB</p>
+              <a href="pipeline-doc-intel.html" class="text-cyan-400 text-xs mt-3 inline-block hover:underline">在 Pipeline 中使用 →</a>
+            </div>
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+              <div class="text-gray-100 text-sm font-medium">提取文本（OCR）</div>
+              <p class="text-xs text-gray-500 mt-1">扫描件 OCR · 275 计算秒/GB</p>
+              <button class="text-cyan-400 text-xs mt-3 hover:underline">试运行 OCR</button>
+            </div>
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+              <div class="text-gray-100 text-sm font-medium">页面渲染为图像</div>
+              <p class="text-xs text-gray-500 mt-1">供 Use LLM 视觉输入</p>
+            </div>
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+              <div class="text-gray-100 text-sm font-medium">获取媒体引用</div>
+              <p class="text-xs text-gray-500 mt-1">生成 mediaReference 列 → Dataset</p>
+              <a href="dataset.html?maintenance=1" class="text-purple-300 text-xs mt-3 inline-block hover:underline">查看下游表 →</a>
+            </div>
+          </div>
+          <div class="rounded-lg border border-purple-400/20 bg-purple-400/5 p-4 text-xs text-purple-200/80">
+            AIP Doc Intel 完整链路请在 <a href="pipeline-doc-intel.html" class="text-purple-300 underline">维修文档 Doc Intel 管道</a> 中配置（OCR → LLM 实体提取 → media_ref 回链）。
+          </div>
+        </div>
+      </div>
+
+      <div data-tab-panel="settings" class="hidden flex-1 overflow-y-auto p-6 lg:p-8">
+        <div class="max-w-xl mx-auto space-y-6">
+          <div>
+            <h2 class="text-lg font-medium text-gray-100">媒体集设置</h2>
+            <p class="text-sm text-gray-500 mt-1">maintenance_scans · Document schema</p>
+          </div>
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-5 space-y-5 text-sm">
+            <div>
+              <label class="block text-xs text-gray-500 mb-1.5">媒体类型 / Schema</label>
+              <div class="flex items-center gap-2">
+                <select disabled class="rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-gray-400 text-sm flex-1">
+                  <option selected>文档 · PDF</option>
+                </select>
+                <span class="px-2 py-1 rounded text-xs badge-media-doc shrink-0">document</span>
+              </div>
+              <p class="text-xs text-amber-400/90 mt-2">⚠ 创建后不可改为 Spreadsheet；XLSX 须单独建电子表格型媒体集</p>
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1.5">保留策略</label>
+              <select class="w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-gray-300">
+                <option selected>永久保留</option>
+                <option>14 天</option>
+                <option>30 天</option>
+                <option>90 天</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 mb-1.5">存储策略</label>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 text-gray-300"><input type="radio" name="storage" checked class="text-cyan-400" /> 复制到 Foundry 存储（默认）</label>
+                <label class="flex items-center gap-2 text-gray-400"><input type="radio" name="storage" /> 虚拟媒体集 · 直读 SharePoint（若源支持）</label>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-white/[0.06] flex justify-between text-xs text-gray-500">
+              <span>RID: ri.mediaset.maintenance.scans</span>
+              <span>248 项 · 1.2 GB</span>
+            </div>
+          </div>
+          <button class="px-4 py-2 rounded-lg border border-white/[0.08] text-sm text-gray-300 hover:bg-white/[0.04]">保存设置</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('media-sets', [
+      { label: '工作区', href: 'index.html' },
+      { label: '媒体集', href: 'media-sets.html' },
+      { label: 'maintenance_scans' }
+    ]);
+    DemoUI.initTabs('[data-tab-group]');
+  </script>
+</body>
+</html>

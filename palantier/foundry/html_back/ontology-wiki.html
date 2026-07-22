@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM Wiki · 双向绑定 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-orange-400/10 border border-orange-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-orange-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">本体 · LLM Wiki</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0" data-tabs-root>
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-1 rounded text-[10px] border border-orange-400/30 bg-orange-400/10 text-orange-200">Palantir Document ≠ 活 Wiki</span>
+        <a href="ontology-object.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300">← Order Overview</a>
+        <button type="button" id="btn-wiki-save" class="px-3 py-1.5 rounded-lg bg-orange-400 text-slate-950 text-xs font-medium hover:bg-orange-300">保存 Wiki</button>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400/30 to-amber-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <div data-tab-group class="border-b border-white/[0.08] px-6 shrink-0">
+      <div class="flex gap-5">
+        <button data-tab="card" class="tab-active py-3 text-sm font-medium text-gray-100 border-b-2 border-orange-400">知识卡片</button>
+        <button data-tab="sync" class="py-3 text-sm text-gray-400 border-b-2 border-transparent">双向绑定</button>
+        <button data-tab="agent" class="py-3 text-sm text-gray-400 border-b-2 border-transparent">Agent 读字段</button>
+        <button data-tab="versions" class="py-3 text-sm text-gray-400 border-b-2 border-transparent">版本</button>
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-hidden flex min-h-0">
+      <!-- 知识卡片：左 Object 右 Wiki -->
+      <div data-tab-panel="card" class="flex-1 flex min-h-0">
+        <aside class="w-80 shrink-0 border-r border-white/[0.08] bg-slate-900/40 overflow-y-auto p-5">
+          <div class="text-[10px] uppercase tracking-wider text-violet-300/80 mb-2">WIKI-001 · Object 挂载</div>
+          <h2 class="text-base font-semibold text-gray-100 mb-1">Order · ORD-88421</h2>
+          <p class="text-xs text-gray-500 mb-4 font-mono">实例 PK: ORD-88421</p>
+          <h3 class="text-xs text-gray-500 mb-2">Object 属性（只读同步源）</h3>
+          <dl class="space-y-3 text-sm" id="obj-props">
+            <div class="rounded-lg border border-white/[0.08] bg-slate-950/50 p-3">
+              <dt class="text-xs text-gray-500">totalAmount</dt>
+              <dd class="text-gray-100 font-mono mt-0.5" data-prop="totalAmount">1280.00</dd>
+            </div>
+            <div class="rounded-lg border border-white/[0.08] bg-slate-950/50 p-3">
+              <dt class="text-xs text-gray-500">currencyCode</dt>
+              <dd class="text-gray-100 font-mono mt-0.5" data-prop="currencyCode">CNY</dd>
+            </div>
+            <div class="rounded-lg border border-white/[0.08] bg-slate-950/50 p-3">
+              <dt class="text-xs text-gray-500">shippingRegion</dt>
+              <dd class="text-gray-100 font-mono mt-0.5" data-prop="shippingRegion">华东</dd>
+            </div>
+            <div class="rounded-lg border border-orange-400/30 bg-orange-400/5 p-3">
+              <dt class="text-xs text-orange-300/80">remark ← Wiki 可回写</dt>
+              <dd class="text-gray-100 mt-0.5" data-prop="remark" id="prop-remark">（空）</dd>
+            </div>
+          </dl>
+        </aside>
+        <div class="flex-1 overflow-y-auto p-6">
+          <div class="max-w-2xl mx-auto space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-lg font-semibold text-gray-100">LLM Wiki 知识卡片</h2>
+              <span class="text-xs text-orange-300">活知识 · 非静态 Document</span>
+            </div>
+            <div class="rounded-xl border border-orange-400/25 bg-slate-900/50 p-5 space-y-4">
+              <div>
+                <label class="text-xs text-gray-500">标题</label>
+                <input id="wiki-title" value="订单 ORD-88421 · 运营备注卡" class="mt-1 w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-sm text-gray-100" />
+              </div>
+              <div>
+                <label class="text-xs text-gray-500">结构化字段 · specification</label>
+                <textarea id="wiki-spec" rows="3" class="mt-1 w-full rounded-lg bg-slate-950 border border-white/[0.08] px-3 py-2 text-sm text-gray-200 font-mono">金额 1280 CNY；区域 华东；客户 VIP；预计发货 T+1</textarea>
+              </div>
+              <div>
+                <label class="text-xs text-gray-500">自然语言备注（保存 → 回写 Object.remark）</label>
+                <textarea id="wiki-remark" rows="3" class="mt-1 w-full rounded-lg bg-slate-950 border border-orange-400/30 px-3 py-2 text-sm text-gray-200" placeholder="例如：备注：近期缺货，优先补货…">备注：近期缺货，仓配协同优先</textarea>
+              </div>
+              <p class="text-[11px] text-gray-500">保存后触发 WIKI-002：Wiki → Object.remark；若改 Object 金额则上方 Wiki specification 自动刷新。</p>
+            </div>
+            <div id="sync-toast" class="hidden rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-xs text-emerald-300"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 双向绑定示意 -->
+      <div data-tab-panel="sync" class="hidden flex-1 overflow-y-auto p-6">
+        <div class="max-w-3xl mx-auto space-y-6">
+          <h2 class="text-lg font-semibold text-gray-100">WIKI-002 · 双向绑定</h2>
+          <div class="grid md:grid-cols-3 gap-4 text-center text-sm">
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-5">
+              <div class="text-violet-300 font-medium mb-2">Object 属性</div>
+              <p class="text-xs text-gray-500">price / spec / remark</p>
+              <button type="button" id="sim-obj-change" class="mt-4 px-3 py-1.5 rounded-lg border border-violet-400/30 text-xs text-violet-200">模拟：改金额 1280→1500</button>
+            </div>
+            <div class="rounded-xl border border-orange-400/30 bg-orange-400/10 p-5 flex flex-col items-center justify-center">
+              <div class="text-orange-200 font-medium">↔ 双向同步</div>
+              <p class="text-[11px] text-gray-500 mt-2">自动刷新 · 反向回写</p>
+            </div>
+            <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-5">
+              <div class="text-orange-300 font-medium mb-2">LLM Wiki</div>
+              <p class="text-xs text-gray-500">知识卡片字段</p>
+              <button type="button" id="sim-wiki-change" class="mt-4 px-3 py-1.5 rounded-lg border border-orange-400/30 text-xs text-orange-200">模拟：Wiki 写备注</button>
+            </div>
+          </div>
+          <ul class="text-sm space-y-2 rounded-xl border border-white/[0.08] p-4" id="sync-log">
+            <li class="text-gray-500 text-xs">等待模拟操作…</li>
+          </ul>
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-5 space-y-4 text-sm">
+            <h3 class="text-gray-100 font-medium">双向绑定规则</h3>
+            <div>
+              <div class="text-xs text-violet-300 mb-2">方向 A（系统→人）</div>
+              <div class="flex flex-wrap gap-2 text-[10px]">
+                <span class="px-2 py-1 rounded bg-violet-400/10 border border-violet-400/25">① Object 属性变更</span>
+                <span class="text-gray-600">→</span>
+                <span class="px-2 py-1 rounded bg-violet-400/10 border border-violet-400/25">② 自动刷新 Wiki.spec</span>
+                <span class="text-gray-600">→</span>
+                <span class="px-2 py-1 rounded bg-violet-400/10 border border-violet-400/25">③ 版本审计</span>
+              </div>
+            </div>
+            <div>
+              <div class="text-xs text-orange-300 mb-2">方向 B（人→系统）</div>
+              <p class="text-xs text-gray-500">Wiki 写回 Object 属性须经 <strong class="text-amber-300">Action 受控写回</strong>，禁止 Agent 直写。</p>
+            </div>
+            <div class="text-xs text-gray-500 space-y-1">
+              <p><span class="text-amber-300">冲突策略：</span>Last-Write-Wins + 全量审计日志</p>
+              <p><span class="text-emerald-300">Agent 权限：</span>只读 Wiki 结构化字段，不可编辑活卡片</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent -->
+      <div data-tab-panel="agent" class="hidden flex-1 overflow-y-auto p-6">
+        <div class="max-w-2xl mx-auto space-y-4">
+          <h2 class="text-lg font-semibold text-gray-100">WIKI-003 · Agent 读结构化字段</h2>
+          <p class="text-xs text-gray-500">AIP 决策引擎优先读 Wiki 字段推理，而非全文向量检索</p>
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900/50 p-5 font-mono text-xs text-gray-300 space-y-2">
+            <div class="text-gray-500">// Tool call · Wiki 字段</div>
+            <div>get_wiki_fields(object=&quot;Order&quot;, pk=&quot;ORD-88421&quot;)</div>
+            <div class="text-emerald-400 mt-3">→ specification: <span id="agent-spec">金额 1280 CNY；区域 华东…</span></div>
+            <div class="text-emerald-400">→ remark: <span id="agent-remark">备注：近期缺货，仓配协同优先</span></div>
+          </div>
+          <div class="rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-4 text-sm text-gray-300">
+            <span class="text-emerald-400">Agent 回答预览：</span>
+            「该订单金额来自 Wiki.specification，备注提示近期缺货——建议触发 restock Action，而非仅依赖向量相似片段。」
+          </div>
+        </div>
+      </div>
+
+      <!-- 版本 -->
+      <div data-tab-panel="versions" class="hidden flex-1 overflow-y-auto p-6">
+        <div class="max-w-2xl mx-auto space-y-4">
+          <h2 class="text-lg font-semibold text-gray-100">WIKI-004 · 版本管理</h2>
+          <table class="w-full text-sm rounded-xl border border-white/[0.08] overflow-hidden">
+            <thead class="bg-slate-900/80 text-gray-500 text-left">
+              <tr><th class="px-4 py-3">版本</th><th class="px-4 py-3">来源</th><th class="px-4 py-3">摘要</th><th class="px-4 py-3"></th></tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]" id="ver-tbody">
+              <tr>
+                <td class="px-4 py-3 font-mono text-gray-200">v3</td>
+                <td class="px-4 py-3 text-orange-300">人工编辑</td>
+                <td class="px-4 py-3 text-gray-400">备注：近期缺货</td>
+                <td class="px-4 py-3 text-gray-500">当前</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-gray-200">v2</td>
+                <td class="px-4 py-3 text-violet-300">Object 同步</td>
+                <td class="px-4 py-3 text-gray-400">金额 1280 → Wiki.specification</td>
+                <td class="px-4 py-3"><button type="button" class="text-xs text-orange-300 hover:underline btn-rollback">回滚</button></td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-gray-200">v1</td>
+                <td class="px-4 py-3 text-gray-500">自动挂载</td>
+                <td class="px-4 py-3 text-gray-400">WIKI-001 初始卡片</td>
+                <td class="px-4 py-3"><button type="button" class="text-xs text-orange-300 hover:underline btn-rollback">回滚</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('ontology-wiki', [
+      { label: '工作区', href: 'index.html' },
+      { label: 'Ontology', href: 'ontology.html' },
+      { label: 'LLM Wiki' }
+    ]);
+    DemoUI.initTabs('[data-tabs-root]');
+
+    const toast = document.getElementById('sync-toast');
+    const log = document.getElementById('sync-log');
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 4000);
+    }
+    function pushLog(msg) {
+      const li = document.createElement('li');
+      li.className = 'text-xs text-gray-300';
+      li.textContent = new Date().toLocaleTimeString() + ' · ' + msg;
+      if (log.querySelector('.text-gray-500')) log.innerHTML = '';
+      log.prepend(li);
+    }
+
+    document.getElementById('btn-wiki-save').addEventListener('click', () => {
+      const remark = document.getElementById('wiki-remark').value.trim() || '（空）';
+      document.getElementById('prop-remark').textContent = remark;
+      document.getElementById('agent-remark').textContent = remark;
+      document.getElementById('agent-spec').textContent = document.getElementById('wiki-spec').value.slice(0, 40) + '…';
+      showToast('WIKI-002 ✅ Wiki → Object.remark 已回写');
+      pushLog('Wiki 保存 → Object.remark = ' + remark.slice(0, 24));
+    });
+
+    document.getElementById('sim-obj-change').addEventListener('click', () => {
+      document.querySelector('[data-prop="totalAmount"]').textContent = '1500.00';
+      const spec = document.getElementById('wiki-spec');
+      spec.value = spec.value.replace(/1280/, '1500');
+      showToast('WIKI-002 ✅ Object.totalAmount → Wiki.specification 已刷新');
+      pushLog('Object 金额 1280→1500 → Wiki 自动同步');
+    });
+
+    document.getElementById('sim-wiki-change').addEventListener('click', () => {
+      document.getElementById('wiki-remark').value = '备注：近期缺货，优先补货';
+      document.getElementById('btn-wiki-save').click();
+    });
+
+    document.querySelectorAll('.btn-rollback').forEach(btn => {
+      btn.addEventListener('click', () => showToast('WIKI-004 · 已请求回滚（演示）'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OKF Funnel · 行业垂直定制 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">本体 · OKF Funnel</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-1 rounded text-[10px] border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">行业垂直定制</span>
+        <button type="button" id="btn-auto-map" class="px-3 py-1.5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 text-emerald-400 text-xs font-medium hover:bg-emerald-400/20">自动映射</button>
+        <button type="button" id="btn-lint" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs text-gray-300 hover:bg-white/[0.04]">Lint 检查</button>
+        <a href="ontology-object.html" id="btn-publish" class="btn-primary px-3 py-1.5 rounded-lg bg-emerald-400 text-slate-950 text-xs font-medium hover:bg-emerald-300 shadow-lg shadow-emerald-400/10" title="Lint 失败不可 Publish">发布</a>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400/30 to-cyan-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <main class="flex-1 flex min-h-0 overflow-hidden">
+      <!-- Left -->
+      <aside class="w-72 shrink-0 border-r border-white/[0.08] bg-slate-900/50 overflow-y-auto flex flex-col">
+        <div class="p-4 border-b border-white/[0.08]">
+          <h2 class="text-sm font-medium text-gray-100">OKF · 行业垂直定制</h2>
+          <p class="text-[11px] text-gray-500 mt-1">行业 Schema 模板 · 加速列 → Object 属性映射</p>
+          <div class="mt-3 space-y-1.5" id="industry-picker">
+            <button type="button" data-industry="ecom" class="industry-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-emerald-400/40 bg-emerald-400/10 text-emerald-200">跨境电商 · Product / Listing / Order</button>
+            <button type="button" data-industry="env" class="industry-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-white/[0.08] text-gray-400 hover:bg-white/[0.03]">环科院 · Pollutant / Regulation</button>
+            <button type="button" data-industry="bio" class="industry-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-white/[0.08] text-gray-400 hover:bg-white/[0.03]">湃肽/生物 · Peptide / Batch</button>
+          </div>
+        </div>
+        <div class="p-4 border-b border-white/[0.08]">
+          <h2 class="text-sm font-medium text-gray-100">源 Schema</h2>
+          <p class="text-xs text-gray-500 mt-0.5" id="src-dataset-label">
+            <a href="dataset.html?curated=1" class="text-emerald-400 hover:underline">curated_orders</a>
+          </p>
+        </div>
+        <ul class="p-2 space-y-1 text-sm flex-1" id="src-columns"></ul>
+        <div class="p-4 border-t border-white/[0.08]">
+          <div class="rounded-lg border border-emerald-400/20 bg-emerald-400/5 p-3 text-xs">
+            <div class="text-emerald-400 font-medium mb-1">谛听 vs Palantir</div>
+            <p class="text-gray-500">手工逐字段映射成本高；OKF 基于行业模板自动推荐列 → Property。</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right -->
+      <div class="flex-1 overflow-y-auto p-6 space-y-6">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h1 class="text-lg font-semibold text-gray-100" id="map-title">Order → Object Type 映射</h1>
+            <p class="text-xs text-gray-500 mt-1" id="map-sub">OKF · 智能属性映射 · 完成度 <span id="map-pct">83%</span></p>
+          </div>
+          <div class="flex gap-2 text-[10px]">
+            <span class="px-2 py-1 rounded border border-emerald-400/20 text-emerald-300">行业垂直定制</span>
+            <span class="px-2 py-1 rounded border border-emerald-400/20 text-emerald-300">智能属性映射</span>
+            <span class="px-2 py-1 rounded border border-amber-400/20 text-amber-300">数据质量清洗</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden bg-slate-900/50">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-900/80 text-gray-500 text-left">
+              <tr>
+                <th class="px-4 py-3 font-medium">源列</th>
+                <th class="px-4 py-3 font-medium w-8"></th>
+                <th class="px-4 py-3 font-medium">Object Property</th>
+                <th class="px-4 py-3 font-medium">类型</th>
+                <th class="px-4 py-3 font-medium">置信度</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]" id="map-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- OKF-003 -->
+        <div class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-medium text-amber-200">OKF · 行业数据质量清洗</h2>
+            <span class="text-[10px] text-gray-500">Pipeline 落地前纠错</span>
+          </div>
+          <ul class="text-xs space-y-2" id="clean-rules"></ul>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-gray-500">
+          <span id="lint-msg">上次 Lint: 无错误 · 1 条警告 · Constitution 伦理 1 条提示</span>
+          <p class="text-amber-300/90 text-[11px]">Lint / Constitution 失败不可 Publish</p>
+          <div class="flex gap-4">
+            <a href="ontology-wiki.html" class="text-orange-300 hover:underline">挂载 LLM Wiki →</a>
+            <a href="ontology-object.html" class="text-violet-300 hover:underline">Publish → Overview</a>
+            <a href="ontology-funnel.html" class="text-violet-300 hover:underline font-medium">Funnel 四阶段水合 →</a>
+            <a href="ontology-graph-health.html" class="text-violet-300 hover:underline">图谱健康 →</a>
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-medium text-gray-100">AOS Constitution（可执行契约）</h3>
+            <span class="text-[10px] px-2 py-0.5 rounded border border-emerald-400/30 text-emerald-300">Bundle /constitution</span>
+          </div>
+          <div class="grid md:grid-cols-3 gap-3 text-xs">
+            <div class="rounded-lg border border-white/[0.08] bg-slate-950/40 p-3">
+              <div class="text-emerald-300 mb-1">语义契约</div>
+              <p class="text-gray-500">Order.total_amount == sum(Item.price × Item.quantity)</p>
+              <span class="inline-block mt-2 text-[10px] text-emerald-400">Lint ✅</span>
+            </div>
+            <div class="rounded-lg border border-white/[0.08] bg-slate-950/40 p-3">
+              <div class="text-emerald-300 mb-1">推理边界</div>
+              <p class="text-gray-500">RiskScore 仅 Function-X · 输入须 Dataset-Y</p>
+              <span class="inline-block mt-2 text-[10px] text-emerald-400">Lint ✅</span>
+            </div>
+            <div class="rounded-lg border border-amber-400/20 bg-slate-950/40 p-3">
+              <div class="text-amber-300 mb-1">伦理护栏</div>
+              <p class="text-gray-500">改 FinancialRecord 须 Human-Approval Action</p>
+              <span class="inline-block mt-2 text-[10px] text-amber-300">须 HITL ⚠</span>
+            </div>
+          </div>
+          <p class="text-[11px] text-gray-500">Git 管理 · Apollo Channel 同绑 · 对齐方案 25 / T06 §7.2</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('funnel', [
+      { label: '工作区', href: 'index.html' },
+      { label: 'OKF Funnel' }
+    ]);
+
+    const INDUSTRIES = {
+      ecom: {
+        title: 'Order → Object Type 映射',
+        sub: '跨境电商行业模板 · Product / Listing / Order',
+        dataset: '<a href="dataset.html?curated=1" class="text-emerald-400 hover:underline">curated_orders</a> · 6 列',
+        pct: '83%',
+        cols: [
+          ['order_id', 'STRING'], ['amount', 'DECIMAL'], ['currency', 'STRING'],
+          ['customer_name', 'STRING'], ['region', 'STRING'], ['created_at', 'TIMESTAMP']
+        ],
+        maps: [
+          ['order_id', 'orderId', 'String · PK', '98%', false],
+          ['amount', 'totalAmount', 'Double', '95%', false],
+          ['currency', 'currencyCode', 'String · ISO', '92%', false],
+          ['customer_name', 'customer.displayName', 'String · Link', '88%', true],
+          ['region', 'shippingRegion', 'String · Enum', '72%', false],
+          ['created_at', 'orderDate', 'Timestamp', '96%', false],
+        ],
+        clean: [
+          '✅ SKU / 订单号首尾空格自动去除',
+          '✅ currency 非 ISO 码 → 告警并默认 CNY',
+          '⚠ region 枚举外取值：Northwest → 记入 Data Health',
+        ],
+        lint: '上次 Lint: 无错误 · 1 条警告 (region 枚举)'
+      },
+      env: {
+        title: 'Pollutant → Object Type 映射',
+        sub: '环科院行业模板 · Pollutant / Regulation / Enterprise',
+        dataset: '<span class="text-emerald-400">raw_emissions.xlsx</span> · 导入识别',
+        pct: '91%',
+        cols: [
+          ['CAS No.', 'STRING'], ['排放限值', 'DOUBLE'], ['污染物名称', 'STRING'],
+          ['适用法规', 'STRING'], ['企业信用代码', 'STRING'], ['采样时间', 'TIMESTAMP']
+        ],
+        maps: [
+          ['CAS No.', 'Pollutant.cas_no', 'String · PK', '99%', true],
+          ['排放限值', 'Pollutant.limit_value', 'Double · mg/m³', '96%', true],
+          ['污染物名称', 'Pollutant.displayName', 'String · Title', '94%', true],
+          ['适用法规', 'Regulation.code', 'String · Link', '90%', true],
+          ['企业信用代码', 'Enterprise.uscc', 'String · FK', '88%', true],
+          ['采样时间', 'Pollutant.sampled_at', 'Timestamp', '97%', false],
+        ],
+        clean: [
+          '✅ CAS 号格式纠错：50-00-0 ↔ 50000（补连字符）',
+          '✅ 分子式大小写自动纠正：h2so4 → H₂SO₄',
+          '✅ 排放限值单位统一为 mg/m³',
+        ],
+        lint: '上次 Lint: 全部通过 · CAS No. → cas_no 自动识别'
+      },
+      bio: {
+        title: 'Peptide → Object Type 映射',
+        sub: '湃肽/生物行业模板 · Peptide / AminoAcid / Batch',
+        dataset: '<span class="text-emerald-400">peptide_batches.csv</span>',
+        pct: '89%',
+        cols: [
+          ['序列', 'STRING'], ['纯度%', 'DOUBLE'], ['批号', 'STRING'],
+          ['氨基酸列表', 'STRING'], ['合成日期', 'DATE'], ['备注', 'STRING']
+        ],
+        maps: [
+          ['批号', 'Batch.lot_no', 'String · PK', '98%', true],
+          ['序列', 'Peptide.sequence', 'String', '97%', true],
+          ['纯度%', 'Peptide.purity', 'Double · 0–1', '93%', true],
+          ['氨基酸列表', 'AminoAcid.codes', 'String[] · Link', '86%', true],
+          ['合成日期', 'Batch.synthesized_at', 'Date', '95%', false],
+          ['备注', 'Peptide.remark', 'String', '70%', false],
+        ],
+        clean: [
+          '✅ 序列字母大写 / 非法字符剥离',
+          '✅ 纯度% → 0–1 小数归一',
+          '✅ 批号空白与全角数字纠正',
+        ],
+        lint: '上次 Lint: 无错误 · 备注列置信度偏低（可选映射）'
+      }
+    };
+
+    function render(key) {
+      const d = INDUSTRIES[key];
+      document.getElementById('map-title').textContent = d.title;
+      document.getElementById('map-sub').innerHTML = 'OKF · 智能属性映射 · ' + d.sub + ' · 完成度 <span id="map-pct">' + d.pct + '</span>';
+      document.getElementById('src-dataset-label').innerHTML = d.dataset;
+      document.getElementById('src-columns').innerHTML = d.cols.map(([n, t], i) =>
+        `<li class="px-3 py-2 rounded-lg ${i===0?'bg-white/[0.04]':'hover:bg-white/[0.03]'} flex items-center justify-between">
+          <span class="font-mono text-gray-200 text-xs">${n}</span><span class="text-xs text-gray-500">${t}</span></li>`
+      ).join('');
+      document.getElementById('map-tbody').innerHTML = d.maps.map(([src, prop, typ, conf, tid]) =>
+        `<tr class="table-row-hover">
+          <td class="px-4 py-3 font-mono text-gray-200 text-xs">${src}</td>
+          <td class="px-4 py-3 text-gray-600">→</td>
+          <td class="px-4 py-3 text-gray-100 text-xs">${prop}</td>
+          <td class="px-4 py-3 text-gray-400 text-xs">${typ}</td>
+          <td class="px-4 py-3"><span class="${conf.startsWith('7')?'text-amber-400':'text-emerald-400'}">${conf}</span>${tid?' <span class="text-xs text-emerald-400/70">谛听</span>':''}</td>
+        </tr>`
+      ).join('');
+      document.getElementById('clean-rules').innerHTML = d.clean.map(c => `<li class="text-gray-300">${c}</li>`).join('');
+      document.getElementById('lint-msg').textContent = d.lint;
+      document.querySelectorAll('.industry-btn').forEach(b => {
+        const on = b.dataset.industry === key;
+        b.className = 'industry-btn w-full text-left px-3 py-2 rounded-lg text-xs border ' +
+          (on ? 'border-emerald-400/40 bg-emerald-400/10 text-emerald-200' : 'border-white/[0.08] text-gray-400 hover:bg-white/[0.03]');
+      });
+    }
+
+    document.getElementById('industry-picker').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-industry]');
+      if (btn) render(btn.dataset.industry);
+    });
+    document.getElementById('btn-lint').addEventListener('click', () => {
+      const el = document.getElementById('lint-msg');
+      el.textContent = 'Lint 完成 · ' + new Date().toLocaleTimeString() + ' · 见下方数据质量规则面板';
+    });
+    document.getElementById('btn-auto-map').addEventListener('click', () => {
+      const el = document.getElementById('map-pct') || document.querySelector('#map-sub span');
+      if (el) el.textContent = '96%';
+    });
+
+    const q = new URLSearchParams(location.search).get('industry');
+    render(q && INDUSTRIES[q] ? q : 'ecom');
+  </script>
+</body>
+</html>

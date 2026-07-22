@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数据连接 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4 7h16M4 12h10M4 17h7"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">数据集成 · v1.4</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] bg-slate-950/90 backdrop-blur flex items-center justify-between px-6 shrink-0">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex items-center gap-3">
+        <div class="relative hidden sm:block">
+          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3-3"/></svg>
+          <input type="search" placeholder="搜索数据源…" class="w-64 pl-9 pr-3 py-1.5 rounded-lg bg-slate-900 border border-white/[0.08] text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-cyan-400/40 transition-colors" />
+        </div>
+        <button class="p-2 rounded-lg hover:bg-white/[0.04] transition-colors text-gray-400" aria-label="通知">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5"/></svg>
+        </button>
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400/30 to-sky-500/20 border border-white/[0.08]"></div>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto" data-tabs-root>
+      <div data-tab-group class="border-b border-white/[0.08] bg-slate-950/50 px-6 shrink-0">
+        <div class="flex gap-6">
+          <button data-tab="sources" class="tab-active py-3 text-sm font-medium text-gray-100 border-b-2 border-cyan-400">数据源</button>
+          <button data-tab="syncs" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors border-b-2 border-transparent">同步</button>
+          <button data-tab="agents" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors border-b-2 border-transparent">代理</button>
+          <button data-tab="exports" class="py-3 text-sm text-gray-400 hover:text-gray-200 transition-colors border-b-2 border-transparent">导出</button>
+        </div>
+      </div>
+
+      <!-- 数据源 Tab -->
+      <div data-tab-panel="sources" class="p-6 lg:p-8 space-y-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+            <div class="text-xs text-gray-500 mb-1">数据源总数</div>
+            <div class="text-2xl font-semibold text-gray-100">12</div>
+            <div class="text-xs text-gray-500 mt-1">9 在线 · 3 需关注</div>
+          </div>
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+            <div class="text-xs text-gray-500 mb-1">今日同步</div>
+            <div class="text-2xl font-semibold text-gray-100">847</div>
+            <div class="text-xs text-emerald-400 mt-1">成功 844 · 失败 3</div>
+          </div>
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+            <div class="text-xs text-gray-500 mb-1">数据量</div>
+            <div class="text-2xl font-semibold text-gray-100">2.4 TB</div>
+            <div class="text-xs text-gray-500 mt-1">原始区 + 精修区</div>
+          </div>
+          <a href="health.html" class="rounded-xl border border-white/[0.08] bg-slate-900 p-4 hover:border-cyan-400/30 transition-colors group">
+            <div class="text-xs text-gray-500 mb-1">数据健康</div>
+            <div class="flex items-center gap-2">
+              <span class="inline-block w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.4)]"></span>
+              <span class="text-2xl font-semibold text-gray-100 group-hover:text-cyan-400 transition-colors">3 告警</span>
+            </div>
+            <div class="text-xs text-cyan-400 mt-1">查看健康检查 →</div>
+          </a>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <select class="rounded-lg bg-slate-900 border border-white/[0.08] px-3 py-1.5 text-sm text-gray-300 focus:outline-none focus:border-cyan-400/40">
+              <option>全部类型</option>
+              <option>JDBC</option>
+              <option>S3</option>
+              <option>Kafka</option>
+              <option>REST</option>
+            </select>
+            <select class="rounded-lg bg-slate-900 border border-white/[0.08] px-3 py-1.5 text-sm text-gray-300 focus:outline-none focus:border-cyan-400/40">
+              <option>全部状态</option>
+              <option>在线</option>
+              <option>告警</option>
+              <option>离线</option>
+            </select>
+          </div>
+          <a href="source-new.html" class="btn-primary inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-400 text-slate-950 text-sm font-medium hover:bg-cyan-300 shadow-lg shadow-cyan-400/10">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            新建数据源
+          </a>
+        </div>
+
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden bg-slate-900/50">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-900/80 text-gray-500 text-left">
+              <tr>
+                <th class="px-4 py-3 font-medium">名称</th>
+                <th class="px-4 py-3 font-medium">连接器</th>
+                <th class="px-4 py-3 font-medium">存储类型</th>
+                <th class="px-4 py-3 font-medium">运行时</th>
+                <th class="px-4 py-3 font-medium">上次同步</th>
+                <th class="px-4 py-3 font-medium">状态</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr class="table-row-hover cursor-pointer" onclick="location.href='source-detail.html'">
+                <td class="px-4 py-3">
+                  <a href="source-detail.html" class="text-gray-100 font-medium hover:text-cyan-400 transition-colors">prod-mysql-orders</a>
+                  <div class="text-xs text-gray-500">跨境电商 · 订单库</div>
+                </td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-sky-400/10 text-sky-300 border border-sky-400/20">MySQL JDBC</span></td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-dataset">数据集</span></td>
+                <td class="px-4 py-3 text-gray-300">代理 · agent-prod-1</td>
+                <td class="px-4 py-3 text-gray-300">2 分钟前</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span><span class="text-emerald-400">在线</span></span></td>
+              </tr>
+              <tr class="table-row-hover cursor-pointer" onclick="location.href='source-detail.html'">
+                <td class="px-4 py-3">
+                  <a href="source-detail.html" class="text-gray-100 font-medium hover:text-cyan-400 transition-colors">prod-pg-inventory</a>
+                  <div class="text-xs text-gray-500">库存中心 · PostgreSQL</div>
+                </td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-sky-400/10 text-sky-300 border border-sky-400/20">PostgreSQL</span></td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-dataset">数据集</span></td>
+                <td class="px-4 py-3 text-gray-300">直接连接</td>
+                <td class="px-4 py-3 text-gray-300">15 分钟前</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span><span class="text-emerald-400">在线</span></span></td>
+              </tr>
+              <tr class="table-row-hover cursor-pointer" onclick="location.href='source-detail.html'">
+                <td class="px-4 py-3">
+                  <a href="source-detail.html" class="text-gray-100 font-medium hover:text-cyan-400 transition-colors">s3-raw-events</a>
+                  <div class="text-xs text-gray-500">用户行为 · S3 原始日志</div>
+                </td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-amber-400/10 text-amber-300 border border-amber-400/20">Amazon S3</span></td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-dataset">数据集</span></td>
+                <td class="px-4 py-3 text-gray-300">直接连接</td>
+                <td class="px-4 py-3 text-gray-300">1 小时前</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span><span class="text-emerald-400">在线</span></span></td>
+              </tr>
+              <tr class="table-row-hover cursor-pointer" onclick="location.href='source-detail.html?source=docs'">
+                <td class="px-4 py-3">
+                  <a href="source-detail.html?source=docs" class="text-gray-100 font-medium hover:text-cyan-400 transition-colors">sharepoint-maintenance-docs</a>
+                  <div class="text-xs text-gray-500">维修 PDF 扫描件 · SharePoint</div>
+                </td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">SharePoint</span></td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-media-doc">媒体集·文档</span></td>
+                <td class="px-4 py-3 text-gray-300">直接连接</td>
+                <td class="px-4 py-3 text-gray-300">30 分钟前</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span><span class="text-emerald-400">在线</span></span></td>
+              </tr>
+              <tr class="table-row-hover cursor-pointer" onclick="location.href='source-detail.html'">
+                <td class="px-4 py-3">
+                  <a href="source-detail.html" class="text-gray-100 font-medium hover:text-cyan-400 transition-colors">kafka-order-stream</a>
+                  <div class="text-xs text-gray-500">实时订单流 · Kafka</div>
+                </td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-purple-400/10 text-purple-300 border border-purple-400/20">Apache Kafka</span></td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-stream">流式</span></td>
+                <td class="px-4 py-3 text-gray-300">代理 · agent-prod-2</td>
+                <td class="px-4 py-3 text-gray-300">持续运行</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.5)]"></span><span class="text-cyan-400">同步中</span></span></td>
+              </tr>
+              <tr class="table-row-hover cursor-pointer" onclick="location.href='source-detail.html'">
+                <td class="px-4 py-3">
+                  <a href="source-detail.html" class="text-gray-100 font-medium hover:text-cyan-400 transition-colors">shopify-rest-api</a>
+                  <div class="text-xs text-gray-500">Shopify 店铺 · REST</div>
+                </td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">REST API</span></td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-dataset">数据集</span></td>
+                <td class="px-4 py-3 text-gray-300">直接连接</td>
+                <td class="px-4 py-3 text-gray-300">6 小时前</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.4)]"></span><span class="text-amber-400">凭证过期</span></span></td>
+              </tr>
+              <tr class="table-row-hover cursor-pointer" onclick="location.href='source-detail.html'">
+                <td class="px-4 py-3">
+                  <a href="source-detail.html" class="text-gray-100 font-medium hover:text-cyan-400 transition-colors">legacy-erp-oracle</a>
+                  <div class="text-xs text-gray-500">ERP 遗留系统 · Oracle</div>
+                </td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-rose-400/10 text-rose-300 border border-rose-400/20">Oracle JDBC</span></td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-dataset">数据集</span></td>
+                <td class="px-4 py-3 text-gray-300">代理 · agent-prod-1</td>
+                <td class="px-4 py-3 text-gray-300">3 天前</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.4)]"></span><span class="text-rose-400">离线</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 同步 Tab -->
+      <div data-tab-panel="syncs" class="hidden p-6 lg:p-8 space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-semibold text-gray-100">同步任务</h2>
+            <p class="text-xs text-gray-500 mt-1">对标 Foundry Syncs · 源 → Dataset / MediaSet / Stream</p>
+          </div>
+          <a href="sync-routing.html" class="px-4 py-2 rounded-lg bg-cyan-400 text-slate-950 text-sm font-medium hover:bg-cyan-300">+ 新建同步</a>
+        </div>
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden bg-slate-900/50">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-900/80 text-gray-500 text-left">
+              <tr>
+                <th class="px-4 py-3 font-medium">同步名称</th>
+                <th class="px-4 py-3 font-medium">数据源</th>
+                <th class="px-4 py-3 font-medium">目标</th>
+                <th class="px-4 py-3 font-medium">调度</th>
+                <th class="px-4 py-3 font-medium">上次运行</th>
+                <th class="px-4 py-3 font-medium">状态</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="sync.html" class="text-gray-100 hover:text-cyan-400">orders_incremental</a></td>
+                <td class="px-4 py-3 text-gray-400">prod-mysql-orders</td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-dataset">raw_orders</span></td>
+                <td class="px-4 py-3 text-gray-400">每 15 分钟</td>
+                <td class="px-4 py-3 text-gray-400">2 分钟前</td>
+                <td class="px-4 py-3 text-emerald-400">成功</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="sync.html?target=media_doc" class="text-gray-100 hover:text-cyan-400">maintenance_pdf_ingest</a></td>
+                <td class="px-4 py-3 text-gray-400">sharepoint-maintenance-docs</td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-media-doc">媒体集</span></td>
+                <td class="px-4 py-3 text-gray-400">每日 02:00</td>
+                <td class="px-4 py-3 text-gray-400">30 分钟前</td>
+                <td class="px-4 py-3 text-emerald-400">成功</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="sync.html" class="text-gray-100 hover:text-cyan-400">kafka_orders_stream</a></td>
+                <td class="px-4 py-3 text-gray-400">kafka-order-stream</td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-stream">流</span></td>
+                <td class="px-4 py-3 text-gray-400">持续</td>
+                <td class="px-4 py-3 text-gray-400">实时</td>
+                <td class="px-4 py-3 text-cyan-400">运行中</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3"><a href="sync.html" class="text-gray-100 hover:text-cyan-400">shopify_products</a></td>
+                <td class="px-4 py-3 text-gray-400">shopify-rest-api</td>
+                <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs badge-storage-dataset">raw_shopify</span></td>
+                <td class="px-4 py-3 text-gray-400">每小时</td>
+                <td class="px-4 py-3 text-gray-400">6 小时前</td>
+                <td class="px-4 py-3 text-amber-400">失败 · 凭证</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 代理 Tab -->
+      <div data-tab-panel="agents" class="hidden p-6 lg:p-8 space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-semibold text-gray-100">Magritte 代理</h2>
+            <p class="text-xs text-gray-500 mt-1">内网源通过 Agent 出站拉取</p>
+          </div>
+          <a href="agents.html" class="px-4 py-2 rounded-lg border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 text-sm hover:bg-cyan-400/20">打开代理管理 →</a>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-gray-100 font-medium">agent-prod-1</span>
+              <span class="text-xs text-emerald-400">在线</span>
+            </div>
+            <p class="text-xs text-gray-500">机房 A · 承载 MySQL / Oracle</p>
+            <p class="text-xs text-gray-400 mt-2">CPU 23% · 内存 41%</p>
+          </div>
+          <div class="rounded-xl border border-white/[0.08] bg-slate-900 p-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-gray-100 font-medium">agent-prod-2</span>
+              <span class="text-xs text-emerald-400">在线</span>
+            </div>
+            <p class="text-xs text-gray-500">机房 B · Kafka 流式</p>
+            <p class="text-xs text-gray-400 mt-2">CPU 58% · 内存 62%</p>
+          </div>
+          <div class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-gray-100 font-medium">agent-dr-standby</span>
+              <span class="text-xs text-amber-400">离线</span>
+            </div>
+            <p class="text-xs text-gray-500">灾备 · HA 对</p>
+            <p class="text-xs text-amber-300/80 mt-2">上次心跳：3 天前</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 导出 Tab -->
+      <div data-tab-panel="exports" class="hidden p-6 lg:p-8 space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-semibold text-gray-100">导出任务</h2>
+            <p class="text-xs text-gray-500 mt-1">Dataset / Object → 外部系统（JDBC / S3 / REST）· 对标 Foundry Exports</p>
+          </div>
+          <button class="px-4 py-2 rounded-lg border border-white/[0.08] text-sm text-gray-300 hover:bg-white/[0.04]">+ 新建导出</button>
+        </div>
+        <div class="rounded-xl border border-white/[0.08] overflow-hidden bg-slate-900/50">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-900/80 text-gray-500 text-left">
+              <tr>
+                <th class="px-4 py-3 font-medium">导出名称</th>
+                <th class="px-4 py-3 font-medium">源</th>
+                <th class="px-4 py-3 font-medium">目标</th>
+                <th class="px-4 py-3 font-medium">调度</th>
+                <th class="px-4 py-3 font-medium">上次导出</th>
+                <th class="px-4 py-3 font-medium">状态</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06]">
+              <tr class="table-row-hover">
+                <td class="px-4 py-3 text-gray-100">curated_orders → warehouse</td>
+                <td class="px-4 py-3 text-gray-400">Dataset curated_orders</td>
+                <td class="px-4 py-3 text-gray-400">Snowflake · ORDERS</td>
+                <td class="px-4 py-3 text-gray-400">每日 04:00</td>
+                <td class="px-4 py-3 text-gray-400">今天 04:12</td>
+                <td class="px-4 py-3 text-emerald-400">成功 · 12.4k 行</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3 text-gray-100">Order Object → CRM</td>
+                <td class="px-4 py-3 text-gray-400">Ontology Order</td>
+                <td class="px-4 py-3 text-gray-400">Salesforce REST</td>
+                <td class="px-4 py-3 text-gray-400">每小时</td>
+                <td class="px-4 py-3 text-gray-400">18 分钟前</td>
+                <td class="px-4 py-3 text-emerald-400">成功</td>
+              </tr>
+              <tr class="table-row-hover">
+                <td class="px-4 py-3 text-gray-100">events_archive → S3</td>
+                <td class="px-4 py-3 text-gray-400">Dataset raw_events</td>
+                <td class="px-4 py-3 text-gray-400">s3://archive/events/</td>
+                <td class="px-4 py-3 text-gray-400">每周日</td>
+                <td class="px-4 py-3 text-gray-400">上周日</td>
+                <td class="px-4 py-3 text-rose-400">失败 · 权限</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('data-connection', [
+      { label: '工作区', href: 'index.html' },
+      { label: '数据连接' }
+    ]);
+    DemoUI.initTabs('[data-tabs-root]');
+  </script>
+</body>
+</html>

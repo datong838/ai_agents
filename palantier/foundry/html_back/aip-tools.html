@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIP · 智能体管理工作台 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body class="aos-themeable bg-slate-950 text-gray-400 min-h-screen flex">
+  <aside class="w-56 shrink-0 border-r border-white/[0.08] bg-slate-900/80 flex flex-col">
+    <div class="p-4 border-b border-white/[0.08]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div>
+          <div class="text-gray-100 text-sm font-medium leading-tight">AI操作系统</div>
+          <div class="text-gray-500 text-xs leading-snug mt-0.5">AOS 企业AI转型方案</div>
+        </div>
+      </div>
+    </div>
+    <nav id="app-nav" class="flex-1 p-3 space-y-0.5 overflow-y-auto"></nav>
+    <div class="p-3 border-t border-white/[0.08] text-xs text-gray-500">AIP 决策引擎</div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 border-b border-white/[0.08] flex items-center justify-between px-6">
+      <div id="app-breadcrumb" class="flex items-center text-sm"></div>
+      <div class="flex gap-2 items-center">
+        <label class="text-[10px] text-gray-500 flex items-center gap-2">
+          调用模式
+          <select id="tool-mode" class="bg-slate-900 border border-white/[0.08] rounded px-2 py-1 text-xs text-gray-200">
+            <option value="native">Native（并行）</option>
+            <option value="prompted">Prompted（单次一工具）</option>
+          </select>
+        </label>
+        <a href="aip-capabilities.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs">重能力 →</a>
+        <a href="aip-maturity.html" class="px-3 py-1.5 rounded-lg border border-white/[0.08] text-xs">← 成熟度</a>
+        <a href="aip-logic.html" class="px-3 py-1.5 rounded-lg border border-amber-400/30 text-xs text-amber-300">Logic →</a>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-4 lg:p-6">
+      <div class="mb-4 px-1">
+        <h1 class="text-lg font-semibold text-gray-100">智能体管理工作台</h1>
+        <p class="text-xs text-gray-500 mt-1">配置当前智能体可用工具类型与细项。LLM 只「请求」工具；平台以调用用户权限代调（A-08）。写路径默认可提案。</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-4 min-h-[28rem]">
+        <!-- 目录 -->
+        <div class="lg:col-span-3 rounded-xl border border-white/[0.08] bg-slate-900/50 p-3 space-y-1">
+          <div class="text-[10px] uppercase tracking-wider text-gray-600 px-2 mb-2">工具目录</div>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="action" class="rounded border-white/20 mt-0.5" /><span><span class="block">Action</span><span class="block text-[10px] text-gray-600">写回动作（可 HITL）</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="query" class="rounded border-white/20 mt-0.5" /><span><span class="block">Object Query</span><span class="block text-[10px] text-gray-600">对象属性查询</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="function" class="rounded border-white/20 mt-0.5" /><span><span class="block">Function</span><span class="block text-[10px] text-gray-600">函数 / 已发布 Logic</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" data-tool-cat="var" class="rounded border-white/20 mt-0.5" /><span><span class="block">Update App Var</span><span class="block text-[10px] text-gray-600">更新应用变量</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" data-tool-cat="cmd" class="rounded border-white/20 mt-0.5" /><span><span class="block">Command</span><span class="block text-[10px] text-gray-600">命令类工具</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="clarify" class="rounded border-white/20 mt-0.5" /><span><span class="block">Request Clarification</span><span class="block text-[10px] text-gray-600">向用户澄清</span></span></label>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-white/[0.03] text-sm cursor-pointer"><input type="checkbox" checked data-tool-cat="capability" class="rounded border-white/20 mt-0.5" /><span><span class="block">Capability</span><span class="block text-[10px] text-gray-600">重能力（平台代调）</span></span></label>
+          <div class="border-t border-white/[0.06] my-2"></div>
+          <label class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg bg-orange-400/5 border border-orange-400/20 text-sm cursor-pointer">
+            <input type="checkbox" checked data-tool-cat="wiki" class="rounded border-white/20 mt-0.5" />
+            <span><span class="block text-orange-300">Wiki Field Tool</span><span class="block text-[10px] text-orange-300/70">Wiki 结构化字段</span></span>
+          </label>
+          <p class="text-[10px] text-gray-600 px-2 pt-1">优先 Wiki 结构化字段 · Query 属性子集</p>
+          <a href="aip-capabilities.html" class="tool-cat flex items-start gap-2 px-2 py-1.5 rounded-lg bg-cyan-400/5 border border-cyan-400/20 text-sm mt-1">
+            <span><span class="block text-cyan-300">登记重能力 Adapter →</span><span class="block text-[10px] text-cyan-300/70">登记 Adapter · 写回经 Action</span></span>
+          </a>
+        </div>
+
+        <!-- 已启用 -->
+        <div class="lg:col-span-4 rounded-xl border border-white/[0.08] bg-slate-900/50 p-3 space-y-2" id="enabled-tools">
+          <div class="text-[10px] uppercase tracking-wider text-gray-600 px-1 mb-1">已启用</div>
+          <button type="button" data-tool-card="action" class="tool-item w-full text-left rounded-lg border border-amber-400/40 bg-amber-400/10 p-3 text-sm">
+            <div class="text-gray-100 font-medium">1. Action · 派单维修</div>
+            <div class="text-[11px] text-amber-200/80 mt-1">HITL: ●确认后执行</div>
+          </button>
+          <button type="button" data-tool-card="query" class="tool-item w-full text-left rounded-lg border border-white/[0.08] p-3 text-sm hover:border-white/20">
+            <div class="text-gray-100 font-medium">2. Object Query · Device</div>
+            <div class="text-[11px] text-gray-500 mt-1">属性子集 · 含 Wiki.risk</div>
+          </button>
+          <button type="button" data-tool-card="function" class="tool-item w-full text-left rounded-lg border border-white/[0.08] p-3 text-sm hover:border-white/20">
+            <div class="text-gray-100 font-medium">3. Function · health_score</div>
+            <div class="text-[11px] text-gray-500 mt-1">或已发布 AIP Logic</div>
+          </button>
+          <button type="button" data-tool-card="clarify" class="tool-item w-full text-left rounded-lg border border-white/[0.08] p-3 text-sm hover:border-white/20">
+            <div class="text-gray-100 font-medium">4. Request Clarification</div>
+            <div class="text-[11px] text-gray-500 mt-1">暂停 · 向用户要澄清</div>
+          </button>
+          <button type="button" data-tool-card="capability" class="tool-item w-full text-left rounded-lg border border-cyan-400/30 bg-cyan-400/5 p-3 text-sm">
+            <div class="text-gray-100 font-medium">6. Capability · 短视频 Job</div>
+            <div class="text-[11px] text-cyan-200/80 mt-1">C1 · 写回经 Action · 禁沙箱扛 GPU</div>
+          </button>
+        </div>
+
+        <!-- 细项 -->
+        <div class="lg:col-span-5 rounded-xl border border-white/[0.08] bg-slate-900/50 p-4" id="tool-detail">
+          <div data-detail="action" class="space-y-3 text-sm">
+            <h2 class="text-gray-100 font-medium">工具卡 · Action</h2>
+            <p>Action Type: <code class="text-amber-300">create_work_order</code></p>
+            <p class="text-xs text-gray-500">RID: ri.action…repair</p>
+            <fieldset class="space-y-2 text-xs">
+              <legend class="text-gray-500 mb-1">执行策略</legend>
+              <label class="flex gap-2 items-center"><input type="radio" name="hitl" /> 对话中自动提交</label>
+              <label class="flex gap-2 items-center"><input type="radio" name="hitl" checked /> 弹出 Action 表单供人确认</label>
+              <label class="flex gap-2 items-center"><input type="radio" name="hitl" /> 仅生成 Draft（提案台）</label>
+            </fieldset>
+            <p class="text-xs text-gray-500">说明给 LLM：「仅当严重级≥高且用户未否决时调用」</p>
+            <a href="ontology-action.html" class="text-xs text-violet-300 hover:underline">打开 Action 编辑器 →</a>
+          </div>
+          <div data-detail="query" class="hidden space-y-3 text-sm">
+            <h2 class="text-gray-100 font-medium">工具卡 · Object Query</h2>
+            <p>Object Type: Device · 遍历深度 1</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-0.5 rounded bg-white/[0.06]">☑ id</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06]">☑ status</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.06]">☑ alarm_code</span>
+              <span class="px-2 py-0.5 rounded bg-orange-400/15 text-orange-300 border border-orange-400/20">☑ wiki.risk_level</span>
+              <span class="px-2 py-0.5 rounded bg-white/[0.04] text-gray-600">☐ raw_payload</span>
+            </div>
+            <a href="ontology-wiki.html" class="text-xs text-orange-300 hover:underline">打开 LLM Wiki →</a>
+          </div>
+          <div data-detail="function" class="hidden space-y-3 text-sm">
+            <h2 class="text-gray-100 font-medium">工具卡 · Function</h2>
+            <p><code class="text-emerald-400">health_score(device)</code> · 类型安全核</p>
+            <a href="ontology-function.html" class="text-xs text-emerald-300 hover:underline">打开 Function →</a>
+            <p class="text-xs text-gray-500">亦可挂已发布 AIP Logic（见画布）</p>
+            <a href="aip-logic.html" class="text-xs text-amber-300 hover:underline">打开 Logic →</a>
+          </div>
+          <div data-detail="clarify" class="hidden space-y-3 text-sm">
+            <h2 class="text-gray-100 font-medium">工具卡 · Request Clarification</h2>
+            <p class="text-xs text-gray-400">触发：「信息不足时先问，不要猜」</p>
+            <p class="text-xs text-gray-500">UI：对话气泡暂停 + chips；用户回答写入上下文后续推。</p>
+          </div>
+          <div data-detail="wiki" class="hidden space-y-3 text-sm">
+            <h2 class="text-gray-100 font-medium">工具卡 · Wiki 字段 Tool</h2>
+            <p class="text-xs text-orange-300 font-medium">Wiki 字段 Tool · 结构化字段优先</p>
+            <p class="text-xs text-gray-400">Agent 只读 Wiki 结构化字段（specification / remark），不扫全文向量库。</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-0.5 rounded bg-orange-400/15 text-orange-300 border border-orange-400/20">wiki.risk_level</span>
+              <span class="px-2 py-0.5 rounded bg-orange-400/15 text-orange-300 border border-orange-400/20">wiki.specification</span>
+            </div>
+            <a href="ontology-wiki.html" class="text-xs text-orange-300 hover:underline">打开 LLM Wiki →</a>
+          </div>
+          <div data-detail="capability" class="hidden space-y-3 text-sm">
+            <h2 class="text-gray-100 font-medium">工具卡 · Capability</h2>
+            <p>Capability: <code class="text-cyan-300">short_video.submit</code> · kind=job</p>
+            <p class="text-xs text-gray-500">LLM 只请求；平台代调 Facade。产物进 MediaSet；状态写 MediaJob 须经 Action（CAP-03）。</p>
+            <a href="aip-capabilities.html" class="text-xs text-cyan-300 hover:underline">打开重能力接入 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 rounded-xl border border-white/[0.06] p-3 text-[11px] text-gray-500 flex flex-wrap gap-3 justify-between">
+        <span>Logic：Apply Action · Call Function · Call Capability · Query · Calculator。重能力见 07b。</span>
+        <button type="button" id="btn-save-tools" class="px-3 py-1 rounded-lg bg-amber-400 text-slate-950 text-xs font-medium">保存智能体配置</button>
+      </div>
+      <p id="tools-toast" class="text-[11px] text-emerald-400/90 mt-2 hidden"></p>
+    </main>
+  </div>
+
+  <script src="assets/demo.js"></script>
+  <script>
+    DemoUI.initShell('aip-tools', [
+      { label: '概览', href: 'index.html' },
+      { label: 'AIP', href: 'aip-maturity.html' },
+      { label: '智能体管理工作台' },
+    ]);
+    DemoUI.initAipTools();
+  </script>
+</body>
+</html>
