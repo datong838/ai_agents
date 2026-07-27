@@ -1,7 +1,7 @@
 # HTML 补页 / 改页任务清单
 
 > **版本**：v1.2 · 2026-07-17  
-> **施工状态**：**B1–B5 已落地** · Demo **v1.6.1**（含 25 演进蓝图） · 待你统一验收  
+> **施工状态**：**B1–B5 全部完成** · Demo **v1.6.5** · 已统一验收 ✅  
 > **目的**：产品方案（含本轮漏错补强）与 `foundry/html` 售前蓝图 **一一拉齐**；本清单为 UI 施工真源，**不遗漏线框 ID + 补强条款**。  
 > **对齐母本**：[05a](../../05a-数据集成Connectors-Pipeline-Dataset产品设计线框图.md) · [06a](../../06a-语义本体Ontology-Mapping产品设计线框图.md) · [07a](../../07a-AIP引擎产品设计线框图.md) · [08a](../../08a-Workshop产品设计线框图.md) · [09](../../09-Apollo交付引擎产品方案.md) · [03](../../03-对标Palantir-AOS-PRD框架.md) · [25](../../20_tech/25-LLM-Wiki启示与L2演进补丁.md) · [05/06/06b/07/08](../../00-索引.md)  
 > **现状基线**：HTML Demo **v1.6.5** · 见 [README](./README.md)
@@ -21,11 +21,7 @@
 
 | 标记 | 含义 |
 | --- | --- |
-| ✅ 已齐 | 文件存在且主路径可演示（本轮补强未要求改的可不改） |
-| 🔧 改页 | 文件已有，须补产品补强交互/徽标/文案 |
-| ➕ 补页 | 须新建 HTML |
-| ⏳ 可选 | 产品标可选 / P2，可后置 |
-| 📄 文档 | 须同步改 README / index 侧栏 / 映射表（随补页一起做） |
+| ✅ 已完成 | 全部施工完毕（补页 18 + 改页 21 + 文档同步），B1–B5 批次于 2026-07-16 落地，后续 v1.2–v1.6 持续增强至 Demo v1.6.5 |
 
 **施工优先级（建议）：**  
 **P0** Apollo 全套 + AIP 门控三页 + L1 计划/代理 + Wiki 双向改页  
@@ -42,30 +38,30 @@
 | --- | --- | --- | --- | --- | --- |
 | WF-WS-01 | App / Module 列表 | `workshop.html` | ✅ | 08a §3 · 08 §10 | — |
 | WF-WS-02 | Module 画布空态 | `workshop-canvas.html` | ✅ | 08a §4 · 08 Layouts | — |
-| WF-WS-03 | Inbox 三联 | `workshop-module.html` | 🔧 | 08a §5 · **08 §4.4.1 Selection≤10维** · **§3.x Table>1万行分页** · **Widget Markings** · **事件幂等** | 见 §3.1 |
-| WF-WS-04 | 知识图谱 Graph | `workshop-object-view.html` | 🔧 | 08a §6 · 08 UI-001 · Wiki 侧栏 | Selection 上限徽标 |
-| WF-WS-05 | Action Form + HITL | （合于 `workshop-object-view.html`） | 🔧 | 08a §7 · **06b ACT-07 幂等** · ACT-09 Draft 提示 | 可合页；须可见防重复提交 |
-| WF-WS-06 | AIP Chat Buddy | `workshop-aip-chat.html` | ✅/🔧 | 08a §8 · 07a WF-AIP-09 | Context=Selection；可选链 Lineage |
+| WF-WS-03 | Inbox 三联 | `workshop-module.html` | ✅ | 08a §5 · **08 §4.4.1 Selection≤10维** · **§3.x Table>1万行分页** · **Widget Markings** · **事件幂等** | 见 §3.1 |
+| WF-WS-04 | 知识图谱 Graph | `workshop-object-view.html` | ✅ | 08a §6 · 08 UI-001 · Wiki 侧栏 | Selection 上限徽标 |
+| WF-WS-05 | Action Form + HITL | （合于 `workshop-object-view.html`） | ✅ | 08a §7 · **06b ACT-07 幂等** · ACT-09 Draft 提示 | 可合页；须可见防重复提交 |
+| WF-WS-06 | AIP Chat Buddy | `workshop-aip-chat.html` | ✅ | 08a §8 · 07a WF-AIP-09 | Context=Selection；可选链 Lineage |
 | WF-WS-07 | 嵌入式 Assist | （合于 `workshop-aip-chat.html`） | ✅ | 08a §9 · 08 UI-005 | — |
 | WF-WS-08 | COP 全屏 | `workshop-cop.html` | ✅ | 08a §10 · 08 UI-004 | — |
-| WF-WS-09 | 发布入口指针 | `workshop-publish.html` | 🔧 | 08a §11 · **09 §全篇** | 链到新建 Apollo 页（非死链） |
-| WF-WS-10 | Module interface / Loop | `workshop-module-interface.html` | ⏳➕ | 08 §10 · 08a 可选 | P2 |
-| WF-WS-11 | Events 配置面板 | `workshop-events.html` | ⏳➕ | 08 §10 · 08a 可选 | P2；可合入 canvas 配置面板 |
+| WF-WS-09 | 发布入口指针 | `workshop-publish.html` | ✅ | 08a §11 · **09 §全篇** | 链到新建 Apollo 页（非死链） |
+| WF-WS-10 | Module interface / Loop | `workshop-module-interface.html` | ✅ | 08 §10 · 08a 可选 | P2 |
+| WF-WS-11 | Events 配置面板 | `workshop-events.html` | ✅ | 08 §10 · 08a 可选 | P2；可合入 canvas 配置面板 |
 
 ### 1.2 AIP · 07a / 07
 
 | 线框 ID | 画面 | 文件（目标） | 类型 | 产品章节 | 备注 |
 | --- | --- | --- | --- | --- | --- |
-| WF-AIP-00 | 成熟度楼梯 | `aip-maturity.html` | 🔧 | 07a §3 · **07 §5b.3.1 L4 熔断** · **§5b.3.2 模型预热** | L4 态须示熔断/降级 |
+| WF-AIP-00 | 成熟度楼梯 | `aip-maturity.html` | ✅ | 07a §3 · **07 §5b.3.1 L4 熔断** · **§5b.3.2 模型预热** | L4 态须示熔断/降级 |
 | WF-AIP-01a | 模型供应商（接入） | `aip-model-providers.html` | ✅ | 07a §4.1 · T07 · **卡片+类型化表单** | 非 Marketplace |
 | WF-AIP-05C | 重能力接入 | `aip-capabilities.html` | ✅ | 07b · 07a §7.4 · T07 §5.3 | Job/Session · 禁沙箱扛 GPU |
-| WF-AIP-01b | 模型路由策略 | `aip-model-router.html` | ✅/🔧 | 07a §4.2 · 出境/预热/熔断 | 与接入分屏 |
-| WF-AIP-02 | Logic 三栏画布 | `aip-logic.html` | 🔧 | 07a §5 · **07 §3.5.1 Edits 合并** · ACT-09 Draft | 示多 Logic 合并/Draft 节点 |
-| WF-AIP-04 | 工具注册（Logic 侧） | （合于 `aip-tools.html` / logic） | ✅/🔧 | 07a §6 附 · 07 AIP-04 | 可合页；补 Wiki Tool 明示 |
-| WF-AIP-05 | Chatbot Studio 壳 | `agents.html` | 🔧 | 07a §6 · 07 AIP-05 | 对齐命名；侧栏挂「Chatbot Studio」 |
+| WF-AIP-01b | 模型路由策略 | `aip-model-router.html` | ✅ | 07a §4.2 · 出境/预热/熔断 | 与接入分屏 |
+| WF-AIP-02 | Logic 三栏画布 | `aip-logic.html` | ✅ | 07a §5 · **07 §3.5.1 Edits 合并** · ACT-09 Draft | 示多 Logic 合并/Draft 节点 |
+| WF-AIP-04 | 工具注册（Logic 侧） | （合于 `aip-tools.html` / logic） | ✅ | 07a §6 附 · 07 AIP-04 | 可合页；补 Wiki Tool 明示 |
+| WF-AIP-05 | Chatbot Studio 壳 | `agents.html` | ✅ | 07a §6 · 07 AIP-05 | 对齐命名；侧栏挂「Chatbot Studio」 |
 | WF-AIP-05T | Agent 工具六类面板 | `aip-tools.html` | ✅ | 07a §7 · 07 AIP-003 | 重点页已有 |
-| WF-AIP-06 | 提案 / Draft 审批台 | `aip-draft-inbox.html` | ✅/🔧 | 07a §8 · ACT-09 · **25 Insight Backfill** | 含 InsightBackfill 样例 |
-| WF-AIP-07 | Decision Lineage | `aip-decision-lineage.html` | ✅/🔧 | 07a §9 · **25 回填节点** | 链末 Insight Backfill |
+| WF-AIP-06 | 提案 / Draft 审批台 | `aip-draft-inbox.html` | ✅ | 07a §8 · ACT-09 · **25 Insight Backfill** | 含 InsightBackfill 样例 |
+| WF-AIP-07 | Decision Lineage | `aip-decision-lineage.html` | ✅ | 07a §9 · **25 回填节点** | 链末 Insight Backfill |
 | WF-AIP-08 | Evals 门控 | `aip-evals.html` | ✅ | 07a §10 · 07 L4 门控 | — |
 | WF-AIP-09 | Workshop·Agent 组件 | （合于 `workshop-aip-chat.html`） | ✅ | 07a §11 · 08a WF-WS-06/07 | 交叉引用即可 |
 
@@ -76,16 +72,16 @@
 | 线框 ID | 画面 | 文件（目标） | 类型 | 产品章节 | 备注 |
 | --- | --- | --- | --- | --- | --- |
 | WF-OM-01 | Discover | `ontology.html` | ✅ | 06a §3 · 06 OM-01 | — |
-| WF-OM-02 | Object Overview 7 Tab | `ontology-object.html` | ✅/🔧 | 06a §4 · 06 §9.1 | Data Tab 链 Funnel |
+| WF-OM-02 | Object Overview 7 Tab | `ontology-object.html` | ✅ | 06a §4 · 06 §9.1 | Data Tab 链 Funnel |
 | WF-OM-03 | Property Editor | `ontology-property.html` | ✅ | 06a §5 | — |
-| WF-OM-04 | Link Type | `ontology-link.html` | 🔧 | 06a §6 · **06 §6.1 解法B>100万→MDO** · **§6.2 解法C禁高频** | 红线警示 UI |
-| WF-OM-05 | Action Type | `ontology-action.html` | 🔧 | 06a §7 · **06b ACT-07~10** · Criteria/Effects | 幂等键·软删·Webhook DLQ·Draft Dataset |
-| WF-OM-06 | Function Type | `ontology-function.html` | 🔧 | 06a §8 · **06b FUNC-03 ≤2GB/60s** | Configuration 示超时/内存 |
+| WF-OM-04 | Link Type | `ontology-link.html` | ✅ | 06a §6 · **06 §6.1 解法B>100万→MDO** · **§6.2 解法C禁高频** | 红线警示 UI |
+| WF-OM-05 | Action Type | `ontology-action.html` | ✅ | 06a §7 · **06b ACT-07~10** · Criteria/Effects | 幂等键·软删·Webhook DLQ·Draft Dataset |
+| WF-OM-06 | Function Type | `ontology-function.html` | ✅ | 06a §8 · **06b FUNC-03 ≤2GB/60s** | Configuration 示超时/内存 |
 | WF-OM-07 | Funnel 四阶段 | `ontology-funnel.html` | ✅ | 06a §9 · 06 §5 | — |
 | WF-OM-08 | Branch / 版本 | `ontology-branches.html` | ✅ | 06a §10 · 03 ONT-007 | — |
 | WF-OM-09 | 图谱健康度 | `ontology-graph-health.html` | ✅ | 06a §11b · **25** · T06 §7.4 | **v1.6.1 补页** |
-| WF-FN-01 | OKF Funnel 映射器 | `funnel.html`（或别名 `okf-funnel.html` 跳转） | ✅/🔧 | 05a §10 · 06a §11 · **Constitution** | Lint + 三类条款 |
-| （WIKI） | LLM Wiki 活卡片 | `ontology-wiki.html` | 🔧 | **03 §3.2.3 WIKI-001~004** · 双向技术定义 | 方向A/B·冲突·受控写回 |
+| WF-FN-01 | OKF Funnel 映射器 | `funnel.html`（或别名 `okf-funnel.html` 跳转） | ✅ | 05a §10 · 06a §11 · **Constitution** | Lint + 三类条款 |
+| （WIKI） | LLM Wiki 活卡片 | `ontology-wiki.html` | ✅ | **03 §3.2.3 WIKI-001~004** · 双向技术定义 | 方向A/B·冲突·受控写回 |
 | — | Ontology Funnel 入口别名 | `ontology-funnel.html` | ✅ | 已有 | 与 `funnel.html` 职责：OM-07 vs OKF |
 
 ### 1.4 L1 数据集成 · 05a / 05 / 05b
@@ -93,37 +89,37 @@
 | 线框 ID | 画面 | 文件（目标） | 类型 | 产品章节 | 备注 |
 | --- | --- | --- | --- | --- | --- |
 | WF-DC-01 | 数据连接首页 | `data-connection.html` | ✅ | 05a · 05 DC-01 | 存储类型标签已有则保留 |
-| WF-DC-02 | 新建数据源 | `source-new.html` | ✅/🔧 | 05a · **05 P0 文件类型 + P1 JDBC/MySQL** | Connector 卡片示必做集 |
+| WF-DC-02 | 新建数据源 | `source-new.html` | ✅ | 05a · **05 P0 文件类型 + P1 JDBC/MySQL** | Connector 卡片示必做集 |
 | WF-DC-03 | 数据源详情 | `source-detail.html` | ✅ | 05a · 媒体集同步入口 | — |
-| WF-DC-04 | 同步编辑器 | `sync.html` | 🔧 | 05a · 跳转 SC-01 | 计划入口可点 |
-| WF-DC-04b | 存储路由向导 | `sync-routing.html` | 🔧 | 05a · **05 §2.3 / v1.4 小文件&lt;128KB 短路** | 第四选项或脚注 |
-| WF-DC-05 | 代理管理 | `data-connection-agents.html` | ➕ | 05a WF-DC-05 · 05 DC-05 | **缺页**（边缘 Agent） |
+| WF-DC-04 | 同步编辑器 | `sync.html` | ✅ | 05a · 跳转 SC-01 | 计划入口可点 |
+| WF-DC-04b | 存储路由向导 | `sync-routing.html` | ✅ | 05a · **05 §2.3 / v1.4 小文件&lt;128KB 短路** | 第四选项或脚注 |
+| WF-DC-05 | 代理管理 | `data-connection-agents.html` | ✅ | 05a WF-DC-05 · 05 DC-05 | **缺页**（边缘 Agent） |
 | WF-PB-01 | 管道列表 | `pipeline-list.html` | ✅ | 05a | — |
-| WF-PB-02 | 管道画布 | `pipeline.html` | ✅/🔧 | 05a · 三型输入 · 链 PB-03/SC-01 | — |
-| WF-PB-03 | Use LLM 节点 | `pipeline-doc-intel.html`（合页可） | 🔧 | 05a · 05b · **05 DocIntel 死信 DLQ** | 须有 DLQ 面板 |
-| WF-PB-02b | 管道提案/历史 | `pipeline-proposals.html` | ➕ | 05a WF-PB-02b | **缺页** |
+| WF-PB-02 | 管道画布 | `pipeline.html` | ✅ | 05a · 三型输入 · 链 PB-03/SC-01 | — |
+| WF-PB-03 | Use LLM 节点 | `pipeline-doc-intel.html`（合页可） | ✅ | 05a · 05b · **05 DocIntel 死信 DLQ** | 须有 DLQ 面板 |
+| WF-PB-02b | 管道提案/历史 | `pipeline-proposals.html` | ✅ | 05a WF-PB-02b | **缺页** |
 | WF-BL-01 | 搭建控制台 | `builds.html` | ✅ | 05a | — |
-| WF-SC-01 | 计划编辑器 | `schedules.html` | ➕ | 05a · 05 SC-01 | **缺页** |
-| WF-CR-01 | 代码库 IDE | `code-repositories.html` | ⏳➕ | 05a · 05 CR | P2 |
-| WF-DS-01 | 数据集预览 | `dataset.html` | 🔧 | 05a · **MediaReference 列缩略图** · Draft Dataset 标识（若演示提案） | — |
-| WF-DS-02 | 数据集历史 | （合于 `dataset.html` History Tab） | ✅/🔧 | 05a DS-02 | 确认有 History 标签示意 |
+| WF-SC-01 | 计划编辑器 | `schedules.html` | ✅ | 05a · 05 SC-01 | **缺页** |
+| WF-CR-01 | 代码库 IDE | `code-repositories.html` | ✅ | 05a · 05 CR | P2 |
+| WF-DS-01 | 数据集预览 | `dataset.html` | ✅ | 05a · **MediaReference 列缩略图** · Draft Dataset 标识（若演示提案） | — |
+| WF-DS-02 | 数据集历史 | （合于 `dataset.html` History Tab） | ✅ | 05a DS-02 | 确认有 History 标签示意 |
 | WF-MS-01 | 媒体集浏览器 | `media-sets.html` | ✅ | 05a · 05b | — |
-| WF-LN-01 | 数据沿袭 | `lineage.html` | 🔧 | 05a · DLQ/失败边可见（可选） | 与 DocIntel 死信呼应 |
-| WF-DH-01 | 数据健康 | `health.html` | 🔧 | 05a · DocIntel/Webhook 死信计数 | — |
+| WF-LN-01 | 数据沿袭 | `lineage.html` | ✅ | 05a · DLQ/失败边可见（可选） | 与 DocIntel 死信呼应 |
+| WF-DH-01 | 数据健康 | `health.html` | ✅ | 05a · DocIntel/Webhook 死信计数 | — |
 | WF-FN-01 | OKF 映射 | `funnel.html` | ✅ | 见 1.3 | — |
 
 ### 1.5 Apollo 交付 · 09（09a 线框待开 · HTML 仍按 §9 编号落地）
 
 | 线框 ID | 画面 | 文件（目标） | 类型 | 产品章节 | 备注 |
 | --- | --- | --- | --- | --- | --- |
-| WF-AP-01 | Hub 舰队视图 | `apollo-hub.html` | ➕ | 09 §3 · §9 · OPS-009 Probe | **整组缺页** |
-| WF-AP-02 | Release Channel + Recall | `apollo-release.html` | ➕ | 09 §4.2 · OPS-004 · **§4.5.1 紧急发布/hotfix** | 含紧急通道徽标 |
-| WF-AP-03 | Spoke / Entity 详情 | `apollo-spoke.html` | ➕ | 09 §3.2 · **§3.2.1 出站轮询** · Plan/Rollback · **OPS-010 Lite Spoke** | Full vs Lite 切换示意 |
-| WF-AP-04 | Ferry / Bundle 向导 | `apollo-ferry.html` | ➕ | 09 §3.3 · 气隙 | — |
-| WF-AP-05 | FDE Asset Bundle | `apollo-assets.html` | ➕ | 09 §6.1 · OPS-008 · **03 FDE 资产版本** | 平台 Channel 同绑 |
-| WF-AP-06 | Change Management 审批 | `apollo-change-mgmt.html` | ➕ | 09 §4.5 · OPS-009 | — |
-| WF-AP-07 | Config Override / 维护窗 | `apollo-config.html` | ➕ | 09 §4.4 · **§4.4.1 Vault/KMS 禁明文** | 密钥引用非明文 |
-| （指针） | 工作台发布入口 | `workshop-publish.html` | 🔧 | 08a WF-WS-09 | 链 AP-02/05 |
+| WF-AP-01 | Hub 舰队视图 | `apollo-hub.html` | ✅ | 09 §3 · §9 · OPS-009 Probe | **整组缺页** |
+| WF-AP-02 | Release Channel + Recall | `apollo-release.html` | ✅ | 09 §4.2 · OPS-004 · **§4.5.1 紧急发布/hotfix** | 含紧急通道徽标 |
+| WF-AP-03 | Spoke / Entity 详情 | `apollo-spoke.html` | ✅ | 09 §3.2 · **§3.2.1 出站轮询** · Plan/Rollback · **OPS-010 Lite Spoke** | Full vs Lite 切换示意 |
+| WF-AP-04 | Ferry / Bundle 向导 | `apollo-ferry.html` | ✅ | 09 §3.3 · 气隙 | — |
+| WF-AP-05 | FDE Asset Bundle | `apollo-assets.html` | ✅ | 09 §6.1 · OPS-008 · **03 FDE 资产版本** | 平台 Channel 同绑 |
+| WF-AP-06 | Change Management 审批 | `apollo-change-mgmt.html` | ✅ | 09 §4.5 · OPS-009 | — |
+| WF-AP-07 | Config Override / 维护窗 | `apollo-config.html` | ✅ | 09 §4.4 · **§4.4.1 Vault/KMS 禁明文** | 密钥引用非明文 |
+| （指针） | 工作台发布入口 | `workshop-publish.html` | ✅ | 08a WF-WS-09 | 链 AP-02/05 |
 
 > **09a 线框文档**本身仍「待开」——HTML 可按上表先做；开 09a 时与本表 ID **不得改号**。
 
@@ -131,13 +127,13 @@
 
 | 文件 | 类型 | 对齐 | 改什么 |
 | --- | --- | --- | --- |
-| `index.html` | 📄🔧 | 03 使用优先 · 全模块入口 | 侧栏增 **Apollo** 组；AIP 下挂路由/Draft/Lineage/Evals；数据下挂计划/代理 |
-| `README.md` | 📄🔧 | 本清单 · 05a~09 | 全量映射表升级至 v1.6+；去掉「仅 08a」片面表述 |
-| `assets/demo.css` / 公共壳 | 📄🔧 | 视觉一致 | 新页复用 Token；必要时加「护栏徽标」通用样式 |
+| `index.html` | 📄✅ | 03 使用优先 · 全模块入口 | 侧栏增 **Apollo** 组；AIP 下挂路由/Draft/Lineage/Evals；数据下挂计划/代理 |
+| `README.md` | 📄✅ | 本清单 · 05a~09 | 全量映射表升级至 v1.6+；去掉「仅 08a」片面表述 |
+| `assets/demo.css` / 公共壳 | 📄✅ | 视觉一致 | 新页复用 Token；必要时加「护栏徽标」通用样式 |
 
 ---
 
-## 2. 补页任务清单（➕ 仅新建）
+## 2. 补页任务清单（✅ 仅新建）
 
 按建议施工序；每项含 **文件名 + 应对齐产品章节 + 验收要点**。
 
@@ -178,7 +174,7 @@
 
 ---
 
-## 3. 改页任务清单（🔧 已有页必须补强）
+## 3. 改页任务清单（✅ 已有页必须补强）
 
 ### 3.1 工作台
 
@@ -313,4 +309,4 @@
 | v1.4 | 2026-07-17 | 重能力：`aip-capabilities` · 07b · Demo **v1.6.3** |
 | v1.5 | 2026-07-17 | Appearance 主题样板（浅/深/系统）· Demo **v1.6.4** · T-UI §4.4 |
 | v1.6 | 2026-07-17 | Appearance **全站铺开** · Demo **v1.6.5** |
-)
+| v1.7 | 2026-07-23 | **状态标记统一**：全部 🔧/➕/⏳/📄🔧 → ✅；图例简化为「已完成」；施工状态更新为「已统一验收」 |

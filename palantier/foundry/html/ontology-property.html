@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Property · amount | AI操作系统</title>
+  <title>Properties · 订单属性编辑器 | AI操作系统</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/demo.css" />
 </head>
@@ -29,12 +29,12 @@
   <div class="p-main">
     <header class="p-header">
       <div class="p-header-left">
-        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>Property · amount</span></div>
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><a href="ontology.html">Ontology Manager</a><span class="p-breadcrumb-sep">/</span><a href="ontology-object.html">Order</a><span class="p-breadcrumb-sep">/</span><span>Properties</span></div>
       </div>
       <div class="p-header-center">
         <div class="p-search">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
-          <input type="search" placeholder="搜索资源…" />
+          <input type="search" placeholder="搜索属性…" />
         </div>
       </div>
       <div class="p-header-right">
@@ -47,43 +47,62 @@
 <a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
 <div class="p-sidebar-section-title">工作台</div>
 <div class="p-sidebar-section">
-<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
-<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a>
-<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>运营台</span></a>
-<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>知识图谱</span></a>
-<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+<a href="workshop.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-app-order.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>订单管理</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>风险告警管理</span></a>
 <a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
-<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+</div>
+<div class="p-sidebar-section-title">应用程序构建工具</div>
+<div class="p-sidebar-section">
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a><a href="workshop-widget-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>组件注册表</span></a>
+<a href="workshop-variables.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16v12H4zM8 10h2v4H8zM14 10h2v4h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变量管理器</span></a>
+<a href="workshop-styles.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>主题与样式</span></a>
 <a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
 <a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
 </div>
 <div class="p-sidebar-section-title">AIP 决策引擎</div>
 <div class="p-sidebar-section">
-<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Chatbot Studio</span></a>
+<div class="p-sidebar-subgroup-title">应用层</div>
+<a href="aip-assist.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AIP 助手</span></a>
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>对话机器人</span></a>
+<a href="aip-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>AIP 分析师</span></a>
+<div class="p-sidebar-subgroup-title">逻辑编排层</div>
 <a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
 <a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Agent 工具面板</span></a>
-<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>重能力接入</span></a>
-<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<div class="p-sidebar-subgroup-title">智能体</div>
+<a href="agent-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg><span>智能体目录</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>智能体插件</span></a>
+<div class="p-sidebar-subgroup-title">评测与治理</div>
 <a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<div class="p-sidebar-subgroup-title">决策谱系</div>
 <a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-observability.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可观测性</span></a>
+</div>
+<div class="p-sidebar-section-title">模型管理</div>
+<div class="p-sidebar-section">
+<a href="aip-model-catalog.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>模型目录</span></a>
 <a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
 <a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
-<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<a href="aip-capacity-management.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>容量管理</span></a>
 </div>
 <div class="p-sidebar-section-title">本体 · 数字孪生</div>
 <div class="p-sidebar-section">
 <a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
-<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>漏斗管道</span></a>
-<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF 行业漏斗</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>对象探索</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>本体提案</span></a>
 <a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
-<a href="ontology-wiki.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="ontology-wiki-index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF funnel</span></a>
+<a href="okf-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>OKF 概览</span></a>
+
 <a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
 </div>
-<div class="p-sidebar-section-title">数据集成</div>
+<div class="p-sidebar-section-title">管道与数据治理</div>
 <div class="p-sidebar-section">
-<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据连接</span></a>
-<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
-<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
 <a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
 <a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
 <a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
@@ -93,7 +112,16 @@
 <a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
 <a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
 </div>
-<div class="p-sidebar-section-title">交付 Apollo</div>
+<div class="p-sidebar-section-title">数据源与同步</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据链接器</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="sync.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg><span>同步配置</span></a>
+<a href="sync-routing.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>同步路由</span></a>
+<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+<a href="document-intelligence.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round"/></svg><span>文档智能</span></a>
+</div>
+<div class="p-sidebar-section-title">运维交付</div>
 <div class="p-sidebar-section">
 <a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
 <a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
@@ -102,46 +130,336 @@
 <a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
 <a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
 <a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+<a href="integration-cases.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>接入案例</span></a>
 </div>
-
       </aside>
-      <main class="p-content">
-<div class="max-w-xl mx-auto space-y-6">
-        <h1 class="text-lg font-semibold text-gray-900">Property: amount</h1>
-        <div class="rounded-xl border border-gray-200 bg-white p-5 space-y-4 text-sm">
-          <div>
-            <label class="text-xs text-gray-500">显示名</label>
-            <input value="订单金额" class="mt-1 w-full rounded-lg bg-[#F0F2F5] border border-gray-200 px-3 py-2 text-gray-700" />
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="text-xs text-gray-500">API 名</label>
-              <input value="amount" class="mt-1 w-full rounded-lg bg-[#F0F2F5] border border-gray-200 px-3 py-2 font-mono text-gray-700" />
-            </div>
-            <div>
-              <label class="text-xs text-gray-500">类型</label>
-              <select class="mt-1 w-full rounded-lg bg-[#F0F2F5] border border-gray-200 px-3 py-2 text-gray-700"><option selected>Double</option><option>String</option><option>Integer</option></select>
-            </div>
-          </div>
-          <div class="border-t border-gray-200 pt-4">
-            <div class="text-xs text-gray-500 mb-2">Backing Dataset（只读 · Data Tab 修改）</div>
-            <p class="font-mono text-blue-700 text-xs">curated_orders</p>
-            <label class="text-xs text-gray-500 mt-3 block">Backing Column</label>
-            <select class="mt-1 w-full rounded-lg bg-[#F0F2F5] border border-gray-200 px-3 py-2 font-mono text-gray-700"><option selected>amount</option><option>amt</option></select>
-            <div class="flex gap-4 mt-3 text-xs">
-              <label class="flex items-center gap-2"><input type="checkbox" /> Title Key</label>
-              <label class="flex items-center gap-2"><input type="checkbox" /> Primary Key</label>
-              <label class="flex items-center gap-2"><input type="checkbox" /> 时间序列 TSP</label>
-            </div>
-          </div>
-        </div>
-        <div class="rounded-xl border border-green-200 bg-green-50 p-4 text-xs space-y-2">
-          <div class="text-green-600 font-medium">🟣 OKF Lint 预览</div>
-          <p>✅ L1 列 amount (double) ↔ L2 Double 类型一致</p>
-          <p class="text-yellow-600">⚠ 样本 3 行含 "N/A" — Funnel 将丢弃并记入 Data Health</p>
+      <main class="p-content" style="padding:0">
+  <!-- Property Editor: 左映射 + 中属性表 + 右属性详情 + 底数据预览 -->
+  <div class="p-ped">
+    <div class="p-ped-main">
+      <!-- 顶部: 类型标题 + 工具栏 -->
+      <div class="p-ped-header">
+        <div class="p-ped-header-left">
+          <h1 class="p-ped-title">Properties</h1>
+          <span class="p-ped-meta">9 of 9 Columns mapped</span>
         </div>
       </div>
-      </main>
+
+      <!-- Tab 切换 -->
+      <div class="p-ped-tabs">
+        <a href="#" class="p-ped-tab is-active">Properties <span class="p-tab-count">13</span></a>
+        <a href="#" class="p-ped-tab">Column mapping</a>
+      </div>
+
+      <!-- 数据源控制条 -->
+      <div class="p-ped-dataset-bar">
+        <div class="p-ped-dataset-select">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5"/><path d="M3 12a9 3 0 0018 0"/></svg>
+          <span class="p-mono">orders_ontology_2</span>
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <label class="p-ped-toggle">
+          <input type="checkbox" checked />
+          <span class="p-ped-toggle-track"></span>
+          <span>Show mapped columns</span>
+        </label>
+        <button class="p-btn p-btn-secondary p-btn-sm">Automap all</button>
+        <div class="p-ped-toolbar-right">
+          <button class="p-ped-icon-btn" title="搜索"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg></button>
+          <button class="p-ped-icon-btn" title="过滤"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h18l-7 9v6l-4-2v-4L3 5z"/></svg></button>
+        </div>
+      </div>
+
+      <!-- 主区域: 左属性表 + 右详情面板 -->
+      <div class="p-ped-body">
+        <!-- ===== 左: 属性表 ===== -->
+        <section class="p-ped-table-wrap">
+          <!-- 表头操作条 -->
+          <div class="p-ped-table-bar">
+            <label class="p-ped-checkall">
+              <input type="checkbox" />
+              <span class="p-ped-checkall-label">Properties <span class="p-tab-count">13</span></span>
+            </label>
+            <div class="p-ped-table-bar-right">
+              <button class="p-btn p-btn-primary p-btn-sm">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+                Create property
+              </button>
+              <button class="p-ped-icon-btn" title="搜索"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg></button>
+              <button class="p-ped-icon-btn" title="过滤"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h18l-7 9v6l-4-2v-4L3 5z"/></svg></button>
+            </div>
+          </div>
+          <table class="p-ped-table">
+            <thead>
+              <tr>
+                <th style="width:32px"></th>
+                <th>Property name</th>
+                <th style="width:120px">Status</th>
+                <th style="width:130px">Visibility</th>
+                <th style="width:150px">Base formatter</th>
+                <th>Column</th>
+                <th style="width:30px"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="is-selected">
+                <td><input type="checkbox" checked /></td>
+                <td>
+                  <div class="p-ped-prop">
+                    <span class="p-ped-prop-icon"><svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor"><rect x="3" y="5" width="4" height="14"/><rect x="9" y="5" width="2" height="14"/><rect x="13" y="5" width="3" height="14"/><rect x="18" y="5" width="2" height="14"/></svg></span>
+                    <span class="p-ped-prop-name">id</span>
+                    <span class="p-badge p-badge-blue">Primary key</span>
+                  </div>
+                </td>
+                <td><span class="p-ped-status p-ped-status-experimental">Experimental</span></td>
+                <td><span class="p-ped-visibility"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Normal <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-formatter">No formatting <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-column">id</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                  <div class="p-ped-prop">
+                    <span class="p-ped-prop-icon">𝐈</span>
+                    <span class="p-ped-prop-name">ICAO</span>
+                    <span class="p-badge p-badge-blue">Title</span>
+                  </div>
+                </td>
+                <td><span class="p-ped-status p-ped-status-experimental">Experimental</span></td>
+                <td><span class="p-ped-visibility"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Normal <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-formatter">No formatting <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-column">ICAO</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                  <div class="p-ped-prop">
+                    <span class="p-ped-prop-icon">𝐈</span>
+                    <span class="p-ped-prop-name">New property 4</span>
+                    <span class="p-ped-prop-dot"></span>
+                  </div>
+                </td>
+                <td><span class="p-ped-status p-ped-status-experimental">Experimental</span></td>
+                <td><span class="p-ped-visibility"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Normal <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-formatter">No formatting <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-column p-ped-column-empty">—</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                  <div class="p-ped-prop">
+                    <span class="p-ped-prop-icon">𝐈</span>
+                    <span class="p-ped-prop-name">Airport</span>
+                  </div>
+                </td>
+                <td><span class="p-ped-status p-ped-status-experimental">Experimental</span></td>
+                <td><span class="p-ped-visibility"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Normal <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-formatter">No formatting <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-column">airport</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                  <div class="p-ped-prop">
+                    <span class="p-ped-prop-icon">𝐈</span>
+                    <span class="p-ped-prop-name">City</span>
+                  </div>
+                </td>
+                <td><span class="p-ped-status p-ped-status-experimental">Experimental</span></td>
+                <td><span class="p-ped-visibility"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Normal <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-formatter">No formatting <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-column">city</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                  <div class="p-ped-prop">
+                    <span class="p-ped-prop-icon">𝐈</span>
+                    <span class="p-ped-prop-name">Country</span>
+                  </div>
+                </td>
+                <td><span class="p-ped-status p-ped-status-experimental">Experimental</span></td>
+                <td><span class="p-ped-visibility"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Normal <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-formatter">No formatting <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-column">country</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                  <div class="p-ped-prop">
+                    <span class="p-ped-prop-icon"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></span>
+                    <span class="p-ped-prop-name">Geohash</span>
+                  </div>
+                </td>
+                <td><span class="p-ped-status p-ped-status-experimental">Experimental</span></td>
+                <td><span class="p-ped-visibility"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Normal <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td></td>
+                <td><span class="p-ped-column">geohash</span></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>
+                  <div class="p-ped-prop">
+                    <span class="p-ped-prop-icon">𝐈</span>
+                    <span class="p-ped-prop-name">IATA</span>
+                  </div>
+                </td>
+                <td><span class="p-ped-status p-ped-status-experimental">Experimental</span></td>
+                <td><span class="p-ped-visibility"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Normal <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-formatter">No formatting <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></span></td>
+                <td><span class="p-ped-column">IATA</span></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ===== 右: 属性详情面板 ===== -->
+        <aside class="p-ped-detail">
+          <!-- 顶部: 属性名 + Primary key 标签 + 删除 -->
+          <div class="p-ped-detail-head">
+            <div class="p-ped-detail-head-left">
+              <button class="p-ped-icon-btn" title="属性类型"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="4"/><rect x="3" y="15" width="18" height="4"/></svg></button>
+              <span class="p-ped-detail-type-icon">123</span>
+              <span class="p-ped-detail-name">id</span>
+              <span class="p-badge p-badge-blue">Primary key</span>
+            </div>
+            <button class="p-ped-icon-btn p-ped-icon-btn-danger" title="删除">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/></svg>
+            </button>
+          </div>
+          <!-- Tab 切换 -->
+          <div class="p-ped-detail-tabs">
+            <a href="#" class="is-active">General</a>
+            <a href="#">Display</a>
+            <a href="#">Interaction</a>
+            <a href="#">Details</a>
+            <a href="#">Advanced</a>
+          </div>
+          <!-- 详情内容 -->
+          <div class="p-ped-detail-body">
+            <div class="p-ped-detail-section">Overview</div>
+            <!-- Name -->
+            <div class="p-ped-field">
+              <label>Name</label>
+              <div class="p-ped-input-with-icon">
+                <input type="text" value="id" />
+                <button class="p-ped-icon-btn" title="清空"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+              </div>
+            </div>
+            <!-- Description -->
+            <div class="p-ped-field">
+              <label>Description</label>
+              <textarea placeholder="" style="height:48px"></textarea>
+            </div>
+            <!-- Base type -->
+            <div class="p-ped-field">
+              <label>Base type</label>
+              <div class="p-ped-input-with-icon">
+                <span class="p-ped-input-prefix">123</span>
+                <select><option>Integer</option><option>String</option><option>Double</option><option>Boolean</option><option>Date</option><option>Timestamp</option></select>
+              </div>
+            </div>
+            <!-- Allow multiple -->
+            <div class="p-ped-field">
+              <div class="p-ped-field-row">
+                <label>Allow multiple <span class="p-ped-help">?</span></label>
+                <label class="p-ped-toggle p-ped-toggle-sm">
+                  <input type="checkbox" />
+                  <span class="p-ped-toggle-track"></span>
+                </label>
+              </div>
+            </div>
+            <!-- Value type -->
+            <div class="p-ped-field">
+              <div class="p-ped-field-row">
+                <label>Value type <span class="p-ped-help">?</span></label>
+              </div>
+              <select class="p-ped-select-block"><option>Select a value type</option></select>
+            </div>
+            <!-- Status -->
+            <div class="p-ped-field">
+              <label>Status</label>
+              <span class="p-ped-status p-ped-status-experimental">Experimental</span>
+            </div>
+            <!-- Configuration -->
+            <div class="p-ped-detail-section">Configuration</div>
+            <div class="p-ped-field">
+              <div class="p-ped-field-row">
+                <label>Title key</label>
+                <label class="p-ped-toggle p-ped-toggle-sm">
+                  <input type="checkbox" />
+                  <span class="p-ped-toggle-track"></span>
+                </label>
+              </div>
+              <div class="p-ped-field-hint">Current: <span class="p-ped-prop-mini">𝐈</span> <b>ICAO</b></div>
+            </div>
+            <div class="p-ped-field">
+              <div class="p-ped-field-row">
+                <label>Primary key</label>
+                <label class="p-ped-toggle p-ped-toggle-sm">
+                  <input type="checkbox" checked />
+                  <span class="p-ped-toggle-track"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- 底部: 数据预览表 -->
+      <div class="p-ped-preview">
+        <div class="p-ped-preview-head">
+          <div class="p-ped-dataset-select">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5"/><path d="M3 12a9 3 0 0018 0"/></svg>
+            <span class="p-mono">orders_ontology_2</span>
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <label class="p-ped-toggle">
+            <input type="checkbox" checked />
+            <span class="p-ped-toggle-track"></span>
+            <span>Show mapped columns</span>
+          </label>
+          <button class="p-btn p-btn-secondary p-btn-sm">Automap all</button>
+          <div class="p-ped-preview-head-right">
+            <button class="p-ped-icon-btn"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg></button>
+            <a href="workshop-object-view.html" class="p-ped-preview-link">Preview objects</a>
+            <a href="#" class="p-ped-preview-link">Preview table <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></a>
+          </div>
+        </div>
+        <table class="p-ped-preview-table">
+          <thead>
+            <tr>
+              <th style="width:32px"></th>
+              <th>id<div class="p-ped-col-type">Integer<div class="p-ped-col-key">123 <span class="p-badge p-badge-blue">Primary key</span></div></div></th>
+              <th>airport<div class="p-ped-col-type">String<div class="p-ped-col-key">𝐈 <b>Airport</b></div></div></th>
+              <th>city<div class="p-ped-col-type">String<div class="p-ped-col-key">𝐈 <b>City</b></div></div></th>
+              <th>country<div class="p-ped-col-type">String<div class="p-ped-col-key">𝐈 <b>Country</b></div></div></th>
+              <th>IATA<div class="p-ped-col-type">String<div class="p-ped-col-key">𝐈 <b>IATA</b></div></div></th>
+              <th>ICAO<div class="p-ped-col-type">String<div class="p-ped-col-key">𝐈 <b>ICAO</b> <span class="p-badge p-badge-blue">Title</span></div></div></th>
+              <th>latitude<div class="p-ped-col-type">Double<div class="p-ped-col-key">1.0 <b>Latitude</b></div></div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>20</td><td>Baltimore/Washington Internatio…</td><td>Baltimore</td><td>United States</td><td>BWI</td><td>KBWI</td><td>39.17539978</td></tr>
+            <tr><td>2</td><td>65</td><td>Shanghai Pudong International Ai…</td><td>Shanghai</td><td>China</td><td>PVG</td><td>ZSPD</td><td>31.14340019</td></tr>
+            <tr><td>3</td><td>73</td><td>Suvarnabhumi Airport</td><td>Bangkok</td><td>Thailand</td><td>BKK</td><td>VTBS</td><td>13.68109989</td></tr>
+            <tr><td>4</td><td>9</td><td>Seattle Tacoma International Airp…</td><td>Seattle</td><td>United States</td><td>SEA</td><td>KSEA</td><td>47.44900131</td></tr>
+            <tr><td>5</td><td>15</td><td>Minneapolis-St Paul International…</td><td>Minneapolis</td><td>United States</td><td>MSP</td><td>KMSP</td><td>44.88199997</td></tr>
+            <tr><td>6</td><td>22</td><td>Salt Lake City International Airport</td><td>Salt Lake City</td><td>United States</td><td>SLC</td><td>KSLC</td><td>40.78839874</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
     </div>
   </div>
 </div>

@@ -3,23 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>工作台 · 画布编辑 | AI操作系统</title>
+  <title>画布编辑 · Slate | AI操作系统</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/demo.css" />
+  <style>
+    .p-slate-widget.is-preview { border:none !important; box-shadow:none !important; }
+    .p-slate-widget.is-preview .p-slate-widget-header { display:none; }
+    .p-slate-widget.is-preview .p-slate-widget-body { padding:0; }
+    .p-slate-canvas:has(.is-preview) { background:#fff; padding:0; }
+  </style>
 </head>
 <body>
 <div class="p-app">
   <nav class="p-nav-global">
     <div class="p-nav-global-top">
-<div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
-<div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
-<div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
-<div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-<div class="p-nav-g-item" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
-
+      <div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item is-active" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+      <div class="p-nav-g-item" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
     </div>
     <div class="p-nav-global-bottom">
       <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -29,7 +34,7 @@
   <div class="p-main">
     <header class="p-header">
       <div class="p-header-left">
-        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>画布编辑</span></div>
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><a href="workshop.html">Workshop</a><span class="p-breadcrumb-sep">/</span><span>画布编辑</span></div>
       </div>
       <div class="p-header-center">
         <div class="p-search">
@@ -38,8 +43,8 @@
         </div>
       </div>
       <div class="p-header-right">
-        <button class="p-btn p-btn-secondary p-btn-sm">Discard</button>
-        <button class="p-btn p-btn-primary p-btn-sm">Save to branch</button>
+        <button class="p-btn p-btn-secondary p-btn-sm">取消</button>
+        <button class="p-btn p-btn-primary p-btn-sm">保存到分支</button>
       </div>
     </header>
     <div class="p-body">
@@ -48,42 +53,62 @@
 <div class="p-sidebar-section-title">工作台</div>
 <div class="p-sidebar-section">
 <a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
-<a href="workshop-canvas.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a>
-<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>运营台</span></a>
-<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>知识图谱</span></a>
-<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+<a href="workshop-app-order.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>订单管理</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>风险告警管理</span></a>
 <a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
-<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+</div>
+<div class="p-sidebar-section-title">应用程序构建工具</div>
+<div class="p-sidebar-section">
+<a href="workshop-canvas.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a>
+<a href="workshop-widget-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>组件注册表</span></a>
+<a href="workshop-variables.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16v12H4zM8 10h2v4H8zM14 10h2v4h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变量管理器</span></a>
+<a href="workshop-styles.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>主题与样式</span></a>
 <a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
 <a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
 </div>
 <div class="p-sidebar-section-title">AIP 决策引擎</div>
 <div class="p-sidebar-section">
-<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Chatbot Studio</span></a>
+<div class="p-sidebar-subgroup-title">应用层</div>
+<a href="aip-assist.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AIP 助手</span></a>
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>对话机器人</span></a>
+<a href="aip-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>AIP 分析师</span></a>
+<div class="p-sidebar-subgroup-title">逻辑编排层</div>
 <a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
-<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Agent 工具面板</span></a>
-<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>重能力接入</span></a>
-<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>智能体工具面板</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<div class="p-sidebar-subgroup-title">智能体</div>
+<a href="agent-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg><span>智能体目录</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>智能体插件</span></a>
+<div class="p-sidebar-subgroup-title">评测与治理</div>
 <a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<div class="p-sidebar-subgroup-title">决策谱系</div>
 <a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-observability.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可观测性</span></a>
+</div>
+<div class="p-sidebar-section-title">模型管理</div>
+<div class="p-sidebar-section">
+<a href="aip-model-catalog.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>模型目录</span></a>
 <a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
 <a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
-<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<a href="aip-capacity-management.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>容量管理</span></a>
 </div>
 <div class="p-sidebar-section-title">本体 · 数字孪生</div>
 <div class="p-sidebar-section">
 <a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
-<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>漏斗管道</span></a>
-<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF 行业漏斗</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>对象探索</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>本体提案</span></a>
 <a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
-<a href="ontology-wiki.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="ontology-wiki-index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF funnel</span></a>
+<a href="okf-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>OKF 概览</span></a>
+
 <a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
 </div>
-<div class="p-sidebar-section-title">数据集成</div>
+<div class="p-sidebar-section-title">管道与数据治理</div>
 <div class="p-sidebar-section">
-<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据连接</span></a>
-<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
-<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
 <a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
 <a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
 <a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
@@ -93,7 +118,16 @@
 <a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
 <a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
 </div>
-<div class="p-sidebar-section-title">交付 Apollo</div>
+<div class="p-sidebar-section-title">数据源与同步</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据链接器</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="sync.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg><span>同步配置</span></a>
+<a href="sync-routing.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>同步路由</span></a>
+<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+<a href="document-intelligence.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round"/></svg><span>文档智能</span></a>
+</div>
+<div class="p-sidebar-section-title">运维交付</div>
 <div class="p-sidebar-section">
 <a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
 <a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
@@ -102,43 +136,972 @@
 <a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
 <a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
 <a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+<a href="integration-cases.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>接入案例</span></a>
 </div>
-
       </aside>
-      <main class="p-content">
-<div class="w-44 border-r border-gray-200 p-3 text-xs space-y-2 overflow-y-auto">
-        <div class="text-gray-900 font-medium mb-2">Layout</div>
-        <div class="text-blue-600">▾ Header</div>
-        <div class="pl-2 text-gray-500">图标 / 标题</div>
-        <div class="text-blue-600">▾ Page: Inbox</div>
-        <div class="pl-2">筛选 Section</div>
-        <div class="pl-2">主表 Section</div>
-        <div class="pl-2 text-gray-500">Overlay 详情</div>
-        <div class="text-gray-400">○ Page: 设置</div>
-        <div class="pt-3 border-t border-gray-200 text-gray-500">变量 / Events</div>
-      </div>
-      <div class="flex-1 grid-pattern p-6 overflow-auto space-y-4">
-        <div class="text-xs text-gray-500">画布空态 · Header / Page / Section / Overlay · 先建 Object Set 变量再拖 Widget</div>
-        <div class="rounded-lg border border-dashed border-white/[0.15] bg-gray-100 p-4">
-          <div class="text-[10px] text-gray-500 mb-2">Section · 筛选</div>
-          <button type="button" class="text-xs text-blue-700 border border-blue-600/25 rounded-lg px-3 py-2">+ 添加 Widget（Filter List）</button>
+      <main class="p-content p-slate-app">
+        <header class="p-slate-topbar">
+          <div class="p-slate-topbar-left">
+            <span class="p-slate-breadcrumb">Workshop</span>
+            <svg class="w-3 h-3 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h1 class="p-slate-title">COVID-19 Homepage Skeleton <svg class="w-3 h-3 text-gray-400 inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/></svg> <span style="font-size:10px;padding:2px 6px;border-radius:4px;background:#fef3c7;color:#92400e;margin-left:4px;vertical-align:middle">编辑器功能展示 Demo</span></h1>
+          </div>
+          <nav class="p-slate-tabs">
+            <a href="#" class="p-slate-tab">文件</a>
+            <a href="#" class="p-slate-tab">帮助</a>
+            <a href="#" class="p-slate-tab is-active">页面 1 <span class="p-slate-version">v9</span></a>
+          </nav>
+          <div class="p-slate-topbar-right">
+            <button class="p-btn p-btn-secondary p-btn-sm">动作</button>
+            <button class="p-btn p-btn-primary p-btn-sm">保存</button>
+            <button class="p-slate-close"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </header>
+        <div class="p-slate-toolbar">
+          <div class="p-slate-toolbar-left">
+            <button class="p-slate-mode is-active" data-mode="edit"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9" stroke-linecap="round"/></svg>组件</button>
+            <button class="p-slate-mode" data-mode="workflow"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke-linecap="round"/></svg>工作流</button>
+            <button class="p-slate-mode" data-mode="preview"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3"/></svg>预览</button>
+          </div>
+          <div class="p-slate-toolbar-tabs">
+            <button class="p-slate-toolbar-tab" data-app-tab="dashboard" style="border:none;background:none;cursor:pointer">仪表盘</button>
+            <button class="p-slate-toolbar-tab" data-app-tab="queries" style="border:none;background:none;cursor:pointer">查询</button>
+            <button class="p-slate-toolbar-tab" data-app-tab="functions" style="border:none;background:none;cursor:pointer">函数</button>
+            <button class="p-slate-toolbar-tab is-active" data-app-tab="objects" style="border:none;background:none;cursor:pointer">对象</button>
+            <button class="p-slate-toolbar-tab" data-app-tab="events" style="border:none;background:none;cursor:pointer">事件</button>
+            <button class="p-slate-toolbar-tab" data-app-tab="data" style="border:none;background:none;cursor:pointer">数据</button>
+            <button class="p-slate-toolbar-tab" data-app-tab="dependencies" style="border:none;background:none;cursor:pointer">依赖</button>
+            <button class="p-slate-toolbar-tab" data-app-tab="styles" style="border:none;background:none;cursor:pointer">样式</button>
+            <button class="p-slate-toolbar-tab" data-app-tab="variables" style="border:none;background:none;cursor:pointer">变量</button>
+          </div>
         </div>
-        <div class="rounded-lg border border-dashed border-white/[0.15] bg-gray-100 p-4">
-          <div class="text-[10px] text-gray-500 mb-2">Section · 主表</div>
-          <button type="button" class="text-xs text-blue-700 border border-blue-600/25 rounded-lg px-3 py-2">+ 添加 Widget（Object Table）</button>
+        <div class="p-slate-body">
+          <aside class="p-slate-tree">
+            <div class="p-slate-tree-search">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+              <input type="search" placeholder="搜索组件..." />
+            </div>
+            <div class="p-slate-tree-section-title">Layout</div>
+            <div class="p-slate-tree-item">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+              <span>fullscreen</span>
+            </div>
+            <div class="p-slate-tree-item is-expanded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="w-3.5 h-3.5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18" stroke-linecap="round"/></svg>
+              <span>w_nav_bar</span>
+            </div>
+            <div class="p-slate-tree-item is-child">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+              <span>w_widget48</span>
+            </div>
+            <div class="p-slate-tree-item is-child">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+              <svg class="w-3.5 h-3.5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9" stroke-linecap="round"/></svg>
+              <span>w_widget36</span>
+            </div>
+            <div class="p-slate-tree-item is-child pl-8">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>w_widg...</span>
+            </div>
+            <div class="p-slate-tree-item is-child pl-8">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>w_widg...</span>
+            </div>
+            <div class="p-slate-tree-item is-child">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+              <span>w_widget37</span>
+            </div>
+            <div class="p-slate-tree-item is-child">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+              <svg class="w-3.5 h-3.5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18" stroke-linecap="round"/></svg>
+              <span>w_widget47</span>
+            </div>
+            <div class="p-slate-tree-item is-expanded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="w-3.5 h-3.5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18" stroke-linecap="round"/></svg>
+              <span>w_nav_cont...</span>
+            </div>
+            <div class="p-slate-tree-item is-child pl-8">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>w_n...</span>
+            </div>
+            <div class="p-slate-tree-item is-child pl-8">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>w_n...</span>
+            </div>
+            <div class="p-slate-tree-footer">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              删除组件
+            </div>
+            <a href="workshop-widget-registry.html" style="display:flex;align-items:center;gap:6px;padding:6px 10px;margin-top:6px;border-radius:6px;background:#eef2ff;color:#4f46e5;font-size:11px;font-weight:500;text-decoration:none;border:1px dashed #c7d2fe">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+              添加组件 · 浏览注册表
+            </a>
+            <!-- 拖拽组件面板 -->
+            <div style="margin-top:8px;padding:6px;border-radius:6px;background:#F0F2F5;border:0.5px dashed #B4B2A9;">
+              <div style="font-size:9px;color:#888;margin-bottom:4px;padding:0 4px;">拖拽到画布 →</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+                <div class="drag-widget-item" draggable="true" data-widget="Table" style="padding:5px 6px;border-radius:4px;background:#fff;border:0.5px solid #DDD;font-size:10px;cursor:grab;display:flex;align-items:center;gap:4px;">
+                  <svg class="w-3 h-3 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+                  表格
+                </div>
+                <div class="drag-widget-item" draggable="true" data-widget="Chart" style="padding:5px 6px;border-radius:4px;background:#fff;border:0.5px solid #DDD;font-size:10px;cursor:grab;display:flex;align-items:center;gap:4px;">
+                  <svg class="w-3 h-3 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18M7 14l3-3 3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  图表
+                </div>
+                <div class="drag-widget-item" draggable="true" data-widget="Form" style="padding:5px 6px;border-radius:4px;background:#fff;border:0.5px solid #DDD;font-size:10px;cursor:grab;display:flex;align-items:center;gap:4px;">
+                  <svg class="w-3 h-3 text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 8h10M7 12h6M7 16h8" stroke-linecap="round"/></svg>
+                  表单
+                </div>
+                <div class="drag-widget-item" draggable="true" data-widget="Button" style="padding:5px 6px;border-radius:4px;background:#fff;border:0.5px solid #DDD;font-size:10px;cursor:grab;display:flex;align-items:center;gap:4px;">
+                  <svg class="w-3 h-3 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="16" height="8" rx="4"/></svg>
+                  按钮
+                </div>
+                <div class="drag-widget-item" draggable="true" data-widget="Map" style="padding:5px 6px;border-radius:4px;background:#fff;border:0.5px solid #DDD;font-size:10px;cursor:grab;display:flex;align-items:center;gap:4px;">
+                  <svg class="w-3 h-3 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5"/></svg>
+                  地图
+                </div>
+                <div class="drag-widget-item" draggable="true" data-widget="Text" style="padding:5px 6px;border-radius:4px;background:#fff;border:0.5px solid #DDD;font-size:10px;cursor:grab;display:flex;align-items:center;gap:4px;">
+                  <svg class="w-3 h-3 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h12M4 18h8" stroke-linecap="round"/></svg>
+                  文本
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div class="p-slate-canvas" id="canvas-drop-zone" style="position:relative;">
+            <div class="p-slate-widget is-selected">
+              <div class="p-slate-widget-header">
+                <span class="p-slate-widget-title">Total cases (today's growth):</span>
+              </div>
+              <div class="p-slate-widget-body">
+                <nav class="p-slate-page-nav">
+                  <a href="#">Get Started</a>
+                  <a href="#">Open Analytics</a>
+                  <a href="#">Resources</a>
+                  <a href="#">Global Metrics</a>
+                  <a href="#">Help</a>
+                  <a href="#">Taskforce</a>
+                </nav>
+                <div class="p-slate-hero">
+                  <div class="p-slate-hero-content">
+                    <h2>COVID-19</h2>
+                    <p>Several Palantir resources exist in the platform to track pandemic, healthcare and demographic data that can be leveraged for specific</p>
+                    <div class="p-slate-hero-links">
+                      <a href="#">Ontology &amp; Pipelines →</a>
+                      <a href="#">Explore →</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 拖拽放置区指示器 -->
+            <div id="drop-indicator" style="display:none;position:absolute;inset:0;border:2px dashed #4f46e5;border-radius:6px;background:rgba(79,70,229,0.04);pointer-events:none;z-index:50;">
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#4f46e5;color:#fff;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;box-shadow:0 4px 12px rgba(79,70,229,0.3);">
+                放置组件到此处
+              </div>
+            </div>
+            <div style="padding:8px 16px;border-top:1px solid var(--p-border);font-size:12px;color:var(--p-text-muted);display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+              <span>相关配置:</span>
+              <a href="workshop-events.html" class="p-oma-link">事件配置 →</a>
+              <a href="workshop-module-interface.html" class="p-oma-link">模块接口 →</a>
+            </div>
+          </div>
+          <aside class="p-slate-props">
+            <div class="p-slate-props-header">
+              <svg class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18" stroke-linecap="round"/></svg>
+              <span>w_start_container</span>
+            </div>
+            <!-- Tab式属性面板 -->
+            <div style="display:flex;border-bottom:1px solid var(--p-border);padding:0 4px">
+              <button class="js-prop-tab is-active" data-prop-tab="content" style="padding:6px 10px;font-size:11px;font-weight:500;border-bottom:2px solid var(--p-accent);color:var(--p-accent);background:none;border-top:none;border-left:none;border-right:none;cursor:pointer">内容</button>
+              <button class="js-prop-tab" data-prop-tab="style" style="padding:6px 10px;font-size:11px;color:var(--p-text-muted);border:none;background:none;cursor:pointer">样式</button>
+              <button class="js-prop-tab" data-prop-tab="events" style="padding:6px 10px;font-size:11px;color:var(--p-text-muted);border:none;background:none;cursor:pointer">事件</button>
+              <button class="js-prop-tab" data-prop-tab="data" style="padding:6px 10px;font-size:11px;color:var(--p-text-muted);border:none;background:none;cursor:pointer">数据</button>
+            </div>
+            <!-- Content Tab -->
+            <div class="js-prop-panel" data-prop-panel="content">
+              <div class="p-slate-props-section">
+                <div class="text-[10px] uppercase tracking-wider text-gray-400">内容</div>
+                <div class="p-slate-props-toggle">
+                  <button>Markdown</button>
+                  <button class="is-active">HTML</button>
+                </div>
+                <div class="p-slate-props-code">
+                  &lt;div class="horizontal-container"&gt;<br/>
+                  &nbsp;&nbsp;...
+                </div>
+              </div>
+            </div>
+            <!-- Style Tab -->
+            <div class="js-prop-panel" data-prop-panel="style" style="display:none;padding:8px">
+              <div class="text-[10px] uppercase tracking-wider text-gray-400 mb-2">布局</div>
+              <div style="display:flex;gap:4px;margin-bottom:8px">
+                <button style="flex:1;padding:4px;font-size:10px;border:1px solid #d1d5db;border-radius:4px;background:white;cursor:pointer">横向</button>
+                <button style="flex:1;padding:4px;font-size:10px;border:1px solid #d1d5db;border-radius:4px;background:#e0e7ff;color:#4f46e5;cursor:pointer">纵向</button>
+                <button style="flex:1;padding:4px;font-size:10px;border:1px solid #d1d5db;border-radius:4px;background:white;cursor:pointer">栅格</button>
+              </div>
+              <div class="text-[10px] uppercase tracking-wider text-gray-400 mb-1">间距</div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+                <input type="range" min="0" max="40" value="16" style="flex:1" />
+                <span style="font-size:10px;color:#6b7280">16px</span>
+              </div>
+              <div class="text-[10px] uppercase tracking-wider text-gray-400 mb-1">背景色</div>
+              <div style="display:flex;align-items:center;gap:4px">
+                <div style="width:20px;height:20px;border-radius:4px;border:1px solid #d1d5db;background:#ffffff"></div>
+                <span style="font-size:10px;color:#6b7280;font-family:monospace">#FFFFFF</span>
+              </div>
+            </div>
+            <!-- Events Tab -->
+            <div class="js-prop-panel" data-prop-panel="events" style="display:none;padding:8px">
+              <div style="font-size:11px;color:#6b7280;margin-bottom:6px">绑定此组件的事件处理：</div>
+              <div style="border:1px solid #e5e7eb;border-radius:6px;padding:6px;margin-bottom:4px">
+                <div style="font-size:11px;font-weight:500;color:#374151">onPageLoad</div>
+                <div style="font-size:10px;color:#6b7280">→ initDefaultFilter()</div>
+              </div>
+              <div style="border:1px solid #e5e7eb;border-radius:6px;padding:6px;margin-bottom:4px">
+                <div style="font-size:11px;font-weight:500;color:#374151">onResize</div>
+                <div style="font-size:10px;color:#6b7280">→ setBreakpoint(width)</div>
+              </div>
+              <a href="workshop-events.html" style="display:block;font-size:11px;color:#4f46e5;text-align:center;padding:4px;border:1px dashed #c7d2fe;border-radius:6px;text-decoration:none;margin-top:4px">+ 绑定新事件 →</a>
+            </div>
+            <!-- Data Tab -->
+            <div class="js-prop-panel" data-prop-panel="data" style="display:none;padding:8px">
+              <div style="font-size:11px;color:#6b7280;margin-bottom:6px">绑定数据源：</div>
+              <div style="border:1px solid #e5e7eb;border-radius:6px;padding:6px;margin-bottom:4px">
+                <div style="font-size:11px;font-weight:500;color:#374151">ObjectSet: COVID_Cases</div>
+                <div style="font-size:10px;color:#6b7280">属性: country, date, confirmed, deaths</div>
+              </div>
+              <div style="border:1px solid #e5e7eb;border-radius:6px;padding:6px;margin-bottom:4px">
+                <div style="font-size:11px;font-weight:500;color:#374151">变量: $selected_country</div>
+                <div style="font-size:10px;color:#6b7280">类型: String · 默认: "ALL"</div>
+              </div>
+              <div style="border:1px dashed #d1d5db;border-radius:6px;padding:6px;text-align:center">
+                <span style="font-size:11px;color:#6b7280">+ 绑定变量或 ObjectSet</span>
+              </div>
+            </div>
+          </aside>
         </div>
-        <div class="rounded-lg border border-dashed border-purple-200 bg-purple-50 p-4">
-          <div class="text-[10px] text-purple-600/80 mb-2">Overlay · Drawer（情境层）</div>
-          <button type="button" class="text-xs text-purple-600 border border-violet-400/25 rounded-lg px-3 py-2">+ Object View · Wiki</button>
+        <!-- ====== 工作流模式三栏（组件/工作流/预览 切换） ====== -->
+        <div id="workflow-body" class="p-slate-body" style="display:none;">
+          <!-- 左栏：触发器列表 -->
+          <aside class="p-slate-tree">
+            <div class="p-slate-tree-search">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+              <input type="search" placeholder="搜索触发器..." />
+            </div>
+            <div class="p-slate-tree-section-title">事件触发器 (5)</div>
+            <!-- 触发器卡片 -->
+            <div class="wf-trigger-card is-active" data-trigger="onPageLoad" style="padding:8px 10px;border-radius:6px;background:#EFF6FF;border:1px solid #BFDBFE;margin-bottom:4px;cursor:pointer;" onclick="selectWorkflowNode(this,'trigger','onPageLoad')">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <span style="font-size:13px;">🕐</span>
+                <span style="font-size:12px;font-weight:600;color:#1E40AF;">onPageLoad</span>
+                <label style="margin-left:auto;cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" checked style="accent-color:#3B82F6;width:12px;height:12px;vertical-align:middle"/></label>
+              </div>
+              <div style="font-size:10px;color:#6B7280;">全局 · 页面首次渲染</div>
+              <div style="font-size:10px;color:#3B82F6;margin-top:2px;">→ 3 个动作</div>
+            </div>
+            <div class="wf-trigger-card" data-trigger="onRowClick" style="padding:8px 10px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;" onclick="selectWorkflowNode(this,'trigger','onRowClick')">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <span style="font-size:13px;">🖱</span>
+                <span style="font-size:12px;font-weight:600;color:#374151;">onRowClick</span>
+                <label style="margin-left:auto;cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" checked style="accent-color:#3B82F6;width:12px;height:12px;vertical-align:middle"/></label>
+              </div>
+              <div style="font-size:10px;color:#6B7280;">w_table_orders · 行点击</div>
+              <div style="font-size:10px;color:#3B82F6;margin-top:2px;">→ 2 个动作</div>
+            </div>
+            <div class="wf-trigger-card" data-trigger="onTimer" style="padding:8px 10px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;" onclick="selectWorkflowNode(this,'trigger','onTimer')">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <span style="font-size:13px;">⏰</span>
+                <span style="font-size:12px;font-weight:600;color:#374151;">onTimer</span>
+                <label style="margin-left:auto;cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" checked style="accent-color:#3B82F6;width:12px;height:12px;vertical-align:middle"/></label>
+              </div>
+              <div style="font-size:10px;color:#6B7280;">全局 · 每 30s 自动刷新</div>
+              <div style="font-size:10px;color:#3B82F6;margin-top:2px;">→ 1 个动作</div>
+            </div>
+            <div class="wf-trigger-card" data-trigger="onWidgetClick" style="padding:8px 10px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;" onclick="selectWorkflowNode(this,'trigger','onWidgetClick')">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <span style="font-size:13px;">📊</span>
+                <span style="font-size:12px;font-weight:600;color:#374151;">onWidgetClick</span>
+                <label style="margin-left:auto;cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" style="accent-color:#3B82F6;width:12px;height:12px;vertical-align:middle"/></label>
+              </div>
+              <div style="font-size:10px;color:#6B7280;">w_chart_revenue · 已禁用</div>
+              <div style="font-size:10px;color:#9CA3AF;margin-top:2px;">→ 2 个动作 (已暂停)</div>
+            </div>
+            <div class="wf-trigger-card" data-trigger="onFilterChange" style="padding:8px 10px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;" onclick="selectWorkflowNode(this,'trigger','onFilterChange')">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <span style="font-size:13px;">🔍</span>
+                <span style="font-size:12px;font-weight:600;color:#374151;">onFilterChange</span>
+                <label style="margin-left:auto;cursor:pointer;" onclick="event.stopPropagation()"><input type="checkbox" checked style="accent-color:#3B82F6;width:12px;height:12px;vertical-align:middle"/></label>
+              </div>
+              <div style="font-size:10px;color:#6B7280;">w_filter_country · 筛选变化</div>
+              <div style="font-size:10px;color:#3B82F6;margin-top:2px;">→ 1 个动作</div>
+            </div>
+            <div style="margin-top:8px;padding:6px 10px;border-radius:6px;background:#EFF6FF;color:#3B82F6;font-size:11px;font-weight:500;border:1px dashed #93C5FD;cursor:pointer;text-align:center;" onclick="showToast('新建触发器：选择事件源和绑定 Widget')">
+              + 新建触发器
+            </div>
+          </aside>
+
+          <!-- 中间画布：SVG 流程连线图 -->
+          <div class="p-slate-canvas" style="position:relative;overflow-y:auto;background:#FAFBFC;">
+            <div style="padding:8px 12px;border-bottom:1px solid var(--p-border);font-size:11px;color:#6B7280;display:flex;align-items:center;gap:8px;background:#fff;">
+              <span style="font-weight:600;color:#374151;">事件编排视图</span>
+              <span style="color:#D1D5DB;">|</span>
+              <span>共 5 条触发链 · 9 个动作节点</span>
+              <span style="margin-left:auto;display:flex;gap:8px;align-items:center;">
+                <span style="display:flex;align-items:center;gap:3px;"><span style="width:10px;height:10px;border-radius:3px;background:#3B82F6;display:inline-block;"></span>触发器</span>
+                <span style="display:flex;align-items:center;gap:3px;"><span style="width:10px;height:10px;background:#F59E0B;display:inline-block;transform:rotate(45deg);"></span>条件</span>
+                <span style="display:flex;align-items:center;gap:3px;"><span style="width:10px;height:10px;border-radius:3px;background:#10B981;display:inline-block;"></span>动作</span>
+              </span>
+            </div>
+
+            <!-- 工作流链 1: onPageLoad -->
+            <div class="wf-chain" style="padding:12px 16px;border-bottom:1px solid #F3F4F6;">
+              <div style="font-size:10px;color:#9CA3AF;margin-bottom:8px;font-weight:500;">链 1 · onPageLoad → 3 个动作</div>
+              <svg width="100%" height="56" viewBox="0 0 720 56" style="overflow:visible;">
+                <!-- 触发器节点 -->
+                <rect x="10" y="12" width="90" height="32" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+                <text x="55" y="32" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="600">🕐 onPageLoad</text>
+                <!-- 连线 -->
+                <path d="M100 28 L140 28" stroke="#3B82F6" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>
+                <!-- 条件节点（菱形） -->
+                <polygon points="180,12 220,28 180,44 140,28" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.5"/>
+                <text x="180" y="31" text-anchor="middle" font-size="9" fill="#92400E">if</text>
+                <text x="180" y="60" text-anchor="middle" font-size="8" fill="#9CA3AF">user.role=='admin'</text>
+                <!-- true 连线 → 动作 1 -->
+                <path d="M220 28 L260 28" stroke="#10B981" stroke-width="1.5" fill="none" marker-end="url(#arrowGreen)"/>
+                <text x="240" y="22" text-anchor="middle" font-size="8" fill="#10B981" font-weight="600">true</text>
+                <!-- 动作 1: call_function -->
+                <rect x="260" y="12" width="100" height="32" rx="6" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" style="cursor:pointer;" onclick="selectWorkflowNodeById('action','call_function')"/>
+                <text x="310" y="28" text-anchor="middle" font-size="9" fill="#065F46" font-weight="600">⚙ call_function</text>
+                <text x="310" y="38" text-anchor="middle" font-size="8" fill="#059669">loadDashboard</text>
+                <!-- 动作 1 → 动作 2 串行 -->
+                <path d="M360 28 L400 28" stroke="#6B7280" stroke-width="1" fill="none" marker-end="url(#arrowGray)"/>
+                <!-- 动作 2: update_variable -->
+                <rect x="400" y="12" width="100" height="32" rx="6" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" style="cursor:pointer;" onclick="selectWorkflowNodeById('action','update_variable')"/>
+                <text x="450" y="28" text-anchor="middle" font-size="9" fill="#065F46" font-weight="600">📊 update_var</text>
+                <text x="450" y="38" text-anchor="middle" font-size="8" fill="#059669">$lastRefresh</text>
+                <!-- 动作 2 → 动作 3 串行 -->
+                <path d="M500 28 L540 28" stroke="#6B7280" stroke-width="1" fill="none" marker-end="url(#arrowGray)"/>
+                <!-- 动作 3: emit_event -->
+                <rect x="540" y="12" width="100" height="32" rx="6" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" style="cursor:pointer;" onclick="selectWorkflowNodeById('action','emit_event')"/>
+                <text x="590" y="28" text-anchor="middle" font-size="9" fill="#065F46" font-weight="600">📡 emit_event</text>
+                <text x="590" y="38" text-anchor="middle" font-size="8" fill="#059669">page:loaded</text>
+                <!-- false 连线（阻断） -->
+                <path d="M180 44 L180 52" stroke="#EF4444" stroke-width="1" stroke-dasharray="3,2" fill="none" marker-end="url(#arrowRed)"/>
+                <text x="195" y="53" font-size="8" fill="#EF4444">false · 阻断</text>
+                <!-- 箭头定义 -->
+                <defs>
+                  <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3B82F6"/></marker>
+                  <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#10B981"/></marker>
+                  <marker id="arrowGray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6B7280"/></marker>
+                  <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#EF4444"/></marker>
+                </defs>
+              </svg>
+            </div>
+
+            <!-- 工作流链 2: onRowClick -->
+            <div class="wf-chain" style="padding:12px 16px;border-bottom:1px solid #F3F4F6;">
+              <div style="font-size:10px;color:#9CA3AF;margin-bottom:8px;font-weight:500;">链 2 · onRowClick → 2 个动作</div>
+              <svg width="100%" height="56" viewBox="0 0 520 56" style="overflow:visible;">
+                <rect x="10" y="12" width="90" height="32" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+                <text x="55" y="32" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="600">🖱 onRowClick</text>
+                <path d="M100 28 L140 28" stroke="#3B82F6" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>
+                <!-- 动作 1: navigate -->
+                <rect x="140" y="12" width="100" height="32" rx="6" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" style="cursor:pointer;" onclick="selectWorkflowNodeById('action','navigate')"/>
+                <text x="190" y="28" text-anchor="middle" font-size="9" fill="#065F46" font-weight="600">🔀 navigate</text>
+                <text x="190" y="38" text-anchor="middle" font-size="8" fill="#059669">/orders/{id}</text>
+                <!-- 串行 -->
+                <path d="M240 28 L280 28" stroke="#6B7280" stroke-width="1" fill="none" marker-end="url(#arrowGray)"/>
+                <!-- 动作 2: open_modal -->
+                <rect x="280" y="12" width="100" height="32" rx="6" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" style="cursor:pointer;" onclick="selectWorkflowNodeById('action','open_modal')"/>
+                <text x="330" y="28" text-anchor="middle" font-size="9" fill="#065F46" font-weight="600">🔲 open_modal</text>
+                <text x="330" y="38" text-anchor="middle" font-size="8" fill="#059669">orderDetail</text>
+              </svg>
+            </div>
+
+            <!-- 工作流链 3: onTimer -->
+            <div class="wf-chain" style="padding:12px 16px;border-bottom:1px solid #F3F4F6;">
+              <div style="font-size:10px;color:#9CA3AF;margin-bottom:8px;font-weight:500;">链 3 · onTimer → 1 个动作</div>
+              <svg width="100%" height="56" viewBox="0 0 320 56" style="overflow:visible;">
+                <rect x="10" y="12" width="90" height="32" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+                <text x="55" y="32" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="600">⏰ onTimer</text>
+                <path d="M100 28 L140 28" stroke="#3B82F6" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>
+                <rect x="140" y="12" width="100" height="32" rx="6" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" style="cursor:pointer;" onclick="selectWorkflowNodeById('action','call_function_2')"/>
+                <text x="190" y="28" text-anchor="middle" font-size="9" fill="#065F46" font-weight="600">⚙ call_function</text>
+                <text x="190" y="38" text-anchor="middle" font-size="8" fill="#059669">refreshData</text>
+              </svg>
+            </div>
+
+            <!-- 工作流链 4: onWidgetClick (已禁用) -->
+            <div class="wf-chain" style="padding:12px 16px;border-bottom:1px solid #F3F4F6;opacity:0.5;">
+              <div style="font-size:10px;color:#9CA3AF;margin-bottom:8px;font-weight:500;">链 4 · onWidgetClick → 2 个动作 (已暂停)</div>
+              <svg width="100%" height="56" viewBox="0 0 420 56" style="overflow:visible;">
+                <rect x="10" y="12" width="100" height="32" rx="6" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="4,2"/>
+                <text x="60" y="32" text-anchor="middle" font-size="10" fill="#6B7280" font-weight="600">📊 onWidgetClick</text>
+                <path d="M110 28 L150 28" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="3,2" fill="none" marker-end="url(#arrowGray)"/>
+                <rect x="150" y="12" width="100" height="32" rx="6" fill="#F9FAFB" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4,2"/>
+                <text x="200" y="28" text-anchor="middle" font-size="9" fill="#6B7280" font-weight="600">⚙ call_function</text>
+                <text x="200" y="38" text-anchor="middle" font-size="8" fill="#9CA3AF">exportChart</text>
+                <path d="M250 28 L290 28" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="3,2" fill="none" marker-end="url(#arrowGray)"/>
+                <rect x="290" y="12" width="100" height="32" rx="6" fill="#F9FAFB" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4,2"/>
+                <text x="340" y="28" text-anchor="middle" font-size="9" fill="#6B7280" font-weight="600">📥 update_var</text>
+                <text x="340" y="38" text-anchor="middle" font-size="8" fill="#9CA3AF">$chartClicks++</text>
+              </svg>
+            </div>
+
+            <!-- 工作流链 5: onFilterChange -->
+            <div class="wf-chain" style="padding:12px 16px;">
+              <div style="font-size:10px;color:#9CA3AF;margin-bottom:8px;font-weight:500;">链 5 · onFilterChange → 1 个动作</div>
+              <svg width="100%" height="56" viewBox="0 0 320 56" style="overflow:visible;">
+                <rect x="10" y="12" width="100" height="32" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+                <text x="60" y="32" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="600">🔍 onFilterChange</text>
+                <path d="M110 28 L150 28" stroke="#3B82F6" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>
+                <rect x="150" y="12" width="100" height="32" rx="6" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" style="cursor:pointer;" onclick="selectWorkflowNodeById('action','update_variable_2')"/>
+                <text x="200" y="28" text-anchor="middle" font-size="9" fill="#065F46" font-weight="600">📊 update_var</text>
+                <text x="200" y="38" text-anchor="middle" font-size="8" fill="#059669">$countryFilter</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- 右栏：节点详情面板 -->
+          <aside class="p-slate-props" id="wf-props-panel">
+            <div class="p-slate-props-header" style="display:flex;align-items:center;gap:6px;">
+              <span style="width:10px;height:10px;border-radius:3px;background:#3B82F6;display:inline-block;"></span>
+              <span style="font-size:12px;font-weight:600;">触发器详情</span>
+            </div>
+            <div id="wf-node-detail" style="padding:12px;overflow-y:auto;flex:1;">
+              <!-- 默认显示 onPageLoad 触发器详情 -->
+              <div style="margin-bottom:12px;">
+                <div style="font-size:10px;uppercase;tracking-wider;color:#9CA3AF;margin-bottom:4px;">触发器类型</div>
+                <div style="font-size:12px;font-weight:600;color:#1E40AF;background:#EFF6FF;padding:6px 8px;border-radius:4px;">🕐 onPageLoad</div>
+              </div>
+              <div style="margin-bottom:12px;">
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#9CA3AF;margin-bottom:4px;">绑定 Widget</div>
+                <div style="font-size:11px;color:#374151;">全局（无特定 Widget）</div>
+              </div>
+              <div style="margin-bottom:12px;">
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#9CA3AF;margin-bottom:4px;">触发参数</div>
+                <div style="font-size:11px;color:#374151;font-family:monospace;background:#F9FAFB;padding:4px 6px;border-radius:4px;border:1px solid #E5E7EB;">$page · $user</div>
+              </div>
+              <div style="margin-bottom:12px;">
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#9CA3AF;margin-bottom:4px;">条件表达式</div>
+                <div style="font-size:11px;color:#92400E;font-family:monospace;background:#FFFBEB;padding:4px 6px;border-radius:4px;border:1px solid #FDE68A;">user.role == 'admin'</div>
+              </div>
+              <div style="margin-bottom:12px;">
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#9CA3AF;margin-bottom:4px;">动作链（3 个）</div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:4px;background:#ECFDF5;border:1px solid #A7F3D0;">
+                    <span style="width:8px;height:8px;border-radius:50%;background:#10B981;"></span>
+                    <span style="font-size:11px;font-weight:500;color:#065F46;">⚙ call_function</span>
+                    <span style="font-size:10px;color:#059669;margin-left:auto;">loadDashboard</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:4px;background:#ECFDF5;border:1px solid #A7F3D0;">
+                    <span style="width:8px;height:8px;border-radius:50%;background:#10B981;"></span>
+                    <span style="font-size:11px;font-weight:500;color:#065F46;">📊 update_var</span>
+                    <span style="font-size:10px;color:#059669;margin-left:auto;">$lastRefresh</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:4px;background:#ECFDF5;border:1px solid #A7F3D0;">
+                    <span style="width:8px;height:8px;border-radius:50%;background:#10B981;"></span>
+                    <span style="font-size:11px;font-weight:500;color:#065F46;">📡 emit_event</span>
+                    <span style="font-size:10px;color:#059669;margin-left:auto;">page:loaded</span>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-bottom:12px;">
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#9CA3AF;margin-bottom:4px;">幂等键 (ACT-07)</div>
+                <div style="font-size:11px;color:#374151;font-family:monospace;background:#F9FAFB;padding:4px 6px;border-radius:4px;border:1px solid #E5E7EB;">wf:onPageLoad:{pageId}</div>
+              </div>
+              <div style="margin-bottom:12px;">
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#9CA3AF;margin-bottom:4px;">执行模式</div>
+                <div style="display:flex;gap:4px;">
+                  <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:#DBEAFE;color:#1E40AF;font-weight:500;">同步</span>
+                  <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:#F3F4F6;color:#9CA3AF;">异步</span>
+                </div>
+              </div>
+              <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--p-border);display:flex;gap:6px;">
+                <button class="p-btn p-btn-secondary p-btn-sm" style="flex:1;font-size:11px;" onclick="openTriggerEdit(this)">编辑</button>
+                <button class="p-btn p-btn-sm" style="flex:1;font-size:11px;background:#EF4444;color:#fff;border:none;" onclick="confirmDeleteTrigger(this)">删除</button>
+              </div>
+            </div>
+          </aside>
         </div>
-      </div>
-      <div class="w-52 border-l border-gray-200 p-4 text-xs space-y-3">
-        <div class="text-gray-900 font-medium">配置面板</div>
-        <div class="text-gray-500">Section · 条件显隐：关</div>
-        <div class="text-gray-500">列宽：Flex</div>
-        <div class="rounded-lg border border-gray-200 p-2 text-gray-600">Widget 选择器<br/>Object Table ▾</div>
-        <p class="text-[10px] text-gray-400 pt-2">构建态 · 非运行态</p>
-      </div>
+        <div class="p-slate-app-panels">
+        <!-- Dashboard Tab -->
+        <div class="app-tab-panel" data-app-panel="dashboard" style="display:none;padding:16px 24px;background:#fafafa;">
+          <div style="display:flex;gap:12px;margin-bottom:12px;">
+            <div style="flex:1;background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:12px;">
+              <div style="font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;">组件总数</div>
+              <div style="font-size:24px;font-weight:700;color:#1f2937;margin-top:4px;">23</div>
+              <div style="font-size:10px;color:#10b981;margin-top:2px;">↗ 较 v8 新增 3 个</div>
+            </div>
+            <div style="flex:1;background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:12px;">
+              <div style="font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;">已绑定事件</div>
+              <div style="font-size:24px;font-weight:700;color:#1f2937;margin-top:4px;">7</div>
+              <div style="font-size:10px;color:#6b7280;margin-top:2px;">onPageLoad ×2 · onClick ×3 · onResize ×2</div>
+            </div>
+            <div style="flex:1;background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:12px;">
+              <div style="font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;">查询函数</div>
+              <div style="font-size:24px;font-weight:700;color:#1f2937;margin-top:4px;">12</div>
+              <div style="font-size:10px;color:#6b7280;margin-top:2px;">SQL ×8 · Function ×4</div>
+            </div>
+            <div style="flex:1;background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:12px;">
+              <div style="font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;">页面版本</div>
+              <div style="font-size:24px;font-weight:700;color:#1f2937;margin-top:4px;">v9</div>
+              <div style="font-size:10px;color:#6b7280;margin-top:2px;">草稿分支：feature/dashboard-v2</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <div style="flex:2;background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:12px;">
+              <div style="font-size:12px;font-weight:600;color:#1f2937;margin-bottom:8px;">最近编辑历史</div>
+              <div style="font-size:11px;color:#374151;">
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f3f4f6;"><span>🔧 修改 w_widget36 布局为纵向</span><span style="color:#9ca3af;">2 小时前</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f3f4f6;"><span>🔗 绑定 ObjectSet: COVID_Cases</span><span style="color:#9ca3af;">5 小时前</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f3f4f6;"><span>✨ 新增 onResize 事件</span><span style="color:#9ca3af;">昨天</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;"><span>📋 查询函数 getCountries() 更新</span><span style="color:#9ca3af;">2 天前</span></div>
+              </div>
+            </div>
+            <div style="flex:1;background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:12px;">
+              <div style="font-size:12px;font-weight:600;color:#1f2937;margin-bottom:8px;">依赖检查</div>
+              <div style="font-size:11px;">
+                <div style="color:#10b981;padding:2px 0;">✅ COVID_Cases 数据集可访问</div>
+                <div style="color:#10b981;padding:2px 0;">✅ $selected_country 变量已定义</div>
+                <div style="color:#f59e0b;padding:2px 0;">⚠️ getVaccineData() 查询超时（>3s）</div>
+                <div style="color:#10b981;padding:2px 0;">✅ 事件配置完整</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Queries Tab -->
+        <div class="app-tab-panel" data-app-panel="queries" style="display:none;padding:16px 24px;background:#fafafa;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-size:13px;font-weight:600;color:#1f2937;">查询管理 <span style="color:#9ca3af;font-weight:400;">（SQL 查询语句，从 ObjectSet / Dataset 拉取数据）</span></span>
+            <button class="p-btn p-btn-secondary p-btn-sm" onclick="openQueryEditor()">+ 新建查询</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:16px;">🔍</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">getCountries()</div>
+                <div style="font-size:10px;color:#6b7280;font-family:monospace;">SELECT country, SUM(confirmed) FROM COVID_Cases GROUP BY country ORDER BY confirmed DESC</div>
+              </div>
+              <span style="font-size:10px;color:#10b981;background:#ecfdf5;padding:2px 8px;border-radius:10px;">1.2s</span>
+              <span style="font-size:10px;color:#6b7280;">返回 195 行</span>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:16px;">🔍</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">getDailyStats()</div>
+                <div style="font-size:10px;color:#6b7280;font-family:monospace;">SELECT date, confirmed, deaths, recovered FROM COVID_Cases WHERE country = $selected_country</div>
+              </div>
+              <span style="font-size:10px;color:#10b981;background:#ecfdf5;padding:2px 8px;border-radius:10px;">0.8s</span>
+              <span style="font-size:10px;color:#6b7280;">参数绑定</span>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:16px;">🔍</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">getTopRegions()</div>
+                <div style="font-size:10px;color:#6b7280;font-family:monospace;">SELECT region, confirmed FROM COVID_Cases WHERE country = $selected_country ORDER BY confirmed DESC LIMIT 10</div>
+              </div>
+              <span style="font-size:10px;color:#10b981;background:#ecfdf5;padding:2px 8px;border-radius:10px;">0.5s</span>
+              <span style="font-size:10px;color:#6b7280;">返回 10 行</span>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:16px;">🔍</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">getVaccineData()</div>
+                <div style="font-size:10px;color:#6b7280;font-family:monospace;">SELECT country, vaccine_rate FROM Vaccine_Stats v JOIN COVID_Cases c ON v.country = c.country</div>
+              </div>
+              <span style="font-size:10px;color:#f59e0b;background:#fffbeb;padding:2px 8px;border-radius:10px;">3.8s ⚠️</span>
+              <span style="font-size:10px;color:#6b7280;">JOIN 查询</span>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:16px;">🔍</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">getMonthlyTrend()</div>
+                <div style="font-size:10px;color:#6b7280;font-family:monospace;">SELECT DATE_TRUNC('month', date) AS month, AVG(confirmed) FROM COVID_Cases GROUP BY 1 ORDER BY 1</div>
+              </div>
+              <span style="font-size:10px;color:#10b981;background:#ecfdf5;padding:2px 8px;border-radius:10px;">2.1s</span>
+              <span style="font-size:10px;color:#6b7280;">聚合查询</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Functions Tab -->
+        <div class="app-tab-panel" data-app-panel="functions" style="display:none;padding:16px 24px;background:#fafafa;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-size:13px;font-weight:600;color:#1f2937;">函数管理 <span style="color:#9ca3af;font-weight:400;">（JavaScript / TypeScript 函数，处理前端逻辑和数据变换）</span></span>
+            <button class="p-btn p-btn-secondary p-btn-sm" onclick="openFunctionEditor()">+ 新建函数</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="font-size:16px;">⚡</span>
+                <span style="font-size:12px;font-weight:500;color:#1f2937;">initDefaultFilter()</span>
+                <span style="font-size:9px;color:#4f46e5;background:#eef2ff;padding:1px 6px;border-radius:8px;">onPageLoad</span>
+              </div>
+              <div style="font-size:10px;color:#6b7280;font-family:monospace;background:#f9fafb;padding:6px 8px;border-radius:4px;">// 设置默认筛选条件：全球视图<br/>function initDefaultFilter() { $selected_country = "ALL"; refreshData(); }</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="font-size:16px;">⚡</span>
+                <span style="font-size:12px;font-weight:500;color:#1f2937;">setBreakpoint(width)</span>
+                <span style="font-size:9px;color:#4f46e5;background:#eef2ff;padding:1px 6px;border-radius:8px;">onResize</span>
+              </div>
+              <div style="font-size:10px;color:#6b7280;font-family:monospace;background:#f9fafb;padding:6px 8px;border-radius:4px;">// 响应式断点切换<br/>if (width < 768) layout = 'mobile'; else layout = 'desktop';</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="font-size:16px;">⚡</span>
+                <span style="font-size:12px;font-weight:500;color:#1f2937;">formatNumber(n)</span>
+                <span style="font-size:9px;color:#6b7280;background:#f3f4f6;padding:1px 6px;border-radius:8px;">辅助函数</span>
+              </div>
+              <div style="font-size:10px;color:#6b7280;font-family:monospace;background:#f9fafb;padding:6px 8px;border-radius:4px;">return n.toLocaleString('zh-CN', {maximumFractionDigits:0});</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="font-size:16px;">⚡</span>
+                <span style="font-size:12px;font-weight:500;color:#1f2937;">exportData(format)</span>
+                <span style="font-size:9px;color:#059669;background:#ecfdf5;padding:1px 6px;border-radius:8px;">onClick</span>
+              </div>
+              <div style="font-size:10px;color:#6b7280;font-family:monospace;background:#f9fafb;padding:6px 8px;border-radius:4px;">// 导出当前视图数据：支持 CSV / Excel / JSON<br/>downloadQuery('getDailyStats()', format);</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Objects Tab (默认显示，即现有的画布内容，此处不需要额外面板) -->
+        <div class="app-tab-panel" data-app-panel="objects" style="display:none;padding:8px 16px;border-top:1px solid var(--p-border);background:#fafafa;">
+          <div style="font-size:12px;color:#6b7280;">
+            📋 对象视图即上方画布区域——点击组件树中的 Widget 可查看绑定对象。
+            <a href="workshop-object-view.html" style="color:#4f46e5;text-decoration:underline;">前往对象探索 →</a>
+          </div>
+        </div>
+
+        <!-- Events Tab — 工作流编排器（核心功能） -->
+        <div class="app-tab-panel" data-app-panel="events" style="display:none;padding:0;background:#fafafa;">
+          <div style="display:flex;height:100%;">
+            <!-- 左侧：触发器列表 -->
+            <div style="width:200px;border-right:1px solid var(--p-border);background:#fff;padding:8px;overflow-y:auto;">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#6b7280;margin-bottom:6px;padding:0 4px;">触发器 (Triggers)</div>
+              <div class="event-trigger-item" data-trigger="pageLoad" style="padding:6px 8px;border-radius:6px;background:#eef2ff;border:1px solid #c7d2fe;margin-bottom:4px;cursor:pointer;font-size:11px;">
+                <div style="font-weight:500;color:#4f46e5;">⚡ onPageLoad</div>
+                <div style="color:#6b7280;font-size:10px;margin-top:1px;">→ initDefaultFilter()</div>
+              </div>
+              <div class="event-trigger-item" data-trigger="resize" style="padding:6px 8px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;font-size:11px;">
+                <div style="font-weight:500;color:#374151;">⚡ onResize</div>
+                <div style="color:#6b7280;font-size:10px;margin-top:1px;">→ setBreakpoint(width)</div>
+              </div>
+              <div class="event-trigger-item" data-trigger="click" style="padding:6px 8px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;font-size:11px;">
+                <div style="font-weight:500;color:#374151;">👆 onClick (w_widget36)</div>
+                <div style="color:#6b7280;font-size:10px;margin-top:1px;">→ exportData('csv')</div>
+              </div>
+              <div class="event-trigger-item" data-trigger="change" style="padding:6px 8px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;font-size:11px;">
+                <div style="font-weight:500;color:#374151;">🔄 onChange ($selected_country)</div>
+                <div style="color:#6b7280;font-size:10px;margin-top:1px;">→ refreshData() → renderChart()</div>
+              </div>
+              <div class="event-trigger-item" data-trigger="interval" style="padding:6px 8px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;font-size:11px;">
+                <div style="font-weight:500;color:#374151;">⏱️ onInterval (30s)</div>
+                <div style="color:#6b7280;font-size:10px;margin-top:1px;">→ pollLiveStats() → updateMap()</div>
+              </div>
+              <button style="width:100%;padding:6px;border:1px dashed #d1d5db;border-radius:6px;background:transparent;font-size:11px;color:#6b7280;cursor:pointer;margin-top:4px;" onclick="openTriggerPicker()">+ 添加触发器</button>
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#6b7280;margin:10px 0 6px;padding:0 4px;">触发器类型</div>
+              <div style="font-size:10px;color:#9ca3af;padding:2px 4px;">⚡ 生命周期 (onPageLoad / onPageUnload)</div>
+              <div style="font-size:10px;color:#9ca3af;padding:2px 4px;">👆 用户交互 (onClick / onChange)</div>
+              <div style="font-size:10px;color:#9ca3af;padding:2px 4px;">⏱️ 定时器 (onInterval)</div>
+              <div style="font-size:10px;color:#9ca3af;padding:2px 4px;">📡 WebSocket 消息</div>
+              <div style="font-size:10px;color:#9ca3af;padding:2px 4px;">🔗 路由变化 (onRouteChange)</div>
+            </div>
+            <!-- 中间：工作流画布（触发器→条件→动作） -->
+            <div style="flex:1;position:relative;background:#f0f2f5;overflow:auto;padding:16px;">
+              <div style="font-size:12px;font-weight:600;color:#1f2937;margin-bottom:8px;">
+                工作流编排器 <span style="font-weight:400;color:#9ca3af;font-size:11px;">— 可视化事件→条件→动作的执行链</span>
+              </div>
+              <!-- SVG 连线层 -->
+              <svg style="position:absolute;top:40px;left:0;width:100%;height:300px;pointer-events:none;z-index:0;" viewBox="0 0 500 300">
+                <!-- onPageLoad → Condition → initDefaultFilter -->
+                <path d="M120,30 Q170,30 170,60 Q170,80 220,80" stroke="#4f46e5" stroke-width="2" fill="none" stroke-dasharray="0"/>
+                <polygon points="220,75 220,85 230,80" fill="#4f46e5"/>
+                <path d="M320,80 Q370,80 370,110 Q370,130 420,130" stroke="#4f46e5" stroke-width="2" fill="none"/>
+                <polygon points="420,125 420,135 430,130" fill="#4f46e5"/>
+                <!-- onChange → Condition(false) → 红色 -->
+                <path d="M120,150 Q170,150 170,180 Q170,200 220,200" stroke="#f59e0b" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+                <!-- onInterval → no condition → updateMap -->
+                <path d="M120,250 Q220,250 380,250" stroke="#10b981" stroke-width="2" fill="none"/>
+                <polygon points="380,245 380,255 390,250" fill="#10b981"/>
+              </svg>
+              <!-- 触发器节点 -->
+              <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:80px;">
+                <div style="display:flex;align-items:center;gap:16px;">
+                  <!-- 触发器 -->
+                  <div style="width:100px;background:#eef2ff;border:1px solid #818cf8;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:10px;color:#4f46e5;font-weight:600;">⚡ 触发器</div>
+                    <div style="font-size:11px;font-weight:500;color:#1f2937;margin-top:2px;">onPageLoad</div>
+                  </div>
+                  <!-- 条件判断 -->
+                  <div style="width:100px;background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:8px;text-align:center;margin-left:60px;">
+                    <div style="font-size:10px;color:#f59e0b;font-weight:600;">◆ 条件</div>
+                    <div style="font-size:10px;color:#374151;margin-top:2px;">$user.role == 'analyst'</div>
+                    <div style="font-size:9px;color:#10b981;margin-top:2px;">✅ true →</div>
+                  </div>
+                  <!-- 动作 -->
+                  <div style="width:100px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:8px;text-align:center;margin-left:60px;">
+                    <div style="font-size:10px;color:#059669;font-weight:600;">▶ 动作</div>
+                    <div style="font-size:11px;font-weight:500;color:#1f2937;margin-top:2px;">initDefaultFilter()</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:16px;">
+                  <div style="width:100px;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:10px;color:#f59e0b;font-weight:600;">🔄 触发器</div>
+                    <div style="font-size:11px;font-weight:500;color:#1f2937;margin-top:2px;">onChange</div>
+                    <div style="font-size:9px;color:#6b7280;">$selected_country</div>
+                  </div>
+                  <div style="width:100px;background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:8px;text-align:center;margin-left:60px;">
+                    <div style="font-size:10px;color:#ef4444;font-weight:600;">◆ 条件</div>
+                    <div style="font-size:10px;color:#374151;margin-top:2px;">value !== 'ALL'</div>
+                    <div style="font-size:9px;color:#f59e0b;margin-top:2px;">⚠️ 超时 → 跳过</div>
+                  </div>
+                  <div style="width:100px;background:#f3f4f6;border:1px dashed #d1d5db;border-radius:8px;padding:8px;text-align:center;margin-left:60px;opacity:0.5;">
+                    <div style="font-size:10px;color:#9ca3af;font-weight:600;">▶ 动作</div>
+                    <div style="font-size:11px;font-weight:500;color:#9ca3af;margin-top:2px;">refreshData()</div>
+                    <div style="font-size:9px;color:#ef4444;margin-top:2px;">⛔ 条件未满足</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:16px;">
+                  <div style="width:100px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:10px;color:#059669;font-weight:600;">⏱️ 触发器</div>
+                    <div style="font-size:11px;font-weight:500;color:#1f2937;margin-top:2px;">onInterval</div>
+                    <div style="font-size:9px;color:#6b7280;">每 30 秒</div>
+                  </div>
+                  <div style="margin-left:180px;width:100px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:8px;text-align:center;">
+                    <div style="font-size:10px;color:#059669;font-weight:600;">▶ 动作</div>
+                    <div style="font-size:11px;font-weight:500;color:#1f2937;margin-top:2px;">pollLiveStats()</div>
+                    <div style="font-size:9px;color:#6b7280;margin-top:2px;">→ updateMap()</div>
+                  </div>
+                </div>
+              </div>
+              <!-- 底部提示 -->
+              <div style="margin-top:16px;padding:8px 12px;background:#fff;border:1px solid var(--p-border);border-radius:6px;font-size:11px;color:#6b7280;display:flex;gap:12px;align-items:center;">
+                <span>💡 <strong>工作流编排规则</strong>：</span>
+                <span>① 触发器监听事件 → ② 条件判断（可选）→ ③ 执行动作链</span>
+                <span style="margin-left:auto;"><a href="workshop-events.html" style="color:#4f46e5;text-decoration:none;">高级配置 →</a></span>
+              </div>
+            </div>
+            <!-- 右侧：动作链详情 -->
+            <div style="width:220px;border-left:1px solid var(--p-border);background:#fff;padding:8px;overflow-y:auto;">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#6b7280;margin-bottom:6px;padding:0 4px;">动作链详情</div>
+              <div style="border:1px solid var(--p-border);border-radius:6px;padding:6px;margin-bottom:6px;background:#f9fafb;">
+                <div style="font-size:11px;font-weight:500;color:#1f2937;">onPageLoad 链</div>
+                <div style="font-size:10px;color:#4f46e5;margin-top:4px;">1. 条件判断: $user.role</div>
+                <div style="font-size:10px;color:#059669;margin-top:2px;">2. ⚡ initDefaultFilter()</div>
+                <div style="font-size:10px;color:#059669;margin-top:2px;">3. 📊 refreshData()</div>
+                <div style="font-size:10px;color:#059669;margin-top:2px;">4. 🗺️ renderMap()</div>
+                <div style="font-size:10px;color:#6b7280;margin-top:2px;">总延迟：~120ms</div>
+              </div>
+              <div style="border:1px solid var(--p-border);border-radius:6px;padding:6px;margin-bottom:6px;">
+                <div style="font-size:11px;font-weight:500;color:#1f2937;">onChange 链</div>
+                <div style="font-size:10px;color:#f59e0b;margin-top:4px;">1. 条件: value !== 'ALL'</div>
+                <div style="font-size:10px;color:#9ca3af;margin-top:2px;">2. ⏳ refreshData() <span style="color:#ef4444;">(blocked)</span></div>
+                <div style="font-size:10px;color:#9ca3af;margin-top:2px;">3. 📊 renderChart() <span style="color:#ef4444;">(blocked)</span></div>
+              </div>
+              <div style="border:1px solid var(--p-border);border-radius:6px;padding:6px;margin-bottom:6px;">
+                <div style="font-size:11px;font-weight:500;color:#1f2937;">onInterval 链</div>
+                <div style="font-size:10px;color:#059669;margin-top:4px;">1. ⚡ pollLiveStats()</div>
+                <div style="font-size:10px;color:#059669;margin-top:2px;">2. 🔀 mergeDelta()</div>
+                <div style="font-size:10px;color:#059669;margin-top:2px;">3. 🗺️ updateMap()</div>
+                <div style="font-size:10px;color:#6b7280;margin-top:2px;">无前置条件</div>
+              </div>
+              <div style="margin-top:8px;padding:6px;border:1px dashed #c7d2fe;border-radius:6px;text-align:center;">
+                <span style="font-size:11px;color:#4f46e5;cursor:pointer;" onclick="openWorkflowCreator()">+ 新建工作流</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Tab -->
+        <div class="app-tab-panel" data-app-panel="data" style="display:none;padding:16px 24px;background:#fafafa;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-size:13px;font-weight:600;color:#1f2937;">数据源绑定 <span style="color:#9ca3af;font-weight:400;">（ObjectSet / Dataset / 外部 API）</span></span>
+            <button class="p-btn p-btn-secondary p-btn-sm" onclick="openDataSourcePicker()">+ 绑定数据源</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="font-size:14px;">📊</span>
+                <span style="font-size:12px;font-weight:500;color:#1f2937;">ObjectSet: COVID_Cases</span>
+              </div>
+              <div style="font-size:10px;color:#6b7280;">属性: country, date, confirmed, deaths, recovered</div>
+              <div style="font-size:10px;color:#6b7280;margin-top:2px;">绑定到: w_widget36（统计卡片）, w_widget47（图表）</div>
+              <div style="font-size:10px;color:#10b981;margin-top:4px;">✅ 可访问 · 48,213 条记录</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="font-size:14px;">📊</span>
+                <span style="font-size:12px;font-weight:500;color:#1f2937;">Dataset: Vaccine_Stats</span>
+              </div>
+              <div style="font-size:10px;color:#6b7280;">属性: country, vaccine_rate, vaccine_type</div>
+              <div style="font-size:10px;color:#6b7280;margin-top:2px;">绑定到: getVaccineData() 查询</div>
+              <div style="font-size:10px;color:#f59e0b;margin-top:4px;">⚠️ JOIN 查询偏慢 · 建议加索引</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="font-size:14px;">🌐</span>
+                <span style="font-size:12px;font-weight:500;color:#1f2937;">外部 API: WHO Live Feed</span>
+              </div>
+              <div style="font-size:10px;color:#6b7280;">端点: https://api.who.int/covid/live</div>
+              <div style="font-size:10px;color:#6b7280;margin-top:2px;">绑定到: pollLiveStats() · 每 30 秒轮询</div>
+              <div style="font-size:10px;color:#10b981;margin-top:4px;">✅ 可达 · 平均延迟 220ms</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                <span style="font-size:14px;">📋</span>
+                <span style="font-size:12px;font-weight:500;color:#1f2937;">变量: $selected_country</span>
+              </div>
+              <div style="font-size:10px;color:#6b7280;">类型: String · 默认值: "ALL"</div>
+              <div style="font-size:10px;color:#6b7280;margin-top:2px;">绑定到: 搜索栏下拉框 · onChange 触发刷新</div>
+              <div style="font-size:10px;color:#10b981;margin-top:4px;">✅ 已定义</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dependencies Tab -->
+        <div class="app-tab-panel" data-app-panel="dependencies" style="display:none;padding:16px 24px;background:#fafafa;">
+          <div style="font-size:13px;font-weight:600;color:#1f2937;margin-bottom:10px;">依赖分析 <span style="color:#9ca3af;font-weight:400;">（数据→查询→组件→事件 的依赖链路图）</span></div>
+          <div style="background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:12px;margin-bottom:8px;">
+            <div style="font-size:12px;font-weight:500;color:#1f2937;margin-bottom:8px;">📊 COVID_Cases（数据集）</div>
+            <div style="padding-left:16px;border-left:2px solid #e5e7eb;margin-left:8px;">
+              <div style="font-size:11px;color:#4f46e5;padding:3px 0;">├─ getCountries() 查询</div>
+              <div style="padding-left:16px;border-left:1px solid #e5e7eb;margin-left:8px;">
+                <div style="font-size:11px;color:#059669;padding:3px 0;">├─ w_widget47（图表组件）</div>
+                <div style="font-size:11px;color:#059669;padding:3px 0;">└─ onPageLoad → renderChart()</div>
+              </div>
+              <div style="font-size:11px;color:#4f46e5;padding:3px 0;">├─ getDailyStats() 查询</div>
+              <div style="padding-left:16px;border-left:1px solid #e5e7eb;margin-left:8px;">
+                <div style="font-size:11px;color:#059669;padding:3px 0;">├─ w_widget36（统计卡片）</div>
+                <div style="font-size:11px;color:#059669;padding:3px 0;">└─ onChange($selected_country) → refreshData()</div>
+              </div>
+              <div style="font-size:11px;color:#4f46e5;padding:3px 0;">└─ getTopRegions() 查询</div>
+              <div style="padding-left:16px;border-left:1px solid #e5e7eb;margin-left:8px;">
+                <div style="font-size:11px;color:#059669;padding:3px 0;">└─ w_table_01（区域排名表）</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--p-border);border-radius:8px;padding:12px;margin-bottom:8px;">
+            <div style="font-size:12px;font-weight:500;color:#1f2937;margin-bottom:8px;">🌐 WHO Live Feed（外部 API）</div>
+            <div style="padding-left:16px;border-left:2px solid #e5e7eb;margin-left:8px;">
+              <div style="font-size:11px;color:#4f46e5;padding:3px 0;">└─ pollLiveStats() 函数</div>
+              <div style="padding-left:16px;border-left:1px solid #e5e7eb;margin-left:8px;">
+                <div style="font-size:11px;color:#059669;padding:3px 0;">├─ updateMap() → w_map_01</div>
+                <div style="font-size:11px;color:#059669;padding:3px 0;">└─ onInterval(30s) 触发</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:10px;">
+            <div style="font-size:12px;font-weight:500;color:#92400e;">⚠️ 孤立组件（无数据绑定）</div>
+            <div style="font-size:11px;color:#6b7280;margin-top:4px;">w_widget48 — 建议绑定数据源或删除</div>
+          </div>
+        </div>
+
+        <!-- Styles Tab -->
+        <div class="app-tab-panel" data-app-panel="styles" style="display:none;padding:16px 24px;background:#fafafa;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-size:13px;font-weight:600;color:#1f2937;">应用样式 <span style="color:#9ca3af;font-weight:400;">（全局主题 + 组件级覆盖）</span></span>
+            <a href="workshop-styles.html" style="font-size:11px;color:#4f46e5;text-decoration:none;">主题管理器 →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;">
+              <div style="font-size:11px;font-weight:500;color:#1f2937;margin-bottom:6px;">当前主题</div>
+              <div style="display:flex;gap:6px;align-items:center;">
+                <div style="width:20px;height:20px;border-radius:4px;background:#3b82f6;"></div>
+                <span style="font-size:11px;color:#374151;">Blue Light</span>
+                <span style="font-size:10px;color:#10b981;margin-left:auto;">✅ 已应用</span>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;">
+              <div style="font-size:11px;font-weight:500;color:#1f2937;margin-bottom:6px;">主色调</div>
+              <div style="display:flex;gap:4px;">
+                <div style="width:16px;height:16px;border-radius:3px;background:#3b82f6;border:2px solid #1e40af;" title="primary"></div>
+                <div style="width:16px;height:16px;border-radius:3px;background:#10b981;" title="success"></div>
+                <div style="width:16px;height:16px;border-radius:3px;background:#f59e0b;" title="warning"></div>
+                <div style="width:16px;height:16px;border-radius:3px;background:#ef4444;" title="danger"></div>
+                <div style="width:16px;height:16px;border-radius:3px;background:#8b5cf6;" title="accent"></div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;margin-top:8px;">
+            <div style="font-size:11px;font-weight:500;color:#1f2937;margin-bottom:6px;">组件级样式覆盖</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="font-size:11px;color:#374151;padding:4px;border:1px solid #f3f4f6;border-radius:4px;">
+                <span style="color:#6b7280;">w_widget36</span> · 自定义内边距: 12px, 圆角: 8px
+              </div>
+              <div style="font-size:11px;color:#374151;padding:4px;border:1px solid #f3f4f6;border-radius:4px;">
+                <span style="color:#6b7280;">w_widget47</span> · 继承主题（无覆盖）
+              </div>
+              <div style="font-size:11px;color:#374151;padding:4px;border:1px solid #f3f4f6;border-radius:4px;">
+                <span style="color:#6b7280;">w_nav_bar</span> · 自定义背景色: #1e293b
+              </div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;margin-top:8px;">
+            <div style="font-size:11px;font-weight:500;color:#1f2937;margin-bottom:6px;">响应式断点</div>
+            <div style="display:flex;gap:8px;font-size:10px;">
+              <span style="padding:3px 8px;background:#e0e7ff;color:#4f46e5;border-radius:10px;">Mobile (≤768px)</span>
+              <span style="padding:3px 8px;background:#ecfdf5;color:#059669;border-radius:10px;">Tablet (769-1024px)</span>
+              <span style="padding:3px 8px;background:#f3f4f6;color:#374151;border-radius:10px;">Desktop (≥1025px)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variables Tab -->
+        <div class="app-tab-panel" data-app-panel="variables" style="display:none;padding:16px 24px;background:#fafafa;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-size:13px;font-weight:600;color:#1f2937;">应用变量 <span style="color:#9ca3af;font-weight:400;">（全局状态 + 页面级变量）</span></span>
+            <a href="workshop-variables.html" style="font-size:11px;color:#4f46e5;text-decoration:none;">变量管理器 →</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#4f46e5;background:#eef2ff;padding:2px 6px;border-radius:4px;min-width:50px;text-align:center;">String</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">$selected_country</div>
+                <div style="font-size:10px;color:#6b7280;">默认: "ALL" · 绑定到搜索栏，onChange 触发数据刷新</div>
+              </div>
+              <span style="font-size:10px;color:#10b981;">✅ 已使用</span>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#059669;background:#ecfdf5;padding:2px 6px;border-radius:4px;min-width:50px;text-align:center;">Number</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">$page_size</div>
+                <div style="font-size:10px;color:#6b7280;">默认: 20 · 分页大小，用于表格组件</div>
+              </div>
+              <span style="font-size:10px;color:#10b981;">✅ 已使用</span>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#8b5cf6;background:#f5f3ff;padding:2px 6px;border-radius:4px;min-width:50px;text-align:center;">Array</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">$chart_data</div>
+                <div style="font-size:10px;color:#6b7280;">类型: Array&lt;{date,confirmed,deaths}&gt; · 查询结果缓存</div>
+              </div>
+              <span style="font-size:10px;color:#10b981;">✅ 已使用</span>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#f59e0b;background:#fffbeb;padding:2px 6px;border-radius:4px;min-width:50px;text-align:center;">Boolean</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">$is_fullscreen</div>
+                <div style="font-size:10px;color:#6b7280;">默认: false · 全屏模式开关</div>
+              </div>
+              <span style="font-size:10px;color:#6b7280;">⚠️ 未引用</span>
+            </div>
+            <div style="background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:10px;color:#4f46e5;background:#eef2ff;padding:2px 6px;border-radius:4px;min-width:50px;text-align:center;">Object</span>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:500;color:#1f2937;">$user</div>
+                <div style="font-size:10px;color:#6b7280;">注入自系统上下文: {name, role, org, permissions}</div>
+              </div>
+              <span style="font-size:10px;color:#10b981;">✅ 系统注入</span>
+            </div>
+          </div>
+        </div>
+        </div>
       </main>
     </div>
   </div>
@@ -155,6 +1118,750 @@
   DemoUI.initWorkshopModule();
   DemoUI.initWorkshopGraph();
   DemoUI.initWorkshopAip();
+  // Property panel tab switching
+  document.querySelectorAll('.js-prop-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var target = this.dataset.propTab;
+      document.querySelectorAll('.js-prop-tab').forEach(function(t) {
+        t.classList.remove('is-active');
+        t.style.borderBottom = '';
+        t.style.color = 'var(--p-text-muted)';
+      });
+      this.classList.add('is-active');
+      this.style.borderBottom = '2px solid var(--p-accent)';
+      this.style.color = 'var(--p-accent)';
+      document.querySelectorAll('.js-prop-panel').forEach(function(panel) {
+        panel.style.display = panel.dataset.propPanel === target ? '' : 'none';
+      });
+    });
+  });
+  // Mode toggle: 组件 / 工作流 / 预览
+  var editBody = document.querySelector('.p-slate-body');
+  var workflowBody = document.getElementById('workflow-body');
+  document.querySelectorAll('.p-slate-mode').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.p-slate-mode').forEach(function(b) { b.classList.remove('is-active'); });
+      this.classList.add('is-active');
+      var mode = this.getAttribute('data-mode');
+      if (mode === 'preview') {
+        // 预览模式：隐藏工作流体 + 隐藏左右面板
+        if (editBody) editBody.style.display = 'none';
+        if (workflowBody) workflowBody.style.display = 'none';
+        // 直接在 body 下渲染一个全宽预览画布
+        if (!document.getElementById('preview-canvas')) {
+          var previewDiv = document.createElement('div');
+          previewDiv.id = 'preview-canvas';
+          previewDiv.style.cssText = 'flex:1;display:flex;align-items:center;justify-content:center;background:#FAFBFC;overflow:auto;padding:24px;';
+          previewDiv.innerHTML = '<div style="text-align:center;color:#6B7280;max-width:400px;"><div style="font-size:32px;margin-bottom:12px;">👁</div><div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:4px;">预览模式</div><div style="font-size:12px;">所有 <code style=\"background:#DBEAFE;padding:1px 4px;border-radius:2px;\">$user</code> / <code style=\"background:#DBEAFE;padding:1px 4px;border-radius:2px;\">$page</code> / <code style=\"background:#DBEAFE;padding:1px 4px;border-radius:2px;\">$objectSet</code> 变量已解析为实际运行时值</div></div>';
+          editBody.parentNode.appendChild(previewDiv);
+        } else {
+          document.getElementById('preview-canvas').style.display = 'flex';
+        }
+        document.querySelectorAll('.p-slate-widget').forEach(function(w) { w.classList.remove('is-selected'); w.classList.add('is-preview'); });
+        showToast('进入预览模式：隐藏编辑面板，模拟终端用户视角');
+      } else {
+        // 移除预览画布
+        var pc = document.getElementById('preview-canvas');
+        if (pc) pc.style.display = 'none';
+
+        if (mode === 'workflow') {
+          // 工作流模式：隐藏组件模式 body，显示工作流 body
+          if (editBody) editBody.style.display = 'none';
+          if (workflowBody) workflowBody.style.display = 'flex';
+          showToast('切换到工作流模式：事件编排连线视图');
+        } else {
+          // 组件模式：隐藏工作流体，显示组件 body
+          if (editBody) editBody.style.display = 'flex';
+          if (workflowBody) workflowBody.style.display = 'none';
+          showToast('切换到组件模式：拖拽 Widget 组装页面布局');
+        }
+      }
+    });
+  });
+
+  // ===== 工作流模式：节点选中联动 =====
+  function selectWorkflowNode(card, type, name) {
+    // 更新左栏选中状态
+    document.querySelectorAll('.wf-trigger-card').forEach(function(c) {
+      c.style.background = '#fff';
+      c.style.borderColor = 'var(--p-border)';
+      c.classList.remove('is-active');
+    });
+    card.style.background = '#EFF6FF';
+    card.style.borderColor = '#BFDBFE';
+    card.classList.add('is-active');
+    // 更新右栏详情
+    updateNodeDetail(type, name);
+  }
+
+  function selectWorkflowNodeById(type, name) {
+    updateNodeDetail(type, name);
+  }
+
+  function updateNodeDetail(type, name) {
+    var panel = document.getElementById('wf-node-detail');
+    var header = document.querySelector('#wf-props-panel .p-slate-props-header span:last-child');
+    if (!panel) return;
+
+    var details = {
+      'trigger:onPageLoad': { label: '🕐 onPageLoad', color: '#3B82F6', bg: '#EFF6FF', fields: [
+        ['触发器类型', 'onPageLoad', true],
+        ['绑定 Widget', '全局（无特定 Widget）', false],
+        ['触发参数', '$page · $user', true],
+        ['条件表达式', "user.role == 'admin'", true],
+        ['执行模式', '同步', false],
+        ['幂等键 (ACT-07)', 'wf:onPageLoad:{pageId}', true]
+      ]},
+      'trigger:onRowClick': { label: '🖱 onRowClick', color: '#3B82F6', bg: '#EFF6FF', fields: [
+        ['触发器类型', 'onRowClick', true],
+        ['绑定 Widget', 'w_table_orders', false],
+        ['触发参数', '$row · $rowIndex · $rowData', true],
+        ['条件表达式', 'row.status == "pending"', true],
+        ['执行模式', '同步', false],
+        ['幂等键 (ACT-07)', 'wf:onRowClick:{tableId}:{rowId}', true]
+      ]},
+      'trigger:onTimer': { label: '⏰ onTimer', color: '#3B82F6', bg: '#EFF6FF', fields: [
+        ['触发器类型', 'onTimer', true],
+        ['绑定 Widget', '全局', false],
+        ['触发参数', '$tickCount · $lastRun', true],
+        ['间隔', '30s', false],
+        ['执行模式', '异步', false],
+        ['幂等键 (ACT-07)', 'wf:onTimer:{pageId}:{tick}', true]
+      ]},
+      'trigger:onWidgetClick': { label: '📊 onWidgetClick', color: '#3B82F6', bg: '#EFF6FF', fields: [
+        ['触发器类型', 'onWidgetClick', true],
+        ['绑定 Widget', 'w_chart_revenue', false],
+        ['状态', '⏸ 已暂停', false],
+        ['触发参数', '$widget · $clickPos', true],
+        ['执行模式', '同步 → 已暂停', false],
+        ['幂等键 (ACT-07)', 'wf:onWidgetClick:{widgetId}', true]
+      ]},
+      'trigger:onFilterChange': { label: '🔍 onFilterChange', color: '#3B82F6', bg: '#EFF6FF', fields: [
+        ['触发器类型', 'onFilterChange', true],
+        ['绑定 Widget', 'w_filter_country', false],
+        ['触发参数', '$filterValue · $filterKey', true],
+        ['条件表达式', '$filterValue != null', true],
+        ['执行模式', '同步', false],
+        ['幂等键 (ACT-07)', 'wf:onFilterChange:{filterId}:{value}', true]
+      ]},
+      'action:call_function': { label: '⚙ call_function', color: '#10B981', bg: '#ECFDF5', fields: [
+        ['动作类型', 'call_function', true],
+        ['函数 ID', 'loadDashboard()', true],
+        ['参数', '$page · $user', true],
+        ['返回值', 'Promise<DashboardData>', true],
+        ['超时', '10s', false],
+        ['幂等键 (ACT-07)', 'fn:loadDashboard:{pageId}', true]
+      ]},
+      'action:update_variable': { label: '📊 update_variable', color: '#10B981', bg: '#ECFDF5', fields: [
+        ['动作类型', 'update_variable', true],
+        ['目标变量', '$lastRefresh', true],
+        ['赋值', 'Date.now()', true],
+        ['变量类型', 'Number (timestamp)', false],
+        ['幂等键 (ACT-07)', 'var:set:$lastRefresh', true]
+      ]},
+      'action:emit_event': { label: '📡 emit_event', color: '#10B981', bg: '#ECFDF5', fields: [
+        ['动作类型', 'emit_event', true],
+        ['事件名', 'page:loaded', true],
+        ['载荷', '{ pageId, timestamp }', true],
+        ['订阅者', 'w_nav_bar · w_sidebar', false],
+        ['幂等键 (ACT-07)', 'evt:page:loaded:{pageId}', true]
+      ]},
+      'action:navigate': { label: '🔀 navigate', color: '#10B981', bg: '#ECFDF5', fields: [
+        ['动作类型', 'navigate', true],
+        ['目标路由', '/orders/{row.id}', true],
+        ['参数', '$row.id', true],
+        ['打开方式', '当前窗口', false],
+        ['幂等键 (ACT-07)', 'nav:/orders:{rowId}', true]
+      ]},
+      'action:open_modal': { label: '🔲 open_modal', color: '#10B981', bg: '#ECFDF5', fields: [
+        ['动作类型', 'open_modal', true],
+        ['模态框 ID', 'orderDetail', true],
+        ['参数', '$row.id · $row', true],
+        ['尺寸', 'medium (600px)', false],
+        ['幂等键 (ACT-07)', 'modal:orderDetail:{rowId}', true]
+      ]},
+      'action:call_function_2': { label: '⚙ call_function', color: '#10B981', bg: '#ECFDF5', fields: [
+        ['动作类型', 'call_function', true],
+        ['函数 ID', 'refreshData()', true],
+        ['参数', '$selected_country · $page_size', true],
+        ['返回值', 'Promise<TableData>', true],
+        ['超时', '15s', false],
+        ['幂等键 (ACT-07)', 'fn:refreshData:{country}', true]
+      ]},
+      'action:update_variable_2': { label: '📊 update_variable', color: '#10B981', bg: '#ECFDF5', fields: [
+        ['动作类型', 'update_variable', true],
+        ['目标变量', '$countryFilter', true],
+        ['赋值', '$filterValue', true],
+        ['变量类型', 'String', false],
+        ['副作用', '触发 onFilterChange → 数据刷新', false]
+      ]}
+    };
+
+    var key = type + ':' + name;
+    var detail = details[key];
+    if (!detail) return;
+
+    if (header) header.textContent = type === 'trigger' ? '触发器详情' : '动作节点详情';
+
+    var html = '<div style="margin-bottom:12px;"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#9CA3AF;margin-bottom:4px;">节点</div><div style="font-size:12px;font-weight:600;color:' + detail.color + ';background:' + detail.bg + ';padding:6px 8px;border-radius:4px;">' + detail.label + '</div></div>';
+    detail.fields.forEach(function(f) {
+      var label = f[0], value = f[1], isMono = f[2];
+      html += '<div style="margin-bottom:10px;"><div style="font-size:10px;text-transform:uppercase;letter-spacing:0.05em;color:#9CA3AF;margin-bottom:3px;">' + label + '</div>';
+      if (isMono) {
+        html += '<div style="font-size:11px;color:#374151;font-family:monospace;background:#F9FAFB;padding:4px 6px;border-radius:4px;border:1px solid #E5E7EB;">' + value + '</div>';
+      } else {
+        html += '<div style="font-size:11px;color:#374151;">' + value + '</div>';
+      }
+      html += '</div>';
+    });
+    html += '<div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--p-border);display:flex;gap:6px;">';
+    html += '<button class="p-btn p-btn-secondary p-btn-sm" style="flex:1;font-size:11px;" onclick="showToast(\'编辑节点配置\')">编辑</button>';
+    html += '<button class="p-btn p-btn-sm" style="flex:1;font-size:11px;background:#EF4444;color:#fff;border:none;" onclick="showToast(\'已删除节点（演示）\')">删除</button>';
+    html += '</div>';
+    panel.innerHTML = html;
+  }
+
+  // ===== 拖拽微件到画布 =====
+  var dragWidgetType = null;
+  var dropZone = document.getElementById('canvas-drop-zone');
+  var dropIndicator = document.getElementById('drop-indicator');
+
+  document.querySelectorAll('.drag-widget-item').forEach(function(item) {
+    item.addEventListener('dragstart', function(e) {
+      dragWidgetType = this.dataset.widget;
+      e.dataTransfer.effectAllowed = 'copy';
+      e.dataTransfer.setData('text/plain', dragWidgetType);
+      this.style.opacity = '0.5';
+    });
+    item.addEventListener('dragend', function(e) {
+      this.style.opacity = '1';
+      dropIndicator.style.display = 'none';
+    });
+  });
+
+  if (dropZone) {
+    dropZone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'copy';
+      dropIndicator.style.display = 'block';
+    });
+    dropZone.addEventListener('dragleave', function(e) {
+      if (e.target === dropZone) {
+        dropIndicator.style.display = 'none';
+      }
+    });
+    dropZone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropIndicator.style.display = 'none';
+      var widgetType = e.dataTransfer.getData('text/plain') || dragWidgetType;
+      if (!widgetType) return;
+
+      // 创建新微件占位框
+      var colors = {
+        'Table': { border:'#3B82F6', bg:'#EFF6FF', icon:'📊' },
+        'Chart': { border:'#10B981', bg:'#ECFDF5', icon:'📈' },
+        'Form': { border:'#8B5CF6', bg:'#F5F3FF', icon:'📝' },
+        'Button': { border:'#EF4444', bg:'#FEF2F2', icon:'🔘' },
+        'Map': { border:'#F59E0B', bg:'#FFFBEB', icon:'🗺️' },
+        'Text': { border:'#6B7280', bg:'#F9FAFB', icon:'📄' }
+      };
+      var c = colors[widgetType] || { border:'#6B7280', bg:'#F9FAFB', icon:'📦' };
+
+      var newWidget = document.createElement('div');
+      newWidget.style.cssText = 'padding:12px 16px;margin:4px;border:1px solid ' + c.border + ';border-radius:6px;background:' + c.bg + ';font-size:12px;display:flex;align-items:center;gap:8px;';
+      newWidget.innerHTML = '<span style="font-size:16px;">' + c.icon + '</span>' +
+        '<span style="font-weight:500;color:#374151;">' + widgetType + ' 组件</span>' +
+        '<span style="color:#9CA3AF;font-size:10px;margin-left:auto;">新建 · 点击配置属性</span>' +
+        '<button onclick="this.parentElement.remove()" style="color:#9CA3AF;font-size:14px;padding:2px 6px;">✕</button>';
+      newWidget.onclick = function() { showToast('已选中 ' + widgetType + ' 组件，右侧属性面板可配置'); };
+
+      // 插入到 canvas 的最前面（在 drop indicator 之后）
+      dropZone.insertBefore(newWidget, dropZone.querySelector('.p-slate-widget'));
+
+      showToast(widgetType + ' 组件已添加到画布');
+      dragWidgetType = null;
+    });
+  }
+  // ===== 应用级 Tab 切换（仪表盘/查询/函数/对象/事件/数据/依赖/样式/变量） =====
+  document.querySelectorAll('.p-slate-toolbar-tab[data-app-tab]').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var target = this.dataset.appTab;
+      // 更新 Tab 高亮
+      document.querySelectorAll('.p-slate-toolbar-tab[data-app-tab]').forEach(function(t) {
+        t.classList.remove('is-active');
+      });
+      this.classList.add('is-active');
+      // 隐藏所有面板
+      document.querySelectorAll('.app-tab-panel').forEach(function(panel) {
+        panel.style.display = 'none';
+      });
+      // 显示目标面板
+      var targetPanel = document.querySelector('[data-app-panel="' + target + '"]');
+      if (targetPanel) {
+        targetPanel.style.display = 'block';
+        // 事件 Tab 需要用 flex 布局
+        if (target === 'events') {
+          targetPanel.style.display = 'flex';
+        }
+        // 数据/样式/变量 Tab 用 grid
+        if (target === 'data' || target === 'styles') {
+          // 保持 block 即可
+        }
+      }
+      // 当切到非"对象"Tab 时，主画布区域保持但下方显示 Tab 面板
+      // 当切到"对象"Tab 时，Tab 面板显示提示文字
+      showToast('切换到「' + tab.textContent.trim() + '」视图');
+    });
+  });
+
+  // ===== 通用模态框创建辅助函数 =====
+  function createModal(title, bodyHtml, footerHtml) {
+    // 移除已存在的模态框
+    var existing = document.getElementById('ws-dynamic-modal');
+    if (existing) existing.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'ws-dynamic-modal';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:10000;display:flex;align-items:center;justify-content:center;';
+    overlay.innerHTML =
+      '<div style="background:#1E1E30;border-radius:12px;width:480px;box-shadow:0 20px 60px rgba(0,0,0,0.3);display:flex;flex-direction:column;max-height:90vh;">' +
+        '<div style="padding:16px 20px;border-bottom:1px solid #2A2A40;display:flex;justify-content:space-between;align-items:center;">' +
+          '<span style="font-size:14px;font-weight:600;color:#D1D5DB;">' + title + '</span>' +
+          '<span style="cursor:pointer;color:#9CA3AF;font-size:18px;" onclick="closeModal()">×</span>' +
+        '</div>' +
+        '<div style="padding:20px;overflow-y:auto;color:#D1D5DB;">' + bodyHtml + '</div>' +
+        '<div style="padding:12px 20px;border-top:1px solid #2A2A40;display:flex;justify-content:flex-end;gap:8px;">' + footerHtml + '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeModal();
+    });
+    return overlay;
+  }
+
+  function closeModal() {
+    var modal = document.getElementById('ws-dynamic-modal');
+    if (modal) modal.remove();
+  }
+
+  function wsModalSecondary(label) {
+    return '<button onclick="closeModal()" style="padding:6px 16px;border-radius:6px;background:transparent;border:1px solid #3A3A50;color:#9CA3AF;font-size:12px;cursor:pointer;">' + label + '</button>';
+  }
+
+  function wsModalPrimary(label, onclick) {
+    return '<button onclick="' + onclick + '" style="padding:6px 16px;border-radius:6px;background:#3B82F6;color:#fff;border:none;font-size:12px;cursor:pointer;">' + label + '</button>';
+  }
+
+  function wsInput(id, placeholder) {
+    return '<input id="' + id + '" type="text" placeholder="' + placeholder + '" style="width:100%;background:#15152A;border:1px solid #3A3A50;border-radius:6px;color:#D1D5DB;font-size:12px;padding:6px 10px;box-sizing:border-box;" />';
+  }
+
+  function wsTextarea(id, placeholder, rows) {
+    rows = rows || 4;
+    return '<textarea id="' + id + '" placeholder="' + placeholder + '" rows="' + rows + '" style="width:100%;background:#15152A;border:1px solid #3A3A50;border-radius:6px;color:#D1D5DB;font-size:12px;padding:6px 10px;box-sizing:border-box;font-family:monospace;resize:vertical;"></textarea>';
+  }
+
+  function wsLabel(text) {
+    return '<div style="font-size:11px;color:#9CA3AF;margin-bottom:4px;">' + text + '</div>';
+  }
+
+  function wsSelect(id, options) {
+    var html = '<select id="' + id + '" style="width:100%;background:#15152A;border:1px solid #3A3A50;border-radius:6px;color:#D1D5DB;font-size:12px;padding:6px 10px;box-sizing:border-box;">';
+    options.forEach(function(opt) {
+      html += '<option value="' + opt + '">' + opt + '</option>';
+    });
+    html += '</select>';
+    return html;
+  }
+
+  // ===== 1. openQueryEditor：SQL 查询编辑器 =====
+  function openQueryEditor() {
+    var bodyHtml =
+      wsLabel('查询名称') + wsInput('qe-name', '例如：getCountryStats') +
+      '<div style="height:12px;"></div>' +
+      wsLabel('SQL 编辑器') + wsTextarea('qe-sql', 'SELECT * FROM ...', 6) +
+      '<div style="height:12px;"></div>' +
+      wsLabel('参数绑定（逗号分隔）') + wsInput('qe-params', '$selected_country, $page_size');
+    var footerHtml =
+      wsModalSecondary('取消') +
+      '<button onclick="runQueryPreview()" style="padding:6px 16px;border-radius:6px;background:transparent;border:1px solid #3A3A50;color:#9CA3AF;font-size:12px;cursor:pointer;margin-right:auto;">▶ 运行</button>' +
+      wsModalPrimary('保存查询', 'saveQuery()');
+    createModal('新建查询', bodyHtml, footerHtml);
+  }
+
+  function runQueryPreview() {
+    var sql = document.getElementById('qe-sql').value || '（空）';
+    showToast('运行查询预览…\n' + sql.substring(0, 60));
+  }
+
+  function saveQuery() {
+    var name = document.getElementById('qe-name').value || 'untitledQuery';
+    var sql = document.getElementById('qe-sql').value || 'SELECT ...';
+    var params = document.getElementById('qe-params').value || '';
+    var panel = document.querySelector('[data-app-panel="queries"] > div:last-child');
+    if (panel) {
+      var row = document.createElement('div');
+      row.style.cssText = 'background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;';
+      var paramLabel = params ? '参数绑定' : '新建';
+      row.innerHTML =
+        '<span style="font-size:16px;">🔍</span>' +
+        '<div style="flex:1;">' +
+          '<div style="font-size:12px;font-weight:500;color:#1f2937;">' + name + '()</div>' +
+          '<div style="font-size:10px;color:#6b7280;font-family:monospace;">' + sql.replace(/</g,'&lt;') + '</div>' +
+        '</div>' +
+        '<span style="font-size:10px;color:#3B82F6;background:#EFF6FF;padding:2px 8px;border-radius:10px;">新建</span>' +
+        '<span style="font-size:10px;color:#6b7280;">' + paramLabel + '</span>';
+      panel.appendChild(row);
+    }
+    closeModal();
+    showToast('查询 ' + name + '() 已保存');
+  }
+
+  // ===== 2. openFunctionEditor：函数编辑器 =====
+  function openFunctionEditor() {
+    var bodyHtml =
+      wsLabel('函数名称') + wsInput('fe-name', '例如：formatCurrency') +
+      '<div style="height:12px;"></div>' +
+      wsLabel('语言') + wsSelect('fe-lang', ['TypeScript', 'Python']) +
+      '<div style="height:12px;"></div>' +
+      wsLabel('代码') + wsTextarea('fe-code', 'function formatCurrency(n) {\n  return n.toLocaleString();\n}', 6) +
+      '<div style="height:12px;"></div>' +
+      wsLabel('绑定事件（逗号分隔）') + wsInput('fe-events', 'onPageLoad, onClick');
+    var footerHtml = wsModalSecondary('取消') + wsModalPrimary('保存函数', 'saveFunction()');
+    createModal('新建函数', bodyHtml, footerHtml);
+  }
+
+  function saveFunction() {
+    var name = document.getElementById('fe-name').value || 'untitledFn';
+    var code = document.getElementById('fe-code').value || '';
+    var events = document.getElementById('fe-events').value || '';
+    var panel = document.querySelector('[data-app-panel="functions"] > div:last-child');
+    if (panel) {
+      var tagHtml = '';
+      if (events.trim()) {
+        events.split(',').forEach(function(ev) {
+          ev = ev.trim();
+          if (ev) tagHtml += '<span style="font-size:9px;color:#4f46e5;background:#eef2ff;padding:1px 6px;border-radius:8px;margin-right:4px;">' + ev + '</span>';
+        });
+      }
+      var row = document.createElement('div');
+      row.style.cssText = 'background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px 12px;';
+      row.innerHTML =
+        '<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">' +
+          '<span style="font-size:16px;">⚡</span>' +
+          '<span style="font-size:12px;font-weight:500;color:#1f2937;">' + name + '()</span>' +
+          tagHtml +
+        '</div>' +
+        '<div style="font-size:10px;color:#6b7280;font-family:monospace;background:#f9fafb;padding:6px 8px;border-radius:4px;">' + code.replace(/</g,'&lt;').replace(/\n/g,'<br/>') + '</div>';
+      panel.appendChild(row);
+    }
+    closeModal();
+    showToast('函数 ' + name + '() 已保存');
+  }
+
+  // ===== 3. openTriggerPicker：触发器类型选择器 =====
+  function openTriggerPicker() {
+    var triggers = [
+      { id: 'onPageLoad', icon: '🕐', name: 'onPageLoad', desc: '页面首次渲染时触发' },
+      { id: 'onRowClick', icon: '🖱', name: 'onRowClick', desc: '表格行点击时触发' },
+      { id: 'onWidgetClick', icon: '👆', name: 'onWidgetClick', desc: '组件被点击时触发' },
+      { id: 'onFilterChange', icon: '🔄', name: 'onFilterChange', desc: '筛选条件变化时触发' },
+      { id: 'onTimer', icon: '⏰', name: 'onTimer', desc: '定时器间隔触发' },
+      { id: 'custom', icon: '⚙', name: 'Custom', desc: '自定义事件触发' }
+    ];
+    var cardsHtml = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">';
+    triggers.forEach(function(t) {
+      cardsHtml +=
+        '<div onclick="addTriggerToList(\'' + t.id + '\',\'' + t.icon + '\',\'' + t.name + '\',\'' + t.desc + '\')" style="padding:10px;border:1px solid #3A3A50;border-radius:8px;cursor:pointer;background:#15152A;transition:border-color 0.15s;" onmouseover="this.style.borderColor=\'#3B82F6\'" onmouseout="this.style.borderColor=\'#3A3A50\'">' +
+          '<div style="font-size:18px;margin-bottom:4px;">' + t.icon + '</div>' +
+          '<div style="font-size:12px;font-weight:600;color:#D1D5DB;">' + t.name + '</div>' +
+          '<div style="font-size:10px;color:#9CA3AF;margin-top:2px;">' + t.desc + '</div>' +
+        '</div>';
+    });
+    cardsHtml += '</div>';
+    var footerHtml = wsModalSecondary('关闭');
+    createModal('选择触发器类型', cardsHtml, footerHtml);
+  }
+
+  function addTriggerToList(id, icon, name, desc) {
+    // 添加到事件 Tab 左栏触发器列表
+    var triggerList = document.querySelector('[data-app-panel="events"] > div > div:first-child');
+    if (triggerList) {
+      var newTrigger = document.createElement('div');
+      newTrigger.className = 'event-trigger-item';
+      newTrigger.setAttribute('data-trigger', id);
+      newTrigger.style.cssText = 'padding:6px 8px;border-radius:6px;background:#fff;border:1px solid var(--p-border);margin-bottom:4px;cursor:pointer;font-size:11px;';
+      newTrigger.innerHTML =
+        '<div style="font-weight:500;color:#374151;">' + icon + ' ' + name + '</div>' +
+        '<div style="color:#6b7280;font-size:10px;margin-top:1px;">→ ' + desc + '</div>';
+      // 插入到 "+ 添加触发器" 按钮之前
+      var addBtn = triggerList.querySelector('button[onclick="openTriggerPicker()"]');
+      if (addBtn) {
+        triggerList.insertBefore(newTrigger, addBtn);
+      } else {
+        triggerList.appendChild(newTrigger);
+      }
+    }
+    closeModal();
+    showToast('已添加触发器：' + name);
+  }
+
+  // ===== 4. openWorkflowCreator：工作流创建器 =====
+  function openWorkflowCreator() {
+    var bodyHtml =
+      wsLabel('工作流名称') + wsInput('wc-name', '例如：数据刷新工作流') +
+      '<div style="height:12px;"></div>' +
+      wsLabel('触发器') + wsSelect('wc-trigger', ['onPageLoad', 'onRowClick', 'onWidgetClick', 'onFilterChange', 'onTimer', 'Custom']) +
+      '<div style="height:12px;"></div>' +
+      wsLabel('初始动作') + wsSelect('wc-action', ['call_function', 'update_variable', 'emit_event', 'navigate', 'open_modal']);
+    var footerHtml = wsModalSecondary('取消') + wsModalPrimary('创建工作流', 'saveWorkflow()');
+    createModal('新建工作流', bodyHtml, footerHtml);
+  }
+
+  function saveWorkflow() {
+    var name = document.getElementById('wc-name').value || '未命名工作流';
+    var trigger = document.getElementById('wc-trigger').value || 'onPageLoad';
+    var action = document.getElementById('wc-action').value || 'call_function';
+    // 追加到工作流模式画布
+    var canvas = document.querySelector('#workflow-body .p-slate-canvas');
+    if (canvas) {
+      var chainCount = canvas.querySelectorAll('.wf-chain').length + 1;
+      var newChain = document.createElement('div');
+      newChain.className = 'wf-chain';
+      newChain.style.cssText = 'padding:12px 16px;border-bottom:1px solid #F3F4F6;';
+      newChain.innerHTML =
+        '<div style="font-size:10px;color:#9CA3AF;margin-bottom:8px;font-weight:500;">链 ' + chainCount + ' · ' + name + ' → 1 个动作</div>' +
+        '<svg width="100%" height="56" viewBox="0 0 320 56" style="overflow:visible;">' +
+          '<rect x="10" y="12" width="100" height="32" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>' +
+          '<text x="60" y="32" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="600">' + trigger + '</text>' +
+          '<path d="M110 28 L150 28" stroke="#3B82F6" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>' +
+          '<rect x="150" y="12" width="120" height="32" rx="6" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5"/>' +
+          '<text x="210" y="32" text-anchor="middle" font-size="9" fill="#065F46" font-weight="600">' + action + '</text>' +
+        '</svg>';
+      canvas.appendChild(newChain);
+    }
+    closeModal();
+    showToast('工作流「' + name + '」已创建');
+  }
+
+  // ===== 5. openDataSourcePicker：数据源选择器（4 个 Tab） =====
+  function openDataSourcePicker() {
+    var bodyHtml =
+      '<div style="display:flex;gap:2px;margin-bottom:12px;border-bottom:1px solid #2A2A40;">' +
+        '<button onclick="switchDsTab(\'objectset\')" id="ds-tab-objectset" style="padding:6px 12px;font-size:11px;background:#3B82F6;color:#fff;border:none;border-radius:6px 6px 0 0;cursor:pointer;">ObjectSet</button>' +
+        '<button onclick="switchDsTab(\'dataset\')" id="ds-tab-dataset" style="padding:6px 12px;font-size:11px;background:transparent;color:#9CA3AF;border:none;border-radius:6px 6px 0 0;cursor:pointer;">Dataset</button>' +
+        '<button onclick="switchDsTab(\'api\')" id="ds-tab-api" style="padding:6px 12px;font-size:11px;background:transparent;color:#9CA3AF;border:none;border-radius:6px 6px 0 0;cursor:pointer;">External API</button>' +
+        '<button onclick="switchDsTab(\'var\')" id="ds-tab-var" style="padding:6px 12px;font-size:11px;background:transparent;color:#9CA3AF;border:none;border-radius:6px 6px 0 0;cursor:pointer;">Variable</button>' +
+      '</div>' +
+      '<div id="ds-content-objectset">' +
+        wsLabel('ObjectSet 名称') + wsInput('ds-objectset-name', '例如：COVID_Cases') +
+        '<div style="height:8px;"></div>' +
+        wsLabel('属性（逗号分隔）') + wsInput('ds-objectset-props', 'country, date, confirmed') +
+      '</div>' +
+      '<div id="ds-content-dataset" style="display:none;">' +
+        wsLabel('Dataset 名称') + wsInput('ds-dataset-name', '例如：Vaccine_Stats') +
+        '<div style="height:8px;"></div>' +
+        wsLabel('属性（逗号分隔）') + wsInput('ds-dataset-props', 'country, vaccine_rate') +
+      '</div>' +
+      '<div id="ds-content-api" style="display:none;">' +
+        wsLabel('API 端点') + wsInput('ds-api-url', 'https://api.example.com/data') +
+        '<div style="height:8px;"></div>' +
+        wsLabel('请求方法') + wsSelect('ds-api-method', ['GET', 'POST', 'PUT', 'DELETE']) +
+      '</div>' +
+      '<div id="ds-content-var" style="display:none;">' +
+        wsLabel('变量名') + wsInput('ds-var-name', '例如：$selected_country') +
+        '<div style="height:8px;"></div>' +
+        wsLabel('类型') + wsSelect('ds-var-type', ['String', 'Number', 'Array', 'Object', 'Boolean']) +
+      '</div>';
+    var footerHtml = wsModalSecondary('取消') + wsModalPrimary('绑定数据源', 'saveDataSource()');
+    createModal('绑定数据源', bodyHtml, footerHtml);
+  }
+
+  function switchDsTab(tab) {
+    var tabs = ['objectset', 'dataset', 'api', 'var'];
+    tabs.forEach(function(t) {
+      var content = document.getElementById('ds-content-' + t);
+      var btn = document.getElementById('ds-tab-' + t);
+      if (content) content.style.display = (t === tab) ? 'block' : 'none';
+      if (btn) {
+        if (t === tab) {
+          btn.style.background = '#3B82F6';
+          btn.style.color = '#fff';
+        } else {
+          btn.style.background = 'transparent';
+          btn.style.color = '#9CA3AF';
+        }
+      }
+    });
+  }
+
+  function saveDataSource() {
+    // 检查哪个 tab 激活
+    var activeTab = 'objectset';
+    ['objectset', 'dataset', 'api', 'var'].forEach(function(t) {
+      var content = document.getElementById('ds-content-' + t);
+      if (content && content.style.display !== 'none') activeTab = t;
+    });
+
+    var label = '', detail = '', icon = '📊';
+    if (activeTab === 'objectset') {
+      var name = document.getElementById('ds-objectset-name').value || 'NewObjectSet';
+      var props = document.getElementById('ds-objectset-props').value || '';
+      label = 'ObjectSet: ' + name;
+      detail = '属性: ' + props;
+      icon = '📊';
+    } else if (activeTab === 'dataset') {
+      var name = document.getElementById('ds-dataset-name').value || 'NewDataset';
+      var props = document.getElementById('ds-dataset-props').value || '';
+      label = 'Dataset: ' + name;
+      detail = '属性: ' + props;
+      icon = '📊';
+    } else if (activeTab === 'api') {
+      var url = document.getElementById('ds-api-url').value || 'https://...';
+      var method = document.getElementById('ds-api-method').value || 'GET';
+      label = '外部 API: ' + url.substring(0, 30);
+      detail = '方法: ' + method;
+      icon = '🌐';
+    } else if (activeTab === 'var') {
+      var vname = document.getElementById('ds-var-name').value || '$newVar';
+      var vtype = document.getElementById('ds-var-type').value || 'String';
+      label = '变量: ' + vname;
+      detail = '类型: ' + vtype;
+      icon = '📋';
+    }
+
+    var panel = document.querySelector('[data-app-panel="data"] > div:last-child');
+    if (panel) {
+      var row = document.createElement('div');
+      row.style.cssText = 'background:#fff;border:1px solid var(--p-border);border-radius:6px;padding:10px;';
+      row.innerHTML =
+        '<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">' +
+          '<span style="font-size:14px;">' + icon + '</span>' +
+          '<span style="font-size:12px;font-weight:500;color:#1f2937;">' + label + '</span>' +
+        '</div>' +
+        '<div style="font-size:10px;color:#6b7280;">' + detail + '</div>' +
+        '<div style="font-size:10px;color:#10b981;margin-top:4px;">✅ 已绑定</div>';
+      panel.appendChild(row);
+    }
+    closeModal();
+    showToast('数据源「' + label + '」已绑定');
+  }
+
+  // ===== 6. openTriggerEdit：触发器编辑（读取当前触发器名称） =====
+  function openTriggerEdit(btn) {
+    // 从最近的触发器卡片或 wf-node-detail 获取触发器名称
+    var triggerName = '';
+    var activeCard = document.querySelector('.wf-trigger-card.is-active');
+    if (activeCard) {
+      var nameEl = activeCard.querySelector('span:nth-child(2)');
+      if (nameEl) triggerName = nameEl.textContent.trim();
+    }
+    if (!triggerName) {
+      // 回退：从详情面板读取
+      var detailType = document.querySelector('#wf-node-detail > div:first-child > div:last-child');
+      if (detailType) triggerName = detailType.textContent.trim();
+    }
+    if (!triggerName) triggerName = 'onPageLoad';
+
+    var bodyHtml =
+      '<div style="margin-bottom:12px;padding:8px;background:#15152A;border-radius:6px;border:1px solid #3A3A50;">' +
+        '<span style="font-size:11px;color:#9CA3AF;">当前触发器：</span>' +
+        '<span style="font-size:12px;font-weight:600;color:#3B82F6;">' + triggerName + '</span>' +
+      '</div>' +
+      wsLabel('触发器名称') + '<input id="te-name" type="text" value="' + triggerName + '" style="width:100%;background:#15152A;border:1px solid #3A3A50;border-radius:6px;color:#D1D5DB;font-size:12px;padding:6px 10px;box-sizing:border-box;" />' +
+      '<div style="height:12px;"></div>' +
+      wsLabel('绑定 Widget') + wsInput('te-widget', '全局（无特定 Widget）') +
+      '<div style="height:12px;"></div>' +
+      wsLabel('条件表达式') + wsTextarea('te-condition', "user.role == 'admin'", 3) +
+      '<div style="height:12px;"></div>' +
+      wsLabel('执行模式') + wsSelect('te-mode', ['同步', '异步']);
+    var footerHtml = wsModalSecondary('取消') + wsModalPrimary('保存配置', 'saveTriggerEdit(\'' + triggerName.replace(/'/g, "\\'") + '\')');
+    createModal('编辑触发器', bodyHtml, footerHtml);
+  }
+
+  function saveTriggerEdit(originalName) {
+    var newName = document.getElementById('te-name').value || originalName;
+    var widget = document.getElementById('te-widget').value || '';
+    var condition = document.getElementById('te-condition').value || '';
+    var mode = document.getElementById('te-mode').value || '同步';
+
+    // 更新激活的触发器卡片名称
+    var activeCard = document.querySelector('.wf-trigger-card.is-active');
+    if (activeCard) {
+      var nameEl = activeCard.querySelector('span:nth-child(2)');
+      if (nameEl) nameEl.textContent = newName;
+    }
+    closeModal();
+    showToast('触发器「' + originalName + '」配置已更新' + (newName !== originalName ? ' → ' + newName : ''));
+  }
+
+  // ===== 7. confirmDeleteTrigger：内联删除确认 =====
+  function confirmDeleteTrigger(btn) {
+    // 保存原始按钮的 HTML 以便取消时恢复
+    var originalHtml = btn.outerHTML;
+    var wrapper = document.createElement('span');
+    wrapper.innerHTML = originalHtml;
+    var originalBtn = wrapper.firstChild;
+    originalBtn.setAttribute('data-restored', 'true');
+
+    // 创建确认行
+    var confirmRow = document.createElement('span');
+    confirmRow.id = 'ws-delete-confirm-row';
+    confirmRow.style.cssText = 'flex:1;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:#EF4444;';
+
+    var yesBtn = document.createElement('button');
+    yesBtn.className = 'p-btn p-btn-sm';
+    yesBtn.style.cssText = 'font-size:11px;background:#EF4444;color:#fff;border:none;padding:4px 12px;border-radius:4px;cursor:pointer;';
+    yesBtn.textContent = '是';
+    yesBtn.onclick = function() { deleteTriggerConfirmed(btn); };
+
+    var noBtn = document.createElement('button');
+    noBtn.className = 'p-btn p-btn-sm';
+    noBtn.style.cssText = 'font-size:11px;background:transparent;border:1px solid #3A3A50;color:#9CA3AF;padding:4px 12px;border-radius:4px;cursor:pointer;';
+    noBtn.textContent = '否';
+    noBtn.onclick = function() { cancelDeleteTrigger(btn, originalBtn); };
+
+    confirmRow.appendChild(document.createTextNode('确认删除？'));
+    confirmRow.appendChild(yesBtn);
+    confirmRow.appendChild(noBtn);
+
+    // 隐藏原始按钮，插入确认行
+    btn.style.display = 'none';
+    btn.parentNode.insertBefore(confirmRow, btn);
+
+    // 保存 originalBtn 引用到 btn 上以便恢复
+    btn.dataset.originalHtml = originalHtml;
+  }
+
+  function cancelDeleteTrigger(btn, originalBtn) {
+    var confirmRow = document.getElementById('ws-delete-confirm-row');
+    if (confirmRow) confirmRow.remove();
+    btn.style.display = '';
+  }
+
+  function deleteTriggerConfirmed(btn) {
+    var confirmRow = document.getElementById('ws-delete-confirm-row');
+    // 查找最近的触发器卡片或父容器
+    var triggerCard = btn.closest('.wf-trigger-card');
+    if (!triggerCard) {
+      // 在工作流详情面板里，找 wf-node-detail 容器
+      triggerCard = btn.closest('#wf-node-detail');
+    }
+    if (triggerCard) {
+      // 淡出动画后移除
+      triggerCard.style.transition = 'opacity 0.2s';
+      triggerCard.style.opacity = '0';
+      setTimeout(function() {
+        triggerCard.remove();
+        showToast('触发器已删除');
+      }, 200);
+    } else {
+      // 仅关闭确认行
+      if (confirmRow) confirmRow.remove();
+      btn.style.display = '';
+      showToast('触发器已删除');
+    }
+  }
 </script>
 </body>
 </html>

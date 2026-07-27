@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>接入案例 · 电商平台端到端链路 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+</head>
+<body>
+<div class="p-app">
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+<div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+<div class="p-nav-g-item is-active" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="用户"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+    </div>
+  </nav>
+  <div class="p-main">
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>接入案例</span></div>
+      </div>
+      <div class="p-header-center">
+        <div class="p-search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="搜索资源…" />
+        </div>
+      </div>
+      <div class="p-header-right">
+        <button class="p-btn p-btn-secondary p-btn-sm">Discard</button>
+        <button class="p-btn p-btn-primary p-btn-sm">Save to branch</button>
+      </div>
+    </header>
+    <div class="p-body">
+      <aside class="p-sidebar">
+<a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+<div class="p-sidebar-section-title">工作台</div>
+<div class="p-sidebar-section">
+<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-app-order.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>订单管理</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>风险告警管理</span></a>
+<a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+</div>
+<div class="p-sidebar-section-title">应用程序构建工具</div>
+<div class="p-sidebar-section">
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a><a href="workshop-widget-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>组件注册表</span></a>
+<a href="workshop-variables.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16v12H4zM8 10h2v4H8zM14 10h2v4h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变量管理器</span></a>
+<a href="workshop-styles.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>主题与样式</span></a>
+<a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+<a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+</div>
+<div class="p-sidebar-section-title">AIP 决策引擎</div>
+<div class="p-sidebar-section">
+<div class="p-sidebar-subgroup-title">应用层</div>
+<a href="aip-assist.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AIP 助手</span></a>
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>对话机器人</span></a>
+<a href="aip-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>AIP 分析师</span></a>
+<div class="p-sidebar-subgroup-title">逻辑编排层</div>
+<a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Agent 工具面板</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<div class="p-sidebar-subgroup-title">智能体</div>
+<a href="agent-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg><span>智能体目录</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>智能体插件</span></a>
+<div class="p-sidebar-subgroup-title">评测与治理</div>
+<a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<div class="p-sidebar-subgroup-title">决策谱系</div>
+<a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-observability.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可观测性</span></a>
+</div>
+<div class="p-sidebar-section-title">模型管理</div>
+<div class="p-sidebar-section">
+<a href="aip-model-catalog.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>模型目录</span></a>
+<a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
+<a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
+<a href="aip-capacity-management.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>容量管理</span></a>
+</div>
+<div class="p-sidebar-section-title">本体 · 数字孪生</div>
+<div class="p-sidebar-section">
+<a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>对象探索</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>本体提案</span></a>
+<a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
+<a href="ontology-wiki-index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF funnel</span></a>
+<a href="okf-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>OKF 概览</span></a>
+
+<a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
+</div>
+<div class="p-sidebar-section-title">管道与数据治理</div>
+<div class="p-sidebar-section">
+<a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+<a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
+<a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+<a href="builds.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>搭建</span></a>
+<a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+<a href="code-repositories.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>代码库</span></a>
+<a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+<a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
+</div>
+<div class="p-sidebar-section-title">数据源与同步</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>接入案例</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="sync.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg><span>同步配置</span></a>
+<a href="sync-routing.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>同步路由</span></a>
+<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+<a href="document-intelligence.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round"/></svg><span>文档智能</span></a>
+</div>
+<div class="p-sidebar-section-title">运维交付</div>
+<div class="p-sidebar-section">
+<a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
+<a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
+<a href="apollo-spoke.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Spoke 详情</span></a>
+<a href="apollo-ferry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>Ferry 摆渡</span></a>
+<a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
+<a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
+<a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+<a href="integration-cases.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>接入案例</span></a>
+</div>
+      </aside>
+      <main class="p-content" style="padding:0">
+  <div class="p-ic">
+    <!-- 顶部头部 -->
+    <header class="p-ic-header">
+      <div class="p-ic-header-left">
+        <h1 class="p-ic-title">接入案例 · 电商平台端到端链路</h1>
+        <p class="p-ic-subtitle">从外部数据源接入到本体数字孪生最终到上层消费的端到端案例。每个案例展示一条完整链路：数据接入 → 同步 → 管道清洗 → OKF 映射 → 本体实例化 → 应用层消费。</p>
+      </div>
+      <div class="p-ic-header-right">
+        <button class="p-btn p-btn-secondary p-btn-sm">导出清单</button>
+        <button class="p-btn p-btn-primary p-btn-sm">+ 新建案例</button>
+      </div>
+    </header>
+
+    <!-- 统计条 -->
+    <section class="p-ic-stats">
+      <div class="p-ic-stat">
+        <div class="p-ic-stat-label">平台总数</div>
+        <div class="p-ic-stat-value">9</div>
+        <div class="p-ic-stat-sub"><span class="p-badge-green">7 已上线</span> · <span class="p-badge-amber">2 进行中</span></div>
+      </div>
+      <div class="p-ic-stat">
+        <div class="p-ic-stat-label">总连接器数</div>
+        <div class="p-ic-stat-value">9</div>
+        <div class="p-ic-stat-sub">REST + GraphQL + JDBC</div>
+      </div>
+      <div class="p-ic-stat">
+        <div class="p-ic-stat-label">同步任务</div>
+        <div class="p-ic-stat-value">47</div>
+        <div class="p-ic-stat-sub">日均 1.2M 行</div>
+      </div>
+      <div class="p-ic-stat">
+        <div class="p-ic-stat-label">本体对象</div>
+        <div class="p-ic-stat-value">38</div>
+        <div class="p-ic-stat-sub">订单 / 商品 / 会员 / 物流</div>
+      </div>
+      <div class="p-ic-stat">
+        <div class="p-ic-stat-label">OKF 映射</div>
+        <div class="p-ic-stat-value">9</div>
+        <div class="p-ic-stat-sub">5 行业 × 9 平台</div>
+      </div>
+      <div class="p-ic-stat">
+        <div class="p-ic-stat-label">应用层消费</div>
+        <div class="p-ic-stat-value">12</div>
+        <div class="p-ic-stat-sub">态势大屏 / Workshop / AIP</div>
+      </div>
+    </section>
+
+    <!-- 端到端链路总览 -->
+    <section class="p-ic-pipeline">
+      <h2 class="p-ic-section-title">端到端链路（Stage 1 → Stage 6）</h2>
+      <p class="p-ic-section-desc">6 个阶段从外部系统到上层消费的全链路。点击任一节点跳转到对应专题。</p>
+      <div class="p-ic-flow">
+        <a href="data-connection.html" class="p-ic-flow-node">
+          <div class="p-ic-flow-num">1</div>
+          <div class="p-ic-flow-name">数据接入</div>
+          <div class="p-ic-flow-desc">外部系统连接器</div>
+        </a>
+        <div class="p-ic-flow-arrow">→</div>
+        <a href="sync.html" class="p-ic-flow-node">
+          <div class="p-ic-flow-num">2</div>
+          <div class="p-ic-flow-name">同步配置</div>
+          <div class="p-ic-flow-desc">批量 / 流式 / 媒体</div>
+        </a>
+        <div class="p-ic-flow-arrow">→</div>
+        <a href="pipeline-list.html" class="p-ic-flow-node">
+          <div class="p-ic-flow-num">3</div>
+          <div class="p-ic-flow-name">管道清洗</div>
+          <div class="p-ic-flow-desc">9 算子 + 字段映射</div>
+        </a>
+        <div class="p-ic-flow-arrow">→</div>
+        <a href="okf-funnel.html" class="p-ic-flow-node">
+          <div class="p-ic-flow-num">4</div>
+          <div class="p-ic-flow-name">OKF 映射</div>
+          <div class="p-ic-flow-desc">行业漏斗到本体</div>
+        </a>
+        <div class="p-ic-flow-arrow">→</div>
+        <a href="ontology.html" class="p-ic-flow-node">
+          <div class="p-ic-flow-num">5</div>
+          <div class="p-ic-flow-name">本体实例化</div>
+          <div class="p-ic-flow-desc">对象 / 链接 / Action</div>
+        </a>
+        <div class="p-ic-flow-arrow">→</div>
+        <a href="workshop.html" class="p-ic-flow-node">
+          <div class="p-ic-flow-num">6</div>
+          <div class="p-ic-flow-name">应用层消费</div>
+          <div class="p-ic-flow-desc">Workshop / AIP / 看板</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 平台案例列表 -->
+    <section class="p-ic-list">
+      <div class="p-ic-list-head">
+        <h2 class="p-ic-section-title">9 个平台案例</h2>
+        <div class="p-ic-filter">
+          <select class="p-ic-select">
+            <option>全部状态</option>
+            <option>已上线</option>
+            <option>进行中</option>
+            <option>规划中</option>
+          </select>
+          <select class="p-ic-select">
+            <option>全部地区</option>
+            <option>国内</option>
+            <option>跨境</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 微商城 -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#FED7D7;color:#C53030">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">微商城 <span class="p-badge-blue">模板</span></div>
+            <div class="p-ic-case-sub">JDBC · 自建库 · ⭐ 通用模板</div>
+          </div>
+          <span class="p-badge-green">已上线</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-done">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">连接器</span><span class="p-ic-metric-value">JDBC</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">表数</span><span class="p-ic-metric-value">302</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">API</span><span class="p-ic-metric-value">341</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">同步</span><span class="p-ic-metric-value">12</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体对象</span><span class="p-ic-metric-value">8</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看链路 →</a>
+        </div>
+      </div>
+
+      <!-- 淘宝/天猫 -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#FEEBC8;color:#C05621">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">淘宝 / 天猫 <span class="p-badge-blue">合并方案</span></div>
+            <div class="p-ic-case-sub">REST · HMAC · ⭐⭐ 国内主站</div>
+          </div>
+          <span class="p-badge-green">已上线</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-done">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">连接器</span><span class="p-ic-metric-value">REST API</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">接口</span><span class="p-ic-metric-value">37</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">认证</span><span class="p-ic-metric-value">HMAC</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">同步</span><span class="p-ic-metric-value">8</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体对象</span><span class="p-ic-metric-value">6</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看链路 →</a>
+        </div>
+      </div>
+
+      <!-- 拼多多 -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#FED7D7;color:#E53E3E">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">拼多多</div>
+            <div class="p-ic-case-sub">REST · MD5 · ⭐⭐ 国内主站</div>
+          </div>
+          <span class="p-badge-green">已上线</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-done">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">连接器</span><span class="p-ic-metric-value">REST API</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">接口</span><span class="p-ic-metric-value">32</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">认证</span><span class="p-ic-metric-value">MD5</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">同步</span><span class="p-ic-metric-value">6</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体对象</span><span class="p-ic-metric-value">4</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看链路 →</a>
+        </div>
+      </div>
+
+      <!-- 京东 -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#FED7D7;color:#C53030">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">京东</div>
+            <div class="p-ic-case-sub">REST · HMAC · POP+自营双模 · ⭐⭐⭐</div>
+          </div>
+          <span class="p-badge-green">已上线</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-done">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">连接器</span><span class="p-ic-metric-value">REST API</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">接口</span><span class="p-ic-metric-value">42</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">认证</span><span class="p-ic-metric-value">HMAC</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">POP+自营</span><span class="p-ic-metric-value">双模</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体对象</span><span class="p-ic-metric-value">6</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看链路 →</a>
+        </div>
+      </div>
+
+      <!-- 抖音 -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#FED7D7;color:#000000">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">抖音电商</div>
+            <div class="p-ic-case-sub">REST · 内容+电商 · 达人佣金 · ⭐⭐⭐⭐</div>
+          </div>
+          <span class="p-badge-green">已上线</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-done">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">连接器</span><span class="p-ic-metric-value">REST API</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">接口</span><span class="p-ic-metric-value">42</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">特色</span><span class="p-ic-metric-value">达人佣金</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">同步</span><span class="p-ic-metric-value">5</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体对象</span><span class="p-ic-metric-value">5</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看链路 →</a>
+        </div>
+      </div>
+
+      <!-- Shopify -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#C6F6D5;color:#276749">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">Shopify</div>
+            <div class="p-ic-case-sub">GraphQL · Webhook · ⭐⭐⭐</div>
+          </div>
+          <span class="p-badge-green">已上线</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-done">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">连接器</span><span class="p-ic-metric-value">GraphQL</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">查询</span><span class="p-ic-metric-value">18</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">变更</span><span class="p-ic-metric-value">7</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">Webhook</span><span class="p-ic-metric-value">13</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体对象</span><span class="p-ic-metric-value">4</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看链路 →</a>
+        </div>
+      </div>
+
+      <!-- 跨境 Shopify -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#C6F6D5;color:#276749">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">跨境 Shopify</div>
+            <div class="p-ic-case-sub">多店铺 · 多币种 · 多 Location</div>
+          </div>
+          <span class="p-badge-green">已上线</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-done">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">指向</span><span class="p-ic-metric-value">Shopify 方案</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">店铺</span><span class="p-ic-metric-value">多</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">币种</span><span class="p-ic-metric-value">多</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">Location</span><span class="p-ic-metric-value">多</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体对象</span><span class="p-ic-metric-value">3</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看链路 →</a>
+        </div>
+      </div>
+
+      <!-- Amazon -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#FEEBC8;color:#FF9900">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">Amazon</div>
+            <div class="p-ic-case-sub">SP-API · AWS4 · 多区域 · ⭐⭐⭐⭐⭐</div>
+          </div>
+          <span class="p-badge-green">已上线</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-done">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-done">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">连接器</span><span class="p-ic-metric-value">SP-API</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">接口</span><span class="p-ic-metric-value">40</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">签名</span><span class="p-ic-metric-value">AWS4</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">区域</span><span class="p-ic-metric-value">多</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体对象</span><span class="p-ic-metric-value">5</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看链路 →</a>
+        </div>
+      </div>
+
+      <!-- 天猫 -->
+      <div class="p-ic-case">
+        <div class="p-ic-case-head">
+          <div class="p-ic-case-icon" style="background:#FEEBC8;color:#C05621">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h14l-2 16H7L5 4zM9 8v8M15 8v8"/></svg>
+          </div>
+          <div class="p-ic-case-meta">
+            <div class="p-ic-case-name">天猫 <span class="p-badge-blue">指向文档</span></div>
+            <div class="p-ic-case-sub">主方案已在淘宝方案中覆盖</div>
+          </div>
+          <span class="p-badge-amber">指向</span>
+        </div>
+        <div class="p-ic-flow-mini">
+          <span class="p-ic-step-pending">1 数据接入</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-pending">2 同步</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-pending">3 管道</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-pending">4 OKF</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-pending">5 本体</span><span class="p-ic-arrow">→</span>
+          <span class="p-ic-step-pending">6 应用</span>
+        </div>
+        <div class="p-ic-case-foot">
+          <div class="p-ic-metric"><span class="p-ic-metric-label">指向</span><span class="p-ic-metric-value">淘宝方案</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">差异</span><span class="p-ic-metric-value">字段对照</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">同步</span><span class="p-ic-metric-value">共用</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">本体</span><span class="p-ic-metric-value">共用</span></div>
+          <div class="p-ic-metric"><span class="p-ic-metric-label">状态</span><span class="p-ic-metric-value">已合并</span></div>
+          <a href="data-connection.html" class="p-ic-case-link">查看指向 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- G1-G10 公共阻塞 -->
+    <section class="p-ic-blockers">
+      <h2 class="p-ic-section-title">G1-G10 公共阻塞项（所有平台共通）</h2>
+      <p class="p-ic-section-desc">9 个平台接入方案实施过程中共通的阻塞项，按依赖顺序排列。</p>
+      <div class="p-ic-blocker-grid">
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G1</div><div class="p-ic-blocker-name">REST API Connector</div><div class="p-ic-blocker-stat">W2+ 阻塞 8 平台</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G2</div><div class="p-ic-blocker-name">OAuth Token Manager</div><div class="p-ic-blocker-stat">W2+ 阻塞 6 平台</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G3</div><div class="p-ic-blocker-name">字段映射引擎</div><div class="p-ic-blocker-stat">W3 阻塞所有</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G4</div><div class="p-ic-blocker-name">增量同步策略</div><div class="p-ic-blocker-stat">W3 阻塞所有</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G5</div><div class="p-ic-blocker-name">限流与配额监控</div><div class="p-ic-blocker-stat">W4 阻塞所有</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G6</div><div class="p-ic-blocker-name">错误重试机制</div><div class="p-ic-blocker-stat">W4 阻塞所有</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G7</div><div class="p-ic-blocker-name">订单加密字段</div><div class="p-ic-blocker-stat">W5 阻塞抖音/拼多多</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G8</div><div class="p-ic-blocker-name">多店铺路由</div><div class="p-ic-blocker-stat">W5 阻塞 Shopify/Amazon</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G9</div><div class="p-ic-blocker-name">OKF 行业映射</div><div class="p-ic-blocker-stat">W6 阻塞所有</div></div>
+        <div class="p-ic-blocker"><div class="p-ic-blocker-num">G10</div><div class="p-ic-blocker-name">本体对象 Action</div><div class="p-ic-blocker-stat">W7 阻塞所有</div></div>
+      </div>
+    </section>
+  </div>
+</main>
+    </div>
+  </div>
+</div>
+<script src="assets/demo.js"></script>
+<script>
+  DemoUI.initTabs('[data-tabs-root]');
+  DemoUI.initAgentList();
+  DemoUI.initStorageRouter();
+  DemoUI.applySyncRoutingParams();
+  DemoUI.initAipMaturity();
+  DemoUI.initAipTools();
+  DemoUI.initAipLogic();
+  DemoUI.initWorkshopModule();
+  DemoUI.initWorkshopGraph();
+  DemoUI.initWorkshopAip();
+</script>
+</body>
+</html>

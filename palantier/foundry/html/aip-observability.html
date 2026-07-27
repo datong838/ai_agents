@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIP 可观测性 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+  <style>
+    .p-workflow-canvas { background: linear-gradient(rgba(200,200,200,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(200,200,200,0.3) 1px, transparent 1px); background-size: 20px 20px; }
+    .p-node { position: absolute; min-width: 180px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .p-node-claude { background: linear-gradient(135deg, #06b6d4, #0891b2); border: 2px solid #22d3ee; }
+    .p-node-function { background: #fff; border: 1px solid #e5e7eb; }
+    .p-node-selected { box-shadow: 0 0 0 2px #f59e0b, 0 4px 12px rgba(245,158,11,0.3); }
+    .p-trace-timeline { width: 100%; }
+    .p-trace-bar { height: 24px; border-radius: 4px; position: relative; margin: 2px 0; }
+    .p-trace-bar-parent { background: #e5e7eb; }
+    .p-trace-bar-nested { background: #d1d5db; height: 20px; margin: 2px 0 2px 20px; }
+    .p-trace-bar-ai { background: linear-gradient(90deg, #06b6d4, #0891b2); }
+    .p-content-observability { display: flex !important; flex-direction: column; padding: 0; overflow: hidden !important; position: relative; flex: 1; min-height: 0; }
+  </style>
+</head>
+<body class="bg-gray-100">
+<div class="p-app">
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+      <div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+      <div class="p-nav-g-item" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="用户"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+    </div>
+  </nav>
+  <div class="p-main">
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>控制面板</span><span class="p-breadcrumb-sep">/</span><span>AIP 可观测性</span></div>
+      </div>
+      <div class="p-header-center">
+        <div class="p-search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="搜索资源…" />
+        </div>
+      </div>
+      <div class="p-header-right">
+        <button class="p-btn p-btn-secondary p-btn-sm">取消</button>
+        <button class="p-btn p-btn-primary p-btn-sm">保存到分支</button>
+      </div>
+    </header>
+    <div class="p-body">
+      <aside class="p-sidebar">
+        <a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+        <div class="p-sidebar-section-title">工作台</div>
+        <div class="p-sidebar-section">
+          <a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+          <a href="workshop-app-order.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>订单管理</span></a>
+          <a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>风险告警管理</span></a>
+          <a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
+          <a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+        </div>
+        <div class="p-sidebar-section-title">应用程序构建工具</div>
+        <div class="p-sidebar-section">
+          <a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a><a href="workshop-widget-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>组件注册表</span></a>
+<a href="workshop-variables.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16v12H4zM8 10h2v4H8zM14 10h2v4h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变量管理器</span></a>
+          <a href="workshop-styles.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>主题与样式</span></a>
+          <a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+          <a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+          <a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+        </div>
+        <div class="p-sidebar-section-title">AIP 决策引擎</div>
+        <div class="p-sidebar-section">
+          <div class="p-sidebar-subgroup-title">应用层</div>
+          <a href="aip-assist.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AIP 助手</span></a>
+          <a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>对话机器人</span></a>
+          <a href="aip-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>AIP 分析师</span></a>
+          <div class="p-sidebar-subgroup-title">逻辑编排层</div>
+          <a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+          <a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>智能体工具面板</span></a>
+          <a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+          <div class="p-sidebar-subgroup-title">智能体</div>
+          <a href="agent-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg><span>智能体目录</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>智能体插件</span></a>
+<div class="p-sidebar-subgroup-title">评测与治理</div>
+          <a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+          <a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+          <div class="p-sidebar-subgroup-title">决策谱系</div>
+          <a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+          <a href="aip-observability.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可观测性</span></a>
+        </div>
+        <div class="p-sidebar-section-title">模型管理</div>
+        <div class="p-sidebar-section">
+          <a href="aip-model-catalog.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>模型目录</span></a>
+          <a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
+          <a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
+          <a href="aip-capacity-management.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>容量管理</span></a>
+        </div>
+        <div class="p-sidebar-section-title">本体 · 数字孪生</div>
+        <div class="p-sidebar-section">
+          <a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
+          <a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>对象探索</span></a>
+          <a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>本体提案</span></a>
+                              <a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
+          <a href="ontology-wiki-index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF funnel</span></a>
+<a href="okf-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>OKF 概览</span></a>
+
+          <a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
+        </div>
+        <div class="p-sidebar-section-title">管道与数据治理</div>
+        <div class="p-sidebar-section">
+          <a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+          <a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
+          <a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+          <a href="builds.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>搭建</span></a>
+          <a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+          <a href="code-repositories.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>代码库</span></a>
+          <a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+          <a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
+        </div>
+        <div class="p-sidebar-section-title">数据源与同步</div>
+        <div class="p-sidebar-section">
+          <a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据链接器</span></a>
+          <a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+          <a href="sync.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg><span>同步配置</span></a>
+          <a href="sync-routing.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>同步路由</span></a>
+          <a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+          <a href="document-intelligence.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round"/></svg><span>文档智能</span></a>
+        </div>
+        <div class="p-sidebar-section-title">运维交付</div>
+        <div class="p-sidebar-section">
+          <a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
+          <a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
+          <a href="apollo-spoke.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Spoke 详情</span></a>
+          <a href="apollo-ferry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>Ferry 摆渡</span></a>
+          <a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
+          <a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
+          <a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+          <a href="integration-cases.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>接入案例</span></a>
+        </div>
+      </aside>
+      <main class="p-content p-content-observability">
+        <!-- Header -->
+        <header class="h-14 border-b border-gray-200 bg-white flex items-center px-4 justify-between shrink-0">
+          <div class="flex items-center space-x-4">
+            <nav class="flex items-center space-x-1 text-sm">
+              <a href="aip-observability.html" class="text-gray-500 hover:text-gray-700">返回所有运行</a>
+              <span class="text-gray-400">/</span>
+              <span class="text-gray-900 font-medium">sendEmailWithTaskPriority</span>
+            </nav>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button id="viewTraceBtn" class="px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200" title="追踪视图：画布编排 + 执行追踪火焰图，聚焦'这次运行发生了什么'">追踪</button>
+            <button id="viewDetailBtn" class="px-3 py-1.5 text-xs font-medium text-indigo-700 bg-indigo-50 rounded-lg" title="详情视图：函数元数据（签名、版本、使用记录、代码位置），聚焦'这个函数是什么'">详情</button>
+          </div>
+        </header>
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 bg-white shrink-0">
+          <div class="px-4">
+            <nav class="flex space-x-6">
+              <a href="#" data-tab="code" class="obs-tab py-3 text-sm text-gray-500 hover:text-gray-700" title="查看和编辑函数源代码（Python/TS/SQL）。后端：RuntimeFunction.source">函数代码</a>
+              <a href="#" data-tab="test" class="obs-tab py-3 text-sm text-gray-500 hover:text-gray-700" title="编写测试用例、手动触发函数执行、查看断言结果。后端：FunctionsTestDebugEngine">测试运行函数</a>
+              <a href="#" data-tab="history" class="obs-tab is-active py-3 text-sm font-medium text-indigo-600 border-b-2 border-indigo-600" title="查看历史执行记录、耗时、调用链路追踪。后端：DistributedTracingEngine">运行历史</a>
+              <a href="#" data-tab="delete" class="obs-tab py-3 text-sm text-gray-500 hover:text-gray-700" title="安全删除函数，含依赖检查和级联清理。后端：FunctionsRuntime.delete()">删除代码函数</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Tab Panel: 函数代码 -->
+        <div id="tabCodePanel" style="display:none; flex:1; background:#f9fafb; overflow:auto; padding:24px; min-height:0;">
+          <div class="max-w-3xl mx-auto space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-sm font-semibold text-gray-900">函数源代码</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Python · 后端引擎：PythonBuilder + FunctionsRuntime</p>
+                <p id="savedTimestamp" class="text-[10px] text-gray-400 mt-0.5" style="display:none;">已保存 · --:--:--</p>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="px-2 py-1 text-[10px] font-medium bg-blue-100 text-blue-700 rounded">Python</span>
+                <button class="px-3 py-1.5 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50" onclick="showToast('代码校验通过：AST 节点数 42/1000，无危险调用')">校验</button>
+                <button id="saveFunctionBtn" class="px-3 py-1.5 text-xs font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700" onclick="saveFunction(this)">保存</button>
+              </div>
+            </div>
+            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+              <pre class="text-xs text-gray-300 font-mono leading-relaxed"><span class="text-purple-400">def</span> <span class="text-cyan-300">sendEmailWithTaskPriority</span>(to_email, subject, body, task_urgency):
+    <span class="text-gray-500"># 根据 urgency 选择模板和发送通道</span>
+    <span class="text-purple-400">if</span> task_urgency == <span class="text-green-400">"high"</span>:
+        template = load_template(<span class="text-green-400">"urgent_notification"</span>)
+        channel = <span class="text-green-400">"priority_queue"</span>
+    <span class="text-purple-400">else</span>:
+        template = load_template(<span class="text-green-400">"standard_notification"</span>)
+        channel = <span class="text-green-400">"default_queue"</span>
+
+    <span class="text-gray-500"># 调用 LLM 生成个性化摘要</span>
+    summary = llm_summarize(body, model=<span class="text-green-400">"claude-3.5-haiku"</span>)
+
+    <span class="text-purple-400">return</span> send_email(
+        to=to_email,
+        subject=subject,
+        body=template.render(summary=summary),
+        channel=channel
+    )</pre>
+            </div>
+            <div class="grid grid-cols-3 gap-3 text-xs">
+              <div class="bg-white border border-gray-200 rounded-lg p-3">
+                <div class="text-gray-400">安全约束</div>
+                <div class="text-gray-900 mt-1">MAX_CODE_SIZE: 5000字符<br/>MAX_AST_NODES: 1000<br/>TIMEOUT: 5.0s</div>
+              </div>
+              <div class="bg-white border border-gray-200 rounded-lg p-3">
+                <div class="text-gray-400">黑名单</div>
+                <div class="text-gray-900 mt-1">import os / subprocess<br/>__import__ / eval / exec<br/>__dunder__ 方法</div>
+              </div>
+              <div class="bg-white border border-gray-200 rounded-lg p-3">
+                <div class="text-gray-400">TS 签名预览</div>
+                <div class="text-gray-900 mt-1 font-mono text-[10px]">sendEmailWithTaskPriority(<br/>&nbsp;&nbsp;to_email: string,<br/>&nbsp;&nbsp;subject: string<br/>): SendResult</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Panel: 测试运行函数 -->
+        <div id="tabTestPanel" style="display:none; flex:1; background:#f9fafb; overflow:auto; padding:24px; min-height:0;">
+          <div class="max-w-3xl mx-auto space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-sm font-semibold text-gray-900">测试用例</h3>
+                <p class="text-xs text-gray-500 mt-0.5">后端引擎：FunctionsTestDebugEngine</p>
+              </div>
+              <button class="px-3 py-1.5 text-xs font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700" onclick="openTestCreator()">+ 新建测试</button>
+            </div>
+            <div class="space-y-2">
+              <div class="bg-white border border-green-200 rounded-lg p-3 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center"><svg class="w-3 h-3 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <div>
+                    <div class="text-xs font-medium text-gray-900">test_high_urgency_uses_priority_queue</div>
+                    <div class="text-[10px] text-gray-400">Python · 3 assertions · 45ms</div>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-[10px] text-green-600 font-medium">PASSED</span>
+                  <button class="text-[10px] text-indigo-600 hover:underline" onclick="showToast('重新运行测试')">运行</button>
+                </div>
+              </div>
+              <div class="bg-white border border-green-200 rounded-lg p-3 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <span class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center"><svg class="w-3 h-3 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <div>
+                    <div class="text-xs font-medium text-gray-900">test_low_urgency_uses_default_queue</div>
+                    <div class="text-[10px] text-gray-400">Python · 2 assertions · 32ms</div>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-[10px] text-green-600 font-medium">PASSED</span>
+                  <button class="text-[10px] text-indigo-600 hover:underline" onclick="showToast('重新运行测试')">运行</button>
+                </div>
+              </div>
+              <div class="bg-white border border-red-200 rounded-lg p-3 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <span class="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center"><svg class="w-3 h-3 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"/></svg></span>
+                  <div>
+                    <div class="text-xs font-medium text-gray-900">test_llm_summary_not_empty</div>
+                    <div class="text-[10px] text-gray-400">Python · 1 assertion · 6012ms</div>
+                    <div class="text-[10px] text-red-500 mt-0.5">AssertionError: summary 为空字符串</div>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-[10px] text-red-600 font-medium">FAILED</span>
+                  <button class="text-[10px] text-indigo-600 hover:underline" onclick="showToast('重新运行测试')">运行</button>
+                </div>
+              </div>
+              <div class="bg-white border border-gray-200 rounded-lg p-3 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <span class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center"><svg class="w-3 h-3 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></span>
+                  <div>
+                    <div class="text-xs font-medium text-gray-900">test_template_rendering</div>
+                    <div class="text-[10px] text-gray-400">Python · 2 assertions · 未运行</div>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-[10px] text-gray-400 font-medium">PENDING</span>
+                  <button class="text-[10px] text-indigo-600 hover:underline" onclick="showToast('运行测试')">运行</button>
+                </div>
+              </div>
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-gray-600">
+              <span class="font-medium text-amber-700">断点调试：</span>支持设置行号断点、查看变量值、单步执行。后端 FunctionDebugSession（breakpoints + current_line + variables）。
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Panel: 删除代码函数 -->
+        <div id="tabDeletePanel" style="display:none; flex:1; background:#f9fafb; overflow:auto; padding:24px; min-height:0;">
+          <div class="max-w-2xl mx-auto space-y-4">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">删除函数</h3>
+              <p class="text-xs text-gray-500 mt-0.5">后端：FunctionsRuntime.delete() + 依赖检查 + 级联清理</p>
+            </div>
+
+            <!-- 依赖检查 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="text-xs font-semibold text-gray-700">依赖检查结果</h4>
+                <span class="text-[10px] text-amber-600 font-medium">2 个活跃引用</span>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-xs bg-gray-50 rounded p-2">
+                  <div>
+                    <span class="text-gray-900 font-medium">AIP Logic: 订单审批流程</span>
+                    <span class="text-gray-400 ml-2">block_id: blk_005 · use_llm</span>
+                  </div>
+                  <a href="aip-logic.html" class="text-indigo-600 hover:underline text-[10px]">查看</a>
+                </div>
+                <div class="flex items-center justify-between text-xs bg-gray-50 rounded p-2">
+                  <div>
+                    <span class="text-gray-900 font-medium">Pipeline: 邮件通知转换</span>
+                    <span class="text-gray-400 ml-2">stage: transform · function_ref</span>
+                  </div>
+                  <a href="pipeline-list.html" class="text-indigo-600 hover:underline text-[10px]">查看</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 级联清理范围 -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+              <h4 class="text-xs font-semibold text-gray-700 mb-3">级联清理范围</h4>
+              <div class="space-y-1.5 text-xs text-gray-600">
+                <div class="flex items-center"><span class="w-4 h-4 mr-2"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"/></svg></span>函数本体：RuntimeFunction(fn_id=fn_001)</div>
+                <div class="flex items-center"><span class="w-4 h-4 mr-2"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"/></svg></span>代码位置记录：CodeLocation(repo, path, line)</div>
+                <div class="flex items-center"><span class="w-4 h-4 mr-2"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"/></svg></span>测试用例：4 条 FunctionTestCase</div>
+                <div class="flex items-center"><span class="w-4 h-4 mr-2"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"/></svg></span>性能 Profile：2 条 ProfileResult</div>
+                <div class="flex items-center"><span class="w-4 h-4 mr-2"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>审计记录保留：写入 DecisionRecord</div>
+              </div>
+            </div>
+
+            <!-- 确认按钮 -->
+            <div class="bg-red-50 border border-red-300 rounded-lg p-4">
+              <div class="flex items-start space-x-3">
+                <svg class="w-5 h-5 text-red-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="flex-1">
+                  <p class="text-xs text-red-900 font-medium">此操作不可逆！</p>
+                  <p class="text-[11px] text-red-700 mt-1">当前函数有 <span class="font-bold">2 个活跃引用</span>。删除后引用方将出现 broken reference。建议先解除依赖再删除。</p>
+                  <div class="flex items-center space-x-2 mt-3">
+                    <button class="px-3 py-1.5 text-xs font-medium text-red-700 bg-white border border-red-300 rounded-lg hover:bg-red-50" onclick="confirmForceDelete()">强制删除</button>
+                    <button class="px-3 py-1.5 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50" onclick="showToast('已取消删除操作')">取消</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 详情视图面板（默认隐藏） -->
+        <div id="detailViewPanel" style="display:none; flex:1; background:#f9fafb; overflow:auto; padding:24px; min-height:0;">
+          <div class="max-w-2xl mx-auto space-y-4">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">函数元数据</h3>
+              <p class="text-xs text-gray-500 mt-0.5">后端：FunctionTypeView（function_type_view.py）</p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-lg divide-y divide-gray-100">
+              <div class="p-3 flex items-center justify-between">
+                <span class="text-xs text-gray-500">函数名</span>
+                <span class="text-xs font-mono text-gray-900">sendEmailWithTaskPriority</span>
+              </div>
+              <div class="p-3 flex items-center justify-between">
+                <span class="text-xs text-gray-500">类型</span>
+                <span class="text-xs text-gray-900">AIP 逻辑函数</span>
+              </div>
+              <div class="p-3 flex items-center justify-between">
+                <span class="text-xs text-gray-500">语言</span>
+                <span class="text-xs text-gray-900">Python</span>
+              </div>
+              <div class="p-3 flex items-center justify-between">
+                <span class="text-xs text-gray-500">签名</span>
+                <span class="text-xs font-mono text-gray-900">(to_email, subject, body, task_urgency) → SendResult</span>
+              </div>
+              <div class="p-3 flex items-center justify-between">
+                <span class="text-xs text-gray-500">使用次数</span>
+                <span class="text-xs text-gray-900">47 次</span>
+              </div>
+              <div class="p-3 flex items-center justify-between">
+                <span class="text-xs text-gray-500">版本数</span>
+                <span class="text-xs text-gray-900">3 个版本</span>
+              </div>
+              <div class="p-3 flex items-center justify-between">
+                <span class="text-xs text-gray-500">代码位置</span>
+                <span class="text-xs font-mono text-gray-900">aos-functions/email.py:42</span>
+              </div>
+              <div class="p-3 flex items-center justify-between">
+                <span class="text-xs text-gray-500">创建时间</span>
+                <span class="text-xs text-gray-900">2026-07-20 14:32</span>
+              </div>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+              <h4 class="text-xs font-semibold text-gray-700 mb-2">版本历史</h4>
+              <div class="space-y-1.5 text-xs">
+                <div class="flex items-center justify-between text-gray-600"><span class="font-mono">v3 (当前)</span><span class="text-gray-400">2026-07-24 · 新增 task_urgency 参数</span></div>
+                <div class="flex items-center justify-between text-gray-600"><span class="font-mono">v2</span><span class="text-gray-400">2026-07-22 · 改用 Claude 3.5 Haiku</span></div>
+                <div class="flex items-center justify-between text-gray-600"><span class="font-mono">v1</span><span class="text-gray-400">2026-07-20 · 初始版本</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workflow Canvas（运行历史 Tab 默认内容） -->
+        <div id="traceContent" style="flex:1; display:flex; flex-direction:column; overflow:hidden; min-height:0;">
+          <!-- Three Panels Row -->
+          <div style="flex:1; display:flex; overflow:hidden; min-height:0;">
+          <!-- Node Type Panel -->
+          <aside style="width:160px; border-right:1px solid #e5e7eb; background:#fff; overflow:auto; flex-shrink:0;">
+            <div class="p-3">
+              <div class="text-[10px] font-semibold text-gray-400 tracking-wider mb-2">节点类型</div>
+              <div class="space-y-1">
+                <div class="flex items-center justify-between text-xs px-2 py-1">
+                  <span class="text-gray-600">动作</span>
+                  <span class="text-gray-400">5</span>
+                </div>
+                <div class="flex items-center justify-between text-xs px-2 py-1">
+                  <span class="text-gray-600">AIP 逻辑函数</span>
+                  <span class="text-gray-400">1</span>
+                </div>
+                <div class="flex items-center justify-between text-xs px-2 py-1">
+                  <span class="text-gray-600">函数</span>
+                  <span class="text-gray-400">4</span>
+                </div>
+                <div class="flex items-center justify-between text-xs px-2 py-1">
+                  <span class="text-gray-600">语言模型</span>
+                  <span class="text-cyan-600 font-medium">2</span>
+                </div>
+                <div class="flex items-center justify-between text-xs px-2 py-1">
+                  <span class="text-gray-600">Webhook</span>
+                  <span class="text-gray-400">1</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <!-- Canvas Area -->
+          <div class="p-workflow-canvas" style="flex:1; position:relative; overflow:auto; min-height:0;">
+            <!-- Toolbar -->
+            <div class="absolute top-4 left-4 flex items-center space-x-2 bg-white rounded-lg shadow-sm border border-gray-200 p-1">
+              <button class="p-1.5 hover:bg-gray-100 rounded" title="撤销">
+                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="p-1.5 hover:bg-gray-100 rounded" title="重做">
+                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="w-px h-4 bg-gray-200"></span>
+              <button class="p-1.5 hover:bg-gray-100 rounded" title="缩小">
+                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6" stroke-linecap="round"/></svg>
+              </button>
+              <button class="p-1.5 hover:bg-gray-100 rounded" title="放大">
+                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6" stroke-linecap="round"/></svg>
+              </button>
+              <button class="p-1.5 hover:bg-gray-100 rounded" title="布局">
+                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <!-- Nodes -->
+            <div class="p-node p-node-claude" style="left: 80px; top: 60px;">
+              <div class="flex items-center p-2 border-b border-white/20">
+                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                <span class="ml-2 text-xs font-medium text-white">Claude 3.5 Haiku</span>
+              </div>
+              <div class="p-2 text-xs text-white/80">Anthropic 模型</div>
+            </div>
+            <div class="p-node p-node-function" style="left: 300px; top: 40px;">
+              <div class="flex items-center p-2 border-b border-gray-100">
+                <span class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-mono">fx</span>
+                <span class="ml-2 text-xs font-medium text-gray-700">sendEmail</span>
+              </div>
+              <div class="p-2 text-xs text-gray-500">2 输入 → 2+ 输出</div>
+            </div>
+            <div class="p-node p-node-function p-node-selected" style="left: 300px; top: 160px;">
+              <div class="flex items-center p-2 border-b border-gray-100">
+                <span class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-mono">fx</span>
+                <span class="ml-2 text-xs font-medium text-gray-700">sendEmailWithTaskPriority</span>
+              </div>
+              <div class="p-2 text-xs text-gray-500">2 输入 → 2+ 输出</div>
+              <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
+                <div class="flex items-center space-x-1">
+                  <button class="px-2 py-0.5 text-[10px] bg-white border border-gray-200 rounded text-gray-600 shadow-sm">详情</button>
+                  <button class="px-2 py-0.5 text-[10px] bg-white border border-gray-200 rounded text-gray-600 shadow-sm">固定</button>
+                </div>
+              </div>
+            </div>
+            <!-- Connection Lines (SVG) -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 0;">
+              <path d="M 180 100 C 240 100, 240 80, 300 80" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M 180 100 C 240 100, 240 180, 300 180" stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <!-- Right Panel -->
+          <aside style="width:256px; border-left:1px solid #e5e7eb; background:#fff; overflow:auto; flex-shrink:0;">
+            <div class="p-4">
+              <h3 class="text-sm font-semibold text-gray-900">节点详情</h3>
+              <p class="text-xs text-gray-500 mt-1">sendEmailWithTaskPriority</p>
+              <div class="mt-4 space-y-3">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">节点类型</span>
+                  <span class="text-gray-900 font-medium">函数</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">输入数量</span>
+                  <span class="text-gray-900">2</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">输出数量</span>
+                  <span class="text-gray-900">2+</span>
+                </div>
+              </div>
+              <div class="mt-6">
+                <button class="w-full py-2 text-xs font-medium text-indigo-700 bg-indigo-50 rounded-lg hover:bg-indigo-100">
+                  查看代码
+                </button>
+              </div>
+            </div>
+          </aside>
+          </div><!-- /Three Panels Row -->
+          <!-- Execution Trace Timeline -->
+          <div style="border-top:1px solid #e5e7eb; background:#fff; flex-shrink:0; height:200px; min-height:200px; overflow-y:auto;">
+            <div class="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+              <h4 class="text-sm font-medium text-gray-900">执行追踪</h4>
+              <div class="flex items-center space-x-2 text-xs text-gray-500">
+                <span>总耗时: 12.261s</span>
+                <span class="text-gray-300">|</span>
+                <span class="text-cyan-600">2 个 LLM 调用</span>
+                <span class="text-gray-300">|</span>
+                <span>13 个 Span</span>
+              </div>
+            </div>
+            <div class="p-4 overflow-x-auto">
+              <!-- Time Scale -->
+              <div class="flex items-center text-[10px] text-gray-400 mb-2 ml-20">
+                <span class="w-16">0s</span>
+                <span class="w-16">3s</span>
+                <span class="w-16">6s</span>
+                <span class="w-16">9s</span>
+                <span class="w-16">12s</span>
+              </div>
+              <!-- Trace Bars -->
+              <div class="space-y-1">
+                <div class="flex items-center group cursor-pointer" title="请求 Span（根节点）· 状态: completed · duration: 12.261s">
+                  <span class="w-20 text-xs text-gray-600 truncate pr-2">sendEmailWith...</span>
+                  <div class="flex-1 h-6 relative">
+                    <div class="p-trace-bar p-trace-bar-parent" style="left: 0%; width: 100%;">
+                      <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-[10px] text-gray-600">请求</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center ml-4 group cursor-pointer" title="用户代码 Span · 状态: completed · duration: 11.65s">
+                  <span class="w-16 text-xs text-gray-500 truncate pr-2">用户代码</span>
+                  <div class="flex-1 h-5 relative">
+                    <div class="p-trace-bar p-trace-bar-nested" style="left: 4%; width: 95%;"></div>
+                  </div>
+                </div>
+                <div class="flex items-center ml-4 group cursor-pointer" title="模块加载 Span · 状态: completed · duration: 1.47s">
+                  <span class="w-16 text-xs text-gray-500 truncate pr-2">加载中</span>
+                  <div class="flex-1 h-5 relative">
+                    <div class="p-trace-bar p-trace-bar-nested" style="left: 4%; width: 12%;"></div>
+                  </div>
+                </div>
+                <div class="flex items-center ml-4 group cursor-pointer" title="Ontology 对象查询 · service: ontology-api · duration: 1.84s">
+                  <span class="w-16 text-xs text-gray-500 truncate pr-2">关联对象</span>
+                  <div class="flex-1 h-5 relative">
+                    <div class="p-trace-bar p-trace-bar-nested" style="left: 4%; width: 15%; background: #93c5fd;"></div>
+                  </div>
+                </div>
+                <div class="flex items-center ml-4 group cursor-pointer" title="函数调用 Span · duration: 6.75s">
+                  <span class="w-16 text-xs text-gray-500 truncate pr-2">函数调用</span>
+                  <div class="flex-1 h-5 relative">
+                    <div class="p-trace-bar p-trace-bar-nested" style="left: 16%; width: 55%;"></div>
+                  </div>
+                </div>
+                <div class="flex items-center ml-6 group cursor-pointer" title="LLM 调用 · model: claude-3.5-haiku · input_tokens: 842 · output_tokens: 156 · duration: 6.0s">
+                  <span class="w-14 text-xs text-cyan-600 truncate pr-2">Claude 3.5</span>
+                  <div class="flex-1 h-5 relative">
+                    <div class="p-trace-bar p-trace-bar-ai" style="left: 16%; width: 50%;">
+                      <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-[10px] text-white font-medium">6.0s · 998 tokens</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center ml-4 group cursor-pointer" title="sendEmail Span · service: email-service · duration: 2.45s">
+                  <span class="w-16 text-xs text-gray-500 truncate pr-2">sendEmail</span>
+                  <div class="flex-1 h-5 relative">
+                    <div class="p-trace-bar p-trace-bar-nested" style="left: 75%; width: 20%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+<script src="assets/demo.js"></script>
+<script>
+  function showToast(msg) {
+    var t = document.createElement('div');
+    t.className = 'fixed top-4 right-4 z-50 px-4 py-2 bg-gray-800 text-white text-xs rounded-lg shadow-lg';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function() { t.remove(); }, 3000);
+  }
+
+  // 视图切换器：追踪 vs 详情
+  var viewTraceBtn = document.getElementById('viewTraceBtn');
+  var viewDetailBtn = document.getElementById('viewDetailBtn');
+  var mainContent = document.querySelector('.p-content-observability');
+
+  if (viewTraceBtn && viewDetailBtn) {
+    viewTraceBtn.addEventListener('click', function() {
+      this.className = 'px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200';
+      // 灰色背景 = 未激活；切换追踪视图时它应该是激活的
+      viewDetailBtn.className = 'px-3 py-1.5 text-xs font-medium text-indigo-700 bg-indigo-50 rounded-lg';
+      this.className = 'px-3 py-1.5 text-xs font-medium text-indigo-700 bg-indigo-50 rounded-lg';
+      viewDetailBtn.className = 'px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200';
+      // 显示追踪内容
+      var detailPanel = document.getElementById('detailViewPanel');
+      if (detailPanel) detailPanel.style.display = 'none';
+      var traceContent = document.getElementById('traceContent');
+      if (traceContent) traceContent.style.display = 'flex';
+      showToast('切换到追踪视图：画布编排 + 执行追踪火焰图');
+    });
+
+    viewDetailBtn.addEventListener('click', function() {
+      this.className = 'px-3 py-1.5 text-xs font-medium text-indigo-700 bg-indigo-50 rounded-lg';
+      viewTraceBtn.className = 'px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200';
+      // 显示详情面板
+      var traceContent = document.getElementById('traceContent');
+      if (traceContent) traceContent.style.display = 'none';
+      var detailPanel = document.getElementById('detailViewPanel');
+      if (detailPanel) detailPanel.style.display = 'flex';
+      showToast('切换到详情视图：函数签名、版本、使用记录、代码位置');
+    });
+  }
+
+  // Tab 切换
+  document.querySelectorAll('.obs-tab').forEach(function(tab) {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      // 更新激活状态
+      document.querySelectorAll('.obs-tab').forEach(function(t) {
+        t.classList.remove('is-active', 'text-indigo-600', 'font-medium');
+        t.classList.add('text-gray-500');
+        t.classList.remove('border-b-2', 'border-indigo-600');
+      });
+      this.classList.add('is-active', 'text-indigo-600', 'font-medium', 'border-b-2', 'border-indigo-600');
+      this.classList.remove('text-gray-500');
+
+      var tabName = this.getAttribute('data-tab');
+      var panels = {
+        'code': 'tabCodePanel',
+        'test': 'tabTestPanel',
+        'history': 'tabHistoryPanel',
+        'delete': 'tabDeletePanel'
+      };
+
+      // 隐藏所有 Tab 面板
+      Object.values(panels).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
+      // 隐藏追踪内容（默认）
+      var traceContent = document.getElementById('traceContent');
+      if (traceContent) traceContent.style.display = 'none';
+
+      // 显示当前 Tab 面板
+      var targetId = panels[tabName];
+      var target = document.getElementById(targetId);
+      if (target) {
+        target.style.display = 'flex';
+      } else {
+        // 运行历史 Tab 显示原有的追踪内容
+        if (tabName === 'history') {
+          if (traceContent) traceContent.style.display = 'flex';
+        }
+      }
+
+      var labels = {
+        'code': '函数代码：查看/编辑源代码（Python/TS/SQL）',
+        'test': '测试运行函数：编写测试用例、断言、调试',
+        'history': '运行历史：历史执行记录 + Span 火焰图',
+        'delete': '删除代码函数：依赖检查 + 级联清理'
+      };
+      showToast('Tab 切换 → ' + labels[tabName]);
+    });
+  });
+
+  // ====== 1. 保存按钮：saveFunction ======
+  function saveFunction(btn) {
+    var originalText = btn.textContent;
+    var originalClass = btn.className;
+    // 保存中
+    btn.textContent = '保存中…';
+    btn.className = 'px-3 py-1.5 text-xs font-medium text-gray-500 bg-gray-300 rounded-lg cursor-wait';
+    btn.disabled = true;
+    setTimeout(function() {
+      // 已保存（绿色）
+      btn.textContent = '已保存 ✓';
+      btn.className = 'px-3 py-1.5 text-xs font-medium text-white bg-green-600 rounded-lg';
+      btn.disabled = false;
+      // 时间戳
+      var tsEl = document.getElementById('savedTimestamp');
+      if (tsEl) {
+        var now = new Date();
+        var hh = String(now.getHours()).padStart(2, '0');
+        var mm = String(now.getMinutes()).padStart(2, '0');
+        var ss = String(now.getSeconds()).padStart(2, '0');
+        tsEl.textContent = '已保存 · ' + hh + ':' + mm + ':' + ss;
+        tsEl.style.display = 'block';
+      }
+      // 2秒后恢复
+      setTimeout(function() {
+        btn.textContent = originalText;
+        btn.className = originalClass;
+      }, 2000);
+    }, 800);
+    showToast('函数已保存到 RuntimeFunction 注册表');
+  }
+
+  // ====== 2. 新建测试：openTestCreator ======
+  function openTestCreator() {
+    // 移除已有模态框
+    var existing = document.getElementById('testCreatorModal');
+    if (existing) existing.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'testCreatorModal';
+    overlay.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); z-index:10000; display:flex; align-items:center; justify-content:center;';
+
+    var modal = document.createElement('div');
+    modal.style.cssText = 'background:#fff; border-radius:12px; width:520px; box-shadow:0 20px 60px rgba(0,0,0,0.15); max-height:90vh; overflow-y:auto;';
+
+    var html = '';
+    // Header
+    html += '<div style="padding:16px 20px; border-bottom:1px solid #E5E7EB;">';
+    html += '<h3 style="font-size:14px; font-weight:600; color:#111827;">新建测试用例（FunctionTestCase）</h3>';
+    html += '</div>';
+    // Body
+    html += '<div style="padding:20px;">';
+    // Test name
+    html += '<div style="margin-bottom:16px;">';
+    html += '<label style="display:block; font-size:12px; font-weight:500; color:#374151; margin-bottom:4px;">测试名称</label>';
+    html += '<input id="tcName" type="text" placeholder="test_my_new_case" style="width:100%; padding:8px 12px; border:1px solid #D1D5DB; border-radius:8px; font-size:12px; outline:none;" />';
+    html += '</div>';
+    // Assertion builder
+    html += '<div style="margin-bottom:16px;">';
+    html += '<label style="display:block; font-size:12px; font-weight:500; color:#374151; margin-bottom:4px;">断言构建器</label>';
+    html += '<div id="tcAssertions" style="display:flex; flex-direction:column; gap:6px;">';
+    for (var i = 0; i < 3; i++) {
+      html += '<div style="display:flex; gap:6px; align-items:center;">';
+      html += '<input type="text" placeholder="变量名 (如 status)" style="flex:1; padding:6px 10px; border:1px solid #D1D5DB; border-radius:6px; font-size:11px; outline:none;" />';
+      html += '<select style="padding:6px 10px; border:1px solid #D1D5DB; border-radius:6px; font-size:11px; outline:none;">';
+      html += '<option value="equals">equals</option>';
+      html += '<option value="contains">contains</option>';
+      html += '<option value="matches">matches</option>';
+      html += '<option value="not_null">not_null</option>';
+      html += '</select>';
+      html += '<input type="text" placeholder="期望值" style="flex:1; padding:6px 10px; border:1px solid #D1D5DB; border-radius:6px; font-size:11px; outline:none;" />';
+      html += '</div>';
+    }
+    html += '</div>';
+    html += '</div>';
+    // Input params JSON
+    html += '<div>';
+    html += '<label style="display:block; font-size:12px; font-weight:500; color:#374151; margin-bottom:4px;">输入参数（JSON）</label>';
+    html += '<textarea id="tcParams" placeholder=\'{ "to_email": "test@example.com", "subject": "test", "body": "hello", "task_urgency": "high" }\' style="width:100%; height:80px; padding:8px 12px; border:1px solid #D1D5DB; border-radius:8px; font-size:11px; font-family:monospace; outline:none; resize:vertical;"></textarea>';
+    html += '</div>';
+    html += '</div>';
+    // Footer
+    html += '<div style="padding:12px 20px; border-top:1px solid #E5E7EB; background:#F9FAFB; display:flex; justify-content:flex-end; gap:8px; border-radius:0 0 12px 12px;">';
+    html += '<button id="tcCancel" style="padding:6px 16px; font-size:12px; font-weight:500; color:#374151; background:#fff; border:1px solid #D1D5DB; border-radius:8px; cursor:pointer;">取消</button>';
+    html += '<button id="tcConfirm" style="padding:6px 16px; font-size:12px; font-weight:500; color:#fff; background:#4F46E5; border:none; border-radius:8px; cursor:pointer;">确认创建</button>';
+    html += '</div>';
+
+    modal.innerHTML = html;
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    // 关闭事件
+    document.getElementById('tcCancel').onclick = function() { overlay.remove(); };
+    document.getElementById('tcConfirm').onclick = function() {
+      var nameInput = document.getElementById('tcName');
+      var testName = (nameInput.value || '').trim() || 'test_new_case_' + Date.now();
+
+      // 构建新测试行（PENDING）
+      var testList = document.querySelector('#tabTestPanel .space-y-2');
+      if (testList) {
+        var newRow = document.createElement('div');
+        newRow.className = 'bg-white border border-gray-200 rounded-lg p-3 flex items-center justify-between';
+        newRow.innerHTML = ''
+          + '<div class="flex items-center space-x-3">'
+          +   '<span class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center"><svg class="w-3 h-3 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></span>'
+          +   '<div>'
+          +     '<div class="text-xs font-medium text-gray-900"></div>'
+          +     '<div class="text-[10px] text-gray-400">Python · 3 assertions · 未运行</div>'
+          +   '</div>'
+          + '</div>'
+          + '<div class="flex items-center space-x-2">'
+          +   '<span class="text-[10px] text-gray-400 font-medium">PENDING</span>'
+          +   '<button class="text-[10px] text-indigo-600 hover:underline" onclick="showToast(\'运行测试\')">运行</button>'
+          + '</div>';
+        // 安全设置测试名（防 XSS）
+        newRow.querySelector('.text-xs.font-medium').textContent = testName;
+        testList.appendChild(newRow);
+      }
+      overlay.remove();
+      showToast('测试用例「' + testName + '」已创建（PENDING）');
+    };
+  }
+
+  // ====== 3. 强制删除：confirmForceDelete ======
+  function confirmForceDelete() {
+    // 移除已有
+    var existing = document.getElementById('forceDeleteModal');
+    if (existing) existing.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'forceDeleteModal';
+    overlay.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); z-index:10000; display:flex; align-items:center; justify-content:center;';
+
+    var modal = document.createElement('div');
+    modal.style.cssText = 'background:#fff; border-radius:12px; width:520px; box-shadow:0 20px 60px rgba(0,0,0,0.15);';
+
+    var html = '';
+    // Header (红色主题)
+    html += '<div style="padding:16px 20px; border-bottom:1px solid #FECACA; background:#FEF2F2; border-radius:12px 12px 0 0;">';
+    html += '<h3 style="font-size:14px; font-weight:600; color:#991B1B;">⚠️ 确认强制删除？</h3>';
+    html += '</div>';
+    // Body
+    html += '<div style="padding:20px;">';
+    // Warning
+    html += '<p style="font-size:12px; color:#DC2626; line-height:1.6; margin-bottom:16px;">此操作不可逆！将级联删除：函数本体 + 4 条测试用例 + 2 条 Profile + 代码位置记录。审计日志保留。</p>';
+    // Input field
+    html += '<div>';
+    html += '<label style="display:block; font-size:12px; font-weight:500; color:#374151; margin-bottom:4px;">请输入函数名 <span style="font-family:monospace; color:#DC2626; font-weight:600;">sendEmailWithTaskPriority</span> 以确认：</label>';
+    html += '<input id="fdConfirmInput" type="text" placeholder="sendEmailWithTaskPriority" style="width:100%; padding:8px 12px; border:1px solid #FECACA; border-radius:8px; font-size:12px; outline:none; background:#FEF2F2;" autocomplete="off" />';
+    html += '</div>';
+    html += '</div>';
+    // Footer
+    html += '<div style="padding:12px 20px; border-top:1px solid #E5E7EB; background:#F9FAFB; border-radius:0 0 12px 12px; display:flex; justify-content:flex-end; gap:8px;">';
+    html += '<button id="fdCancel" style="padding:6px 16px; font-size:12px; font-weight:500; color:#374151; background:#fff; border:1px solid #D1D5DB; border-radius:8px; cursor:pointer;">取消</button>';
+    html += '<button id="fdDelete" style="padding:6px 16px; font-size:12px; font-weight:500; color:#fff; background:#DC2626; border:none; border-radius:8px; cursor:not-allowed; opacity:0.5;" disabled>确认强制删除</button>';
+    html += '</div>';
+
+    modal.innerHTML = html;
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    var input = document.getElementById('fdConfirmInput');
+    var deleteBtn = document.getElementById('fdDelete');
+
+    // 输入校验：必须精确匹配
+    input.addEventListener('input', function() {
+      if (this.value === 'sendEmailWithTaskPriority') {
+        deleteBtn.disabled = false;
+        deleteBtn.style.cursor = 'pointer';
+        deleteBtn.style.opacity = '1';
+      } else {
+        deleteBtn.disabled = true;
+        deleteBtn.style.cursor = 'not-allowed';
+        deleteBtn.style.opacity = '0.5';
+      }
+    });
+
+    // 取消
+    document.getElementById('fdCancel').onclick = function() { overlay.remove(); };
+    // 确认删除
+    deleteBtn.onclick = function() {
+      if (this.disabled) return;
+      overlay.remove();
+      showToast('函数 sendEmailWithTaskPriority 已删除');
+      // 跳转回列表
+      setTimeout(function() {
+        window.location.href = 'aip-observability.html';
+      }, 800);
+    };
+  }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var sidebar = document.querySelector('.p-sidebar');
+    if (!sidebar) return;
+    var active = sidebar.querySelector('.p-sidebar-item.is-active');
+    if (active) {
+      var section = active.parentElement;
+      if (section && section.classList.contains('p-sidebar-section') && section.classList.contains('is-collapsed')) {
+        section.classList.remove('is-collapsed');
+        var title = section.previousElementSibling;
+        if (title && title.classList.contains('p-sidebar-section-title')) title.classList.remove('is-collapsed');
+      }
+      var targetScroll = active.offsetTop - sidebar.clientHeight / 2 + active.clientHeight / 2;
+      sidebar.scrollTop = Math.max(0, targetScroll);
+    }
+  });
+</script>
+</body>
+</html>

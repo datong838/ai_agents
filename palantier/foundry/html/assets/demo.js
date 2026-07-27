@@ -9,36 +9,47 @@ const DEMO_PAGES = [
   { id: 'index', href: 'index.html', label: '概览', icon: 'home' },
   { section: '工作台' },
   { id: 'workshop', href: 'workshop.html', label: '应用列表', icon: 'apps' },
-  { id: 'workshop-canvas', href: 'workshop-canvas.html', label: '画布编辑', icon: 'layers' },
-  { id: 'workshop-module', href: 'workshop-module.html', label: '运营台', icon: 'inbox' },
-  { id: 'workshop-object-view', href: 'workshop-object-view.html', label: '知识图谱', icon: 'graph' },
-  { id: 'workshop-aip-chat', href: 'workshop-aip-chat.html', label: 'Buddy · 智能助手', icon: 'chat' },
+  { id: 'workshop-app-order', href: 'workshop-app-order.html', label: '订单管理', icon: 'inbox' },
+  { id: 'workshop-module', href: 'workshop-module.html', label: '风险告警管理', icon: 'inbox' },
   { id: 'workshop-cop', href: 'workshop-cop.html', label: '态势大屏', icon: 'ontology' },
-  { id: 'workshop-publish', href: 'workshop-publish.html', label: '发布入口', icon: 'server' },
+  { id: 'workshop-aip-chat', href: 'workshop-aip-chat.html', label: 'Buddy · 智能助手', icon: 'chat' },
+  { section: '应用程序构建工具' },
+  { id: 'workshop-canvas', href: 'workshop-canvas.html', label: '画布编辑', icon: 'layers' },
   { id: 'workshop-module-interface', href: 'workshop-module-interface.html', label: '模块接口', icon: 'apps' },
   { id: 'workshop-events', href: 'workshop-events.html', label: '事件配置', icon: 'bell' },
+  { id: 'workshop-publish', href: 'workshop-publish.html', label: '发布入口', icon: 'server' },
   { section: 'AIP 决策引擎' },
-  { id: 'agents', href: 'agents.html', label: 'Chatbot Studio', icon: 'chat' },
+  { subgroup: '应用层' },
+  { id: 'aip-assist', href: 'aip-assist.html', label: 'AIP 助手', icon: 'chat' },
+  { id: 'agents', href: 'agents.html', label: '对话机器人', icon: 'chat' },
+  { id: 'aip-analyst', href: 'aip-analyst.html', label: 'AIP 分析师', icon: 'table' },
+  { subgroup: '逻辑编排层' },
   { id: 'aip-logic', href: 'aip-logic.html', label: 'AIP 逻辑画布', icon: 'workflow' },
   { id: 'aip-tools', href: 'aip-tools.html', label: 'Agent 工具面板', icon: 'wrench' },
-  { id: 'aip-capabilities', href: 'aip-capabilities.html', label: '重能力接入', icon: 'film' },
-  { id: 'aip-draft-inbox', href: 'aip-draft-inbox.html', label: 'Draft 审批台', icon: 'inbox' },
+  { id: 'aip-maturity', href: 'aip-maturity.html', label: '成熟度楼梯', icon: 'stairs' },
+  { subgroup: '智能体' },
+  { id: 'aip-capabilities', href: 'aip-capabilities.html', label: '智能体插件', icon: 'film' },
+  { subgroup: '评测与治理' },
   { id: 'aip-evals', href: 'aip-evals.html', label: 'Evals 门控', icon: 'check' },
+  { id: 'aip-draft-inbox', href: 'aip-draft-inbox.html', label: 'Draft 审批台', icon: 'inbox' },
+  { subgroup: '决策谱系' },
   { id: 'aip-decision-lineage', href: 'aip-decision-lineage.html', label: '决策谱系', icon: 'git' },
+  { id: 'aip-observability', href: 'aip-observability.html', label: '可观测性', icon: 'activity' },
+  { section: '模型管理' },
+  { id: 'aip-model-catalog', href: 'aip-model-catalog.html', label: '模型目录', icon: 'database' },
   { id: 'aip-model-providers', href: 'aip-model-providers.html', label: '模型供应商', icon: 'plug' },
   { id: 'aip-model-router', href: 'aip-model-router.html', label: '模型路由', icon: 'spark' },
-  { id: 'aip-maturity', href: 'aip-maturity.html', label: '成熟度楼梯', icon: 'stairs' },
+  { id: 'aip-capacity-management', href: 'aip-capacity-management.html', label: '容量管理', icon: 'database' },
   { section: '本体 · 数字孪生' },
   { id: 'ontology', href: 'ontology.html', label: '本体管理', icon: 'ontology' },
-  { id: 'ontology-funnel', href: 'ontology-funnel.html', label: '漏斗管道', icon: 'funnel' },
-  { id: 'funnel', href: 'funnel.html', label: 'OKF 行业漏斗', icon: 'spark' },
+  { id: 'workshop-object-view', href: 'workshop-object-view.html', label: '对象探索', icon: 'graph' },
+  { id: 'ontology-funnel', href: 'ontology-funnel.html', label: '本体提案', icon: 'funnel' },
   { id: 'ontology-graph-health', href: 'ontology-graph-health.html', label: '图谱健康度', icon: 'heart' },
   { id: 'ontology-wiki', href: 'ontology-wiki.html', label: '活知识 Wiki', icon: 'wiki' },
+  { id: 'funnel', href: 'funnel.html', label: 'OKF funnel', icon: 'spark' },
+  { id: 'okf-funnel', href: 'okf-funnel.html', label: 'OKF 概览', icon: 'server' },
   { id: 'ontology-branches', href: 'ontology-branches.html', label: '分支管理', icon: 'git' },
-  { section: '数据集成' },
-  { id: 'data-connection', href: 'data-connection.html', label: '数据连接', icon: 'plug' },
-  { id: 'data-connection-agents', href: 'data-connection-agents.html', label: '边缘代理', icon: 'server' },
-  { id: 'media-sets', href: 'media-sets.html', label: '媒体集', icon: 'film' },
+  { section: '管道与数据治理' },
   { id: 'pipeline-list', href: 'pipeline-list.html', label: '管道构建', icon: 'workflow' },
   { id: 'pipeline-proposals', href: 'pipeline-proposals.html', label: '管道提案', icon: 'git' },
   { id: 'schedules', href: 'schedules.html', label: '计划编辑器', icon: 'bell' },
@@ -47,7 +58,14 @@ const DEMO_PAGES = [
   { id: 'code-repositories', href: 'code-repositories.html', label: '代码库', icon: 'layers' },
   { id: 'lineage', href: 'lineage.html', label: '数据沿袭', icon: 'git' },
   { id: 'health', href: 'health.html', label: '数据健康', icon: 'heart' },
-  { section: '交付 Apollo' },
+  { section: '数据源与同步' },
+  { id: 'data-connection', href: 'data-connection.html', label: '数据链接器', icon: 'plug' },
+  { id: 'data-connection-agents', href: 'data-connection-agents.html', label: '边缘代理', icon: 'server' },
+  { id: 'sync', href: 'sync.html', label: '同步配置', icon: 'clock' },
+  { id: 'sync-routing', href: 'sync-routing.html', label: '同步路由', icon: 'workflow' },
+  { id: 'media-sets', href: 'media-sets.html', label: '媒体集', icon: 'film' },
+  { id: 'document-intelligence', href: 'document-intelligence.html', label: '文档智能', icon: 'film' },
+  { section: '运维交付' },
   { id: 'apollo-hub', href: 'apollo-hub.html', label: 'Hub 舰队', icon: 'server' },
   { id: 'apollo-release', href: 'apollo-release.html', label: 'Release 通道', icon: 'stairs' },
   { id: 'apollo-spoke', href: 'apollo-spoke.html', label: 'Spoke 详情', icon: 'plug' },
@@ -55,6 +73,7 @@ const DEMO_PAGES = [
   { id: 'apollo-assets', href: 'apollo-assets.html', label: 'FDE 资产包', icon: 'spark' },
   { id: 'apollo-change-mgmt', href: 'apollo-change-mgmt.html', label: '变更审批', icon: 'inbox' },
   { id: 'apollo-config', href: 'apollo-config.html', label: '配置与密钥', icon: 'wrench' },
+  { id: 'integration-cases', href: 'integration-cases.html', label: '接入案例', icon: 'activity' },
 ];
 
 const ICONS = {
@@ -77,6 +96,7 @@ const ICONS = {
   inbox: '<path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/>',
   graph: '<circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/>',
   chat: '<path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/>',
+  activity: '<path stroke-linecap="round" stroke-linejoin="round" d="M3 12h6l3-9 3 18 3-9h3"/>',
   search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/>',
   bell: '<path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>',
   chevron: '<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -139,9 +159,11 @@ function buildShell(activeId, breadcrumbs, pageTitle, mainContent) {
       if (inSection) sidebarHTML += '</div>';
       sidebarHTML += `<div class="p-sidebar-section-title">${p.section}</div><div class="p-sidebar-section">`;
       inSection = true;
+    } else if (p.subgroup) {
+      sidebarHTML += `<div class="p-sidebar-subgroup-title">${p.subgroup}</div>`;
     } else {
       const isActive = p.id === activeId;
-      sidebarHTML += `<a href="${p.href}" class="p-sidebar-item ${isActive ? 'is-active' : ''}">${svgIcon(p.icon)}<span>${p.label}</span></a>`;
+      sidebarHTML += `<a href="${p.href}" class="p-sidebar-item ${isActive ? 'is-active' : ''}" title="${p.label}">${svgIcon(p.icon)}<span>${p.label}</span></a>`;
     }
   });
   if (inSection) sidebarHTML += '</div>';
@@ -608,6 +630,9 @@ function autoInit() {
   // 转换布局
   transformToPalantir(activeId);
 
+  // 侧栏折叠/展开
+  initSidebarToggle();
+
   // 初始化各功能模块
   initTabs('[data-tabs-root]');
   initAgentList();
@@ -620,6 +645,78 @@ function autoInit() {
   initWorkshopGraph();
   initWorkshopAip();
 }
+
+/** ===== 侧栏折叠/展开（全站通用） ===== */
+function initSidebarToggle() {
+  var sidebar = document.querySelector('.p-sidebar');
+  if (!sidebar || sidebar.dataset.toggleReady) return;
+  sidebar.dataset.toggleReady = '1';
+
+  // 给侧栏菜单项补 title（折叠时 hover 可见名称）
+  sidebar.querySelectorAll('.p-sidebar-item').forEach(function (item) {
+    if (!item.getAttribute('title')) {
+      var span = item.querySelector('span');
+      if (span) item.setAttribute('title', span.textContent.trim());
+    }
+  });
+
+  // 注入折叠按钮
+  var toggleBtn = document.createElement('div');
+  toggleBtn.className = 'p-sidebar-toggle';
+  toggleBtn.id = 'p-sidebar-toggle';
+  toggleBtn.setAttribute('title', '折叠/展开侧栏');
+  toggleBtn.innerHTML = svgIcon('chevron', 'w-3 h-3');
+  sidebar.insertBefore(toggleBtn, sidebar.firstChild);
+
+  // 恢复上次状态
+  if (localStorage.getItem('p-sidebar-collapsed') === '1') {
+    sidebar.classList.add('is-collapsed');
+  }
+
+  toggleBtn.addEventListener('click', function () {
+    var collapsed = sidebar.classList.toggle('is-collapsed');
+    localStorage.setItem('p-sidebar-collapsed', collapsed ? '1' : '0');
+  });
+
+  // 分区抽屉式折叠
+  var arrowSvg = '<svg class="p-collapse-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var titles = sidebar.querySelectorAll('.p-sidebar-section-title');
+  titles.forEach(function (title) {
+    title.insertAdjacentHTML('beforeend', arrowSvg);
+    title.addEventListener('click', function () {
+      var section = title.nextElementSibling;
+      if (!section || !section.classList.contains('p-sidebar-section')) return;
+      var willCollapse = !section.classList.contains('is-collapsed');
+      section.classList.toggle('is-collapsed', willCollapse);
+      title.classList.toggle('is-collapsed', willCollapse);
+      var key = 'p-sidebar-section-' + title.textContent.replace(/\s+/g, '').trim();
+      localStorage.setItem(key, willCollapse ? '1' : '0');
+    });
+    // 恢复上次折叠状态
+    var key2 = 'p-sidebar-section-' + title.textContent.replace(/\s+/g, '').trim();
+    if (localStorage.getItem(key2) === '1') {
+      var s2 = title.nextElementSibling;
+      if (s2) { s2.classList.add('is-collapsed'); title.classList.add('is-collapsed'); }
+    }
+  });
+
+  // 自动滚动到当前激活项，并确保其所在分区展开
+  var activeItem = sidebar.querySelector('.p-sidebar-item.is-active');
+  if (activeItem) {
+    var parentSection = activeItem.parentElement;
+    if (parentSection && parentSection.classList.contains('p-sidebar-section') && parentSection.classList.contains('is-collapsed')) {
+      parentSection.classList.remove('is-collapsed');
+      var parentTitle = parentSection.previousElementSibling;
+      if (parentTitle && parentTitle.classList.contains('p-sidebar-section-title')) {
+        parentTitle.classList.remove('is-collapsed');
+      }
+    }
+    activeItem.scrollIntoView({ block: 'center', behavior: 'auto' });
+  }
+}
+
+// 全站自动执行（demo.js 在 body 末尾加载，DOM 已就绪）
+initSidebarToggle();
 
 window.DemoUI = {
   svgIcon,
@@ -638,5 +735,6 @@ window.DemoUI = {
   initWorkshopModule,
   initWorkshopGraph,
   initWorkshopAip,
+  initSidebarToggle,
   DEMO_VERSION,
 };

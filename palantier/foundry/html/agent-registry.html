@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智能体目录 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+  <style>
+    .source-tab { transition: all .15s; }
+    .source-tab.active { background: #4F46E5; color: #fff; border-color: #4F46E5; }
+    .agent-card { transition: all .2s; }
+    .agent-card:hover { border-color: #818CF8; box-shadow: 0 4px 12px rgba(79,70,229,.1); transform: translateY(-1px); }
+    .tag { font-size: 10px; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+  </style>
+</head>
+<body>
+<div class="p-app">
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+<div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+<div class="p-nav-g-item" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="用户"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+    </div>
+  </nav>
+  <div class="p-main">
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>智能体目录</span></div>
+      </div>
+      <div class="p-header-center">
+        <div class="p-search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="搜索智能体…" id="search-input" />
+        </div>
+      </div>
+      <div class="p-header-right">
+        <a href="agents.html" class="p-btn p-btn-primary p-btn-sm flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          <span>创建智能体</span>
+        </a>
+      </div>
+    </header>
+    <div class="p-body">
+      <aside class="p-sidebar">
+<a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+<div class="p-sidebar-section-title">工作台</div>
+<div class="p-sidebar-section">
+<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-app-order.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>订单管理</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>风险告警管理</span></a>
+<a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+</div>
+<div class="p-sidebar-section-title">应用程序构建工具</div>
+<div class="p-sidebar-section">
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a><a href="workshop-widget-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>组件注册表</span></a>
+<a href="workshop-variables.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16v12H4zM8 10h2v4H8zM14 10h2v4h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变量管理器</span></a>
+<a href="workshop-styles.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>主题与样式</span></a>
+<a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+<a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+</div>
+<div class="p-sidebar-section-title">AIP 决策引擎</div>
+<div class="p-sidebar-section">
+<div class="p-sidebar-subgroup-title">应用层</div>
+<a href="aip-assist.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AIP 助手</span></a>
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>对话机器人</span></a>
+<a href="aip-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>AIP 分析师</span></a>
+<div class="p-sidebar-subgroup-title">逻辑编排层</div>
+<a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>智能体工具面板</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<div class="p-sidebar-subgroup-title">智能体</div>
+<a href="agent-registry.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg><span>智能体目录</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>智能体插件</span></a>
+<div class="p-sidebar-subgroup-title">评测与治理</div>
+<a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<div class="p-sidebar-subgroup-title">决策谱系</div>
+<a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-observability.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可观测性</span></a>
+</div>
+<div class="p-sidebar-section-title">模型管理</div>
+<div class="p-sidebar-section">
+<a href="aip-model-catalog.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>模型目录</span></a>
+<a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
+<a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
+<a href="aip-capacity-management.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>容量管理</span></a>
+</div><div class="p-sidebar-section-title">本体 · 数字孪生</div>
+<div class="p-sidebar-section">
+<a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>对象探索</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>本体提案</span></a>
+<a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
+<a href="ontology-wiki-index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF funnel</span></a>
+<a href="okf-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>OKF 概览</span></a>
+
+<a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
+</div>
+<div class="p-sidebar-section-title">管道与数据治理</div>
+<div class="p-sidebar-section">
+<a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+<a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
+<a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+<a href="builds.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>搭建</span></a>
+<a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+<a href="code-repositories.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>代码库</span></a>
+<a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+<a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
+</div>
+<div class="p-sidebar-section-title">数据源与同步</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据链接器</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="sync.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg><span>同步配置</span></a>
+<a href="sync-routing.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>同步路由</span></a>
+<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+<a href="document-intelligence.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round"/></svg><span>文档智能</span></a>
+</div>
+<div class="p-sidebar-section-title">运维交付</div>
+<div class="p-sidebar-section">
+<a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
+<a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
+<a href="apollo-spoke.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Spoke 详情</span></a>
+<a href="apollo-ferry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>Ferry 摆渡</span></a>
+<a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
+<a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
+<a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+<a href="integration-cases.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>接入案例</span></a>
+</div>
+      </aside>
+      <main class="p-content">
+<div class="max-w-6xl mx-auto p-6 space-y-5">
+
+  <!-- 页面标题 + 统计 -->
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-xl font-semibold text-gray-900">智能体目录</h1>
+      <p class="mt-1 text-sm text-gray-500">平台全部智能体的浏览与发现。涵盖平台内创建、插件市场引入、外部 Adapter 接入三种来源。</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="text-center">
+        <div class="text-2xl font-bold text-indigo-600" id="stat-total">11</div>
+        <div class="text-[10px] text-gray-500">总计</div>
+      </div>
+      <div class="w-px h-8 bg-gray-200"></div>
+      <div class="text-center">
+        <div class="text-lg font-semibold text-green-600" id="stat-running">7</div>
+        <div class="text-[10px] text-gray-500">运行中</div>
+      </div>
+      <div class="text-center">
+        <div class="text-lg font-semibold text-yellow-600" id="stat-draft">2</div>
+        <div class="text-[10px] text-gray-500">草稿</div>
+      </div>
+      <div class="text-center">
+        <div class="text-lg font-semibold text-gray-400" id="stat-stopped">2</div>
+        <div class="text-[10px] text-gray-500">已停用</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 来源筛选 Tab -->
+  <div class="flex items-center gap-2">
+    <button class="source-tab active px-3 py-1.5 rounded-lg text-xs font-medium border border-gray-200 bg-white text-gray-700" data-source="all">
+      全部 <span class="ml-1 text-[10px] opacity-70">(11)</span>
+    </button>
+    <button class="source-tab px-3 py-1.5 rounded-lg text-xs font-medium border border-gray-200 bg-white text-gray-700" data-source="builtin">
+      <span class="inline-flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+        平台内创建 <span class="text-[10px] opacity-70">(5)</span>
+      </span>
+    </button>
+    <button class="source-tab px-3 py-1.5 rounded-lg text-xs font-medium border border-gray-200 bg-white text-gray-700" data-source="plugin">
+      <span class="inline-flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+        插件引入 <span class="text-[10px] opacity-70">(4)</span>
+      </span>
+    </button>
+    <button class="source-tab px-3 py-1.5 rounded-lg text-xs font-medium border border-gray-200 bg-white text-gray-700" data-source="external">
+      <span class="inline-flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+        外部接入 <span class="text-[10px] opacity-70">(2)</span>
+      </span>
+    </button>
+    <div class="flex-1"></div>
+    <div class="flex items-center gap-2">
+      <select id="sort-select" class="text-xs border border-gray-200 rounded-lg px-2 py-1.5 text-gray-600 bg-white">
+        <option value="recent">最近更新</option>
+        <option value="name">名称</option>
+        <option value="calls">调用量</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ============ 智能体卡片网格 ============ -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="agent-grid">
+
+    <!-- 1. 维修派单 Buddy -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="builtin" data-name="维修派单 Buddy" data-calls="1280">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-yellow-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">维修派单 Buddy</div>
+            <div class="text-[10px] text-gray-500">设备运维 · 平台内创建</div>
+          </div>
+        </div>
+        <span class="tag bg-green-100 text-green-700">运行中</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">接收设备故障工单，自动匹配维修人员、预估时长、生成备件清单。支持 L2 人机协作审批。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-indigo-50 text-indigo-600">工单分配</span>
+        <span class="tag bg-indigo-50 text-indigo-600">人员匹配</span>
+        <span class="tag bg-indigo-50 text-indigo-600">备件预判</span>
+        <span class="tag bg-yellow-50 text-yellow-700">L2 · HITL</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">5 工具 · 1,280 次调用</span>
+        <a href="agents.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">配置 →</a>
+      </div>
+    </div>
+
+    <!-- 2. 短视频生产 Agent -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="builtin" data-name="短视频生产 Agent" data-calls="860">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">短视频生产 Agent</div>
+            <div class="text-[10px] text-gray-500">内容创作 · 平台内创建</div>
+          </div>
+        </div>
+        <span class="tag bg-green-100 text-green-700">运行中</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">从选品到脚本到素材混剪，自动生成电商短视频。调用 Media Job Capability 提交 GPU 渲染任务。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-indigo-50 text-indigo-600">脚本生成</span>
+        <span class="tag bg-indigo-50 text-indigo-600">素材混剪</span>
+        <span class="tag bg-indigo-50 text-indigo-600">字幕烧录</span>
+        <span class="tag bg-orange-50 text-orange-600">L3 · 自主</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">4 工具 · 860 次调用</span>
+        <a href="agents.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">配置 →</a>
+      </div>
+    </div>
+
+    <!-- 3. 风险告警分析 Agent -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="builtin" data-name="风险告警分析 Agent" data-calls="420">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">风险告警分析 Agent</div>
+            <div class="text-[10px] text-gray-500">风控分析 · 平台内创建</div>
+          </div>
+        </div>
+        <span class="tag bg-yellow-100 text-yellow-700">Draft</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">实时监控订单异常模式，识别刷单、退货欺诈、价格异常。产出风险评分并写入 RiskAlert 对象。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-indigo-50 text-indigo-600">异常检测</span>
+        <span class="tag bg-indigo-50 text-indigo-600">风险评分</span>
+        <span class="tag bg-indigo-50 text-indigo-600">告警分发</span>
+        <span class="tag bg-blue-50 text-blue-600">L1 · 建议</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">6 工具 · 420 次调用</span>
+        <a href="agents.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">配置 →</a>
+      </div>
+    </div>
+
+    <!-- 4. 订单客服 Agent -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="builtin" data-name="订单客服 Agent" data-calls="3200">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">订单客服 Agent</div>
+            <div class="text-[10px] text-gray-500">电商客服 · 平台内创建</div>
+          </div>
+        </div>
+        <span class="tag bg-green-100 text-green-700">运行中</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">处理售前咨询、订单查询、物流追踪、退换货发起。支持多轮对话上下文，可直接发起退款 Action。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-indigo-50 text-indigo-600">多轮对话</span>
+        <span class="tag bg-indigo-50 text-indigo-600">订单查询</span>
+        <span class="tag bg-indigo-50 text-indigo-600">退款发起</span>
+        <span class="tag bg-yellow-50 text-yellow-700">L2 · HITL</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">3 工具 · 3,200 次调用</span>
+        <a href="agents.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">配置 →</a>
+      </div>
+    </div>
+
+    <!-- 5. 文档问答 Agent -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="builtin" data-name="文档问答 Agent" data-calls="156">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">文档问答 Agent</div>
+            <div class="text-[10px] text-gray-500">知识检索 · 平台内创建</div>
+          </div>
+        </div>
+        <span class="tag bg-gray-100 text-gray-500">已停用</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">基于 Wiki 和文档库的 RAG 问答，支持引用溯源。只读模式，不触发任何写操作。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-indigo-50 text-indigo-600">RAG 检索</span>
+        <span class="tag bg-indigo-50 text-indigo-600">引用溯源</span>
+        <span class="tag bg-green-50 text-green-600">L0 · 只读</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">2 工具 · 156 次调用</span>
+        <a href="agents.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">配置 →</a>
+      </div>
+    </div>
+
+    <!-- 6. 短视频生成（插件） -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="plugin" data-name="短视频生成" data-calls="640">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-pink-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7zM14 5H3a2 2 0 00-2 2v10a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">短视频生成</div>
+            <div class="text-[10px] text-gray-500">媒体能力 · 插件引入</div>
+          </div>
+        </div>
+        <span class="tag bg-green-100 text-green-700">就绪</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">C1 Job 类型能力。提交文本/图片输入，异步生成 MP4 短视频，产物写入 MediaSet 对象。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-green-50 text-green-700">C1 · Job</span>
+        <span class="tag bg-indigo-50 text-indigo-600">GPU 渲染</span>
+        <span class="tag bg-indigo-50 text-indigo-600">MediaSet</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">Adapter: HTTP API · 640 次调用</span>
+        <a href="aip-capabilities.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">管理 →</a>
+      </div>
+    </div>
+
+    <!-- 7. 直播稿引擎（插件） -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="plugin" data-name="直播稿引擎" data-calls="320">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">直播稿引擎</div>
+            <div class="text-[10px] text-gray-500">内容能力 · 插件引入</div>
+          </div>
+        </div>
+        <span class="tag bg-green-100 text-green-700">就绪</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">根据商品信息和营销策略，实时生成直播口播稿。C0 同步能力，可升级为 C1 异步批处理。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-green-50 text-green-700">C0 · Sync</span>
+        <span class="tag bg-indigo-50 text-indigo-600">口播稿</span>
+        <span class="tag bg-indigo-50 text-indigo-600">LiveScript</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">Adapter: HTTP API · 320 次调用</span>
+        <a href="aip-capabilities.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">管理 →</a>
+      </div>
+    </div>
+
+    <!-- 8. 电商数字人（插件） -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="plugin" data-name="电商可交互数字人" data-calls="85">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6M20 8v4M22 10h-4" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">电商可交互数字人</div>
+            <div class="text-[10px] text-gray-500">交互能力 · 插件引入</div>
+          </div>
+        </div>
+        <span class="tag bg-blue-100 text-blue-700">会话中</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">C2 Session 类型。实时驱动的虚拟主播，支持弹幕互动、商品讲解、限时促销口播。WebSocket 会话管理。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-blue-50 text-blue-700">C2 · Session</span>
+        <span class="tag bg-indigo-50 text-indigo-600">虚拟主播</span>
+        <span class="tag bg-indigo-50 text-indigo-600">弹幕互动</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">Adapter: Session GW · 85 次</span>
+        <a href="aip-capabilities.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">管理 →</a>
+      </div>
+    </div>
+
+    <!-- 9. 教育数字人（插件） -->
+    <div class="agent-card rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3" data-source="plugin" data-name="教育可交互数字人" data-calls="12">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">教育可交互数字人</div>
+            <div class="text-[10px] text-gray-500">交互能力 · 插件引入</div>
+          </div>
+        </div>
+        <span class="tag bg-gray-100 text-gray-500">已停用</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">面向在线教育的虚拟教师，按课纲 Wiki 自动生成讲解内容。当前停用，等待课纲库扩充后重新启用。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-blue-50 text-blue-700">C2 · Session</span>
+        <span class="tag bg-indigo-50 text-indigo-600">虚拟教师</span>
+        <span class="tag bg-indigo-50 text-indigo-600">课纲 Wiki</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+        <span class="text-[10px] text-gray-400">Adapter: Session GW · 12 次</span>
+        <a href="aip-capabilities.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">管理 →</a>
+      </div>
+    </div>
+
+    <!-- 10. AutoGen 多 Agent 协作（外部） -->
+    <div class="agent-card rounded-xl border border-orange-200 bg-orange-50/30 p-4 flex flex-col gap-3" data-source="external" data-name="AutoGen 多 Agent 协作" data-calls="45">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">AutoGen 多 Agent 协作</div>
+            <div class="text-[10px] text-gray-500">awesome-llm-apps · 外部接入</div>
+          </div>
+        </div>
+        <span class="tag bg-green-100 text-green-700">运行中</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">Microsoft AutoGen 框架。多个 Agent 在对话中协作完成复杂任务（如代码评审→修改→测试→部署建议）。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-orange-50 text-orange-700">Process Wrapper</span>
+        <span class="tag bg-indigo-50 text-indigo-600">多角色协作</span>
+        <span class="tag bg-indigo-50 text-indigo-600">代码评审</span>
+        <span class="tag bg-yellow-50 text-yellow-700">L2 · HITL</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-orange-100">
+        <span class="text-[10px] text-gray-400">沙箱子进程 · 45 次调用</span>
+        <a href="aip-capabilities.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">管理 →</a>
+      </div>
+    </div>
+
+    <!-- 11. CrewAI 角色编排（外部） -->
+    <div class="agent-card rounded-xl border border-orange-200 bg-orange-50/30 p-4 flex flex-col gap-3" data-source="external" data-name="CrewAI 角色编排" data-calls="28">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-gray-900">CrewAI 角色编排</div>
+            <div class="text-[10px] text-gray-500">awesome-llm-apps · 外部接入</div>
+          </div>
+        </div>
+        <span class="tag bg-yellow-100 text-yellow-700">Draft</span>
+      </div>
+      <p class="text-xs text-gray-600 leading-relaxed">定义 Crew 角色组（研究员、作家、审核员），按任务链自动编排。适用于内容生产流水线。</p>
+      <div class="flex flex-wrap gap-1">
+        <span class="tag bg-orange-50 text-orange-700">Process Wrapper</span>
+        <span class="tag bg-indigo-50 text-indigo-600">角色编排</span>
+        <span class="tag bg-indigo-50 text-indigo-600">任务链</span>
+        <span class="tag bg-blue-50 text-blue-600">L1 · 建议</span>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-orange-100">
+        <span class="text-[10px] text-gray-400">沙箱子进程 · 28 次调用</span>
+        <a href="aip-capabilities.html" class="text-[11px] text-indigo-600 hover:text-indigo-700 font-medium">管理 →</a>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+
+  <!-- 底部：三方关系说明 -->
+  <div class="rounded-xl border border-gray-200 bg-gray-50 p-4">
+    <div class="flex items-start gap-3">
+      <svg class="w-5 h-5 text-gray-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>
+      <div class="text-xs text-gray-600 space-y-1.5">
+        <div class="font-medium text-gray-700">三种来源说明</div>
+        <div class="flex items-start gap-4">
+          <div class="flex-1">
+            <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-indigo-500"></span><b class="text-gray-700">平台内创建</b></span>
+            <p class="mt-0.5">在对话机器人 Studio 中配置提示词+工具+上下文+安全等级后创建。编辑入口 → <a href="agents.html" class="text-indigo-600 hover:underline">对话机器人</a></p>
+          </div>
+          <div class="flex-1">
+            <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span><b class="text-gray-700">插件引入</b></span>
+            <p class="mt-0.5">通过 Capability Manifest 声明接入的外部能力（C0/C1/C2）。管理入口 → <a href="aip-capabilities.html" class="text-indigo-600 hover:underline">智能体插件</a></p>
+          </div>
+          <div class="flex-1">
+            <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span><b class="text-gray-700">外部接入</b></span>
+            <p class="mt-0.5">从 awesome-llm-apps 等开源社区导入的 Agent 框架，通过 Adapter（Process Wrapper / MCP Bridge / Docker Container / Session Gateway）桥接。管理入口 → <a href="aip-capabilities.html" class="text-indigo-600 hover:underline">智能体插件</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 来源筛选
+  document.querySelectorAll('.source-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.source-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      var source = tab.dataset.source;
+      var visible = 0;
+      document.querySelectorAll('.agent-card').forEach(function(card) {
+        if (source === 'all' || card.dataset.source === source) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // 搜索过滤
+  var searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      var q = searchInput.value.trim().toLowerCase();
+      document.querySelectorAll('.agent-card').forEach(function(card) {
+        var name = (card.dataset.name || '').toLowerCase();
+        var text = card.textContent.toLowerCase();
+        if (!q || name.indexOf(q) >= 0 || text.indexOf(q) >= 0) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // 排序
+  var sortSelect = document.getElementById('sort-select');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', function() {
+      var grid = document.getElementById('agent-grid');
+      var cards = Array.from(grid.querySelectorAll('.agent-card'));
+      var mode = sortSelect.value;
+      cards.sort(function(a, b) {
+        if (mode === 'name') return (a.dataset.name||'').localeCompare(b.dataset.name||'', 'zh');
+        if (mode === 'calls') return parseInt(b.dataset.calls||0) - parseInt(a.dataset.calls||0);
+        return 0; // recent: keep original order
+      });
+      cards.forEach(function(c) { grid.appendChild(c); });
+    });
+  }
+</script>
+<script src="assets/demo.js"></script>
+</body>
+</html>

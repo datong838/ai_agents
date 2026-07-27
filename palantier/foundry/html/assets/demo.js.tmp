@@ -1,0 +1,717 @@
+/**
+ * AOS Demo v4.0 · Palantir Foundry 1:1 复刻
+ */
+
+const DEMO_VERSION = 'v4.0';
+
+/** 侧栏导航结构 */
+const DEMO_PAGES = [
+  { id: 'index', href: 'index.html', label: '概览', icon: 'home' },
+  { section: '工作台' },
+  { id: 'workshop', href: 'workshop.html', label: '应用列表', icon: 'apps' },
+  { id: 'workshop-app-order', href: 'workshop-app-order.html', label: '订单管理', icon: 'inbox' },
+  { id: 'workshop-module', href: 'workshop-module.html', label: '风险告警管理', icon: 'inbox' },
+  { id: 'workshop-cop', href: 'workshop-cop.html', label: '态势大屏', icon: 'ontology' },
+  { id: 'workshop-aip-chat', href: 'workshop-aip-chat.html', label: 'Buddy · 智能助手', icon: 'chat' },
+  { section: '应用程序构建工具' },
+  { id: 'workshop-canvas', href: 'workshop-canvas.html', label: '画布编辑', icon: 'layers' },
+  { id: 'workshop-module-interface', href: 'workshop-module-interface.html', label: '模块接口', icon: 'apps' },
+  { id: 'workshop-events', href: 'workshop-events.html', label: '事件配置', icon: 'bell' },
+  { id: 'workshop-publish', href: 'workshop-publish.html', label: '发布入口', icon: 'server' },
+  { section: 'AIP 决策引擎' },
+  { id: 'aip-assist', href: 'aip-assist.html', label: 'AIP Assist', icon: 'chat' },
+  { id: 'agents', href: 'agents.html', label: 'Chatbot Studio', icon: 'chat' },
+  { id: 'aip-analyst', href: 'aip-analyst.html', label: 'AIP Analyst', icon: 'table' },
+  { id: 'aip-logic', href: 'aip-logic.html', label: 'AIP 逻辑画布', icon: 'workflow' },
+  { id: 'aip-tools', href: 'aip-tools.html', label: 'Agent 工具面板', icon: 'wrench' },
+  { id: 'aip-maturity', href: 'aip-maturity.html', label: '成熟度楼梯', icon: 'stairs' },
+  { id: 'aip-capabilities', href: 'aip-capabilities.html', label: '重能力接入', icon: 'film' },
+  { id: 'aip-draft-inbox', href: 'aip-draft-inbox.html', label: 'Draft 审批台', icon: 'inbox' },
+  { id: 'aip-evals', href: 'aip-evals.html', label: 'Evals 门控', icon: 'check' },
+  { id: 'aip-decision-lineage', href: 'aip-decision-lineage.html', label: '决策谱系', icon: 'git' },
+  { id: 'aip-observability', href: 'aip-observability.html', label: '可观测性', icon: 'activity' },
+  { section: '模型管理' },
+  { id: 'aip-model-catalog', href: 'aip-model-catalog.html', label: '模型目录', icon: 'database' },
+  { id: 'aip-model-providers', href: 'aip-model-providers.html', label: '模型供应商', icon: 'plug' },
+  { id: 'aip-model-router', href: 'aip-model-router.html', label: '模型路由', icon: 'spark' },
+  { section: '本体 · 数字孪生' },
+  { id: 'ontology', href: 'ontology.html', label: '本体管理', icon: 'ontology' },
+  { id: 'workshop-object-view', href: 'workshop-object-view.html', label: '对象探索', icon: 'graph' },
+  { id: 'ontology-funnel', href: 'ontology-funnel.html', label: '漏斗管道', icon: 'funnel' },
+  { id: 'funnel', href: 'funnel.html', label: 'OKF 行业漏斗', icon: 'spark' },
+  { id: 'okf-funnel', href: 'okf-funnel.html', label: 'OKF 概览', icon: 'server' },
+  { id: 'ontology-graph-health', href: 'ontology-graph-health.html', label: '图谱健康度', icon: 'heart' },
+  { id: 'ontology-wiki', href: 'ontology-wiki.html', label: '活知识 Wiki', icon: 'wiki' },
+  { id: 'ontology-branches', href: 'ontology-branches.html', label: '分支管理', icon: 'git' },
+  { section: '管道与数据治理' },
+  { id: 'pipeline-list', href: 'pipeline-list.html', label: '管道构建', icon: 'workflow' },
+  { id: 'pipeline-proposals', href: 'pipeline-proposals.html', label: '管道提案', icon: 'git' },
+  { id: 'schedules', href: 'schedules.html', label: '计划编辑器', icon: 'bell' },
+  { id: 'builds', href: 'builds.html', label: '搭建', icon: 'layers' },
+  { id: 'dataset', href: 'dataset.html', label: '数据集预览', icon: 'table' },
+  { id: 'code-repositories', href: 'code-repositories.html', label: '代码库', icon: 'layers' },
+  { id: 'lineage', href: 'lineage.html', label: '数据沿袭', icon: 'git' },
+  { id: 'health', href: 'health.html', label: '数据健康', icon: 'heart' },
+  { section: '数据源与同步' },
+  { id: 'data-connection', href: 'data-connection.html', label: '数据链接器', icon: 'plug' },
+  { id: 'data-connection-agents', href: 'data-connection-agents.html', label: '边缘代理', icon: 'server' },
+  { id: 'sync', href: 'sync.html', label: '同步配置', icon: 'clock' },
+  { id: 'sync-routing', href: 'sync-routing.html', label: '同步路由', icon: 'workflow' },
+  { id: 'media-sets', href: 'media-sets.html', label: '媒体集', icon: 'film' },
+  { section: '运维交付' },
+  { id: 'apollo-hub', href: 'apollo-hub.html', label: 'Hub 舰队', icon: 'server' },
+  { id: 'apollo-release', href: 'apollo-release.html', label: 'Release 通道', icon: 'stairs' },
+  { id: 'apollo-spoke', href: 'apollo-spoke.html', label: 'Spoke 详情', icon: 'plug' },
+  { id: 'apollo-ferry', href: 'apollo-ferry.html', label: 'Ferry 摆渡', icon: 'film' },
+  { id: 'apollo-assets', href: 'apollo-assets.html', label: 'FDE 资产包', icon: 'spark' },
+  { id: 'apollo-change-mgmt', href: 'apollo-change-mgmt.html', label: '变更审批', icon: 'inbox' },
+  { id: 'apollo-config', href: 'apollo-config.html', label: '配置与密钥', icon: 'wrench' },
+  { id: 'integration-cases', href: 'integration-cases.html', label: '接入案例', icon: 'activity' },
+];
+
+const ICONS = {
+  home: '<path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/>',
+  plug: '<path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>',
+  server: '<rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/>',
+  workflow: '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/>',
+  layers: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>',
+  table: '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/>',
+  git: '<circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/>',
+  spark: '<path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/>',
+  heart: '<path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/>',
+  film: '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/>',
+  ontology: '<circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/>',
+  funnel: '<path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/>',
+  wiki: '<path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/>',
+  stairs: '<path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/>',
+  wrench: '<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/>',
+  apps: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+  inbox: '<path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/>',
+  graph: '<circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/>',
+  chat: '<path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/>',
+  activity: '<path stroke-linecap="round" stroke-linejoin="round" d="M3 12h6l3-9 3 18 3-9h3"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/>',
+  bell: '<path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>',
+  chevron: '<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>',
+  back: '<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>',
+  plus: '<path d="M12 5v14M5 12h14" stroke-linecap="round"/>',
+  check: '<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>',
+  menu: '<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>',
+  database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/>',
+  folder: '<path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/>',
+  grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/>',
+  star: '<path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z" stroke-linecap="round" stroke-linejoin="round"/>',
+  x: '<path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>',
+  trash: '<path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6" stroke-linecap="round" stroke-linejoin="round"/>',
+  edit: '<path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4 12.5-12.5z" stroke-linecap="round" stroke-linejoin="round"/>',
+};
+
+function svgIcon(name, cls = 'w-4 h-4') {
+  const paths = ICONS[name] || ICONS.home;
+  return `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">${paths}</svg>`;
+}
+
+function statusDot(status) {
+  const colors = {
+    ok: 'background:#38A169;box-shadow:0 0 6px rgba(56,161,105,0.4)',
+    warn: 'background:#D69E2E;box-shadow:0 0 6px rgba(214,158,46,0.4)',
+    err: 'background:#E53E3E;box-shadow:0 0 6px rgba(229,62,62,0.4)',
+    run: 'background:#2B6CB0;box-shadow:0 0 6px rgba(43,108,176,0.4)',
+  };
+  return `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;${colors[status] || colors.ok}"></span>`;
+}
+
+/** ===== 构建 Palantir 风格页面壳 ===== */
+function buildShell(activeId, breadcrumbs, pageTitle, mainContent) {
+  const page = DEMO_PAGES.find(p => p.id === activeId);
+  const pageLabel = page ? page.label : (pageTitle || 'AOS');
+
+  // 全局深色导航图标
+  const globalNavItems = [
+    { icon: 'menu', label: '菜单', active: false },
+    { icon: 'home', label: '首页', active: activeId === 'index' },
+    { icon: 'search', label: '搜索', active: false },
+    { icon: 'bell', label: '通知', active: false },
+    { icon: 'clock', label: '历史', active: false },
+    { icon: 'folder', label: '项目', active: false },
+    { icon: 'grid', label: '应用', active: activeId === 'workshop' },
+    { icon: 'database', label: '数据', active: ['data-connection','pipeline-list','dataset'].includes(activeId) },
+  ];
+
+  const globalNavHTML = globalNavItems.map(item =>
+    `<div class="p-nav-g-item ${item.active ? 'is-active' : ''}" title="${item.label}">${svgIcon(item.icon, 'w-5 h-5')}</div>`
+  ).join('');
+
+  // 侧边栏导航
+  let sidebarHTML = '';
+  let inSection = false;
+  DEMO_PAGES.forEach(p => {
+    if (p.section) {
+      if (inSection) sidebarHTML += '</div>';
+      sidebarHTML += `<div class="p-sidebar-section-title">${p.section}</div><div class="p-sidebar-section">`;
+      inSection = true;
+    } else {
+      const isActive = p.id === activeId;
+      sidebarHTML += `<a href="${p.href}" class="p-sidebar-item ${isActive ? 'is-active' : ''}" title="${p.label}">${svgIcon(p.icon)}<span>${p.label}</span></a>`;
+    }
+  });
+  if (inSection) sidebarHTML += '</div>';
+
+  // 面包屑
+  let breadcrumbHTML = '';
+  if (breadcrumbs && breadcrumbs.length) {
+    breadcrumbHTML = breadcrumbs.map((b, i) => {
+      if (b.href && i < breadcrumbs.length - 1) {
+        return `<a href="${b.href}">${b.label}</a>`;
+      }
+      return `<span>${b.label}</span>`;
+    }).join(`<span class="p-breadcrumb-sep">/</span>`);
+  } else {
+    breadcrumbHTML = `<a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><span>${pageLabel}</span>`;
+  }
+
+  return `<div class="p-app">
+    <!-- 全局深色导航 -->
+    <nav class="p-nav-global">
+      <div class="p-nav-global-top">${globalNavHTML}</div>
+      <div class="p-nav-global-bottom">
+        <div class="p-nav-g-item" title="帮助">${svgIcon('wrench', 'w-5 h-5')}</div>
+        <div class="p-nav-g-item" title="用户">${svgIcon('user', 'w-5 h-5')}</div>
+      </div>
+    </nav>
+
+    <!-- 主区域 -->
+    <div class="p-main">
+      <!-- 顶部栏 -->
+      <header class="p-header">
+        <div class="p-header-left">
+          <div class="p-breadcrumb">${breadcrumbHTML}</div>
+        </div>
+        <div class="p-header-center">
+          <div class="p-search">
+            ${svgIcon('search', 'w-4 h-4')}
+            <input type="search" placeholder="搜索资源…" />
+          </div>
+        </div>
+        <div class="p-header-right">
+          <button class="p-btn p-btn-secondary p-btn-sm">Discard</button>
+          <button class="p-btn p-btn-primary p-btn-sm">Save to branch</button>
+        </div>
+      </header>
+
+      <!-- 页面主体 -->
+      <div class="p-body">
+        <!-- 侧边栏 -->
+        <aside class="p-sidebar">
+          ${sidebarHTML}
+        </aside>
+
+        <!-- 内容区 -->
+        <main class="p-content">${mainContent}</main>
+      </div>
+    </div>
+  </div>`;
+}
+
+/** ===== 自动转换旧布局为新 Palantir 布局 ===== */
+function transformToPalantir(activeId, breadcrumbs) {
+  const body = document.body;
+
+  // 已经转换过则跳过
+  if (document.querySelector('.p-app')) return;
+
+  // 提取内容：优先找 <main>，其次找 #p-root，最后取 body 全部
+  let content = '';
+  const mainEl = body.querySelector('main');
+  const rootEl = body.querySelector('#p-root');
+  if (mainEl) {
+    content = mainEl.innerHTML;
+  } else if (rootEl) {
+    content = rootEl.innerHTML;
+  } else {
+    // 提取 body 内除 script 外的内容
+    const scripts = [];
+    body.querySelectorAll('script').forEach(s => scripts.push(s.outerHTML));
+    content = body.innerHTML;
+    scripts.forEach(s => { content = content.replace(s, ''); });
+  }
+
+  // 构建新壳
+  const shell = buildShell(activeId, breadcrumbs, document.title, content);
+
+  // 替换整个 body
+  body.innerHTML = shell;
+  body.className = '';
+  body.style.background = '#F0F2F5';
+  body.style.margin = '0';
+  body.style.padding = '0';
+}
+
+/** ===== Tab 切换 ===== */
+function initTabs(containerSelector) {
+  document.querySelectorAll(`${containerSelector} [data-tab]`).forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('[data-tab-group]');
+      const target = btn.dataset.tab;
+      const scope = group.closest('[data-tabs-root]') || group.parentElement;
+
+      group.querySelectorAll('[data-tab]').forEach((t) => {
+        const active = t.dataset.tab === target;
+        t.classList.toggle('is-active', active);
+      });
+
+      scope.querySelectorAll('[data-tab-panel]').forEach((p) => {
+        p.classList.toggle('p-hidden', p.dataset.tabPanel !== target);
+      });
+    });
+  });
+}
+
+/** ===== 代理列表 ===== */
+function initAgentList() {
+  document.querySelectorAll('.agent-item').forEach((item) => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.agent-item').forEach((i) => i.classList.remove('active'));
+      item.classList.add('active');
+      const id = item.dataset.agent;
+      document.querySelectorAll('[data-agent-panel]').forEach((p) => {
+        p.classList.toggle('p-hidden', p.dataset.agentPanel !== id);
+      });
+    });
+  });
+}
+
+/** ===== 存储路由 ===== */
+function initStorageRouter() {
+  const form = document.getElementById('storage-router-form');
+  if (!form) return;
+  const targets = form.querySelectorAll('[name="storage-target"]');
+  const pathSelect = form.querySelector('#parse-path');
+  const hint = form.querySelector('#storage-hint');
+  const xlsxWarn = form.querySelector('#xlsx-warn');
+  const pathByTarget = {
+    dataset: 'structured',
+    media_doc: 'unstructured',
+    media_sheet: 'unstructured',
+    stream: 'timeseries',
+  };
+  const hints = {
+    dataset: 'CSV · JSON · JDBC 表 · API 响应 → Dataset（Text/Parquet）',
+    media_doc: 'PDF · 图像 · 音视频 · Word/PPT → Document 型媒体集',
+    media_sheet: 'XLSX/XLSM → Spreadsheet 型媒体集（schema: spreadsheet）',
+    stream: 'Kafka · IoT · MQTT → 流数据集（Avro）',
+    smallfile: '单文件 <128KB 且无需原件预览 → 直入 Dataset，不建 MediaSet（避免元数据碎片）',
+  };
+  const pathByTargetExt = { ...pathByTarget, smallfile: 'structured' };
+  function update() {
+    const selected = form.querySelector('[name="storage-target"]:checked');
+    if (!selected) return;
+    const val = selected.value;
+    if (pathSelect) pathSelect.value = pathByTargetExt[val] || 'structured';
+    if (hint) hint.textContent = hints[val] || '';
+    if (xlsxWarn) xlsxWarn.classList.toggle('p-hidden', val !== 'media_doc');
+  }
+  targets.forEach((r) => r.addEventListener('change', update));
+  update();
+}
+
+/** ===== 同步页路由 ===== */
+function applySyncRoutingParams() {
+  const params = new URLSearchParams(window.location.search);
+  const target = params.get('target');
+  const path = params.get('path');
+  const elTarget = document.querySelector('[data-sync-target]');
+  const elPath = document.querySelector('[data-sync-path]');
+  const elTitle = document.querySelector('[data-sync-title]');
+  if (!target) return;
+  const labels = {
+    dataset: '数据集',
+    media_doc: '媒体集 · 文档',
+    media_sheet: '媒体集 · 电子表格',
+    stream: '流数据集',
+  };
+  const paths = {
+    structured: '结构化 · Apply Schema',
+    semistructured: '半结构化 · Explode',
+    unstructured: '非结构化 · Doc Intel 五步',
+    timeseries: '时序 · Stream + CDC',
+  };
+  if (elTarget) elTarget.textContent = labels[target] || target;
+  if (elPath && path) elPath.textContent = paths[path] || path;
+  if (elTitle && target.startsWith('media')) elTitle.textContent = '创建媒体集同步';
+}
+
+/** ===== AIP 成熟度 ===== */
+function initAipMaturity() {
+  const root = document.getElementById('maturity-stairs');
+  if (!root) return;
+  const label = document.getElementById('maturity-label');
+  const hint = document.getElementById('maturity-hint');
+  const toast = document.getElementById('maturity-toast');
+  const hints = {
+    1: '适合摸索。固化可复用对话模式后再升 L2。',
+    2: '挂 Workshop Agent 组件 → 升 L3；勿直接开 L4。',
+    3: '一线试用通过后，再申请 L4（须 Eval 绿 + Draft 默认）。',
+    4: 'L4：失败率>5% 自动熔断降 L3；冷模型须预热。须 Eval 绿 + Draft 默认。',
+  };
+  const labels = {
+    1: 'L1 临时分析',
+    2: 'L2 任务 Agent',
+    3: 'L3 Agentic 应用',
+    4: 'L4 自动化（熔断护栏）',
+  };
+  function setLevel(n) {
+    root.dataset.level = String(n);
+    root.querySelectorAll('[data-mat]').forEach((card) => {
+      const on = Number(card.dataset.mat) === n;
+      card.style.borderColor = on ? '#D69E2E' : '#E2E8F0';
+      card.style.background = on ? '#FFFAF0' : '#FFFFFF';
+    });
+    if (label) label.textContent = labels[n] || '';
+    if (hint) hint.textContent = hints[n] || '';
+  }
+  root.querySelectorAll('[data-mat]').forEach((card) => {
+    card.addEventListener('click', () => setLevel(Number(card.dataset.mat)));
+  });
+  const btnL3 = document.getElementById('btn-mark-l3');
+  if (btnL3) {
+    btnL3.addEventListener('click', () => {
+      setLevel(3);
+      if (toast) {
+        toast.textContent = '已标记 L3：请打开工作台绑定 Agent（Demo → workshop.html）。';
+        toast.classList.remove('p-hidden');
+      }
+    });
+  }
+  const btnL4 = document.getElementById('btn-req-l4');
+  if (btnL4) {
+    btnL4.addEventListener('click', () => {
+      setLevel(4);
+      if (toast) {
+        toast.textContent = 'L4 评审示意：Eval 未绿 → 拦截。若已上线且失败率>5% → 熔断降级 L3。';
+        toast.classList.remove('p-hidden');
+      }
+    });
+  }
+  const btnBreak = document.getElementById('btn-sim-breaker');
+  if (btnBreak && toast) {
+    btnBreak.addEventListener('click', () => {
+      setLevel(3);
+      toast.textContent = '模拟熔断：失败率 7.2% > 5% → 已自动降级到 L3，须人工确认后恢复。';
+      toast.classList.remove('p-hidden');
+    });
+  }
+}
+
+/** ===== AIP 工具面板 ===== */
+function initAipTools() {
+  const detailRoot = document.getElementById('tool-detail');
+  if (!detailRoot) return;
+  document.querySelectorAll('[data-tool-card]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.toolCard;
+      document.querySelectorAll('[data-tool-card]').forEach((b) => {
+        const on = b === btn;
+        b.style.borderColor = on ? '#D69E2E' : '#E2E8F0';
+        b.style.background = on ? '#FFFAF0' : '#FFFFFF';
+      });
+      detailRoot.querySelectorAll('[data-detail]').forEach((p) => {
+        p.classList.toggle('p-hidden', p.dataset.detail !== id);
+      });
+    });
+  });
+  const save = document.getElementById('btn-save-tools');
+  const toast = document.getElementById('tools-toast');
+  const mode = document.getElementById('tool-mode');
+  if (save && toast) {
+    save.addEventListener('click', () => {
+      const m = mode ? mode.value : 'native';
+      toast.textContent = `已保存（示意）· 调用模式=${m} · 写路径仍受 Draft / 提交标准约束`;
+      toast.classList.remove('p-hidden');
+    });
+  }
+}
+
+/** ===== AIP Logic ===== */
+function initAipLogic() {
+  const run = document.getElementById('btn-run-logic');
+  const empty = document.getElementById('debug-empty');
+  const panel = document.getElementById('debug-panel');
+  if (run && empty && panel) {
+    run.addEventListener('click', () => {
+      empty.classList.add('p-hidden');
+      panel.classList.remove('p-hidden');
+    });
+  }
+  const autoBtn = document.getElementById('btn-create-auto');
+  const autoMsg = document.getElementById('auto-msg');
+  if (autoBtn && autoMsg) {
+    autoBtn.addEventListener('click', () => {
+      autoMsg.textContent = '已预填自动化（示意）：输出=Ontology edits → 提案审核。开放提案约 24h。';
+      autoMsg.classList.remove('p-hidden');
+    });
+  }
+  const pub = document.getElementById('btn-publish-logic');
+  if (pub) {
+    pub.addEventListener('click', () => {
+      pub.textContent = '已发布（示意）';
+      pub.style.opacity = '0.8';
+    });
+  }
+}
+
+/** ===== 工作台 Inbox ===== */
+function initWorkshopModule() {
+  const rows = document.querySelectorAll('[data-order-row]');
+  const selEl = document.getElementById('ws-selection');
+  const titleEl = document.getElementById('ws-obj-title');
+  const metaEl = document.getElementById('ws-obj-meta');
+  const scoreEl = document.getElementById('ws-obj-score');
+  const shopEl = document.getElementById('ws-obj-shop');
+  const toast = document.getElementById('ws-toast');
+  if (!rows.length) return;
+  const data = {
+    'ORD-8821': { title: 'ORD-8821', meta: '类型：Order · 状态：异常', score: '0.91', shop: '店铺A' },
+    'ORD-8819': { title: 'ORD-8819', meta: '类型：Order · 状态：异常', score: '0.72', shop: '店铺B' },
+    'ORD-8801': { title: 'ORD-8801', meta: '类型：Order · 状态：正常', score: '0.21', shop: '店铺C' },
+  };
+  function select(id) {
+    rows.forEach((r) => {
+      const on = r.dataset.orderRow === id;
+      r.style.background = on ? '#EBF4FF' : '';
+      r.style.borderLeft = on ? '3px solid #2B6CB0' : '';
+    });
+    const d = data[id];
+    if (selEl) selEl.textContent = id;
+    if (titleEl && d) titleEl.textContent = d.title;
+    if (metaEl && d) metaEl.textContent = d.meta;
+    if (scoreEl && d) scoreEl.textContent = d.score;
+    if (shopEl && d) shopEl.textContent = d.shop;
+  }
+  rows.forEach((r) => r.addEventListener('click', () => select(r.dataset.orderRow)));
+  select('ORD-8821');
+  const dimEl = document.getElementById('ws-sel-dims');
+  if (dimEl) dimEl.textContent = '3 / 10';
+  let lastKey = '';
+  const actionBtn = document.getElementById('ws-btn-appeal');
+  if (actionBtn && toast) {
+    actionBtn.addEventListener('click', () => {
+      const id = selEl ? selEl.textContent : 'ORD-8821';
+      const key = `appeal:${id}`;
+      if (key === lastKey) {
+        toast.textContent = `幂等命中：同一 idempotencyKey，不重复执行（ACT-07）`;
+        toast.classList.remove('p-hidden');
+        return;
+      }
+      lastKey = key;
+      toast.textContent = `Action「发起申诉」· key=${key} · HITL / Draft Dataset（示意）`;
+      toast.classList.remove('p-hidden');
+    });
+  }
+}
+
+/** ===== 工作台图谱 ===== */
+function initWorkshopGraph() {
+  const nodes = document.querySelectorAll('[data-graph-node]');
+  const sel = document.getElementById('graph-selection');
+  const view = document.getElementById('graph-obj-view');
+  const modal = document.getElementById('ws-action-modal');
+  if (!nodes.length) return;
+  const info = {
+    pollutant: { name: '污染物 · PM2.5超标事件', wiki: '排放限值 35µg/m³ · 适用《大气法》§42' },
+    enterprise: { name: '企业 · 环科示范厂', wiki: '信用代码 91xxxxx · Wiki：排污许可有效期 2027-03' },
+    law: { name: '法规 · 大气污染防治法', wiki: '条款 §42–§45 · 行业定制 Wiki 已挂载' },
+  };
+  nodes.forEach((n) => {
+    n.addEventListener('click', () => {
+      nodes.forEach((x) => x.style.boxShadow = '');
+      n.style.boxShadow = '0 0 0 2px #2B6CB0';
+      const id = n.dataset.graphNode;
+      const d = info[id];
+      if (sel) sel.textContent = d ? d.name : id;
+      if (view && d) {
+        view.querySelector('[data-g-name]').textContent = d.name;
+        view.querySelector('[data-g-wiki]').textContent = d.wiki;
+      }
+    });
+  });
+  const openAct = document.getElementById('btn-open-action');
+  const closeAct = document.getElementById('btn-close-action');
+  if (openAct && modal) openAct.addEventListener('click', () => modal.classList.remove('p-hidden'));
+  if (closeAct && modal) closeAct.addEventListener('click', () => modal.classList.add('p-hidden'));
+  const submit = document.getElementById('btn-submit-action');
+  const toast = document.getElementById('graph-toast');
+  let graphKey = '';
+  if (submit && toast && modal) {
+    submit.addEventListener('click', () => {
+      const selName = sel ? sel.textContent : 'obj';
+      const key = `case:${selName}`;
+      if (key === graphKey) {
+        toast.textContent = '幂等：重复提交已忽略（ACT-07）';
+        toast.classList.remove('p-hidden');
+        return;
+      }
+      graphKey = key;
+      modal.classList.add('p-hidden');
+      toast.textContent = '立案 Action 已送审（示意）· Draft 隔离 · 非直调 Logic';
+      toast.classList.remove('p-hidden');
+    });
+  }
+  const dimG = document.getElementById('graph-sel-dims');
+  if (dimG) dimG.textContent = 'Selection 维 2 / 10';
+}
+
+/** ===== Buddy 助手 ===== */
+function initWorkshopAip() {
+  const chat = document.getElementById('buddy-panel');
+  const assist = document.getElementById('assist-popover');
+  const chip = document.getElementById('ctx-chip');
+  const openBuddy = document.getElementById('btn-open-buddy');
+  const openAssist = document.getElementById('btn-open-assist');
+  if (openBuddy && chat) openBuddy.addEventListener('click', () => chat.classList.toggle('p-hidden'));
+  if (openAssist && assist) openAssist.addEventListener('click', () => assist.classList.toggle('p-hidden'));
+  document.querySelectorAll('[data-pick-order]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.pickOrder;
+      if (chip) chip.textContent = `Selection: ${id}`;
+      document.querySelectorAll('[data-pick-order]').forEach((b) => {
+        b.style.background = b === btn ? '#EBF4FF' : '';
+        b.style.borderColor = b === btn ? '#BEE3F8' : '';
+      });
+    });
+  });
+  const send = document.getElementById('buddy-send');
+  const log = document.getElementById('buddy-log');
+  const input = document.getElementById('buddy-input');
+  if (send && log && input) {
+    send.addEventListener('click', () => {
+      const q = input.value.trim() || '这单为啥卡海关？';
+      const ctx = chip ? chip.textContent : 'Selection';
+      log.innerHTML += `<div style="margin-top:12px"><div style="color:#2B6CB0;font-size:11px">你 · ${ctx}</div><div style="color:#1A202C;font-size:13px;margin-top:4px">${q}</div></div>`;
+      log.innerHTML += `<div style="margin-top:12px"><div style="color:#D69E2E;font-size:11px">Buddy</div><div style="color:#4A5568;font-size:13px;margin-top:4px">已读 Order + Wiki「清关规则」。建议发起申诉 Action（须 HITL）。</div><button type="button" style="margin-top:8px;font-size:11px;color:#2B6CB0;background:none;border:none;cursor:pointer;text-decoration:underline" id="buddy-suggest-action">打开申诉表单 →</button></div>`;
+      input.value = '';
+      const sug = document.getElementById('buddy-suggest-action');
+      if (sug) sug.addEventListener('click', () => { window.location.href = 'workshop-module.html'; });
+    });
+  }
+}
+
+/** 兼容旧页面的 initShell 调用（已废弃，由 autoInit 替代） */
+function initShell() {
+  // 空函数：旧页面底部的 initShell 调用不再生效
+  // 布局转换由 autoInit 统一处理
+}
+
+/** ===== 自动检测页面并转换布局 ===== */
+function autoInit() {
+  // 从 URL 提取页面 ID
+  const path = window.location.pathname;
+  const filename = path.split('/').pop() || 'index.html';
+  const pageId = filename.replace(/\.html$/, '') || 'index';
+
+  // 查找匹配的导航项
+  const page = DEMO_PAGES.find(p => p.href === filename);
+  const activeId = page ? page.id : pageId;
+
+  // 检查是否已经转换过（避免重复）
+  if (document.querySelector('.p-app')) return;
+
+  // 转换布局
+  transformToPalantir(activeId);
+
+  // 侧栏折叠/展开
+  initSidebarToggle();
+
+  // 初始化各功能模块
+  initTabs('[data-tabs-root]');
+  initAgentList();
+  initStorageRouter();
+  applySyncRoutingParams();
+  initAipMaturity();
+  initAipTools();
+  initAipLogic();
+  initWorkshopModule();
+  initWorkshopGraph();
+  initWorkshopAip();
+}
+
+/** ===== 侧栏折叠/展开（全站通用） ===== */
+function initSidebarToggle() {
+  var sidebar = document.querySelector('.p-sidebar');
+  if (!sidebar || sidebar.dataset.toggleReady) return;
+  sidebar.dataset.toggleReady = '1';
+
+  // 给侧栏菜单项补 title（折叠时 hover 可见名称）
+  sidebar.querySelectorAll('.p-sidebar-item').forEach(function (item) {
+    if (!item.getAttribute('title')) {
+      var span = item.querySelector('span');
+      if (span) item.setAttribute('title', span.textContent.trim());
+    }
+  });
+
+  // 注入折叠按钮
+  var toggleBtn = document.createElement('div');
+  toggleBtn.className = 'p-sidebar-toggle';
+  toggleBtn.id = 'p-sidebar-toggle';
+  toggleBtn.setAttribute('title', '折叠/展开侧栏');
+  toggleBtn.innerHTML = svgIcon('chevron', 'w-3 h-3');
+  sidebar.insertBefore(toggleBtn, sidebar.firstChild);
+
+  // 恢复上次状态
+  if (localStorage.getItem('p-sidebar-collapsed') === '1') {
+    sidebar.classList.add('is-collapsed');
+  }
+
+  toggleBtn.addEventListener('click', function () {
+    var collapsed = sidebar.classList.toggle('is-collapsed');
+    localStorage.setItem('p-sidebar-collapsed', collapsed ? '1' : '0');
+  });
+
+  // 分区抽屉式折叠
+  var arrowSvg = '<svg class="p-collapse-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var titles = sidebar.querySelectorAll('.p-sidebar-section-title');
+  titles.forEach(function (title) {
+    title.insertAdjacentHTML('beforeend', arrowSvg);
+    title.addEventListener('click', function () {
+      var section = title.nextElementSibling;
+      if (!section || !section.classList.contains('p-sidebar-section')) return;
+      var willCollapse = !section.classList.contains('is-collapsed');
+      section.classList.toggle('is-collapsed', willCollapse);
+      title.classList.toggle('is-collapsed', willCollapse);
+      var key = 'p-sidebar-section-' + title.textContent.replace(/\s+/g, '').trim();
+      localStorage.setItem(key, willCollapse ? '1' : '0');
+    });
+    // 恢复上次折叠状态
+    var key2 = 'p-sidebar-section-' + title.textContent.replace(/\s+/g, '').trim();
+    if (localStorage.getItem(key2) === '1') {
+      var s2 = title.nextElementSibling;
+      if (s2) { s2.classList.add('is-collapsed'); title.classList.add('is-collapsed'); }
+    }
+  });
+}
+
+// 全站自动执行（demo.js 在 body 末尾加载，DOM 已就绪）
+initSidebarToggle();
+
+window.DemoUI = {
+  svgIcon,
+  statusDot,
+  buildShell,
+  transformToPalantir,
+  initShell,
+  autoInit,
+  initTabs,
+  initAgentList,
+  initStorageRouter,
+  applySyncRoutingParams,
+  initAipMaturity,
+  initAipTools,
+  initAipLogic,
+  initWorkshopModule,
+  initWorkshopGraph,
+  initWorkshopAip,
+  initSidebarToggle,
+  DEMO_VERSION,
+};

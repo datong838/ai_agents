@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>活知识 Wiki · 索引 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+  <style>
+    .wiki-branch-item { display:flex; align-items:center; gap:6px; padding:5px 8px 5px 8px; border-radius:4px; font-size:12px; color:#444; cursor:pointer; transition:background .12s; }
+    .wiki-branch-item:hover { background:#F0F2F5; }
+    .wiki-branch-item.is-active { background:#E8F0FE; color:#185FA5; font-weight:500; }
+    .wiki-branch-item.is-branch { padding-left:20px; }
+    .wiki-branch-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+    .wiki-page-card { transition:all .15s; cursor:pointer; }
+    .wiki-page-card:hover { box-shadow:0 2px 8px rgba(0,0,0,.08); transform:translateY(-1px); }
+  </style>
+</head>
+<body>
+<div class="p-app">
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+<div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+<div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+<div class="p-nav-g-item is-active" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="用户"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+    </div>
+  </nav>
+  <div class="p-main">
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><a href="ontology.html">本体</a><span class="p-breadcrumb-sep">/</span><span>活知识 Wiki</span></div>
+      </div>
+      <div class="p-header-center">
+        <div class="p-search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="搜索 Wiki 页面…" id="wiki-search" />
+        </div>
+      </div>
+      <div class="p-header-right">
+        <button class="p-btn p-btn-secondary p-btn-sm" onclick="openImportDocModal()">导入文档</button>
+        <button class="p-btn p-btn-primary p-btn-sm" onclick="window.location.href='ontology-wiki.html'">+ 新建页面</button>
+      </div>
+    </header>
+    <div class="p-body">
+      <aside class="p-sidebar">
+<a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+<div class="p-sidebar-section-title">工作台</div>
+<div class="p-sidebar-section">
+<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-app-order.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>订单管理</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>风险告警管理</span></a>
+<a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+</div>
+<div class="p-sidebar-section-title">应用程序构建工具</div>
+<div class="p-sidebar-section">
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a><a href="workshop-widget-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>组件注册表</span></a>
+<a href="workshop-variables.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16v12H4zM8 10h2v4H8zM14 10h2v4h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变量管理器</span></a>
+<a href="workshop-styles.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>主题与样式</span></a>
+<a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+<a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+</div>
+<div class="p-sidebar-section-title">AIP 决策引擎</div>
+<div class="p-sidebar-section">
+<div class="p-sidebar-subgroup-title">应用层</div>
+<a href="aip-assist.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AIP 助手</span></a>
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>对话机器人</span></a>
+<a href="aip-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>AIP 分析师</span></a>
+<div class="p-sidebar-subgroup-title">逻辑编排层</div>
+<a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>智能体工具面板</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<div class="p-sidebar-subgroup-title">智能体</div>
+<a href="agent-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg><span>智能体目录</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>智能体插件</span></a>
+<div class="p-sidebar-subgroup-title">评测与治理</div>
+<a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<div class="p-sidebar-subgroup-title">决策谱系</div>
+<a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-model-catalog.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9" /></svg><span>模型注册表</span></a>
+<a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke-linecap="round"/></svg><span>模型路由</span></a>
+<a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>模型供应商</span></a>
+</div>
+<div class="p-sidebar-section-title">本体</div>
+<div class="p-sidebar-section">
+<a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>对象探索</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>本体提案</span></a>
+<a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
+<a href="ontology-wiki-index.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF funnel</span></a>
+<a href="okf-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>OKF 概览</span></a>
+
+<a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
+</div>
+<div class="p-sidebar-section-title">管道与数据治理</div>
+<div class="p-sidebar-section">
+<a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+<a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
+<a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+<a href="builds.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>搭建</span></a>
+<a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+<a href="code-repositories.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>代码库</span></a>
+<a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+<a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
+</div>
+<div class="p-sidebar-section-title">数据源与同步</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据链接器</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="sync.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg><span>同步配置</span></a>
+<a href="sync-routing.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>同步路由</span></a>
+<a href="media-sets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>媒体集</span></a>
+<a href="document-intelligence.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round"/></svg><span>文档智能</span></a>
+</div>
+<div class="p-sidebar-section-title">运维交付</div>
+<div class="p-sidebar-section">
+<a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
+<a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
+<a href="apollo-spoke.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Spoke 详情</span></a>
+<a href="apollo-ferry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>Ferry 摆渡</span></a>
+<a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
+<a href="apollo-change-mgmt.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变更审批</span></a>
+<a href="apollo-config.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>配置与密钥</span></a>
+<a href="integration-cases.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>接入案例</span></a>
+</div>
+      </aside>
+      <main class="p-content">
+        <!-- 左侧分支树 + 右侧页面列表 -->
+        <div class="flex h-full">
+          <!-- 分支树 -->
+          <div class="w-56 border-r border-gray-200 overflow-y-auto p-3 shrink-0">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-medium text-gray-700">分支</span>
+              <button class="text-gray-400 hover:text-gray-600" title="创建分支" onclick="openCreateBranchModal()">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <div class="space-y-0.5">
+              <div class="wiki-branch-item is-active" onclick="selectBranch(this)">
+                <span class="wiki-branch-dot bg-green-500"></span>
+                <span>main</span>
+                <span class="ml-auto text-[9px] text-gray-400">12 页</span>
+              </div>
+              <div class="wiki-branch-item" onclick="selectBranch(this)">
+                <span class="wiki-branch-dot bg-blue-500"></span>
+                <span>feature/risk-model-v2</span>
+                <span class="ml-auto text-[9px] text-gray-400">8 页</span>
+              </div>
+              <div class="wiki-branch-item" onclick="selectBranch(this)">
+                <span class="wiki-branch-dot bg-purple-500"></span>
+                <span>feature/order-flow</span>
+                <span class="ml-auto text-[9px] text-gray-400">5 页</span>
+              </div>
+              <div class="wiki-branch-item" onclick="selectBranch(this)">
+                <span class="wiki-branch-dot bg-yellow-500"></span>
+                <span>hotfix/sla-breach</span>
+                <span class="ml-auto text-[9px] text-gray-400">3 页</span>
+              </div>
+              <div class="wiki-branch-item" onclick="selectBranch(this)">
+                <span class="wiki-branch-dot bg-gray-400"></span>
+                <span>archive/v1-deprecated</span>
+                <span class="ml-auto text-[9px] text-gray-400">归档</span>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-gray-100">
+              <div class="text-xs font-medium text-gray-700 mb-2">标签</div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded text-[10px] bg-blue-50 text-blue-600 cursor-pointer hover:bg-blue-100">风控</span>
+                <span class="px-2 py-0.5 rounded text-[10px] bg-green-50 text-green-600 cursor-pointer hover:bg-green-100">订单</span>
+                <span class="px-2 py-0.5 rounded text-[10px] bg-purple-50 text-purple-600 cursor-pointer hover:bg-purple-100">SLA</span>
+                <span class="px-2 py-0.5 rounded text-[10px] bg-yellow-50 text-yellow-600 cursor-pointer hover:bg-yellow-100">合规</span>
+                <span class="px-2 py-0.5 rounded text-[10px] bg-red-50 text-red-600 cursor-pointer hover:bg-red-100">应急</span>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-gray-100">
+              <div class="text-xs font-medium text-gray-700 mb-2">统计</div>
+              <div class="space-y-1 text-[11px] text-gray-500">
+                <div class="flex justify-between"><span>总页面数</span><span class="font-medium text-gray-700">28</span></div>
+                <div class="flex justify-between"><span>活跃分支</span><span class="font-medium text-gray-700">4</span></div>
+                <div class="flex justify-between"><span>本周更新</span><span class="font-medium text-gray-700">7</span></div>
+                <div class="flex justify-between"><span>贡献者</span><span class="font-medium text-gray-700">5</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 页面列表 -->
+          <div class="flex-1 overflow-y-auto p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h1 class="text-lg font-semibold text-gray-900">活知识 Wiki</h1>
+                <p class="text-xs text-gray-500 mt-0.5">main 分支 · 12 个页面 · 最近更新：2 小时前</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="flex rounded-md border border-gray-200 overflow-hidden">
+                  <button class="px-3 py-1.5 text-xs text-white bg-indigo-600 font-medium">卡片</button>
+                  <button class="px-3 py-1.5 text-xs text-gray-500 hover:bg-gray-50" onclick="showToast('切换为列表视图')">列表</button>
+                  <button class="px-3 py-1.5 text-xs text-gray-500 hover:bg-gray-50" onclick="showToast('切换为树视图')">树形</button>
+                </div>
+                <select class="rounded-md border border-gray-200 px-2 py-1.5 text-xs text-gray-600">
+                  <option>最近更新</option>
+                  <option>名称排序</option>
+                  <option>创建时间</option>
+                  <option>版本数</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 页面卡片网格 -->
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3" id="wiki-pages-grid">
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v9</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-red-50 text-red-600 font-medium">风控</span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">订单风险分诊规范</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">定义订单风险等级（low/medium/high/critical）的判定标准、LLM 提示词模板、分支条件和升级审批流程…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>2h 前</span>
+                  <span>·</span>
+                  <span>大同</span>
+                  <span>·</span>
+                  <span>9 版本</span>
+                </div>
+              </div>
+
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v4</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-green-50 text-green-600 font-medium">订单</span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">订单生命周期 SOP</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">从创建到签收的完整订单流程图，含异常分支（退款/换货/丢失）的处理规范和 SLA 时限要求…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>1d 前</span>
+                  <span>·</span>
+                  <span>系统</span>
+                  <span>·</span>
+                  <span>4 版本</span>
+                </div>
+              </div>
+
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v12</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-purple-50 text-purple-600 font-medium">SLA</span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">SLA 超时响应手册</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">P0~P3 级别工单的超时升级链：自动通知 → 主管介入 → CTO 升级。含值班轮换表和应急联系人…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>3h 前</span>
+                  <span>·</span>
+                  <span>风控组</span>
+                  <span>·</span>
+                  <span>12 版本</span>
+                </div>
+              </div>
+
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v6</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-yellow-50 text-yellow-600 font-medium">合规</span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">跨境数据合规指引</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">GDPR / PIPL / 个保法下的数据出境审批流程，含字段级脱敏规则和白名单国家清单…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>2d 前</span>
+                  <span>·</span>
+                  <span>法务</span>
+                  <span>·</span>
+                  <span>6 版本</span>
+                </div>
+              </div>
+
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v3</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-red-50 text-red-600 font-medium">应急</span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">P0 故障应急预案</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">系统级故障的应急响应流程：发现 → 通报 → 止血 → 根因 → 复盘。含 War Room 启动条件和通讯录…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>5d 前</span>
+                  <span>·</span>
+                  <span>SRE</span>
+                  <span>·</span>
+                  <span>3 版本</span>
+                </div>
+              </div>
+
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v7</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-blue-50 text-blue-600 font-medium">风控</span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">退款审核标准</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">退款金额阈值、审核权限矩阵、特殊场景处理（批量退款/疑似欺诈/商品损坏）…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>4h 前</span>
+                  <span>·</span>
+                  <span>大同</span>
+                  <span>·</span>
+                  <span>7 版本</span>
+                </div>
+              </div>
+
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v2</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-green-50 text-green-600 font-medium">订单</span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">物流对接规范</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">顺丰/京东/圆通 API 对接参数、运单状态映射表、异常件处理流程…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>1w 前</span>
+                  <span>·</span>
+                  <span>物流组</span>
+                  <span>·</span>
+                  <span>2 版本</span>
+                </div>
+              </div>
+
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v5</span>
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] bg-yellow-50 text-yellow-600 font-medium">合规</span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">客户隐私保护策略</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">客户数据的采集/存储/使用/销毁全生命周期管理规范，含 DPIA 评估流程…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>3d 前</span>
+                  <span>·</span>
+                  <span>法务</span>
+                  <span>·</span>
+                  <span>5 版本</span>
+                </div>
+              </div>
+
+              <div class="wiki-page-card aos-panel p-4" onclick="window.location.href='ontology-wiki.html'">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg>
+                    <span class="text-[10px] text-gray-400">v1</span>
+                    <span class="px-1.5 py-0.5 rounded text-[9px] bg-gray-100 text-gray-500">草稿</span>
+                  </div>
+                </div>
+                <h3 class="text-sm font-medium text-gray-900 mb-1">新品上架流程</h3>
+                <p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">从商品信息录入到正式上架的审批链路，含质检标准、图片规范、关键词设置…</p>
+                <div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+                  <span>刚刚</span>
+                  <span>·</span>
+                  <span>运营</span>
+                  <span>·</span>
+                  <span>1 版本</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 最近活动 -->
+            <div class="mt-8">
+              <h2 class="text-sm font-medium text-gray-900 mb-3">最近活动</h2>
+              <div class="aos-panel p-4 space-y-3">
+                <div class="flex items-center gap-3 text-xs">
+                  <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-medium text-[10px]">DT</div>
+                  <div class="flex-1">
+                    <span class="text-gray-700"><span class="font-medium">大同</span> 更新了 <a href="ontology-wiki.html" class="text-indigo-600 hover:underline">订单风险分诊规范</a></span>
+                    <span class="text-gray-400 ml-1">→ v9</span>
+                  </div>
+                  <span class="text-gray-400">2h 前</span>
+                </div>
+                <div class="flex items-center gap-3 text-xs">
+                  <div class="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-medium text-[10px]">系统</div>
+                  <div class="flex-1">
+                    <span class="text-gray-700"><span class="font-medium">系统</span> 从 feature/risk-model-v2 合并了 3 个页面到 main</span>
+                  </div>
+                  <span class="text-gray-400">6h 前</span>
+                </div>
+                <div class="flex items-center gap-3 text-xs">
+                  <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-medium text-[10px]">FK</div>
+                  <div class="flex-1">
+                    <span class="text-gray-700"><span class="font-medium">风控组</span> 创建了分支 <span class="font-mono text-gray-600">hotfix/sla-breach</span></span>
+                  </div>
+                  <span class="text-gray-400">1d 前</span>
+                </div>
+                <div class="flex items-center gap-3 text-xs">
+                  <div class="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-medium text-[10px]">FY</div>
+                  <div class="flex-1">
+                    <span class="text-gray-700"><span class="font-medium">法务</span> 发布了 <a href="ontology-wiki-diff.html" class="text-indigo-600 hover:underline">跨境数据合规指引 v5→v6 diff</a></span>
+                  </div>
+                  <span class="text-gray-400">2d 前</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+<div id="toast" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2C2C2A;color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:9999;opacity:0;transition:opacity .2s;pointer-events:none;"></div>
+
+<!-- 新建分支 Modal -->
+<div id="createBranchModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); z-index:10000; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:12px; width:520px; max-height:85vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+    <div style="padding:16px 20px; border-bottom:1px solid #E5E7EB; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; font-weight:600; color:#111827;">新建分支</span>
+      <button onclick="closeCreateBranchModal()" style="color:#9CA3AF; font-size:18px; background:none; border:none; cursor:pointer;">×</button>
+    </div>
+    <div style="padding:20px;">
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:11px; font-weight:500; color:#374151; margin-bottom:4px;">分支名称</label>
+        <input id="branchNameInput" type="text" placeholder="例如：feature/new-page" style="width:100%; padding:6px 10px; border:1px solid #D1D5DB; border-radius:6px; font-size:12px;" />
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:11px; font-weight:500; color:#374151; margin-bottom:4px;">基础分支</label>
+        <select id="baseBranchSelect" style="width:100%; padding:6px 10px; border:1px solid #D1D5DB; border-radius:6px; font-size:12px;">
+          <option>main</option>
+          <option>feature/risk-model-v2</option>
+          <option>feature/order-flow</option>
+          <option>hotfix/sla-breach</option>
+        </select>
+      </div>
+      <div>
+        <label style="display:block; font-size:11px; font-weight:500; color:#374151; margin-bottom:4px;">复制范围</label>
+        <div style="display:flex; gap:16px; padding-top:2px;">
+          <label style="display:flex; align-items:center; gap:4px; font-size:12px; color:#374151; cursor:pointer;">
+            <input type="radio" name="copyScope" value="all" checked /> 所有页面
+          </label>
+          <label style="display:flex; align-items:center; gap:4px; font-size:12px; color:#374151; cursor:pointer;">
+            <input type="radio" name="copyScope" value="selected" /> 仅选中页面
+          </label>
+        </div>
+      </div>
+    </div>
+    <div style="padding:12px 20px; border-top:1px solid #E5E7EB; background:#F9FAFB; display:flex; justify-content:flex-end; gap:8px; border-radius:0 0 12px 12px;">
+      <button onclick="closeCreateBranchModal()" style="padding:6px 16px; font-size:12px; border:1px solid #D1D5DB; border-radius:6px; background:#fff; color:#374151; cursor:pointer;">取消</button>
+      <button onclick="confirmCreateBranch()" style="padding:6px 16px; font-size:12px; border:none; border-radius:6px; background:#4F46E5; color:#fff; cursor:pointer; font-weight:500;">创建分支</button>
+    </div>
+  </div>
+</div>
+
+<!-- 导入文档 Modal -->
+<div id="importDocModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); z-index:10000; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:12px; width:520px; max-height:85vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+    <div style="padding:16px 20px; border-bottom:1px solid #E5E7EB; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:14px; font-weight:600; color:#111827;">导入文档</span>
+      <button onclick="closeImportDocModal()" style="color:#9CA3AF; font-size:18px; background:none; border:none; cursor:pointer;">×</button>
+    </div>
+    <div style="padding:20px;">
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:11px; font-weight:500; color:#374151; margin-bottom:6px;">文档类型</label>
+        <div style="display:flex; gap:4px; border-bottom:1px solid #E5E7EB;">
+          <button onclick="switchDocTab(this,'markdown')" style="padding:6px 12px; font-size:12px; border:none; background:#EEF2FF; color:#4F46E5; border-bottom:2px solid #4F46E5; cursor:pointer; font-weight:500;">Markdown</button>
+          <button onclick="switchDocTab(this,'word')" style="padding:6px 12px; font-size:12px; border:none; background:none; color:#6B7280; border-bottom:2px solid transparent; cursor:pointer;">Word</button>
+          <button onclick="switchDocTab(this,'confluence')" style="padding:6px 12px; font-size:12px; border:none; background:none; color:#6B7280; border-bottom:2px solid transparent; cursor:pointer;">Confluence URL</button>
+        </div>
+      </div>
+      <div id="docUploadArea" style="margin-bottom:16px;">
+        <label style="display:block; font-size:11px; font-weight:500; color:#374151; margin-bottom:4px;">上传文件</label>
+        <div style="border:2px dashed #D1D5DB; border-radius:8px; padding:24px; text-align:center; color:#9CA3AF; font-size:12px; cursor:pointer;" onclick="showToast('选择文件…')">
+          <svg style="width:24px; height:24px; margin:0 auto 6px; display:block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v12m0-12l-4 4m4-4l4 4M3 17v3a1 1 0 001 1h16a1 1 0 001-1v-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          拖拽文件到此处，或点击选择
+        </div>
+      </div>
+      <div id="docUrlArea" style="display:none; margin-bottom:16px;">
+        <label style="display:block; font-size:11px; font-weight:500; color:#374151; margin-bottom:4px;">URL / 路径</label>
+        <input type="text" placeholder="https://wiki.example.com/page 或 /docs/spec.md" style="width:100%; padding:6px 10px; border:1px solid #D1D5DB; border-radius:6px; font-size:12px;" />
+      </div>
+      <div>
+        <label style="display:block; font-size:11px; font-weight:500; color:#374151; margin-bottom:4px;">解析预览</label>
+        <div style="background:#F9FAFB; border:1px solid #E5E7EB; border-radius:6px; padding:12px; font-size:12px; color:#374151;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:#6B7280;">标题</span>
+            <span style="font-weight:500;">（待解析）</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:#6B7280;">段落数</span>
+            <span style="font-weight:500;">—</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:#6B7280;">图片数</span>
+            <span style="font-weight:500;">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:12px 20px; border-top:1px solid #E5E7EB; background:#F9FAFB; display:flex; justify-content:flex-end; gap:8px; border-radius:0 0 12px 12px;">
+      <button onclick="closeImportDocModal()" style="padding:6px 16px; font-size:12px; border:1px solid #D1D5DB; border-radius:6px; background:#fff; color:#374151; cursor:pointer;">取消</button>
+      <button onclick="confirmImportDoc()" style="padding:6px 16px; font-size:12px; border:none; border-radius:6px; background:#4F46E5; color:#fff; cursor:pointer; font-weight:500;">导入并创建页面</button>
+    </div>
+  </div>
+</div>
+<script src="assets/demo.js"></script>
+<script>
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.opacity = '1';
+    setTimeout(function() { t.style.opacity = '0'; }, 2000);
+  }
+  function selectBranch(el) {
+    document.querySelectorAll('.wiki-branch-item').forEach(function(item) {
+      item.classList.remove('is-active');
+    });
+    el.classList.add('is-active');
+    showToast('已切换到分支：' + el.querySelector('span:nth-child(2)').textContent);
+  }
+  // 搜索过滤
+  document.getElementById('wiki-search').addEventListener('input', function(e) {
+    var q = e.target.value.toLowerCase();
+    document.querySelectorAll('.wiki-page-card').forEach(function(card) {
+      var title = card.querySelector('h3').textContent.toLowerCase();
+      var desc = card.querySelector('p').textContent.toLowerCase();
+      card.style.display = (title.indexOf(q) >= 0 || desc.indexOf(q) >= 0) ? '' : 'none';
+    });
+  });
+
+  // ===== 新建分支 Modal =====
+  function openCreateBranchModal() {
+    var m = document.getElementById('createBranchModal');
+    m.style.display = 'flex';
+  }
+  function closeCreateBranchModal() {
+    document.getElementById('createBranchModal').style.display = 'none';
+  }
+  function confirmCreateBranch() {
+    var name = document.getElementById('branchNameInput').value.trim() || 'feature/new-branch';
+    var list = document.querySelector('.wiki-branch-item').parentElement;
+    var colors = ['bg-indigo-500','bg-pink-500','bg-teal-500','bg-orange-500'];
+    var color = colors[list.querySelectorAll('.wiki-branch-item').length % colors.length];
+    var item = document.createElement('div');
+    item.className = 'wiki-branch-item';
+    item.setAttribute('onclick', 'selectBranch(this)');
+    item.innerHTML = '<span class="wiki-branch-dot ' + color + '"></span><span>' + name + '</span><span class="ml-auto text-[9px] text-gray-400">0 页</span>';
+    list.appendChild(item);
+    closeCreateBranchModal();
+    showToast('已创建分支：' + name);
+    document.getElementById('branchNameInput').value = '';
+  }
+
+  // ===== 导入文档 Modal =====
+  function openImportDocModal() {
+    document.getElementById('importDocModal').style.display = 'flex';
+  }
+  function closeImportDocModal() {
+    document.getElementById('importDocModal').style.display = 'none';
+  }
+  function switchDocTab(btn, type) {
+    var tabs = btn.parentElement.querySelectorAll('button');
+    tabs.forEach(function(t) {
+      t.style.background = 'none';
+      t.style.color = '#6B7280';
+      t.style.borderBottom = '2px solid transparent';
+      t.style.fontWeight = '400';
+    });
+    btn.style.background = '#EEF2FF';
+    btn.style.color = '#4F46E5';
+    btn.style.borderBottom = '2px solid #4F46E5';
+    btn.style.fontWeight = '500';
+    var showUpload = (type === 'markdown' || type === 'word');
+    document.getElementById('docUploadArea').style.display = showUpload ? '' : 'none';
+    document.getElementById('docUrlArea').style.display = (type === 'confluence') ? '' : 'none';
+  }
+  function confirmImportDoc() {
+    var grid = document.getElementById('wiki-pages-grid');
+    var card = document.createElement('div');
+    card.className = 'wiki-page-card aos-panel p-4';
+    card.setAttribute('onclick', "window.location.href='ontology-wiki.html'");
+    card.innerHTML = '<div class="flex items-start justify-between mb-2"><div class="flex items-center gap-2"><svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span class="text-[10px] text-gray-400">v1</span></div><span class="px-1.5 py-0.5 rounded text-[9px] bg-gray-100 text-gray-500">草稿</span></div><h3 class="text-sm font-medium text-gray-900 mb-1">导入的文档</h3><p class="text-[11px] text-gray-500 leading-relaxed line-clamp-2">从外部文档导入并自动解析生成的 Wiki 页面草稿，可在编辑器中进一步修订与发布。</p><div class="flex items-center gap-3 mt-3 text-[10px] text-gray-400"><span>刚刚</span><span>·</span><span>导入</span><span>·</span><span>1 版本</span></div>';
+    grid.appendChild(card);
+    closeImportDocModal();
+    showToast('文档已导入并创建草稿页面');
+  }
+</script>
+</body>
+</html>

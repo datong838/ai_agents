@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>接入插件能力 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+  <style>
+    .ci-step-nav-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:6px; cursor:pointer; font-size:13px; color:#5F5E5A; transition: all .15s; border:0.5px solid transparent; }
+    .ci-step-nav-item:hover { background:#F1EFE8; }
+    .ci-step-nav-item.is-active { background:#E8F0FE; color:#185FA5; font-weight:500; border-color:#7BA7E8; }
+    .ci-step-nav-item.is-done { color:#185FA5; }
+    .ci-step-nav-item.is-done .ci-step-num { background:#185FA5; color:#fff; }
+    .ci-step-num { width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; background:#D3D1C7; color:#5F5E5A; flex-shrink:0; transition:all .15s; }
+    .ci-step-nav-item.is-active .ci-step-num { background:#185FA5; color:#fff; }
+    .ci-panel { display:none; }
+    .ci-panel.is-active { display:block; }
+    .ci-cap-type { border:0.5px solid #B4B2A9; border-radius:8px; padding:16px; cursor:pointer; transition:all .15s; background:#fff; }
+    .ci-cap-type:hover { border-color:#7BA7E8; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .ci-cap-type.is-selected { border:1.5px solid #185FA5; background:#E8F0FE; }
+    .ci-form-label { font-size:12px; color:#5F5E5A; margin-bottom:4px; display:block; }
+    .ci-form-input { width:100%; padding:6px 10px; border:0.5px solid #B4B2A9; border-radius:4px; font-size:12px; background:#fff; color:#1A1A1A; outline:none; }
+    .ci-form-input:focus { border-color:#185FA5; box-shadow:0 0 0 2px rgba(24,95,165,.12); }
+    .ci-yaml-preview { background:#1E293B; color:#CBD5E1; padding:16px; border-radius:6px; font-family:'Menlo','Monaco',monospace; font-size:11px; line-height:1.7; overflow-x:auto; white-space:pre; }
+    .ci-yaml-key { color:#93C5FD; }
+    .ci-yaml-str { color:#86EFAC; }
+    .ci-yaml-comment { color:#64748B; }
+    .ci-next-btn { padding:8px 24px; border-radius:6px; font-size:13px; font-weight:500; background:#185FA5; color:#fff; border:none; cursor:pointer; }
+    .ci-next-btn:hover { background:#0E477A; }
+    .ci-back-btn { padding:8px 24px; border-radius:6px; font-size:13px; border:0.5px solid #888780; background:#fff; color:#444441; cursor:pointer; }
+    .ci-back-btn:hover { background:#F1EFE8; }
+    .ci-finish-btn { padding:8px 24px; border-radius:6px; font-size:13px; font-weight:500; background:#0F6E56; color:#fff; border:none; cursor:pointer; }
+    .ci-finish-btn:hover { background:#085041; }
+    .ci-toast { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#2C2C2A; color:#fff; padding:10px 24px; border-radius:8px; font-size:13px; z-index:9999; opacity:0; transition:opacity .2s; pointer-events:none; }
+    .ci-toast.is-visible { opacity:1; }
+    .ci-test-row { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:4px; font-size:12px; }
+    .ci-test-pass { background:#E8F5E9; color:#1B5E20; }
+    .ci-test-fail { background:#FFEBEE; color:#B71C1C; }
+    .ci-test-pending { background:#FFF8E1; color:#E65100; }
+    .ci-sec-level { border:0.5px solid #B4B2A9; border-radius:6px; padding:10px 14px; cursor:pointer; transition:all .15s; background:#fff; }
+    .ci-sec-level:hover { border-color:#7BA7E8; }
+    .ci-sec-level.is-selected { border:1.5px solid #185FA5; background:#E8F0FE; }
+  </style>
+</head>
+<body>
+<div class="p-app">
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+      <div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="搜索"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="通知"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="历史"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="项目"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h6l2 3h8v13H4V4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+      <div class="p-nav-g-item is-active" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="用户"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
+    </div>
+  </nav>
+  <div class="p-main">
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb"><a href="index.html">AOS</a><span class="p-breadcrumb-sep">/</span><a href="aip-capabilities.html">智能体插件</a><span class="p-breadcrumb-sep">/</span><span>接入插件能力</span></div>
+      </div>
+      <div class="p-header-center"><div class="p-search"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg><input type="search" placeholder="搜索…" /></div></div>
+      <div class="p-header-right"><a href="aip-capabilities.html" class="p-btn p-btn-secondary p-btn-sm">取消</a></div>
+    </header>
+    <div class="p-body" style="background:#F0F2F5;">
+      <aside class="p-sidebar">
+<a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+<div class="p-sidebar-section-title">工作台</div>
+<div class="p-sidebar-section">
+<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-app-order.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>订单管理</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>风险告警管理</span></a>
+<a href="workshop-cop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>态势大屏</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+</div>
+<div class="p-sidebar-section-title">应用程序构建工具</div>
+<div class="p-sidebar-section">
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a>
+<a href="workshop-widget-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>组件注册表</span></a>
+<a href="workshop-variables.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16v12H4zM8 10h2v4H8zM14 10h2v4h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变量管理器</span></a>
+<a href="workshop-styles.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>主题与样式</span></a>
+<a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+<a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+</div>
+<div class="p-sidebar-section-title">AIP 决策引擎</div>
+<div class="p-sidebar-section">
+<div class="p-sidebar-subgroup-title">应用层</div>
+<a href="aip-assist.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AIP 助手</span></a>
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>对话机器人</span></a>
+<a href="aip-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>AIP 分析师</span></a>
+<div class="p-sidebar-subgroup-title">逻辑编排层</div>
+<a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>智能体工具面板</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<div class="p-sidebar-subgroup-title">智能体</div>
+<a href="agent-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg><span>智能体目录</span></a>
+<a href="aip-capabilities.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>智能体插件</span></a>
+<div class="p-sidebar-subgroup-title">评测与治理</div>
+<a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<div class="p-sidebar-subgroup-title">决策谱系</div>
+<a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-observability.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可观测性</span></a>
+</div>
+<div class="p-sidebar-section-title">模型管理</div>
+<div class="p-sidebar-section">
+<a href="aip-model-catalog.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>模型目录</span></a>
+<a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
+<a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
+</div>
+<div class="p-sidebar-section-title">管道与数据治理</div>
+<div class="p-sidebar-section">
+<a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+<a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+<a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+<a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+</div>
+<div class="p-sidebar-section-title">运维交付</div>
+<div class="p-sidebar-section">
+<a href="apollo-hub.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>Hub 舰队</span></a>
+<a href="apollo-release.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Release 通道</span></a>
+<a href="apollo-assets.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FDE 资产包</span></a>
+<a href="integration-cases.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>接入案例</span></a>
+</div>
+      </aside>
+      <main class="p-content">
+<div class="max-w-4xl mx-auto space-y-5" style="padding:24px 0;">
+        <div>
+          <h1 class="text-xl font-semibold text-gray-900">接入插件能力（Capability Manifest）</h1>
+          <p class="mt-1 text-sm text-gray-500">声明外部能力端点和契约，注册为 C0/C1/C2 Capability 供智能体调用。</p>
+        </div>
+
+        <section class="rounded-xl border border-yellow-200 bg-yellow-50 p-4 text-xs text-gray-600 space-y-1">
+          <div class="text-yellow-700 font-medium text-sm">C0 / C1 / C2 能力分层</div>
+          <div class="grid grid-cols-3 gap-3 mt-2">
+            <div><span class="font-medium text-gray-900">C0 sync</span> — 同步函数，&lt;15s，可直接挂 Function</div>
+            <div><span class="font-medium text-gray-900">C1 Job</span> — 异步任务，GPU/长耗时，产物写 MediaSet</div>
+            <div><span class="font-medium text-gray-900">C2 Session</span> — 实时会话，WebSocket 长连接，AV 流外置</div>
+          </div>
+        </section>
+
+        <div class="flex gap-6">
+          <aside class="w-56 flex-shrink-0">
+            <div class="space-y-1">
+              <div class="ci-step-nav-item is-active" data-step="1">
+                <div class="ci-step-num">1</div>
+                <span>能力类型</span>
+              </div>
+              <div class="ci-step-nav-item" data-step="2">
+                <div class="ci-step-num">2</div>
+                <span>Manifest 配置</span>
+              </div>
+              <div class="ci-step-nav-item" data-step="3">
+                <div class="ci-step-num">3</div>
+                <span>安全与配额</span>
+              </div>
+              <div class="ci-step-nav-item" data-step="4">
+                <div class="ci-step-num">4</div>
+                <span>连通测试</span>
+              </div>
+            </div>
+          </aside>
+
+          <div class="flex-1 min-w-0">
+            <!-- Step 1: 能力类型 -->
+            <div class="ci-panel is-active" data-panel="1">
+              <h2 class="text-sm font-medium text-gray-900 mb-1">选择能力类型</h2>
+              <p class="text-xs text-gray-500 mb-4">不同能力类型对应不同的运行时和资源配额</p>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="ci-cap-type is-selected" data-cap="C0">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-lg">C0</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-700 font-medium">sync</span>
+                  </div>
+                  <div class="text-xs font-medium text-gray-900">同步函数</div>
+                  <div class="text-[11px] text-gray-500 mt-1 leading-relaxed">超时 &lt; 15s<br/>直接挂 Function Tool<br/>内存限制 512Mi</div>
+                  <div class="mt-2 text-[10px] text-gray-400">例：直播稿引擎、文本摘要</div>
+                </div>
+                <div class="ci-cap-type" data-cap="C1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-lg">C1</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] bg-purple-100 text-purple-700 font-medium">Job</span>
+                  </div>
+                  <div class="text-xs font-medium text-gray-900">异步任务</div>
+                  <div class="text-[11px] text-gray-500 mt-1 leading-relaxed">GPU / 长耗时<br/>submit → status → artifact<br/>产物写 MediaSet</div>
+                  <div class="mt-2 text-[10px] text-gray-400">例：短视频生成、图片渲染</div>
+                </div>
+                <div class="ci-cap-type" data-cap="C2">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-lg">C2</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] bg-orange-100 text-orange-700 font-medium">Session</span>
+                  </div>
+                  <div class="text-xs font-medium text-gray-900">实时会话</div>
+                  <div class="text-[11px] text-gray-500 mt-1 leading-relaxed">WebSocket 长连接<br/>open / push / close<br/>AV 流外置</div>
+                  <div class="mt-2 text-[10px] text-gray-400">例：数字人交互、语音对话</div>
+                </div>
+              </div>
+              <div class="mt-4 p-3 rounded-lg bg-gray-50 border border-gray-200 text-[11px] text-gray-500">
+                <span class="font-medium text-gray-700">提示：</span>选择后将在 Step 2 自动预填对应 Manifest 模板。可在 Step 2 修改。
+              </div>
+            </div>
+
+            <!-- Step 2: Manifest 配置 -->
+            <div class="ci-panel" data-panel="2">
+              <h2 class="text-sm font-medium text-gray-900 mb-1">配置 Capability Manifest</h2>
+              <p class="text-xs text-gray-500 mb-4">填写能力端点、输入输出 Schema、回调地址。右侧实时预览生成的 YAML。</p>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-3">
+                  <div>
+                    <label class="ci-form-label">能力名称（唯一标识）</label>
+                    <input class="ci-form-input" value="short-video-generation" />
+                  </div>
+                  <div>
+                    <label class="ci-form-label">显示名称</label>
+                    <input class="ci-form-input" value="短视频生成" />
+                  </div>
+                  <div>
+                    <label class="ci-form-label">Adapter 端点</label>
+                    <input class="ci-form-input" value="https://cap.internal/video/v1" />
+                  </div>
+                  <div>
+                    <label class="ci-form-label">密钥 Secret Ref（KMS 加密）</label>
+                    <input class="ci-form-input" value="vault://aip/capabilities/short-video#token" />
+                    <p class="text-[10px] text-gray-400 mt-1">存储于 KMS，运行时注入，不落地</p>
+                  </div>
+                  <div>
+                    <label class="ci-form-label">回调 Webhook（验签）</label>
+                    <input class="ci-form-input" value="https://aos-api/v1/aip/capabilities/cb/video" />
+                  </div>
+                  <div>
+                    <label class="ci-form-label">输入 Schema（JSON）</label>
+                    <textarea class="ci-form-input" rows="3" style="font-family:Menlo,Monaco,monospace;font-size:10px;">{"prompt": "string", "duration": "int?", "aspect": "16:9|9:16?"}</textarea>
+                  </div>
+                  <div>
+                    <label class="ci-form-label">输出产物 → Object Type</label>
+                    <input class="ci-form-input" value="MediaSet" />
+                  </div>
+                  <div>
+                    <label class="ci-form-label">是否写回本体</label>
+                    <select class="ci-form-input">
+                      <option>否（只返回引用）</option>
+                      <option>是（通过 Action 盖章写入）</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label class="ci-form-label">Manifest YAML 预览</label>
+                  <div class="ci-yaml-preview" style="height:380px;"><span class="ci-yaml-comment"># Capability Manifest — auto-generated</span>
+<span class="ci-yaml-key">apiVersion</span>: v1
+<span class="ci-yaml-key">kind</span>: <span class="ci-yaml-str">Capability</span>
+<span class="ci-yaml-key">metadata</span>:
+  <span class="ci-yaml-key">name</span>: <span class="ci-yaml-str">short-video-generation</span>
+  <span class="ci-yaml-key">displayName</span>: <span class="ci-yaml-str">短视频生成</span>
+  <span class="ci-yaml-key">version</span>: <span class="ci-yaml-str">1.0.0</span>
+<span class="ci-yaml-key">spec</span>:
+  <span class="ci-yaml-key">capabilityLevel</span>: <span class="ci-yaml-str">C1</span>  <span class="ci-yaml-comment"># async Job</span>
+  <span class="ci-yaml-key">runtime</span>:
+    <span class="ci-yaml-key">endpoint</span>: <span class="ci-yaml-str">https://cap.internal/video/v1</span>
+    <span class="ci-yaml-key">secretRef</span>: <span class="ci-yaml-str">vault://aip/cap#token</span>
+    <span class="ci-yaml-key">healthCheck</span>: <span class="ci-yaml-str">/health</span>
+    <span class="ci-yaml-key">timeout</span>: <span class="ci-yaml-str">300</span>
+  <span class="ci-yaml-key">interface</span>:
+    <span class="ci-yaml-key">input</span>:
+      <span class="ci-yaml-key">prompt</span>: <span class="ci-yaml-str">string</span>
+      <span class="ci-yaml-key">duration</span>: <span class="ci-yaml-str">int?</span>
+    <span class="ci-yaml-key">output</span>:
+      <span class="ci-yaml-key">artifact</span>: <span class="ci-yaml-str">MediaSet</span>
+      <span class="ci-yaml-key">writeBack</span>: <span class="ci-yaml-str">false</span>
+  <span class="ci-yaml-key">callback</span>:
+    <span class="ci-yaml-key">webhook</span>: <span class="ci-yaml-str">https://aos-api/cb/video</span>
+    <span class="ci-yaml-key">verify</span>: <span class="ci-yaml-str">hmac-sha256</span>
+  <span class="ci-yaml-key">references</span>:
+    - <span class="ci-yaml-key">path</span>: <span class="ci-yaml-str">references/video-api-spec.pdf</span>
+    - <span class="ci-yaml-key">path</span>: <span class="ci-yaml-str">references/prompt-guide.md</span>
+    <span class="ci-yaml-comment"># 运行时按需检索注入上下文</span></div>
+                </div>
+              </div>
+
+              <!-- 知识库关联（references/） -->
+              <div class="mt-5 rounded-lg border border-blue-200 bg-blue-50/40 p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-900">知识库关联 <span class="text-[10px] text-gray-400 font-normal">references/</span></h3>
+                    <p class="text-[11px] text-gray-500 mt-0.5">为该能力挂载参考文档，Agent 运行时可按需检索注入上下文</p>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] text-gray-400">已关联 3 个文件</span>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-3 rounded-md bg-white border border-gray-200 px-3 py-2">
+                    <svg class="w-4 h-4 text-red-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h9l5 5v15a1 1 0 01-1 1H6a1 1 0 01-1-1V3a1 1 0 011-1z" stroke-linejoin="round"/><path d="M14 2v6h6" stroke-linejoin="round"/><path d="M9 13h6M9 17h6" stroke-linecap="round"/></svg>
+                    <div class="flex-1 min-w-0">
+                      <div class="text-xs font-medium text-gray-800 truncate">video-generation-api-spec.pdf</div>
+                      <div class="text-[10px] text-gray-400">2.4MB · API 接口规格书 · 自动解析为 18 个语义块</div>
+                    </div>
+                    <span class="px-1.5 py-0.5 text-[9px] rounded bg-green-100 text-green-700 font-medium">已索引</span>
+                    <button class="text-gray-400 hover:text-red-500"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button>
+                  </div>
+                  <div class="flex items-center gap-3 rounded-md bg-white border border-gray-200 px-3 py-2">
+                    <svg class="w-4 h-4 text-blue-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h9l5 5v15a1 1 0 01-1 1H6a1 1 0 01-1-1V3a1 1 0 011-1z" stroke-linejoin="round"/><path d="M14 2v6h6" stroke-linejoin="round"/></svg>
+                    <div class="flex-1 min-w-0">
+                      <div class="text-xs font-medium text-gray-800 truncate">prompt-engineering-best-practices.md</div>
+                      <div class="text-[10px] text-gray-400">86KB · 提示词工程参考 · 12 个语义块</div>
+                    </div>
+                    <span class="px-1.5 py-0.5 text-[9px] rounded bg-green-100 text-green-700 font-medium">已索引</span>
+                    <button class="text-gray-400 hover:text-red-500"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button>
+                  </div>
+                  <div class="flex items-center gap-3 rounded-md bg-white border border-gray-200 px-3 py-2">
+                    <svg class="w-4 h-4 text-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h9l5 5v15a1 1 0 01-1 1H6a1 1 0 01-1-1V3a1 1 0 011-1z" stroke-linejoin="round"/><path d="M14 2v6h6" stroke-linejoin="round"/></svg>
+                    <div class="flex-1 min-w-0">
+                      <div class="text-xs font-medium text-gray-800 truncate">brand-guidelines-2026.docx</div>
+                      <div class="text-[10px] text-gray-400">340KB · 品牌设计规范 · 解析中…</div>
+                    </div>
+                    <span class="px-1.5 py-0.5 text-[9px] rounded bg-yellow-100 text-yellow-700 font-medium">索引中</span>
+                    <button class="text-gray-400 hover:text-red-500"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button>
+                  </div>
+                </div>
+                <div class="mt-3 flex items-center gap-3">
+                  <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-blue-300 bg-white text-xs text-blue-700 hover:bg-blue-50 font-medium">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+                    上传文档
+                  </button>
+                  <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-300 bg-white text-xs text-gray-600 hover:bg-gray-50">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    从代码仓库引用
+                  </button>
+                  <span class="text-[10px] text-gray-400">支持 PDF / MD / DOCX / TXT，自动语义分块 + 向量索引</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: 安全与配额 -->
+            <div class="ci-panel" data-panel="3">
+              <h2 class="text-sm font-medium text-gray-900 mb-1">安全等级与资源配额</h2>
+              <p class="text-xs text-gray-500 mb-4">定义该能力的调用限制、安全护栏和资源配额</p>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-3">
+                  <div>
+                    <label class="ci-form-label">安全等级</label>
+                    <div class="grid grid-cols-5 gap-2 mt-1">
+                      <div class="ci-sec-level is-selected text-center">
+                        <div class="text-xs font-medium text-gray-900">L0</div>
+                        <div class="text-[9px] text-gray-500">全自动</div>
+                      </div>
+                      <div class="ci-sec-level text-center">
+                        <div class="text-xs font-medium text-gray-900">L1</div>
+                        <div class="text-[9px] text-gray-500">日志</div>
+                      </div>
+                      <div class="ci-sec-level text-center">
+                        <div class="text-xs font-medium text-gray-900">L2</div>
+                        <div class="text-[9px] text-gray-500">HITL</div>
+                      </div>
+                      <div class="ci-sec-level text-center">
+                        <div class="text-xs font-medium text-gray-900">L3</div>
+                        <div class="text-[9px] text-gray-500">审批</div>
+                      </div>
+                      <div class="ci-sec-level text-center">
+                        <div class="text-xs font-medium text-gray-900">L4</div>
+                        <div class="text-[9px] text-gray-500">熔断</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3">
+                    <div>
+                      <label class="ci-form-label">并发配额</label>
+                      <input class="ci-form-input" value="4" type="number" />
+                    </div>
+                    <div>
+                      <label class="ci-form-label">速率限制（次/分）</label>
+                      <input class="ci-form-input" value="30" type="number" />
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3">
+                    <div>
+                      <label class="ci-form-label">内存上限</label>
+                      <input class="ci-form-input" value="512Mi" />
+                    </div>
+                    <div>
+                      <label class="ci-form-label">GPU（C1/C2）</label>
+                      <input class="ci-form-input" value="1 × T4" />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="ci-form-label">超时（秒）</label>
+                    <input class="ci-form-input" value="300" type="number" />
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <div>
+                    <label class="ci-form-label">网络白名单</label>
+                    <div class="space-y-1">
+                      <div class="flex items-center gap-2 text-xs"><input type="checkbox" checked class="rounded"> <span class="text-gray-700">api.openai.com</span> <span class="text-[10px] text-gray-400">LLM API</span></div>
+                      <div class="flex items-center gap-2 text-xs"><input type="checkbox" checked class="rounded"> <span class="text-gray-700">cap.internal</span> <span class="text-[10px] text-gray-400">内部服务</span></div>
+                      <div class="flex items-center gap-2 text-xs"><input type="checkbox" class="rounded"> <span class="text-gray-400">自定义域名…</span></div>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="ci-form-label">护栏配置</label>
+                    <div class="space-y-1">
+                      <div class="flex items-center gap-2 text-xs"><input type="checkbox" checked class="rounded"> <span class="text-gray-700">禁止臆造字段</span></div>
+                      <div class="flex items-center gap-2 text-xs"><input type="checkbox" checked class="rounded"> <span class="text-gray-700">Token 上限（4096）</span></div>
+                      <div class="flex items-center gap-2 text-xs"><input type="checkbox" checked class="rounded"> <span class="text-gray-700">自动入 Draft（L2+）</span></div>
+                      <div class="flex items-center gap-2 text-xs"><input type="checkbox" class="rounded"> <span class="text-gray-400">PII 过滤</span></div>
+                    </div>
+                  </div>
+                  <div class="p-3 rounded-lg bg-blue-50 border border-blue-200 text-[11px] text-gray-600">
+                    <span class="font-medium text-blue-700">Vault 配置：</span>密钥将在运行时从 KMS 注入，不落地到配置文件。轮换周期 90 天。
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: 连通测试 -->
+            <div class="ci-panel" data-panel="4">
+              <h2 class="text-sm font-medium text-gray-900 mb-1">连通性测试与确认</h2>
+              <p class="text-xs text-gray-500 mb-4">点击「运行测试」验证端点可达、鉴权有效、Schema 匹配</p>
+
+              <div class="space-y-2 mb-4">
+                <div class="ci-test-row ci-test-pass">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="font-medium">DNS 解析</span>
+                  <span class="text-[10px] text-gray-500 ml-auto">cap.internal → 10.0.12.34 (12ms)</span>
+                </div>
+                <div class="ci-test-row ci-test-pass">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="font-medium">TLS 握手</span>
+                  <span class="text-[10px] text-gray-500 ml-auto">TLS 1.3 · 证书有效期至 2026-12-01</span>
+                </div>
+                <div class="ci-test-row ci-test-pass">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="font-medium">鉴权验证</span>
+                  <span class="text-[10px] text-gray-500 ml-auto">Vault secret ref 有效 · HMAC 验签通过</span>
+                </div>
+                <div class="ci-test-row ci-test-pass">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="font-medium">健康检查端点</span>
+                  <span class="text-[10px] text-gray-500 ml-auto">GET /health → 200 OK (45ms)</span>
+                </div>
+                <div class="ci-test-row ci-test-pending">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg>
+                  <span class="font-medium">Schema 冒烟测试</span>
+                  <span class="text-[10px] text-gray-500 ml-auto">发送测试请求 → 等待响应…</span>
+                </div>
+              </div>
+
+              <div class="rounded-lg border border-gray-200 bg-gray-50 p-4 space-y-2 text-xs">
+                <div class="text-gray-900 font-medium mb-1">注册汇总</div>
+                <div class="grid grid-cols-2 gap-x-6 gap-y-1 text-gray-600">
+                  <div>能力名称：<span class="text-gray-900 font-medium">short-video-generation</span></div>
+                  <div>能力类型：<span class="text-blue-600 font-medium">C1 Job</span></div>
+                  <div>安全等级：<span class="text-gray-900">L0 全自动</span></div>
+                  <div>并发配额：<span class="text-gray-900">4</span></div>
+                  <div>速率限制：<span class="text-gray-900">30 次/分</span></div>
+                  <div>密钥管理：<span class="text-gray-900">KMS Vault</span></div>
+                  <div>产物写入：<span class="text-gray-900">MediaSet</span></div>
+                  <div>写回本体：<span class="text-gray-900">否</span></div>
+                </div>
+              </div>
+
+              <div class="mt-4 p-3 rounded-lg bg-green-50 border border-green-200 text-[11px] text-gray-600">
+                <span class="font-medium text-green-700">注册后：</span>该能力将出现在「智能体插件」列表中，状态为「就绪」。可在「智能体工具面板」中将此 Capability 挂载为 Agent 的 Function Tool。
+                <a href="aip-tools.html" class="text-blue-600 underline ml-1">去挂载 →</a>
+              </div>
+            </div>
+
+            <!-- Bottom action bar -->
+            <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-200">
+              <button class="ci-back-btn" id="btn-prev" style="visibility:hidden;">上一步</button>
+              <div class="flex gap-2 ml-auto">
+                <a href="aip-capabilities.html" class="ci-back-btn">取消</a>
+                <button class="ci-next-btn" id="btn-next">下一步</button>
+                <button class="ci-finish-btn hidden" id="btn-finish">注册并启用</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </main>
+    </div>
+  </div>
+</div>
+<div class="ci-toast" id="ci-toast"></div>
+<script>
+(function(){
+  var step = 1, max = 4;
+  var navItems = document.querySelectorAll('.ci-step-nav-item');
+  var panels = document.querySelectorAll('.ci-panel');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+  var btnFinish = document.getElementById('btn-finish');
+  var toast = document.getElementById('ci-toast');
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('is-visible');
+    setTimeout(function(){ toast.classList.remove('is-visible'); }, 2000);
+  }
+
+  function go(n) {
+    if (n < 1) n = 1;
+    if (n > max) n = max;
+    step = n;
+    navItems.forEach(function(el){
+      var s = parseInt(el.dataset.step);
+      el.classList.toggle('is-active', s === step);
+      el.classList.toggle('is-done', s < step);
+    });
+    panels.forEach(function(el){
+      el.classList.toggle('is-active', parseInt(el.dataset.panel) === step);
+    });
+    btnPrev.style.visibility = step > 1 ? 'visible' : 'hidden';
+    btnNext.classList.toggle('hidden', step === max);
+    btnFinish.classList.toggle('hidden', step !== max);
+    btnNext.textContent = step === max - 1 ? '运行测试' : '下一步';
+  }
+
+  navItems.forEach(function(el){
+    el.addEventListener('click', function(){ go(parseInt(el.dataset.step)); });
+  });
+  btnPrev.addEventListener('click', function(){ go(step - 1); });
+  btnNext.addEventListener('click', function(){
+    if (step < max) go(step + 1);
+  });
+  btnFinish.addEventListener('click', function(){
+    showToast('Capability 已注册 · 状态：就绪');
+    setTimeout(function(){ window.location.href = 'aip-capabilities.html'; }, 1500);
+  });
+
+  // Capability type selection
+  document.querySelectorAll('.ci-cap-type').forEach(function(el){
+    el.addEventListener('click', function(){
+      document.querySelectorAll('.ci-cap-type').forEach(function(e){ e.classList.remove('is-selected'); });
+      el.classList.add('is-selected');
+    });
+  });
+
+  // Security level selection
+  document.querySelectorAll('.ci-sec-level').forEach(function(el){
+    el.addEventListener('click', function(){
+      document.querySelectorAll('.ci-sec-level').forEach(function(e){ e.classList.remove('is-selected'); });
+      el.classList.add('is-selected');
+    });
+  });
+})();
+</script>
+<script src="assets/demo.js"></script>
+</body>
+</html>
