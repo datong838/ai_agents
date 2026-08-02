@@ -4,6 +4,7 @@
 > 版本：v1.0 · 2026-08-02
 > 上游：[G1 每日经营最小闭环](228-电商增长参谋长G1每日经营最小闭环实施方案.md)
 > 总纲：[电商增长参谋长与六数字同事协同进化实施方案](228-电商增长参谋长与六数字同事协同进化实施方案.md)
+> 模块边界：[电商领域包、平台适配包与接入实例交付方案](228-电商领域包平台适配包与接入实例交付方案.md)
 
 ---
 
@@ -16,6 +17,7 @@
 - 每个智能体必须使用已发布 Logic、受控 Tool 和可回读 run，禁止旧内存 TAOR 成为生产真源。
 - 内容效果、成交反馈和服务反馈都回流给数据参谋，不能把“已生成”当成“有效”。
 - 平台专项字段通过映射层接入，不污染通用 CustomerLite 和增长契约。
+- CustomerLite、内容/导购/客服模型与 20 条 Logic 全部属于 `solution.ecommerce.growth`，不进入 AOS 内核或 Niushop 包。
 
 ---
 
@@ -199,17 +201,17 @@ G2 客服不调用退款、发货、改价或补偿 Action；只输出建议步�
 新增建议：
 
 ```text
-POST   /v1/growth/customer-lite
-GET    /v1/growth/customer-lite/{id}
-PATCH  /v1/growth/customer-lite/{id}
-POST   /v1/growth/customer-lite/{id}/consent-events
-POST   /v1/growth/content-briefs
-POST   /v1/growth/content-assets/{id}/submit
-POST   /v1/growth/consultations
-POST   /v1/growth/recommendations/{id}/submit
-POST   /v1/growth/service-cases
-POST   /v1/growth/service-replies/{id}/submit
-POST   /v1/growth/outcomes
+POST   /v1/domains/ecommerce/customer-lite
+GET    /v1/domains/ecommerce/customer-lite/{id}
+PATCH  /v1/domains/ecommerce/customer-lite/{id}
+POST   /v1/domains/ecommerce/customer-lite/{id}/consent-events
+POST   /v1/domains/ecommerce/growth/content-briefs
+POST   /v1/domains/ecommerce/growth/content-assets/{id}/submit
+POST   /v1/domains/ecommerce/growth/consultations
+POST   /v1/domains/ecommerce/growth/recommendations/{id}/submit
+POST   /v1/domains/ecommerce/growth/service-cases
+POST   /v1/domains/ecommerce/growth/service-replies/{id}/submit
+POST   /v1/domains/ecommerce/growth/outcomes
 ```
 
 Draft 状态统一为 `draft → validating → ready_for_review → approved_for_manual_use → superseded|rejected`。`approved_for_manual_use` 不是外部已发送；外部结果必须另建 Outcome。所有 POST 使用 Idempotency-Key，PATCH/submit 使用 expected revision/hash。
@@ -219,30 +221,28 @@ Draft 状态统一为 `draft → validating → ready_for_review → approved_fo
 ## 10. 计划新增/修改文件
 
 ```text
-services/aos-api/aos_api/
-  growth_customer_contracts.py
-  growth_customer_store.py
-  growth_content_service.py
-  growth_shopping_guide_service.py
-  growth_customer_service.py
-  growth_handoff_policy.py
-  growth_core_agent_logic_templates.py
-  routers/growth_customers.py
-  routers/growth_core_agents.py
-
-services/aos-api/alembic/versions/
-  228growth2_customer_lite_core_agents.py
-
-apps/web/src/pages/s2/growth/
-  CoreAgentCommandCenterPage.tsx
-  ContentOfficerWorkbench.tsx
-  ShoppingGuideWorkbench.tsx
-  CustomerServiceWorkbench.tsx
-  CustomerLiteDrawer.tsx
-  HandoffTracePanel.tsx
+bundles/solutions/ecommerce-growth/
+  backend/ecommerce_growth/g2/
+    customer_contracts.py
+    customer_store.py
+    content_service.py
+    shopping_guide_service.py
+    customer_service.py
+    handoff_policy.py
+    logic_templates.py
+    routes.py
+  frontend/growth/
+    CoreAgentCommandCenterPage.tsx
+    ContentOfficerWorkbench.tsx
+    ShoppingGuideWorkbench.tsx
+    CustomerServiceWorkbench.tsx
+    CustomerLiteDrawer.tsx
+    HandoffTracePanel.tsx
+  evals/g2/
+  migrations/003_growth_g2_customer_core_agents.py
 ```
 
-共享 OpenAPI、router manifest、迁移 head 和导航只由集成负责人修改；三个智能体服务和页面可以按目录并行，但公共契约由 G2 契约负责人冻结。
+共享 extension registry、OpenAPI、Bundle migration lock 和导航 slot 只由集成负责人修改；三个智能体服务和页面可以按目录并行，但领域公共契约由 G2 契约负责人冻结。
 
 ---
 

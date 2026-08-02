@@ -4,6 +4,7 @@
 > 版本：v1.0 · 2026-08-02
 > 安全前置：[228-AIP 生产写回 C0 租户与审批安全闭环方案](../228-AIP生产写回C0租户与审批安全闭环方案.md)
 > 上游：[G5 社交平台 Connector 与数字人直播](228-电商增长参谋长G5社交平台Connector与数字人直播实施方案.md)
+> 模块边界：[电商领域包、平台适配包与接入实例交付方案](228-电商领域包平台适配包与接入实例交付方案.md)
 
 ---
 
@@ -16,6 +17,7 @@
 - 外部超时是 `unknown`，不能盲目重试；先查远端状态再决定恢复。
 - 先低风险、可逆、小流量、单租户灰度；支付、退款、库存、价格等高风险 Action 不纳入通用首波。
 - Automation 只能引用已发布不可变对象与批准策略，不能运行任意脚本或绕过 Tool registry。
+- ActionProposal/审批/Executor/Automation 属于平台内核；电商 Action policy/payload 属于 SolutionPack；provider executor 属于 PlatformAdapterPack。
 
 ---
 
@@ -201,22 +203,22 @@ Automation 状态为 `draft → evaluated → approved → active → paused|exp
 ## 11. API 建议
 
 ```text
-POST   /v1/growth/actions
-GET    /v1/growth/actions/{id}
-POST   /v1/growth/actions/{id}/submit
-POST   /v1/growth/actions/{id}/approve
-POST   /v1/growth/actions/{id}/reject
-POST   /v1/growth/actions/{id}/cancel
-POST   /v1/growth/actions/{id}/reconcile
-POST   /v1/growth/actions/{id}/compensations
-POST   /v1/growth/action-policies
-POST   /v1/growth/automations
-POST   /v1/growth/automations/{id}/evaluate
-POST   /v1/growth/automations/{id}/approve
-POST   /v1/growth/automations/{id}/activate
-POST   /v1/growth/automations/{id}/pause
-POST   /v1/growth/kill-switches
-DELETE /v1/growth/kill-switches/{id}
+POST   /v1/actions
+GET    /v1/actions/{id}
+POST   /v1/actions/{id}/submit
+POST   /v1/actions/{id}/approve
+POST   /v1/actions/{id}/reject
+POST   /v1/actions/{id}/cancel
+POST   /v1/actions/{id}/reconcile
+POST   /v1/actions/{id}/compensations
+POST   /v1/action-policies
+POST   /v1/automations
+POST   /v1/automations/{id}/evaluate
+POST   /v1/automations/{id}/approve
+POST   /v1/automations/{id}/activate
+POST   /v1/automations/{id}/pause
+POST   /v1/kill-switches
+DELETE /v1/kill-switches/{id}
 ```
 
 Action/Automation/kill switch 均须 Principal、roles、markings、幂等、revision/hash 与审计。解除 kill switch 是高权限写操作，不能用普通 DELETE 无条件执行，API 实现需提交解除理由和 expected revision。
@@ -244,24 +246,34 @@ services/aos-api/aos_api/automation/
   evaluator.py
   scheduler.py
 services/aos-api/aos_api/routers/
-  growth_actions.py
-  growth_automations.py
-  growth_kill_switches.py
+  actions.py
+  automations.py
+  kill_switches.py
 
 services/aos-api/alembic/versions/
-  228growth6_actions_automation.py
+  228action0_actions_automation.py
 
-apps/web/src/pages/s2/growth/actions/
+apps/web/src/pages/s2/actions/
   ActionApprovalQueue.tsx
   ActionDetailPage.tsx
   ActionReconciliationPanel.tsx
   KillSwitchConsole.tsx
-apps/web/src/pages/s2/growth/automation/
+apps/web/src/pages/s2/automation/
   AutomationEditor.tsx
   AutomationRunHistory.tsx
+
+bundles/solutions/ecommerce-growth/
+  backend/ecommerce_growth/g6/
+    action_payloads.py
+    action_policies.py
+    automation_templates.py
+  evals/g6/
+
+bundles/platforms/<provider>/
+  backend/<provider>_adapter/action_executor.py
 ```
 
-Action 核心、Automation、前端审批/控制台和 provider adapter 可并行，但公共 contract、policy registry、迁移 head 和 OpenAPI 由单一集成 owner 管理。
+Action/Automation 核心和平台审批/控制台属于内核；电商 payload/policy/模板属于 SolutionPack；provider executor 属于 PlatformAdapterPack。三者可并行，但公共 contract、extension registry、迁移 head 和 OpenAPI 由单一集成 owner 管理。
 
 ---
 

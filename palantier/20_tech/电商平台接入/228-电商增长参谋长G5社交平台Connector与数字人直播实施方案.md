@@ -4,6 +4,7 @@
 > 版本：v1.0 · 2026-08-02
 > 上游：[G3 私域活动与跨渠道分析](228-电商增长参谋长G3私域活动与跨渠道分析实施方案.md)、[G4 多智能体记忆与协同进化](228-电商增长参谋长G4多智能体记忆与协同进化实施方案.md)
 > 总纲：[电商增长参谋长与六数字同事协同进化实施方案](228-电商增长参谋长与六数字同事协同进化实施方案.md)
+> 模块边界：[电商领域包、平台适配包与接入实例交付方案](228-电商领域包平台适配包与接入实例交付方案.md)
 
 ---
 
@@ -16,6 +17,7 @@
 - G5 即使具备技术调用能力，也默认 Draft/manual；真实发布或互动还受 G6 Action 审批控制。
 - 数字人形象、声音、素材、音乐和商品宣传必须有授权；高风险问题支持人工接管和立即停播。
 - 网页、评论和直播弹幕都是不可信输入，不能覆盖 Logic、Tool 权限或记忆治理。
+- OAuth/Webhook/Connector Runtime 属于平台；各社交平台实现属于独立 PlatformAdapterPack；内容/直播业务模型属于 `solution.ecommerce.growth`。
 
 ---
 
@@ -215,11 +217,11 @@ POST   /v1/connectors/installations/{id}/refresh-capabilities
 POST   /v1/connectors/webhooks/{provider}
 POST   /v1/connectors/operations:invoke
 GET    /v1/connectors/operations/{id}
-POST   /v1/growth/live-plans
-POST   /v1/growth/live-plans/{id}/evaluate
-POST   /v1/growth/live-sessions
-POST   /v1/growth/live-sessions/{id}/takeover
-POST   /v1/growth/live-sessions/{id}/stop
+POST   /v1/domains/ecommerce/growth/live-plans
+POST   /v1/domains/ecommerce/growth/live-plans/{id}/evaluate
+POST   /v1/domains/ecommerce/growth/live-sessions
+POST   /v1/domains/ecommerce/growth/live-sessions/{id}/takeover
+POST   /v1/domains/ecommerce/growth/live-sessions/{id}/stop
 ```
 
 写 operation 在 G6 前统一返回 `ACTION_APPROVAL_REQUIRED`；不能通过直接调用 adapter 绕过服务层。
@@ -236,38 +238,41 @@ services/aos-api/aos_api/connectors/
   oauth_service.py
   webhook_service.py
   runtime.py
-  social/
-    wechat_channels.py
-    wechat_moments.py
-    douyin.py
-    xiaohongshu.py
-    toutiao.py
-    xianyu.py
-
-services/aos-api/aos_api/
-  growth_social_event_service.py
-  growth_live_contracts.py
-  growth_live_service.py
-  growth_live_safety.py
   routers/connectors.py
-  routers/growth_live.py
+
+bundles/platforms/social-<provider>/
+  bundle.yaml
+  backend/<provider>_adapter/
+  capabilities/
+  oauth/
+  webhooks/
+  evals/
 
 services/aos-api/alembic/versions/
-  228growth5_connectors_live.py
+  228_connector_runtime_core.py
 
-apps/web/src/pages/s2/growth/connectors/
-  ConnectorCatalogPage.tsx
-  ConnectorAccountPage.tsx
-  CapabilityMatrix.tsx
-  OperationTrace.tsx
-apps/web/src/pages/s2/growth/live/
-  DigitalHumanProfilePage.tsx
-  LivePlanEditor.tsx
-  LiveControlRoom.tsx
-  LiveIncidentPanel.tsx
+bundles/solutions/ecommerce-growth/
+  backend/ecommerce_growth/g5/
+    social_event_service.py
+    live_contracts.py
+    live_service.py
+    live_safety.py
+    routes.py
+  frontend/growth/connectors/
+    ConnectorCatalogPage.tsx
+    ConnectorAccountPage.tsx
+    CapabilityMatrix.tsx
+    OperationTrace.tsx
+  frontend/growth/live/
+    DigitalHumanProfilePage.tsx
+    LivePlanEditor.tsx
+    LiveControlRoom.tsx
+    LiveIncidentPanel.tsx
+  evals/g5/
+  migrations/006_growth_g5_social_live.py
 ```
 
-平台插件各自独立文件/测试，公共 runtime、契约、router manifest 和迁移由集成负责人维护，减少并行冲突。
+平台插件各自形成 PlatformAdapterPack；公共 runtime、契约、extension registry 和平台迁移由集成负责人维护；增长业务模型留在 SolutionPack。账号 secret_ref 和 capability snapshot 在 InstanceOverlay/installation 中绑定。
 
 ### 9.1 数据库迁移与凭据边界
 
