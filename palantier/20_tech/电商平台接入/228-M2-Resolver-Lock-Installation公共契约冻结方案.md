@@ -1,7 +1,7 @@
 # 228-M2 Resolver、Lock 与 Installation 公共契约冻结方案
 
 > 状态：**已补充冻结·等待 M1 最终累计回归门**
-> 版本：v1.0 · 2026-08-03
+> 版本：v1.1 · 2026-08-03
 > 上位方案：[228-M0 资产包注册、解析、安装与证据化接入案例实施方案](228-M0-资产包注册解析安装与证据化接入案例实施方案.md)
 > 范围：通用 AOS 平台内核，不包含任何具体电商平台业务逻辑、生产连接器或生产数据
 
@@ -66,23 +66,29 @@ M2 不交付：
 
 M1 的 `exports` 仅包含 bundle-local 路径，不能证明 API/navigation/UI 资源键。M2 在 `BundleSpec` 增加向后兼容、默认空数组的 `contributions`；它属于 manifest，因而被 M1 content hash 与 Ed25519 签名覆盖。
 
-### 3.1 ContributionClaim
+### 3.1 ContributionClaim 判别联合
 
 ```json
-{
-  "kind": "api",
-  "key": "POST /v1/orders/{orderId}:retry",
-  "mode": "exclusive"
-}
+[
+  {"kind":"api","method":"POST","path":"/v1/orders/{orderId}:retry","operationId":"retryOrder","mode":"exclusive"},
+  {"kind":"navigation","route":"/orders/:orderId","mode":"exclusive"},
+  {"kind":"ui","slot":"order.detail.actions","id":"retry-order","mode":"shared"}
+]
 ```
 
-| 字段 | 约束 |
-|---|---|
-| `kind` | `api`、`navigation`、`ui` |
-| `key` | 1～512；已 trim、无 NUL、反斜杠、查询串或 fragment；必须是调用方预规范化后的稳定资源键 |
-| `mode` | `exclusive` 或 `shared`；`api` 只允许 `exclusive` |
+| kind | 精确字段 | 冲突主键 |
+|---|---|---|
+| `api` | method、path、operationId、mode=`exclusive` | `(method, normalizedPath)`；`operationId` 另做全局唯一键，不能拼进 path 主键绕过冲突 |
+| `navigation` | route、mode | `normalizedRoute` |
+| `ui` | slot、id、mode | `(slot,id)` |
 
-同一 manifest 内 `(kind,key)` 唯一。`api` key 固定为 `UPPER_METHOD + 空格 + normalized_path + 可选 ':' + operationId`；navigation key 固定为 normalized route；UI key 固定为 `slot/id`。同一 `(kind,key)` 被多个 resolved bundle 声明且任一为 `exclusive` 时返回 contribution collision；仅当全部为 `shared` 才允许共存。
+三个 claim 都是 strict discriminated union，禁止携带其他 kind 的字段。公共 `mode` 只能是 `exclusive/shared`；API 只接受 exclusive。slot/id/operationId 长度 1～160，已 trim、无 NUL；operationId 符合 `^[A-Za-z][A-Za-z0-9_]*$`，slot/id 符合小写 `BUNDLE_ID_PATTERN`。
+
+API normalization：method 转大写后只能是 `GET/POST/PUT/PATCH/DELETE/OPTIONS/HEAD`；path 必须以 `/` 开头，拒绝反斜杠、percent encoding、query、fragment、重复斜杠、`.`/`..` 段和空模板；除根路径外移除尾斜杠；`{合法参数名}` 统一折叠为 `{}` 参与冲突主键，因此 `{id}` 与 `{orderId}` 必然冲突。静态段大小写保留并按 PostgreSQL `C`/Unicode codepoint 排序。
+
+Navigation normalization：route 必须以 `/` 开头，拒绝反斜杠、percent encoding、query、fragment、重复斜杠和 `.`/`..` 段；除根路径外移除尾斜杠，静态段转小写；`:合法参数名` 统一折叠为 `:`。UI 不拼接自由文本 key，直接以已校验的 `(slot,id)` 比较。
+
+同一 manifest 内各冲突主键唯一。主键被多个 resolved bundle 声明且任一为 exclusive 时返回 contribution collision；仅当全部为 shared 才允许共存。API route 主键或 operationId 任一重复都冲突。
 
 若 `exports.backend` 非空却没有 `api` claim，或 `exports.ui` 非空却没有 `navigation/ui` claim，解析失败关闭为 `MANIFEST_INVALID`，不得伪称路由/导航/UI 冲突检测通过。
 
@@ -134,9 +140,12 @@ M1 的 `exports` 仅包含 bundle-local 路径，不能证明 API/navigation/UI 
 - 完整 strict `manifest`；
 - `contentHash`；
 - 当前唯一 `signature_verification.artifactHash` 作为 `signatureFingerprint`；
+- 五类 release evidence 最小快照的 `releaseEvidenceRevision`；
 - 服务端派生的 required/optional dependency、conflict、capability、permission、migration 和 contribution 索引。
 
 候选只来自 `published` version，且 M1 `REQUIRED_RELEASE_EVIDENCE` 每种都必须非空、该类型的**每一条**证据均为当前 valid、`observedAt <= transaction_timestamp()`、未过期、未 revoked；content-hash evidence 每一条都必须等于 version contentHash；signature evidence 必须唯一。内部 signature envelope、evidence artifactRef/metadata、actor、reason、snapshot 不进入 DTO，不经 API 泄露。
+
+`releaseEvidenceRevision = canonical_sha256(sortedEvidence)`；每个最小 evidence 只含 `type/artifactHash/status/observedAt/expiresAt/revokedAt`，按 `(type,artifactHash,observedAt,expiresAt null-first)` 排序。它进入 RegistrySnapshotCandidate、ResolvedBundle 和 lock hash。submit/approve/apply/verify 重算后必须与 lock 完全一致；合法证据刷新也要求重新 resolve/approve，不能静默沿用旧安全证据集合。
 
 ### 4.5 RegistrySnapshot
 
@@ -149,7 +158,7 @@ hash payload 精确为：
 }
 ```
 
-候选按 `(publisher,id,SemVer precedence,version,contentHash)` 稳定排序。`computedAt` 可作为存储元数据，但不进入 payload/hash。snapshot reader 必须单事务、单次候选集合读取，禁止 `list + N 次 get`。
+对外/内部 DTO 精确为 `schemaVersion/candidates/snapshotHash/checkedAt`；`snapshotHash` 和 `checkedAt` 不进入上面的 hash payload，checkedAt 固定取同一 PostgreSQL 事务的 `transaction_timestamp()`。候选按 publisher/id 升序、SemVer precedence 升序，再按 version/contentHash 升序稳定排序。snapshot reader 必须单事务、单次候选集合读取，禁止 `list + N 次 get`。
 
 ---
 
@@ -157,13 +166,15 @@ hash payload 精确为：
 
 ### 5.1 ResolvedBundle
 
-`ResolvedBundle` 包含：
+`ResolvedBundle` 精确包含：
 
-- `publisher/id/version/kind/contentHash/signatureFingerprint`；
-- canonical required/optional dependency edges；
-- conflicts、capabilities provides/requires；
-- permissions、migration plan reference；
-- signed contribution claims；
+- `publisher/id/version/kind/contentHash/signatureFingerprint/releaseEvidenceRevision`；
+- `dependencies/optionalDependencies`：`publisher/id/version` 约束 DTO，publisher 已服务端补全；
+- `conflicts`：`publisher/id/version|null`，publisher 已服务端补全；
+- `capabilities`：`provides/requires` 两个排序唯一字符串数组；
+- `permissions`：完整目标 PermissionSet；
+- `migration`：`planRef|null/downgradePolicy`；
+- `contributions`：规范化后的判别联合数组；
 - `selectionReason`：`requested` 或 `dependency`。
 
 ### 5.2 ResolvedEdge 与 CapabilityProvider
@@ -172,6 +183,8 @@ hash payload 精确为：
 - Provider：`capability → publisher/id/version`；按 capability 排序。一个 required capability 必须恰有一个 selected provider；0 个或多个都冲突。
 
 ### 5.3 稳定 ConflictDetail
+
+`ConstraintPathNode` 精确字段为 `publisher/id/version|null/via`，via 是 `requested/dependency/optional`；`ConstraintRecord` 为 `sourcePublisher/sourceId/sourceVersion|null/targetPublisher/targetId/requirement/optional`；`CandidateRejection` 为 `publisher/id/version/reason`，reason 只能是 `platform_api/version_constraint/prerelease/conflict/resource_limit`；`ConflictResource` 为 `kind/key/owners`，owner 是 `publisher/id/version`。
 
 `DEPENDENCY_CONFLICT.details` 固定为：
 
@@ -187,6 +200,8 @@ hash payload 精确为：
 
 `subtype` 只能是：`missing_dependency`、`version_intersection_empty`、`explicit_conflict`、`capability_missing`、`capability_multiple`、`contribution_collision`。path 从顶层 requested 到冲突节点；cycle 另用 `DEPENDENCY_CYCLE`，cycle 旋转到字典序最小节点并固定方向。所有 constraints/rejections/resource provider 列表 canonical 排序，禁止自由文本代替结构化 details。
 
+`DEPENDENCY_CYCLE.details` 精确为 `{"cycle":[ConstraintPathNode...]}`；数组不重复首节点并保持真实有向依赖方向，只旋转到字典序最小 tuple 起点，不得反转成不存在的边。
+
 ### 5.4 确定性算法
 
 1. 先校验平台 API，再收集顶层 requested 约束。
@@ -194,7 +209,7 @@ hash payload 精确为：
 3. required dependency 全部参与；optional dependency 仅当其 `(publisher,id)` 同时是顶层 requested 时参与约束。
 4. 多个范围不计算字符串交集，而是对 snapshot 中稳定候选逐项同时 match。
 5. 优先最高 stable 版本；prerelease 只有顶层/依赖约束显式包含 prerelease 时可选。
-6. 候选相同 SemVer precedence 时按 `(version,publisher,id,contentHash)` 固定排序。
+6. 候选相同 SemVer precedence 时按 `(version,publisher,id,contentHash)` 升序排序并选第一项；conflict 的 publisher 缺省也与 dependency 一样继承声明者 publisher。
 7. 采用全图 deterministic DFS/backtracking；输入、数据库行或 dict 顺序不得影响结果。
 8. 选定后统一检查 cycle、explicit conflict、capability 与 contribution collision。
 
@@ -212,6 +227,18 @@ hash payload 精确为：
 | canonical lock payload | 4 MiB |
 
 任一超限返回 `RESOLUTION_LIMIT_EXCEEDED` 并在 details 中给出 `resource/limit/observed`。生产请求另设 2 秒 wall-clock 保护，但决定性 step budget 是主要边界；超时只允许失败，不允许返回可能因机器速度不同而变化的部分 lock。每一上限都做 max-1/max/max+1 测试。
+
+### 5.6 三类 Diff 精确 DTO
+
+`PermissionSet` 精确为 `roles/markings/dataScopes/actionTypes` 四个排序唯一字符串数组。`PermissionDiff` 精确为 `baseline/target/added/removed/unchanged` 五个 PermissionSet；added/removed/unchanged 分别做逐集合差集/交集。无 current installation 时 baseline 四项全为空数组。职责分离中的 marking 门检查 `target.markings` 全集，不只检查 added。
+
+`MigrationStep` 精确为 `publisher/id/version/planRef/downgradePolicy`，只收录 planRef 非 null 的 resolved bundle，按 `(publisher,id,version,planRef)` 排序。`MigrationChange` 精确为 `publisher/id/before/after`。`MigrationPlanDiff` 精确为 `baseline/target/added/removed/changed`：前四项为 MigrationStep 数组，changed 只包含同 bundle coordinate 但 step 不同的 before/after；无 current installation 时 baseline/removed/changed 为空。
+
+`ContributionBinding` 精确为 `publisher/id/version/claim`，claim 为 §3 的规范化判别联合。`ContributionDiff` 精确为 `baseline/target/added/removed/unchanged` 五个 ContributionBinding 数组，按 `(claim.kind, conflictKey, publisher,id,version)` 排序。resolver 已在生成 diff 前拒绝 collision，因此 lock 内不保存“可能有冲突”的结果。
+
+target 一律从本次 resolved bundles 聚合；baseline 一律从服务端验证后的 current active installation 所绑定的旧 lock payload 重建，禁止改用当前 Registry 中同版本的可变查询结果。Permission target 是所有 resolved permissions 的集合并集；migration/contribution 保留 owner coordinate，不能因文本相同丢失归属。
+
+三个 diff 对象都以 strict DTO 的完整 canonical JSON 分别计算 `permissionDiffHash/migrationPlanHash/contributionDiffHash`；正文和 hash 同时落库并在 Store/Service/DB 三层重算。禁止只 hash added、只保存摘要或把空对象 `{}` 当成未定义算法。
 
 ---
 
@@ -256,13 +283,13 @@ hash payload 精确为：
 | resolve | `CompositionRequest` | 必填 Idempotency-Key |
 | create installation | `compositionId/lockRevision/overlayRevision/displayName` | 必填 Idempotency-Key |
 | submit | 空 strict object | Idempotency-Key + If-Match |
-| approve | `lockHash/permissionDiffHash/migrationPlanHash` | Idempotency-Key + If-Match |
+| approve | `lockHash/permissionDiffHash/migrationPlanHash/contributionDiffHash` | Idempotency-Key + If-Match |
 | reject | `reason` | Idempotency-Key + If-Match |
 | apply | 空 strict object | Idempotency-Key + If-Match |
 | verify | 空 strict object | Idempotency-Key + If-Match |
 | rollback | `reason` | Idempotency-Key + If-Match |
 
-所有成功 installation response 返回强 ETag。body 不提供 `expectedRevision`；若未来新增该字段，必须与 If-Match 一致，否则 400。create 时服务端按租户读取 lock 并固定 immutable installation revision 1；M2 不提供升级到 revision 2 的 API，但 schema 为后续 revision 留出空间。
+所有成功 installation response 返回强 ETag。body 不提供 `expectedRevision`；若未来新增该字段，必须与 If-Match 一致，否则 400。create 时服务端按租户读取 lock 并固定 immutable installation revision 1；后续动作以 N+1 revision 记录状态，但 M2 不提供替换 composition lock/overlay 的安装计划升级 API。
 
 ### 7.2 状态机
 
@@ -270,7 +297,7 @@ hash payload 精确为：
 |---|---|---|---|
 | create | 无 | `draft` | lock/diff/hash 完整，租户一致 |
 | submit | `draft` | `submitted` | requester 与 revision requester 固定 |
-| approve | `submitted` | `approved` | approver ≠ requester；三个 hash 精确匹配 |
+| approve | `submitted` | `approved` | approver ≠ requester；四个 hash 精确匹配 |
 | reject | `submitted` | `rejected` | reviewer ≠ requester；reason 非空 |
 | apply | `approved` | `applied` | 只生成 dry-apply evidence，不执行 Bundle |
 | verify | `applied` | `active` | lock/Registry refs/evidence 复验；原 active 保存为 previous |
@@ -293,9 +320,19 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 
 ### 7.4 InstallationRevision 与响应
 
-每个 immutable revision 完整包含：`installationId/revision/parentRevision/state/compositionId/lockRevision/lockHash/permissionDiffHash/migrationPlanHash/contributionDiffHash/overlayRevision/requestedBy/createdAt`；approved revision 通过独立 approval DTO 关联 `decision/actor/approved hashes/reason/createdAt`，不得回写历史 revision。
+每个 immutable revision 完整包含：`installationId/revision/parentRevision/state/compositionId/lockRevision/lockHash/permissionDiffHash/migrationPlanHash/contributionDiffHash/overlayRevision/requestedBy/decisionId|null/createdAt`。approve/reject 创建 immutable `decisionId`；approved revision 写入该 id，apply/verify/active/rolled_back 后继 revision 必须原样继承，禁止替换或清空。rejected revision 关联 rejected decision；draft/submitted 必须为 null。
 
-`InstallationRecord` 包含：identity/displayName、由 current revision 派生的 state、`currentRevision/activeRevision/previousActiveRevision/etagVersion`、current immutable revision、可选 approval、按 sequence 排序的事件和 created/updated 时间。列表 API 只返回 identity/displayName/state/pointers/etag/times；详情和动作返回完整 record。所有动作响应中的 body `etagVersion` 必须与 HTTP `ETag` 一致；事件 evidence 只返回服务端生成的脱敏 ref/hash/status，不返回秘密或 Bundle 原始内容。
+`InstallationDecision` 精确为 `decisionId/installationId/submittedRevision/decision/actor/lockHash/permissionDiffHash/migrationPlanHash/contributionDiffHash/reason|null/createdAt`，decision 只能 `approved/rejected`。apply/verify 通过 current revision 的 decisionId 读取同一批准对象，逐字核对四个 hash、decision=approved、actor≠requestedBy；不通过“当前 revision 恰好没有 approval”或仅按 lock hash 猜批准对象。
+
+`InstallationRecord` 包含：identity/displayName、由 current revision 派生的 state、`currentRevision/activeRevision/previousActiveRevision/etagVersion`、current immutable revision、由 decisionId 精确关联的可选 decision、按 sequence 排序的事件和 created/updated 时间。列表 API 只返回 identity/displayName/state/pointers/etag/times；详情和动作返回完整 record。所有动作响应中的 body `etagVersion` 必须与 HTTP `ETag` 一致；事件 evidence 只返回服务端生成的脱敏 ref/hash/status，不返回秘密或 Bundle 原始内容。
+
+### 7.5 API 字段、列表和状态码
+
+- `CreateInstallationRequest`：compositionId UUID、lockRevision integer≥1、overlayRevision 1～160 规范化字符串、displayName 1～240 规范化字符串。
+- `ApproveRequest`：四个 SHA-256 hash；`RejectRequest/RollbackRequest`：reason 1～2000 规范化字符串；submit/apply/verify body 必须是严格空对象 `{}`。
+- `InstallationEvent`：`sequence/fromRevision|null/toRevision/fromState|null/toState/actor/reason|null/evidence|null/createdAt`；evidence 精确为 `type/evidenceRef/evidenceHash/status/observedAt`，type 为 `dry_apply/verification/rollback`，status 为 `valid/invalid`。
+- list query：可选 state filter，`limit` 默认 50、范围 1～100，`offset` 默认 0、范围 0～10000；稳定排序 `createdAt DESC, installationId ASC`；响应 envelope 为 `items/total/limit/offset`。
+- resolve 与 create installation 首次成功返回 201；submit/approve/reject/apply/verify/rollback 返回 200；所有 GET 返回 200；幂等回放返回原始状态码而不是改成 200。
 
 ---
 
@@ -307,9 +344,9 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 
 ### 8.2 幂等
 
-唯一键固定为 `(org_id, project_id, operation, idempotency_key)`。request hash 覆盖 canonical body、path identity、If-Match 和服务端固定的资源 revision，不覆盖 actor 时间戳。
+唯一键固定为 `(org_id, project_id, operation, idempotency_key)`。事务取得 advisory lock 后**先查 receipt，再读取任何当前 Registry/installation 状态**。request hash 只覆盖 canonical client command envelope：`subject/pathParams/body/ifMatch`；subject 是已验证 Principal subject，body 包含客户端实际提交的 snapshot/current-ref 前置条件。不得把本次服务端读取的 snapshot、current resource revision/ETag、角色、markings 或时间放入 request hash。
 
-- 同 key + 同 request hash：回放原 HTTP status、response body 和 ETag；
+- 已有 receipt 时先用原 command envelope 重算 hash；同 key + 同 request hash 直接回放原 HTTP status、response body 和 ETag，不再次 resolve、重验当前 ETag 或读取变化后的 Registry；
 - 同 key + 不同 request hash：`IDEMPOTENCY_CONFLICT`；
 - 不同租户或 operation 可安全复用相同 key；
 - M2 不设 TTL，不允许 key 过期后表达另一请求；
@@ -328,16 +365,43 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 | `bundle_composition_lock` | tenant、composition_pk、revision、payload/hash、三个 diff 正文/hash、created_at | tenant-safe FK；revision≥1；JSON object；insert-only；lock hash 唯一于 composition |
 | `bundle_installation` | tenant、installation_id/pk、display_name、current_revision、active_revision、previous_active_revision、etag_version、actor/time | tenant+id 唯一；etag≥1；identity/tenant immutable；业务 state 从 current immutable revision 读取 |
 | `bundle_installation_revision` | tenant、installation_pk/revision、parent_revision、state、composition_pk/lock_revision/hash、overlay_revision、requested_by/time | 每个成功动作插入 N+1；复合 PK/FK；insert-only；parent=N-1；lock 三 hash 由 trigger 核对 |
-| `bundle_installation_approval` | tenant、installation/revision、decision、actor、三个 approved hash、reason/time | 每 revision 最多一个决定；insert-only；actor≠requester trigger |
-| `bundle_installation_event` | tenant、installation、sequence、revision、from/to、actor、reason、evidence_json/hash、created_at | append-only；sequence 连续；事件尾与 installation state 同事务一致 |
+| `bundle_installation_decision` | tenant、decision_id、installation/submitted_revision、decision、actor、四个 approved hash、reason/time | 每 submitted revision 最多一个决定；insert-only；actor≠requester trigger |
+| `bundle_installation_event` | tenant、installation、sequence、from/to revision/state、actor、reason、evidence_json/hash、created_at | append-only；sequence 连续；事件尾与 installation current revision 同事务一致 |
 | `bundle_installation_command` | tenant、operation、key、request_hash、HTTP status、response_json、etag、created_at | 复合 PK；insert-only；只允许 2xx receipt；JSON object |
 
-### 9.2 关系与 trigger
+### 9.2 精确列、主键和 null
+
+所有 `org_id/project_id/actor/operation/key/display_name/overlay_revision/resolver_version` 为 TEXT，并做非空白、无 NUL 与本文件长度 CHECK；所有 hash 为 TEXT + SHA256_PATTERN CHECK；所有时间为 `TIMESTAMPTZ NOT NULL DEFAULT NOW()`；所有 JSONB 同时做 object/array CHECK。
+
+1. `bundle_composition`
+   - `org_id, project_id, composition_pk UUID, composition_id UUID, request_json JSONB(object), request_hash, registry_snapshot_json JSONB(object), registry_snapshot_hash, current_installation_ref_json JSONB(object) NULL, current_installation_ref_hash NULL, resolver_version, created_by, created_at`。
+   - PK `(org_id,project_id,composition_pk)`；UNIQUE `(org_id,project_id,composition_id)`；等价去重 unique index 为 `(org_id,project_id,request_hash,registry_snapshot_hash,resolver_version,COALESCE(current_installation_ref_hash,''))`。
+2. `bundle_composition_lock`
+   - `org_id, project_id, composition_pk, revision BIGINT, lock_payload JSONB(object), lock_hash, permission_diff_json JSONB(object), permission_diff_hash, migration_plan_json JSONB(object), migration_plan_hash, contribution_diff_json JSONB(object), contribution_diff_hash, created_by, created_at`。
+   - PK `(org_id,project_id,composition_pk,revision)`；revision≥1；复合 FK 到 composition；UNIQUE `(org_id,project_id,composition_pk,lock_hash)`。
+3. `bundle_installation`
+   - `org_id, project_id, installation_pk UUID, installation_id UUID, display_name, current_revision BIGINT, active_revision BIGINT NULL, previous_active_revision BIGINT NULL, etag_version BIGINT, created_by, created_at, updated_at`。
+   - PK `(org_id,project_id,installation_pk)`；UNIQUE `(org_id,project_id,installation_id)`；current_revision/etag≥1；三个 pointer 使用 `DEFERRABLE INITIALLY DEFERRED` 复合 FK 到本 installation revision。
+4. `bundle_installation_revision`
+   - `org_id, project_id, installation_pk, revision BIGINT, parent_revision BIGINT NULL, state, composition_pk, lock_revision BIGINT, lock_hash, permission_diff_hash, migration_plan_hash, contribution_diff_hash, overlay_revision, requested_by, decision_id UUID NULL, created_at`。
+   - PK `(org_id,project_id,installation_pk,revision)`；revision≥1；revision=1 时 parent NULL，否则 parent=revision-1；state CHECK `draft/submitted/approved/rejected/applied/active/rolled_back`；复合 FK 到 installation、parent revision、composition lock 和可选 decision。
+5. `bundle_installation_decision`
+   - `org_id, project_id, decision_id UUID, installation_pk, submitted_revision BIGINT, decision, actor, lock_hash, permission_diff_hash, migration_plan_hash, contribution_diff_hash, reason TEXT NULL, created_at`。
+   - PK `(org_id,project_id,decision_id)`；UNIQUE `(org_id,project_id,installation_pk,submitted_revision)`；decision CHECK `approved/rejected`；approved reason 可 null，rejected reason 必填；FK 到 submitted immutable revision。revision→decision FK 为 deferred，以便 decision 与 N+1 revision 同事务插入。
+6. `bundle_installation_event`
+   - `org_id, project_id, installation_pk, sequence BIGINT, from_revision BIGINT NULL, to_revision BIGINT, from_state TEXT NULL, to_state TEXT, actor, reason TEXT NULL, evidence_json JSONB(object) NULL, evidence_hash TEXT NULL, created_at`。
+   - PK `(org_id,project_id,installation_pk,sequence)`；sequence≥1；evidence_json/hash 必须同 null 或同非 null；复合 FK 到 from/to revision；to_state 必须等于 to revision state。
+7. `bundle_installation_command`
+   - `org_id, project_id, operation, idempotency_key, subject, request_hash, status_code SMALLINT, response_json JSONB(object), response_etag TEXT NULL, created_at`。
+   - PK `(org_id,project_id,operation,idempotency_key)`；status_code 200～299；response ETag 必须为 null 或冻结的强 ETag 格式；M2 无 expires_at/TTL。
+
+### 9.3 关系与 trigger
 
 - 所有 tenant-owned 表都保留 `org_id + project_id` 并使用包含 tenant 的复合 FK，禁止只靠 Service 过滤。
 - FK 全部 `ON DELETE RESTRICT`；M2 不提供物理删除。
-- lock/revision/approval/event/command 使用 UPDATE/DELETE/TRUNCATE 拒绝 trigger。
+- lock/revision/decision/event/command 使用 UPDATE/DELETE/TRUNCATE 拒绝 trigger。
 - installation identity/tenant 不允许任意直接修改；current/active/previous pointer 与 etag 只能通过受控 transition trigger，且 commit 时必须同时存在 N+1 immutable revision 和连续 event。
+- decision trigger 要求 submitted source 的 requester 与 decision actor 不同、四个 hash 等于固定 lock；approved 及其所有后继 revision 必须继承同一 approved decisionId，rejected 只能引用 rejected decision。
 - lock insert trigger 重新计算 canonical lock、permission、migration、contribution hash；直接 SQL 伪造正文/hash 必须失败关闭。
 - event evidence 正文与 hash 在数据库层强绑定，采用 M1 已冻结的 canonical JSONB + pgcrypto profile。
 - 非空 lock、installation 或 command 数据存在时，M2 downgrade 失败关闭；空库允许 downgrade。
@@ -355,11 +419,14 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 | 422 | `RESOLUTION_LIMIT_EXCEEDED` | 任一决定性解析预算超限 |
 | 409 | `INSTALLATION_STATE_CONFLICT` | 非法状态边或 terminal revision 重放 |
 | 409 | `LOCK_INTEGRITY_INVALID` | lock/diff 正文与 hash 不一致 |
+| 500 | `LOCK_INTEGRITY_CORRUPT` | 服务端回读已持久化 lock/diff 发现损坏；响应不得带原始内容 |
 | 400 | `IDEMPOTENCY_KEY_REQUIRED` | M2 POST 缺少或非法幂等键 |
 | 428 | `PRECONDITION_REQUIRED` | mutation 缺少 If-Match |
 | 400 | `PRECONDITION_INVALID` | If-Match 不是冻结的强 ETag 格式 |
 
 跨租户资源统一 `NOT_FOUND`，不得泄露资源存在性。旧批准 hash 重放使用 `APPROVAL_STALE`；自批使用 `DUTY_SEPARATION_REQUIRED`。
+
+`LOCK_INTEGRITY_INVALID` 只用于客户端引用/hash 与 canonical lock 不一致；数据库已持久化内容自身无法通过重算时必须使用 `LOCK_INTEGRITY_CORRUPT` 并告警。M2 的 rollback 从 active 恢复 previous（previous 可 null）原则上总是允许；`ROLLBACK_BLOCKED` 保留给后续存在下游引用或法律保留门的阶段，M2 不凭空返回该错误。
 
 ---
 
@@ -414,12 +481,12 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 | 解析器指数爆炸 | P0 | 决定性 step budget + 节点/边/深度上限 |
 | 同 id 多 publisher 歧义 | P0 | 顶层 publisher 必填；依赖缺省只继承声明者 |
 | lock 看似不可变但 hash 可伪造 | P0 | Store/Service/DB 三层重算，insert-only trigger |
-| 自批或旧批准重放 | P0 | immutable approval hashes + maker-checker + CAS |
+| 自批或旧批准重放 | P0 | immutable decision hashes + maker-checker + CAS |
 | 幂等只在内存 | P0 | PostgreSQL receipt + advisory lock + unique constraint |
 | route/nav/UI 假检测 | P0 | manifest signed contribution claims；索引缺失失败关闭 |
 | M2 破坏 M1 | P1 | 新模块/新表为主，两阶段累计回归；不改旧 Apollo 真源 |
 
-回滚优先通过 revert M2 router/service 开关保留新表；有 M2 数据时 schema downgrade 失败关闭，禁止为“回滚成功”静默删除 lock、approval、event 或 receipt。
+回滚优先通过 revert M2 router/service 开关保留新表；有 M2 数据时 schema downgrade 失败关闭，禁止为“回滚成功”静默删除 lock、decision、event 或 receipt。
 
 ---
 
