@@ -1,7 +1,8 @@
-# 栖月汇数据接入 / 全栈 bootstrap（代手工）
+# 栖月汇旧数据接入脚本（已隔离，禁止运行）
 
-脚本代手工配置，**不进** `aos-platform`。只调通用 `/v1/*`。  
-**数据目标是线上全量孪生**（默认 `limit=0`），不是演示子集。
+> **2026-08-02 审计结论：** 本目录脚本与当前 OpenAPI、Pipeline 真实执行能力和 C0.2 安全边界不匹配。它们仅保留为历史参考，**不得在本地、测试或生产环境运行**。替代分层脚本和门禁见 [228 实施规格](../228-微商城专项实施准备与FDE全链路规格.md#4-fde-实施包结构)。
+
+主要风险：默认 `limit=0` 全量读取；Connector ingest 直写遗留对象表；Pipeline/Schedule 请求体过时；全栈脚本会连续创建配置并触发运行；PowerShell 脚本复制数据库密钥到平台 `.env`。
 
 | 脚本 | 作用 |
 |------|------|
@@ -15,7 +16,7 @@
 2. 单机 AOS：`powershell -File scripts/demo/start-local.ps1`（Docker 需先起；Win 可经 WSL dockerd）
 3. `AOS_AUTH_ALLOW_DEV=1`；Web `http://127.0.0.1:5173` · API `:8080`
 
-## 一键全量孪生
+## 历史命令（禁止执行）
 
 ```powershell
 cd docs\palantier\20_tech\niushop电商案例

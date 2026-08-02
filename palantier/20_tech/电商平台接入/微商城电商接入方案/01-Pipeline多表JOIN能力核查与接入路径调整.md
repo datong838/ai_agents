@@ -1,11 +1,13 @@
 # Niushop 案例 · Pipeline 多表 JOIN 能力核查与接入路径调整
 
+> **2026-08-02 基线校准：** 旧结论“无 DAG、无 Join 算子编辑”已经过期。当前 Pipeline 画布已支持节点、拖动、端口连线、方向箭头和图结构持久化，也有 JOIN 视觉节点；但生产 resolver/executor 尚未注册，因此 JOIN **可编辑但不可作为生产执行能力验收**。实施以 [228-微商城专项实施准备与FDE全链路规格](228-微商城专项实施准备与FDE全链路规格.md) 为准。
+
 | 字段 | 内容 |
 |------|------|
 | 状态 | **方案 only · 暂不编码** |
 | 版本 | **v1.0** · 2026-07-19 |
-| 目录 | `docs/palantier/20_tech/niushop电商案例/` |
-| 关联 | [00 整体孪生主方案 v2.0](00-Niushop微商城AOS对接方案.md) · [05 产品](../../05-数据集成Connectors-Pipeline-Dataset产品方案.md) · [T05](../T05-L1数据集成详细技术方案.md) · [36](../36-T4.6-MySQL去stub方案.md) · [39](../39-T4.4b-文件解析插件方案.md) |
+| 目录 | `docs/palantier/20_tech/电商平台接入/微商城电商接入方案/` |
+| 关联 | [00 整体孪生主方案 v2.0](00-Niushop微商城AOS对接方案.md) · [05 产品](../../../05-数据集成Connectors-Pipeline-Dataset产品方案.md) · [T05](../../T05-L1数据集成详细技术方案.md) · [36](../../36-T4.6-MySQL去stub方案.md) · [39](../../39-T4.4b-文件解析插件方案.md) |
 | 目的 | ① 核实 Pipeline Builder 多表 JOIN；② 支撑栖月汇 **整体孪生** 中商品多子表接入；③ 缺口回馈平台 |
 
 ---
@@ -24,16 +26,16 @@
 
 ## 1. 核查结论（直接回答）
 
-### 1.1 Pipeline Builder 多表 JOIN —— **当前不可用（非 live）**
+### 1.1 Pipeline Builder 多表 JOIN —— **画布可编排，生产执行仍不可用**
 
 | 层 | 现状 |
 |----|------|
-| 产品目标 / 蓝图 | [05](../../05-数据集成Connectors-Pipeline-Dataset产品方案.md) Transform 含 **Filter · Join · Aggregate**；foundry HTML 有 Join 节点示意 |
-| `/data/pipelines` UI | 列表壳 + sourceId 过滤 + 试跑壳；**无 DAG、无 Join 算子编辑** |
-| API `POST /v1/pipelines` | 内存 CRUD；create 即假 SUCCEEDED；**无 transforms / nodes / SQL** |
+| 产品目标 / 蓝图 | [05](../../../05-数据集成Connectors-Pipeline-Dataset产品方案.md) Transform 含 **Filter · Join · Aggregate**；foundry HTML 有 Join 节点示意 |
+| `/data/pipelines` UI | 自由画布、节点拖动、端口连线、方向箭头、属性编辑与图结构保存已具备；含 JOIN 视觉节点 |
+| API / 执行层 | Pipeline 元数据和图可持久化；生产 resolver/executor 未注册时会可信失败，尚无可验收的 JOIN 数据执行 |
 | `jdbc-mysql` | **单表** `SELECT * FROM table`（env/`AOS_MYSQL_TABLE`）；**无多表、无自定义 JOIN SQL 面** |
 
-**判定：** 多表 JOIN 是 **目标态能力点**，本案例正好用来 **检验并暴露缺口**；**不能**把首波孪生建立在「PB 里拖 Join」上。
+**判定：** 多表 JOIN 的编辑交互已经具备，但执行闭环仍是 **目标态能力点**；**不能**把首波孪生建立在「PB 里拖 Join」上。首波采用单表对象管道 + Link，待通用 JOIN executor 验收后再做聚合 Dataset。
 
 ### 1.2 对「商品 JDBC + 订单 Excel」的评价（纳入整体孪生 v2.0）
 
