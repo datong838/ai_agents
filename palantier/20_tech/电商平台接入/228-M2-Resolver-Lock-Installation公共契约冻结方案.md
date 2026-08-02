@@ -1,7 +1,7 @@
 # 228-M2 Resolver、Lock 与 Installation 公共契约冻结方案
 
-> 状态：**已补充冻结·M1 GREEN·M2-A 已授权编码**
-> 版本：v1.2 · 2026-08-03
+> 状态：**M2-A0 GREEN·M2-A1 已授权编码**
+> 版本：v1.3 · 2026-08-03
 > 上位方案：[228-M0 资产包注册、解析、安装与证据化接入案例实施方案](228-M0-资产包注册解析安装与证据化接入案例实施方案.md)
 > 范围：通用 AOS 平台内核，不包含任何具体电商平台业务逻辑、生产连接器或生产数据
 
@@ -434,10 +434,10 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 
 ### M2-A：Core（可并行）
 
-- W1：新增 `composition_contracts.py`、`release_policy.py`、`registry_snapshot.py`、`dependency_graph.py`、`diff_service.py`、`resolver.py` 及纯算法/属性测试；只在总控窗口修改 `contracts.py/__init__.py`。M1 Service 与 snapshot reader 共用 release policy，禁止跨模块调用下划线私有函数。
-- W2：新增 M2 migration、`composition_store.py`、`installation_store.py` 及 PostgreSQL/迁移/并发测试。
-- W3：独立安全与契约测试，先不修改共享 router/main。
-- 总控：冻结公共导出、审查 hash/DDL，集成后运行 M1+M2-A 专项和累计回归。
+- M2-A0 已完成：W1 冻结 composition DTO/contribution claims，W2 落地 migration/数据库不变量，W3 冻结请求 Schema/稳定错误，总控冻结五个公共导出并完成累计回归。
+- M2-A1 按 [228-M2-A1 核心解析与持久化并行实施方案](228-M2-A1核心解析与持久化并行实施方案.md) 执行：W1 负责 release policy/snapshot，W2 负责 composition/installation store，W3 负责 dependency graph/diff/resolver，W4 负责独立对抗与跨模块集成测试。
+- M1 Service 与 snapshot reader 共用 release policy，禁止跨模块调用下划线私有函数。
+- 总控独占共享导出和既有契约文件，审查 hash/DDL，集成后运行 M1+M2-A 专项和累计回归。
 
 ### M2-B：Control Plane（M2-A GREEN 后）
 
@@ -492,4 +492,4 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 
 ## 14. 冻结结论
 
-M1 最新提交 `7c04cf3` 已完成累计回归，m1 与四个 worker 分支已对齐同一提交，本文件已提交，M2-A 编码门现已打开。M2-A 未通过专项与累计回归，不进入 M2-B；M2-B 未通过不进入 M3。
+M2-A0 已在 `m1@cc78e01` 完成公共契约、数据库底座与最终累计回归，证据见 [M2-A0 公共契约与数据库底座回归证据](../evidence/m0/m2-control/2026-08-03-M2-A0公共契约与数据库底座回归证据.md)。M2-A1 编码门现已打开；M2-A1 未通过专项与累计回归，不进入 M2-B，M2-B 未通过不进入 M3。
