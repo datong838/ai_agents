@@ -1,7 +1,7 @@
 # TitanIndustries · AOS 对接方案 — 总体分析
 
 > **版本**：v1.0 · 2026-07-23
-> **参照**：`000-电商平台接入总方案.md` Stage 1-6 框架
+> **参照**：`../000-电商平台接入总方案.md` Stage 1-6 框架
 > **定位**：TitanIndustries 是 Palantir 官方用虚构公司演示的**订单到现金（Order-to-Cash, O2C）端到端最佳实践**，是全部电商/零售平台接入的**架构蓝本和参考标杆**
 > **源资料**：`TitanIndustries资料.md`（Palantir 官方 Blog + AIP Demos + Blocks 文档深度还原）
 

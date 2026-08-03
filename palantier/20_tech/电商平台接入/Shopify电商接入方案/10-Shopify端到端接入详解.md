@@ -1,7 +1,7 @@
 # Shopify · 端到端接入详解
 
 > **版本**：v1.0 · 2026-07-23
-> **参照**：`000-电商平台接入总方案.md` Stage 1-6 框架
+> **参照**：`../000-电商平台接入总方案.md` Stage 1-6 框架
 > **定位**：Phase 2 跨境平台，验证 **GraphQL Connector** + **Webhook 事件驱动** + **多币种**
 > **依赖**：G2（OAuth Token Manager）+ G3（Webhook 监听）+ G4（GraphQL Connector）
 > **复杂度**：⭐⭐⭐
@@ -174,9 +174,9 @@ Expression:
 
 -- 汇率标记
 Expression:
-  CASE WHEN customer_currency != shop_currency 
-       THEN 'multi_currency' 
-       ELSE 'single_currency' 
+  CASE WHEN customer_currency != shop_currency
+       THEN 'multi_currency'
+       ELSE 'single_currency'
   END AS currency_flag
 ```
 

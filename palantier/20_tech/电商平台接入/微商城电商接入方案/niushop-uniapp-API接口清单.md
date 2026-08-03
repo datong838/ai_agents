@@ -1,11 +1,11 @@
 # Niushop ↔ UniApp（栖月汇）API 接口清单
 
-> **依据**  
-> - 服务端：`niushop/app/api/controller/*` + `niushop/addon/*/api/controller/*`  
-> - 使用方：`uniapp/`（主工程；统一经 `uniapp/common/js/http.js` → `$api.sendRequest`）  
-> - 扫描结果：服务端约 **341** 个 action；uniapp 源码引用约 **315** 条路径（含插件前缀）  
-> **范围**：以 **uniapp 实际调用** 为主；服务端有但前端未用的接口见附录 B。  
-> **关联文档**：`docs/niushop-数据表与核心对象关系.md`
+> **依据**
+> - 服务端：`niushop/app/api/controller/*` + `niushop/addon/*/api/controller/*`
+> - 使用方：`uniapp/`（主工程；统一经 `uniapp/common/js/http.js` → `$api.sendRequest`）
+> - 扫描结果：服务端约 **341** 个 action；uniapp 源码引用约 **315** 条路径（含插件前缀）
+> **范围**：以 **uniapp 实际调用** 为主；服务端有但前端未用的接口见附录 B。
+> **关联文档**：`niushop-数据表与核心对象关系.md`
 
 ---
 
@@ -74,7 +74,7 @@
 
 ### 1.6 鉴权
 
-- 服务端：`$this->checkToken()` 通过则填充 `$this->member_id`。  
+- 服务端：`$this->checkToken()` 通过则填充 `$this->member_id`。
 - 下表 **需登录** 列：`Y` = 控制器内显式 `checkToken`；`N` = 可不登录；`?` = 视业务（有 token 更好）。
 
 ### 1.7 统一响应形态

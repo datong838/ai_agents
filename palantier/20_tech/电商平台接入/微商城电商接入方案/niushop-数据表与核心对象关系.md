@@ -1,10 +1,10 @@
 # Niushop B2C v5 — 数据表关系与核心对象关系
 
-> **依据**  
+> **依据**
 >
-> - 库结构：`docs/niushop_b2c_v5.sql`（线上库导出，约 **302** 张表，前缀 `ns_`）  
-> - 代码：`niushop/app`（ThinkPHP 模型/服务；`model('order')` ≡ 物理表 `ns_order`）  
-> **约定**：下文表名多写逻辑名（去掉 `ns_`）；本站常见 `site_id = 1`。  
+> - 库结构：`docs/niushop_b2c_v5.sql`（线上库导出，约 **302** 张表，前缀 `ns_`）
+> - 代码：`niushop/app`（ThinkPHP 模型/服务；`model('order')` ≡ 物理表 `ns_order`）
+> **约定**：下文表名多写逻辑名（去掉 `ns_`）；本站常见 `site_id = 1`。
 > **说明**：Niushop 多数「外键」为逻辑关联（应用层保证），库内很少声明 FOREIGN KEY。
 
 ---
@@ -264,7 +264,7 @@ goods（主品配额 / share_lead_goods_id）
 
 ### 3.3 多小程序并存
 
-见 `docs/site1-三小程序并存-技术实现与实施方案.md`。数据上贯穿：`weapp`、`goods_weapp`、`member_weapp`、`order.weapp_id`、`pay.weapp_id`、`goods_cart.weapp_id`、`config.weapp_id`。
+原始方案《site1-三小程序并存-技术实现与实施方案》当前仓库未收录。数据上贯穿：`weapp`、`goods_weapp`、`member_weapp`、`order.weapp_id`、`pay.weapp_id`、`goods_cart.weapp_id`、`config.weapp_id`。
 
 ---
 
@@ -322,10 +322,10 @@ goods（主品配额 / share_lead_goods_id）
 
 ### 6.1 `order`（130 列，最重）
 
-身份与端：`order_id, order_no, site_id, member_id, weapp_id, weapp_appid, weapp_openid, store_id, delivery_store_id`  
-支付：`out_trade_no, pay_status, pay_type, pay_money, balance_money, pay_time`  
-金额：`goods_money, delivery_money, promotion_money, coupon_money, order_money, adjust_money`  
-状态：`order_status, delivery_status, refund_status, order_type, delivery_type`  
+身份与端：`order_id, order_no, site_id, member_id, weapp_id, weapp_appid, weapp_openid, store_id, delivery_store_id`
+支付：`out_trade_no, pay_status, pay_type, pay_money, balance_money, pay_time`
+金额：`goods_money, delivery_money, promotion_money, coupon_money, order_money, adjust_money`
+状态：`order_status, delivery_status, refund_status, order_type, delivery_type`
 分享/分润扩展：`share_member_id, share_bind_*, commission_risk_*, order_biz_type, share_instance_id, share_owner_member_id, is_self_shop_order, is_self_shop_special_price`
 
 ### 6.2 `order_goods`（71 列）
@@ -334,19 +334,19 @@ goods（主品配额 / share_lead_goods_id）
 
 ### 6.3 `goods` / `goods_sku`
 
-SPU 含体验：`share_experience_quota, share_lead_goods_id, share_lead_goods_quantity`。  
+SPU 含体验：`share_experience_quota, share_lead_goods_id, share_lead_goods_quantity`。
 SKU 含店主价：`self_shop_special_price`；库存 `stock` / `real_stock`。
 
 ### 6.4 `member`
 
-关系网：`share_member, source_member, fenxiao_id, has_shop_qualified`。  
-资产：`point, balance, balance_money, growth`。  
+关系网：`share_member, source_member, fenxiao_id, has_shop_qualified`。
+资产：`point, balance, balance_money, growth`。
 消费汇总：`order_money, order_num, …`。
 
 ### 6.5 `pay` / `config` / `weapp`
 
-- `pay`：`out_trade_no, relate_id, member_id, weapp_id, pay_status, event`  
-- `config`：`site_id, weapp_id, app_module, config_key, value`  
+- `pay`：`out_trade_no, relate_id, member_id, weapp_id, pay_status, event`
+- `config`：`site_id, weapp_id, app_module, config_key, value`
 - `weapp`：`weapp_id, site_id, appid, is_default`
 
 ### 6.6 `member_shop_share_experience`
@@ -415,7 +415,7 @@ erDiagram
 
 `addon`, `addon_quick`, `adv`, `adv_position`, `album`, `album_pic`, `area`, `article`, `article_category`, `blindbox*`, `cashier_*`, `change_shifts_record`, `config`, `cron`, `cron_log`, `diy_*`, `document`, `export`, `express_*`, `fenxiao_*`, `finance_cost_expense`, `form`, `form_data`, `giftcard_*`, `goods*`, `group`, `help*`, `link`, `local*`, `member*`, `menu`, `message*`, `notes*`, `notice`, `order*`, `pay*`, `pc_*`, `poster*`, `printer*`, `promotion_*`, `reserve*`, `scale`, `service_*`, `servicer*`, `shop*`, `site*`, `sms_template`, `split_word`, `stat_*`, `stock_*`, `store*`, `supplier`, `sys_*`, `user*`, `v3_upgrade_log`, `verifier`, `verify*`, `virtual_stock`, `weapp*`, `wechat_*`
 
-（与 `docs/niushop_b2c_v5.sql` 中 `CREATE TABLE` 一一对应；完整排序列表可用：  
+（与 `docs/niushop_b2c_v5.sql` 中 `CREATE TABLE` 一一对应；完整排序列表可用：
 `Select-String -Path docs/niushop_b2c_v5.sql -Pattern '^CREATE TABLE'`）
 
 ---
@@ -427,7 +427,7 @@ erDiagram
 | ----- | ---------------------------------------- |
 | 初版依据  | 线上导出 SQL + `niushop/app` 模型扫描            |
 | 若结构变更 | 重新导出 SQL 后更新 §1/§4/§6 与附录 A              |
-| 相关文档  | `docs/site1-三小程序并存-技术实现与实施方案.md`；体验码方案文档 |
+| 相关文档  | 《site1-三小程序并存-技术实现与实施方案》（当前仓库未收录）；体验码方案文档 |
 
 
 ---

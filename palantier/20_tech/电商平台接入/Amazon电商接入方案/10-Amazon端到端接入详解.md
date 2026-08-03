@@ -1,7 +1,7 @@
 # Amazon · 端到端接入详解
 
 > **版本**：v1.0 · 2026-07-23
-> **参照**：`000-电商平台接入总方案.md` Stage 1-6 框架
+> **参照**：`../000-电商平台接入总方案.md` Stage 1-6 框架
 > **定位**：Phase 2 最后接入平台，**最复杂的全球平台**（20+ 区域、SP-API、AWS Sig V4、FBA 状态机）
 > **依赖**：G2（OAuth Token Manager）+ G5（AWS Signature V4）
 > **复杂度**：⭐⭐⭐⭐⭐
@@ -39,7 +39,7 @@ Step 2 · STS Token 获取 AWS 临时凭证（如果使用 IAM Role）
   → AWS_SECRET_ACCESS_KEY + AWS_SESSION_TOKEN
 
 Step 3 · AWS Signature V4 签名每个 API 请求
-  Authorization: AWS4-HMAC-SHA256 
+  Authorization: AWS4-HMAC-SHA256
     Credential=AKID****/20260723/us-east-1/execute-api/aws4_request,
     SignedHeaders=host;x-amz-date,
     Signature=****
@@ -178,7 +178,7 @@ Union:
 ```sql
 -- Amazon 有两种配送方式
 Expression:
-  CASE 
+  CASE
     WHEN fulfillment_channel = 'AFN' THEN 'FBA'  -- Amazon 配送
     WHEN fulfillment_channel = 'MFN' THEN 'FBM'  -- 卖家自发货(MFN)
     ELSE 'unknown'
@@ -195,7 +195,7 @@ Expression:
 Aggregate GROUP BY asin:
   COLLECT_LIST(MAP(region, price)) AS prices_by_region
   → [{NA: 29.99}, {EU: 24.99}, {FE: 3500}]  -- 多币种
-  
+
 MIN(price_usd) AS min_price_global  -- 全球最低价（统一换算 USD 后）
 MAX(price_usd) AS max_price_global
 ```

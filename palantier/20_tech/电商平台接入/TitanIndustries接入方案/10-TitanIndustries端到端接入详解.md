@@ -1,7 +1,7 @@
 # TitanIndustries · 端到端接入详解
 
 > **版本**：v1.0 · 2026-07-23
-> **参照**：`000-电商平台接入总方案.md` Stage 1-6 框架
+> **参照**：`../000-电商平台接入总方案.md` Stage 1-6 框架
 > **定位**：Palantir 官方 O2C（订单到现金）最佳实践，全部电商/零售平台接入的架构蓝本
 > **源系统**：SAP S/4HANA（CDS View 模式）
 > **核心场景**：流程挖掘 + AI 信用冻结决策 + BAPI 写回闭环
@@ -515,7 +515,7 @@ Your final output MUST be in the following JSON structure:
 {
   "decision": "release_block",
   "confidence": 0.87,
-  "reasoning": "Order value $12,500 is within credit limit $50,000. 
+  "reasoning": "Order value $12,500 is within credit limit $50,000.
     Customer's 12-month paid on time rate is 0.94 (above 0.9 threshold).
     Historic order volume shows stable growth. Recommend release.",
   "proposed_action": "Release credit block for SO item VBAP-00123"
@@ -971,4 +971,3 @@ Ontology 中 Credit Block 对象状态更新
     ↓ Ontology 同步刷新 → 经验沉淀 → 优化后续推荐
 [SAP S/4HANA 信用状态更新 + Foundry Ontology 闭环]
 ```
-

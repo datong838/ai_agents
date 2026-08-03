@@ -29,8 +29,8 @@
 
 ## 1. 一句话目标
 
-> 把 **栖月汇** 线上微商城（人 · 货 · 场 · 单 · 钱 · 履约 · 分润 · 内容）  
-> **整体映射**为 AOS 数字孪生，使运营在 AOS 态势/运营台看见真实变化，  
+> 把 **栖月汇** 线上微商城（人 · 货 · 场 · 单 · 钱 · 履约 · 分润 · 内容）
+> **整体映射**为 AOS 数字孪生，使运营在 AOS 态势/运营台看见真实变化，
 > 并以此 **检验与完善** AOS 平台能力——**不是**再造一个商城后台，也**不是**测试假数据。
 
 ```text
@@ -62,7 +62,7 @@
 
 ## 3. 整体孪生范围（按域 · 不是 302 表无脑进 OT）
 
-> **原则：** 302 表 **都能进 L1 Dataset**（可配置 Sync）；Ontology **按业务对象建模**。  
+> **原则：** 302 表 **都能进 L1 Dataset**（可配置 Sync）；Ontology **按业务对象建模**。
 > 营销 55+ 表等进「卫星域」——数据可进湖，OT 可后置，**不挡核心孪生退出**。
 
 ### 3.1 孪生域总图
@@ -220,7 +220,7 @@ OKF Bundle（配置包）：`okf.qiyuehui.mall.twin.v1`（名示意；无通用�
 
 ### 5.4 JDBC 商品多子表（无 PB Join 时）
 
-**路径 A：** `ns_goods` / `ns_goods_sku` / `ns_goods_weapp` / `ns_goods_category` 各 Dataset + Ontology Link。  
+**路径 A：** `ns_goods` / `ns_goods_sku` / `ns_goods_weapp` / `ns_goods_category` 各 Dataset + Ontology Link。
 **路径 B：** 只读 VIEW `v_aos_goods_sku_flat` 单表采集（01 §3）。
 
 ### 5.5 Dataset 命名建议
@@ -334,14 +334,14 @@ OKF Bundle（配置包）：`okf.qiyuehui.mall.twin.v1`（名示意；无通用�
 
 ## 12. 验收（栖月汇整体孪生 MVP）
 
-- [ ] 线上库经隧道 JDBC 绿；T0～T6 关键表有 Dataset  
-- [ ] Ontology：Site/Weapp/Member/Goods/Sku/Order/OrderLine/Payment/Store 可检索  
-- [ ] Link：订单→会员→行→SKU→商品；订单→weapp/门店  
-- [ ] `mall-order.xlsx` 与库 **列级对齐**（130/71），作孪生包而非抽样  
-- [ ] 真实下单后，Schedule 内 COP/Inbox 可见变化  
-- [ ] 至少 1 套商品 PDF + 协议 Word 进 MediaSet 可解析  
-- [ ] Marking + Draft 一条；无 Host 行业定制码  
-- [ ] 话术：**栖月汇整体数字孪生 MVP（T0～T6）**；不宣称替代商城后台、不宣称营销 55 表全进 OT  
+- [ ] 线上库经隧道 JDBC 绿；T0～T6 关键表有 Dataset
+- [ ] Ontology：Site/Weapp/Member/Goods/Sku/Order/OrderLine/Payment/Store 可检索
+- [ ] Link：订单→会员→行→SKU→商品；订单→weapp/门店
+- [ ] `mall-order.xlsx` 与库 **列级对齐**（130/71），作孪生包而非抽样
+- [ ] 真实下单后，Schedule 内 COP/Inbox 可见变化
+- [ ] 至少 1 套商品 PDF + 协议 Word 进 MediaSet 可解析
+- [ ] Marking + Draft 一条；无 Host 行业定制码
+- [ ] 话术：**栖月汇整体数字孪生 MVP（T0～T6）**；不宣称替代商城后台、不宣称营销 55 表全进 OT
 
 ---
 
@@ -361,12 +361,12 @@ OKF Bundle（配置包）：`okf.qiyuehui.mall.twin.v1`（名示意；无通用�
 
 ## 14. 评审清单
 
-- [ ] 确认目标 = **栖月汇整体孪生**（T0～T6 MVP）  
-- [ ] 确认运行态 = JDBC；Excel = 全字段孪生包；文档 = Media  
-- [ ] 确认 PB Join 非 live，用 VIEW/Link  
-- [ ] 确认态势依赖 Schedule；秒级后置  
-- [ ] 确认零行业定制码 · 缺口进 §11  
-- [ ] 通过后开 **QYH.1**（配置 + 隧道），非开定制开发  
+- [ ] 确认目标 = **栖月汇整体孪生**（T0～T6 MVP）
+- [ ] 确认运行态 = JDBC；Excel = 全字段孪生包；文档 = Media
+- [ ] 确认 PB Join 非 live，用 VIEW/Link
+- [ ] 确认态势依赖 Schedule；秒级后置
+- [ ] 确认零行业定制码 · 缺口进 §11
+- [ ] 通过后开 **QYH.1**（配置 + 隧道），非开定制开发
 
 ---
 
@@ -379,4 +379,4 @@ OKF Bundle（配置包）：`okf.qiyuehui.mall.twin.v1`（名示意；无通用�
 
 ---
 
-*v2.0 · `niushop电商案例/00-Niushop微商城AOS对接方案.md`*
+*v2.0 · `00-Niushop微商城AOS对接方案.md`*
