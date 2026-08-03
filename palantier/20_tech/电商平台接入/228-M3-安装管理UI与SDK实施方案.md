@@ -1,7 +1,8 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.0 评审通过，允许进入 M3-0；M2-B GREEN 后的 M3 编码门**
-> 代码基线：`aos-platform m1@d85992b`
+> 状态：**v1.1 评审通过 · M3-0 GREEN · 允许进入 M3-1**
+> 起始代码基线：`aos-platform m1@d85992b`
+> 当前代码基线：`aos-platform m1@435de34`
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
 > 后续门禁：M3 GREEN 后方可进入 M4；M5 完成前不得进入电商 G0～G6
 
@@ -149,6 +150,21 @@ UI 仅把服务端状态映射成动作入口，服务端仍做最终授权：
 
 ## 6. 开发拆分与文件所有权
 
+### M3-0 实施结果（2026-08-03）
+
+M3-0 已由四个独立 worker 从 `m1@d85992b` 并行完成，并由总控逐提交审查、集成到 `m1@435de34`：
+
+| Worker | 交付 | 集成提交 |
+|---|---|---|
+| W1 | Composition/Installation TypeScript DTO 与类型 fixture | `d460c29` |
+| W2 | Registry 真实动态响应、失败关闭 parser 与 fixture | `e839e8c` |
+| W3 | 11 个 control operation 的 OpenAPI/header/ETag/error 契约测试 | `435de34` |
+| W4 | 前端 operation map、header 与错误矩阵 | `f7937b0` |
+
+验证结果：前端专项 14/14、Web 全量 1795/1795、TypeScript GREEN、Web production build GREEN；后端 Registry/Composition/Installation/OpenAPI 累计 77/77。完整证据见 [`2026-08-03-M3-0契约与测试夹具冻结证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)。
+
+M3-0 未修改页面、通用 API client、后端生产代码、数据库或状态机。Registry OpenAPI 仍是动态 object，前端以真实 Store/API 公共投影 fixture 和失败关闭 parser 冻结；后端合法增加字段时必须显式更新契约。下一步只允许进入 M3-1。
+
 ### M3-0：契约与测试夹具冻结
 
 **目标：** 从 OpenAPI/Pydantic 和真实响应冻结 TypeScript 字段与错误矩阵。
@@ -268,4 +284,4 @@ M3 只有在以下条件全部满足时才可标记 GREEN：
 5. 专项、Web 全量、typecheck/build 和平台累计回归 GREEN，证据归档。
 6. 上位状态和 AOS 项目开发上下文同步更新。
 
-当前结论：**M2-B 已为 M3 提供完整后端基础；本方案冻结后按 M3-0～M3-5 实施，不新增架构。**
+当前结论：**M3-0 已 GREEN；以 `m1@435de34` 进入 M3-1 专用 SDK Adapter，继续按 M3-1～M3-5 实施且不新增架构。**
