@@ -1,8 +1,8 @@
 # 228-M4 Evidence 与接入案例实施方案
 
-> 状态：**v1.5 · M4-4 GREEN · 允许进入 M4-5 累计回归与证据收口**
+> 状态：**v1.6 · M4 最终 GREEN · 允许进入 M5 最小电商包组合验证**
 > 起始代码基线：`aos-platform m1@36b386e`
-> 当前代码基线：`aos-platform m1@c9da800`（五分支与五远端同 HEAD/tree）
+> 最终代码基线：`aos-platform m1@8964c4b`（五分支与五远端同 HEAD/tree、ahead/behind `0/0`）
 > 上位约束：M1、M2、M3 已最终 GREEN；本方案只细化 M0 已定义的 Evidence/Case 架构
 > 后续门禁：M4 最终 GREEN 后方可进入 M5；M5 完成前不得进入具体电商平台接入
 
@@ -354,7 +354,11 @@ M4-4 退出门：W1/W2 真实 PostgreSQL 对抗、W3 隔离启动与 HTTP 健康
 - 五分支同 HEAD/tree、ahead/behind 0/0、clean 并推远端。
 
 **实施冻结（2026-08-04）：** M4-5 不增加功能。W1 执行资产域与 M1～M4 后端累计门；W2 执行 Web 全量、Integration/Asset SDK、TypeScript 与 production build；W3 执行 Desktop、Ontology SDK 和浏览器支撑语法/清理复验；W4/总控执行后端全量、Router/OpenAPI 确定性、跨壳汇总、最终证据与五分支同步。失败先分类为本波回归、既有失败或环境问题，只有本波真实缺陷才允许最小修复。
+
+**累计门禁修复裁决（2026-08-04）：** M4-5 发现 M4-2 已注册并由 Router 基线覆盖的 5 个 `/v1/integration-cases` operation 尚未进入已提交 OpenAPI 生成物与库存计数；这是 M4 交付物之间的契约漂移，不是新增 API。允许总控仅刷新 `export_openapi.py` 的确定性计数和对应生成物，并以两次干净进程字节一致、唯一 operationId、Router 基线及 OpenAPI 契约测试共同证明；不得借此改变路由、DTO 或兼容语义。M4-4 新增测试/浏览器支撑文件的静态检查问题只做定向格式修复；若敏感扫描将隔离测试 DSN 字面量识别为 credential URL，则只允许改为由非敏感测试参数在运行时组装，并复跑 scanner、shell 语法和幂等清理。既有全资产域格式债务另行登记，不在本波批量改写。
 - 更新总计划、228 路线、M0 状态与 AOS 开发上下文。
+
+**完成状态（2026-08-04）：最终 GREEN。** 累计门补齐 5 个既有 Case operation 的 OpenAPI/库存生成物与计数，修复本波新增浏览器支撑的定向格式及 credential URL 扫描写法；Router 保持 512 entries/4047 routes，OpenAPI 为 2281 paths/4024 unique operations/1498 schemas。后端全量 8878 passed、3 skipped、1 个外部 Agnes 用例显式 deselected、15 个既有 warning、2 subtests；资产域 679 passed；Web 148 files/2001 passed；Desktop 40、Ontology SDK 6，OpenAPI/security/构建均满足门禁。最终代码基线 `m1@8964c4b`，五分支与五远端同 HEAD/tree、ahead/behind `0/0`、工作树 clean。详见 [M4-5 最终累计回归与 M4 收口证据](../evidence/m0/m4-evidence-case/2026-08-04-M4-5最终累计回归与M4收口证据.md)。
 
 ## 12. 验收矩阵
 
@@ -392,4 +396,4 @@ M4 只有同时满足以下条件才 GREEN：
 
 ## 14. 当前裁决
 
-M4 方案已冻结。允许从 `m1@36b386e` 开始 M4-0；不得提前修改数据库、页面或启动 M5。M4-0 的唯一目标是让后端 strict DTO、Stage Policy、Web fixture 和五端点安全契约形成同一可执行真源。
+M4 已在 `m1@8964c4b` 最终 GREEN 并完成五分支/远端收口。允许进入已冻结的 M5 最小电商包组合验证；不得以 M4 的测试 Case 冒充真实平台接入，也不得提前开发具体电商平台。
