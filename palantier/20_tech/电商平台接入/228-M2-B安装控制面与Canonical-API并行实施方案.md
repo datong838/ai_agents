@@ -1,10 +1,10 @@
 # 228-M2-B 安装控制面与 Canonical API 并行实施方案
 
-> 状态：**v1.3 B0 审查收敛版，授权完成 M2-B0 共享底座**
+> 状态：**v1.5 M2-B0 最终 GREEN，允许进入 B1**
 > 日期：2026-08-03
 > 上位方案：[228-M2 Resolver、Lock 与 Installation 公共契约冻结方案](228-M2-Resolver-Lock-Installation公共契约冻结方案.md)
-> 代码基线：`aos-platform m1@a6e4d31`
-> 分支基线：m1、W1、W2、W3、W4 均对齐 `a6e4d31`
+> 代码基线：`aos-platform m1@2648808`（B0 共享底座已提交）
+> 分支基线：m1、W1、W2、W3、W4 均对齐 `2648808`
 
 ---
 
@@ -39,6 +39,8 @@ M2-A 已提供可复用的严格 DTO、确定性 Resolver、Registry snapshot/re
 结论：**M2-B 可开发，但必须按 B0→B1→B2→B3 四小波推进，不能直接先开 Router。**
 
 交叉评审记录：v1.0 首轮由 W1/W2/W3 分别审查事务/baseline、状态机/revalidation/evidence、HTTP/OpenAPI/CORS；v1.1 关闭全部 P0/P1 后又进行两轮定点复核。最终三方均确认残余 P0/P1 为零，形成 v1.2 冻结版。B0 首轮实现审查又发现超大 ETag 转换逃逸、全局 `sys.modules` 测试易受收集顺序干扰、Protocol 缺精确签名锁和畸形 target marking helper 可能失败开放；v1.3 在继续编码前冻结对应边界与回归方法，不改变 M2-B 业务范围。
+
+B0 执行复核（2026-08-03）：`2648808` 的生产文件、测试文件和共享 wiring 与 B0 独占清单一致；B0 专项、M1+M2 `asset_registry` 累计、OpenAPI、路由聚合、Alembic head/current、Ruff/format 与源码安全门已通过，回归证据已归档。Ruff 必须从 `services/aos-api` 项目目录运行以使用正确的一方包分类；从仓库根直接检查同一文件会把 `aos_api` 误分类为第三方，不作为格式门结果。B0 未修改业务代码，允许五分支保持 `2648808` 进入 B1 文件独占开发。
 
 ---
 
@@ -603,6 +605,6 @@ W4 不修改生产文件；以合入 W1/W2/W3 后的基线写真实 PostgreSQL �
 
 ## 11. 进入编码结论
 
-M2-A 最终 GREEN，五分支已对齐 `a6e4d31`。本文件 v1.3 已根据方案期三组交叉评审及 B0 首轮实现审查补齐事务、baseline、跨 Worker Protocol、typed transition、exact revalidation、role/marking、可复算 evidence、header/ETag 上界、隔离 lazy-import 测试、OpenAPI、CORS 和文件所有权；正式授权 B0 收敛，必须在 P0/P1 清零后同步五分支。
+M2-A 最终 GREEN，M2-B0 已在 `2648808` 完成共享错误、control policy、跨 Worker Protocol、统一 wiring 与旧 Registry factory 委托；专项、M1+M2 累计、OpenAPI、聚合、数据库、格式和安全门均为 GREEN。五分支已对齐且 Worker worktree 干净。
 
-**下一步固定为 M2-B0：总控先交付新增稳定错误、control policy/protocol/wiring；专项通过并同步五分支后，W1/W2/W3 并行进入 B1。不得跳过 B0 直接写 Router。**
+**下一步固定为 M2-B1：W1 实现 Composition Service，W2 实现 Installation Service/Revalidation/Evidence，W3 只实现 Router/Header；三路不得修改对方独占文件或总控生成物。W4 等三路集成后再进入 B2 独立对抗。**
