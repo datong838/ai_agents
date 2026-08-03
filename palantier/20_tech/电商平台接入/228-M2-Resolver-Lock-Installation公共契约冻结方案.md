@@ -1,7 +1,7 @@
 # 228-M2 Resolver、Lock 与 Installation 公共契约冻结方案
 
-> 状态：**M2-A 最终 GREEN·M2-B 详细方案编制已授权**
-> 版本：v1.6 · 2026-08-03
+> 状态：**M2-A 最终 GREEN·M2-B v1.2 最终冻结·进入 B0**
+> 版本：v1.8 · 2026-08-03
 > 上位方案：[228-M0 资产包注册、解析、安装与证据化接入案例实施方案](228-M0-资产包注册解析安装与证据化接入案例实施方案.md)
 > 范围：通用 AOS 平台内核，不包含任何具体电商平台业务逻辑、生产连接器或生产数据
 
@@ -346,7 +346,7 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 
 唯一键固定为 `(org_id, project_id, operation, idempotency_key)`。事务取得 advisory lock 后**先查 receipt，再读取任何当前 Registry/installation 状态**。request hash 只覆盖 canonical client command envelope：`subject/pathParams/body/ifMatch`；subject 是已验证 Principal subject，body 包含客户端实际提交的 snapshot/current-ref 前置条件。不得把本次服务端读取的 snapshot、current resource revision/ETag、角色、markings 或时间放入 request hash。
 
-- 已有 receipt 时先用原 command envelope 重算 hash；同 key + 同 request hash 直接回放原 HTTP status、response body 和 ETag，不再次 resolve、重验当前 ETag 或读取变化后的 Registry；
+- 已有 receipt 时先用原 command envelope 重算 hash；同 key + 同 request hash 不再次 resolve、重验当前 ETag 或读取变化后的 Registry/current installation。回放前仍须校验 receipt DTO/ETag 完整性，并仅通过 receipt body 或其引用的 immutable lock 重验当前 Principal role/target markings；权限已撤销则拒绝读取，不产生新 receipt；
 - 同 key + 不同 request hash：`IDEMPOTENCY_CONFLICT`；
 - 不同租户或 operation 可安全复用相同 key；
 - M2 不设 TTL，不允许 key 过期后表达另一请求；
@@ -423,6 +423,8 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 | 400 | `IDEMPOTENCY_KEY_REQUIRED` | M2 POST 缺少或非法幂等键 |
 | 428 | `PRECONDITION_REQUIRED` | mutation 缺少 If-Match |
 | 400 | `PRECONDITION_INVALID` | If-Match 不是冻结的强 ETag 格式 |
+| 403 | `MARKING_ACCESS_DENIED` | mutation/resolve 的 target marking 不足；admin 不绕过 |
+| 500 | `REGISTRY_INTEGRITY_CORRUPT` | 已持久化 Registry descriptor/evidence/关联损坏 |
 
 跨租户资源统一 `NOT_FOUND`，不得泄露资源存在性。旧批准 hash 重放使用 `APPROVAL_STALE`；自批使用 `DUTY_SEPARATION_REQUIRED`。
 
@@ -441,10 +443,12 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 
 ### M2-B：Control Plane（M2-A GREEN 后）
 
+详细事务、权限、证据、Header、OpenAPI、CORS、四 Worker 文件所有权和分波以 [228-M2-B 安装控制面与 Canonical API 并行实施方案](228-M2-B安装控制面与Canonical-API并行实施方案.md) 为唯一实现细则；发现冲突必须先修文档，代码不得自行选择。
+
 - W1：`composition_service.py`；
 - W2：`installation_service.py`；
 - W3：`routers/bundle_compositions.py`、`routers/bundle_installations.py`、API/OpenAPI 测试；
-- 总控：修改 `aos_api/routers/domain_manifest.json` 并重新生成 `domain_aggregates.py`，不得直接手改生成文件或 `main.py`；同时负责错误映射、集成/安全/浏览器前置契约。
+- 总控：修改 `aos_api/routers/domain_manifest.json` 并重新生成 `domain_aggregates.py`，不得手改生成文件或 `main.py` router import；同时负责错误映射、集成/安全/浏览器前置契约。M2-B 详细方案明确授权总控对 `main.py` 做唯一的 CORS `expose_headers += ETag` 最小改动，除此以外不得改 main。
 
 任何 Worker 不提前修改别人的共享文件；跨模块接口以本文件 DTO/Protocol 为准。
 
@@ -492,4 +496,4 @@ submit、approve、apply、verify 在同一事务内按 lock 中精确 `publishe
 
 ## 14. 冻结结论
 
-M2-A0 已在 `m1@cc78e01` 完成公共契约与数据库底座；M2-A1 在 `m1@a6e4d31` 完成 Core、三轮风险封口、时间文本确定性修复、真实 PostgreSQL、独立复核与最终累计回归。证据分别见 [M2-A0 公共契约与数据库底座回归证据](../evidence/m0/m2-control/2026-08-03-M2-A0公共契约与数据库底座回归证据.md) 与 [M2-A1 核心解析与持久化回归证据](../evidence/m0/m2-control/2026-08-03-M2-A1核心解析与持久化回归证据.md)。M2-A 最终 GREEN，允许编制并冻结 M2-B 详细实施方案；M2-B 未通过不进入 M3。
+M2-A0 已在 `m1@cc78e01` 完成公共契约与数据库底座；M2-A1 在 `m1@a6e4d31` 完成 Core、三轮风险封口、时间文本确定性修复、真实 PostgreSQL、独立复核与最终累计回归。证据分别见 [M2-A0 公共契约与数据库底座回归证据](../evidence/m0/m2-control/2026-08-03-M2-A0公共契约与数据库底座回归证据.md) 与 [M2-A1 核心解析与持久化回归证据](../evidence/m0/m2-control/2026-08-03-M2-A1核心解析与持久化回归证据.md)。五个代码分支已对齐 `a6e4d31`；M2-B v1.2 经三方交叉评审和定点复核后残余 P0/P1 为零，现进入 B0，M2-B 未通过不进入 M3。
