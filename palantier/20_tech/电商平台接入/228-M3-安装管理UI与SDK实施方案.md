@@ -2,7 +2,7 @@
 
 > 状态：**v1.1 评审通过 · M3-0 GREEN · 允许进入 M3-1**
 > 起始代码基线：`aos-platform m1@d85992b`
-> 当前代码基线：`aos-platform m1@dff51c1`（分支同步提交，tree 与 M3-0 GREEN 的 `435de34` 一致）
+> 当前代码基线：`aos-platform m1@b400f16`（五分支与远程 `origin/m1` 已同步；M3-0 契约内容未改变）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
 > 后续门禁：M3 GREEN 后方可进入 M4；M5 完成前不得进入电商 G0～G6
 
@@ -184,6 +184,19 @@ M3-0 未修改页面、通用 API client、后端生产代码、数据库或状�
 - 证明 mutation 不进入离线队列；不修改通用 client 返回形状。
 
 **退出门：** 11 个控制面 operation + M3 所需 Registry GET 契约测试全绿。
+
+#### M3-1 四路文件所有权（2026-08-03 开工冻结）
+
+| 路线 | 独占文件 | 责任边界 |
+|---|---|---|
+| W1 | `assetControl/idempotency.ts`、`idempotency.test.ts` | 生成 1～160 字符命令键；同一命令重试复用，新命令不复用；不持久化 Secret |
+| W2 | `assetControl/errors.ts`、`errors.test.ts` | 规范化网络错误和 400/401/403/404/409/412/428/500；404 不区分不可见与不存在；暴露 conflict/refresh 语义 |
+| W3 | `assetControl/client.ts` | 生产 SDK adapter：Registry GET、Composition resolve/get、Installation create/list/get/六 action；不调用通用离线写队列 |
+| W4/总控 | `assetControl/client.test.ts` | 从冻结的 `types/registry/operations` 反向验证路径、query、body、header、URL 编码、幂等重试、If-Match、ETag 与失败关闭 |
+
+协作约束：W1/W2 不修改 `client.ts`；W3 不修改 W1/W2 文件和测试；W4 只写黑盒契约测试。公共导出若必须增加，统一由总控在集成阶段做最小收口。生产页面、通用 `api/client.ts`、后端、数据库和状态机均不在本波文件所有权内。
+
+M3-1 集成顺序固定为 W1 → W2 → W3 → W4/总控；每路提交后审查文件边界和专项测试，最终执行 Asset Control 专项、Web 全量、TypeScript、production build。全部 GREEN 后才可标记 M3-1 完成并进入 M3-2。
 
 ### M3-2：Registry 真实化与只读安装视图
 
