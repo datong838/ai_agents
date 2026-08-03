@@ -1,8 +1,8 @@
 # 228-M4 Evidence 与接入案例实施方案
 
-> 状态：**v1.4 · M4-3 GREEN · 允许进入 M4-4 降级、统计与浏览器闭环**
+> 状态：**v1.5 · M4-4 GREEN · 允许进入 M4-5 累计回归与证据收口**
 > 起始代码基线：`aos-platform m1@36b386e`
-> 当前代码基线：`aos-platform m1@b2dc69b`（五分支与五远端同 HEAD/tree）
+> 当前代码基线：`aos-platform m1@c9da800`（五分支与五远端同 HEAD/tree）
 > 上位约束：M1、M2、M3 已最终 GREEN；本方案只细化 M0 已定义的 Evidence/Case 架构
 > 后续门禁：M4 最终 GREEN 后方可进入 M5；M5 完成前不得进入具体电商平台接入
 
@@ -343,6 +343,8 @@ M4-3 退出门：新增组件与 hook 专项测试、原 IntegrationCasesPage �
 - W4/总控：启动隔离环境，以浏览器可见页面验证 loading/empty/error、current/reference、目录选择、详情、8 门、timeline、刷新、stale/恢复与过期降级；保存截图或等价可审计证据，并复核页面无敏感字段泄漏。
 
 M4-4 退出门：W1/W2 真实 PostgreSQL 对抗、W3 隔离启动与 HTTP 健康检查、浏览器 current/reference/detail/timeline/refresh/expiry 场景、M4 后端累计、Web 全量/typecheck/build 全部 GREEN；五分支同步后才进入 M4-5。
+
+**完成状态（2026-08-04）：GREEN。** W1 以真实 PostgreSQL 证明 14 类 Evidence 连续升级、latest negative、expiry、续期、revoke、重复 projector 零写与非法 revision 全事务回滚；W2 证明 marking 过滤先于 total/page/stats、reference 排除、去重、row sum、latency max、`null`/`0`、统一 cutoff 和稳定分页；W3 提供无生产后门的隔离 PostgreSQL + 真实 API/JWT/Web 浏览器支撑；总控在浏览器完成 current/reference、详情、8 门、Evidence、timeline、空筛选、stale/恢复和 `evidence_expired` 降级闭环。最终代码基线 `m1@c9da800`，五分支与五远端同 HEAD/tree、ahead/behind `0/0`、工作树及隔离运行环境 clean。详见 [M4-4 降级统计与浏览器闭环回归证据](../evidence/m0/m4-evidence-case/2026-08-04-M4-4降级统计与浏览器闭环回归证据.md)。
 
 ### M4-5：累计回归与证据收口
 
