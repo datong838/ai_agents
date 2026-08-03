@@ -352,6 +352,8 @@ M4-4 退出门：W1/W2 真实 PostgreSQL 对抗、W3 隔离启动与 HTTP 健康
 - Web/Desktop/Ontology SDK 测试、typecheck、production build。
 - OpenAPI 确定性生成与唯一 operationId。
 - 五分支同 HEAD/tree、ahead/behind 0/0、clean 并推远端。
+
+**实施冻结（2026-08-04）：** M4-5 不增加功能。W1 执行资产域与 M1～M4 后端累计门；W2 执行 Web 全量、Integration/Asset SDK、TypeScript 与 production build；W3 执行 Desktop、Ontology SDK 和浏览器支撑语法/清理复验；W4/总控执行后端全量、Router/OpenAPI 确定性、跨壳汇总、最终证据与五分支同步。失败先分类为本波回归、既有失败或环境问题，只有本波真实缺陷才允许最小修复。
 - 更新总计划、228 路线、M0 状态与 AOS 开发上下文。
 
 ## 12. 验收矩阵
