@@ -1,8 +1,8 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.1 评审通过 · M3-0 GREEN · 允许进入 M3-1**
+> 状态：**v1.2 评审通过 · M3-1 GREEN · 允许进入 M3-2**
 > 起始代码基线：`aos-platform m1@d85992b`
-> 当前代码基线：`aos-platform m1@b400f16`（五分支与远程 `origin/m1` 已同步；M3-0 契约内容未改变）
+> 当前代码基线：`aos-platform m1@89bbb98`（五分支同步）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
 > 后续门禁：M3 GREEN 后方可进入 M4；M5 完成前不得进入电商 G0～G6
 
@@ -185,6 +185,14 @@ M3-0 未修改页面、通用 API client、后端生产代码、数据库或状�
 
 **退出门：** 11 个控制面 operation + M3 所需 Registry GET 契约测试全绿。
 
+#### M3-1 实施结果（2026-08-03）
+
+M3-1 已在 `m1@89bbb98` 收口：新增专用 `client.ts`、`idempotency.ts`、`errors.ts` 及黑盒测试，覆盖 Registry GET、Composition resolve/get、Installation create/list/get 和六个 action。Mutation 不进入通用离线队列，离线状态在 fetch 前失败关闭；同一命令重试复用品牌化幂等键；action 使用强 `If-Match`，安装响应 ETag 必须与 body `etagVersion` 一致。
+
+总控审查额外修正两项安全语义：HTTP 500 视为结果未知，必须先刷新并以原幂等键重试；`OFFLINE_MUTATION_DISABLED` 视为发送前明确未执行，不得混同网络中断。
+
+验证结果：Asset Control 专项 41/41、Web 全量 1822/1822、TypeScript GREEN、production build GREEN、后端 Registry/Composition/Installation/OpenAPI 77/77。生产页面、通用 `api/client.ts`、后端、数据库和状态机均未修改。完整证据见 [`2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)。
+
 #### M3-1 四路文件所有权（2026-08-03 开工冻结）
 
 | 路线 | 独占文件 | 责任边界 |
@@ -297,4 +305,4 @@ M3 只有在以下条件全部满足时才可标记 GREEN：
 5. 专项、Web 全量、typecheck/build 和平台累计回归 GREEN，证据归档。
 6. 上位状态和 AOS 项目开发上下文同步更新。
 
-当前结论：**M3-0 已 GREEN；以五分支同步基线 `m1@dff51c1` 进入 M3-1 专用 SDK Adapter。该提交与已验证的 `435de34` tree 完全一致；继续按 M3-1～M3-5 实施且不新增架构。**
+当前结论：**M3-1 已 GREEN；以五分支同步基线 `m1@89bbb98` 进入 M3-2 Registry 真实化与只读安装视图。继续按 M3-2～M3-5 实施且不新增架构。**
