@@ -417,6 +417,17 @@ M3-5 是 M3 的最终验收波，不新增生产架构、路由、DTO、状态�
 4. 四 Worker 依次合入 `m1`，再由四 Worker fast-forward 同步；五分支同 HEAD/tree、ahead/behind `0/0` 且远程一致。
 5. M3 最终证据、两份总计划、228 路线、M0 状态和 `AOS项目开发上下文/` 完成统一对账后，M3 才可标记最终 GREEN 并允许评审 M4。
 
+#### M3-5.5 累计门发现的跨壳兼容修复（2026-08-03）
+
+W1～W3 测试合入后，Web 138 files / 1923 tests、Web TypeScript 和 production build 均 GREEN；Ontology SDK 6/6、Desktop tests 40/40 也已通过。Desktop 随后以其冻结的较低 TypeScript lib 编译共享 Web SDK 时，发现三处 `Object.hasOwn` 与一处 `Error(message, { cause })` 语法不可用。该问题只属于共享源码的编译兼容性，不改变 M3 API、DTO、错误分类、状态机或数据。
+
+冻结的最小修复仅允许：
+
+1. 将 `Object.hasOwn(target, key)` 等价替换为 `Object.prototype.hasOwnProperty.call(target, key)`。
+2. 将双参数 `Error` 构造改为单参数构造，并在有 cause 时通过类型安全的显式属性赋值保留同一 cause。
+3. 只修改 `apps/web/src/api/assetControl/compositions.ts`、`errors.ts` 及必要的既有测试；不提高 Desktop lib、不引入 polyfill、不改变运行时响应。
+4. 修复后重跑 Web、Desktop、Ontology SDK 与后端累计门；未全部 GREEN 不得标记 M3 完成。
+
 ## 7. 测试矩阵
 
 ### 7.1 SDK P0
