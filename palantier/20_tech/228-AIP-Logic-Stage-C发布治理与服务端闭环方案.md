@@ -1,8 +1,8 @@
 # 228 AIP Logic Stage C 发布治理与服务端闭环方案
 
-> 版本：v1.1（2026-08-02，C1 交付复核）  
-> 编码基线：`aos-platform` m1 `b78a3bf`；交付版本：m1 `bc9711a`  
-> 状态：Stage C C1 已完成；C0.2 未关闭前禁止生产写回；具体电商平台、外部写回执行器和真实商家凭据后置  
+> 版本：v1.1（2026-08-02，C1 交付复核）
+> 编码基线：`aos-platform` m1 `b78a3bf`；交付版本：m1 `bc9711a`
+> 状态：Stage C C1 已完成；C0.2 未关闭前禁止生产写回；具体电商平台、外部写回执行器和真实商家凭据后置
 > 上游：[`07-AIP引擎k-LLM与AgentStudio产品方案.md`](../07-AIP引擎k-LLM与AgentStudio产品方案.md)、[`228-AIP-Logic核心自由画布与可信执行方案.md`](./228-AIP-Logic核心自由画布与可信执行方案.md)、[`228-AIP-Logic可信DryRun与运行历史实施方案.md`](./228-AIP-Logic可信DryRun与运行历史实施方案.md)
 
 ---
