@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIP 决策引擎 · 能力介绍</title>
+  <style>
+    :root {
+      --p-blue: #2B6CB0; --p-blue-hover: #2C5282; --p-blue-light: #EBF4FF; --p-blue-border: #BEE3F8;
+      --p-purple: #805AD5; --p-green: #38A169; --p-amber: #D69E2E; --p-red: #E53E3E;
+      --p-bg: #F0F2F5; --p-surface: #FFFFFF; --p-surface-hover: #F7F8FA;
+      --p-border: #E2E8F0; --p-border-strong: #CBD5E0; --p-divider: #EDF2F7;
+      --p-text: #1A202C; --p-text-secondary: #4A5568; --p-text-tertiary: #718096; --p-text-muted: #A0AEC0;
+      --p-green-bg: #F0FFF4; --p-amber-bg: #FFFAF0; --p-red-bg: #FFF5F5; --p-purple-bg: #FAF5FF;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 13px; line-height: 1.5; color: var(--p-text-secondary); background: var(--p-bg); -webkit-font-smoothing: antialiased; }
+    .w-5 { width: 20px; height: 20px; }
+    .h-5 { height: 20px; }
+    .feature-placeholder { padding: 32px 24px; background: #F7FAFC; border: 1px dashed var(--p-border); border-radius: 10px; text-align: center; }
+    .feature-placeholder-icon { font-size: 36px; margin-bottom: 12px; }
+    .feature-placeholder-title { font-size: 14px; font-weight: 600; color: var(--p-text); margin-bottom: 6px; }
+    .feature-placeholder-desc { font-size: 12px; color: var(--p-text-muted); max-width: 480px; margin: 0 auto; }
+    .feature-steps { display: flex; gap: 8px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+    .feature-step { padding: 6px 12px; background: #fff; border: 1px solid var(--p-border); border-radius: 6px; font-size: 11px; color: var(--p-text-secondary); }
+    .feature-step-active { background: var(--p-blue-light); border-color: var(--p-blue); color: var(--p-blue); }
+  </style>
+  <style>
+    body {
+      background: var(--p-bg);
+    }
+    .page-wrapper {
+      min-height: 100vh;
+    }
+    .top-header {
+      background: #fff;
+      border-bottom: 1px solid var(--p-border);
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-header-logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--p-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .top-header-logo svg {
+      color: var(--p-blue);
+    }
+    .top-header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .intro-hero {
+      background: linear-gradient(135deg, #1A1D29 0%, #252A3A 50%, #1A1D29 100%);
+      color: #fff;
+      padding: 48px 40px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .intro-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .intro-hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .intro-hero p {
+      font-size: 15px;
+      color: #A0AEC0;
+      max-width: 680px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .arch-card {
+      background: #fff;
+      border: 1px solid var(--p-border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      transition: all 0.2s;
+    }
+    .arch-card:hover {
+      border-color: var(--p-blue-border);
+      box-shadow: 0 4px 12px rgba(43,108,176,0.08);
+    }
+    .arch-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--p-text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .arch-card p {
+      font-size: 12px;
+      color: var(--p-text-secondary);
+      line-height: 1.6;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--p-text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-desc {
+      font-size: 13px;
+      color: var(--p-text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .showcase-frame {
+      width: 100%;
+      border: 1px solid var(--p-border);
+      border-radius: 10px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .tag-blue { background: #EBF4FF; color: #2B6CB0; }
+    .tag-green { background: #F0FFF4; color: #38A169; }
+    .tag-amber { background: #FFFAF0; color: #D69E2E; }
+    .tag-purple { background: #FAF5FF; color: #805AD5; }
+    .tag-red { background: #FFF5F5; color: #E53E3E; }
+    .intro-section {
+      margin-bottom: 48px;
+    }
+    .layer-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--p-text-muted);
+      margin-bottom: 12px;
+      padding-left: 4px;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 4px;
+      background: #F7FAFC;
+      border: 1px solid var(--p-border);
+      border-radius: 8px;
+      padding: 4px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+    }
+    .nav-tab {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--p-text-secondary);
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+    .nav-tab.active {
+      background: #fff;
+      color: var(--p-text);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .nav-tab:hover:not(.active) {
+      color: var(--p-text);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    /* Block 组件库 tooltip 样式 */
+    .blk-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .blk-item:hover {
+      background: #F3F4F6;
+      border-color: #E5E7EB;
+    }
+    .blk-item .blk-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      flex-shrink: 0;
+    }
+    .blk-item .blk-name {
+      font-weight: 500;
+      color: #374151;
+      font-size: 10px;
+      flex: 1;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .blk-item .blk-en {
+      font-size: 9px;
+      color: #9CA3AF;
+      margin-left: auto;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .blk-tooltip {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <main style="max-width: 1200px; margin: 0 auto; padding: 24px;">
+
+    <!-- Hero -->
+    <div class="intro-hero">
+      <p style="font-size: 18px; font-weight: 600; margin: 0;">企业级 AI 智能体编排与决策中枢。从对话机器人到逻辑画布，从工具配置到评测门控，为业务提供完整的 LLM 应用构建、运行、治理闭环。让每一次模型调用都可见、可控、可审计。</p>
+      <div style="margin-top: 20px; display: flex; gap: 8px; position: relative; z-index: 1;">
+        <span class="tag tag-blue">逻辑编排</span>
+        <span class="tag tag-green">智能体管理</span>
+        <span class="tag tag-amber">评测门控</span>
+        <span class="tag tag-purple">可观测性</span>
+        <span class="tag tag-red">决策谱系</span>
+      </div>
+    </div>
+
+    <!-- 全链路过程关系图（三列布局） -->
+    <div class="intro-section">
+      <div class="layer-label">端到端链路</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        举例：一次完整的执行全过程：工作台 → AIP → 写回
+      </div>
+      <p class="section-desc">
+        以<strong>差评管理运营场景</strong>为例：一位会员留下 1 星差评（"用了过敏/刺痛"）。这条差评从被系统发现，到最终处理完成、写回业务系统的<strong>一次完整执行链路</strong>——涉及 <strong>6 个智能体协作</strong>（数据参谋、售后客服、内容官、导购顾问、活动策划师、客户管家）、跨 4 组电商本体查询/写入、3 个 Action 写回、1 次人工审批。
+      </p>
+
+      <div class="showcase-frame" style="padding: 28px; position: relative; overflow-x: auto;">
+        <div style="display: flex; gap: 20px; position: relative; min-width: 1100px;">
+
+          <!-- 左侧：AOS 平台支撑能力 -->
+          <div style="width: 200px; display: flex; flex-direction: column; gap: 16px; flex-shrink: 0;">
+            <div style="font-size: 11px; font-weight: 600; color: var(--p-text-muted); margin-bottom: 2px;">左侧：AOS 平台支撑能力</div>
+
+            <!-- 在线制作智能体 -->
+            <div id="cap-agent" style="background: #EBF4FF; border: 2px solid #4299E1; border-radius: 10px; padding: 12px;">
+              <div style="font-size: 12px; font-weight: 700; color: #2B6CB0;">🤖 在线制作智能体</div>
+              <div style="font-size: 10px; color: #4299E1; margin: 4px 0 8px;">造人</div>
+              <div style="background: #fff; border: 1px solid #90CDF4; border-radius: 6px; padding: 5px 7px; font-size: 10px; color: #2B6CB0; line-height: 1.4;">
+                💡 本链路涉及 <strong>6 个智能体</strong>：<br/>数据参谋·售后客服·内容官<br/>导购顾问·活动策划师·客户管家<br/>均通过此能力在线创建
+              </div>
+              <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 3px; font-size: 10px; color: #2B6CB0; line-height: 1.5;">
+                <div><span style="background:#bee3f8;color:#2B6CB0;padding:0 4px;border-radius:3px;font-size:9px;">→②</span> 数据参谋智能体</div>
+                <div><span style="background:#bee3f8;color:#2B6CB0;padding:0 4px;border-radius:3px;font-size:9px;">→③</span> 售后客服智能体（主协调）</div>
+                <div><span style="background:#bee3f8;color:#2B6CB0;padding:0 4px;border-radius:3px;font-size:9px;">→④⑤⑥</span> 其他 4 个智能体协作</div>
+                <div><span style="background:#bee3f8;color:#2B6CB0;padding:0 4px;border-radius:3px;font-size:9px;">→⑥</span> 注入 Prompt+模型+上下文</div>
+                <div><span style="background:#bee3f8;color:#2B6CB0;padding:0 4px;border-radius:3px;font-size:9px;">→⑦</span> 安全等级触发 Draft</div>
+              </div>
+            </div>
+
+            <!-- AIP 逻辑画布 -->
+            <div id="cap-logic" style="background: #F0FFF4; border: 2px solid #38A169; border-radius: 10px; padding: 12px;">
+              <div style="font-size: 12px; font-weight: 700; color: #276749;">🧠 AIP 逻辑画布</div>
+              <div style="font-size: 10px; color: #38A169; margin: 4px 0 8px;">健脑</div>
+              <div style="margin-top: 4px; display: flex; flex-direction: column; gap: 3px; font-size: 10px; color: #276749; line-height: 1.5;">
+                <div><span style="background:#9ae6b4;color:#276749;padding:0 4px;border-radius:3px;font-size:9px;">→②</span> 编排「监控→阈值→告警」</div>
+                <div><span style="background:#9ae6b4;color:#276749;padding:0 4px;border-radius:3px;font-size:9px;">→④</span> 声明 Block 链走哪个 Action</div>
+                <div><span style="background:#9ae6b4;color:#276749;padding:0 4px;border-radius:3px;font-size:9px;">→⑤</span> 编排 Function 顺序分支</div>
+                <div><span style="background:#9ae6b4;color:#276749;padding:0 4px;border-radius:3px;font-size:9px;">→⑥</span> 声明 Use LLM 节点</div>
+                <div><span style="background:#9ae6b4;color:#276749;padding:0 4px;border-radius:3px;font-size:9px;">→⑧</span> Action 执行+失败回滚</div>
+              </div>
+            </div>
+
+            <!-- 智能体工具面板 -->
+            <div id="cap-tools" style="background: #FFFAF0; border: 2px solid #D69E2E; border-radius: 10px; padding: 12px;">
+              <div style="font-size: 12px; font-weight: 700; color: #975A16;">🔧 智能体工具面板</div>
+              <div style="font-size: 10px; color: #D69E2E; margin: 4px 0 8px;">配枪</div>
+              <div style="margin-top: 4px; display: flex; flex-direction: column; gap: 3px; font-size: 10px; color: #975A16; line-height: 1.5;">
+                <div><span style="background:#fefcbf;color:#975A16;padding:0 4px;border-radius:3px;font-size:9px;">→②</span> 配置数据查询 Function</div>
+                <div><span style="background:#fefcbf;color:#975A16;padding:0 4px;border-radius:3px;font-size:9px;">→④</span> 定义 Action Schema</div>
+                <div><span style="background:#fefcbf;color:#975A16;padding:0 4px;border-radius:3px;font-size:9px;">→⑤</span> 定义 Function 实现</div>
+                <div><span style="background:#fefcbf;color:#975A16;padding:0 4px;border-radius:3px;font-size:9px;">→⑥</span> 敏感词质量门控</div>
+                <div><span style="background:#fefcbf;color:#975A16;padding:0 4px;border-radius:3px;font-size:9px;">→⑦</span> 工具级安全策略</div>
+                <div><span style="background:#fefcbf;color:#975A16;padding:0 4px;border-radius:3px;font-size:9px;">→⑧</span> 3 个 Action 实现</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 中间：9步主链路 -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; position: relative; min-width: 380px;">
+            <div style="font-size: 11px; font-weight: 600; color: var(--p-text-muted); margin-bottom: 8px; align-self: flex-start;">中间：一次执行的 9 步主链路（6 个智能体协作）</div>
+
+            <!-- 智能体图例 -->
+            <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; padding: 8px; background: #F7FAFC; border-radius: 6px; font-size: 9px;">
+              <span style="padding: 2px 6px; background: #bee3f8; color: #2B6CB0; border-radius: 3px;">🤖 数据参谋（蓝）</span>
+              <span style="padding: 2px 6px; background: #9ae6b4; color: #276749; border-radius: 3px;">🤖 售后客服（绿）</span>
+              <span style="padding: 2px 6px; background: #e9d8fd; color: #553C9A; border-radius: 3px;">🤖 内容官（紫）</span>
+              <span style="padding: 2px 6px; background: #90cdf4; color: #2b6cb0; border-radius: 3px;">🤖 导购顾问（青）</span>
+              <span style="padding: 2px 6px; background: #fefcbf; color: #975A16; border-radius: 3px;">🤖 活动策划师（黄）</span>
+              <span style="padding: 2px 6px; background: #81e6d9; color: #234e52; border-radius: 3px;">🤖 客户管家（蓝绿）</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; max-width: 440px;">
+
+              <!-- 🏢 业务工作台（入口） -->
+              <div style="width: 100%; background: #fff; border: 2px dashed #718096; border-radius: 8px; padding: 7px 12px; position: relative; text-align: center;">
+                <div style="font-size: 11px; font-weight: 700; color: #4A5568;">🏢 业务工作台</div>
+                <div style="font-size: 9px; color: #718096; margin-top: 1px;">接收业务事件 · 发起 AIP 执行</div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ① -->
+              <div id="step-1" style="width: 100%; background: #fff; border: 2px solid #4299E1; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #2B6CB0;">① 差评产生</div>
+                <div style="font-size: 10px; color: #718096; margin-top: 2px;">10:00 会员留 1 星差评：「产品用了过敏/刺痛」</div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ② 数据参谋 -->
+              <div id="step-2" style="width: 100%; background: #EBF8FF; border: 2px solid #2B6CB0; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #2B6CB0;">② 数据参谋检测异常</div>
+                <div style="font-size: 10px; color: #2B6CB0; margin-top: 2px;">10:01 差评率 2%→3.5%，触发告警广播</div>
+                <div style="margin-top: 4px; display: flex; gap: 3px; flex-wrap: wrap;">
+                  <span style="font-size: 8px; padding: 1px 5px; background: #bee3f8; color: #2B6CB0; border-radius: 3px;">🤖 数据参谋：监控巡检</span>
+                </div>
+                <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); display:flex; gap:2px;">
+                  <span class="tag tag-blue" style="font-size: 8px;">A</span>
+                  <span class="tag tag-green" style="font-size: 8px;">L</span>
+                  <span class="tag tag-amber" style="font-size: 8px;">T</span>
+                </div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ③ 售后客服 -->
+              <div id="step-3" style="width: 100%; background: #F0FFF4; border: 2px solid #276749; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #276749;">③ 意图理解 · 任务分派</div>
+                <div style="font-size: 10px; color: #276749; margin-top: 2px;">识别「差评危机」→ 提取关键信息 → 分派给 5 个同事</div>
+                <div style="margin-top: 4px; display: flex; gap: 3px; flex-wrap: wrap;">
+                  <span style="font-size: 8px; padding: 1px 5px; background: #9ae6b4; color: #276749; border-radius: 3px;">🤖 售后客服：主协调</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #fefcbf; color: #975A16; border-radius: 3px;">🤖 活动策划师：赠品</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #90cdf4; color: #2b6cb0; border-radius: 3px;">🤖 导购顾问：替代推荐</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #e9d8fd; color: #553C9A; border-radius: 3px;">🤖 内容官：详情页</span>
+                </div>
+                <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%);">
+                  <span class="tag tag-blue" style="font-size: 8px;">A</span>
+                </div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ④ Action 请求 -->
+              <div id="step-4" style="width: 100%; background: #F0FFF4; border: 2px solid #276749; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #276749;">④ Action 请求 · 拆解任务</div>
+                <div style="font-size: 10px; color: #276749; margin-top: 2px;">确定 3 个 Action 执行方案</div>
+                <div style="margin-top: 4px; display: flex; gap: 3px; flex-wrap: wrap;">
+                  <span style="font-size: 8px; padding: 1px 5px; background: #9ae6b4; color: #276749; border-radius: 3px;">🤖 售后客服：退款+道歉</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #fefcbf; color: #975A16; border-radius: 3px;">🤖 活动策划师：赠送小样</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #90cdf4; color: #2b6cb0; border-radius: 3px;">🤖 导购顾问：推荐替代产品</span>
+                </div>
+                <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); display:flex; gap:2px;">
+                  <span class="tag tag-green" style="font-size: 8px;">L</span>
+                  <span class="tag tag-amber" style="font-size: 8px;">T</span>
+                </div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ⑤ Function 工具调用 -->
+              <div id="step-5" style="width: 100%; background: #F0FFF4; border: 2px solid #276749; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #276749;">⑤ Function 工具调用 · 数据查询</div>
+                <div style="font-size: 10px; color: #276749; margin-top: 2px;">并行查询所需数据</div>
+                <div style="margin-top: 4px; display: flex; gap: 3px; flex-wrap: wrap;">
+                  <span style="font-size: 8px; padding: 1px 5px; background: #9ae6b4; color: #276749; border-radius: 3px;">🤖 售后客服：查会员/订单</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #90cdf4; color: #2b6cb0; border-radius: 3px;">🤖 导购顾问：查成分/肤质</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #fefcbf; color: #975A16; border-radius: 3px;">🤖 活动策划师：查活动规则</span>
+                </div>
+                <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); display:flex; gap:2px;">
+                  <span class="tag tag-green" style="font-size: 8px;">L</span>
+                  <span class="tag tag-amber" style="font-size: 8px;">T</span>
+                </div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ⑥ LLM 大模型建议 -->
+              <div id="step-6" style="width: 100%; background: #FFF5F5; border: 2px solid #C53030; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #C53030;">⑥ LLM 大模型建议 · 生成内容</div>
+                <div style="font-size: 10px; color: #C53030; margin-top: 2px;">生成个性化内容，供人工审批</div>
+                <div style="margin-top: 4px; display: flex; gap: 3px; flex-wrap: wrap;">
+                  <span style="font-size: 8px; padding: 1px 5px; background: #9ae6b4; color: #276749; border-radius: 3px;">🤖 售后客服：生成安抚话术</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #e9d8fd; color: #553C9A; border-radius: 3px;">🤖 内容官：品牌合规审核</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #90cdf4; color: #2b6cb0; border-radius: 3px;">🤖 导购顾问：替代产品推荐</span>
+                </div>
+                <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); display:flex; gap:2px;">
+                  <span class="tag tag-blue" style="font-size: 8px;">A</span>
+                  <span class="tag tag-green" style="font-size: 8px;">L</span>
+                  <span class="tag tag-amber" style="font-size: 8px;">T</span>
+                </div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ⑦ 人工确认 -->
+              <div id="step-7" style="width: 100%; background: #FFFAF0; border: 2px solid #D69E2E; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #975A16;">⑦ 人工确认 · Draft 审批</div>
+                <div style="font-size: 10px; color: #975A16; margin-top: 2px;">退款金额 >200 元 → 客服主管审批</div>
+                <div style="margin-top: 4px; display: flex; gap: 3px; flex-wrap: wrap;">
+                  <span style="font-size: 8px; padding: 1px 5px; background: #9ae6b4; color: #276749; border-radius: 3px;">🤖 售后客服：触发安全策略</span>
+                </div>
+                <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); display:flex; gap:2px;">
+                  <span class="tag tag-blue" style="font-size: 8px;">A</span>
+                  <span class="tag tag-amber" style="font-size: 8px;">T</span>
+                </div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ⑧ 写回业务系统 -->
+              <div id="step-8" style="width: 100%; background: #F0FFF4; border: 2px solid #276749; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #276749;">⑧ 写回业务系统 · 执行 Action</div>
+                <div style="font-size: 10px; color: #276749; margin-top: 2px;">执行 3 个 Action，写回业务系统</div>
+                <div style="margin-top: 4px; display: flex; gap: 3px; flex-wrap: wrap;">
+                  <span style="font-size: 8px; padding: 1px 5px; background: #9ae6b4; color: #276749; border-radius: 3px;">🤖 售后客服：退款/旺旺道歉</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #e9d8fd; color: #553C9A; border-radius: 3px;">🤖 内容官：修改详情页</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #fefcbf; color: #975A16; border-radius: 3px;">🤖 活动策划师：登记小样</span>
+                </div>
+                <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); display:flex; gap:2px;">
+                  <span class="tag tag-green" style="font-size: 8px;">L</span>
+                  <span class="tag tag-amber" style="font-size: 8px;">T</span>
+                </div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+
+              <!-- ⑨ 结果返回 -->
+              <div id="step-9" style="width: 100%; background: #EBF8FF; border: 2px solid #2B6CB0; border-radius: 8px; padding: 9px 12px; position: relative;">
+                <div style="font-size: 12px; font-weight: 700; color: #2B6CB0;">⑨ 结果返回工作台</div>
+                <div style="font-size: 10px; color: #2B6CB0; margin-top: 2px;">差评率恢复 · 客户改评 · 后续回访</div>
+                <div style="margin-top: 4px; display: flex; gap: 3px; flex-wrap: wrap;">
+                  <span style="font-size: 8px; padding: 1px 5px; background: #81e6d9; color: #234e52; border-radius: 3px;">🤖 客户管家：3天后回访</span>
+                  <span style="font-size: 8px; padding: 1px 5px; background: #81e6d9; color: #234e52; border-radius: 3px;">🤖 客户管家：14天后跟进</span>
+                </div>
+              </div>
+              <div style="width: 2px; height: 14px; background: #CBD5E0;"></div>
+              <div style="width: 100%; background: #fff; border: 2px dashed #718096; border-radius: 8px; padding: 7px 12px; text-align: center;">
+                <div style="font-size: 11px; font-weight: 700; color: #4A5568;">🏢 业务工作台</div>
+                <div style="font-size: 9px; color: #718096; margin-top: 1px;">展示处理结果 · 等待人工确认</div>
+              </div>
+
+            </div>
+
+            <!-- 6 个智能体工作分布表 -->
+            <div style="margin-top: 16px; padding: 12px; background: #F7FAFC; border-radius: 8px; font-size: 10px; width: 100%;">
+              <div style="font-weight: 700; color: #2D3748; margin-bottom: 8px; font-size: 11px;">📋 6 个智能体工作分布</div>
+              <table style="width: 100%; border-collapse: collapse; font-size: 9px;">
+                <thead>
+                  <tr style="border-bottom: 1px solid #CBD5E0;">
+                    <th style="text-align: left; padding: 4px; color: #4A5568;">智能体</th>
+                    <th style="text-align: left; padding: 4px; color: #4A5568;">参与步骤</th>
+                    <th style="text-align: left; padding: 4px; color: #4A5568;">具体工作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid #EDF2F7;">
+                    <td style="padding: 4px; background: #bee3f8; color: #2B6CB0;">🤖 数据参谋</td>
+                    <td style="padding: 4px;">②</td>
+                    <td style="padding: 4px;">监控差评率 → 触发告警</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #EDF2F7;">
+                    <td style="padding: 4px; background: #9ae6b4; color: #276749;">🤖 售后客服</td>
+                    <td style="padding: 4px;">③④⑤⑥⑦⑧</td>
+                    <td style="padding: 4px;">主协调+退款+道歉+话术生成</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #EDF2F7;">
+                    <td style="padding: 4px; background: #e9d8fd; color: #553C9A;">🤖 内容官</td>
+                    <td style="padding: 4px;">③⑥⑧</td>
+                    <td style="padding: 4px;">品牌合规审核+修改详情页</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #EDF2F7;">
+                    <td style="padding: 4px; background: #90cdf4; color: #2b6cb0;">🤖 导购顾问</td>
+                    <td style="padding: 4px;">③④⑤⑥</td>
+                    <td style="padding: 4px;">成分查询+肤质匹配+替代推荐</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #EDF2F7;">
+                    <td style="padding: 4px; background: #fefcbf; color: #975A16;">🤖 活动策划师</td>
+                    <td style="padding: 4px;">③④⑤⑧</td>
+                    <td style="padding: 4px;">制定补偿方案+登记赠品</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 4px; background: #81e6d9; color: #234e52;">🤖 客户管家</td>
+                    <td style="padding: 4px;">⑨</td>
+                    <td style="padding: 4px;">后续回访+客户维护</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 右侧：电商本体 -->
+          <div style="width: 200px; display: flex; flex-direction: column; gap: 0; flex-shrink: 0;">
+            <div style="font-size: 11px; font-weight: 600; color: var(--p-text-muted); margin-bottom: 10px;">右侧：电商本体</div>
+
+            <!-- 与①对齐 -->
+            <div style="height: 0;"></div>
+            <div style="display:flex; justify-content:flex-end; height: 0;">
+              <div style="width: 140px; border-top: 1px dashed #CBD5E0; margin-top: 8px;"></div>
+            </div>
+            <div style="background: #fffbeb; border: 2px solid #D69E2E; border-radius: 8px; padding: 8px 10px; font-size: 10px;">
+              <div style="font-weight: 700; color: #975A16; font-size: 11px;">📦 电商本体</div>
+              <div style="border-top: 1px solid #FEEBC8; margin: 4px 0;"></div>
+              <div style="color: #744210;">order_review <span style="color:#D69E2E;font-size:9px;">（差评记录）</span></div>
+              <div style="color: #744210; margin-top: 2px;">实时同步</div>
+              <div style="margin-top: 4px;"><span style="background:#c05621;color:#fff;padding:1px 5px;border-radius:3px;font-size:9px;">写入</span></div>
+            </div>
+            <div style="height: 16px;"></div>
+
+            <!-- 与②对齐 -->
+            <div style="background: #fffbeb; border: 2px solid #D69E2E; border-radius: 8px; padding: 8px 10px; font-size: 10px;">
+              <div style="font-weight: 700; color: #975A16; font-size: 11px;">📦 电商本体</div>
+              <div style="border-top: 1px solid #FEEBC8; margin: 4px 0;"></div>
+              <div style="color: #744210;">product <span style="color:#D69E2E;font-size:9px;">（商品 SKU）</span></div>
+              <div style="color: #744210; margin-top: 2px;">order_review <span style="color:#D69E2E;font-size:9px;">（差评率指标）</span></div>
+              <div style="margin-top: 4px;"><span style="background:#2b6cb0;color:#fff;padding:1px 5px;border-radius:3px;font-size:9px;">读取</span></div>
+            </div>
+            <div style="height: 80px;"></div>
+
+            <!-- 与⑤对齐 -->
+            <div style="background: #fffbeb; border: 2px solid #D69E2E; border-radius: 8px; padding: 8px 10px; font-size: 10px;">
+              <div style="font-weight: 700; color: #975A16; font-size: 11px;">📦 电商本体</div>
+              <div style="border-top: 1px solid #FEEBC8; margin: 4px 0;"></div>
+              <div style="color: #744210;">member <span style="color:#D69E2E;font-size:9px;">（会员档案）</span></div>
+              <div style="color: #744210; margin-top: 2px;">order <span style="color:#D69E2E;font-size:9px;">（订单详情）</span></div>
+              <div style="color: #744210; margin-top: 2px;">product_ingredient <span style="color:#D69E2E;font-size:9px;">（成分表）</span></div>
+              <div style="color: #744210; margin-top: 2px;">member_skin_profile <span style="color:#D69E2E;font-size:9px;">（肤质标签）</span></div>
+              <div style="margin-top: 4px;"><span style="background:#2b6cb0;color:#fff;padding:1px 5px;border-radius:3px;font-size:9px;">读取</span></div>
+            </div>
+            <div style="height: 80px;"></div>
+
+            <!-- 与⑧对齐 -->
+            <div style="background: #fffbeb; border: 2px solid #D69E2E; border-radius: 8px; padding: 8px 10px; font-size: 10px;">
+              <div style="font-weight: 700; color: #975A16; font-size: 11px;">📦 电商本体</div>
+              <div style="border-top: 1px solid #FEEBC8; margin: 4px 0;"></div>
+              <div style="color: #744210;">refund <span style="color:#D69E2E;font-size:9px;">（退款记录）</span></div>
+              <div style="color: #744210; margin-top: 2px;">order_gift <span style="color:#D69E2E;font-size:9px;">（赠品登记）</span></div>
+              <div style="color: #744210; margin-top: 2px;">product_detail <span style="color:#D69E2E;font-size:9px;">（商品详情页）</span></div>
+              <div style="color: #744210; margin-top: 2px;">chat_message <span style="color:#D69E2E;font-size:9px;">（旺旺消息）</span></div>
+              <div style="margin-top: 4px;"><span style="background:#c05621;color:#fff;padding:1px 5px;border-radius:3px;font-size:9px;">写入</span></div>
+            </div>
+            <div style="flex:1;"></div>
+          </div>
+
+          <!-- 虚线连接（SVG 覆盖层，可选增强） -->
+          <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+            <!-- 左能力 → 中步骤 -->
+            <!-- CapAgent → S2 -->
+            <line x1="200" y1="120" x2="420" y2="165" stroke="#4299E1" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <!-- CapLogic → S2 -->
+            <line x1="200" y1="120" x2="420" y2="165" stroke="#38A169" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <!-- CapTools → S2 -->
+            <line x1="200" y1="120" x2="420" y2="165" stroke="#D69E2E" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <!-- CapAgent → S3 -->
+            <line x1="200" y1="160" x2="420" y2="210" stroke="#4299E1" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+            <!-- CapLogic → S5 -->
+            <line x1="200" y1="280" x2="420" y2="320" stroke="#38A169" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+            <!-- CapAgent → S6 -->
+            <line x1="200" y1="340" x2="420" y2="395" stroke="#4299E1" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+            <!-- CapTools → S6 -->
+            <line x1="200" y1="340" x2="420" y2="395" stroke="#D69E2E" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+            <!-- CapAgent → S7 -->
+            <line x1="200" y1="400" x2="420" y2="440" stroke="#4299E1" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+            <!-- CapTools → S7 -->
+            <line x1="200" y1="400" x2="420" y2="440" stroke="#D69E2E" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+            <!-- CapLogic → S8 -->
+            <line x1="200" y1="450" x2="420" y2="495" stroke="#38A169" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+            <!-- CapTools → S8 -->
+            <line x1="200" y1="450" x2="420" y2="495" stroke="#D69E2E" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+            <!-- 中步骤 → 右本体 -->
+            <!-- S1 → OT1 -->
+            <line x1="780" y1="82" x2="920" y2="92" stroke="#D69E2E" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <!-- S2 → OT2 -->
+            <line x1="780" y1="165" x2="920" y2="175" stroke="#2b6cb0" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <!-- S5 → OT5 -->
+            <line x1="780" y1="320" x2="920" y2="330" stroke="#2b6cb0" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <!-- S8 → OT8 -->
+            <line x1="780" y1="495" x2="920" y2="505" stroke="#c05621" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+          </svg>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 架构全景 -->
+    <div class="intro-section">
+      <div class="layer-label">架构全景</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        五层架构，全链路闭环
+      </div>
+      <p class="section-desc">
+        AIP 决策引擎基于 Foundry AIP 官方架构设计，分为用户界面层、编排构建层、质量保障层、可观测性层与模型基础设施层。数据从文档智能进入，经 Logic 编排、Evals 质检，最终通过 Chatbot / Analyst 服务用户，全程由 Observability 监控。
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px;">
+        <div class="arch-card">
+          <h3><span class="tag tag-blue">用户界面层</span></h3>
+          <p>AIP Assist 平台助手、Chatbot Studio 对话机器人、AIP Analyst 分析助手 —— 三类入口覆盖不同业务场景。</p>
+        </div>
+        <div class="arch-card">
+          <h3><span class="tag tag-green">编排构建层</span></h3>
+          <p>AIP Logic 无代码 LLM 函数构建器。Input → Variable → Use LLM → Transform → Apply Action，可视化编排复杂逻辑。</p>
+        </div>
+        <div class="arch-card">
+          <h3><span class="tag tag-amber">质量保障层</span></h3>
+          <p>AIP Evals 评测门控。评测集管理、跨模型对比、门控上线 —— 未达标禁止发布为生产 Function。</p>
+        </div>
+        <div class="arch-card">
+          <h3><span class="tag tag-purple">可观测性层</span></h3>
+          <p>AIP Observability 全程监控。链路追踪、指标仪表盘、日志管理、阈值告警，全链路透明。</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+        <div class="arch-card">
+          <h3><span class="tag tag-red">模型基础设施层</span></h3>
+          <p>Model Catalog 模型目录 + Capacity Management 容量管理。模型登记、评估、生命周期与配额控制。</p>
+        </div>
+        <div class="arch-card">
+          <h3><span class="tag" style="background: #E6FFFA; color: #319795;">数据处理层</span></h3>
+          <p>Document Intelligence 文档智能。PDF/Word/图片解析、信息提取、语义理解、多模态索引。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 核心组件三角关系 -->
+    <div class="intro-section">
+      <div class="layer-label">核心组件关系</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        造人 · 健脑 · 配枪 —— 三位一体的智能体生产流水线
+      </div>
+      <p class="section-desc">
+        AIP 决策引擎的三大核心模块不是孤立的功能点，而是一条完整的"智能体生产流水线"。<strong>在线制作智能体</strong>负责"造人"，<strong>AIP 逻辑画布</strong>负责"健脑"，<strong>智能体工具面板</strong>负责"配枪"。三者闭环协作，才能把一个业务需求转化为可上岗的智能体。
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px;">
+        <div class="arch-card" style="border-top: 3px solid #4299E1;">
+          <h3><span class="tag tag-blue">① 在线制作智能体</span></h3>
+          <p style="font-size: 13px; margin-bottom: 8px;"><strong>作用：定义"谁"在干活</strong></p>
+          <p>给智能体起名字、写系统 Prompt、选择底层模型、配置本体上下文、设定安全等级（L0-L4）。产出一份<strong>《智能体出生证明》</strong>——包含身份、性格、能力边界和权限红线。</p>
+        </div>
+        <div class="arch-card" style="border-top: 3px solid #38A169;">
+          <h3><span class="tag tag-green">② AIP 逻辑画布</span></h3>
+          <p style="font-size: 13px; margin-bottom: 8px;"><strong>作用：定义"怎么干"</strong></p>
+          <p>用 8 种 Block 把 LLM 调用、变量处理、条件判断、工具执行编排成可运行的 Pipeline。让智能体<strong>拿到任务后先做什么、再做什么、什么条件下走分支</strong>。</p>
+        </div>
+        <div class="arch-card" style="border-top: 3px solid #D69E2E;">
+          <h3><span class="tag tag-amber">③ 智能体工具面板</span></h3>
+          <p style="font-size: 13px; margin-bottom: 8px;"><strong>作用：定义"用什么干"</strong></p>
+          <p>为智能体配备工具箱：对象查询（读数据）、动作（写数据）、函数（计算）、请求澄清（反问用户）。设定每个工具的安全策略——谁审批、什么条件下自动执行。让智能体从<strong>"只会聊天"变成"能查能写能调系统"</strong>。</p>
+        </div>
+      </div>
+
+      <!-- 关系图 -->
+      <div style="background: #F7FAFC; border: 1px solid var(--p-border); border-radius: 10px; padding: 24px;">
+        <p style="font-size: 12px; color: var(--p-text-muted); text-align: center; margin-bottom: 16px; font-weight: 600;">三者协作关系：配置 → 编排 → 赋能 → 运行</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <div style="background: #fff; border: 2px solid #4299E1; border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600; color: #2B6CB0; text-align: center; min-width: 120px;">
+            <div style="font-size: 11px; color: var(--p-text-muted); font-weight: 400; margin-bottom: 2px;">Step 1</div>
+            Agent Builder<br/><span style="font-size: 11px; font-weight: 400;">造人</span>
+          </div>
+          <svg width="32" height="20" viewBox="0 0 32 20"><path d="M0 10h28M22 4l6 6-6 6" stroke="#A0AEC0" stroke-width="2" fill="none"/></svg>
+          <div style="background: #fff; border: 2px solid #38A169; border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600; color: #276749; text-align: center; min-width: 120px;">
+            <div style="font-size: 11px; color: var(--p-text-muted); font-weight: 400; margin-bottom: 2px;">Step 2</div>
+            AIP Logic<br/><span style="font-size: 11px; font-weight: 400;">健脑</span>
+          </div>
+          <svg width="32" height="20" viewBox="0 0 32 20"><path d="M0 10h28M22 4l6 6-6 6" stroke="#A0AEC0" stroke-width="2" fill="none"/></svg>
+          <div style="background: #fff; border: 2px solid #D69E2E; border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600; color: #975A16; text-align: center; min-width: 120px;">
+            <div style="font-size: 11px; color: var(--p-text-muted); font-weight: 400; margin-bottom: 2px;">Step 3</div>
+            AIP Tools<br/><span style="font-size: 11px; font-weight: 400;">配枪</span>
+          </div>
+          <svg width="32" height="20" viewBox="0 0 32 20"><path d="M0 10h28M22 4l6 6-6 6" stroke="#A0AEC0" stroke-width="2" fill="none"/></svg>
+          <div style="background: linear-gradient(135deg, #EBF4FF, #F0FFF4); border: 2px solid #805AD5; border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600; color: #553C9A; text-align: center; min-width: 120px;">
+            <div style="font-size: 11px; color: var(--p-text-muted); font-weight: 400; margin-bottom: 2px;">Result</div>
+            可运行智能体<br/><span style="font-size: 11px; font-weight: 400;">上岗</span>
+          </div>
+        </div>
+        <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+          <div style="font-size: 11px; color: var(--p-text-secondary); text-align: center; padding: 0 8px;">
+            <span style="color: #4299E1; font-weight: 600;">输入：</span>业务需求 + Prompt + 模型选择<br/>
+            <span style="color: #4299E1; font-weight: 600;">输出：</span>智能体定义（Identity + Context + Safety）
+          </div>
+          <div style="font-size: 11px; color: var(--p-text-secondary); text-align: center; padding: 0 8px;">
+            <span style="color: #38A169; font-weight: 600;">输入：</span>智能体定义 + 业务任务<br/>
+            <span style="color: #38A169; font-weight: 600;">输出：</span>可执行 Block 链（Pipeline）
+          </div>
+          <div style="font-size: 11px; color: var(--p-text-secondary); text-align: center; padding: 0 8px;">
+            <span style="color: #D69E2E; font-weight: 600;">输入：</span>Pipeline 中的工具调用点<br/>
+            <span style="color: #D69E2E; font-weight: 600;">输出：</span>工具授权策略 + 执行代理
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 核心能力 1：在线制作一个智能体 -->
+    <div class="intro-section">
+      <div class="layer-label">核心能力 01</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        在线制作一个智能体
+      </div>
+      <p class="section-desc">
+        Chatbot Studio 提供零代码智能体配置能力。四步完成 Agent 创建：基础信息 → 能力配置（Prompt + 工具 + 本体上下文）→ 安全等级（L0-L4）→ 确认创建。每个 Agent = Prompt + Tools + Context + Model + Safety，开箱即用。
+      </p>
+      <div class="showcase-frame" style="padding: 24px; background: #F7FAFC; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+        <!-- ============================================ -->
+        <!-- 第一步：基础信息（完整向导窗口） -->
+        <!-- ============================================ -->
+        <div style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #E2E8F0;">
+          <!-- 向导头部 -->
+          <div style="padding: 16px 24px; border-bottom: 1px solid #E2E8F0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 15px; font-weight: 600; color: #1A202C;">新建智能体</div>
+                <div style="font-size: 11px; color: #718096; margin-top: 2px;">四步完成智能体创建，开箱即用</div>
+              </div>
+              <div style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #A0AEC0;">
+                <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18L18 6" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <!-- 步进指示器 -->
+            <div style="display: flex; align-items: center; margin-top: 14px;">
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #4F46E5; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">1</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #4F46E5;">基础信息</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #CBD5E0; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #E2E8F0; color: #718096; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">2</div>
+                <span style="margin-left: 8px; font-size: 12px; color: #A0AEC0;">能力配置</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #CBD5E0; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #E2E8F0; color: #718096; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">3</div>
+                <span style="margin-left: 8px; font-size: 12px; color: #A0AEC0;">安全等级</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #CBD5E0; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #E2E8F0; color: #718096; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">4</div>
+                <span style="margin-left: 8px; font-size: 12px; color: #A0AEC0;">确认创建</span>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 -->
+          <div style="padding: 20px 24px;">
+            <div style="margin-bottom: 16px;">
+              <div style="font-size: 14px; font-weight: 600; color: #1A202C; margin-bottom: 2px;">第一步：填写智能体基础信息</div>
+              <div style="font-size: 11px; color: #718096;">设定名称、图标、业务域和用途描述。</div>
+            </div>
+            <!-- 名称 -->
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 6px;">智能体名称 <span style="color: #EF4444;">*</span></label>
+              <div style="width: 100%; border: 1px solid #D1D5DB; border-radius: 8px; padding: 8px 12px; font-size: 13px; color: #9CA3AF; background: #fff;">例：售后退换货 Buddy</div>
+              <div style="font-size: 10px; color: #9CA3AF; margin-top: 4px;">3-20 个字符，在同一项目内唯一</div>
+            </div>
+            <!-- 图标选择 -->
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 6px;">图标 <span style="color: #EF4444;">*</span></label>
+              <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;">
+                <div style="width: 40px; height: 40px; border-radius: 8px; background: #EEF2FF; border: 2px solid #4F46E5; display: flex; align-items: center; justify-content: center;"><svg style="width: 20px; height: 20px; color: #4F46E5;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div style="width: 40px; height: 40px; border-radius: 8px; background: #F9FAFB; border: 1px solid #E5E7EB; display: flex; align-items: center; justify-content: center;"><svg style="width: 20px; height: 20px; color: #6B7280;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div style="width: 40px; height: 40px; border-radius: 8px; background: #F9FAFB; border: 1px solid #E5E7EB; display: flex; align-items: center; justify-content: center;"><svg style="width: 20px; height: 20px; color: #6B7280;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div style="width: 40px; height: 40px; border-radius: 8px; background: #F9FAFB; border: 1px solid #E5E7EB; display: flex; align-items: center; justify-content: center;"><svg style="width: 20px; height: 20px; color: #6B7280;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg></div>
+                <div style="width: 40px; height: 40px; border-radius: 8px; background: #F9FAFB; border: 1px solid #E5E7EB; display: flex; align-items: center; justify-content: center;"><svg style="width: 20px; height: 20px; color: #6B7280;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round"/></svg></div>
+                <div style="width: 40px; height: 40px; border-radius: 8px; background: #F9FAFB; border: 1px solid #E5E7EB; display: flex; align-items: center; justify-content: center;"><svg style="width: 20px; height: 20px; color: #6B7280;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+            </div>
+            <!-- 业务域 -->
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 6px;">业务域 <span style="color: #EF4444;">*</span></label>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span style="padding: 4px 12px; border-radius: 20px; background: #EEF2FF; color: #4338CA; font-size: 12px; font-weight: 500; border: 1px solid #C7D2FE;">设备运维</span>
+                <span style="padding: 4px 12px; border-radius: 20px; background: #fff; color: #4B5563; font-size: 12px; border: 1px solid #E5E7EB;">电商客服</span>
+                <span style="padding: 4px 12px; border-radius: 20px; background: #fff; color: #4B5563; font-size: 12px; border: 1px solid #E5E7EB;">风控分析</span>
+                <span style="padding: 4px 12px; border-radius: 20px; background: #fff; color: #4B5563; font-size: 12px; border: 1px solid #E5E7EB;">内容创作</span>
+                <span style="padding: 4px 12px; border-radius: 20px; background: #fff; color: #4B5563; font-size: 12px; border: 1px solid #E5E7EB;">知识检索</span>
+                <span style="padding: 4px 12px; border-radius: 20px; background: #fff; color: #4B5563; font-size: 12px; border: 1px solid #E5E7EB;">财务报销</span>
+              </div>
+            </div>
+            <!-- 描述 -->
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 6px;">用途描述</label>
+              <div style="width: 100%; height: 72px; border: 1px solid #D1D5DB; border-radius: 8px; padding: 8px 12px; font-size: 13px; color: #9CA3AF; background: #fff;">一句话说明这个智能体的职责和适用场景…</div>
+            </div>
+          </div>
+          <!-- 底部操作栏 -->
+          <div style="padding: 12px 24px; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 12px; color: #9CA3AF;">第 1 / 4 步</span>
+            <div style="display: flex; gap: 8px;">
+              <button style="padding: 6px 16px; font-size: 12px; border: 1px solid #E5E7EB; border-radius: 6px; background: #fff; color: #6B7280;">取消</button>
+              <button style="padding: 6px 16px; font-size: 12px; border: none; border-radius: 6px; background: #4F46E5; color: #fff; font-weight: 500;">下一步 →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- 第二步：能力配置（完整向导窗口） -->
+        <!-- ============================================ -->
+        <div style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #E2E8F0;">
+          <!-- 向导头部 -->
+          <div style="padding: 16px 24px; border-bottom: 1px solid #E2E8F0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 15px; font-weight: 600; color: #1A202C;">新建智能体</div>
+                <div style="font-size: 11px; color: #718096; margin-top: 2px;">四步完成智能体创建，开箱即用</div>
+              </div>
+              <div style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #A0AEC0;">
+                <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18L18 6" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <!-- 步进指示器 -->
+            <div style="display: flex; align-items: center; margin-top: 14px;">
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">✓</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #10B981;">基础信息</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #10B981; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #4F46E5; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">2</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #4F46E5;">能力配置</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #CBD5E0; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #E2E8F0; color: #718096; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">3</div>
+                <span style="margin-left: 8px; font-size: 12px; color: #A0AEC0;">安全等级</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #CBD5E0; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #E2E8F0; color: #718096; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">4</div>
+                <span style="margin-left: 8px; font-size: 12px; color: #A0AEC0;">确认创建</span>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 -->
+          <div style="padding: 20px 24px;">
+            <div style="margin-bottom: 16px;">
+              <div style="font-size: 14px; font-weight: 600; color: #1A202C; margin-bottom: 2px;">第二步：配置智能体能力</div>
+              <div style="font-size: 11px; color: #718096;">选择模型、编写系统提示词、勾选初始工具集。</div>
+            </div>
+            <!-- 模型选择 -->
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 6px;">LLM 模型 <span style="color: #EF4444;">*</span></label>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                <div style="border: 2px solid #4F46E5; background: #EEF2FF; border-radius: 8px; padding: 8px 10px;">
+                  <div style="font-size: 13px; font-weight: 500; color: #1A202C;">GLM-4-Plus</div>
+                  <div style="font-size: 10px; color: #6B7280; margin-top: 2px;">通用旗舰 · 128K 上下文</div>
+                </div>
+                <div style="border: 1px solid #E5E7EB; background: #fff; border-radius: 8px; padding: 8px 10px;">
+                  <div style="font-size: 13px; font-weight: 500; color: #1A202C;">GLM-4-Air</div>
+                  <div style="font-size: 10px; color: #6B7280; margin-top: 2px;">轻量高速 · 低延迟</div>
+                </div>
+                <div style="border: 1px solid #E5E7EB; background: #fff; border-radius: 8px; padding: 8px 10px;">
+                  <div style="font-size: 13px; font-weight: 500; color: #1A202C;">DeepSeek-V3</div>
+                  <div style="font-size: 10px; color: #6B7280; margin-top: 2px;">推理增强 · 开源</div>
+                </div>
+              </div>
+            </div>
+            <!-- 系统提示词 -->
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 6px;">系统提示词 (System Prompt) <span style="color: #EF4444;">*</span></label>
+              <div style="width: 100%; height: 96px; border: 1px solid #D1D5DB; border-radius: 8px; padding: 8px 12px; font-size: 13px; color: #9CA3AF; background: #fff; line-height: 1.5;">你是[智能体名称]。你的职责是…优先读 Object 与 Wiki 结构化字段，禁止臆造字段。写回操作必须走 Action / Draft 审批。</div>
+              <div style="display: flex; gap: 12px; margin-top: 6px; font-size: 10px; color: #9CA3AF;">
+                <span>可用变量：/Order.status /Wiki.sla</span>
+                <span style="color: #2563EB; cursor: pointer;">AI 辅助生成提示词 →</span>
+              </div>
+            </div>
+            <!-- 本体上下文 -->
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 6px;">本体上下文（Agent 可访问的对象类型）</label>
+              <div style="border: 1px solid #E5E7EB; background: #F9FAFB; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 16px; height: 16px; border-radius: 4px; background: #4F46E5; display: flex; align-items: center; justify-content: center;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <span style="font-size: 12px; color: #374151;">Order（订单）</span>
+                  <span style="font-size: 10px; color: #9CA3AF;">— 工单编号、状态、SLA、负责人</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 16px; height: 16px; border-radius: 4px; background: #4F46E5; display: flex; align-items: center; justify-content: center;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <span style="font-size: 12px; color: #374151;">Device（设备）</span>
+                  <span style="font-size: 10px; color: #9CA3AF;">— 设备编号、位置、健康度、维保记录</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 16px; height: 16px; border-radius: 4px; border: 2px solid #D1D5DB;"></div>
+                  <span style="font-size: 12px; color: #374151;">WorkOrder（工单）</span>
+                  <span style="font-size: 10px; color: #9CA3AF;">— 工单类型、优先级、处理人</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 16px; height: 16px; border-radius: 4px; border: 2px solid #D1D5DB;"></div>
+                  <span style="font-size: 12px; color: #374151;">KnowledgeDoc（知识文档）</span>
+                  <span style="font-size: 10px; color: #9CA3AF;">— Wiki 知识库关联文档</span>
+                </div>
+              </div>
+            </div>
+            <!-- 初始工具集 -->
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="font-size: 12px; font-weight: 500; color: #374151;">初始工具集（可后续在工具面板中调整）</label>
+                <span style="font-size: 10px; color: #2563EB;">管理全部工具 →</span>
+              </div>
+              <div style="border: 1px solid #E5E7EB; background: #F9FAFB; border-radius: 8px; overflow: hidden;">
+                <!-- Tab 行 -->
+                <div style="display: flex; border-bottom: 1px solid #E5E7EB; background: #fff;">
+                  <div style="flex: 1; padding: 8px; text-align: center; font-size: 12px; font-weight: 500; color: #4338CA; border-bottom: 2px solid #4F46E5; background: rgba(238,242,255,0.5);">平台内置 <span style="font-size: 10px; color: #9CA3AF; font-weight: 400;">4 项</span></div>
+                  <div style="flex: 1; padding: 8px; text-align: center; font-size: 12px; font-weight: 500; color: #6B7280; border-bottom: 2px solid transparent;">外部工具扩展 <span style="font-size: 10px; color: #9CA3AF; font-weight: 400;">6 项可用</span></div>
+                </div>
+                <!-- 工具列表 -->
+                <div style="padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div style="width: 16px; height: 16px; border-radius: 4px; background: #4F46E5; display: flex; align-items: center; justify-content: center;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <span style="font-size: 12px; font-weight: 500; color: #374151;">Object Query · 对象查询</span>
+                    </div>
+                    <span style="font-size: 10px; color: #9CA3AF;">读取本体数据的基础能力</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div style="width: 16px; height: 16px; border-radius: 4px; background: #4F46E5; display: flex; align-items: center; justify-content: center;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <span style="font-size: 12px; font-weight: 500; color: #374151;">Request Clarification · 澄清追问</span>
+                    </div>
+                    <span style="font-size: 10px; color: #9CA3AF;">向用户追问不明确的参数</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div style="width: 16px; height: 16px; border-radius: 4px; border: 2px solid #D1D5DB;"></div>
+                      <span style="font-size: 12px; font-weight: 500; color: #374151;">Action · 动作执行</span>
+                    </div>
+                    <span style="font-size: 10px; color: #9CA3AF;">写回操作（需 HITL 审批）</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <div style="width: 16px; height: 16px; border-radius: 4px; border: 2px solid #D1D5DB;"></div>
+                      <span style="font-size: 12px; font-weight: 500; color: #374151;">Function · 函数调用</span>
+                    </div>
+                    <span style="font-size: 10px; color: #9CA3AF;">调用 AIP Logic 注册的函数</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 底部操作栏 -->
+          <div style="padding: 12px 24px; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 12px; color: #9CA3AF;">第 2 / 4 步</span>
+            <div style="display: flex; gap: 8px;">
+              <button style="padding: 6px 16px; font-size: 12px; border: 1px solid #E5E7EB; border-radius: 6px; background: #fff; color: #6B7280;">取消</button>
+              <button style="padding: 6px 16px; font-size: 12px; border: 1px solid #E5E7EB; border-radius: 6px; background: #fff; color: #6B7280;">上一步</button>
+              <button style="padding: 6px 16px; font-size: 12px; border: none; border-radius: 6px; background: #4F46E5; color: #fff; font-weight: 500;">下一步 →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- 第三步：安全等级（完整向导窗口） -->
+        <!-- ============================================ -->
+        <div style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #E2E8F0;">
+          <!-- 向导头部 -->
+          <div style="padding: 16px 24px; border-bottom: 1px solid #E2E8F0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 15px; font-weight: 600; color: #1A202C;">新建智能体</div>
+                <div style="font-size: 11px; color: #718096; margin-top: 2px;">四步完成智能体创建，开箱即用</div>
+              </div>
+              <div style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #A0AEC0;">
+                <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18L18 6" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <!-- 步进指示器 -->
+            <div style="display: flex; align-items: center; margin-top: 14px;">
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">✓</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #10B981;">基础信息</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #10B981; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">✓</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #10B981;">能力配置</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #10B981; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #4F46E5; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">3</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #4F46E5;">安全等级</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #CBD5E0; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #E2E8F0; color: #718096; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">4</div>
+                <span style="margin-left: 8px; font-size: 12px; color: #A0AEC0;">确认创建</span>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 -->
+          <div style="padding: 20px 24px;">
+            <div style="margin-bottom: 16px;">
+              <div style="font-size: 14px; font-weight: 600; color: #1A202C; margin-bottom: 2px;">第三步：设定安全等级与护栏</div>
+              <div style="font-size: 11px; color: #718096;">根据智能体的写回权限，选择成熟度等级。可后续通过「成熟度楼梯」升级。</div>
+            </div>
+            <!-- 成熟度等级 -->
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 8px;">成熟度等级 <span style="color: #EF4444;">*</span></label>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- L0 -->
+                <div style="display: flex; align-items: flex-start; gap: 12px; border: 1px solid #E5E7EB; background: #fff; border-radius: 8px; padding: 10px 12px;">
+                  <div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D1D5DB; margin-top: 2px; flex-shrink: 0;"></div>
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="padding: 2px 6px; border-radius: 3px; background: #F3F4F6; color: #4B5563; font-size: 10px; font-weight: 500;">L0</span>
+                      <span style="font-size: 13px; font-weight: 500; color: #1A202C;">只读问答</span>
+                    </div>
+                    <div style="font-size: 10px; color: #6B7280; margin-top: 4px;">仅查询 Object/Wiki，不做任何写回。适合知识检索型 Agent。</div>
+                  </div>
+                </div>
+                <!-- L1 -->
+                <div style="display: flex; align-items: flex-start; gap: 12px; border: 1px solid #E5E7EB; background: #fff; border-radius: 8px; padding: 10px 12px;">
+                  <div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D1D5DB; margin-top: 2px; flex-shrink: 0;"></div>
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="padding: 2px 6px; border-radius: 3px; background: #FEF3C7; color: #92400E; font-size: 10px; font-weight: 500;">L1</span>
+                      <span style="font-size: 13px; font-weight: 500; color: #1A202C;">Draft 暂存</span>
+                    </div>
+                    <div style="font-size: 10px; color: #6B7280; margin-top: 4px;">写操作自动进入 Draft 审批台，人工审批后才生效。</div>
+                  </div>
+                </div>
+                <!-- L2 选中 -->
+                <div style="display: flex; align-items: flex-start; gap: 12px; border: 2px solid #4F46E5; background: #EEF2FF; border-radius: 8px; padding: 10px 12px;">
+                  <div style="width: 16px; height: 16px; border-radius: 50%; background: #4F46E5; border: 2px solid #4F46E5; display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="padding: 2px 6px; border-radius: 3px; background: #E0E7FF; color: #4338CA; font-size: 10px; font-weight: 500;">L2</span>
+                      <span style="font-size: 13px; font-weight: 500; color: #1A202C;">HITL 人机协同</span>
+                      <span style="padding: 2px 6px; border-radius: 3px; background: #4F46E5; color: #fff; font-size: 10px; font-weight: 500;">推荐</span>
+                    </div>
+                    <div style="font-size: 10px; color: #6B7280; margin-top: 4px;">写操作执行前弹出确认窗口，人工一键批准。适合大多数业务场景。</div>
+                  </div>
+                </div>
+                <!-- L3 -->
+                <div style="display: flex; align-items: flex-start; gap: 12px; border: 1px solid #E5E7EB; background: #fff; border-radius: 8px; padding: 10px 12px;">
+                  <div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D1D5DB; margin-top: 2px; flex-shrink: 0;"></div>
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="padding: 2px 6px; border-radius: 3px; background: #DBEAFE; color: #1D4ED8; font-size: 10px; font-weight: 500;">L3</span>
+                      <span style="font-size: 13px; font-weight: 500; color: #1A202C;">Capability 委托</span>
+                    </div>
+                    <div style="font-size: 10px; color: #6B7280; margin-top: 4px;">通过 Capability 接入其他智能体执行写操作。需要被委托智能体已发布。</div>
+                  </div>
+                </div>
+                <!-- L4 -->
+                <div style="display: flex; align-items: flex-start; gap: 12px; border: 1px solid #FCA5A5; background: #FEF2F2; border-radius: 8px; padding: 10px 12px;">
+                  <div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D1D5DB; margin-top: 2px; flex-shrink: 0;"></div>
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="padding: 2px 6px; border-radius: 3px; background: #FEE2E2; color: #B91C1C; font-size: 10px; font-weight: 500;">L4</span>
+                      <span style="font-size: 13px; font-weight: 500; color: #1A202C;">无人值守写回</span>
+                      <span style="padding: 2px 6px; border-radius: 3px; background: #DC2626; color: #fff; font-size: 10px; font-weight: 500;">高风险</span>
+                    </div>
+                    <div style="font-size: 10px; color: #DC2626; margin-top: 4px;">全自动执行写回，无需人工确认。须 Evals 门控全绿方可启用。</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 安全护栏 -->
+            <div>
+              <label style="font-size: 12px; font-weight: 500; color: #374151; display: block; margin-bottom: 6px;">安全护栏</label>
+              <div style="border: 1px solid #E5E7EB; background: #F9FAFB; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 12px; color: #374151;">禁止臆造字段（强制结构化优先）</span>
+                  <div style="width: 32px; height: 18px; border-radius: 9px; background: #4F46E5; display: flex; align-items: center; justify-content: flex-end; padding: 0 2px;"><div style="width: 14px; height: 14px; border-radius: 50%; background: #fff;"></div></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 12px; color: #374151;">Token 上限（防超量调用）</span>
+                  <span style="font-size: 10px; color: #6B7280;">10,000 tokens/会话</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 12px; color: #374151;">速率限制（防 DDoS）</span>
+                  <span style="font-size: 10px; color: #6B7280;">30 次/分钟</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 12px; color: #374151;">创建后自动进入 Draft 审批台</span>
+                  <div style="width: 32px; height: 18px; border-radius: 9px; background: #4F46E5; display: flex; align-items: center; justify-content: flex-end; padding: 0 2px;"><div style="width: 14px; height: 14px; border-radius: 50%; background: #fff;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 底部操作栏 -->
+          <div style="padding: 12px 24px; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 12px; color: #9CA3AF;">第 3 / 4 步</span>
+            <div style="display: flex; gap: 8px;">
+              <button style="padding: 6px 16px; font-size: 12px; border: 1px solid #E5E7EB; border-radius: 6px; background: #fff; color: #6B7280;">取消</button>
+              <button style="padding: 6px 16px; font-size: 12px; border: 1px solid #E5E7EB; border-radius: 6px; background: #fff; color: #6B7280;">上一步</button>
+              <button style="padding: 6px 16px; font-size: 12px; border: none; border-radius: 6px; background: #4F46E5; color: #fff; font-weight: 500;">下一步 →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- 第四步：确认创建（完整向导窗口） -->
+        <!-- ============================================ -->
+        <div style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #E2E8F0;">
+          <!-- 向导头部 -->
+          <div style="padding: 16px 24px; border-bottom: 1px solid #E2E8F0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 15px; font-weight: 600; color: #1A202C;">新建智能体</div>
+                <div style="font-size: 11px; color: #718096; margin-top: 2px;">四步完成智能体创建，开箱即用</div>
+              </div>
+              <div style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #A0AEC0;">
+                <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18L18 6" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <!-- 步进指示器 -->
+            <div style="display: flex; align-items: center; margin-top: 14px;">
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">✓</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #10B981;">基础信息</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #10B981; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">✓</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #10B981;">能力配置</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #10B981; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #10B981; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">✓</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #10B981;">安全等级</span>
+              </div>
+              <div style="width: 48px; height: 1px; background: #10B981; margin: 0 8px;"></div>
+              <div style="display: flex; align-items: center;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: #4F46E5; color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;">4</div>
+                <span style="margin-left: 8px; font-size: 12px; font-weight: 600; color: #4F46E5;">确认创建</span>
+              </div>
+            </div>
+          </div>
+          <!-- 内容区 -->
+          <div style="padding: 20px 24px;">
+            <div style="margin-bottom: 16px;">
+              <div style="font-size: 14px; font-weight: 600; color: #1A202C; margin-bottom: 2px;">第四步：确认配置并创建</div>
+              <div style="font-size: 11px; color: #718096;">检查以下配置，创建后可在编辑器中进一步调整。</div>
+            </div>
+            <!-- 汇总卡片 -->
+            <div style="border: 1px solid #E5E7EB; background: #F9FAFB; border-radius: 12px; overflow: hidden; margin-bottom: 16px;">
+              <!-- 卡片头部 -->
+              <div style="padding: 12px 16px; background: #fff; border-bottom: 1px solid #E5E7EB; display: flex; align-items: center; gap: 12px;">
+                <div style="width: 40px; height: 40px; border-radius: 8px; background: #E0E7FF; display: flex; align-items: center; justify-content: center;">
+                  <svg style="width: 20px; height: 20px; color: #4F46E5;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <div style="font-size: 14px; font-weight: 600; color: #1A202C;">售后退换货 Buddy</div>
+                  <div style="font-size: 10px; color: #6B7280;">设备运维 · L2 HITL</div>
+                </div>
+                <span style="margin-left: auto; padding: 2px 8px; border-radius: 4px; background: #F3F4F6; color: #6B7280; font-size: 10px;">Draft</span>
+              </div>
+              <!-- 卡片详情 -->
+              <div style="padding: 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex;">
+                  <span style="width: 80px; font-size: 11px; color: #9CA3AF; flex-shrink: 0;">模型</span>
+                  <span style="font-size: 12px; color: #374151;">GLM-4-Plus（128K 上下文）</span>
+                </div>
+                <div style="display: flex;">
+                  <span style="width: 80px; font-size: 11px; color: #9CA3AF; flex-shrink: 0;">提示词</span>
+                  <span style="font-size: 12px; color: #374151;">你是售后退换货助手。优先读 Order 与 Wiki 结构化字段…</span>
+                </div>
+                <div style="display: flex;">
+                  <span style="width: 80px; font-size: 11px; color: #9CA3AF; flex-shrink: 0;">本体上下文</span>
+                  <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                    <span style="padding: 1px 6px; border-radius: 3px; background: #EFF6FF; color: #2563EB; font-size: 11px;">Order</span>
+                    <span style="padding: 1px 6px; border-radius: 3px; background: #EFF6FF; color: #2563EB; font-size: 11px;">Device</span>
+                  </div>
+                </div>
+                <div style="display: flex;">
+                  <span style="width: 80px; font-size: 11px; color: #9CA3AF; flex-shrink: 0;">初始工具</span>
+                  <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                    <span style="padding: 1px 6px; border-radius: 3px; background: #ECFDF5; color: #059669; font-size: 11px;">Object Query</span>
+                    <span style="padding: 1px 6px; border-radius: 3px; background: #ECFDF5; color: #059669; font-size: 11px;">Request Clarification</span>
+                  </div>
+                </div>
+                <div style="display: flex;">
+                  <span style="width: 80px; font-size: 11px; color: #9CA3AF; flex-shrink: 0;">安全等级</span>
+                  <span style="padding: 2px 6px; border-radius: 3px; background: #E0E7FF; color: #4338CA; font-size: 11px; font-weight: 500;">L2 · HITL 人机协同</span>
+                </div>
+                <div style="display: flex;">
+                  <span style="width: 80px; font-size: 11px; color: #9CA3AF; flex-shrink: 0;">护栏</span>
+                  <span style="font-size: 12px; color: #374151;">禁止臆造 · 10K tokens · 30 次/分 · 自动入 Draft</span>
+                </div>
+              </div>
+            </div>
+            <!-- 创建后提示 -->
+            <div style="border: 1px solid #FDE68A; background: #FFFBEB; border-radius: 8px; padding: 12px 16px;">
+              <div style="display: flex; gap: 8px;">
+                <svg style="width: 16px; height: 16px; color: #D97706; flex-shrink: 0; margin-top: 2px;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div>
+                  <div style="font-size: 12px; font-weight: 600; color: #92400E;">创建后你需要：</div>
+                  <div style="font-size: 11px; color: #B45309; margin-top: 4px; display: flex; flex-direction: column; gap: 2px;">
+                    <div>1. 在「试运行」Tab 中验证 Agent 对话效果</div>
+                    <div>2. 通过 Evals 门控测试（至少通过率 ≥ 80%）</div>
+                    <div>3. 根据需要通过「成熟度楼梯」升级安全等级</div>
+                    <div>4. 在 Workshop 画布中将 Agent 组件拖入页面</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 底部操作栏 -->
+          <div style="padding: 12px 24px; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 12px; color: #9CA3AF;">第 4 / 4 步</span>
+            <div style="display: flex; gap: 8px;">
+              <button style="padding: 6px 16px; font-size: 12px; border: 1px solid #E5E7EB; border-radius: 6px; background: #fff; color: #6B7280;">取消</button>
+              <button style="padding: 6px 16px; font-size: 12px; border: 1px solid #E5E7EB; border-radius: 6px; background: #fff; color: #6B7280;">上一步</button>
+              <button style="padding: 6px 16px; font-size: 12px; border: none; border-radius: 6px; background: #4F46E5; color: #fff; font-weight: 600;">创建智能体 ✓</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 核心能力 2：AIP 逻辑画布 -->
+    <div class="intro-section">
+      <div class="layer-label">核心能力 02</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg>
+        AIP 逻辑画布
+      </div>
+      <p class="section-desc">
+        AIP Logic 是决策引擎的"发动机"。<strong>10 种 Block</strong> 是构建智能体运行逻辑的"乐高积木"。每一个 Block 都代表一个原子操作，开发者通过拖拽、连接这些 Block，将零散的能力点拼装成一个自动化的工作流（Pipeline）。三栏 UI 设计：左侧块链编排、中间可视化画布、右侧运行与调试面板，支持实时调试与版本管理。
+      </p>
+      <div class="showcase-frame" style="padding: 0;">
+        <!-- AIP 逻辑画布 · 完整三栏编排界面 -->
+        <div style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #E2E8F0;">
+          <!-- Tab 导航 -->
+          <div style="background: #fff; border-bottom: 1px solid #E2E8F0; padding: 0 16px; display: flex; gap: 4px;">
+            <div style="padding: 10px 16px; font-size: 12px; font-weight: 600; color: #4F46E5; border-bottom: 2px solid #4F46E5;">编辑</div>
+            <div style="padding: 10px 16px; font-size: 12px; color: #6B7280;">自动化</div>
+            <div style="padding: 10px 16px; font-size: 12px; color: #6B7280;">运行历史</div>
+          </div>
+          <!-- 三栏编排 -->
+          <div style="display: grid; grid-template-columns: 6fr 4fr 3fr; min-height: 620px;">
+            <!-- ① 编排区（左：Block组件库 / 右：块链编排） -->
+            <div style="border-right: 1px solid #E2E8F0; display: flex; flex-direction: row; overflow: hidden;">
+              <!-- Block 组件库（原调色板） -->
+              <div style="width: 140px; padding: 12px 8px; border-right: 1px solid #E5E7EB; background: #fff; flex-shrink: 0;">
+                <div style="font-size: 10px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Block 组件库</div>
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #DBEAFE; color: #1D4ED8;">📥</div>
+                    <span class="blk-name">输入</span>
+                    <span class="blk-en">Input</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">输入 (Input)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>定义推理入口变量，指定 Pipeline 接收什么类型的业务对象作为输入，如 ObjectType / ObjectId。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>差评触发时，Pipeline 第一步就是通过 Input 接收差评记录的 ID 和对象类型，后续所有步骤都围绕这条数据展开。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #D1FAE5; color: #065F46;">📐</div>
+                    <span class="blk-name">创建变量</span>
+                    <span class="blk-en">Create Variable</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">创建变量 (Create Variable)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>在逻辑执行过程中定义并初始化一个临时变量，将中间计算结果暂存以便复用。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>将订单的"风险等级"计算结果存入 var_risk_level，供后续的"分支判断"和"应用动作"步骤直接读取，避免重复计算。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #FEF3C7; color: #92400E;">🔗</div>
+                    <span class="blk-name">获取属性</span>
+                    <span class="blk-en">Get Property</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">获取属性 (Get Property)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>从一个已注册的业务对象（Object）或其他数据源中读取特定的字段值，是数据读取的入口。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>智能体接收到"订单ID"后，先用"获取属性"Block 查询订单对象，拿到订单的"金额"、"客户等级"、"商品类型"等具体信息作为后续决策的依据。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #EDE9FE; color: #5B21B6;">🤖</div>
+                    <span class="blk-name">使用 LLM</span>
+                    <span class="blk-en">Use LLM</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">使用 LLM (Use LLM)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>调用大语言模型进行推理、对话、总结或结构化信息提取，是智能体的"大脑"。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>读取用户差评文本后，通过 LLM 分析评论的情感倾向（愤怒/失望/中立）、提取关键词（过敏/物流慢/客服问题），并输出结构化标签供后续判断。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #E0E7FF; color: #3730A3;">🔧</div>
+                    <span class="blk-name">使用工具</span>
+                    <span class="blk-en">Use Tool</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">使用工具 (Use Tool)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>调用已在工具面板中注册的 Capability 工具，如对象查询、外部 API、计算函数等。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>差评处理流程中，需要查询"客户历史退款记录"，通过 Use Tool 调用"客户行为查询工具"，获取该客户过去6个月的交易和退款频次，作为风险评估的补充依据。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #CFFAFE; color: #0E7490;">🔄</div>
+                    <span class="blk-name">数据变换</span>
+                    <span class="blk-en">Transform</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">数据变换 (Transform)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>对读取的数据或变量进行格式转换、清洗或简单运算，将数据转换为 LLM 易于理解的格式。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>将订单金额从"分"转换为"元"以便展示；或把"客户姓名 + 购买的商品名称"拼接为一段自然语言描述，再喂给 LLM 进行分析。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #FFEDD5; color: #9A3412;">✏️</div>
+                    <span class="blk-name">应用动作</span>
+                    <span class="blk-en">Apply Action</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">应用动作 (Apply Action)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>触发一个写操作改变系统状态，通常对应一个预定义的 API 调用；调试模式下 dryRun 不落库。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>当判定一个差评为高优先级时，触发"创建工单"Action，自动在客服系统中生成一张待处理工单，并自动分配给对应品类的售后团队。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #DCFCE7; color: #166534;">🚀</div>
+                    <span class="blk-name">执行</span>
+                    <span class="blk-en">Execute</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">执行 (Execute)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>运行一个外部函数（Function）或已发布的 AIP 逻辑单元，实现逻辑复用；也可用于提交执行结果或触发外部通知。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>如果有一个已封装好的"计算客户价值"函数，可直接通过 Execute 调用它；或将最终处理结果以 Webhook 形式推送给企业微信通知相关处理人。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #FEE2E2; color: #991B1B;">🔀</div>
+                    <span class="blk-name">分支</span>
+                    <span class="blk-en">Branch</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">分支 (Branch)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>根据一个条件（通常是变量或属性的值），将流程引导到不同的执行路径上，实现逻辑的多样性。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>根据"差评的风险等级"走两条路径：高风险走"主管介入 + 优惠券补偿"路径；低风险走"标准话术回复 + 自动跟进"路径，实现差异化的智能处理。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="blk-item">
+                    <div class="blk-icon" style="background: #EEF2FF; color: #3730A3;">🔗</div>
+                    <span class="blk-name">汇聚</span>
+                    <span class="blk-en">Handoff</span>
+                    <div class="blk-tooltip">
+                      <div class="tt-title">汇聚 (Handoff)</div>
+                      <div class="tt-section">
+                        <div class="tt-label">作用：</div>
+                        <div>汇聚多路分支的上下文，输出统一的决策摘要+产物清单+待确认项，传递给下一个智能体或人工审批。</div>
+                      </div>
+                      <div class="tt-section">
+                        <div class="tt-label">场景：</div>
+                        <div>高风险分支与低风险分支处理完毕后，通过 Handoff 汇总决策结论、生成的补偿方案、需要主管确认的开放问题，一并交付给"风控审批智能体"继续处理。</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- 块链编排 -->
+              <div style="flex: 1; padding: 16px; overflow-y: auto; background: repeating-linear-gradient(0deg, #fff, #fff 20px, #F8FAFC 20px, #F8FAFC 21px);">
+                <div style="font-size: 10px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">编排 · 块链</div>
+                <!-- Input Block -->
+                <div style="border-radius: 8px; border: 1px solid #BFDBFE; background: rgba(255,255,255,0.95); padding: 10px; margin-bottom: 6px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 500; color: #1D4ED8;">输入</span><span style="font-size: 9px; color: #9CA3AF;">块 #1</span></div>
+                  <div style="font-size: 11px; color: #6B7280; margin-top: 4px; font-family: monospace;">order : Object · Order</div>
+                  <div style="font-size: 9px; color: #9CA3AF; margin-top: 2px;">来自 Workshop 选中行</div>
+                </div>
+                <div style="text-align: center; color: #9CA3AF; font-size: 10px; margin-bottom: 6px;">↓</div>
+                <!-- Get Attributes -->
+                <div style="border-radius: 8px; border: 1px solid #E9D5FF; background: rgba(255,255,255,0.95); padding: 10px; margin-bottom: 6px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 500; color: #7C3AED;">获取属性</span><span style="font-size: 9px; color: #9CA3AF;">块 #2</span></div>
+                  <div style="font-size: 11px; color: #6B7280; margin-top: 4px; font-family: monospace;">order.status · order.amount</div>
+                  <div style="font-size: 11px; color: #6B7280; font-family: monospace;">order.currency · order.region</div>
+                </div>
+                <div style="text-align: center; color: #9CA3AF; font-size: 10px; margin-bottom: 6px;">↓</div>
+                <!-- LLM Block (选中) -->
+                <div style="border-radius: 8px; border: 1px solid #FDE68A; background: #FFFBEB; padding: 10px; margin-bottom: 6px; box-shadow: 0 0 0 2px #FDE68A;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 500; color: #CA8A04;">使用 LLM · 风险评估</span><span style="font-size: 9px; color: #9CA3AF;">块 #3 · 已选中</span></div>
+                  <div style="display: flex; gap: 8px; margin-top: 4px; font-size: 10px; color: #6B7280;">
+                    <span>模型: 私有-中</span>
+                    <span>Temp: 0.3</span>
+                    <span>Max: 512</span>
+                  </div>
+                  <div style="margin-top: 6px; font-size: 11px; color: #6B7280; line-height: 1.5; background: #F3F4F6; border-radius: 4px; padding: 6px; border: 1px solid #E5E7EB;">
+                    你是订单风险评估助手。分析订单风险等级（low/medium/high/critical）。<br/>高风险因子：金额 &gt; $500、跨境发货、新客首单、频繁退款的会员。
+                  </div>
+                  <div style="margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px;">
+                    <span style="padding: 1px 6px; border-radius: 3px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #059669; font-size: 9px;">输出: risk_level</span>
+                    <span style="padding: 1px 6px; border-radius: 3px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #059669; font-size: 9px;">输出: reason</span>
+                  </div>
+                </div>
+                <div style="text-align: center; color: #9CA3AF; font-size: 10px; margin-bottom: 6px;">↓ ↓</div>
+                <!-- Branch (双路) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 6px;">
+                  <div style="border-radius: 8px; border: 1px solid #FECACA; background: #FEF2F2; padding: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 500; color: #EF4444;">分支 · 高风险</span><span style="font-size: 9px; color: #9CA3AF;">#4A</span></div>
+                    <div style="font-size: 11px; color: #6B7280; margin-top: 4px; font-family: monospace;">risk_level IN [high, critical]</div>
+                    <div style="margin-top: 6px; font-size: 10px; color: #EF4444;">→ Apply Action: escalate_to_supervisor</div>
+                  </div>
+                  <div style="border-radius: 8px; border: 1px solid #86EFAC; background: #F0FDF4; padding: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 500; color: #16A34A;">分支 · 低风险</span><span style="font-size: 9px; color: #9CA3AF;">#4B</span></div>
+                    <div style="font-size: 11px; color: #6B7280; margin-top: 4px; font-family: monospace;">risk_level IN [low, medium]</div>
+                    <div style="margin-top: 6px; font-size: 10px; color: #16A34A;">→ 写回：update_status → shipped</div>
+                  </div>
+                </div>
+                <div style="text-align: center; color: #9CA3AF; font-size: 10px; margin-bottom: 6px;">↓ ↓ 汇聚</div>
+                <!-- 汇聚节点 -->
+                <div style="border-radius: 8px; border: 2px solid #A5B4FC; background: #EEF2FF; padding: 10px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <svg style="width: 14px; height: 14px; color: #4F46E5;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7h8M8 12h8M8 17h8" stroke-linecap="round"/><circle cx="5" cy="7" r="1.5" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="5" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg>
+                      <span style="font-size: 12px; font-weight: 500; color: #4338CA;">汇聚 · Handoff 上下文</span>
+                    </div>
+                    <span style="font-size: 9px; color: #9CA3AF;">块 #5</span>
+                  </div>
+                  <div style="margin-top: 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+                    <div style="border-radius: 4px; background: rgba(255,255,255,0.6); border: 1px solid #C7D2FE; padding: 4px 6px;">
+                      <div style="font-size: 9px; color: #9CA3AF;">decision</div>
+                      <div style="font-size: 10px; color: #374151; font-weight: 500;">风险分诊结论</div>
+                    </div>
+                    <div style="border-radius: 4px; background: rgba(255,255,255,0.6); border: 1px solid #C7D2FE; padding: 4px 6px;">
+                      <div style="font-size: 9px; color: #9CA3AF;">artifacts</div>
+                      <div style="font-size: 10px; color: #374151; font-weight: 500;">3 个产物</div>
+                    </div>
+                    <div style="border-radius: 4px; background: rgba(255,255,255,0.6); border: 1px solid #C7D2FE; padding: 4px 6px;">
+                      <div style="font-size: 9px; color: #9CA3AF;">open_qs</div>
+                      <div style="font-size: 10px; color: #374151; font-weight: 500;">1 个待确认</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- ② 配置区 -->
+            <div style="border-right: 1px solid #E2E8F0; padding: 16px; overflow-y: auto; background: #fff;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <div style="font-size: 10px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px;">② 配置 · 汇聚节点属性</div>
+                <span style="padding: 1px 6px; border-radius: 3px; background: #E0E7FF; color: #4338CA; font-size: 9px; font-weight: 500;">Handoff 上下文</span>
+              </div>
+              <!-- 决策摘要 -->
+              <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px; margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                  <svg style="width: 14px; height: 14px; color: #6B7280;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20 10 10 0 000-20z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <label style="font-size: 11px; color: #6B7280; font-weight: 500;">decision_summary · 决策摘要</label>
+                  <span style="font-size: 9px; color: #9CA3AF; margin-left: auto;">必填</span>
+                </div>
+                <div style="font-size: 12px; color: #374151; background: rgba(255,255,255,0.6); border-radius: 4px; padding: 6px; border: 1px solid #E5E7EB; line-height: 1.5;">
+                  订单 <span style="font-family: monospace; color: #111827;">ORD-0721-002</span> 风险等级判定为 <span style="color: #EF4444; font-weight: 500;">高</span>，触发升级审批。主要风险因子：金额 $1,840 &gt; 阈值 $500，跨境发货至东南亚，新客首单。
+                </div>
+              </div>
+              <!-- 产物列表 -->
+              <div style="margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                  <svg style="width: 14px; height: 14px; color: #6B7280;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h9l5 5v15a1 1 0 01-1 1H6a1 1 0 01-1-1V3a1 1 0 011-1z" stroke-linejoin="round"/><path d="M14 2v6h6" stroke-linejoin="round"/></svg>
+                  <label style="font-size: 11px; color: #6B7280; font-weight: 500;">artifacts · 产物列表</label>
+                  <span style="padding: 1px 6px; border-radius: 3px; background: #F3F4F6; color: #6B7280; font-size: 9px; margin-left: auto;">3 项</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <div style="display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #E5E7EB; border-radius: 4px; padding: 4px 8px;">
+                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #A78BFA; flex-shrink: 0;"></span>
+                    <span style="font-size: 11px; color: #374151; font-family: monospace; flex: 1;">risk_assessment.json</span>
+                    <span style="font-size: 9px; color: #9CA3AF;">LLM 输出</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #E5E7EB; border-radius: 4px; padding: 4px 8px;">
+                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #60A5FA; flex-shrink: 0;"></span>
+                    <span style="font-size: 11px; color: #374151; font-family: monospace; flex: 1;">order_snapshot.diff</span>
+                    <span style="font-size: 9px; color: #9CA3AF;">字段变更</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #E5E7EB; border-radius: 4px; padding: 4px 8px;">
+                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #F87171; flex-shrink: 0;"></span>
+                    <span style="font-size: 11px; color: #374151; font-family: monospace; flex: 1;">escalation_ticket.log</span>
+                    <span style="font-size: 9px; color: #9CA3AF;">Action 产物</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 开放问题 -->
+              <div style="margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                  <svg style="width: 14px; height: 14px; color: #6B7280;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 3.5M12 17v.5" stroke-linecap="round"/></svg>
+                  <label style="font-size: 11px; color: #6B7280; font-weight: 500;">open_questions · 待确认项</label>
+                  <span style="padding: 1px 6px; border-radius: 3px; background: #FEF3C7; color: #CA8A04; font-size: 9px; margin-left: auto;">1 项</span>
+                </div>
+                <div style="border-radius: 4px; background: #FFFBEB; border: 1px solid #FDE68A; padding: 8px 10px;">
+                  <div style="display: flex; gap: 6px;">
+                    <span style="font-size: 10px; color: #CA8A04; font-weight: 500; flex-shrink: 0;">Q1</span>
+                    <div style="font-size: 11px; color: #6B7280;">客户历史退款率 22% 是否需要人工复核？建议由风控主管确认后再执行 escalate。</div>
+                  </div>
+                  <div style="display: flex; gap: 6px; margin-top: 6px;">
+                    <span style="font-size: 9px; color: #9CA3AF;">下一步：</span>
+                    <span style="font-size: 10px; color: #4F46E5;">→ 传递给风控审批 Agent</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 传递目标 -->
+              <div style="padding-top: 8px; border-top: 1px solid #F3F4F6;">
+                <label style="display: block; font-size: 11px; color: #6B7280; font-weight: 500; margin-bottom: 6px;">handoff_to · 传递目标</label>
+                <div style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 6px 10px; font-size: 12px; color: #374151; background: #fff; display: flex; justify-content: space-between; align-items: center;">
+                  风控审批 Agent（risk-approver）
+                  <svg style="width: 14px; height: 14px; color: #9CA3AF;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; margin-top: 6px;">
+                  <div style="width: 14px; height: 14px; border-radius: 3px; background: #4F46E5; display: flex; align-items: center; justify-content: center;"><svg style="width: 9px; height: 9px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <span style="font-size: 10px; color: #6B7280;">包含完整运行 trace（Token 用量 / 延迟）</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+                  <div style="width: 14px; height: 14px; border-radius: 3px; background: #4F46E5; display: flex; align-items: center; justify-content: center;"><svg style="width: 9px; height: 9px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <span style="font-size: 10px; color: #6B7280;">自动生成交接摘要（LLM 总结）</span>
+                </div>
+              </div>
+            </div>
+            <!-- ③ 预览区 -->
+            <div style="padding: 16px; overflow-y: auto; background: #fff;">
+              <div style="font-size: 10px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">③ 预览 · 单次运行</div>
+              <div style="border-radius: 8px; border: 1px solid #A7F3D0; background: #ECFDF5; padding: 10px;">
+                <div style="font-size: 12px; font-weight: 500; color: #16A34A; margin-bottom: 6px;">运行 #1047 · 16:42</div>
+                <div style="display: flex; flex-direction: column; gap: 5px; font-size: 11px;">
+                  <div style="display: flex; justify-content: space-between;"><span style="color: #6B7280;">输入：</span><span style="color: #374151; font-family: monospace;">ORD-0721-001</span></div>
+                  <div style="display: flex; justify-content: space-between;"><span style="color: #6B7280;">状态：</span><span style="color: #374151;">已完成 · $129.99 · USD</span></div>
+                  <div style="display: flex; justify-content: space-between;"><span style="color: #6B7280;">风险：</span><span style="color: #16A34A; font-weight: 500;">低</span></div>
+                  <div style="display: flex; justify-content: space-between;"><span style="color: #6B7280;">原因：</span><span style="color: #374151;">金额适中，稳定客户</span></div>
+                  <div style="display: flex; justify-content: space-between;"><span style="color: #6B7280;">延迟：</span><span style="color: #374151;">1,240ms</span></div>
+                  <div style="display: flex; justify-content: space-between;"><span style="color: #6B7280;">Token：</span><span style="color: #374151;">入 284 · 出 47</span></div>
+                </div>
+              </div>
+              <button style="width: 100%; margin-top: 8px; padding: 8px; border: 1px solid #FDE68A; border-radius: 6px; background: #FFFBEB; color: #CA8A04; font-size: 12px; font-weight: 500;">重新运行</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 核心能力 3：智能体工具面板 -->
+    <div class="intro-section">
+      <div class="layer-label">核心能力 03</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        智能体工具面板
+      </div>
+      <p class="section-desc">
+        AI Agent 的"工具箱管理器"。定义 Agent 能用什么工具、怎么用、安全策略是什么。7 种工具类型：动作（Action）、对象查询（Object Query）、函数（Function）、更新应用变量、命令（Command）、请求澄清、智能体接入（Capability）。写路径默认可提案，LLM 只"请求"工具，平台以用户权限代调执行。
+      </p>
+      <div class="showcase-frame" style="padding: 0;">
+        <!-- 智能体工具面板 · 完整三栏布局界面 -->
+        <div style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #E2E8F0;">
+          <!-- Agent 上下文选择器 -->
+          <div style="background: #fff; border-bottom: 1px solid #E2E8F0; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: #6B7280;">
+                <svg style="width: 14px; height: 14px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                返回智能体列表
+              </div>
+              <span style="color: #E2E8F0;">|</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 12px; color: #6B7280;">当前智能体：</span>
+                <div style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: 8px; background: #EEF2FF; border: 1px solid #C7D2FE;">
+                  <div style="width: 20px; height: 20px; border-radius: 4px; background: #FEF3C7; display: flex; align-items: center; justify-content: center;">
+                    <svg style="width: 12px; height: 12px; color: #CA8A04;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span style="font-size: 13px; font-weight: 500; color: #312E81;">维修派单 Buddy</span>
+                  <svg style="width: 14px; height: 14px; color: #A5B4FC;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="padding: 2px 6px; border-radius: 3px; background: #D1FAE5; color: #065F46; font-size: 10px; font-weight: 500;">运行中</span>
+                <span style="padding: 2px 6px; border-radius: 3px; background: #FEF3C7; color: #92400E; font-size: 10px; font-weight: 500;">L2 · HITL</span>
+              </div>
+            </div>
+            <span style="font-size: 12px; color: #9CA3AF;">4 个工具已启用 / 7 类可配</span>
+          </div>
+          <!-- 标题描述 -->
+          <div style="padding: 12px 16px;">
+            <div style="font-size: 16px; font-weight: 600; color: #111827;">AI Agent 的「工具箱管理器」</div>
+            <div style="font-size: 12px; color: #6B7280; margin-top: 2px;">定义 Agent 能用什么工具、怎么用、安全策略是什么——是 AIP 决策引擎中连接 LLM 推理层和平台执行层的关键配置枢纽。</div>
+          </div>
+          <!-- 三栏布局 -->
+          <div style="padding: 0 16px 16px; display: grid; grid-template-columns: 3fr 4fr 5fr; gap: 12px; min-height: 420px;">
+            <!-- 工具目录 -->
+            <div style="border: 1px solid #E2E8F0; border-radius: 10px; background: #fff; padding: 12px;">
+              <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #9CA3AF; padding: 0 8px; margin-bottom: 8px;">工具目录</div>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <label style="display: flex; align-items: flex-start; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                  <div style="width: 16px; height: 16px; border-radius: 3px; background: #4F46E5; display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <div><div style="font-size: 13px; color: #374151;">动作 (Action)</div><div style="font-size: 10px; color: #9CA3AF;">写回动作（可人工确认）</div></div>
+                </label>
+                <label style="display: flex; align-items: flex-start; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                  <div style="width: 16px; height: 16px; border-radius: 3px; background: #4F46E5; display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <div><div style="font-size: 13px; color: #374151;">对象查询 (Object Query)</div><div style="font-size: 10px; color: #9CA3AF;">对象属性查询</div></div>
+                </label>
+                <label style="display: flex; align-items: flex-start; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                  <div style="width: 16px; height: 16px; border-radius: 3px; background: #4F46E5; display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <div><div style="font-size: 13px; color: #374151;">函数 (Function)</div><div style="font-size: 10px; color: #9CA3AF;">函数 / 已发布 Logic</div></div>
+                </label>
+                <label style="display: flex; align-items: flex-start; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                  <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid #D1D5DB; margin-top: 2px; flex-shrink: 0;"></div>
+                  <div><div style="font-size: 13px; color: #374151;">更新应用变量</div><div style="font-size: 10px; color: #9CA3AF;">修改应用状态</div></div>
+                </label>
+                <label style="display: flex; align-items: flex-start; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                  <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid #D1D5DB; margin-top: 2px; flex-shrink: 0;"></div>
+                  <div><div style="font-size: 13px; color: #374151;">命令 (Command)</div><div style="font-size: 10px; color: #9CA3AF;">命令类工具</div></div>
+                </label>
+                <label style="display: flex; align-items: flex-start; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                  <div style="width: 16px; height: 16px; border-radius: 3px; background: #4F46E5; display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0;"><svg style="width: 10px; height: 10px; color: #fff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <div><div style="font-size: 13px; color: #374151;">请求澄清</div><div style="font-size: 10px; color: #9CA3AF;">向用户提问</div></div>
+                </label>
+                <label style="display: flex; align-items: flex-start; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13px;">
+                  <div style="width: 16px; height: 16px; border-radius: 3px; border: 2px solid #D1D5DB; margin-top: 2px; flex-shrink: 0;"></div>
+                  <div><div style="font-size: 13px; color: #374151;">智能体接入 (Capability)</div><div style="font-size: 10px; color: #9CA3AF;">平台代调</div></div>
+                </label>
+              </div>
+            </div>
+            <!-- 已启用 -->
+            <div style="border: 1px solid #E2E8F0; border-radius: 10px; background: #fff; padding: 12px;">
+              <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #9CA3AF; padding: 0 4px; margin-bottom: 8px;">已启用</div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <!-- Action (选中) -->
+                <div style="text-align: left; border-radius: 8px; border: 1px solid #FDE68A; background: #FEF3C7; padding: 10px;">
+                  <div style="font-size: 13px; font-weight: 500; color: #111827;">1. 动作 · 派单维修</div>
+                  <div style="font-size: 11px; color: #CA8A04; margin-top: 2px;">人工确认：●确认后执行</div>
+                </div>
+                <!-- Object Query -->
+                <div style="text-align: left; border-radius: 8px; border: 1px solid #E5E7EB; padding: 10px;">
+                  <div style="font-size: 13px; font-weight: 500; color: #111827;">2. 对象查询 · 设备</div>
+                  <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">属性子集 · 含 Wiki.risk</div>
+                </div>
+                <!-- Function -->
+                <div style="text-align: left; border-radius: 8px; border: 1px solid #E5E7EB; padding: 10px;">
+                  <div style="font-size: 13px; font-weight: 500; color: #111827;">3. 函数 · health_score</div>
+                  <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">或已发布 AIP Logic</div>
+                </div>
+                <!-- 请求澄清 -->
+                <div style="text-align: left; border-radius: 8px; border: 1px solid #E5E7EB; padding: 10px;">
+                  <div style="font-size: 13px; font-weight: 500; color: #111827;">4. 请求澄清</div>
+                  <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">暂停 · 向用户要澄清</div>
+                </div>
+              </div>
+            </div>
+            <!-- 细项详情 -->
+            <div style="border: 1px solid #E2E8F0; border-radius: 10px; background: #fff; padding: 14px;">
+              <!-- 质量评分面板 -->
+              <div style="margin-bottom: 12px; padding: 12px; border-radius: 8px; background: linear-gradient(135deg, #F0F4FF 0%, #FFF7ED 100%); border: 1px solid #E0E7FF;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <svg style="width: 14px; height: 14px; color: #F59E0B;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <span style="font-size: 12px; font-weight: 600; color: #374151;">质量评分</span>
+                  </div>
+                  <div style="display: flex; align-items: baseline; gap: 2px;">
+                    <span style="font-size: 28px; font-weight: 700; color: #185FA5; line-height: 1;">82</span>
+                    <span style="font-size: 12px; color: #9CA3AF;">/ 100</span>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                  <div style="text-align: center; padding: 6px 4px; border-radius: 4px; background: #fff; border: 1px solid #E5E7EB;">
+                    <div style="font-size: 9px; color: #6B7280; margin-bottom: 2px;">结构分</div>
+                    <div style="font-size: 16px; font-weight: 600; color: #10B981;">88</div>
+                    <div style="height: 3px; background: #E5E7EB; border-radius: 2px; margin-top: 4px; overflow: hidden;"><div style="height: 100%; width: 88%; background: #10B981; border-radius: 2px;"></div></div>
+                    <div style="font-size: 8px; color: #9CA3AF; margin-top: 2px;">Schema 完整性</div>
+                  </div>
+                  <div style="text-align: center; padding: 6px 4px; border-radius: 4px; background: #fff; border: 1px solid #E5E7EB;">
+                    <div style="font-size: 9px; color: #6B7280; margin-bottom: 2px;">文档分</div>
+                    <div style="font-size: 16px; font-weight: 600; color: #F59E0B;">75</div>
+                    <div style="height: 3px; background: #E5E7EB; border-radius: 2px; margin-top: 4px; overflow: hidden;"><div style="height: 100%; width: 75%; background: #F59E0B; border-radius: 2px;"></div></div>
+                    <div style="font-size: 8px; color: #9CA3AF; margin-top: 2px;">描述 + 示例</div>
+                  </div>
+                  <div style="text-align: center; padding: 6px 4px; border-radius: 4px; background: #fff; border: 1px solid #E5E7EB;">
+                    <div style="font-size: 9px; color: #6B7280; margin-bottom: 2px;">测试分</div>
+                    <div style="font-size: 16px; font-weight: 600; color: #3B82F6;">83</div>
+                    <div style="height: 3px; background: #E5E7EB; border-radius: 2px; margin-top: 4px; overflow: hidden;"><div style="height: 100%; width: 83%; background: #3B82F6; border-radius: 2px;"></div></div>
+                    <div style="font-size: 8px; color: #9CA3AF; margin-top: 2px;">12/15 用例通过</div>
+                  </div>
+                </div>
+                <div style="margin-top: 8px; padding: 6px 8px; border-radius: 4px; background: #FEF3C7; border: 1px solid #FDE68A; font-size: 10px; color: #92400E;">
+                  <span style="font-weight: 500;">改进建议：</span>补充 2 个边界测试用例（空输入 + 超长文本），文档分可提升至 85+。
+                </div>
+                <div style="margin-top: 6px; display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 9px; color: #6B7280;">最近评分：</span>
+                  <span style="font-size: 9px; color: #374151;">v3 → 78</span>
+                  <span style="color: #D1D5DB;">→</span>
+                  <span style="font-size: 9px; color: #374151;">v4 → 80</span>
+                  <span style="color: #D1D5DB;">→</span>
+                  <span style="font-size: 9px; font-weight: 600; color: #185FA5;">v5 → 82</span>
+                  <span style="margin-left: auto; font-size: 9px; color: #9CA3AF;">2026-07-25</span>
+                </div>
+              </div>
+              <!-- 工具详情 -->
+              <div>
+                <div style="font-size: 14px; font-weight: 500; color: #111827; margin-bottom: 8px;">工具卡 · 动作 (Action)</div>
+                <div style="font-size: 12px; color: #6B7280; margin-bottom: 6px;">动作类型：<code style="color: #CA8A04; font-family: monospace;">create_work_order</code></div>
+                <div style="font-size: 11px; color: #9CA3AF; margin-bottom: 10px;">RID: ri.action…repair</div>
+                <!-- 执行策略 -->
+                <div style="margin-bottom: 10px;">
+                  <div style="font-size: 11px; color: #6B7280; font-weight: 500; margin-bottom: 6px;">执行策略</div>
+                  <div style="display: flex; flex-direction: column; gap: 5px; font-size: 12px;">
+                    <label style="display: flex; gap: 8px; align-items: center; color: #374151;">
+                      <div style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid #D1D5DB;"></div>
+                      对话中自动提交
+                    </label>
+                    <label style="display: flex; gap: 8px; align-items: center; color: #374151;">
+                      <div style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid #4F46E5; background: #fff; display: flex; align-items: center; justify-content: center;"><div style="width: 6px; height: 6px; border-radius: 50%; background: #4F46E5;"></div></div>
+                      弹出动作表单供人确认
+                    </label>
+                    <label style="display: flex; gap: 8px; align-items: center; color: #374151;">
+                      <div style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid #D1D5DB;"></div>
+                      仅生成提案（提案台）
+                    </label>
+                  </div>
+                </div>
+                <!-- 说明 -->
+                <div style="font-size: 11px; color: #6B7280; margin-bottom: 8px; padding: 6px 8px; background: #F9FAFB; border-radius: 4px; border: 1px solid #E5E7EB;">
+                  说明给 LLM：「仅当严重级≥高且用户未否决时调用」
+                </div>
+                <div style="font-size: 11px; color: #7C3AED; text-decoration: underline;">打开动作编辑器 →</div>
+              </div>
+            </div>
+          </div>
+          <!-- 底部操作栏 -->
+          <div style="border-top: 1px solid #E2E8F0; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 11px; color: #6B7280;">Logic：应用动作 · 调用函数 · 查询 · 计算器。</span>
+            <button style="padding: 5px 12px; font-size: 12px; border: none; border-radius: 6px; background: #F59E0B; color: #fff; font-weight: 500;">保存智能体配置</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 质量与治理：Evals 门控 + 成熟度楼梯 -->
+    <div class="intro-section">
+      <div class="layer-label">质量与治理</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-amber);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Evals 门控 + 成熟度楼梯
+      </div>
+      <p class="section-desc">
+        生产安全的"安检站"。Evals 提供评测集管理、跨模型对比、门控上线能力：未过门禁不可挂生产 Automate。L4 级别 Agent 必须通过 Evals 绿灯才能上线。成熟度楼梯可视化 Agent 从 L0（仅对话）到 L4（全自动化）的成长路径，每一级都有明确的工具授权与人工确认策略。
+      </p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div class="showcase-frame" style="padding: 0;">
+          <div style="background: #FFFAF0; border-bottom: 2px solid #D69E2E; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-size: 14px; font-weight: 600; color: #975A16;">✅ Evals 门控</div>
+            <span class="tag tag-amber">评测管理</span>
+          </div>
+          <div style="padding: 20px; background: #fff;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;">
+              <div style="text-align: center; padding: 10px; background: #FFFAF0; border-radius: 6px;">
+                <div style="font-size: 18px; font-weight: 700; color: #975A16;">87%</div>
+                <div style="font-size: 9px; color: #744210;">总体通过率</div>
+              </div>
+              <div style="text-align: center; padding: 10px; background: #FFFAF0; border-radius: 6px;">
+                <div style="font-size: 18px; font-weight: 700; color: #975A16;">42</div>
+                <div style="font-size: 9px; color: #744210;">测试用例</div>
+              </div>
+              <div style="text-align: center; padding: 10px; background: #F0FFF4; border-radius: 6px;">
+                <div style="font-size: 18px; font-weight: 700; color: #276749;">L2</div>
+                <div style="font-size: 9px; color: #276749;">当前等级</div>
+              </div>
+            </div>
+            <div style="border-top: 1px solid #EDF2F7; padding-top: 12px; font-size: 11px; color: #744210; line-height: 1.8;">
+              <div>📋 <strong>评测集</strong>：含 8 条回归黄金集，门槛 ≥ 92%</div>
+              <div>🚫 <strong>当前状态</strong>：L4 未达标，差 5 个百分点</div>
+              <div>🕐 <strong>上次运行</strong>：今天 09:00</div>
+            </div>
+            <div style="margin-top: 14px; display: flex; gap: 8px;">
+              <button class="p-btn p-btn-primary p-btn-sm">运行评测</button>
+              <button class="p-btn p-btn-secondary p-btn-sm">查看详情</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-frame" style="padding: 0;">
+          <div style="background: #FAF5FF; border-bottom: 2px solid #805AD5; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-size: 14px; font-weight: 600; color: #553C9A;">🪜 成熟度楼梯</div>
+            <span class="tag tag-purple">自动化等级</span>
+          </div>
+          <div style="padding: 20px; background: #fff;">
+            <div style="font-size: 11px; color: #553C9A; margin-bottom: 12px; line-height: 1.6;">
+              别一上来做自动化。先 Threads，再固化 Agent，再嵌应用，最后才自动化。
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 24px; height: 24px; background: #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: #718096;">L1</div>
+                <div style="flex: 1; font-size: 11px; color: #718096;">只读工具，需人工确认</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 24px; height: 24px; background: #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: #718096;">L2</div>
+                <div style="flex: 1; font-size: 11px; color: #718096;">低风险写入，Draft 审批</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; padding: 8px; background: #FAF5FF; border-radius: 6px; border: 1px solid #E9D8FD;">
+                <div style="width: 24px; height: 24px; background: #805AD5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: #fff;">L3</div>
+                <div style="flex: 1; font-size: 11px; color: #553C9A; font-weight: 500;">🚨 需人工审批（当前等级）</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 24px; height: 24px; background: #E2E8F0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: #718096;">L4</div>
+                <div style="flex: 1; font-size: 11px; color: #718096;">全自动化（需 Evals 绿灯）</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 可观测性 -->
+    <div class="intro-section">
+      <div class="layer-label">运维保障</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-purple);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        可观测性
+      </div>
+      <p class="section-desc">
+        AIP 的"眼睛"。从用户提问 → Logic 执行 → 工具调用 → 模型调用 → 结果返回，全链路可追踪。Token 用量、延迟、成功率、成本实时监控；失败率/延迟/成本超阈值自动告警。Trace 视图还原每一次决策的完整链路，节点类型、节点详情、执行时间线一目了然。
+      </p>
+      <div style="background: #FAF5FF; border: 1px solid #E9D8FD; border-radius: 8px; padding: 20px 24px;">
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <svg class="w-5 h-5" style="color: #805AD5; flex-shrink: 0; margin-top: 2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01" stroke-linecap="round"/></svg>
+          <div style="flex: 1;">
+            <div style="font-size: 13px; font-weight: 600; color: #553C9A; margin-bottom: 10px;">📊 可观测性能力清单</div>
+            <div style="font-size: 12px; color: #553C9A; line-height: 1.9;">
+              <div style="margin-bottom: 6px;"><strong>🔍 链路追踪</strong>　用户提问 → Logic → 工具 → 模型 → 结果，每一次决策的完整链路可回放</div>
+              <div style="margin-bottom: 6px;"><strong>📈 指标仪表盘</strong>　Token 用量 / P99 延迟 / 成功率 / 单次成本，按模型与智能体维度切片</div>
+              <div style="margin-bottom: 6px;"><strong>🚨 阈值告警</strong>　失败率 / 延迟 / 成本超阈值自动触发告警，可路由到 IM、邮件、Webhook</div>
+              <div style="margin-bottom: 6px;"><strong>📋 日志管理</strong>　每次调用的完整输入输出留存，凭据全程脱敏，仅存引用</div>
+              <div style="margin-bottom: 6px;"><strong>🕐 执行时间线</strong>　节点类型 + 耗时 + 状态一目了然，"运行历史" Tab 默认展开</div>
+              <div><strong>🔄 失败回滚</strong>　Action 执行失败自动回滚 + 重试，生产数据删除必须人工确认</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 模型管理 -->
+    <div class="intro-section">
+      <div class="layer-label">基础设施</div>
+      <div class="section-title">
+        <svg class="w-5 h-5" style="color: var(--p-red);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg>
+        模型管理
+      </div>
+      <p class="section-desc">
+        Model Catalog 统一管理模型登记、版本、供应商与生命周期。支持 40+ 模型供应商接入，提供跨模型对比评测与容量配额控制，为上层所有 AIP 模块供应"弹药"。
+      </p>
+
+      <!-- 模型目录 · 目录浏览界面（参考 /aip/model-catalog） -->
+      <div class="showcase-frame" style="padding: 0;">
+        <div style="background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid #E2E8F0;">
+          <!-- 页面头部：标题 + 副标题 + Live 状态条 -->
+          <div style="padding: 20px 24px 0;">
+            <div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">模型目录</div>
+            <div style="font-size: 13px; color: #6B7280; margin-bottom: 12px;">管理 AIP 启用状态、模型家族和已注册模型</div>
+            <!-- Live 状态条 -->
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; margin-bottom: 16px;">
+              <span style="padding: 2px 8px; border-radius: 4px; background: #2563EB; color: #fff; font-size: 11px; font-weight: 600;">Live</span>
+              <span style="font-size: 12px; color: #374151;">目录/已注册已接 <code style="color: #1D4ED8; background: #DBEAFE; padding: 1px 4px; border-radius: 3px; font-size: 11px;">`/v1/aip/model-catalog`</code></span>
+            </div>
+            <!-- 架构条 L1→L2→L3→AIP -->
+            <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; gap: 0; margin-bottom: 12px;">
+              <div style="flex: 1; text-align: center; padding: 12px; border-radius: 8px; background: #fff; border: 1px solid #E5E7EB;">
+                <div style="font-size: 11px; color: #9CA3AF; font-weight: 600; margin-bottom: 4px;">L1</div>
+                <div style="font-size: 14px; font-weight: 600; color: #111827;">模型供应商</div>
+                <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">凭证管理</div>
+                <div style="font-size: 11px; color: #4F46E5; margin-top: 4px; font-weight: 500;">进入 →</div>
+              </div>
+              <span style="font-size: 18px; color: #9CA3AF; margin: 0 8px;">→</span>
+              <div style="flex: 1; text-align: center; padding: 12px; border-radius: 8px; background: #fff; border: 1px solid #E5E7EB;">
+                <div style="font-size: 11px; color: #9CA3AF; font-weight: 600; margin-bottom: 4px;">L2</div>
+                <div style="font-size: 14px; font-weight: 600; color: #111827;">模型路由</div>
+                <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">流量策略 · 熔断</div>
+                <div style="font-size: 11px; color: #4F46E5; margin-top: 4px; font-weight: 500;">进入 →</div>
+              </div>
+              <span style="font-size: 18px; color: #4F46E5; margin: 0 8px;">→</span>
+              <div style="flex: 1; text-align: center; padding: 12px; border-radius: 8px; background: #EEF2FF; border: 2px solid #4F46E5;">
+                <div style="font-size: 11px; color: #4F46E5; font-weight: 600; margin-bottom: 4px;">L3 · 当前</div>
+                <div style="font-size: 14px; font-weight: 600; color: #111827;">模型目录</div>
+                <div style="font-size: 11px; color: #4F46E5; margin-top: 2px;">可发现 → 注册</div>
+              </div>
+              <span style="font-size: 18px; color: #9CA3AF; margin: 0 8px;">→</span>
+              <div style="flex: 1; text-align: center; padding: 12px; border-radius: 8px; background: #ECFDF5; border: 1px solid #A7F3D0;">
+                <div style="font-size: 11px; color: #059669; font-weight: 600; margin-bottom: 4px;">AIP</div>
+                <div style="font-size: 14px; font-weight: 600; color: #065F47;">智能体调用</div>
+                <div style="font-size: 11px; color: #059669; margin-top: 2px;">选模型 → 推理</div>
+              </div>
+            </div>
+          </div>
+          <!-- 统计卡片 -->
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+            <div style="padding: 16px; text-align: center; border-right: 1px solid #E2E8F0;">
+              <div style="font-size: 28px; font-weight: 700; color: #4F46E5;">14</div>
+              <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">目录模型总数</div>
+            </div>
+            <div style="padding: 16px; text-align: center; border-right: 1px solid #E2E8F0;">
+              <div style="font-size: 28px; font-weight: 700; color: #10B981;">7</div>
+              <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">已注册</div>
+            </div>
+            <div style="padding: 16px; text-align: center; border-right: 1px solid #E2E8F0;">
+              <div style="font-size: 28px; font-weight: 700; color: #7C3AED;">7</div>
+              <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">供应商数</div>
+            </div>
+            <div style="padding: 16px; text-align: center;">
+              <div style="font-size: 28px; font-weight: 700; color: #F59E0B;">1</div>
+              <div style="font-size: 11px; color: #6B7280; margin-top: 2px;">免费模型</div>
+            </div>
+          </div>
+          <!-- Tab 导航 -->
+          <div style="display: flex; border-bottom: 1px solid #E2E8F0; background: #fff;">
+            <div style="padding: 10px 16px; font-size: 12px; font-weight: 600; color: #4F46E5; border-bottom: 2px solid #4F46E5;">目录浏览 (14)</div>
+            <div style="padding: 10px 16px; font-size: 12px; color: #6B7280;">AIP 设置</div>
+            <div style="padding: 10px 16px; font-size: 12px; color: #6B7280;">模型启用</div>
+            <div style="padding: 10px 16px; font-size: 12px; color: #6B7280;">已注册 (7)</div>
+          </div>
+          <!-- 筛选栏 -->
+          <div style="padding: 12px 16px; border-bottom: 1px solid #E2E8F0; display: flex; gap: 8px; align-items: center;">
+            <div style="flex: 1; position: relative;">
+              <svg style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: #9CA3AF;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+              <div style="width: 100%; border: 1px solid #D1D5DB; border-radius: 6px; padding: 6px 10px 6px 32px; font-size: 12px; color: #9CA3AF;">搜索模型名称、供应商...</div>
+            </div>
+            <div style="border: 1px solid #D1D5DB; border-radius: 6px; padding: 6px 10px; font-size: 12px; color: #374151; display: flex; align-items: center; gap: 4px;">所有供应商 <svg style="width: 12px; height: 12px; color: #6B7280;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg></div>
+            <div style="border: 1px solid #D1D5DB; border-radius: 6px; padding: 6px 10px; font-size: 12px; color: #374151; display: flex; align-items: center; gap: 4px;">所有能力 <svg style="width: 12px; height: 12px; color: #6B7280;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg></div>
+            <div style="border: 1px solid #D1D5DB; border-radius: 6px; padding: 6px 10px; font-size: 12px; color: #374151; display: flex; align-items: center; gap: 4px;">所有价位 <svg style="width: 12px; height: 12px; color: #6B7280;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg></div>
+          </div>
+          <!-- 结果信息 -->
+          <div style="padding: 8px 16px; font-size: 11px; color: #6B7280; border-bottom: 1px solid #F3F4F6;">
+            找到 <strong style="color: #374151;">14</strong> 个模型 · 已选 <strong style="color: #4F46E5;">0</strong>/3 用于对比
+          </div>
+          <!-- 模型卡片网格 -->
+          <div style="padding: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+            <!-- GPT-5.4 Pro -->
+            <div style="border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px; background: #fff;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <div style="display: flex; gap: 8px;">
+                  <div style="width: 32px; height: 32px; border-radius: 8px; background: #10A37F; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center;">O</div>
+                  <div>
+                    <div style="font-size: 13px; font-weight: 600; color: #111827;">GPT-5.4 Pro</div>
+                    <div style="font-size: 10px; color: #9CA3AF;">OpenAI</div>
+                  </div>
+                </div>
+                <span style="padding: 2px 6px; border-radius: 4px; background: #D1FAE5; color: #065F46; font-size: 9px; font-weight: 500;">已注册</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; margin-bottom: 8px;">
+                <div><span style="color: #9CA3AF;">参数量 </span><span style="color: #374151; font-weight: 500;">≈1.8T</span></div>
+                <div><span style="color: #9CA3AF;">上下文 </span><span style="color: #374151; font-weight: 500;">256K</span></div>
+                <div><span style="color: #9CA3AF;">输入 </span><span style="color: #374151; font-weight: 500;">$10/1M</span></div>
+                <div><span style="color: #9CA3AF;">输出 </span><span style="color: #374151; font-weight: 500;">$30/1M</span></div>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 10px;">
+                <span style="padding: 1px 5px; border-radius: 3px; background: #DBEAFE; color: #1D4ED8; font-size: 9px;">chat</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #FCE7F3; color: #BE185D; font-size: 9px;">vision</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #FEF3C7; color: #B45309; font-size: 9px;">reasoning</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #F1F5F9; color: #475569; font-size: 9px;">function-calling</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #6B7280;"><div style="width: 12px; height: 12px; border-radius: 2px; border: 2px solid #D1D5DB;"></div>对比</label>
+                <span style="font-size: 10px; color: #4F46E5; text-decoration: underline;">路由配置 →</span>
+              </div>
+            </div>
+            <!-- Claude Opus 4.7 -->
+            <div style="border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px; background: #fff;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <div style="display: flex; gap: 8px;">
+                  <div style="width: 32px; height: 32px; border-radius: 8px; background: #D97706; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center;">A</div>
+                  <div>
+                    <div style="font-size: 13px; font-weight: 600; color: #111827;">Claude Opus 4.7</div>
+                    <div style="font-size: 10px; color: #9CA3AF;">Anthropic</div>
+                  </div>
+                </div>
+                <span style="padding: 2px 6px; border-radius: 4px; background: #D1FAE5; color: #065F46; font-size: 9px; font-weight: 500;">已注册</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; margin-bottom: 8px;">
+                <div><span style="color: #9CA3AF;">参数量 </span><span style="color: #374151; font-weight: 500;">≈2T</span></div>
+                <div><span style="color: #9CA3AF;">上下文 </span><span style="color: #374151; font-weight: 500;">500K</span></div>
+                <div><span style="color: #9CA3AF;">输入 </span><span style="color: #374151; font-weight: 500;">$15/1M</span></div>
+                <div><span style="color: #9CA3AF;">输出 </span><span style="color: #374151; font-weight: 500;">$75/1M</span></div>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 10px;">
+                <span style="padding: 1px 5px; border-radius: 3px; background: #DBEAFE; color: #1D4ED8; font-size: 9px;">chat</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #FCE7F3; color: #BE185D; font-size: 9px;">vision</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #FEF3C7; color: #B45309; font-size: 9px;">reasoning</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #EDE9FE; color: #6D28D9; font-size: 9px;">code</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #6B7280;"><div style="width: 12px; height: 12px; border-radius: 2px; border: 2px solid #D1D5DB;"></div>对比</label>
+                <span style="font-size: 10px; color: #4F46E5; text-decoration: underline;">路由配置 →</span>
+              </div>
+            </div>
+            <!-- Gemini 2.5 Ultra (未注册) -->
+            <div style="border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px; background: #fff;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <div style="display: flex; gap: 8px;">
+                  <div style="width: 32px; height: 32px; border-radius: 8px; background: #4285F4; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center;">G</div>
+                  <div>
+                    <div style="font-size: 13px; font-weight: 600; color: #111827;">Gemini 2.5 Ultra</div>
+                    <div style="font-size: 10px; color: #9CA3AF;">Google</div>
+                  </div>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; margin-bottom: 8px;">
+                <div><span style="color: #9CA3AF;">参数量 </span><span style="color: #374151; font-weight: 500;">≈1.5T</span></div>
+                <div><span style="color: #9CA3AF;">上下文 </span><span style="color: #374151; font-weight: 500;">2M</span></div>
+                <div><span style="color: #9CA3AF;">输入 </span><span style="color: #374151; font-weight: 500;">$7/1M</span></div>
+                <div><span style="color: #9CA3AF;">输出 </span><span style="color: #374151; font-weight: 500;">$21/1M</span></div>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 10px;">
+                <span style="padding: 1px 5px; border-radius: 3px; background: #DBEAFE; color: #1D4ED8; font-size: 9px;">chat</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #FCE7F3; color: #BE185D; font-size: 9px;">vision</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #FEF3C7; color: #B45309; font-size: 9px;">reasoning</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #EDE9FE; color: #6D28D9; font-size: 9px;">code</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #6B7280;"><div style="width: 12px; height: 12px; border-radius: 2px; border: 2px solid #D1D5DB;"></div>对比</label>
+                <button style="padding: 3px 10px; font-size: 10px; border: none; border-radius: 4px; background: #4F46E5; color: #fff; font-weight: 500;">注册到供应商</button>
+              </div>
+            </div>
+            <!-- DeepSeek V3.2 (未注册) -->
+            <div style="border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px; background: #fff;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <div style="display: flex; gap: 8px;">
+                  <div style="width: 32px; height: 32px; border-radius: 8px; background: #4D6BFE; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center;">D</div>
+                  <div>
+                    <div style="font-size: 13px; font-weight: 600; color: #111827;">DeepSeek V3.2</div>
+                    <div style="font-size: 10px; color: #9CA3AF;">DeepSeek</div>
+                  </div>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; margin-bottom: 8px;">
+                <div><span style="color: #9CA3AF;">参数量 </span><span style="color: #374151; font-weight: 500;">≈671B</span></div>
+                <div><span style="color: #9CA3AF;">上下文 </span><span style="color: #374151; font-weight: 500;">128K</span></div>
+                <div><span style="color: #9CA3AF;">输入 </span><span style="color: #374151; font-weight: 500;">$0.27/1M</span></div>
+                <div><span style="color: #9CA3AF;">输出 </span><span style="color: #374151; font-weight: 500;">$1.10/1M</span></div>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 10px;">
+                <span style="padding: 1px 5px; border-radius: 3px; background: #DBEAFE; color: #1D4ED8; font-size: 9px;">chat</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #EDE9FE; color: #6D28D9; font-size: 9px;">code</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #FEF3C7; color: #B45309; font-size: 9px;">reasoning</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #6B7280;"><div style="width: 12px; height: 12px; border-radius: 2px; border: 2px solid #D1D5DB;"></div>对比</label>
+                <button style="padding: 3px 10px; font-size: 10px; border: none; border-radius: 4px; background: #4F46E5; color: #fff; font-weight: 500;">注册到供应商</button>
+              </div>
+            </div>
+            <!-- Qwen3 Max (未注册) -->
+            <div style="border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px; background: #fff;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <div style="display: flex; gap: 8px;">
+                  <div style="width: 32px; height: 32px; border-radius: 8px; background: #FF6A00; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center;">A</div>
+                  <div>
+                    <div style="font-size: 13px; font-weight: 600; color: #111827;">Qwen3 Max</div>
+                    <div style="font-size: 10px; color: #9CA3AF;">Alibaba</div>
+                  </div>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; margin-bottom: 8px;">
+                <div><span style="color: #9CA3AF;">参数量 </span><span style="color: #374151; font-weight: 500;">≈480B</span></div>
+                <div><span style="color: #9CA3AF;">上下文 </span><span style="color: #374151; font-weight: 500;">256K</span></div>
+                <div><span style="color: #9CA3AF;">输入 </span><span style="color: #374151; font-weight: 500;">¥4/1M</span></div>
+                <div><span style="color: #9CA3AF;">输出 </span><span style="color: #374151; font-weight: 500;">¥12/1M</span></div>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 10px;">
+                <span style="padding: 1px 5px; border-radius: 3px; background: #DBEAFE; color: #1D4ED8; font-size: 9px;">chat</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #EDE9FE; color: #6D28D9; font-size: 9px;">code</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #FCE7F3; color: #BE185D; font-size: 9px;">vision</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #6B7280;"><div style="width: 12px; height: 12px; border-radius: 2px; border: 2px solid #D1D5DB;"></div>对比</label>
+                <button style="padding: 3px 10px; font-size: 10px; border: none; border-radius: 4px; background: #4F46E5; color: #fff; font-weight: 500;">注册到供应商</button>
+              </div>
+            </div>
+            <!-- Llama 4 Maverick (免费, 未注册) -->
+            <div style="border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px; background: #fff;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <div style="display: flex; gap: 8px;">
+                  <div style="width: 32px; height: 32px; border-radius: 8px; background: #0668E1; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center;">M</div>
+                  <div>
+                    <div style="font-size: 13px; font-weight: 600; color: #111827;">Llama 4 Maverick 17B</div>
+                    <div style="font-size: 10px; color: #9CA3AF;">Meta</div>
+                  </div>
+                </div>
+                <span style="padding: 2px 6px; border-radius: 4px; background: #FEF3C7; color: #B45309; font-size: 9px; font-weight: 500;">免费</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; margin-bottom: 8px;">
+                <div><span style="color: #9CA3AF;">参数量 </span><span style="color: #374151; font-weight: 500;">17B</span></div>
+                <div><span style="color: #9CA3AF;">上下文 </span><span style="color: #374151; font-weight: 500;">256K</span></div>
+                <div><span style="color: #9CA3AF;">输入 </span><span style="color: #374151; font-weight: 500;">免费</span></div>
+                <div><span style="color: #9CA3AF;">输出 </span><span style="color: #374151; font-weight: 500;">—</span></div>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 10px;">
+                <span style="padding: 1px 5px; border-radius: 3px; background: #DBEAFE; color: #1D4ED8; font-size: 9px;">chat</span>
+                <span style="padding: 1px 5px; border-radius: 3px; background: #EDE9FE; color: #6D28D9; font-size: 9px;">code</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #6B7280;"><div style="width: 12px; height: 12px; border-radius: 2px; border: 2px solid #D1D5DB;"></div>对比</label>
+                <button style="padding: 3px 10px; font-size: 10px; border: none; border-radius: 4px; background: #4F46E5; color: #fff; font-weight: 500;">注册到供应商</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>
