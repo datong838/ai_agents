@@ -216,6 +216,24 @@ M3-1 集成顺序固定为 W1 → W2 → W3 → W4/总控；每路提交后审�
 
 **退出门：** 空 Registry、500、403/404、分页、刷新回读组件和浏览器验证通过。
 
+#### M3-2 开工审计与四路文件所有权（2026-08-03）
+
+开工审计确认：当前 `AssetBundlesPage.tsx` 请求不存在的 `/v1/assets`，并把 loading、真实空数组、响应漂移、网络错误及 401/403/404/500 全部静默替换成 `MOCK_ASSET_BUNDLES`；旧 channel/components/changelog 模型与真实 Registry 契约不兼容。现有两套页面测试同样锁定 Mock 成功数据，必须替换。
+
+另发现 Installation list/detail 目前只有 TypeScript 静态类型，缺少与 Registry 等价的运行时失败关闭 parser。M3-2 在展示服务端事实前先补该 parser；详情只能宣称展示 current revision、current decision 和完整事件时间线，不得声称拥有每个历史 revision 的完整快照。
+
+| 路线 | 独占文件 | 责任边界 |
+|---|---|---|
+| 总控前置 | `assetBundles/model.ts` | 冻结只读 `ReadState`、选择键和分页视图契约，供并行路线共同消费 |
+| W1 | `api/assetControl/installations.ts`、fixture/test；最小修改 `client.ts` | Installation list/detail 运行时 parser、状态/hash/时间/事件结构失败关闭；SDK GET 接入 parser |
+| W2 | `assetBundles/readHooks.ts`、`readHooks.test.tsx` | 五个只读 hook、request sequence 防乱序、loading/empty/error/refresh/stale；403/404 清除旧数据 |
+| W3 | `assetBundles/RegistryPanel.tsx`、`InstallationPanel.tsx`、`InstallationDetail.tsx` 及各自测试 | 纯只读视图；真实状态、服务端分页、事件/evidence/pointer 展示；不直接调用 API |
+| W4/总控 | `AssetBundlesPage.tsx` 和现有两套页面测试 | 保留 named export 与 `/apollo/assets`；接线 hooks/panels；删除生产 Mock 和 `/v1/assets`；集成状态验证 |
+
+M3-2 不新增 mutation UI，不修改通用 `api/client.ts`、后端、数据库、路由或状态机。Registry 无服务端分页，不伪装全局分页；Installation 只按服务端 `state/limit/offset` 分页。详情请求必须携带 publisher；刷新失败如保留旧数据必须显示 stale，401/403/404 必须清除旧数据。
+
+退出门补充：生产源码中 `MOCK_ASSET_BUNDLES` 与 `\"/v1/assets\"` 零命中；pending promise 只显示 loading；真实 `[]` 显示 empty；403 显示无权；404 统一不可见或不存在；500/网络显示重试；分页边界和乱序响应通过；M3-3/M3-4 的 resolve/create/action 入口不可达。
+
 ### M3-3：Resolve/Create 与 Diff
 
 **目标：** 完成安装前预检，不执行安装 action。
