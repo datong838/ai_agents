@@ -1,10 +1,10 @@
 # 228-M2-B 安装控制面与 Canonical API 并行实施方案
 
-> 状态：**v1.5 M2-B0 最终 GREEN，允许进入 B1**
+> 状态：**v1.7 M2-B 最终 GREEN，允许进入 M3**
 > 日期：2026-08-03
 > 上位方案：[228-M2 Resolver、Lock 与 Installation 公共契约冻结方案](228-M2-Resolver-Lock-Installation公共契约冻结方案.md)
-> 代码基线：`aos-platform m1@2648808`（B0 共享底座已提交）
-> 分支基线：m1、W1、W2、W3、W4 均对齐 `2648808`
+> 代码基线：`aos-platform m1@d85992b`（B0～B3 最终 GREEN）
+> 分支基线：W1 `764ad05`、W2 `5372caf`、W3 `1a490b3`、W4 `9a6818a` 已纳入 m1
 
 ---
 
@@ -41,6 +41,10 @@ M2-A 已提供可复用的严格 DTO、确定性 Resolver、Registry snapshot/re
 交叉评审记录：v1.0 首轮由 W1/W2/W3 分别审查事务/baseline、状态机/revalidation/evidence、HTTP/OpenAPI/CORS；v1.1 关闭全部 P0/P1 后又进行两轮定点复核。最终三方均确认残余 P0/P1 为零，形成 v1.2 冻结版。B0 首轮实现审查又发现超大 ETag 转换逃逸、全局 `sys.modules` 测试易受收集顺序干扰、Protocol 缺精确签名锁和畸形 target marking helper 可能失败开放；v1.3 在继续编码前冻结对应边界与回归方法，不改变 M2-B 业务范围。
 
 B0 执行复核（2026-08-03）：`2648808` 的生产文件、测试文件和共享 wiring 与 B0 独占清单一致；B0 专项、M1+M2 `asset_registry` 累计、OpenAPI、路由聚合、Alembic head/current、Ruff/format 与源码安全门已通过，回归证据已归档。Ruff 必须从 `services/aos-api` 项目目录运行以使用正确的一方包分类；从仓库根直接检查同一文件会把 `aos_api` 误分类为第三方，不作为格式门结果。B0 未修改业务代码，允许五分支保持 `2648808` 进入 B1 文件独占开发。
+
+B1/B2 执行复核（2026-08-03）：Composition、Installation/Revalidation/Evidence、Router/Header 三路文件独占实现已合入 m1；W4 在合入基线上只新增对抗和真实 PostgreSQL 集成测试。三路集成累计 `asset_registry` 为 557 passed，B2 加入重复/畸形 header、客户端 evidence 注入和同 ETag 并发后为 561 passed；并发输家无 receipt，最终仅一条状态迁移。允许进入 B3 路由登记、OpenAPI/CORS、全平台门和证据收口。
+
+B3 最终复核（2026-08-03）：两个 Router 已按 509/510 登记并由脚本生成 aggregate；运行时为 4042 routes，OpenAPI 为 2277 paths/4019 unique operations，新增 11 个显式 operationId、10 个 unique paths，known duplicates 不增加，浏览器可读取 ETag。具体 Service 六个 action 的签名已再次与冻结 Protocol 对齐。资产域 562 passed，聚合/OpenAPI 19 passed + 2 subtests，后端全量 8762 passed/3 skipped + 2 subtests；Ontology SDK 6、Web 1781、Desktop 40 项通过，typecheck/build、Alembic head/current、Ruff/format、确定性生成和安全扫描均 GREEN。最终证据已归档，允许进入 M3，但仍不授权提前开发电商 G0～G6。
 
 ---
 
@@ -603,8 +607,8 @@ W4 不修改生产文件；以合入 W1/W2/W3 后的基线写真实 PostgreSQL �
 
 ---
 
-## 11. 进入编码结论
+## 11. 当前执行结论
 
-M2-A 最终 GREEN，M2-B0 已在 `2648808` 完成共享错误、control policy、跨 Worker Protocol、统一 wiring 与旧 Registry factory 委托；专项、M1+M2 累计、OpenAPI、聚合、数据库、格式和安全门均为 GREEN。五分支已对齐且 Worker worktree 干净。
+M2-A 最终 GREEN；M2-B0～B3 已在 `m1@d85992b` 完成并通过全部退出门。用户已有 `AppShell.tsx` 和掘金文档仍保持未触碰。
 
-**下一步固定为 M2-B1：W1 实现 Composition Service，W2 实现 Installation Service/Revalidation/Evidence，W3 只实现 Router/Header；三路不得修改对方独占文件或总控生成物。W4 等三路集成后再进入 B2 独立对抗。**
+**下一步固定为 M3：先复核并完善安装管理 UI/SDK 方案，再编码；M5 完成前仍不得进入电商 G0～G6。**
