@@ -1,8 +1,8 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.6 评审通过 · M3-3 GREEN · M3-4 编码前契约已冻结**
+> 状态：**v1.7 评审通过 · M3-4 GREEN · 允许进入 M3-5**
 > 起始代码基线：`aos-platform m1@d85992b`
-> 当前代码基线：`aos-platform m1@77a1e5b`（五分支同步，远程 `origin/m1` 已更新）
+> 当前代码基线：`aos-platform m1@6432444`（五分支同 HEAD/tree，五个远程分支已更新）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
 > 后续门禁：M3 GREEN 后方可进入 M4；M5 完成前不得进入电商 G0～G6
 
@@ -161,7 +161,7 @@ M3-0 已由四个独立 worker 从 `m1@d85992b` 并行完成，并由总控逐�
 | W3 | 11 个 control operation 的 OpenAPI/header/ETag/error 契约测试 | `435de34` |
 | W4 | 前端 operation map、header 与错误矩阵 | `f7937b0` |
 
-验证结果：前端专项 14/14、Web 全量 1795/1795、TypeScript GREEN、Web production build GREEN；后端 Registry/Composition/Installation/OpenAPI 累计 77/77。完整证据见 [`2026-08-03-M3-0契约与测试夹具冻结证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)。
+验证结果：前端专项 14/14、Web 全量 1795/1795、TypeScript GREEN、Web production build GREEN；后端 Registry/Composition/Installation/OpenAPI 累计 77/77。完整证据见 [`../evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)。
 
 M3-0 未修改页面、通用 API client、后端生产代码、数据库或状态机。Registry OpenAPI 仍是动态 object，前端以真实 Store/API 公共投影 fixture 和失败关闭 parser 冻结；后端合法增加字段时必须显式更新契约。下一步只允许进入 M3-1。
 
@@ -191,7 +191,7 @@ M3-1 已在 `m1@89bbb98` 收口：新增专用 `client.ts`、`idempotency.ts`、
 
 总控审查额外修正两项安全语义：HTTP 500 视为结果未知，必须先刷新并以原幂等键重试；`OFFLINE_MUTATION_DISABLED` 视为发送前明确未执行，不得混同网络中断。
 
-验证结果：Asset Control 专项 41/41、Web 全量 1822/1822、TypeScript GREEN、production build GREEN、后端 Registry/Composition/Installation/OpenAPI 77/77。生产页面、通用 `api/client.ts`、后端、数据库和状态机均未修改。完整证据见 [`2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)。
+验证结果：Asset Control 专项 41/41、Web 全量 1822/1822、TypeScript GREEN、production build GREEN、后端 Registry/Composition/Installation/OpenAPI 77/77。生产页面、通用 `api/client.ts`、后端、数据库和状态机均未修改。完整证据见 [`../evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)。
 
 #### M3-1 四路文件所有权（2026-08-03 开工冻结）
 
@@ -240,7 +240,7 @@ M3-2 已在 `m1@7f6e80a` 收口。资产页保留 `/apollo/assets` 和原 named 
 
 只读 hooks 覆盖 loading、empty、refresh、stale、403、404、网络/500 和乱序响应；403/404 清除旧数据，刷新失败保留数据时显式标记 stale。Installation 响应增加运行时失败关闭解析，未增加 mutation UI，也未修改通用 API client、后端、数据库、路由或状态机。
 
-验证结果：M3-2/Asset Control 前端专项 72/72、Web 全量 1842/1842、TypeScript GREEN、production build GREEN、后端 Registry/Composition/Installation/OpenAPI 77/77；生产源码两项禁用字符串均零命中。浏览器确认 Registry/安装管理双页签、只读边界和 API 不可达时的诚实错误态；浏览器沙箱未能直连宿主机 `:8080`，真实响应形状由后端契约测试、SDK parser 与组件 fixture 覆盖。完整证据见 [`2026-08-03-M3-2真实只读资产页回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)。
+验证结果：M3-2/Asset Control 前端专项 72/72、Web 全量 1842/1842、TypeScript GREEN、production build GREEN、后端 Registry/Composition/Installation/OpenAPI 77/77；生产源码两项禁用字符串均零命中。浏览器确认 Registry/安装管理双页签、只读边界和 API 不可达时的诚实错误态；浏览器沙箱未能直连宿主机 `:8080`，真实响应形状由后端契约测试、SDK parser 与组件 fixture 覆盖。完整证据见 [`../evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)。
 
 ### M3-3：Resolve/Create 与 Diff
 
@@ -300,7 +300,7 @@ M3-3 已在 `m1@77a1e5b` 收口。新增 Composition Lock 运行时失败关闭 
 
 页面只允许从已发布且已签名的 Registry 版本构造请求；输入变化使既有 lock stale，create 只能消费已回读且一致的 lock，并且只创建 draft。网络/500 结果未知时保留同一命令与幂等键；submit、approve、reject、apply、verify、rollback 仍不可达。浏览器未运行 Resolver、未重算 hash/diff/evidence，四 hash 均只读。
 
-验证结果：Web 全量 132 files / 1867 passed，TypeScript GREEN，production build GREEN（227 modules），后端 Registry/Composition/Installation/OpenAPI 77/77；浏览器确认三页签、空选择禁用、无可编辑 hash、无 M3-4 动作和 API 不可达诚实错误态。完整证据见 [`2026-08-03-M3-3组合预检与Draft创建回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-3组合预检与Draft创建回归证据.md)。
+验证结果：Web 全量 132 files / 1867 passed，TypeScript GREEN，production build GREEN（227 modules），后端 Registry/Composition/Installation/OpenAPI 77/77；浏览器确认三页签、空选择禁用、无可编辑 hash、无 M3-4 动作和 API 不可达诚实错误态。完整证据见 [`../evidence/m0/m3-ui-sdk/2026-08-03-M3-3组合预检与Draft创建回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-3组合预检与Draft创建回归证据.md)。
 
 ### M3-4：审批、Apply/Verify/Rollback
 
@@ -369,6 +369,14 @@ W1 的 `api/assetControl/installationActions.ts` 与 W3 的页面纯函数文件
 8. 四个 Worker 合入 `m1` 后再次同步 `m1`，五分支同 HEAD/tree 且 ahead/behind 为 `0/0`，才能进入 M3-5。
 
 **退出门：** 完整 dry install 闭环和 rollback 浏览器验证；客户端 evidence 注入不可达。
+
+#### M3-4.6 实施结果（2026-08-03）
+
+M3-4 已在 `m1@6432444` 收口。六 action 均使用 exact serializer、canonical UUID、独立幂等命令、强 If-Match、完整 Installation Runtime Parser 和最终 GET；单一页面级 Controller 实现角色/状态/maker-checker 门、动作前事实回读、409/412 冲突回读、network/500 未知结果恢复，以及同状态新 revision/hash/pointer 变化必须重新确认。Approve 四 hash 只由当前 Installation 与对应 Composition Lock 比较生成，不可编辑、不重算；apply/verify/rollback evidence 仍完全由服务端生成。
+
+资产页已接入 `/v1/me` 的 subject/roles 与离线事件；安装列表保持只读事实展示，安装动作独立受控。浏览器隔离环境无法访问宿主机 8080 API，因此未发真实 POST；浏览器验证的是 API 不可达/离线时动作按钮为 0、Hash/Evidence 可编辑输入为 0 和错误态诚实展示。真实 action、maker-checker、回放、证据和指针语义由前后端契约及集成测试覆盖，M3-5 再在 API 可达环境完成双角色完整链路验收。
+
+验证结果：Web 全量 138 files / 1914 passed，TypeScript GREEN，production build GREEN（233 modules），后端 Installation/Composition/Control/OpenAPI 相关 71/71；五分支均为 `6432444`、tree `cb4a25e0...`、ahead/behind `0/0`，五个远程分支已推送。完整证据见 [`2026-08-03-M3-4安装状态动作回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-4安装状态动作回归证据.md)。
 
 ### M3-5：总控收口
 
@@ -439,4 +447,4 @@ M3 只有在以下条件全部满足时才可标记 GREEN：
 5. 专项、Web 全量、typecheck/build 和平台累计回归 GREEN，证据归档。
 6. 上位状态和 AOS 项目开发上下文同步更新。
 
-当前结论：**M3-3 已 GREEN；以五分支同步基线 `m1@77a1e5b` 进入 M3-4 审批、Apply/Verify/Rollback。继续按 M3-4～M3-5 实施且不新增架构。**
+当前结论：**M3-4 已 GREEN；以五分支同步基线 `m1@6432444` 进入 M3-5 总控收口。M3-5 只补 API 可达环境的双角色完整链路、并发冲突与最终证据，不新增架构。**
