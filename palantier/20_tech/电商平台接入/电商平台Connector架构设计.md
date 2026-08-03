@@ -1,8 +1,8 @@
 # 电商平台 Connector 架构设计
 
 > **版本**：v1.0 · 2026-07-23
-> **位置**：`docs/palantier/20_tech/电商平台Connector架构设计.md`
-> **定位**：基于现有 Connector 插件化框架（[97](97-Connector插件化整改方案.md) / [100](100-Connector运行时插件分发方案.md)），扩展设计 REST / GraphQL / Webhook / OAuth 四种新 Connector 类型
+> **位置**：`电商平台Connector架构设计.md`
+> **定位**：基于现有 Connector 插件化框架（[97](../97-Connector插件化整改方案.md) / [100](../100-Connector运行时插件分发方案.md)），扩展设计 REST / GraphQL / Webhook / OAuth 四种新 Connector 类型
 > **解决阻塞**：G1 REST Connector · G2 OAuth Manager · G3-G5 签名插件 · G6 GraphQL · G7 Webhook · G8 解密 · G9 计费
 
 ---

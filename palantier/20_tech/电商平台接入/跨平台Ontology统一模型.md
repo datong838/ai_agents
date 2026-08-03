@@ -1,7 +1,7 @@
 # 跨平台 Ontology 统一模型映射
 
 > **版本**：v1.0 · 2026-07-23
-> **位置**：`docs/palantier/20_tech/跨平台Ontology统一模型.md`
+> **位置**：`跨平台Ontology统一模型.md`
 > **定位**：将 7 个电商平台约 110 个 OT（Object Type）归约为 **35 个统一 OT + 22 个统一 LT（Link Type）**，定义跨平台主键映射规则与字段对齐策略
 > **前置依赖**：各平台 P0 总体方案 + P1 API 接口清单
 

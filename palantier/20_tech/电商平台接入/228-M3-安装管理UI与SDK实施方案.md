@@ -376,7 +376,7 @@ M3-4 已在 `m1@6432444` 收口。六 action 均使用 exact serializer、canoni
 
 资产页已接入 `/v1/me` 的 subject/roles 与离线事件；安装列表保持只读事实展示，安装动作独立受控。浏览器隔离环境无法访问宿主机 8080 API，因此未发真实 POST；浏览器验证的是 API 不可达/离线时动作按钮为 0、Hash/Evidence 可编辑输入为 0 和错误态诚实展示。真实 action、maker-checker、回放、证据和指针语义由前后端契约及集成测试覆盖，M3-5 再在 API 可达环境完成双角色完整链路验收。
 
-验证结果：Web 全量 138 files / 1914 passed，TypeScript GREEN，production build GREEN（233 modules），后端 Installation/Composition/Control/OpenAPI 相关 71/71；五分支均为 `6432444`、tree `cb4a25e0...`、ahead/behind `0/0`，五个远程分支已推送。完整证据见 [`2026-08-03-M3-4安装状态动作回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-4安装状态动作回归证据.md)。
+验证结果：Web 全量 138 files / 1914 passed，TypeScript GREEN，production build GREEN（233 modules），后端 Installation/Composition/Control/OpenAPI 相关 71/71；五分支均为 `6432444`、tree `cb4a25e0...`、ahead/behind `0/0`，五个远程分支已推送。完整证据见 [`../evidence/m0/m3-ui-sdk/2026-08-03-M3-4安装状态动作回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-4安装状态动作回归证据.md)。
 
 ### M3-5：总控收口
 
