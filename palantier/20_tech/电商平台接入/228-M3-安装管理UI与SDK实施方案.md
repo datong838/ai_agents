@@ -1,6 +1,6 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.5 评审通过 · M3-3 GREEN · 允许进入 M3-4**
+> 状态：**v1.6 评审通过 · M3-3 GREEN · M3-4 编码前契约已冻结**
 > 起始代码基线：`aos-platform m1@d85992b`
 > 当前代码基线：`aos-platform m1@77a1e5b`（五分支同步，远程 `origin/m1` 已更新）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
@@ -309,6 +309,64 @@ M3-3 已在 `m1@77a1e5b` 收口。新增 Composition Lock 运行时失败关闭 
 - 实现状态/角色感知动作、确认对话框、reason 输入、hash 审批确认。
 - 处理 maker-checker、409/412、回放、双击、网络失败、marking/tenant 错误。
 - 展示服务端 revision/decision/event/evidence 与 active pointers。
+
+#### M3-4.1 编码前审计结论（2026-08-03）
+
+本波以 `m1@77a1e5b` 为唯一代码起点，不修改后端状态机、数据库、OpenAPI 路由或通用 API client。现有后端已提供六条 action、角色策略、maker-checker、强 ETag、幂等收据和服务端 evidence；前端缺口是 action 成功响应仍未进入 Installation Runtime Parser、三个非空 body 缺少 exact serializer、六动作缺少统一命令控制器与受控确认 UI。
+
+审计同时确认两处必须如实记录的运行时差异：当前 stale ETag 实际主要返回 `REVISION_CONFLICT=409`，但 OpenAPI 仍声明 412，前端须兼容 409/412；需要 release revalidation 的动作还可能返回 `TRUST_ROOT_UNAVAILABLE=503`，当前 OpenAPI 尚未列出 503，前端必须失败关闭并按稳定 code 显示服务暂不可用，不能解释成成功。
+
+#### M3-4.2 冻结的状态、角色和请求体
+
+| 当前状态 | 动作 | 下一状态 | 前端允许角色提示 |
+|---|---|---|---|
+| draft | submit | submitted | admin、developer、asset-installer |
+| submitted | approve / reject | approved / rejected | admin、asset-install-approver，且 subject 不等于 requestedBy |
+| approved | apply | applied | admin、asset-installer |
+| applied | verify | active | admin、asset-installer |
+| active | rollback | rolled_back | admin、asset-installer |
+| rejected / rolled_back | 无 | 终态 | 无 |
+
+前端角色门只负责失败关闭和操作提示，服务端仍做最终角色、marking、tenant、状态和 maker-checker 裁决。`subject` 或 `roles` 未从 `/v1/me` 装载、详情不是 ready、详情 stale/refreshing、离线或已有未知结果命令时，六动作全部不可达；admin 也不得绕过 maker-checker。
+
+- submit/apply/verify body 精确为 `{}`。
+- approve body 只从动作前回读的当前 Installation 与对应 Composition Lock 取得四 hash；二者只比较不重算，任何不一致均失败关闭；hash 只能展示和确认，不能输入或编辑。
+- reject/rollback body 精确为 `{reason}`；reason trim 后 1～2000 字符且不含控制字符。
+- `etagVersion` 只构造强 `If-Match: "<revision>"`，不得进入 body。
+- dry_apply、verification、rollback evidence 只由服务端生成；客户端没有 evidence DTO、输入框或注入路径。
+
+#### M3-4.3 冻结的命令与恢复算法
+
+六动作共用一个页面级 Controller，禁止为不同动作建立可并发的独立命令状态。每次 attempt 固定保存 `action/installationId/sourceState/sourceRevision/sourceEtagVersion/expectedState/exactBody/idempotentCommand`；running、reconciling、unknown_outcome 期间阻断全部其他 action 和安装选择切换。
+
+1. 用户确认后先 GET 当前 Installation；approve 再 GET 对应 Composition Lock 并核对四 hash。若状态、revision、ETag 或确认事实已变化，停止并要求重新确认。
+2. 每个新用户命令生成新幂等键；同一未知结果恢复必须复用原 key、原 body 和原 If-Match，任一字段都不得改变。
+3. 成功响应必须先校验响应 ETag，再经 `parseInstallationDetail` 失败关闭；随后 GET 最新详情，避免幂等回放的旧 receipt 覆盖服务端更新事实。
+4. 409/412 后立即 GET 最新详情，落 conflict 并清除旧 command；不得自动重发。用户审阅新状态后若仍合法，使用新 ETag 和新 key 发起新命令。
+5. 网络/500 结果未知时保留完整 attempt，不自动 POST；用户显式恢复时先 GET。若最新事件已精确证明原 actor 完成预期一步转换，则确认成功；否则只允许用原 envelope 恢复，回放后再次 GET。
+6. 403、404、422、428、503 以及无法解析的成功响应均失败关闭；404 继续统一为“不可见或不存在”，428 视为客户端契约缺陷。
+
+#### M3-4.4 四路文件所有权
+
+| 路线 | 文件白名单 | 交付 |
+|---|---|---|
+| W1 契约 | 新增 `api/assetControl/installationActions.ts`、`installationActionFixtures.ts` 及测试；最小修改 `client.ts/client.test.ts`，必要时同步 `operations/errors` 及测试 | action exact serializer、动作前 Installation/Lock hash 核对工具、canonical UUID、完整响应 parser、409/412/503 失败策略 |
+| W2 命令 | 新增 `pages/s2/assetBundles/installationActionModel.ts/.test.ts`、`installationActionHooks.ts/.test.tsx` | 单一 action controller、角色/状态门、幂等恢复、冲突/未知结果回读；不修改 M3-3 commandModel/hooks |
+| W3 UI | 新增 `installationActions.ts/.test.ts`、`InstallationActionPanel.tsx/.test.tsx`、`InstallationActionDialog.tsx/.test.tsx` | 纯函数入口矩阵、六动作确认、四 hash 只读、reason 和 evidence/pointer 说明；组件不直接调用 client |
+| W4/总控 | 独占 `AssetBundlesPage.tsx` 及页面集成测试；必要时仅为响应事实补 fixture | 接入 tenant subject/roles、页面级 Controller、详情/列表刷新和累计回归；不改后端 |
+
+W1 的 `api/assetControl/installationActions.ts` 与 W3 的页面纯函数文件同名但目录不同，职责不可混用。`InstallationPanel.tsx` 继续只负责列表，`InstallationDetail.tsx` 继续只负责服务端事实展示；除非集成测试证明现有展示缺失，否则本波不修改二者。
+
+#### M3-4.5 本波退出门
+
+1. 六 action method/path/body/header 精确；非法 UUID、ETag、hash、reason、额外字段在 fetch 前失败。
+2. 六类完整成功响应均经过同一 Installation parser；缺失/错 ETag、history/decision/evidence/pointer 漂移失败关闭。
+3. 7 状态 × 角色、maker-checker、stale/offline/身份缺失、双击和交叉动作全部测试通过。
+4. 409/412 回读但不自动覆盖；network/500 先回读再显式同 envelope 恢复；503 失败关闭。
+5. approve 四 hash 无输入控件、无浏览器重算；客户端 evidence 注入静态与运行时均不可达。
+6. submit→approve→apply→verify→rollback 的 dry install 链路和 maker-checker 浏览器场景完成；若隔离浏览器无法访问 API，必须区分 UI 验收与后端契约测试，不得伪报真实写入。
+7. Worker 专项、Asset Control 累计、Web 全量、TypeScript、production build、后端 Installation/OpenAPI 专项与 `git diff --check` 全部 GREEN。
+8. 四个 Worker 合入 `m1` 后再次同步 `m1`，五分支同 HEAD/tree 且 ahead/behind 为 `0/0`，才能进入 M3-5。
 
 **退出门：** 完整 dry install 闭环和 rollback 浏览器验证；客户端 evidence 注入不可达。
 
