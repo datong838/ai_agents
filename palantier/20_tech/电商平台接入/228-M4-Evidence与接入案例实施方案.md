@@ -1,8 +1,8 @@
 # 228-M4 Evidence 与接入案例实施方案
 
-> 状态：**v1.2 · M4-1 GREEN · 允许进入 M4-2 Service、Projection 与 API**
+> 状态：**v1.3 · M4-2 GREEN · 允许进入 M4-3 真实 Case 页面**
 > 起始代码基线：`aos-platform m1@36b386e`
-> 当前代码基线：`aos-platform m1@14311e2`（五分支与五远端同 HEAD/tree）
+> 当前代码基线：`aos-platform m1@483dd0f`（五分支与五远端同 HEAD/tree）
 > 上位约束：M1、M2、M3 已最终 GREEN；本方案只细化 M0 已定义的 Evidence/Case 架构
 > 后续门禁：M4 最终 GREEN 后方可进入 M5；M5 完成前不得进入具体电商平台接入
 
@@ -193,6 +193,7 @@ Snapshot POST body 严格为 `{}`。它只对服务端已有 canonical Evidence 
 
 - create：`Idempotency-Key`；
 - snapshot：`Idempotency-Key + If-Match`；
+- 两个 POST 成功均回复 `201 Created`，幂等 replay 保持原 status/body/ETag；
 - detail/mutation 返回强 ETag；
 - Snapshot 返回不可变历史响应，调用方随后 GET 当前 Case；
 - 同 key 同 envelope replay 原结果；不同 body/If-Match 返回 409；同 ETag 并发只允许一个成功。
@@ -300,6 +301,10 @@ apps/web/src/pages/s2/integrationCases/
 - W4：API E2E、双租户、role/marking、OpenAPI/header 契约。
 
 共享 `domain_manifest.json`、聚合 Router、生成物与 operation 总数由总控收口。
+
+M4-2 生产接线还必须由总控单写 PostgreSQL Reader 与 Marking Resolver：Reader 在 org/project/scope/marking 过滤后再计算 total、分页与统计，读取 current 列表前处理本租户已到期投影；由于 M2 Installation 尚无独立 marking 字段，v1 创建 Case 时保守地将已验证 Principal 的 marking 集合固化为 Case/Instance required markings，不允许 body 自报或降级。
+
+**完成状态（2026-08-04）：GREEN。** W1 完成统一数据库 cutoff、租户限定和失败隔离的 expiry projector；W2 完成五用例 Service、receipt-first 幂等、Snapshot CAS 与仅供可信 Producer 使用的内部 `EvidenceWriter`；W3 完成五个 Canonical Router、严格 body/query/header、角色/marking 与统一错误映射；总控完成 PostgreSQL Reader、Marking Resolver、真实 JWT + 隔离 PostgreSQL HTTP 闭环、路由清单和 OpenAPI 确定性收口。公共 HTTP 未开放 Evidence 写入/撤销通道，current 读取在返回前处理本租户到期投影并失败关闭。最终代码基线 `m1@483dd0f`，五分支与五远端同 HEAD/tree、ahead/behind `0/0`、工作树 clean。详见 [M4-2 Service、Projection 与 Canonical API 回归证据](../evidence/m0/m4-evidence-case/2026-08-04-M4-2Service-Projection与Canonical-API回归证据.md)。
 
 ### M4-3：真实 Case 页面
 
