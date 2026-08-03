@@ -1,6 +1,6 @@
 # 228-M2-B 安装控制面与 Canonical API 并行实施方案
 
-> 状态：**v1.2 最终冻结，授权进入 M2-B0 共享底座**
+> 状态：**v1.3 B0 审查收敛版，授权完成 M2-B0 共享底座**
 > 日期：2026-08-03
 > 上位方案：[228-M2 Resolver、Lock 与 Installation 公共契约冻结方案](228-M2-Resolver-Lock-Installation公共契约冻结方案.md)
 > 代码基线：`aos-platform m1@a6e4d31`
@@ -38,7 +38,7 @@ M2-A 已提供可复用的严格 DTO、确定性 Resolver、Registry snapshot/re
 
 结论：**M2-B 可开发，但必须按 B0→B1→B2→B3 四小波推进，不能直接先开 Router。**
 
-交叉评审记录：v1.0 首轮由 W1/W2/W3 分别审查事务/baseline、状态机/revalidation/evidence、HTTP/OpenAPI/CORS；v1.1 关闭全部 P0/P1 后又进行两轮定点复核。最终三方均确认残余 P0/P1 为零，才形成 v1.2 冻结版。
+交叉评审记录：v1.0 首轮由 W1/W2/W3 分别审查事务/baseline、状态机/revalidation/evidence、HTTP/OpenAPI/CORS；v1.1 关闭全部 P0/P1 后又进行两轮定点复核。最终三方均确认残余 P0/P1 为零，形成 v1.2 冻结版。B0 首轮实现审查又发现超大 ETag 转换逃逸、全局 `sys.modules` 测试易受收集顺序干扰、Protocol 缺精确签名锁和畸形 target marking helper 可能失败开放；v1.3 在继续编码前冻结对应边界与回归方法，不改变 M2-B 业务范围。
 
 ---
 
@@ -86,6 +86,7 @@ M2-A 已提供可复用的严格 DTO、确定性 Resolver、Registry snapshot/re
 
 - resolve 的结果、create、所有动作和详情读取都检查 `permissionDiff.target.markings` 全集，不只检查 added。
 - `admin` 不绕过；不得复用带 admin bypass 的通用 `ensure_markings()`。
+- target marking 任一元素非字符串、空值、首尾空白、NUL 或不可打印即失败关闭，不能静默丢弃后把 target 误判为空集；来自持久化锁的数据由完整性入口映射为 `LOCK_INTEGRITY_CORRUPT`，共享 helper 对类型错误抛 `TypeError`、值错误抛 `ValueError`。
 - mutation/resolve marking 不足返回新增稳定错误 `MARKING_ACCESS_DENIED` 403；details 不回显缺失 marking 名称。
 - GET lock/detail marking 不足按隐藏资源策略返回 `NOT_FOUND` 404。
 - list 必须在 SQL 计数、排序、limit/offset 前过滤不可见项，响应 total 不包含不可见安装。
@@ -420,7 +421,7 @@ evidence://bundle-installations/{installationId}/revisions/{toRevision}/{type}
 ### 6.2 Header 解析
 
 - 所有 M2 POST 要求 **恰好一个** `Idempotency-Key`：1～160、trim 后不变、无 NUL/控制字符；缺失、重复或非法统一 `IDEMPOTENCY_KEY_REQUIRED` 400。
-- 六个 action 要求 **恰好一个** If-Match，格式严格 `"[1-9][0-9]*"`；缺失 428，弱 ETag、`*`、列表、无引号、0、前导零或重复均 `PRECONDITION_INVALID` 400。
+- 六个 action 要求 **恰好一个** If-Match，格式严格 `"[1-9][0-9]*"`，且数值不超过 PostgreSQL signed BIGINT 最大值 `9223372036854775807`；缺失 428，弱 ETag、`*`、列表、无引号、0、前导零、超大值或重复均 `PRECONDITION_INVALID` 400。`strong_etag()` 使用相同上界，禁止生成数据库不可表示的版本。
 - Router 从 raw ASGI headers 计数并显式调用领域错误；不能把 Header 声明为 FastAPI required 后交给通用 validation。
 - request hash 保存客户端规范化的 raw If-Match；不存在时 resolve/create 为 null。
 
@@ -474,8 +475,9 @@ evidence://bundle-installations/{installationId}/revisions/{toRevision}/{type}
 - `services/aos-api/aos_api/routers/asset_bundles.py`（仅把既有 Registry factory 委托给共享 wiring，API/行为不变）
 - `services/aos-api/tests/asset_registry/test_m2_control_policy.py`（新）
 - `services/aos-api/tests/asset_registry/test_control_wiring.py`（新）
+- `services/aos-api/tests/asset_registry/test_manifest_contracts.py`（只登记两个新增稳定错误）
 
-冻结并测试新增错误、operation role、no-admin-bypass marking、read-hide/mutation-deny、Protocol 和统一生产 wiring。`control_wiring.py` 公开 `build_asset_registry_service() -> RegistryService`、`build_composition_service() -> CompositionControl`、`build_installation_service() -> InstallationControl`；后两者在函数体内 lazy import B1 concrete Service，W3 Router 只依赖 builder/Protocol。可信根和 allowlist 配置只在 wiring 定义一次，旧 `get_asset_registry_service()` 保留原 dependency 名称和 cache，只委托 builder。B0 只验证配置、旧 Registry 行为和 lazy seam；B1 合入后 W4/B3 必须调用两个 control builder 做真实装配测试。B0 提交后五分支重新对齐，Worker 才开始 B1。
+冻结并测试新增错误、operation role、no-admin-bypass marking、read-hide/mutation-deny、Protocol 和统一生产 wiring。Protocol 测试用 `inspect.signature` 精确锁定方法、参数顺序、keyword-only、默认值和返回注解；lazy import 测试必须用 fresh subprocess，不依赖 pytest 进程的全局 `sys.modules` 收集顺序。`control_wiring.py` 公开 `build_asset_registry_service() -> RegistryService`、`build_composition_service() -> CompositionControl`、`build_installation_service() -> InstallationControl`；后两者在函数体内 lazy import B1 concrete Service，W3 Router 只依赖 builder/Protocol。可信根和 allowlist 配置只在 wiring 定义一次，旧 `get_asset_registry_service()` 保留原 dependency 名称和 cache，只委托 builder。B0 只验证配置、旧 Registry 行为和 lazy seam；B1 合入后 W4/B3 必须调用两个 control builder 做真实装配测试。B0 提交后五分支重新对齐，Worker 才开始 B1。
 
 ### M2-B1：三路并行
 
@@ -558,7 +560,7 @@ W4 不修改生产文件；以合入 W1/W2/W3 后的基线写真实 PostgreSQL �
 
 1. 11 routes 未认证 401且 Service 零调用；tenant header 伪造 403；跨租户 404。
 2. body 注入 tenant/actor/roles/markings、snake_case、coercion、extra 字段全部 400。
-3. Idempotency-Key 缺失/空白/NUL/控制/161字符/重复；If-Match 所有非法形状/重复/旧值。
+3. Idempotency-Key 缺失/空白/NUL/控制/161字符/重复；If-Match 所有非法形状/重复/旧值/超过 signed BIGINT 值，且超长数字不得逃逸为通用 500。
 4. 首次与 replay status/body/ETag 完全一致；body etagVersion 与 response ETag 一致。
 5. list marking SQL 前过滤、total 不泄露；detail/lock marking 不足 404。
 6. OpenAPI 两次 byte-identical、11 个显式 operationId 精确集合、10 paths/参数名完整、header required/security/status/response header 正确、duplicates 不增加。
@@ -601,6 +603,6 @@ W4 不修改生产文件；以合入 W1/W2/W3 后的基线写真实 PostgreSQL �
 
 ## 11. 进入编码结论
 
-M2-A 最终 GREEN，五分支已对齐 `a6e4d31`。本文件 v1.2 已根据三组交叉评审补齐事务、baseline、跨 Worker Protocol、typed transition、exact revalidation、role/marking、可复算 evidence、header、OpenAPI、CORS 和文件所有权；最终复核残余 P0/P1 为零，正式授权 B0。
+M2-A 最终 GREEN，五分支已对齐 `a6e4d31`。本文件 v1.3 已根据方案期三组交叉评审及 B0 首轮实现审查补齐事务、baseline、跨 Worker Protocol、typed transition、exact revalidation、role/marking、可复算 evidence、header/ETag 上界、隔离 lazy-import 测试、OpenAPI、CORS 和文件所有权；正式授权 B0 收敛，必须在 P0/P1 清零后同步五分支。
 
 **下一步固定为 M2-B0：总控先交付新增稳定错误、control policy/protocol/wiring；专项通过并同步五分支后，W1/W2/W3 并行进入 B1。不得跳过 B0 直接写 Router。**
