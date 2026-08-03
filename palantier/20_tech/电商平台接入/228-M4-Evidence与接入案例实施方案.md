@@ -1,7 +1,8 @@
 # 228-M4 Evidence 与接入案例实施方案
 
-> 状态：**v1.0 评审冻结 · 允许进入 M4-0～M4-5 实施**
+> 状态：**v1.1 · M4-0 GREEN · 允许进入 M4-1 PostgreSQL 真源**
 > 起始代码基线：`aos-platform m1@36b386e`
+> 当前代码基线：`aos-platform m1@c10d5ee`（五分支与五远端同 HEAD/tree）
 > 上位约束：M1、M2、M3 已最终 GREEN；本方案只细化 M0 已定义的 Evidence/Case 架构
 > 后续门禁：M4 最终 GREEN 后方可进入 M5；M5 完成前不得进入具体电商平台接入
 
@@ -123,7 +124,7 @@ Case 的 `planned` 事实来自精确 Installation revision 与 Composition lock
 | `dataset_revision` | datasetRef、revision、schemaHash、rowCount（可空） | data/metrics |
 | `data_quality` | datasetRef、checkSetHash、requiredPassed、failedChecks | data |
 | `ontology_revision` | ontologyRef、revision、schemaHash | ontology |
-| `mapping_validation` | mappingRef、coverage、linkValidationPassed | ontology |
+| `mapping_validation` | mappingRef、coverage、linkValidationPassed；v1 要求 coverage=1.0 | ontology |
 | `logic_publication` | logicRef、immutableRevision、publicationHash | logic |
 | `logic_eval` | logicRef、evalSuiteHash、requiredPassed | logic |
 | `workshop_validation` | workshopRef、realSource、empty/permission/mainFlowPassed | workshop |
@@ -263,12 +264,22 @@ apps/web/src/pages/s2/integrationCases/
 
 ### M4-0：契约与 Policy 冻结
 
+**实施结果（2026-08-03）：GREEN。**
+
+- W1 冻结 14 类 strict typed claims、current/reference 判别 DTO、Snapshot 与 Timeline。
+- W2 冻结 8 级最高连续 Policy、latest series head、expiry/revoke/negative 和 `null`/`0`。
+- W3 冻结五端点 Web types/parser/fixture；W4 冻结 maker/projector、scope 与 marking 安全门。
+- 总控完成后端/Web canonical 对拍、DTO→Policy 直接执行、结构化 blocker、UTC/统计/错误收口。
+- 后端累计 131 passed；Web 全量 140 files / 1950 passed；TypeScript 与 production build GREEN。
+- 五代码分支与五远端同步到 `c10d5ee`，ahead/behind `0/0`，五工作树 clean。
+- 完整证据：[M4-0 契约与阶段策略冻结证据](../evidence/m0/m4-evidence-case/2026-08-03-M4-0契约与阶段策略冻结证据.md)。
+
 - W1：`integration_contracts.py` 与 strict DTO/fixture。
 - W2：`integration_stage_policy.py` 与连续门/expiry/revoke 算法。
 - W3：Web DTO/parser/operation fixture。
 - W4：M4 API、错误、角色、marking、OpenAPI 契约测试。
 
-退出门：字段、claims、stage policy、五端点和错误矩阵全部通过；不改 DB，不改页面。
+退出门：字段、claims、stage policy、五端点和错误矩阵全部通过；不改 DB，不改页面。**已满足。**
 
 ### M4-1：PostgreSQL 真源
 

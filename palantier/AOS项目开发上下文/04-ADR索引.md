@@ -8,5 +8,6 @@
 | [ADR-002](ADR/ADR-002-Receipt-First幂等与强ETag-CAS.md) | Accepted | 写操作使用 receipt-first 幂等和强 ETag/CAS |
 | [ADR-003](ADR/ADR-003-权限与职责分离失败关闭.md) | Accepted | tenant/role/marking/maker-checker 由服务端失败关闭 |
 | [ADR-004](ADR/ADR-004-M3只做现有控制面的UI与SDK适配.md) | Accepted | M3 不重画架构，只做现有 API 的 UI/SDK 适配 |
+| [ADR-005](ADR/ADR-005-M4证据不可变与服务端阶段投影.md) | Accepted | M4 Evidence 不可变，阶段与统计只由服务端连续证据门投影 |
 
 新增或反转决策必须：先更新上位方案，新增 ADR 记录上下文、取舍和迁移影响，再编码与回归；不得静默覆盖历史 ADR。
