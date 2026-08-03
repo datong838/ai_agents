@@ -1,6 +1,6 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.7 评审通过 · M3-4 GREEN · 允许进入 M3-5**
+> 状态：**v1.8 评审通过 · M3-4 GREEN · M3-5 开工边界已冻结**
 > 起始代码基线：`aos-platform m1@d85992b`
 > 当前代码基线：`aos-platform m1@6432444`（五分支同 HEAD/tree，五个远程分支已更新）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
@@ -384,6 +384,38 @@ M3-4 已在 `m1@6432444` 收口。六 action 均使用 exact serializer、canoni
 - 后端资产域和 Router/OpenAPI 契约回归，确认 M3 未改变后端 schema/route。
 - 两角色 maker-checker、同 ETag 并发、刷新回读、空/错/无权全场景证据。
 - 更新上位状态、路线图、项目上下文和最终证据。
+
+#### M3-5.1 编码前审计结论（2026-08-03）
+
+M3-5 是 M3 的最终验收波，不新增生产架构、路由、DTO、状态边或数据表。现有后端已经具备完整 `create → submit → approve → apply → verify → active → rollback` 服务链路和真实 PostgreSQL 原子性测试；现有 Web 已具备六动作 SDK、单一页面级 Controller、角色/状态门、受控确认、冲突与未知结果恢复。当前缺口只允许通过端到端契约测试、页面集成测试、API 可达环境验收和证据归档关闭；若验证发现生产缺陷，必须先回写本节并单独说明最小修复，禁止借收口波扩展功能。
+
+#### M3-5.2 冻结的四路所有权
+
+| 路线 | 独占范围 | 交付 |
+|---|---|---|
+| W1 | 后端 `tests/asset_registry/` 下新增 M3 最终 HTTP 生命周期测试 | 使用真实 Installation/Composition service 和隔离 PostgreSQL schema；按请求切换 requester/approver/installer principal，覆盖六 action、强 ETag、最终 GET、Evidence 与 Pointer |
+| W2 | Web `installationActionHooks.test.tsx` 及必要的测试 fixture | 覆盖跨状态连续动作、同 ETag 冲突、409/412 回读、unknown 恢复、刷新后新事实必须重新确认；不得新增第二套 Controller |
+| W3 | `AssetBundlesPage` 页面集成测试及浏览器验收记录 | 覆盖空/错/无权/离线、角色切换、动作可见性、Hash/Evidence 只读和刷新回读；不得修改 API 或生产状态机 |
+| W4/总控 | 测试夹具接线、累计回归、浏览器/API 可达环境、证据和状态文档 | 只做跨路集成与缺口修正；默认不修改后端生产代码，不创建 M4/M5 文件 |
+
+共享文件由总控最小接线。W1～W3 不修改生产 DTO、Router、Store、Migration、OpenAPI 或 `AssetBundlesPage.tsx`；确需修复生产缺陷时暂停合并，先记录复现、影响和最小修复边界。
+
+#### M3-5.3 必须关闭的验收矩阵
+
+1. HTTP 完整链路必须由 requester 创建/提交、不同 subject 的 approver 审批、installer apply/verify/rollback；自批必须失败关闭。
+2. 每个 mutation 都必须携带独立 Idempotency-Key 和当前强 If-Match；旧 ETag、缺失/重复/弱 ETag、同 ETag 并发只能有一个状态前进。
+3. Approve body 必须精确来自当前 Installation 与对应 Lock 的四 Hash；任一 revision/hash/requestedBy/pointer 变化均要求重新确认。
+4. apply/verify/rollback Evidence 只来自服务端事件；首次 active 的 `previousActiveRevision` 和回滚后的空基线 Pointer 必须符合冻结契约。
+5. tenant、marking、role、404 隐藏、409/412、网络/500 unknown、离线和刷新回读均有失败关闭证据，不得自动覆盖或隐式重试。
+6. 浏览器/API 可达验收不得连接生产数据；测试数据必须位于隔离 schema 或可清理的专用 tenant，不使用真实客户、Secret 或真实平台连接。
+
+#### M3-5.4 退出门
+
+1. W1/W2/W3 专项、Web 全量、TypeScript、production build、后端资产域与 OpenAPI 累计回归全部 GREEN。
+2. API 可达环境完成完整双角色 dry-install 链路；若浏览器运行环境仍有网络隔离，必须同时保留 HTTP 真实链路证据和浏览器失败关闭证据，禁止把未执行的 POST 写成通过。
+3. 生产源码静态检查确认 M3 未新增后端 schema/route、未引入 Mock fallback、客户端 Hash/Evidence 计算或离线 mutation 队列。
+4. 四 Worker 依次合入 `m1`，再由四 Worker fast-forward 同步；五分支同 HEAD/tree、ahead/behind `0/0` 且远程一致。
+5. M3 最终证据、两份总计划、228 路线、M0 状态和 `AOS项目开发上下文/` 完成统一对账后，M3 才可标记最终 GREEN 并允许评审 M4。
 
 ## 7. 测试矩阵
 
