@@ -335,6 +335,15 @@ M4-3 退出门：新增组件与 hook 专项测试、原 IntegrationCasesPage �
 - 覆盖 reference 排除、marking 后聚合、`null` 与 `0`、去重和统一 cutoff。
 - 浏览器验证空、错误、current/reference、详情、timeline、过期降级和刷新。
 
+**实施冻结（2026-08-04）：** M4-4 是对 M4-0～M4-3 的证明波，默认只新增对抗测试、隔离测试支撑与证据；只有测试暴露真实契约缺陷时才允许最小生产修复，不新增端点、表、DTO、页面能力或平台模型。
+
+- W1：真实 PostgreSQL Evidence 生命周期闭环。以可信内部 Producer 写入连续有效 Evidence 推进阶段，再覆盖 latest negative、expiry、revoke、有效续期和重复 projector；逐步断言 Snapshot/Stage Event/Projection 的 revision、cause、stage 与幂等零写。
+- W2：真实 PostgreSQL Reader/统计对抗。至少两个 current Case、一个 reference、不同 marking；断言授权过滤先于 total/page/stats，reference 不进入 current，connector/pipeline/row 去重与 latency max，`null`/明确 `0`、统一 cutoff 和分页稳定。
+- W3：只在测试目录或脚本目录建立隔离 PostgreSQL + 真实 API + Web 的浏览器支撑，复用生产 migration/Service/Router/SDK；禁止测试专用生产端点、Web runtime fixture、DOM 注入或 fetch Mock。
+- W4/总控：启动隔离环境，以浏览器可见页面验证 loading/empty/error、current/reference、目录选择、详情、8 门、timeline、刷新、stale/恢复与过期降级；保存截图或等价可审计证据，并复核页面无敏感字段泄漏。
+
+M4-4 退出门：W1/W2 真实 PostgreSQL 对抗、W3 隔离启动与 HTTP 健康检查、浏览器 current/reference/detail/timeline/refresh/expiry 场景、M4 后端累计、Web 全量/typecheck/build 全部 GREEN；五分支同步后才进入 M4-5。
+
 ### M4-5：累计回归与证据收口
 
 - 后端 M1～M4 专项与累计回归。
