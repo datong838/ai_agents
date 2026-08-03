@@ -1,8 +1,8 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.2 评审通过 · M3-1 GREEN · 允许进入 M3-2**
+> 状态：**v1.3 评审通过 · M3-2 GREEN · 允许进入 M3-3**
 > 起始代码基线：`aos-platform m1@d85992b`
-> 当前代码基线：`aos-platform m1@89bbb98`（五分支同步）
+> 当前代码基线：`aos-platform m1@7f6e80a`（五分支同步，远程 `origin/m1` 已更新）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
 > 后续门禁：M3 GREEN 后方可进入 M4；M5 完成前不得进入电商 G0～G6
 
@@ -234,6 +234,14 @@ M3-2 不新增 mutation UI，不修改通用 `api/client.ts`、后端、数据�
 
 退出门补充：生产源码中 `MOCK_ASSET_BUNDLES` 与 `\"/v1/assets\"` 零命中；pending promise 只显示 loading；真实 `[]` 显示 empty；403 显示无权；404 统一不可见或不存在；500/网络显示重试；分页边界和乱序响应通过；M3-3/M3-4 的 resolve/create/action 入口不可达。
 
+#### M3-2 实施结果（2026-08-03）
+
+M3-2 已在 `m1@7f6e80a` 收口。资产页保留 `/apollo/assets` 和原 named export，生产路径已删除 `MOCK_ASSET_BUNDLES` 与错误端点 `/v1/assets`，通过专用 SDK 映射 Canonical Registry 和 Installation 只读事实。新增 Registry bundle/version 详情、Installation 服务端分页、current revision/decision、事件/evidence/pointer 展示，并明确事件时间线不等于历史 revision 完整快照。
+
+只读 hooks 覆盖 loading、empty、refresh、stale、403、404、网络/500 和乱序响应；403/404 清除旧数据，刷新失败保留数据时显式标记 stale。Installation 响应增加运行时失败关闭解析，未增加 mutation UI，也未修改通用 API client、后端、数据库、路由或状态机。
+
+验证结果：M3-2/Asset Control 前端专项 72/72、Web 全量 1842/1842、TypeScript GREEN、production build GREEN、后端 Registry/Composition/Installation/OpenAPI 77/77；生产源码两项禁用字符串均零命中。浏览器确认 Registry/安装管理双页签、只读边界和 API 不可达时的诚实错误态；浏览器沙箱未能直连宿主机 `:8080`，真实响应形状由后端契约测试、SDK parser 与组件 fixture 覆盖。完整证据见 [`2026-08-03-M3-2真实只读资产页回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)。
+
 ### M3-3：Resolve/Create 与 Diff
 
 **目标：** 完成安装前预检，不执行安装 action。
@@ -323,4 +331,4 @@ M3 只有在以下条件全部满足时才可标记 GREEN：
 5. 专项、Web 全量、typecheck/build 和平台累计回归 GREEN，证据归档。
 6. 上位状态和 AOS 项目开发上下文同步更新。
 
-当前结论：**M3-1 已 GREEN；以五分支同步基线 `m1@89bbb98` 进入 M3-2 Registry 真实化与只读安装视图。继续按 M3-2～M3-5 实施且不新增架构。**
+当前结论：**M3-2 已 GREEN；以五分支同步基线 `m1@7f6e80a` 进入 M3-3 Resolve/Create 与 Diff。继续按 M3-3～M3-5 实施且不新增架构。**
