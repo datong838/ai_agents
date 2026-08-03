@@ -1,8 +1,8 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.4 评审通过 · M3-2 GREEN · M3-3 开工审计与文件所有权已冻结**
+> 状态：**v1.5 评审通过 · M3-3 GREEN · 允许进入 M3-4**
 > 起始代码基线：`aos-platform m1@d85992b`
-> 当前代码基线：`aos-platform m1@7f6e80a`（五分支同步，远程 `origin/m1` 已更新）
+> 当前代码基线：`aos-platform m1@77a1e5b`（五分支同步，远程 `origin/m1` 已更新）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
 > 后续门禁：M3 GREEN 后方可进入 M4；M5 完成前不得进入电商 G0～G6
 
@@ -294,6 +294,14 @@ M3-2 已在 `m1@7f6e80a` 收口。资产页保留 `/apollo/assets` 和原 named 
 7. submit、approve、reject、apply、verify、rollback、客户端 hash/diff/evidence 计算、离线排队和自动重试全部不可达。
 8. 专项、Asset Control 累计、Web 全量、TypeScript、production build、后端 77 契约回归及浏览器场景全部 GREEN，才允许进入 M3-4。
 
+#### M3-3 实施结果（2026-08-03）
+
+M3-3 已在 `m1@77a1e5b` 收口。新增 Composition Lock 运行时失败关闭 parser、resolve/create exact serializer、422 校验/解析资源上限错误策略、独立命令状态与幂等恢复、resolve 后 GET 一致性回读、Lock/依赖/Diff 只读视图，并把 `/apollo/assets` 扩展为 Registry、组合预检与创建、只读安装三页签。
+
+页面只允许从已发布且已签名的 Registry 版本构造请求；输入变化使既有 lock stale，create 只能消费已回读且一致的 lock，并且只创建 draft。网络/500 结果未知时保留同一命令与幂等键；submit、approve、reject、apply、verify、rollback 仍不可达。浏览器未运行 Resolver、未重算 hash/diff/evidence，四 hash 均只读。
+
+验证结果：Web 全量 132 files / 1867 passed，TypeScript GREEN，production build GREEN（227 modules），后端 Registry/Composition/Installation/OpenAPI 77/77；浏览器确认三页签、空选择禁用、无可编辑 hash、无 M3-4 动作和 API 不可达诚实错误态。完整证据见 [`2026-08-03-M3-3组合预检与Draft创建回归证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-3组合预检与Draft创建回归证据.md)。
+
 ### M3-4：审批、Apply/Verify/Rollback
 
 **目标：** 接通现有六条状态边。
@@ -373,4 +381,4 @@ M3 只有在以下条件全部满足时才可标记 GREEN：
 5. 专项、Web 全量、typecheck/build 和平台累计回归 GREEN，证据归档。
 6. 上位状态和 AOS 项目开发上下文同步更新。
 
-当前结论：**M3-2 已 GREEN；以五分支同步基线 `m1@7f6e80a` 进入 M3-3 Resolve/Create 与 Diff。继续按 M3-3～M3-5 实施且不新增架构。**
+当前结论：**M3-3 已 GREEN；以五分支同步基线 `m1@77a1e5b` 进入 M3-4 审批、Apply/Verify/Rollback。继续按 M3-4～M3-5 实施且不新增架构。**

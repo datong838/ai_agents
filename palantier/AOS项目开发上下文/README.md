@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-03
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@7f6e80a`（五分支同步，远程 `origin/m1` 已更新）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，`m1@663d7ac`（本次 M3-2 收口前基线）
-> 当前门禁：M3-2 最终 GREEN，允许进入 M3-3；M5 完成前不得进入电商 G0～G6。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@77a1e5b`（五分支同步，远程 `origin/m1` 已更新）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，`m1@dfa2efd`（本次 M3-3 收口前基线）
+> 当前门禁：M3-3 最终 GREEN，允许进入 M3-4；M5 完成前不得进入电商 G0～G6。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -26,6 +26,7 @@
 - M3-0 回归证据：[`2026-08-03-M3-0契约与测试夹具冻结证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)
 - M3-1 回归证据：[`2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)
 - M3-2 回归证据：[`2026-08-03-M3-2真实只读资产页回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)
+- M3-3 回归证据：[`2026-08-03-M3-3组合预检与Draft创建回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-3组合预检与Draft创建回归证据.md)
 - 新客户需求：[`228-新电商达人增长与控价任务产品方案.md`](../20_tech/电商平台接入/228-新电商达人增长与控价任务产品方案.md)
 - 微信小店适配：[`00-微信小店AOS对接方案.md`](../20_tech/电商平台接入/微信小店电商接入方案/00-微信小店AOS对接方案.md)
 - 微信小店 API 证据矩阵：[`01-微信小店API能力清单.md`](../20_tech/电商平台接入/微信小店电商接入方案/01-微信小店API能力清单.md)
