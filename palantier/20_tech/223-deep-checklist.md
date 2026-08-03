@@ -1,8 +1,10 @@
 # 223 全站 UI 深度检查清单
 
-> 版本：v1.0（2026-07-26）
+> 版本：v1.1（2026-07-29 功能完整度复审）
 > 范围：全站 9 大分区 + 详情页，共 73 个视觉稿文件
 > 检查标准：逐页分析组件级差距，输出每页的改造清单
+>
+> **v1.1 说明**：§1.1 起为「菜单页功能完整度」复审表。旧文中「组件注册表/变量/样式 = 0% 缺失」「Draft=0%」「多处路由未注册」等已过时——页面大多已接线，完整度见下表。§7+ 单页详表仍保留历史差距描述，以 §1.1 的 **new%** 为准。
 
 ---
 
@@ -74,17 +76,177 @@
 
 ---
 
+## 1.1 菜单页功能完整度总表（2026-07-29 复审）
+
+### 评分口径（功能逻辑，不是纯视觉像素）
+
+| 档位 | % | 含义 |
+|------|---|------|
+| 壳 | 0–15 | 能打开 / 占位文案，主能力未接 |
+| 骨架 | 20–40 | 主区块有，多为 MOCK；主流程不闭环或很薄 |
+| 可用 | 50–70 | 主流程可走（含 API 或可靠 mock 降级）；相对视觉稿仍有结构/能力缺口 |
+| 接近 | 75–90 | 结构接近视觉 + 核心功能可用；细项/后端/1:1 对账未完 |
+| 完成向 | 90+ | 演示产品意图基本闭环（仍可能有对账细节） |
+
+**复审人理解的页面职责（写完整度前先对齐「这页干什么」）：**
+
+| 分区 | 页面在产品里的角色 |
+|------|-------------------|
+| 工作台 | 业务人员打开/使用 Module（应用列表、订单、风险 Inbox、态势、Buddy） |
+| 构建工具 | FDE 搭建 Module：画布 / 组件 / 变量 / 主题 / **接口契约** / 事件 / 发布 |
+| AIP | AI 能力注入：助手、Agent、逻辑、工具、评测、Draft、谱系、可观测 |
+| 模型 | 模型目录、供应商、路由、容量配额 |
+| 本体 | 对象类型与知识（Discover、探索、Wiki、分支、健康） |
+| 管道/数据源 | 数据进本体前的管道、调度、数据集、连接与同步 |
+| 运维 | Hub/Spoke/Ferry/资产/变更/密钥与接入案例 |
+
+> `/workshop/create`、`/workshop/module`：**侧栏已隐藏**（能力收敛到应用列表），路由保留，仍计入下表。
+
+### A. 概览 + 工作台
+
+| 路径 | 页面 | 职责一句话 | 旧% | **新%** | 现状要点 |
+|------|------|------------|-----|--------|----------|
+| `/` | 概览 | 全站入口域网格 | ~90 | **90** | 域卡+指标；视觉细节仍可抠 |
+| `/workshop` | 应用列表 | 打开/新建 Module 入口 | — | **70** | 分类卡片+`/v1/modules`；mock 降级 |
+| `/workshop/create` | 创建应用 *(隐)* | 四步向导建 Module | — | **55** | 已对齐 4 步视觉；创建失败走 mockId |
+| `/workshop/module` | 模块管理 *(隐)* | Module CRUD（与列表重叠） | 60 | **70** | 列表/发布有 API；侧栏已藏 |
+| `/workshop/orders` | 订单管理 | 订单运行态 demo | — | **60** | 列表/详情主流程 |
+| `/workshop/inbox` | 风险告警 | Inbox 工单运行态 | — | **65** | 筛选+表格+详情流 |
+| `/workshop/cop` | 态势大屏 | COP 态势可视化 | — | **55** | KPI/地图壳，演示向 |
+| `/workshop/buddy` | Buddy | 业务助手对话 | — | **60** | Assist 对话；非全 Studio |
+| `/analytics` | 分析建模 | 分析工作台 | — | **65** | 多块分析流；视觉未 1:1 |
+
+### B. 应用程序构建工具（搭建链）
+
+| 路径 | 页面 | 职责一句话 | 旧% | **新%** | 现状要点 |
+|------|------|------------|-----|--------|----------|
+| `/workshop/canvas` | 画布编辑 | 三栏拖拽搭页面 | **30** | **70** | 变量只读面板+属性绑定+树联动（W4 B1） |
+| `/workshop/widget-registry` | 组件注册表 | Widget 目录三来源 | **0** | **70** | 卡片/详情齐；市场安装/usedBy 弱 |
+| `/workshop/variables` | 变量管理器 | 集中管页面/应用/全局变量 | **0** | **65** | API CRUD + MOCK 降级（W1 A1） |
+| `/workshop/styles` | 主题与样式 | Module 主题色/字体 | **0** | **60** | 编辑器较完整；未真正驱动全应用主题 |
+| `/workshop/module-interface` | 模块接口 | Module **入参/出参契约** + Loop 嵌套示意 | **10** | **65** | schema CRUD + GET/PUT（W2 A2） |
+| `/workshop/events` | 事件配置 | Widget 事件→动作绑定 | **20** | **60** | 列表+向导；API 可降级 MOCK |
+| `/workshop/publish` | 发布入口 | Module 发布通道 | **20** | **65** | 环境卡+步骤+publish/deploy（W2 B4） |
+
+### C. AIP 决策引擎
+
+| 路径 | 页面 | 职责一句话 | 旧% | **新%** | 现状要点 |
+|------|------|------------|-----|--------|----------|
+| `/aip/assist` | AIP 助手 | 文档/本体感知问答 | **0** | **65** | 聊天+SSE；挂则 mock |
+| `/aip/studio` | 对话机器人 | Agent 配置工作台 | **25** | **65** | 提示词/工具 Tab 可写保存（W2 B2） |
+| `/aip/agents` | 智能体列表 | Agent 列表+向导 | — | **65** | 向导/试运行；多 MOCK |
+| `/aip/analyst` | AIP 分析师 | NL/SQL 分析 | **0** | **60** | live query + 演示降级（W2 A4） |
+| `/aip/logic` | AIP 逻辑画布 | 逻辑编排/handoff | **60** | **75** | execute API 有；预览粗 |
+| `/aip/tools` | Agent 工具面板 | 工具目录与试跑 | **70** | **75** | 工具 API 实；评分等缺 |
+| `/aip/maturity` | 成熟度楼梯 | L0–L4 门控 | **85** | **85** | 楼梯+熔断较齐 |
+| `/aip/capabilities` | 智能体插件 | 能力插件卡 | **0** | **70** | 配置 PUT + 连通测试（W4 B5） |
+| `/aip/agent-registry` | 智能体目录 | 浏览/发现 Agent | **30** | **60** | 卡片网格；可 MOCK |
+| `/aip/agent-import` | 智能体导入 | 外部 Agent 导入 | **40** | **55** | 多步；扫描演示重 |
+| `/aip/capability-import` | 能力导入 | 能力 YAML 导入 | **35** | **50** | 注册有；预览未满 |
+| `/aip/evals` | Evals 门控 | 评测门控 | **75** | **75** | 读写可用；分项示意 |
+| `/aip/drafts` | Draft 审批台 | HITL 审批写入 | **0** | **75** | 真 approve/reject + 演示降级（W3 A3） |
+| `/aip/lineage` | 决策谱系 | 决策追溯 | **55** | **60** | 可拉 lineage |
+| `/aip/observability` | 可观测性 | Trace/指标看板 | **50** | **60** | Overview/Traces 接采样 API（W2 A5） |
+
+### D. 模型管理
+
+| 路径 | 页面 | 职责一句话 | 旧% | **新%** | 现状要点 |
+|------|------|------------|-----|--------|----------|
+| `/aip/model-catalog` | 模型目录 | 模型浏览/注册 | **0** | **65** | catalog/register API（W2 A7） |
+| `/aip/model-providers` | 模型供应商 | Provider/探针 | **65** | **75** | API 实 |
+| `/aip/model-router` | 模型路由 | 路由规则/试聊 | **75** | **80** | CRUD+试聊较齐 |
+| `/aip/capacity` | 容量管理 | 配额/限流 | **0** | **60** | usage/limits API（W2 A6） |
+
+### E. 本体 · 数字孪生
+
+| 路径 | 页面 | 职责一句话 | 旧% | **新%** | 现状要点 |
+|------|------|------------|-----|--------|----------|
+| `/ontology` | 本体管理 | Discover/类型目录 | — | **70** | 收藏/最近/列表+API |
+| `/workshop/graph` | 对象探索 | 实例探索前端 | 40 | **65** | 浏览有；三栏保真一般 |
+| `/ontology/funnel` | 本体提案 | 提案漏斗 | ~60 | **60** | 阶段 API |
+| `/ontology/okf-funnel` | OKF funnel | 行业漏斗映射 | ~60 | **60** | 映射可用 |
+| `/ontology/okf-overview` | OKF 概览 | OKF 总览 | ~60 | **55** | 壳深有限 |
+| `/ontology/graph-health` | 图谱健康度 | 图质量指标 | ~80 | **80** | 指标 API 较齐 |
+| `/ontology/wiki` | 活知识 Wiki | Wiki 知识卡 | ~65 | **60** | 非全量编辑器 |
+| `/ontology/wiki-index` | Wiki 索引 | Wiki 索引表 | ~65 | **60** | 列表可用 |
+| `/ontology/branches` | 分支管理 | Ontology 分支 | ~70 | **70** | checkout/merge 类 |
+| `/ontology/wiki/:id` | Wiki 详情 | 全文编辑 | 0–20 | **55** | 可编辑保存+版本列表（W3 C1） |
+| `/ontology/wiki/:id/diff` | Wiki 差异 | 版本对比 | **0** | **60** | 两版本文本 diff（W3 C5） |
+
+### F. 管道与数据治理 / 数据源
+
+| 路径 | 页面 | 职责一句话 | 旧% | **新%** | 现状要点 |
+|------|------|------------|-----|--------|----------|
+| `/data/pipelines` | 管道构建 | 管道列表入口 | **30** | **55** | 进画布有；非全 SVG 图例 |
+| `/data/pipelines/:id` | 管道详情 | DAG 编辑 | 30 | **70** | 历史 Tab + 变换试运行（W3 C6） |
+| `/data/pipeline-proposals` | 管道提案 | 提案审阅 | **10** | **45** | 列表壳；审阅薄 |
+| `/data/schedules` | 计划编辑器 | 调度 | **30** | **50** | CRUD 向 |
+| `/data/builds` | 搭建 | Build 列表 | **0** | **50** | 列表有；弹窗未对齐 |
+| `/data/datasets` | 数据集 | 数据集目录 | **40** | **60** | 采样预览 API |
+| `/data/code-repos` | 代码库 | 仓库连接 | **10** | **50** | 非四栏 IDE |
+| `/data/lineage` | 数据沿袭 | 血缘图 | **20** | **50** | 图有；展开弱 |
+| `/data/health` | 数据健康 | 健康规则 | **20** | **55** | 仪表有 |
+| `/data` | 数据链接器 | 连接器网格 | **40** | **60** | 源管理 API |
+| `/data/connections` | 数据连接 | 连接列表 | — | **55** | 管理页 |
+| `/data/sources/new` | 新建数据源 | 向导建源 | **0** | **55** | 多步；演示向 |
+| `/data/agents` | 边缘代理 | Edge Agent | **20** | **45** | 列表；登记弱 |
+| `/data/sync-config` | 同步配置 | 同步策略 | **30** | **55** | 表单+API |
+| `/data/sync-routes` | 同步路由 | 路由启停 | **20** | **50** | 启停有 |
+| `/data/media-sets` | 媒体集 | 媒体上传 | **10** | **55** | 上传 API |
+| `/aip/doc-intelligence` | 文档智能 | 文档抽取 | **0** | **55** | 抽取 API；pipeline-doc-intel 已并入（W4 E1） |
+
+### G. 运维交付
+
+| 路径 | 页面 | 职责一句话 | 旧% | **新%** | 现状要点 |
+|------|------|------------|-----|--------|----------|
+| `/settings/local-platform` | 本地平台 | 本机探活/控制 | — | **70** | 实操向 |
+| `/settings/ops-start-guide` | 启停说明 | 运维文档 | — | **75** | 文档页 |
+| `/apollo` | Hub 舰队 | Spoke 舰队总览 | **30** | **60** | 卡+probe |
+| `/apollo/release` | Release | 发布通道 | **20** | **55** | 通道 UI+API |
+| `/apollo/spoke` | Spoke 详情 | 单 Spoke | **20** | **55** | Full/Lite 内容 |
+| `/apollo/ferry` | Ferry | 摆渡导入导出 | **10** | **50** | 步骤+API |
+| `/apollo/assets` | FDE 资产包 | 资产清单 | **20** | **55** | 表+徽章 |
+| `/apollo/change` | 变更审批 | 变更单 | **10** | **55** | 双栏+API |
+| `/apollo/config` | 配置与密钥 | 覆盖/密钥 | **10** | **55** | 壳+API |
+| `/apollo/cases` | 接入案例 | 案例叙事 | **10** | **40** | 静态页 |
+| `/apollo/provisioning` | SaaS 开通 | 开通流程 | — | **50** | 深度有限 |
+
+### 复审结论（给产品/排期）
+
+1. **「10%」不等于全站只有 10%**：那是早期单页（如模块接口）或「深度检查进度」口径；**今日菜单功能中位大约 55–65%**。
+2. **已从「缺失」变成「有页」**：组件注册表 / 变量 / 样式 / Draft / AIP 助手 / 容量壳 / 多块运维 —— 但 **变量、分析师、可观测、容量、文档智能** 仍偏演示（MOCK、无写回）。
+3. **相对视觉稿最吃亏**：画布（保真）、Wiki 详情（编辑器）、模块接口（契约编辑）、变量（数据闭环）。
+4. **相对最可用**：成熟度、工具面板、Evals、模型路由/供应商、图谱健康、本体 Discover、部分数据连接与运维。
+5. **建议下一波功能优先**（非纯视觉）：① 变量 API↔画布；② 模块接口 schema 读写；③ Draft 接真审批；④ 画布缺面板按视觉补。
+6. **统一补齐排期**：见 [`227-未完成项补齐计划.md`](./227-未完成项补齐计划.md)；P1/详情最新状态见 `-2`/`-3` v1.1。
+
+### H. 二级详情页完整度（与 checklist-3 对齐，2026-07-29）
+
+| 路径 | 页面 | **现%** | 要点 |
+|------|------|--------|------|
+| `/ontology/object-types/:id` | 对象类型详情 | **80** | 元数据+SVG 链接图（W3 C2） |
+| `/ontology/link-types/:id` | 链接类型详情 | **70** | SVG 关系图（W4 C8a） |
+| `/ontology/action-types/:id` | Action 详情 | **70** | Overview 双列+徽章（W4 C8b） |
+| `/ontology/properties/:typeId` | 属性编辑 | **70** | 列映射 Tab（W3 C3） |
+| `/ontology/functions` | Function | **65** | 参数表+试跑（W3 C4） |
+| `/ontology/wiki/:id` | Wiki 详情 | **55** | 可编辑保存+版本（W3 C1） |
+| `/ontology/wiki/:id/diff` | Wiki 差异 | **60** | 文本 diff（W3 C5） |
+| `/data/pipelines/:id` | 管道详情 | **70** | 历史/变换（W3 C6） |
+| `/data/sources/:id` | 数据源详情 | **65** | Schema 树+预览（W3 C7） |
+
+---
+
 ## 2. 已深度检查的页面（7 个）
 
 | # | 页面 | 视觉稿文件 | 检查状态 | 文档位置 |
 |---|---|---|---|---|
-| 1 | 概览 | `index.html` | ✅ 已检查 | 223-menu-alignment-full.md |
-| 2 | 应用列表 | `workshop.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
-| 3 | 订单管理 | `workshop-app-order.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
-| 4 | 风险告警管理 | `workshop-module.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
-| 5 | 态势大屏 | `workshop-cop.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
-| 6 | Buddy 助手 | `workshop-aip-chat.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
-| 7 | 创建应用 | `workshop-create.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
+| 1 | 概览 | `../foundry/html/index.html` | ✅ 已检查 | 223-menu-alignment-full.md |
+| 2 | 应用列表 | `../foundry/html/workshop.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
+| 3 | 订单管理 | `../foundry/html/workshop-app-order.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
+| 4 | 风险告警管理 | `../foundry/html/workshop-module.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
+| 5 | 态势大屏 | `../foundry/html/workshop-cop.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
+| 6 | Buddy 助手 | `../foundry/html/workshop-aip-chat.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
+| 7 | 创建应用 | `../foundry/html/workshop-create.html` | ✅ 已检查 | 223-ui-alignment-plan.md Phase A |
 
 ---
 
@@ -96,24 +258,24 @@
 
 | # | 页面 | 视觉稿文件 | 系统路径 | 备注 |
 |---|---|---|---|---|
-| 1 | 画布编辑 | `workshop-canvas.html` | `/workshop/canvas` | 视觉稿 145KB，最复杂 |
-| 2 | 模块接口 | `workshop-module-interface.html` | `/workshop/module-interface` |  |
-| 3 | 事件配置 | `workshop-events.html` | `/workshop/events` |  |
-| 4 | 对象探索 | `workshop-object-view.html` | `/workshop/graph` |  |
-| 5 | 发布入口 | `workshop-publish.html` | `/workshop/publish` |  |
+| 1 | 画布编辑 | `../foundry/html/workshop-canvas.html` | `/workshop/canvas` | 视觉稿 145KB，最复杂 |
+| 2 | 模块接口 | `../foundry/html/workshop-module-interface.html` | `/workshop/module-interface` |  |
+| 3 | 事件配置 | `../foundry/html/workshop-events.html` | `/workshop/events` |  |
+| 4 | 对象探索 | `../foundry/html/workshop-object-view.html` | `/workshop/graph` |  |
+| 5 | 发布入口 | `../foundry/html/workshop-publish.html` | `/workshop/publish` |  |
 | 6 | 模块管理（系统多出） | - | `/workshop/module` | 系统多出，检查是否保留 |
 
 **应用程序构建工具（7 页，3 个缺失）：**
 
 | # | 页面 | 视觉稿文件 | 系统路径 | 备注 |
 |---|---|---|---|---|
-| 7 | 组件注册表 | `workshop-widget-registry.html` | - | 🔴 系统缺失，需全新建 |
-| 8 | 变量管理器 | `workshop-variables.html` | - | 🔴 系统缺失，需全新建 |
-| 9 | 主题与样式 | `workshop-styles.html` | - | 🔴 系统缺失，需全新建 |
-| 10 | 画布编辑 | `workshop-canvas.html` | `/workshop/canvas` | 与工作台共用 |
-| 11 | 模块接口 | `workshop-module-interface.html` | `/workshop/module-interface` | 与工作台共用 |
-| 12 | 事件配置 | `workshop-events.html` | `/workshop/events` | 与工作台共用 |
-| 13 | 发布入口 | `workshop-publish.html` | `/workshop/publish` | 与工作台共用 |
+| 7 | 组件注册表 | `../foundry/html/workshop-widget-registry.html` | - | 🔴 系统缺失，需全新建 |
+| 8 | 变量管理器 | `../foundry/html/workshop-variables.html` | - | 🔴 系统缺失，需全新建 |
+| 9 | 主题与样式 | `../foundry/html/workshop-styles.html` | - | 🔴 系统缺失，需全新建 |
+| 10 | 画布编辑 | `../foundry/html/workshop-canvas.html` | `/workshop/canvas` | 与工作台共用 |
+| 11 | 模块接口 | `../foundry/html/workshop-module-interface.html` | `/workshop/module-interface` | 与工作台共用 |
+| 12 | 事件配置 | `../foundry/html/workshop-events.html` | `/workshop/events` | 与工作台共用 |
+| 13 | 发布入口 | `../foundry/html/workshop-publish.html` | `/workshop/publish` | 与工作台共用 |
 
 > 注：工作台和应用程序构建工具有 4 页共用（画布编辑、模块接口、事件配置、发布入口）
 
@@ -123,50 +285,50 @@
 
 | # | 页面 | 视觉稿文件 | 系统路径 | 备注 |
 |---|---|---|---|---|
-| 1 | AIP 助手 | `aip-assist.html` | `/aip/assist` | 🔴 路由未注册 |
-| 2 | 对话机器人 | `agents.html` | `/aip/studio` | 名字差异（Chatbot Studio → 对话机器人） |
-| 3 | AIP 分析师 | `aip-analyst.html` | `/aip/analyst` | 🔴 路由未注册 |
-| 4 | AIP 逻辑画布 | `aip-logic.html` | `/aip/logic` |  |
-| 5 | Agent 工具面板 | `aip-tools.html` | `/aip/tools` |  |
-| 6 | 成熟度楼梯 | `aip-maturity.html` | `/aip/maturity` |  |
-| 7 | 智能体目录 | `agent-registry.html` | `/aip/agent-registry` | 名字差异（智能体注册表 → 智能体目录） |
-| 8 | 智能体插件 | `aip-capabilities.html` | `/aip/capabilities` |  |
-| 9 | Evals 门控 | `aip-evals.html` | `/aip/evals` |  |
-| 10 | Draft 审批台 | `aip-draft-inbox.html` | `/aip/drafts` |  |
-| 11 | 决策谱系 | `aip-decision-lineage.html` | `/aip/lineage` |  |
-| 12 | 可观测性 | `aip-observability.html` | `/aip/observability` |  |
+| 1 | AIP 助手 | `../foundry/html/aip-assist.html` | `/aip/assist` | 🔴 路由未注册 |
+| 2 | 对话机器人 | `../foundry/html/agents.html` | `/aip/studio` | 名字差异（Chatbot Studio → 对话机器人） |
+| 3 | AIP 分析师 | `../foundry/html/aip-analyst.html` | `/aip/analyst` | 🔴 路由未注册 |
+| 4 | AIP 逻辑画布 | `../foundry/html/aip-logic.html` | `/aip/logic` |  |
+| 5 | Agent 工具面板 | `../foundry/html/aip-tools.html` | `/aip/tools` |  |
+| 6 | 成熟度楼梯 | `../foundry/html/aip-maturity.html` | `/aip/maturity` |  |
+| 7 | 智能体目录 | `../foundry/html/agent-registry.html` | `/aip/agent-registry` | 名字差异（智能体注册表 → 智能体目录） |
+| 8 | 智能体插件 | `../foundry/html/aip-capabilities.html` | `/aip/capabilities` |  |
+| 9 | Evals 门控 | `../foundry/html/aip-evals.html` | `/aip/evals` |  |
+| 10 | Draft 审批台 | `../foundry/html/aip-draft-inbox.html` | `/aip/drafts` |  |
+| 11 | 决策谱系 | `../foundry/html/aip-decision-lineage.html` | `/aip/lineage` |  |
+| 12 | 可观测性 | `../foundry/html/aip-observability.html` | `/aip/observability` |  |
 | 13 | 智能体列表（系统多出） | - | `/aip/agents` | 系统多出 |
-| 14 | 智能体导入（系统多出） | `aip-agent-import.html` | `/aip/agent-import` | 系统多出 |
-| 15 | 能力导入（系统多出） | `aip-capability-import.html` | `/aip/capability-import` | 系统多出 |
+| 14 | 智能体导入（系统多出） | `../foundry/html/aip-agent-import.html` | `/aip/agent-import` | 系统多出 |
+| 15 | 能力导入（系统多出） | `../foundry/html/aip-capability-import.html` | `/aip/capability-import` | 系统多出 |
 
 **模型管理（4 页，2 个缺失）：**
 
 | # | 页面 | 视觉稿文件 | 系统路径 | 备注 |
 |---|---|---|---|---|
-| 16 | 模型目录 | `aip-model-catalog.html` | `/aip/model-catalog` | 🔴 路由未注册 |
-| 17 | 模型供应商 | `aip-model-providers.html` | `/aip/model-providers` |  |
-| 18 | 模型路由 | `aip-model-router.html` | `/aip/model-router` |  |
-| 19 | 容量管理 | `aip-capacity-management.html` | `/aip/capacity` | 🔴 路由未注册 |
+| 16 | 模型目录 | `../foundry/html/aip-model-catalog.html` | `/aip/model-catalog` | 🔴 路由未注册 |
+| 17 | 模型供应商 | `../foundry/html/aip-model-providers.html` | `/aip/model-providers` |  |
+| 18 | 模型路由 | `../foundry/html/aip-model-router.html` | `/aip/model-router` |  |
+| 19 | 容量管理 | `../foundry/html/aip-capacity-management.html` | `/aip/capacity` | 🔴 路由未注册 |
 
 **本体·数字孪生（13 页，5 个详情页缺失）：**
 
 | # | 页面 | 视觉稿文件 | 系统路径 | 备注 |
 |---|---|---|---|---|
-| 20 | 本体管理 | `ontology.html` | `/ontology` |  |
-| 21 | 对象探索 | `workshop-object-view.html` | `/workshop/graph` | 与工作台共用 |
-| 22 | 本体提案 | `ontology-funnel.html` | `/ontology/funnel` | 名字差异（漏斗管道 → 本体提案） |
-| 23 | 图谱健康度 | `ontology-graph-health.html` | `/ontology/graph-health` |  |
-| 24 | 活知识 Wiki | `ontology-wiki-index.html` | `/ontology/wiki` | 视觉稿合并为 1 项，系统拆 2 项 |
-| 25 | OKF funnel | `funnel.html` | `/ontology/okf-funnel` | 名字差异（OKF 行业漏斗 → OKF funnel） |
-| 26 | OKF 概览 | `okf-funnel.html` | `/ontology/okf-overview` |  |
-| 27 | 分支管理 | `ontology-branches.html` | `/ontology/branches` |  |
-| 28 | Wiki 详情 | `ontology-wiki.html` | - | 🔴 详情页，系统缺失 |
-| 29 | Wiki 差异 | `ontology-wiki-diff.html` | - | 🔴 详情页，系统缺失 |
-| 30 | 属性类型详情 | `ontology-property.html` | - | 🔴 详情页，系统缺失 |
-| 31 | Function 详情 | `ontology-function.html` | - | 🔴 详情页，系统缺失 |
-| 32 | 对象详情 | `ontology-object.html` | - | ⚠️ 不在侧栏，需确认 |
-| 33 | 动作详情 | `ontology-action.html` | - | ⚠️ 不在侧栏，需确认 |
-| 34 | 链接详情 | `ontology-link.html` | - | ⚠️ 不在侧栏，需确认 |
+| 20 | 本体管理 | `../foundry/html/ontology.html` | `/ontology` |  |
+| 21 | 对象探索 | `../foundry/html/workshop-object-view.html` | `/workshop/graph` | 与工作台共用 |
+| 22 | 本体提案 | `../foundry/html/ontology-funnel.html` | `/ontology/funnel` | 名字差异（漏斗管道 → 本体提案） |
+| 23 | 图谱健康度 | `../foundry/html/ontology-graph-health.html` | `/ontology/graph-health` |  |
+| 24 | 活知识 Wiki | `../foundry/html/ontology-wiki-index.html` | `/ontology/wiki` | 视觉稿合并为 1 项，系统拆 2 项 |
+| 25 | OKF funnel | `../foundry/html/funnel.html` | `/ontology/okf-funnel` | 名字差异（OKF 行业漏斗 → OKF funnel） |
+| 26 | OKF 概览 | `../foundry/html/okf-funnel.html` | `/ontology/okf-overview` |  |
+| 27 | 分支管理 | `../foundry/html/ontology-branches.html` | `/ontology/branches` |  |
+| 28 | Wiki 详情 | `../foundry/html/ontology-wiki.html` | - | 🔴 详情页，系统缺失 |
+| 29 | Wiki 差异 | `../foundry/html/ontology-wiki-diff.html` | - | 🔴 详情页，系统缺失 |
+| 30 | 属性类型详情 | `../foundry/html/ontology-property.html` | - | 🔴 详情页，系统缺失 |
+| 31 | Function 详情 | `../foundry/html/ontology-function.html` | - | 🔴 详情页，系统缺失 |
+| 32 | 对象详情 | `../foundry/html/ontology-object.html` | - | ⚠️ 不在侧栏，需确认 |
+| 33 | 动作详情 | `../foundry/html/ontology-action.html` | - | ⚠️ 不在侧栏，需确认 |
+| 34 | 链接详情 | `../foundry/html/ontology-link.html` | - | ⚠️ 不在侧栏，需确认 |
 
 ### 3.3 P2：管道 + 数据源 + 运维（26 页）
 
@@ -174,42 +336,42 @@
 
 | # | 页面 | 视觉稿文件 | 系统路径 | 备注 |
 |---|---|---|---|---|
-| 1 | 管道构建 | `pipeline-list.html` | `/data/pipelines` |  |
-| 2 | 管道提案 | `pipeline-proposals.html` | `/data/pipeline-proposals` |  |
-| 3 | 计划编辑器 | `schedules.html` | `/data/schedules` |  |
-| 4 | 搭建 | `builds.html` | `/data/builds` |  |
-| 5 | 数据集预览 | `dataset.html` | `/data/datasets` |  |
-| 6 | 代码库 | `code-repositories.html` | `/data/code-repos` |  |
-| 7 | 数据沿袭 | `lineage.html` | `/data/lineage` |  |
-| 8 | 数据健康 | `health.html` | `/data/health` |  |
-| 9 | DocIntel 管道 | `pipeline-doc-intel.html` | - | 🔴 系统缺失 |
-| 10 | 管道详情 | `pipeline.html` | - | ⚠️ 不在侧栏，需确认 |
+| 1 | 管道构建 | `../foundry/html/pipeline-list.html` | `/data/pipelines` |  |
+| 2 | 管道提案 | `../foundry/html/pipeline-proposals.html` | `/data/pipeline-proposals` |  |
+| 3 | 计划编辑器 | `../foundry/html/schedules.html` | `/data/schedules` |  |
+| 4 | 搭建 | `../foundry/html/builds.html` | `/data/builds` |  |
+| 5 | 数据集预览 | `../foundry/html/dataset.html` | `/data/datasets` |  |
+| 6 | 代码库 | `../foundry/html/code-repositories.html` | `/data/code-repos` |  |
+| 7 | 数据沿袭 | `../foundry/html/lineage.html` | `/data/lineage` |  |
+| 8 | 数据健康 | `../foundry/html/health.html` | `/data/health` |  |
+| 9 | DocIntel 管道 | `../foundry/html/pipeline-doc-intel.html` | - | 🔴 系统缺失 |
+| 10 | 管道详情 | `../foundry/html/pipeline.html` | - | ⚠️ 不在侧栏，需确认 |
 
 **数据源与同步（7 页，2 个缺失）：**
 
 | # | 页面 | 视觉稿文件 | 系统路径 | 备注 |
 |---|---|---|---|---|
-| 11 | 数据链接器 | `data-connection.html` | `/data` |  |
-| 12 | 边缘代理 | `data-connection-agents.html` | `/data/agents` |  |
-| 13 | 同步配置 | `sync.html` | `/data/sync-config` |  |
-| 14 | 同步路由 | `sync-routing.html` | `/data/sync-routes` |  |
-| 15 | 媒体集 | `media-sets.html` | `/data/media-sets` |  |
-| 16 | 文档智能 | `document-intelligence.html` | `/aip/doc-intelligence` | 🔴 路由未注册 |
-| 17 | 数据源新建 | `source-new.html` | - | 🔴 系统缺失 |
-| 18 | 数据源详情 | `source-detail.html` | - | ⚠️ 不在侧栏，需确认 |
+| 11 | 数据链接器 | `../foundry/html/data-connection.html` | `/data` |  |
+| 12 | 边缘代理 | `../foundry/html/data-connection-agents.html` | `/data/agents` |  |
+| 13 | 同步配置 | `../foundry/html/sync.html` | `/data/sync-config` |  |
+| 14 | 同步路由 | `../foundry/html/sync-routing.html` | `/data/sync-routes` |  |
+| 15 | 媒体集 | `../foundry/html/media-sets.html` | `/data/media-sets` |  |
+| 16 | 文档智能 | `../foundry/html/document-intelligence.html` | `/aip/doc-intelligence` | 🔴 路由未注册 |
+| 17 | 数据源新建 | `../foundry/html/source-new.html` | - | 🔴 系统缺失 |
+| 18 | 数据源详情 | `../foundry/html/source-detail.html` | - | ⚠️ 不在侧栏，需确认 |
 
 **运维交付（10 页，2 个系统多出）：**
 
 | # | 页面 | 视觉稿文件 | 系统路径 | 备注 |
 |---|---|---|---|---|
-| 19 | Hub 舰队 | `apollo-hub.html` | `/apollo` |  |
-| 20 | Release 通道 | `apollo-release.html` | `/apollo/release` |  |
-| 21 | Spoke 详情 | `apollo-spoke.html` | `/apollo/spoke` |  |
-| 22 | Ferry 摆渡 | `apollo-ferry.html` | `/apollo/ferry` |  |
-| 23 | FDE 资产包 | `apollo-assets.html` | `/apollo/assets` |  |
-| 24 | 变更审批 | `apollo-change-mgmt.html` | `/apollo/change` |  |
-| 25 | 配置与密钥 | `apollo-config.html` | `/apollo/config` |  |
-| 26 | 接入案例 | `integration-cases.html` | `/apollo/cases` |  |
+| 19 | Hub 舰队 | `../foundry/html/apollo-hub.html` | `/apollo` |  |
+| 20 | Release 通道 | `../foundry/html/apollo-release.html` | `/apollo/release` |  |
+| 21 | Spoke 详情 | `../foundry/html/apollo-spoke.html` | `/apollo/spoke` |  |
+| 22 | Ferry 摆渡 | `../foundry/html/apollo-ferry.html` | `/apollo/ferry` |  |
+| 23 | FDE 资产包 | `../foundry/html/apollo-assets.html` | `/apollo/assets` |  |
+| 24 | 变更审批 | `../foundry/html/apollo-change-mgmt.html` | `/apollo/change` |  |
+| 25 | 配置与密钥 | `../foundry/html/apollo-config.html` | `/apollo/config` |  |
+| 26 | 接入案例 | `../foundry/html/integration-cases.html` | `/apollo/cases` |  |
 | 27 | 本机探活（系统多出） | - | `/settings/local-platform` | 开发辅助 |
 | 28 | 启停说明（系统多出） | - | `/settings/ops-start-guide` | 开发辅助 |
 | 29 | SaaS 开通（系统多出） | - | `/apollo/provisioning` | 系统多出 |
@@ -308,7 +470,7 @@
 
 ### 7.1 画布编辑
 
-**视觉稿文件**：`workshop-canvas.html`（1867 行，最复杂页面）
+**视觉稿文件**：`../foundry/html/workshop-canvas.html`（1867 行，最复杂页面）
 **系统路径**：`/workshop/canvas`
 **当前完整度**：30%
 **改造工作量**：8-10 人天
@@ -367,9 +529,9 @@
 
 ### 7.2 模块接口
 
-**视觉稿文件**：`workshop-module-interface.html`（197 行，简单页面）
+**视觉稿文件**：`../foundry/html/workshop-module-interface.html`（197 行，简单页面）
 **系统路径**：`/workshop/module-interface`
-**当前完整度**：10%（可能只有占位）
+**当前完整度**：45%（2026-07-29 复审；历史曾标 10% 占位——见 §1.1）
 **改造工作量**：1-2 人天
 **优先级**：P0
 
@@ -410,7 +572,7 @@
 
 ### 7.3 事件配置
 
-**视觉稿文件**：`workshop-events.html`（608 行，中等复杂度）
+**视觉稿文件**：`../foundry/html/workshop-events.html`（608 行，中等复杂度）
 **系统路径**：`/workshop/events`
 **当前完整度**：20%
 **改造工作量**：3-4 人天
@@ -462,7 +624,7 @@
 
 ### 7.4 对象探索
 
-**视觉稿文件**：`workshop-object-view.html`（324 行，中等复杂度）
+**视觉稿文件**：`../foundry/html/workshop-object-view.html`（324 行，中等复杂度）
 **系统路径**：`/workshop/graph`
 **当前完整度**：40%
 **改造工作量**：2-3 人天
@@ -506,7 +668,7 @@
 
 ### 7.5 发布入口
 
-**视觉稿文件**：`workshop-publish.html`（173 行，简单页面）
+**视觉稿文件**：`../foundry/html/workshop-publish.html`（173 行，简单页面）
 **系统路径**：`/workshop/publish`
 **当前完整度**：20%
 **改造工作量**：1-2 人天
@@ -564,9 +726,9 @@
 
 ### 7.7 组件注册表
 
-**视觉稿文件**：`workshop-widget-registry.html`（449 行，中等复杂度）
-**系统路径**：缺失（需新建）
-**当前完整度**：0%
+**视觉稿文件**：`../foundry/html/workshop-widget-registry.html`（449 行，中等复杂度）
+**系统路径**：`/workshop/widget-registry`
+**当前完整度**：70%（2026-07-29 复审；历史 0%「缺失」已过时）
 **改造工作量**：3-4 人天
 **优先级**：P0
 
@@ -610,9 +772,9 @@
 
 ### 7.8 变量管理器
 
-**视觉稿文件**：`workshop-variables.html`（782 行，中等复杂度）
-**系统路径**：缺失（需新建）
-**当前完整度**：0%
+**视觉稿文件**：`../foundry/html/workshop-variables.html`（782 行，中等复杂度）
+**系统路径**：`/workshop/variables`
+**当前完整度**：35%（2026-07-29 复审；UI 已对账，数据闭环弱；历史 0%「缺失」已过时）
 **改造工作量**：3-4 人天
 **优先级**：P0
 
@@ -660,9 +822,9 @@
 
 ### 7.9 主题与样式
 
-**视觉稿文件**：`workshop-styles.html`（394 行，中等复杂度）
-**系统路径**：缺失（需新建）
-**当前完整度**：0%
+**视觉稿文件**：`../foundry/html/workshop-styles.html`（394 行，中等复杂度）
+**系统路径**：`/workshop/styles`
+**当前完整度**：60%（2026-07-29 复审；历史 0%「缺失」已过时）
 **改造工作量**：2-3 人天
 **优先级**：P0
 
@@ -768,7 +930,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.1 管道构建
 
-**视觉稿文件**：`pipeline-list.html`（333 行）
+**视觉稿文件**：`../foundry/html/pipeline-list.html`（333 行）
 **系统路径**：`/data/pipelines`
 **当前完整度**：30%
 **改造工作量**：4-5 人天
@@ -807,7 +969,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.2 管道提案
 
-**视觉稿文件**：`pipeline-proposals.html`（211 行，简单页面）
+**视觉稿文件**：`../foundry/html/pipeline-proposals.html`（211 行，简单页面）
 **系统路径**：`/data/pipeline-proposals`
 **当前完整度**：10%
 **改造工作量**：1-2 人天
@@ -845,7 +1007,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.3 计划编辑器
 
-**视觉稿文件**：`schedules.html`（570 行，中等复杂度）
+**视觉稿文件**：`../foundry/html/schedules.html`（570 行，中等复杂度）
 **系统路径**：`/data/schedules`
 **当前完整度**：30%
 **改造工作量**：3-4 人天
@@ -893,7 +1055,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.4 搭建（Build Status Check 配置弹窗）
 
-**视觉稿文件**：`builds.html`（204 行，简单页面）
+**视觉稿文件**：`../foundry/html/builds.html`（204 行，简单页面）
 **系统路径**：`/data/builds`
 **当前完整度**：0%
 **改造工作量**：1-2 人天
@@ -936,7 +1098,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.5 数据集预览
 
-**视觉稿文件**：`dataset.html`（393 行，中等复杂度）
+**视觉稿文件**：`../foundry/html/dataset.html`（393 行，中等复杂度）
 **系统路径**：`/data/datasets`
 **当前完整度**：40%
 **改造工作量**：3-4 人天
@@ -986,7 +1148,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.6 代码库
 
-**视觉稿文件**：`code-repositories.html`（386 行，中等复杂度）
+**视觉稿文件**：`../foundry/html/code-repositories.html`（386 行，中等复杂度）
 **系统路径**：`/data/code-repos`
 **当前完整度**：10%
 **改造工作量**：3-4 人天
@@ -1029,7 +1191,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.7 数据沿袭
 
-**视觉稿文件**：`lineage.html`（389 行，中等复杂度）
+**视觉稿文件**：`../foundry/html/lineage.html`（389 行，中等复杂度）
 **系统路径**：`/data/lineage`
 **当前完整度**：20%
 **改造工作量**：3-4 人天
@@ -1070,7 +1232,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.8 数据健康
 
-**视觉稿文件**：`health.html`（746 行，复杂页面）
+**视觉稿文件**：`../foundry/html/health.html`（746 行，复杂页面）
 **系统路径**：`/data/health`
 **当前完整度**：20%
 **改造工作量**：4-5 人天
@@ -1116,7 +1278,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.9 DocIntel 管道（LLM 文档智能配置）
 
-**视觉稿文件**：`pipeline-doc-intel.html`（397 行，中等复杂度）
+**视觉稿文件**：`../foundry/html/pipeline-doc-intel.html`（397 行，中等复杂度）
 **系统路径**：缺失（需新建）
 **当前完整度**：0%
 **改造工作量**：3-4 人天
@@ -1161,7 +1323,7 @@ P0 需要新增的数据库表：
 
 #### 10.1.10 管道详情（Pipeline Builder 编辑器）
 
-**视觉稿文件**：`pipeline.html`（422 行，复杂页面）
+**视觉稿文件**：`../foundry/html/pipeline.html`（422 行，复杂页面）
 **系统路径**：`/data/pipelines/:id`（详情页，不在侧栏）
 **当前完整度**：30%
 **改造工作量**：5-6 人天
@@ -1216,7 +1378,7 @@ P0 需要新增的数据库表：
 
 #### 10.2.1 数据链接器
 
-**视觉稿文件**：`data-connection.html`
+**视觉稿文件**：`../foundry/html/data-connection.html`
 **系统路径**：`/data`
 **当前完整度**：40%
 **改造工作量**：2-3 人天
@@ -1245,7 +1407,7 @@ P0 需要新增的数据库表：
 
 #### 10.2.2 边缘代理
 
-**视觉稿文件**：`data-connection-agents.html`
+**视觉稿文件**：`../foundry/html/data-connection-agents.html`
 **系统路径**：`/data/agents`
 **当前完整度**：20%
 **改造工作量**：3-4 人天
@@ -1277,7 +1439,7 @@ P0 需要新增的数据库表：
 
 #### 10.2.3 同步配置
 
-**视觉稿文件**：`sync.html`
+**视觉稿文件**：`../foundry/html/sync.html`
 **系统路径**：`/data/sync-config`
 **当前完整度**：30%
 **改造工作量**：3-4 人天
@@ -1309,7 +1471,7 @@ P0 需要新增的数据库表：
 
 #### 10.2.4 同步路由
 
-**视觉稿文件**：`sync-routing.html`
+**视觉稿文件**：`../foundry/html/sync-routing.html`
 **系统路径**：`/data/sync-routes`
 **当前完整度**：20%
 **改造工作量**：2-3 人天
@@ -1339,7 +1501,7 @@ P0 需要新增的数据库表：
 
 #### 10.2.5 媒体集
 
-**视觉稿文件**：`media-sets.html`
+**视觉稿文件**：`../foundry/html/media-sets.html`
 **系统路径**：`/data/media-sets`
 **当前完整度**：10%
 **改造工作量**：2-3 人天
@@ -1367,7 +1529,7 @@ P0 需要新增的数据库表：
 
 #### 10.2.6 文档智能（缺失页）
 
-**视觉稿文件**：`document-intelligence.html`
+**视觉稿文件**：`../foundry/html/document-intelligence.html`
 **系统路径**：缺失（需新建，路由 `/aip/doc-intelligence`）
 **当前完整度**：0%
 **改造工作量**：3-4 人天
@@ -1399,7 +1561,7 @@ P0 需要新增的数据库表：
 
 #### 10.2.7 数据源新建（缺失页）
 
-**视觉稿文件**：`source-new.html`
+**视觉稿文件**：`../foundry/html/source-new.html`
 **系统路径**：缺失（需新建）
 **当前完整度**：0%
 **改造工作量**：2-3 人天
@@ -1434,7 +1596,7 @@ P0 需要新增的数据库表：
 
 #### 10.2.8 数据源详情（数据库浏览器）
 
-**视觉稿文件**：`source-detail.html`
+**视觉稿文件**：`../foundry/html/source-detail.html`
 **系统路径**：缺失（详情页，不在侧栏）
 **当前完整度**：0%
 **改造工作量**：4-5 人天
@@ -1471,7 +1633,7 @@ P0 需要新增的数据库表：
 
 #### 10.3.1 Hub 舰队
 
-**视觉稿文件**：`apollo-hub.html`
+**视觉稿文件**：`../foundry/html/apollo-hub.html`
 **系统路径**：`/apollo`
 **当前完整度**：30%
 **改造工作量**：2-3 人天
@@ -1499,7 +1661,7 @@ P0 需要新增的数据库表：
 
 #### 10.3.2 Release 通道
 
-**视觉稿文件**：`apollo-release.html`
+**视觉稿文件**：`../foundry/html/apollo-release.html`
 **系统路径**：`/apollo/release`
 **当前完整度**：20%
 **改造工作量**：2-3 人天
@@ -1530,7 +1692,7 @@ P0 需要新增的数据库表：
 
 #### 10.3.3 Spoke 详情
 
-**视觉稿文件**：`apollo-spoke.html`
+**视觉稿文件**：`../foundry/html/apollo-spoke.html`
 **系统路径**：`/apollo/spoke`
 **当前完整度**：20%
 **改造工作量**：2-3 人天
@@ -1562,7 +1724,7 @@ P0 需要新增的数据库表：
 
 #### 10.3.4 Ferry 摆渡
 
-**视觉稿文件**：`apollo-ferry.html`
+**视觉稿文件**：`../foundry/html/apollo-ferry.html`
 **系统路径**：`/apollo/ferry`
 **当前完整度**：10%
 **改造工作量**：2-3 人天
@@ -1590,7 +1752,7 @@ P0 需要新增的数据库表：
 
 #### 10.3.5 FDE 资产包
 
-**视觉稿文件**：`apollo-assets.html`
+**视觉稿文件**：`../foundry/html/apollo-assets.html`
 **系统路径**：`/apollo/assets`
 **当前完整度**：20%
 **改造工作量**：1-2 人天
@@ -1617,7 +1779,7 @@ P0 需要新增的数据库表：
 
 #### 10.3.6 变更审批
 
-**视觉稿文件**：`apollo-change-mgmt.html`
+**视觉稿文件**：`../foundry/html/apollo-change-mgmt.html`
 **系统路径**：`/apollo/change`
 **当前完整度**：10%
 **改造工作量**：2-3 人天
@@ -1649,7 +1811,7 @@ P0 需要新增的数据库表：
 
 #### 10.3.7 配置与密钥
 
-**视觉稿文件**：`apollo-config.html`
+**视觉稿文件**：`../foundry/html/apollo-config.html`
 **系统路径**：`/apollo/config`
 **当前完整度**：10%
 **改造工作量**：2 人天
@@ -1678,7 +1840,7 @@ P0 需要新增的数据库表：
 
 #### 10.3.8 接入案例
 
-**视觉稿文件**：`integration-cases.html`（535 行，最大页面）
+**视觉稿文件**：`../foundry/html/integration-cases.html`（535 行，最大页面）
 **系统路径**：`/apollo/cases`
 **当前完整度**：10%
 **改造工作量**：4-5 人天
@@ -1823,8 +1985,8 @@ Ferry 摆渡 → FDE 资产包
 
 ## 11. 配套文档
 
-- 开发计划：`/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/223-plan.md`
-- 全量页面差距盘点：`/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/223-full-ui-gap-analysis.md`
-- 菜单对齐全表：`/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/223-menu-alignment-full.md`
-- 工作台深度方案：`/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/223-ui-alignment-plan.md`
-- 种子数据整合方案：`/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/223-seed-data-consolidation-plan.md`
+- 开发计划：`palantier/20_tech/223-plan.md`
+- 全量页面差距盘点：`palantier/20_tech/223-full-ui-gap-analysis.md`
+- 菜单对齐全表：`palantier/20_tech/223-menu-alignment-full.md`
+- 工作台深度方案：`palantier/20_tech/223-ui-alignment-plan.md`
+- 种子数据整合方案：`palantier/20_tech/223-seed-data-consolidation-plan.md`

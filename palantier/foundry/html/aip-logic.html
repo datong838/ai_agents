@@ -141,24 +141,81 @@
           <button data-tab="hist" class="px-4 py-2.5 text-sm text-gray-500 hover:text-gray-700 border-b-2 border-transparent">运行历史</button>
         </div>
 <div data-tab-panel="edit" class="flex-1 flex flex-col min-h-0">
-        <!-- Block 工具栏 -->
-        <div class="px-4 py-2 border-b border-gray-200 flex flex-wrap gap-1.5 text-[10px] shrink-0">
-          <span class="text-gray-400 self-center mr-1">块:</span>
-          <button data-block="create_variable" class="block-add-btn px-2.5 py-1 rounded border border-gray-200 text-gray-600 hover:bg-gray-50">+ 创建变量</button>
-          <button data-block="get_attribute" class="block-add-btn px-2.5 py-1 rounded border border-gray-200 text-gray-600 hover:bg-gray-50">+ 获取属性</button>
-          <button data-block="use_llm" class="block-add-btn px-2.5 py-1 rounded border border-yellow-300 bg-yellow-50 text-yellow-600">+ 使用 LLM</button>
-          <button data-block="transform" class="block-add-btn px-2.5 py-1 rounded border border-gray-200 text-gray-600 hover:bg-gray-50">+ 数据变换</button>
-          <button data-block="apply_action" class="block-add-btn px-2.5 py-1 rounded border border-gray-200 text-gray-600 hover:bg-gray-50">+ 应用动作</button>
-          <button data-block="write_back" class="block-add-btn px-2.5 py-1 rounded border border-green-300 bg-green-50 text-green-600">+ 写回</button>
-          <button data-block="execute" class="block-add-btn px-2.5 py-1 rounded border border-gray-200 text-gray-600 hover:bg-gray-50">+ 执行</button>
-          <button data-block="branch" class="block-add-btn px-2.5 py-1 rounded border border-gray-200 text-gray-600 hover:bg-gray-50">+ 分支</button>
-        </div>
-
         <!-- 三栏编排 -->
         <div class="flex-1 grid lg:grid-cols-12 min-h-0 overflow-hidden">
-          <!-- ① 编排区 -->
-          <div class="lg:col-span-5 border-r border-gray-200 overflow-y-auto p-4 space-y-3 grid-pattern">
-            <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-2">① 编排 · 块链</div>
+          <!-- ① 编排区（左：Block组件库 / 右：块链编排） -->
+          <div class="lg:col-span-6 border-r border-gray-200 flex flex-row overflow-hidden min-h-0">
+            <!-- Block 组件库 -->
+            <div class="w-[140px] shrink-0 p-3 pr-2 border-r border-gray-200 bg-white">
+              <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-2 font-semibold">Block 组件库</div>
+              <div class="flex flex-col gap-1">
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#DBEAFE;color:#1D4ED8;">📥</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">输入</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Input</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#D1FAE5;color:#065F46;">📐</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">创建变量</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Create Variable</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#E0E7FF;color:#4F46E5;">🔗</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">获取属性</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Get Property</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#FEF3C7;color:#B45309;">🤖</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">使用 LLM</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Use LLM</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#FCE7F3;color:#BE185D;">🔧</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">使用工具</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Use Tool</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#FEF9C3;color:#A16207;">🔄</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">数据变换</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Transform</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#FEE2E2;color:#B91C1C;">✏️</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">应用动作</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Apply Action</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#E0E7FF;color:#4338CA;">🚀</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">执行</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Execute</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#F1F5F9;color:#475569;">🔀</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">分支</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Branch</span>
+                </div>
+
+                <div class="flex items-center gap-1 px-1 py-1 rounded hover:bg-gray-50 cursor-pointer text-[10px] group">
+                  <div class="w-4 h-4 rounded shrink-0 flex items-center justify-center text-[8px]" style="background:#DBEAFE;color:#1D4ED8;">🔗</div>
+                  <span class="font-medium text-gray-700 flex-1 text-left whitespace-nowrap">汇聚</span>
+                  <span class="text-gray-400 text-[9px] ml-auto whitespace-nowrap">Handoff</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- 编排 · 块链 -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-3 grid-pattern min-w-0">
+              <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-2">编排 · 块链</div>
 
             <!-- Input Block -->
             <div data-block-node="1" class="pipeline-node rounded-lg border border-blue-200 bg-white/95 p-3 text-xs cursor-pointer hover:ring-2 hover:ring-blue-300 transition-all">
@@ -233,6 +290,7 @@
                   <div class="text-[10px] text-gray-700 font-medium">1 个待确认</div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
 
@@ -322,7 +380,7 @@
           </div>
 
           <!-- ③ 预览区 -->
-          <div class="lg:col-span-3 overflow-y-auto p-4 space-y-3">
+          <div class="lg:col-span-2 overflow-y-auto p-4 space-y-3">
             <div class="text-[10px] text-gray-400 uppercase tracking-wider">③ 预览 · 单次运行</div>
             <div class="rounded-lg border border-green-200 bg-green-50 p-3 text-xs">
               <div class="text-green-600 font-medium mb-2">运行 #1047 · 16:42</div>

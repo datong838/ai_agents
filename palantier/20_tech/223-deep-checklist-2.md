@@ -1,46 +1,83 @@
 # 223 深度检查清单 P1：AIP 决策引擎 + 模型管理 + 本体
 
-> 版本：v1.0（2026-07-26）
-> 审查人：AI Agent（buddy）
-> 范围：P1 三大分区共 31 页，逐一 7 项深度检查
-> 输出文件：`223-deep-checklist-2.md`
-> 配套文档：`223-full-ui-gap-analysis.md`（总览）+ `223-menu-alignment-full.md`（菜单对照）
+> 版本：v1.1（2026-07-29 功能完整度复审）
+> 原版本：v1.0（2026-07-26）
+> 审查人：AI Agent
+> 范围：P1 三大分区（AIP / 模型 / 本体菜单 + 部分详情）
+> 配套：[`223-deep-checklist.md`](./223-deep-checklist.md) §1.1（菜单总表）· [`223-deep-checklist-3.md`](./223-deep-checklist-3.md)（详情页）· [`227-未完成项补齐计划.md`](./227-未完成项补齐计划.md)
 
 ---
 
-## 0. P1 全局汇总
+## 0. P1 全局汇总（2026-07-29 最新）
 
-| 分区 | 视觉稿页数 | 系统已实现 | 完全缺失 | 部分实现 | 平均完整度 | 总工作量 |
-|------|-----------|-----------|---------|---------|-----------|---------|
-| AIP 决策引擎 | 14 | 10 | 4 | 10 | ~36% | ~25-35 人天 |
-| 模型管理 | 4 | 2 | 2 | 2 | ~50% | ~8-12 人天 |
-| 本体·数字孪生 | 13 | 9 | 4 | 9 | ~45% | ~18-25 人天 |
-| **合计** | **31** | **21** | **10** | **21** | **~42%** | **~51-72 人天** |
+### 0.1 阅读说明
 
-### 路由缺失清单（10 页）
+| 项 | 说明 |
+|----|------|
+| **完整度口径** | 功能逻辑（非纯像素），与 §1.1 同档：壳 / 骨架 / 可用 / 接近 |
+| **下文 7 项详表** | 仍保留 07-26 的组件差距清单，作改造参考；**百分比与「是否缺失」以本节 + 各页文首「完整度」为准** |
+| **旧「路由缺失 10 页」** | **已全部有路由/页面**；下列「曾标缺失」列供对照 |
 
-| # | 页面 | 路由 | 分区 |
-|---|------|------|------|
-| 1 | AIP 助手 | `/aip/assist` | AIP |
-| 2 | AIP 分析师 | `/aip/analyst` | AIP |
-| 3 | 智能体插件 | `/aip/capabilities`（无独立组件） | AIP |
-| 4 | Draft 审批台 | `/aip/drafts`（无独立组件） | AIP |
-| 5 | 模型目录 | `/aip/model-catalog` | 模型 |
-| 6 | 容量管理 | `/aip/capacity` | 模型 |
-| 7 | 属性类型详情 | `/ontology/property/:id` | 本体 |
-| 8 | Function 详情 | `/ontology/function/:id` | 本体 |
-| 9 | Wiki 详情 | `/ontology/wiki/:id` | 本体 |
-| 10 | Wiki 差异 | `/ontology/wiki/:id/diff` | 本体 |
+### 0.2 分区汇总（按新%）
 
-### 名字差异清单（6 处，P1 范围内）
+| 分区 | 视觉稿相关页 | 路由现状 | 平均完整度（约） | 说明 |
+|------|-------------|---------|-----------------|------|
+| AIP 决策引擎 | 14 | **全部已接线** | **~60%** | 无「完全缺失」；弱项：Studio / Analyst / Observability |
+| 模型管理 | 4 | **全部已接线** | **~60%** | 目录/容量仍偏硬编码或本地 mock |
+| 本体·数字孪生（菜单+详情） | ~15 | **几乎全部已接线** | **~58%** | Wiki 详情/差异、Function、属性仍弱于视觉 |
+| **合计** | **~33** | 0 页「无路由」 | **~59%** | 旧文「10 页缺失 / 均 42%」作废 |
+
+### 0.3 曾标「路由缺失」→ 现状态
+
+| # | 页面 | 路由 | 旧结论 | **现%** | 组件 |
+|---|------|------|--------|--------|------|
+| 1 | AIP 助手 | `/aip/assist` | 缺失 | **65** | `AipAssistPage.tsx` |
+| 2 | AIP 分析师 | `/aip/analyst` | 缺失 | **35** | `AipAnalystPage.tsx` |
+| 3 | 智能体插件 | `/aip/capabilities` | 无独立组件 | **55** | `CapabilityPage.tsx` |
+| 4 | Draft 审批台 | `/aip/drafts` | 无独立组件 | **55** | `DraftInboxPage.tsx` |
+| 5 | 模型目录 | `/aip/model-catalog` | 缺失 | **45** | `ModelCatalogPage.tsx` |
+| 6 | 容量管理 | `/aip/capacity` | 缺失 | **40** | `CapacityPage.tsx` |
+| 7 | 属性类型详情 | `/ontology/properties/:typeId` | 缺失 | **50** | `PropertyEditorPage.tsx` |
+| 8 | Function 详情 | `/ontology/functions` | 缺失 | **45** | `FunctionEditorPage.tsx` |
+| 9 | Wiki 详情 | `/ontology/wiki/:wikiId` | 缺失 | **35** | `WikiDetailPage.tsx` |
+| 10 | Wiki 差异 | `/ontology/wiki/:wikiId/diff` | 缺失 | **40** | `WikiDiffPage.tsx` |
+
+### 0.4 P1 菜单页完整度速查（与 §1.1 C/D/E 对齐）
+
+| 路径 | 页面 | **现%** | 未完成要点（一句话） |
+|------|------|--------|----------------------|
+| `/aip/assist` | AIP 助手 | 65 | 视觉/分支保存细节 |
+| `/aip/studio` | 对话机器人 | 40 | 配置壳，4 Tab 深度不足 |
+| `/aip/agents` | 智能体列表 | 65 | 多 MOCK |
+| `/aip/analyst` | AIP 分析师 | 35 | 执行偏 mock |
+| `/aip/logic` | 逻辑画布 | 75 | 预览粗 |
+| `/aip/tools` | 工具面板 | 75 | 评分等缺 |
+| `/aip/maturity` | 成熟度 | 85 | 细项 |
+| `/aip/capabilities` | 智能体插件 | 55 | 配置深度 |
+| `/aip/agent-registry` | 智能体目录 | 60 | 发现/安装弱 |
+| `/aip/agent-import` | 智能体导入 | 55 | 扫描演示重 |
+| `/aip/capability-import` | 能力导入 | 50 | 预览未满 |
+| `/aip/evals` | Evals | 75 | 分项示意 |
+| `/aip/drafts` | Draft | 55 | 默认 MOCK，真审批弱 |
+| `/aip/lineage` | 决策谱系 | 60 | 阶段类型 |
+| `/aip/observability` | 可观测 | 45 | **全 MOCK** |
+| `/aip/model-catalog` | 模型目录 | 45 | 数据硬编码 |
+| `/aip/model-providers` | 供应商 | 75 | 三层条/健康 |
+| `/aip/model-router` | 路由 | 80 | 细项 |
+| `/aip/capacity` | 容量 | 40 | **本地 mock** |
+| `/ontology` | Discover | 70 | 视觉细节 |
+| `/workshop/graph` | 对象探索 | 65 | 三栏保真 |
+| `/ontology/funnel` 等 | 漏斗/OKF/健康/Wiki/分支 | 55–80 | 见 §1.1 E |
+
+### 0.5 名字差异（仍有效）
 
 | 视觉稿 | 系统 | 分区 |
 |--------|------|------|
-| AIP 助手 | AIP Assist | AIP |
-| 对话机器人 | Chatbot Studio | AIP |
-| AIP 分析师 | AIP Analyst | AIP |
-| 智能体目录 | 智能体注册表 | AIP |
-| 本体提案 | 漏斗管道 | 本体 |
+| AIP 助手 | AIP Assist（侧栏已中文） | AIP |
+| 对话机器人 | Chatbot Studio → 已改「对话机器人」 | AIP |
+| AIP 分析师 | AIP Analyst（侧栏已中文） | AIP |
+| 智能体目录 | 曾称注册表 → 已改目录 | AIP |
+| 本体提案 | 漏斗管道 → 已改提案 | 本体 |
 | OKF funnel | OKF 行业漏斗 | 本体 |
 
 ---
@@ -49,9 +86,9 @@
 
 ---
 
-### AIP-01：AIP 助手 (`aip-assist.html`)
+### AIP-01：AIP 助手 (`../foundry/html/aip-assist.html`)
 
-**视觉稿**：30KB | **React**：🔴 无路由无组件
+**视觉稿**：30KB | **React**：`pages/s2/AipAssistPage.tsx` · `/aip/assist` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -105,8 +142,8 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**65%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：L（3-5 天）— 需后端对话 API + 前端聊天组件 + 流式响应
 - **优先级**：中
 
@@ -120,7 +157,7 @@
 
 ---
 
-### AIP-02：对话机器人 (`agents.html`)
+### AIP-02：对话机器人 (`../foundry/html/agents.html`)
 
 **视觉稿**：80KB | **React**：`AgentsPage.tsx`（5.7KB）
 
@@ -186,7 +223,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：25%
+- **完整度**：**40%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：
   1. 缺两栏布局（左列表 + 右详情）
   2. 缺 4 Tab 面板（提示词/工具箱/试运行/发布）
@@ -204,9 +241,9 @@
 
 ---
 
-### AIP-03：AIP 分析师 (`aip-analyst.html`)
+### AIP-03：AIP 分析师 (`../foundry/html/aip-analyst.html`)
 
-**视觉稿**：42KB | **React**：🔴 无路由无组件
+**视觉稿**：42KB | **React**：`pages/s2/AipAnalystPage.tsx` · `/aip/analyst` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -258,8 +295,8 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**35%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：L（5 天+）— 地图集成 + 对话 + Object 检索
 - **优先级**：低（高级功能）
 
@@ -273,7 +310,7 @@
 
 ---
 
-### AIP-04：AIP 逻辑画布 (`aip-logic.html`)
+### AIP-04：AIP 逻辑画布 (`../foundry/html/aip-logic.html`)
 
 **视觉稿**：73KB | **React**：`LogicCanvasPage.tsx`（32KB）
 
@@ -330,7 +367,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：60%
+- **完整度**：**75%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：
   1. 缺分支 Block（DAG 双路）
   2. 缺汇聚 Handoff 节点
@@ -349,7 +386,7 @@
 
 ---
 
-### AIP-05：Agent 工具面板 (`aip-tools.html`)
+### AIP-05：Agent 工具面板 (`../foundry/html/aip-tools.html`)
 
 **视觉稿**：40KB | **React**：`aip.tsx` → `ToolsPage`（行 52-564）
 
@@ -401,7 +438,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：70%
+- **完整度**：**75%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：
   1. 缺 Agent 上下文选择器
   2. 缺质量评分面板
@@ -417,7 +454,7 @@
 
 ---
 
-### AIP-06：成熟度楼梯 (`aip-maturity.html`)
+### AIP-06：成熟度楼梯 (`../foundry/html/aip-maturity.html`)
 
 **视觉稿**：31KB | **React**：`extras.tsx` → `MaturityPage`
 
@@ -463,7 +500,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：85%
+- **完整度**：**85%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：仅视觉细节差异
 - **工作量**：S（0.5 天）
 - **优先级**：低
@@ -474,7 +511,7 @@
 
 ---
 
-### AIP-07：智能体目录 (`agent-registry.html`)
+### AIP-07：智能体目录 (`../foundry/html/agent-registry.html`)
 
 **视觉稿**：53KB | **React**：`AgentRegistryPage.tsx`（10.6KB）
 
@@ -528,7 +565,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：30%
+- **完整度**：**60%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：
   1. 表格需改为卡片网格
   2. 缺来源筛选 Tab
@@ -546,9 +583,9 @@
 
 ---
 
-### AIP-08：智能体插件 (`aip-capabilities.html`)
+### AIP-08：智能体插件 (`../foundry/html/aip-capabilities.html`)
 
-**视觉稿**：39KB | **React**：🔴 无独立组件
+**视觉稿**：39KB | **React**：`pages/CapabilityPage.tsx` · `/aip/capabilities` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -592,8 +629,8 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**55%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：M（2 天）
 - **优先级**：**P0 高** — Capability 管理是核心功能
 
@@ -606,7 +643,7 @@
 
 ---
 
-### AIP-09：智能体导入 (`aip-agent-import.html`)
+### AIP-09：智能体导入 (`../foundry/html/aip-agent-import.html`)
 
 **视觉稿**：68KB | **React**：`AgentImportPage.tsx`（13.9KB）
 
@@ -655,7 +692,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：40%
+- **完整度**：**55%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：
   1. 缺 Adapter 类型选择（5 种）
   2. 缺扫描结果展示
@@ -671,7 +708,7 @@
 
 ---
 
-### AIP-10：能力导入 (`aip-capability-import.html`)
+### AIP-10：能力导入 (`../foundry/html/aip-capability-import.html`)
 
 **视觉稿**：47KB | **React**：`CapabilityImportPage.tsx`（12.2KB）
 
@@ -715,7 +752,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：35%
+- **完整度**：**50%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：
   1. 缺 C0/C1/C2 选择卡
   2. 缺 YAML 预览面板
@@ -730,7 +767,7 @@
 
 ---
 
-### AIP-11：Evals 门控 (`aip-evals.html`)
+### AIP-11：Evals 门控 (`../foundry/html/aip-evals.html`)
 
 **视觉稿**：28KB | **React**：`aip.tsx` → `EvalsPage`（行 2572-2658）
 
@@ -775,7 +812,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：75%
+- **完整度**：**75%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：数据丰富度稍差
 - **工作量**：S（0.5 天）
 - **优先级**：低
@@ -786,9 +823,9 @@
 
 ---
 
-### AIP-12：Draft 审批台 (`aip-draft-inbox.html`)
+### AIP-12：Draft 审批台 (`../foundry/html/aip-draft-inbox.html`)
 
-**视觉稿**：37KB | **React**：🔴 无独立组件
+**视觉稿**：37KB | **React**：`pages/DraftInboxPage.tsx` · `/aip/drafts` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -843,8 +880,8 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**55%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：L（3-5 天）— 三栏交互复杂
 - **优先级**：**P0 高** — 审批是写回安全的核心
 
@@ -858,7 +895,7 @@
 
 ---
 
-### AIP-13：决策谱系 (`aip-decision-lineage.html`)
+### AIP-13：决策谱系 (`../foundry/html/aip-decision-lineage.html`)
 
 **视觉稿**：30KB | **React**：`aip.tsx` → `DecisionLineagePage`（行 2660-2831）
 
@@ -904,7 +941,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：55%
+- **完整度**：**60%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：阶段类型不足（缺检索/推理/熔断/回填独立阶段）
 - **工作量**：M（1-2 天）
 - **优先级**：中
@@ -917,7 +954,7 @@
 
 ---
 
-### AIP-14：可观测性 (`aip-observability.html`)
+### AIP-14：可观测性 (`../foundry/html/aip-observability.html`)
 
 **视觉稿**：75KB | **React**：`ObservabilityPage.tsx`（33.7KB）
 
@@ -973,7 +1010,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：50%
+- **完整度**：**45%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：
   1. 缺代码编辑器（需 Monaco/CodeMirror）
   2. 缺安全约束展示
@@ -996,9 +1033,9 @@
 
 ---
 
-### MODEL-01：模型目录 (`aip-model-catalog.html`)
+### MODEL-01：模型目录 (`../foundry/html/aip-model-catalog.html`)
 
-**视觉稿**：71KB | **React**：🔴 无路由无组件
+**视觉稿**：71KB | **React**：`pages/s2/ModelCatalogPage.tsx` · `/aip/model-catalog` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -1007,7 +1044,7 @@
 | 布局 | 标题 + 三层架构定位条（L1→L2→L3→AIP） + 目录 vs 已注册说明 + Tab 导航 + 内容区 | 🔴 缺失 |
 | 顶部栏 | h1"AIP 设置" + 描述 + 三层架构条 | 🔴 |
 | 主内容 | Tab（AIP 状态 / 模型目录 / 已注册模型） | 🔴 |
-| **差距** | 完全缺失 | — |
+| **差距** | 页已存在（见 §0）；下文组件差距仍作改造参考 | — |
 
 #### 2. 组件级盘点
 
@@ -1050,8 +1087,8 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**45%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：L（3-5 天）— 含三层架构定位条 + Tab 系统 + 注册流程
 - **优先级**：**P0 高** — 模型管理的核心入口
 
@@ -1064,7 +1101,7 @@
 
 ---
 
-### MODEL-02：模型供应商 (`aip-model-providers.html`)
+### MODEL-02：模型供应商 (`../foundry/html/aip-model-providers.html`)
 
 **视觉稿**：45KB | **React**：`aip.tsx` → `ProvidersPage`（行 565-1620）+ `ProviderDetailPage`（行 2882-3412）
 
@@ -1119,7 +1156,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：65%
+- **完整度**：**75%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：
   1. 缺三层架构定位条
   2. 缺连接健康检查总览（4 卡）
@@ -1134,7 +1171,7 @@
 
 ---
 
-### MODEL-03：模型路由 (`aip-model-router.html`)
+### MODEL-03：模型路由 (`../foundry/html/aip-model-router.html`)
 
 **视觉稿**：42KB | **React**：`aip.tsx` → `ModelRouterPage`（行 1674-2569）
 
@@ -1181,7 +1218,7 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：75%
+- **完整度**：**80%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：缺三层架构定位条
 - **工作量**：S（0.5 天）
 - **优先级**：低
@@ -1192,9 +1229,9 @@
 
 ---
 
-### MODEL-04：容量管理 (`aip-capacity-management.html`)
+### MODEL-04：容量管理 (`../foundry/html/aip-capacity-management.html`)
 
-**视觉稿**：38KB | **React**：🔴 无路由无组件
+**视觉稿**：38KB | **React**：`pages/s2/CapacityPage.tsx` · `/aip/capacity` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -1241,8 +1278,8 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**40%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：M（1-2 天）— 相对简单的管理页面
 - **优先级**：中
 
@@ -1258,16 +1295,16 @@
 
 ---
 
-### ONT-01：本体管理/Discover (`ontology.html`)
+### ONT-01：本体管理/Discover (`../foundry/html/ontology.html`)
 
-**视觉稿**：36KB | **React**：`ontology.tsx`（32KB，但无 Discover 主页面组件）
+**视觉稿**：36KB | **React**：`OntologyPage.tsx` · `/ontology` ✅ Discover 已实现（2026-07-29）
 
 #### 1. 页面结构检查
 
 | 维度 | 视觉稿 | 系统 |
 |------|--------|------|
-| 布局 | 窄内容居中（`.p-content-narrow`） + 多个 section | 当前 `/ontology` 路由无对应 Discover 组件 |
-| 顶部栏 | 面包屑 + h1"Discover" + 描述 | 🔴 缺失 |
+| 布局 | 窄内容居中（`.p-content-narrow`） + 多个 section | `OntologyPage` Discover 已实现；保真见组件盘点 |
+| 顶部栏 | 面包屑 + h1"Discover" + 描述 | 部分对齐（细节可继续抠） |
 | 主内容 | 收藏 Object 类型网格 + 最近查看列表 + 类型分区 + 快捷操作 | 🔴 缺失 |
 
 #### 2. 组件级盘点
@@ -1308,8 +1345,8 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：0%（`/ontology` 路由存在但无 Discover 组件）
-- **核心差距**：完全缺失 Discover 主页面
+- **完整度**：**70%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：M（1-2 天）
 - **优先级**：**P0 高** — 本体管理的入口页
 
@@ -1322,7 +1359,7 @@
 
 ---
 
-### ONT-02：对象探索 (`workshop-object-view.html`)
+### ONT-02：对象探索 (`../foundry/html/workshop-object-view.html`)
 
 **视觉稿**：36KB | **React**：`workshop.tsx` → `GraphExplorerPage`
 
@@ -1335,13 +1372,13 @@
 
 #### 2-7. 检查项
 
-- **完整度**：~70%（需细看视觉稿确认具体差距）
+- **完整度**：**65%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **工作量**：M（1-2 天）
 - **优先级**：中
 
 ---
 
-### ONT-03：本体提案/漏斗管道 (`ontology-funnel.html`)
+### ONT-03：本体提案/漏斗管道 (`../foundry/html/ontology-funnel.html`)
 
 **视觉稿**：36KB | **React**：`ontology.tsx` → `FunnelPage`（行 206-333）
 
@@ -1355,15 +1392,15 @@
 
 #### 2-7. 检查项
 
-- **完整度**：~60%（功能对齐但定位可能不同）
-- **关键风险**：视觉稿 `ontology-funnel.html` 可能是"提案审核"而非"管道监控"，需确认需求语义
+- **完整度**：**60%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **关键风险**：视觉稿 `../foundry/html/ontology-funnel.html` 可能是"提案审核"而非"管道监控"，需确认需求语义
 - **工作量**：M（1-2 天）
 - **优先级**：中
 - **风险**：需求不明确——"本体提案" vs "漏斗管道" 是同一页还是两个不同功能？
 
 ---
 
-### ONT-04：图谱健康度 (`ontology-graph-health.html`)
+### ONT-04：图谱健康度 (`../foundry/html/ontology-graph-health.html`)
 
 **视觉稿**：35KB | **React**：`ontology.tsx` → `GraphHealthPage`（行 29-205）
 
@@ -1375,13 +1412,13 @@
 
 #### 2-7. 检查项
 
-- **完整度**：~80%
+- **完整度**：**80%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **工作量**：S（0.5 天）
 - **优先级**：低
 
 ---
 
-### ONT-05：活知识 Wiki (`ontology-wiki-index.html`)
+### ONT-05：活知识 Wiki (`../foundry/html/ontology-wiki-index.html`)
 
 **视觉稿**：56KB | **React**：`ontology.tsx` → `WikiPage`（行 334-696）+ `WikiIndexPage.tsx`
 
@@ -1390,17 +1427,17 @@
 | 维度 | 视觉稿 | 系统 |
 |------|--------|------|
 | 布局 | 标题 + Wiki 索引列表 + 卡片视图 | WikiPage: S2Chrome + 知识卡编辑 + Draft 提交；WikiIndexPage: 索引列表 |
-| **差距** | WikiPage 是单个 Object 的 Wiki 卡编辑，WikiIndexPage 是索引。视觉稿 `ontology-wiki-index.html` 是索引页 |
+| **差距** | WikiPage 是单个 Object 的 Wiki 卡编辑，WikiIndexPage 是索引。视觉稿 `../foundry/html/ontology-wiki-index.html` 是索引页 |
 
 #### 2-7. 检查项
 
-- **完整度**：~65%
+- **完整度**：**60%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **工作量**：M（1 天）
 - **优先级**：中
 
 ---
 
-### ONT-06：OKF funnel (`funnel.html`)
+### ONT-06：OKF funnel (`../foundry/html/funnel.html`)
 
 **视觉稿**：34KB | **React**：`remainder.tsx` → `OkfFunnelPage`（行 28-1058）
 
@@ -1412,37 +1449,37 @@
 
 #### 2-7. 检查项
 
-- **完整度**：~60%（需细看视觉稿确认）
+- **完整度**：**60%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **工作量**：M（1 天）
 - **优先级**：中
 
 ---
 
-### ONT-07：OKF 概览 (`okf-funnel.html`)
+### ONT-07：OKF 概览 (`../foundry/html/okf-funnel.html`)
 
 **视觉稿**：43KB | **React**：`remainder.tsx` → `OkfOverviewPage`（行 1059+）
 
 #### 2-7. 检查项
 
-- **完整度**：~60%
+- **完整度**：**55%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **工作量**：M（1 天）
 - **优先级**：中
 
 ---
 
-### ONT-08：分支管理 (`ontology-branches.html`)
+### ONT-08：分支管理 (`../foundry/html/ontology-branches.html`)
 
 **视觉稿**：47KB | **React**：`ontology.tsx` → `BranchesPage`（行 697+）
 
 #### 2-7. 检查项
 
-- **完整度**：~70%
+- **完整度**：**70%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **工作量**：S-M（0.5-1 天）
 - **优先级**：低
 
 ---
 
-### ONT-09：对象类型详情 (`ontology-object.html`)
+### ONT-09：对象类型详情 (`../foundry/html/ontology-object.html`)
 
 **视觉稿**：40KB | **React**：`ObjectTypeDetailPage.tsx`（6.4KB）+ `objectTypeDetail.tsx`（25KB）
 
@@ -1454,28 +1491,28 @@
 
 #### 2-7. 检查项
 
-- **完整度**：~75%
+- **完整度**：**65%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：需详细对比每个 Tab 内容
 - **工作量**：M（1-2 天）
 - **优先级**：中
 
 ---
 
-### ONT-10：链接类型详情 (`ontology-link.html`)
+### ONT-10：链接类型详情 (`../foundry/html/ontology-link.html`)
 
 **视觉稿**：39KB | **React**：`LinkTypeEditorPage.tsx`（7.3KB）
 
 #### 2-7. 检查项
 
-- **完整度**：~65%
+- **完整度**：**50%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **工作量**：M（1 天）
 - **优先级**：中
 
 ---
 
-### ONT-11：属性类型详情 (`ontology-property.html`) 🔴 缺失
+### ONT-11：属性类型详情 (`../foundry/html/ontology-property.html`)
 
-**视觉稿**：47KB | **React**：🔴 无路由无组件
+**视觉稿**：47KB | **React**：`PropertyEditorPage.tsx` · `/ontology/properties/:typeId` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -1527,8 +1564,8 @@
 
 #### 6. 与系统现状对比
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**50%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：L（3-5 天）— 属性编辑器 + 列映射 + 数据预览
 - **优先级**：**P1 高** — 对象类型详情的属性行链接指向此页
 
@@ -1542,22 +1579,22 @@
 
 ---
 
-### ONT-12：Action 详情 (`ontology-action.html`)
+### ONT-12：Action 详情 (`../foundry/html/ontology-action.html`)
 
 **视觉稿**：42KB | **React**：`ActionTypeEditorPage.tsx`（10.5KB）
 
 #### 2-7. 检查项
 
-- **完整度**：~60%
+- **完整度**：**55%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
 - **核心差距**：需详细对比（Action 参数表单 + submissionCriteria + requiredMarkings + 试跑校验）
 - **工作量**：M（1-2 天）
 - **优先级**：中
 
 ---
 
-### ONT-13：Function 详情 (`ontology-function.html`) 🔴 缺失
+### ONT-13：Function 详情 (`../foundry/html/ontology-function.html`)
 
-**视觉稿**：38KB | **React**：🔴 无路由无组件
+**视觉稿**：38KB | **React**：`FunctionEditorPage.tsx` · `/ontology/functions` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -1567,17 +1604,17 @@
 
 #### 2-7. 检查项
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**45%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：M（2 天）— Function 编辑器 + 测试 + 版本管理
 - **优先级**：中
 - **风险**：代码编辑器需要 Monaco/CodeMirror 集成
 
 ---
 
-### ONT-14：Wiki 详情 (`ontology-wiki.html`) 🔴 缺失
+### ONT-14：Wiki 详情 (`../foundry/html/ontology-wiki.html`)
 
-**视觉稿**：70KB | **React**：🔴 无路由无组件
+**视觉稿**：70KB | **React**：`WikiDetailPage.tsx` · `/ontology/wiki/:wikiId` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -1587,16 +1624,16 @@
 
 #### 2-7. 检查项
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**35%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：M（2 天）
 - **优先级**：**P1** — 本体分区核心页面
 
 ---
 
-### ONT-15：Wiki 差异 (`ontology-wiki-diff.html`) 🔴 缺失
+### ONT-15：Wiki 差异 (`../foundry/html/ontology-wiki-diff.html`)
 
-**视觉稿**：41KB | **React**：🔴 无路由无组件
+**视觉稿**：41KB | **React**：`WikiDiffPage.tsx` · `/ontology/wiki/:wikiId/diff` ✅（2026-07-29）
 
 #### 1. 页面结构检查
 
@@ -1606,52 +1643,52 @@
 
 #### 2-7. 检查项
 
-- **完整度**：0%
-- **核心差距**：完全缺失
+- **完整度**：**40%**（2026-07-29 复审；与 `223-deep-checklist.md` §1.1 对齐）
+- **核心差距**：页已存在；差距见上文组件盘点与 §0（旧「完全缺失」作废）
 - **工作量**：M（1-2 天）— diff 渲染引擎
 - **优先级**：**P1**
 
 ---
 
-## 附录 A：工作量优先级矩阵
+## 附录 A：工作量优先级矩阵（2026-07-29 按「剩余缺口」重排）
 
-### P0（必须优先，影响核心体验）
+> 不再有「完全缺失」页；优先级按 **现%低 + 产品价值高**。
 
-| 页面 | 完整度 | 工作量 | 理由 |
-|------|--------|--------|------|
-| AIP-02 对话机器人 | 25% | L | 核心交互页面，缺两栏+4Tab+向导 |
-| AIP-04 AIP 逻辑画布 | 60% | M | 缺分支/汇聚 Block |
-| AIP-07 智能体目录 | 30% | M | 发现页核心入口，表格需改卡片 |
-| AIP-08 智能体插件 | 0% | M | 完全缺失，核心功能 |
-| AIP-12 Draft 审批台 | 0% | L | 审批写回安全核心 |
-| MODEL-01 模型目录 | 0% | L | 模型管理入口，含三层架构条 |
-| ONT-01 本体管理/Discover | 0% | M | 本体管理入口页 |
+### P0（优先补闭环 / 核心体验）
 
-### P1（重要，影响功能完整性）
+| 页面 | 现% | 工作量 | 理由 |
+|------|-----|--------|------|
+| AIP-02 对话机器人 | 40 | L | 配置工作台深度 |
+| AIP-03 AIP 分析师 | 35 | L | 执行真链路 |
+| AIP-12 Draft 审批台 | 55 | M–L | 接真审批写回 |
+| AIP-14 可观测性 | 45 | M | 脱 MOCK |
+| MODEL-01 模型目录 | 45 | M | 接目录 API |
+| MODEL-04 容量管理 | 40 | M | 接容量 API |
+| ONT-14 Wiki 详情 | 35 | XL | 富文本/视觉差距大 |
 
-| 页面 | 完整度 | 工作量 | 理由 |
-|------|--------|--------|------|
-| AIP-01 AIP 助手 | 0% | L | 需对话 API |
-| AIP-05 Agent 工具面板 | 70% | M | 缺 Agent 上下文+质量评分 |
-| AIP-09 智能体导入 | 40% | M | 缺 Adapter 类型+扫描结果 |
-| AIP-10 能力导入 | 35% | M | 缺 C0/C1/C2+YAML 预览 |
-| AIP-13 决策谱系 | 55% | M | Timeline 阶段类型不足 |
-| AIP-14 可观测性 | 50% | M | 缺代码编辑器+删除检查 |
-| MODEL-02 模型供应商 | 65% | M | 缺三层架构条+健康检查 |
-| MODEL-04 容量管理 | 0% | M | 完全缺失 |
-| ONT-11 属性类型详情 | 0% | L | 对象详情属性行链接指向 |
-| ONT-14 Wiki 详情 | 0% | M | 本体核心页面 |
-| ONT-15 Wiki 差异 | 0% | M | diff 渲染 |
+### P1（重要）
 
-### P2（可延后）
+| 页面 | 现% | 工作量 | 理由 |
+|------|-----|--------|------|
+| AIP-08 智能体插件 | 55 | M | 配置/测试深度 |
+| AIP-07 智能体目录 | 60 | M | 卡片发现体验 |
+| ONT-11 属性编辑 | 50 | M | 对齐视觉双栏 |
+| ONT-13 Function | 45 | M | 对齐视觉编辑器 |
+| ONT-15 Wiki 差异 | 40 | M | 版本 API |
+| ONT-10 链接详情 | 50 | L | 可视化 |
+| AIP-01 助手 | 65 | S–M | 视觉与分支 |
 
-| 页面 | 完整度 | 工作量 | 理由 |
-|------|--------|--------|------|
-| AIP-03 AIP 分析师 | 0% | L | 高级功能，需地图集成 |
-| AIP-06 成熟度楼梯 | 85% | S | 基本完成 |
-| AIP-11 Evals 门控 | 75% | S | 结构对齐 |
-| MODEL-03 模型路由 | 75% | S | 缺三层架构条 |
-| ONT-02~10 | 60-80% | S-M | 各本体子页 |
+### P2（可延后 / 已较可用）
+
+| 页面 | 现% | 工作量 | 理由 |
+|------|-----|--------|------|
+| AIP-06 成熟度 | 85 | S | 基本可用 |
+| AIP-11 Evals | 75 | S | 结构对齐 |
+| MODEL-03 路由 | 80 | S | 细项 |
+| AIP-04/05 逻辑·工具 | 75 | S–M | 预览/评分 |
+| ONT-01～09 等 | 60–80 | S–M | 保真与细项 |
+
+完整排期见 [`227-未完成项补齐计划.md`](./227-未完成项补齐计划.md)。
 
 ---
 

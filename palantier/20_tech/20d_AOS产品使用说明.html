@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOS 产品使用说明 · 面向技术人员</title>
+<style>
+:root{
+  --bg:#0d1117;--surface:#161b22;--surface2:#21262d;--surface3:#30363d;
+  --border:#30363d;--border2:#484f58;
+  --text:#e6edf3;--text2:#8b949e;--text3:#6e7681;
+  --accent:#2f81f7;--accent2:#1f6feb;--accent-bg:rgba(56,139,253,0.15);
+  --green:#3fb950;--green-bg:rgba(63,185,80,0.15);
+  --yellow:#d29922;--yellow-bg:rgba(187,128,9,0.15);
+  --red:#f85149;--red-bg:rgba(248,81,73,0.15);
+  --purple:#bc8cff;--purple-bg:rgba(188,140,255,0.15);
+  --teal:#2dd4bf;--teal-bg:rgba(45,212,191,0.12);
+  --orange:#f0883e;--orange-bg:rgba(240,136,62,0.12);
+  --radius:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.7;font-size:14px;
+  display:flex;min-height:100vh;
+}
+/* ===== Sidebar ===== */
+.sidebar{
+  width:280px;background:var(--surface);border-right:1px solid var(--border);
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;padding:20px 0;flex-shrink:0;z-index:100;
+}
+.sidebar-title{padding:0 20px 16px;border-bottom:1px solid var(--border);margin-bottom:8px;}
+.sidebar-title h1{font-size:16px;font-weight:700;color:var(--text);}
+.sidebar-title p{font-size:11px;color:var(--text3);margin-top:4px;}
+.nav-section{margin-bottom:4px;}
+.nav-section-title{
+  padding:12px 20px 6px;font-size:11px;font-weight:600;text-transform:uppercase;
+  letter-spacing:0.5px;color:var(--text3);
+}
+.nav-item{
+  display:block;padding:6px 20px 6px 36px;font-size:13px;color:var(--text2);
+  text-decoration:none;transition:all 0.15s;border-left:3px solid transparent;
+}
+.nav-item:hover{background:var(--surface2);color:var(--text);border-left-color:var(--accent);}
+.nav-item.active{color:var(--accent);border-left-color:var(--accent);}
+.nav-item.lvl2{padding-left:48px;font-size:12px;}
+/* ===== Main ===== */
+.main{margin-left:280px;padding:40px 48px;max-width:1080px;width:100%;}
+.section{margin-bottom:48px;scroll-margin-top:20px;}
+.section-title{
+  font-size:22px;font-weight:700;margin-bottom:8px;padding-bottom:12px;
+  border-bottom:2px solid var(--border2);display:flex;align-items:center;gap:8px;
+}
+.section-title .num{
+  background:var(--accent);color:#fff;font-size:13px;padding:2px 10px;border-radius:4px;flex-shrink:0;
+}
+.subsection-title{
+  font-size:18px;font-weight:600;margin:32px 0 12px;color:var(--text);
+}
+.module-title{font-size:16px;font-weight:600;margin:24px 0 8px;color:var(--purple);}
+p{margin-bottom:12px;color:var(--text);}
+.callout{
+  background:var(--accent-bg);border-left:3px solid var(--accent);
+  padding:12px 16px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0;
+}
+.callout.green{background:var(--green-bg);border-left-color:var(--green);}
+.callout.yellow{background:var(--yellow-bg);border-left-color:var(--yellow);}
+.callout.red{background:var(--red-bg);border-left-color:var(--red);}
+.callout.purple{background:var(--purple-bg);border-left-color:var(--purple);}
+.callout strong{color:var(--text);}
+/* ===== Table ===== */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+th,td{padding:10px 14px;text-align:left;border:1px solid var(--border);}
+th{background:var(--surface2);font-weight:600;color:var(--text);}
+td{color:var(--text2);}
+tr:hover td{background:var(--surface);}
+/* ===== Badge ===== */
+.badge{
+  display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;
+  vertical-align:middle;
+}
+.badge-green{background:var(--green-bg);color:var(--green);}
+.badge-yellow{background:var(--yellow-bg);color:var(--yellow);}
+.badge-red{background:var(--red-bg);color:var(--red);}
+.badge-blue{background:var(--accent-bg);color:var(--accent);}
+.badge-purple{background:var(--purple-bg);color:var(--purple);}
+.badge-teal{background:var(--teal-bg);color:var(--teal);}
+.badge-orange{background:var(--orange-bg);color:var(--orange);}
+.badge-gray{background:var(--surface3);color:var(--text2);}
+/* ===== Card Grid ===== */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:16px 0;}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px;transition:border-color 0.15s;
+}
+.card:hover{border-color:var(--accent);}
+.card-title{font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text);}
+.card-desc{font-size:12px;color:var(--text2);margin-bottom:8px;}
+.card-tag{font-size:11px;color:var(--text3);}
+/* ===== Flow Diagram ===== */
+.flow-diagram{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px;margin:16px 0;font-family:'SF Mono','Fira Code',monospace;font-size:12px;
+  line-height:1.8;overflow-x:auto;color:var(--text2);
+}
+.flow-step{padding:4px 0;}
+.flow-arrow{color:var(--accent);padding:2px 0 2px 20px;}
+.flow-arrow::before{content:"│ ";color:var(--text3);}
+.flow-step .label{color:var(--green);font-weight:600;}
+.flow-step .detail{color:var(--text2);}
+/* ===== Block List ===== */
+.block-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:16px 0;}
+.block-item{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:12px 14px;display:flex;align-items:flex-start;gap:10px;
+}
+.block-icon{
+  width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;flex-shrink:0;
+}
+.block-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+.block-use{font-size:11px;color:var(--text3);}
+/* ===== Layer Stack ===== */
+.layer-stack{margin:16px 0;}
+.layer{
+  display:flex;align-items:center;padding:14px 20px;border:1px solid var(--border);
+  border-radius:var(--radius);margin-bottom:-1px;gap:12px;
+}
+.layer:first-child{border-radius:var(--radius) var(--radius) 0 0;}
+.layer:last-child{border-radius:0 0 var(--radius) var(--radius);}
+.layer-num{
+  font-size:20px;font-weight:700;width:36px;text-align:center;flex-shrink:0;
+}
+.layer-content{flex:1;}
+.layer-title{font-size:14px;font-weight:600;}
+.layer-desc{font-size:12px;color:var(--text2);margin-top:2px;}
+/* ===== Steps ===== */
+.steps{margin:16px 0;}
+.step{
+  display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);
+}
+.step:last-child{border-bottom:none;}
+.step-num{
+  width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;
+}
+.step-content{flex:1;}
+.step-title{font-size:14px;font-weight:600;margin-bottom:4px;}
+.step-desc{font-size:12px;color:var(--text2);}
+/* ===== Code ===== */
+code{
+  background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:12px;
+  font-family:'SF Mono','Fira Code',monospace;color:var(--teal);
+}
+pre{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;overflow-x:auto;margin:12px 0;font-size:12px;line-height:1.6;
+  font-family:'SF Mono','Fira Code',monospace;color:var(--text2);
+}
+/* ===== Header ===== */
+.doc-header{
+  background:linear-gradient(135deg,rgba(56,139,253,0.1),rgba(188,140,255,0.08));
+  border:1px solid var(--border);border-radius:12px;padding:32px;margin-bottom:40px;
+}
+.doc-header h1{font-size:28px;font-weight:800;margin-bottom:8px;}
+.doc-header .subtitle{font-size:14px;color:var(--text2);}
+.doc-header .meta{display:flex;gap:16px;margin-top:16px;font-size:12px;color:var(--text3);}
+.doc-header .meta span{display:flex;align-items:center;gap:4px;}
+/* ===== TOC for mobile ===== */
+@media(max-width:900px){
+  .sidebar{display:none;}
+  .main{margin-left:0;padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-title">
+    <h1>AOS 产品使用说明</h1>
+    <p>v1.0 · 2026-07-27 · 面向技术人员</p>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">总览</div>
+    <a class="nav-item" href="#overview">产品全景</a>
+    <a class="nav-item" href="#architecture">三层栈架构</a>
+    <a class="nav-item" href="#quick-start">快速上手路径</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">一 · 数据层 (Foundry)</div>
+    <a class="nav-item" href="#data-source">数据源与同步</a>
+    <a class="nav-item" href="#pipeline">管道构建</a>
+    <a class="nav-item" href="#ontology">本体 · 数字孪生</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">二 · 应用层 (Workshop)</div>
+    <a class="nav-item" href="#workshop">工作台</a>
+    <a class="nav-item lvl2" href="#workshop-app">应用列表</a>
+    <a class="nav-item lvl2" href="#workshop-canvas">画布编辑器</a>
+    <a class="nav-item lvl2" href="#workshop-canvas-tabs">9 个功能 Tab</a>
+    <a class="nav-item lvl2" href="#workshop-canvas-modes">3 种模式</a>
+    <a class="nav-item lvl2" href="#workshop-vars">变量系统</a>
+    <a class="nav-item lvl2" href="#workshop-events">事件系统</a>
+    <a class="nav-item lvl2" href="#workshop-builder">构建工具</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">三 · 智能层 (AIP)</div>
+    <a class="nav-item" href="#aip-app">AIP 应用层</a>
+    <a class="nav-item lvl2" href="#aip-assist">AIP 助手</a>
+    <a class="nav-item lvl2" href="#aip-agents">对话机器人</a>
+    <a class="nav-item lvl2" href="#aip-analyst">AIP 分析师</a>
+    <a class="nav-item" href="#aip-logic">AIP 逻辑画布</a>
+    <a class="nav-item lvl2" href="#logic-blocks">10 种逻辑块</a>
+    <a class="nav-item lvl2" href="#logic-exec">执行流程</a>
+    <a class="nav-item" href="#aip-agent-mgmt">智能体管理</a>
+    <a class="nav-item lvl2" href="#agent-registry">智能体目录</a>
+    <a class="nav-item lvl2" href="#agent-import">智能体导入</a>
+    <a class="nav-item lvl2" href="#capability-import">能力导入</a>
+    <a class="nav-item lvl2" href="#aip-tools">工具面板</a>
+    <a class="nav-item" href="#aip-governance">评测与治理</a>
+    <a class="nav-item lvl2" href="#aip-evals">Evals 门控</a>
+    <a class="nav-item lvl2" href="#aip-draft">Draft 审批台</a>
+    <a class="nav-item lvl2" href="#aip-lineage">决策谱系</a>
+    <a class="nav-item lvl2" href="#aip-observability">可观测性</a>
+    <a class="nav-item lvl2" href="#aip-maturity">成熟度楼梯</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">四 · 模型管理</div>
+    <a class="nav-item" href="#model-mgmt">三层栈模型架构</a>
+    <a class="nav-item lvl2" href="#model-providers">L1 供应商</a>
+    <a class="nav-item lvl2" href="#model-router">L2 路由</a>
+    <a class="nav-item lvl2" href="#model-catalog">L3 目录</a>
+    <a class="nav-item lvl2" href="#model-capacity">容量管理</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">五 · 运维交付</div>
+    <a class="nav-item" href="#ops">Apollo 运维体系</a>
+    <a class="nav-item lvl2" href="#ops-hub">Hub 舰队</a>
+    <a class="nav-item lvl2" href="#ops-spoke">Spoke 详情</a>
+    <a class="nav-item lvl2" href="#ops-release">Release 通道</a>
+    <a class="nav-item lvl2" href="#ops-ferry">Ferry 摆渡</a>
+    <a class="nav-item lvl2" href="#ops-assets">FDE 资产包</a>
+    <a class="nav-item lvl2" href="#ops-cases">接入案例</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">附录</div>
+    <a class="nav-item" href="#glossary">术语对照</a>
+    <a class="nav-item" href="#nav-map">导航全量地图</a>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main class="main">
+
+<!-- ===== HEADER ===== -->
+<div class="doc-header">
+  <h1>AOS 产品使用说明</h1>
+  <div class="subtitle">面向技术人员的操作手册 · 每个功能是什么 · 在哪一步用 · 怎么用</div>
+  <div class="meta">
+    <span>📋 版本 v1.0</span>
+    <span>📅 2026-07-27</span>
+    <span>🎯 对象：工程师 / 架构师 / 技术产品经理</span>
+    <span>📊 系统基线：3772 路由 · 66 页面 · 9284 测试 PASS</span>
+  </div>
+</div>
+
+<!-- ===== SECTION: OVERVIEW ===== -->
+<div class="section" id="overview">
+  <div class="section-title"><span class="num">0</span>产品全景</div>
+  <p>AOS（AI Ontology System）是对标 Palantir Foundry 的自研平台。核心思路：<strong>先建本体，再搭应用，最后注入智能</strong>。整个系统由三大产品层 + 模型管理 + 运维交付构成。</p>
+
+  <div class="layer-stack">
+    <div class="layer" style="border-color:var(--teal);">
+      <div class="layer-num" style="color:var(--teal);">①</div>
+      <div class="layer-content">
+        <div class="layer-title">数据层 — Foundry <span class="badge badge-teal">数据 → 本体</span></div>
+        <div class="layer-desc">把外部系统数据接入、清洗、加工、物化为本体。包含数据源同步、管道构建、本体管理。</div>
+      </div>
+    </div>
+    <div class="layer" style="border-color:var(--accent);">
+      <div class="layer-num" style="color:var(--accent);">②</div>
+      <div class="layer-content">
+        <div class="layer-title">应用层 — Workshop <span class="badge badge-blue">本体 → 应用</span></div>
+        <div class="layer-desc">在已有本体之上，用低代码画布搭业务应用。包含工作台、画布编辑器、组件注册表、变量管理器、事件配置。</div>
+      </div>
+    </div>
+    <div class="layer" style="border-color:var(--purple);">
+      <div class="layer-num" style="color:var(--purple);">③</div>
+      <div class="layer-content">
+        <div class="layer-title">智能层 — AIP <span class="badge badge-purple">应用 + AI</span></div>
+        <div class="layer-desc">给应用注入 AI 能力：对话助手、逻辑编排、智能体、工具面板。含评测门控、人在回路、决策谱系。</div>
+      </div>
+    </div>
+    <div class="layer" style="border-color:var(--orange);">
+      <div class="layer-num" style="color:var(--orange);">④</div>
+      <div class="layer-content">
+        <div class="layer-title">模型管理 — 三层栈 <span class="badge badge-orange">AI 基础设施</span></div>
+        <div class="layer-desc">管理 LLM 供应商连接、路由策略、模型目录、容量配额。是 AIP 智能层的底层依赖。</div>
+      </div>
+    </div>
+    <div class="layer" style="border-color:var(--green);">
+      <div class="layer-num" style="color:var(--green);">⑤</div>
+      <div class="layer-content">
+        <div class="layer-title">运维交付 — Apollo <span class="badge badge-green">多环境管理</span></div>
+        <div class="layer-desc">中心 Hub 管理多个 Spoke 边缘环境，灰度发布、版本管理、气隙交付、资产打包。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout purple">
+    <strong>一句话理解：</strong>数据层把脏数据变成可信本体 → 应用层把本体变成可操作的应用 → 智能层让应用能自主决策 → 模型层提供 AI 算力 → 运维层把整套系统交付到不同环境。
+  </div>
+</div>
+
+<!-- ===== SECTION: ARCHITECTURE ===== -->
+<div class="section" id="architecture">
+  <div class="section-title"><span class="num">0.1</span>三层栈架构与数据流向</div>
+  <p>理解 AOS 的关键是理解数据如何在三大产品层之间流动。以下是一个完整链路：</p>
+
+  <div class="flow-diagram">
+<span class="flow-step"><span class="label">[数据层]</span> 外部数据源（MySQL/Kafka/Salesforce…）</span>
+<span class="flow-arrow">↓ <span class="detail">数据链接器选择连接器，配置同步任务</span></span>
+<span class="flow-step"><span class="label">[数据层]</span> 数据集 (Dataset)</span>
+<span class="flow-arrow">↓ <span class="detail">管道构建：Join → Filter → Transform → 输出</span></span>
+<span class="flow-step"><span class="label">[数据层]</span> 本体 (Ontology) — Object Type / Link Type / Action Type</span>
+<span class="flow-arrow">↓ <span class="detail">本体管理：定义实体、属性、关系、动作</span></span>
+<span class="flow-step"><span class="label">[应用层]</span> Workshop 应用</span>
+<span class="flow-arrow">↓ <span class="detail">画布编辑器拖入 Widget → 绑定 Object Type → 配置变量 → 配置事件</span></span>
+<span class="flow-step"><span class="label">[智能层]</span> AIP 逻辑编排</span>
+<span class="flow-arrow">↓ <span class="detail">逻辑画布编排：Input → Get Property → Use LLM → Apply Action</span></span>
+<span class="flow-step"><span class="label">[智能层]</span> Agent 执行</span>
+<span class="flow-arrow">↓ <span class="detail">Agent 调用工具 → 生成 Draft → 人工审批 → 写回本体</span></span>
+<span class="flow-step"><span class="label">[运维层]</span> 交付到 Spoke 环境</span>
+  </div>
+
+  <div class="callout">
+    <strong>关键概念：</strong>每一层都是独立可用的。你可以只用数据层做 ETL，也可以只用应用层搭管理界面。但完整价值需要三层贯通：<strong>数据 → 本体 → 应用 → AI 决策 → 写回数据</strong>。
+  </div>
+</div>
+
+<!-- ===== SECTION: QUICK START ===== -->
+<div class="section" id="quick-start">
+  <div class="section-title"><span class="num">0.2</span>快速上手路径</div>
+  <p>如果你是第一次使用 AOS，按以下顺序操作：</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">接入数据源</div>
+        <div class="step-desc">进入 <strong>数据源 → 数据链接器</strong>，选择连接器类型（MySQL/REST/GraphQL…），配置连接参数，创建同步任务将外部数据拉入数据集。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">构建管道加工数据</div>
+        <div class="step-desc">进入 <strong>管道 → 管道构建</strong>，在 DAG 画布上拖入数据源节点和变换算子（Filter/Join/Expression），配置输出到本体 Object Type。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">定义本体结构</div>
+        <div class="step-desc">进入 <strong>本体 → 本体管理</strong>，创建 Object Type（如 Order/Customer），定义属性、Link Type（关系）、Action Type（写回操作）。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">搭建业务应用</div>
+        <div class="step-desc">进入 <strong>工作台 → 创建应用</strong>，4 步向导创建 Module，然后在画布编辑器中拖入 Widget 组件，绑定 Object Type 和变量。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">注入 AI 能力</div>
+        <div class="step-desc">进入 <strong>AIP → 逻辑画布</strong> 编排 AI 决策流；在 <strong>AIP → 对话机器人</strong> 创建 Agent 绑定工具和提示词；在 <strong>AIP → Draft 审批台</strong> 审批 AI 写操作。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <div class="step-title">配置模型基础设施</div>
+        <div class="step-desc">进入 <strong>模型管理 → 供应商</strong> 接入 LLM API Key，在 <strong>模型管理 → 路由</strong> 配置任务路由策略。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 1: DATA LAYER ===== -->
+<div class="section" id="data-source">
+  <div class="section-title"><span class="num">1</span>数据层 — 数据源与同步</div>
+  <p>侧边栏 <strong>「数据源与同步」</strong> 分区。这是数据进入 AOS 的第一步——把外部系统数据拉入平台的数据集。</p>
+
+  <div class="subsection-title">各页面用途</div>
+  <table>
+    <thead><tr><th>页面</th><th>用途</th><th>什么时候用</th></tr></thead>
+    <tbody>
+      <tr><td><strong>数据链接器</strong></td><td>连接器目录总览，按类型浏览（数据库/SaaS/流式/对象存储）</td><td>首次接入数据源时选择连接器类型</td></tr>
+      <tr><td><strong>数据连接</strong></td><td>已有连接列表，查看状态和健康度</td><td>运维巡检数据源连接状态</td></tr>
+      <tr><td><strong>新建数据源</strong></td><td>配置新数据源的连接参数向导</td><td>接入新数据库/API 时使用</td></tr>
+      <tr><td><strong>同步配置</strong></td><td>配置单个同步任务的 SQL 查询、事务类型、增量列、调度频率</td><td>定义"怎么拉、多久拉一次"</td></tr>
+      <tr><td><strong>同步路由</strong></td><td>同步任务的路由配置</td><td>多目标同步时配置写入路径</td></tr>
+      <tr><td><strong>边缘代理</strong></td><td>管理数据代理 Agent（部署在内网/现场的代理节点）</td><td>内网环境数据接入时部署代理</td></tr>
+      <tr><td><strong>媒体集</strong></td><td>非结构化数据（图片/视频/文档）的存储和索引</td><td>接入图片、PDF 等多媒体数据时使用</td></tr>
+      <tr><td><strong>文档智能</strong></td><td>OCR + LLM 提取文档结构化信息</td><td>从 PDF/扫描件中提取业务数据时使用</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout yellow">
+    <strong>关键操作流程：</strong>数据链接器选择连接器 → 新建数据源填写连接参数 → 进入同步配置写 SQL 和调度 → 数据写入数据集 → 在管道构建中进一步加工。
+  </div>
+</div>
+
+<div class="section" id="pipeline">
+  <div class="section-title"><span class="num">1.1</span>管道构建</div>
+  <p>侧边栏 <strong>「管道与数据治理」</strong> 分区。管道是数据从原始到可信的加工流水线——类似 Spark / Airflow 的 DAG 编排，但可视化操作。</p>
+
+  <table>
+    <thead><tr><th>页面</th><th>用途</th><th>什么时候用</th></tr></thead>
+    <tbody>
+      <tr><td><strong>管道构建</strong></td><td>DAG 画布编辑器，拖拽数据源节点 + 变换算子连线编排</td><td>构建/修改数据加工流水线时</td></tr>
+      <tr><td><strong>管道提案</strong></td><td>管道变更的审批流程（类似 Git PR）</td><td>团队协作时审查他人提交的管道变更</td></tr>
+      <tr><td><strong>计划编辑器</strong></td><td>配置管道的调度计划（Cron / 触发器 / 手动）</td><td>设置管道自动运行频率</td></tr>
+      <tr><td><strong>搭建</strong></td><td>查看当前管道的搭建状态和日志</td><td>排查管道执行失败</td></tr>
+      <tr><td><strong>数据集预览</strong></td><td>查看任何数据集的数据内容和 Schema</td><td>验证数据质量、查看中间结果</td></tr>
+      <tr><td><strong>代码库</strong></td><td>管理管道关联的代码仓库</td><td>复杂管道需要自定义代码时</td></tr>
+      <tr><td><strong>数据沿袭</strong></td><td>数据从源到目标的完整血缘关系图</td><td>追溯数据来源、影响面分析</td></tr>
+      <tr><td><strong>数据健康</strong></td><td>数据集质量检查（空值率/唯一性/范围/Schema 变更）</td><td>运维巡检数据质量异常</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subsection-title">管道编辑器核心操作</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">拖入数据源节点</div>
+        <div class="step-desc">左栏选择已注册的数据集作为输入（黄色节点）</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">添加变换算子</div>
+        <div class="step-desc">从工具栏拖入 Filter / Join / Aggregate / Expression / Cast / Union 等（蓝色节点），连线形成 DAG</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">底部预览验证</div>
+        <div class="step-desc">点击任意节点，底部表格实时显示该节点的输出数据预览（最多 10 行）</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">配置输出</div>
+        <div class="step-desc">右栏选择输出类型（数据集输出 / Object Type 物化 / Link Type 输出）+ 写入模式（append/snapshot/upsert/replace）</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">提交或部署</div>
+        <div class="step-desc">顶部工具栏 → 提议变更（走提案审批）或直接部署</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>管道的核心价值：</strong>不是写 SQL，而是<strong>把数据加工过程可视化、可追溯、可协作</strong>。每个节点的输出都可以预览，数据沿袭图可以追溯任何字段的来源。
+  </div>
+</div>
+
+<div class="section" id="ontology">
+  <div class="section-title"><span class="num">1.2</span>本体 · 数字孪生</div>
+  <p>侧边栏 <strong>「本体 · 数字孪生」</strong> 分区。本体（Ontology）是 AOS 的核心——它把业务实体（订单/客户/设备）、关系、动作建模为一等公民，而不是普通的数据库表。</p>
+
+  <div class="callout purple">
+    <strong>为什么需要本体？</strong>数据库表只描述"数据长什么样"，本体还描述"实体之间什么关系"和"可以对实体做什么操作（Action）"。这让 AI 能理解业务语义，而不只是 SQL 查询。
+  </div>
+
+  <table>
+    <thead><tr><th>页面</th><th>用途</th><th>什么时候用</th></tr></thead>
+    <tbody>
+      <tr><td><strong>本体管理</strong></td><td>本体总入口，收藏的 Object Type、最近修改、按业务域分组</td><td>日常维护本体时从这里出发</td></tr>
+      <tr><td><strong>对象探索</strong></td><td>图谱可视化，展示 Object Type 之间的关系拓扑</td><td>向业务方展示数据模型全貌；检查关系是否合理</td></tr>
+      <tr><td><strong>本体提案</strong></td><td>本体变更的审批流程（类似 Git PR）</td><td>修改 Object Type / Link Type 后提交审批</td></tr>
+      <tr><td><strong>图谱健康度</strong></td><td>检查本体的一致性、连通性、孤立节点</td><td>本体治理巡检</td></tr>
+      <tr><td><strong>活知识 Wiki</strong></td><td>本体的"活知识库"——业务规则、SOP、操作手册</td><td>为 Agent 提供业务上下文；记录领域知识</td></tr>
+      <tr><td><strong>Wiki 索引</strong></td><td>Wiki 的目录导航页（分支树 + 卡片 + 搜索）</td><td>浏览和查找 Wiki 文档</td></tr>
+      <tr><td><strong>分支管理</strong></td><td>本体的版本控制分支（类似 Git branches）</td><td>多人协作修改本体时隔离工作</td></tr>
+    </tbody>
+  </table>
+
+  <div class="subsection-title">本体的三大核心概念</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">Object Type <span class="badge badge-blue">实体</span></div>
+      <div class="card-desc">业务实体的定义。例如 Order 有 order_no、amount、status 等属性。不只是 schema——还含主键、显示标题、索引策略。</div>
+      <div class="card-tag">→ 在 Workshop 中被 Widget 绑定</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Link Type <span class="badge badge-teal">关系</span></div>
+      <div class="card-desc">实体之间的关系。例如 Order → Customer (N:1)、Order → OrderItem (1:N)。定义基数、方向、约束。</div>
+      <div class="card-tag">→ 在对象探索图谱中可视化</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Action Type <span class="badge badge-orange">动作</span></div>
+      <div class="card-desc">对实体可执行的操作。例如 confirmShipment、cancelOrder、refundOrder。不是 CRUD API——是有业务语义的写操作。</div>
+      <div class="card-tag">→ 在 AIP Logic 中被 Apply Action 块调用</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 2: WORKSHOP ===== -->
+<div class="section" id="workshop">
+  <div class="section-title"><span class="num">2</span>应用层 — Workshop 工作台</div>
+  <p>侧边栏 <strong>「工作台」</strong> + <strong>「应用程序构建工具」</strong> 两个分区。这是搭建业务应用的核心区域。</p>
+</div>
+
+<div class="section" id="workshop-app">
+  <div class="section-title"><span class="num">2.0</span>工作台菜单</div>
+  <table>
+    <thead><tr><th>页面</th><th>用途</th><th>什么时候用</th></tr></thead>
+    <tbody>
+      <tr><td><strong>应用列表</strong></td><td>所有 Workshop 应用的入口，按分类展示</td><td>日常使用应用、管理应用</td></tr>
+      <tr><td><strong>创建应用</strong></td><td>4 步向导创建新 Module（基本信息 → 数据绑定 → 模板选择 → 确认）</td><td>新建业务应用</td></tr>
+      <tr><td><strong>模块管理</strong></td><td>Module 的列表/搜索/筛选/编辑/发布/删除</td><td>管理已有 Module 生命周期</td></tr>
+      <tr><td><strong>订单管理</strong></td><td>首个 Workshop 应用实例（Order Object + 3 个 Action）</td><td>电商业务场景演示</td></tr>
+      <tr><td><strong>风险告警管理</strong></td><td>风险告警的列表+处理</td><td>风控业务场景</td></tr>
+      <tr><td><strong>态势大屏</strong></td><td>COP（Common Operating Picture）全屏数据可视化</td><td>管理层实时监控大屏</td></tr>
+      <tr><td><strong>Buddy · 智能助手</strong></td><td>内嵌在工作台中的 AI 对话助手</td><td>快速问答、操作引导</td></tr>
+      <tr><td><strong>分析建模</strong></td><td>分析报表 / 数据建模工具</td><td>数据探索和临时分析</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" id="workshop-canvas">
+  <div class="section-title"><span class="num">2.1</span>画布编辑器（核心工具）</div>
+  <p>侧边栏 <strong>「构建工具 → 画布编辑」</strong>。这是 Workshop 的核心——一个类 Figma 的可视化页面构建器，三栏布局。</p>
+
+  <div class="flow-diagram">
+<span class="flow-step">┌─────────────┬───────────────────────────┬──────────────┐</span>
+<span class="flow-step">│  左栏 240px  │       中间画布区             │  右栏 280px  │</span>
+<span class="flow-step">│             │                             │              │</span>
+<span class="flow-step">│  组件调色板  │   所见即所得编辑/预览画布      │  属性配置面板 │</span>
+<span class="flow-step">│  (拖入组件)  │   (拖拽排序、选中编辑)        │  (Content/   │</span>
+<span class="flow-step">│             │                             │   Style/     │</span>
+<span class="flow-step">│             │                             │   Events/    │</span>
+<span class="flow-step">│             │                             │   Data)      │</span>
+<span class="flow-step">└─────────────┴───────────────────────────┴──────────────┘</span>
+<span class="flow-step">                    底部面板（9 个功能 Tab）</span>
+  </div>
+
+  <p>画布编辑器顶部有<strong>模式切换按钮</strong>和<strong>9 个功能 Tab</strong>。下面逐一说明。</p>
+</div>
+
+<div class="section" id="workshop-canvas-modes">
+  <div class="subsection-title">3 种编辑模式</div>
+  <table>
+    <thead><tr><th>模式</th><th>用途</th><th>什么时候用</th></tr></thead>
+    <tbody>
+      <tr><td><strong>模块模式 (Widget)</strong> <span class="badge badge-blue">默认</span></td><td>所见即所得的 UI 组件拖拽编辑</td><td>搭页面布局、拖入组件、调整位置</td></tr>
+      <tr><td><strong>工作流模式 (Workflow)</strong></td><td>事件流可视化编排——SVG 展示触发器→条件→动作的节点图</td><td>配置 Widget 之间的交互逻辑</td></tr>
+      <tr><td><strong>预览模式 (Preview)</strong></td><td>运行态只读预览，实时拉取后端数据填充</td><td>验证最终效果、演示给业务方看</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" id="workshop-canvas-tabs">
+  <div class="subsection-title">9 个功能 Tab（底部面板）</div>
+  <p>底部面板可折叠展开，每个 Tab 服务于画布编辑的不同阶段：</p>
+  <table>
+    <thead><tr><th>Tab</th><th>用途</th><th>为哪一步准备</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Dashboard</strong> <span class="badge badge-blue">概览</span></td><td>当前 Module 整体概览：Widget 数 / 事件数 / 变量数</td><td>编辑开始前快速了解模块规模</td></tr>
+      <tr><td><strong>Queries</strong> <span class="badge badge-teal">数据</span></td><td>SQL 查询编辑器 + 执行结果预览（对接 <code>/v1/sql/preview</code>）</td><td>调试 ObjectSet 过滤条件、验证 SQL</td></tr>
+      <tr><td><strong>Functions</strong> <span class="badge badge-purple">计算</span></td><td>页面绑定的 AIP Logic 函数列表</td><td>查看当前模块调用了哪些后端逻辑函数</td></tr>
+      <tr><td><strong>Objects</strong> <span class="badge badge-orange">绑定</span></td><td>画布上所有 Widget 网格视图，展示每个组件绑定的 Object Type</td><td>查看哪个 Widget 绑定了哪个实体</td></tr>
+      <tr><td><strong>Events</strong> <span class="badge badge-yellow">交互</span></td><td>事件绑定管理 + 3 步创建向导（选触发器→选动作→确认）</td><td>配置"按钮点击→调 Action""行选中→弹详情"</td></tr>
+      <tr><td><strong>Data</strong> <span class="badge badge-teal">数据源</span></td><td>当前 Module 可访问的数据源列表</td><td>确认模块能连到哪些数据库</td></tr>
+      <tr><td><strong>Dependencies</strong> <span class="badge badge-gray">依赖</span></td><td>变量之间的依赖关系图（<code>A → B, C</code>）</td><td>排查循环依赖、理解变量计算链</td></tr>
+      <tr><td><strong>Styles</strong> <span class="badge badge-blue">样式</span></td><td>4 主题预设（浅色/深色/紧凑/鲜艳）+ CSS 变量编辑器</td><td>统一切换模块视觉风格</td></tr>
+      <tr><td><strong>Variables</strong> <span class="badge badge-red">核心</span></td><td>变量 CRUD 管理——7 种类型、3 种作用域、5 种定义方式</td><td>管理应用状态（selectedId / filterText…）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout red">
+    <strong>Variables 是 Workshop 的核心：</strong>它不是普通的全局变量——是连接 UI 组件和后端数据的<strong>状态管理桥梁</strong>。Widget 的 Data Tab 绑定变量，变量可以引用 ObjectSet 聚合结果或 AIP Logic 函数。理解了 Variables，就理解了 Workshop 的运行机制。
+  </div>
+</div>
+
+<div class="section" id="workshop-vars">
+  <div class="subsection-title">变量系统详解</div>
+
+  <div class="subsection-title" style="font-size:14px;">7 种变量类型</div>
+  <div class="block-list">
+    <div class="block-item">
+      <div class="block-icon" style="background:var(--accent-bg);color:var(--accent);">OS</div>
+      <div><div class="block-name">object_set</div><div class="block-use">对象集合（最常用）——查询结果集</div></div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:var(--green-bg);color:var(--green);">S</div>
+      <div><div class="block-name">string</div><div class="block-use">字符串</div></div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:var(--yellow-bg);color:var(--yellow);">N</div>
+      <div><div class="block-name">numeric</div><div class="block-use">数值</div></div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:var(--red-bg);color:var(--red);">B</div>
+      <div><div class="block-name">boolean</div><div class="block-use">布尔值</div></div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:var(--purple-bg);color:var(--purple);">D</div>
+      <div><div class="block-name">date</div><div class="block-use">日期</div></div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:var(--teal-bg);color:var(--teal);">A</div>
+      <div><div class="block-name">array</div><div class="block-use">数组</div></div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:var(--orange-bg);color:var(--orange);">{} </div>
+      <div><div class="block-name">struct</div><div class="block-use">结构体（嵌套对象）</div></div>
+    </div>
+  </div>
+
+  <div class="subsection-title" style="font-size:14px;">5 种定义方式（决定变量值怎么来）</div>
+  <table>
+    <thead><tr><th>定义方式</th><th>含义</th><th>示例</th></tr></thead>
+    <tbody>
+      <tr><td><code>static</code></td><td>静态值，直接赋值</td><td><code>site = "DC-East"</code></td></tr>
+      <tr><td><code>function</code></td><td>调用 AIP Logic 函数返回</td><td><code>risk_score = calcRisk(order)</code></td></tr>
+      <tr><td><code>object_set_aggregation</code></td><td>对 ObjectSet 做聚合</td><td><code>order_count = OrderSet.count()</code></td></tr>
+      <tr><td><code>object_property</code></td><td>提取对象属性</td><td><code>customer_name = order.customer.name</code></td></tr>
+      <tr><td><code>variable_transformation</code></td><td>对其他变量做变换</td><td><code>total = price * qty</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="subsection-title" style="font-size:14px;">3 种作用域</div>
+  <table>
+    <thead><tr><th>作用域</th><th>可见范围</th></tr></thead>
+    <tbody>
+      <tr><td><code>module</code></td><td>当前 Module 内所有页面可见</td></tr>
+      <tr><td><code>session</code></td><td>当前用户会话内可见（关闭浏览器后消失）</td></tr>
+      <tr><td><code>global</code></td><td>跨 Module 全局可见</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" id="workshop-events">
+  <div class="subsection-title">事件系统详解</div>
+  <p>事件（Events）是 Workshop 的交互逻辑层。采用 <strong>触发器 → [条件] → 动作</strong> 模型：</p>
+
+  <div class="flow-diagram">
+<span class="flow-step">  用户操作 (Trigger)         条件 (Condition)        执行动作 (Action)</span>
+<span class="flow-step">────────────────────── ───────────────────── ─────────────────────</span>
+<span class="flow-step">  表格行 onSelect     →    if 严重级=高    →    弹出确认表单</span>
+<span class="flow-step">  按钮 onClick        →    (无条件)        →    调用 Action 派单</span>
+<span class="flow-step">  筛选器 onChange     →    debounce 300ms  →    刷新数据集</span>
+<span class="flow-step">  页面 onLoad         →    (无条件)        →    初始化默认筛选</span>
+<span class="flow-step">  定时器 onTimer      →    每 30 秒        →    自动刷新数据</span>
+  </div>
+
+  <table>
+    <thead><tr><th>触发器类型</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>on_click</td><td>组件点击</td></tr>
+      <tr><td>on_select</td><td>表格行选中</td></tr>
+      <tr><td>on_change</td><td>筛选器值变化</td></tr>
+      <tr><td>on_load</td><td>页面首次渲染</td></tr>
+      <tr><td>interval</td><td>定时触发</td></tr>
+      <tr><td>custom</td><td>自定义事件</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead><tr><th>动作类型</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>call_function</td><td>调用后端函数</td></tr>
+      <tr><td>update_variable</td><td>更新变量值</td></tr>
+      <tr><td>emit_event</td><td>发射自定义事件</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" id="workshop-builder">
+  <div class="subsection-title">应用程序构建工具（7 个工具页）</div>
+  <table>
+    <thead><tr><th>页面</th><th>用途</th><th>什么时候用</th></tr></thead>
+    <tbody>
+      <tr><td><strong>画布编辑</strong></td><td>三栏可视化页面编辑器（上面已详解）</td><td>搭建/修改应用页面</td></tr>
+      <tr><td><strong>组件注册表</strong> <span class="badge badge-gray">s2</span></td><td>Widget 组件目录（3 来源：平台内置/市场安装/代码开发）</td><td>发现可用组件、安装新组件</td></tr>
+      <tr><td><strong>变量管理器</strong> <span class="badge badge-gray">s2</span></td><td>独立的变量管理面板（与画布 Variables Tab 功能重叠但更完整）</td><td>批量管理变量</td></tr>
+      <tr><td><strong>主题与样式</strong> <span class="badge badge-gray">s2</span></td><td>模块级主题和样式配置</td><td>统一视觉风格</td></tr>
+      <tr><td><strong>模块接口</strong></td><td>定义 Module 的输入/输出接口</td><td>Module 间数据传递时</td></tr>
+      <tr><td><strong>事件配置</strong></td><td>独立的 Widget 事件管理面板</td><td>批量查看和配置事件绑定</td></tr>
+      <tr><td><strong>发布入口</strong></td><td>Module 发布为应用的入口</td><td>开发完成后发布上线</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== SECTION 3: AIP ===== -->
+<div class="section" id="aip-app">
+  <div class="section-title"><span class="num">3</span>智能层 — AIP 应用层</div>
+  <p>侧边栏 <strong>「AIP 决策引擎」</strong> 分区。AIP（AI Intelligent Platform）是给应用注入 AI 能力的层。分为 4 个子分组：应用层、逻辑编排层、智能体、评测与治理。</p>
+</div>
+
+<div class="section" id="aip-assist">
+  <div class="subsection-title">3.0.1 AIP 助手 <span class="badge badge-blue">即问即答</span></div>
+  <p><strong>用途</strong>：权限感知的 LLM 聊天界面，基于产品文档和本体知识回答问题。</p>
+  <p><strong>什么时候用</strong>：需要快速了解平台功能、查阅文档、获取操作指引时——类似内嵌的 ChatGPT，但了解你的业务数据。</p>
+  <p><strong>关键特性</strong>：返回答案附带引用来源；底部展示建议问题引导深入探索。</p>
+</div>
+
+<div class="section" id="aip-agents">
+  <div class="subsection-title">3.0.2 对话机器人 <span class="badge badge-purple">Agent Studio</span></div>
+  <p><strong>用途</strong>：创建和管理任务型 Agent 的核心工作台——配置提示词、工具、本体上下文、安全等级。</p>
+  <p><strong>什么时候用</strong>：业务人员需要搭建一个特定任务的 Agent（如维修派单、订单客服、风险分析）时。</p>
+
+  <div class="subsection-title" style="font-size:14px;">Agent 配置 4 Tab</div>
+  <table>
+    <thead><tr><th>Tab</th><th>配置什么</th><th>为哪一步准备</th></tr></thead>
+    <tbody>
+      <tr><td><strong>提示词</strong></td><td>系统提示词 + 变量标签（<code>/Order.status</code>、<code>/Wiki.sla</code>）</td><td>定义 Agent 的人格和知识边界</td></tr>
+      <tr><td><strong>工具箱</strong></td><td>查看/启用工具（Action 派单、Object Query、Function、Wiki Tool…）</td><td>定义 Agent 能调用哪些外部能力</td></tr>
+      <tr><td><strong>试运行</strong></td><td>内置模拟对话，验证 Agent 行为</td><td>上线前测试 Agent 响应质量</td></tr>
+      <tr><td><strong>发布</strong></td><td>L4 发布门控检查（须 Evals 绿 + Draft 默认暂存）</td><td>发布为自动化 Agent 时</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" id="aip-analyst">
+  <div class="subsection-title">3.0.3 AIP 分析师 <span class="badge badge-teal">数据查询</span></div>
+  <p><strong>用途</strong>：基于本体的自然语言数据查询——把自然语言转化为结构化查询并可视化。</p>
+  <p><strong>什么时候用</strong>：需要用自然语言查询业务数据时，如"北安普顿 10 公里范围内有哪些咖啡店"。</p>
+  <p><strong>工作流</strong>：输入自然语言 → AI 展示思考过程（折叠卡片）→ 调用 Object Query 检索本体 → 返回表格/卡片/地图可视化。</p>
+</div>
+
+<!-- AIP LOGIC -->
+`
+<div class="section" id="aip-logic">
+  <div class="section-title"><span class="num">3.1</span>AIP 逻辑画布 <span class="badge badge-purple">核心编排工具</span></div>
+  <p>这是 AIP 最核心的工具——一个可视化逻辑编排器，把 AI 决策流程拆解为可连接的逻辑块（Block）。</p>
+
+  <div class="callout purple">
+    <strong>为什么需要逻辑画布？</strong>直接写 Prompt 让 LLM 自由决策不可控。逻辑画布让你<strong>像搭管道一样编排 AI 决策流</strong>：先拿什么数据、再调什么模型、满足什么条件走哪条路、最后怎么写回——每一步都可见、可调试、可审计。
+  </div>
+</div>
+
+<div class="section" id="logic-blocks">
+  <div class="subsection-title">10 种逻辑块（Block）详解</div>
+  <p>每种 Block 对应 AI 决策流程中的一个具体步骤。以下是<strong>每个 Block 是什么、在哪一步用、解决什么问题</strong>：</p>
+
+  <div class="block-list">
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(99,102,241,0.15);color:#6366f1;">IN</div>
+      <div>
+        <div class="block-name">1. Input（输入）</div>
+        <div class="block-use"><strong>流程第一步</strong>。声明本次操作的目标对象，如 <code>order : Order</code>。所有后续 Block 从此变量读取数据。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">GP</div>
+      <div>
+        <div class="block-name">2. Get Property（取属性）</div>
+        <div class="block-use"><strong>Input 之后</strong>。从本体对象提取字段值，如 <code>order.status</code> / <code>order.amount</code>，注入上下文供后续分析。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(20,184,166,0.15);color:#14b8a6;">CV</div>
+      <div>
+        <div class="block-name">3. Create Variable（建变量）</div>
+        <div class="block-use"><strong>需要计算派生值时</strong>。用 DSL 表达式创建中间变量，如 <code>is_vip = customer.tier == "gold"</code>。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(236,72,153,0.15);color:#ec4899;">LLM</div>
+      <div>
+        <div class="block-name">4. Use LLM（调模型）<span class="badge badge-red" style="font-size:9px;">核心</span></div>
+        <div class="block-use"><strong>需要 AI 判断时</strong>。配置 prompt / model / temperature，调用大模型做分类、抽取、生成、风险评估。是 AI 决策的核心环节。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">TL</div>
+      <div>
+        <div class="block-name">5. Use Tool（调工具）</div>
+        <div class="block-use"><strong>需要调外部能力时</strong>。调用已注册的 Capability 工具（查库、调 API、执行计算）。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(6,182,212,0.15);color:#06b6d4;">TF</div>
+      <div>
+        <div class="block-name">6. Transform（变换）</div>
+        <div class="block-use"><strong>需要集合操作时</strong>。用 DSL 过滤/映射/聚合列表数据，如 <code>filter(orders, o → o.amount > 500)</code>。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(249,115,22,0.15);color:#f97316;">AA</div>
+      <div>
+        <div class="block-name">7. Apply Action（执行动作）<span class="badge badge-red" style="font-size:9px;">写回</span></div>
+        <div class="block-use"><strong>需要改变系统状态时</strong>。对本体对象执行 Action（修改状态、创建工单、发通知）。支持 dryRun 模式——先生成提案不落库。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(34,197,94,0.15);color:#22c55e;">EX</div>
+      <div>
+        <div class="block-name">8. Execute（执行子流程）</div>
+        <div class="block-use"><strong>需要嵌套或通知时</strong>。执行子逻辑流、语义搜索、或触发通知（email/webhook）。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(220,38,38,0.15);color:#DC2626;">BR</div>
+      <div>
+        <div class="block-name">9. Branch（分支）<span class="badge badge-yellow" style="font-size:9px;">条件路由</span></div>
+        <div class="block-use"><strong>需要走不同路径时</strong>。根据条件 DSL 分叉，如高风险→升级流程，低风险→自动放行。<strong>不是独立块</strong>——通过边的 condition 实现。</div>
+      </div>
+    </div>
+    <div class="block-item">
+      <div class="block-icon" style="background:rgba(79,70,229,0.15);color:#4F46E5;">HO</div>
+      <div>
+        <div class="block-name">10. Handoff（汇聚交接）<span class="badge badge-blue" style="font-size:9px;">合并</span></div>
+        <div class="block-use"><strong>分支执行完毕后</strong>。合并多路上下文，输出决策摘要+产物+待确认项，传递给下游 Agent 或人工审批台。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="logic-exec">
+  <div class="subsection-title">典型编排示例：风险分诊</div>
+  <div class="flow-diagram">
+<span class="flow-step"><span style="color:#6366f1;">[Input]</span> order : Object · Order</span>
+<span class="flow-arrow">↓</span>
+<span class="flow-step"><span style="color:#f59e0b;">[Get Property]</span> order.status / amount / currency / region</span>
+<span class="flow-arrow">↓</span>
+<span class="flow-step"><span style="color:#ec4899;">[Use LLM]</span> 风险评估 (model=私有-中, temp=0.3, max=512)</span>
+<span class="flow-arrow">↓ ↓ (双路分支)</span>
+<span class="flow-step">├─ <span style="color:#DC2626;">[Branch · high]</span> → <span style="color:#f97316;">[Apply Action]</span> escalate_to_supervisor</span>
+<span class="flow-step">└─ <span style="color:#DC2626;">[Branch · low]</span>  → <span style="color:#22c55e;">[Write Back]</span> update_status → shipped</span>
+<span class="flow-arrow">↓ ↓ 汇聚</span>
+<span class="flow-step"><span style="color:#4F46E5;">[Handoff]</span> 上下文交接 (decision + artifacts + open_questions)</span>
+  </div>
+
+  <div class="callout">
+    <strong>数据流模型：</strong>每个 Block 从 <code>ExecutionContext</code> 读取输入变量，执行后写回同一 Context。下游 Block 通过变量名引用上游输出——形成数据管道。<code>apply_action</code> 默认 <code>debug=true</code>（dryRun 不落库），需人工审批后才生产写回。
+  </div>
+</div>
+
+<!-- AIP AGENT MANAGEMENT -->
+<div class="section" id="aip-agent-mgmt">
+  <div class="section-title"><span class="num">3.2</span>智能体管理</div>
+
+  <div class="section" id="agent-registry">
+    <div class="subsection-title">智能体目录</div>
+    <p><strong>用途</strong>：平台全部 Agent 的浏览与发现入口。展示 3 种来源的 Agent：</p>
+    <table>
+      <thead><tr><th>来源</th><th>说明</th><th>示例</th></tr></thead>
+      <tbody>
+        <tr><td><strong>平台内创建</strong></td><td>在 Chatbot Studio 中配置创建</td><td>维修派单 Buddy、风险告警分析 Agent</td></tr>
+        <tr><td><strong>插件引入</strong></td><td>通过 Capability Manifest 声明接入</td><td>短视频生成 C1 Job、数字人 C2 Session</td></tr>
+        <tr><td><strong>外部接入</strong></td><td>从开源社区导入</td><td>AutoGen 多 Agent 协作、CrewAI 角色编排</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="agent-import">
+    <div class="subsection-title">智能体导入（5 步向导）</div>
+    <p><strong>用途</strong>：从外部 Git 仓库导入已有 Agent 框架。</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">选择来源</div><div class="step-desc">输入 Git 仓库 URL</div></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">仓库扫描</div><div class="step-desc">自动识别可导入的 Agent</div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">配置 Manifest</div><div class="step-desc">映射工具和本体</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">安全与网络</div><div class="step-desc">配置沙箱、网络白名单</div></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-title">连通测试</div><div class="step-desc">验证 Adapter 可达</div></div></div>
+    </div>
+  </div>
+
+  <div class="section" id="capability-import">
+    <div class="subsection-title">能力导入（4 步向导）</div>
+    <p><strong>用途</strong>：通过 Capability Manifest 注册外部能力端点，供 Agent 调用。</p>
+    <table>
+      <thead><tr><th>能力类型</th><th>特征</th><th>示例</th></tr></thead>
+      <tbody>
+        <tr><td><strong>C0 sync</strong> <span class="badge badge-green">同步</span></td><td>同步函数，超时 &lt;15s，直接挂 Function Tool</td><td>直播稿引擎、文本摘要</td></tr>
+        <tr><td><strong>C1 Job</strong> <span class="badge badge-yellow">异步</span></td><td>异步任务，GPU/长耗时，submit → status → artifact</td><td>短视频生成、图片渲染</td></tr>
+        <tr><td><strong>C2 Session</strong> <span class="badge badge-purple">实时</span></td><td>WebSocket 长连接，open/push/close</td><td>数字人交互、语音对话</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="aip-tools">
+    <div class="subsection-title">Agent 工具面板</div>
+    <p><strong>用途</strong>：管理单个 Agent 可调用的全部工具及执行策略。</p>
+    <p><strong>三栏布局</strong>：左 = 工具目录（7 类：Action / Object Query / Function / 变量更新 / Command / 请求澄清 / Capability）→ 中 = 已启用工具 → 右 = 细项配置。</p>
+    <p><strong>执行策略三选一</strong>：</p>
+    <table>
+      <thead><tr><th>策略</th><th>行为</th><th>适用场景</th></tr></thead>
+      <tbody>
+        <tr><td>自动提交</td><td>对话中直接执行</td><td>只读查询</td></tr>
+        <tr><td>人确认</td><td>弹出动作表单供人确认</td><td>L2 HITL 写操作</td></tr>
+        <tr><td>仅生成提案</td><td>只生成 Draft 不执行</td><td>高风险操作走审批台</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- AIP GOVERNANCE -->
+<div class="section" id="aip-governance">
+  <div class="section-title"><span class="num">3.3</span>评测与治理 <span class="badge badge-red">安全护栏</span></div>
+  <p>这是 AIP 最独特的部分——Palantir 的核心理念：<strong>AI 的写操作不直接落库，先生成提案（Draft），经人工审批后才写回</strong>。这确保了 AI 出错不污染生产数据。</p>
+</div>
+
+<div class="section" id="aip-evals">
+  <div class="subsection-title">Evals 门控 <span class="badge badge-yellow">质量门槛</span></div>
+  <p><strong>用途</strong>：Agent 质量评测与发布门控，决定 Agent 能否升级到 L4 全自动化。</p>
+  <p><strong>什么时候用</strong>：Agent 上线前或升级 L4 前，跑评测集验证质量是否达标。</p>
+  <table>
+    <thead><tr><th>指标</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>总体通过率</td><td>当前 87%，L4 门槛 ≥92% → <strong>未达标，不能 L4</strong></td></tr>
+      <tr><td>派单准确性</td><td>94% ✅</td></tr>
+      <tr><td>工具调用合规</td><td>91% ✅</td></tr>
+      <tr><td>幻觉率</td><td>78% ❌ 未达标</td></tr>
+      <tr><td>延迟 p95</td><td>3.2s ⚠️ 警告</td></tr>
+    </tbody>
+  </table>
+  <div class="callout red">
+    <strong>L4 门控条件：</strong>Evals ≥92% <strong>且</strong> Draft 审批通过 → 两项都满足才能发布为无人值守 Agent。
+  </div>
+</div>
+
+<div class="section" id="aip-draft">
+  <div class="subsection-title">Draft 审批台 <span class="badge badge-orange">人在回路</span></div>
+  <p><strong>用途</strong>：Human-in-the-Loop 审批工作台，处理 Agent 产生的写操作提案。</p>
+
+  <div class="callout yellow">
+    <strong>核心理念：物理隔离</strong>。Agent 的写操作<strong>不直接写入生产本体</strong>，而是先生成 Draft 进入物理隔离的 Draft Dataset，经人工审批后才落库。Agent 即使出错也不会污染生产数据。
+  </div>
+
+  <p><strong>三栏布局</strong>：</p>
+  <table>
+    <thead><tr><th>栏目</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>左栏 · 任务列表</strong></td><td>待审批 Draft 任务（如"纯度异常 ↔ 设备振动 · 知识回填"，置信度 0.93）</td></tr>
+      <tr><td><strong>中栏 · 任务详情</strong></td><td>提案类型（InsightBackfill / Action / 工具调用）+ 变更表格（新建/关联/更新 × 对象 × 字段）+ 影响面卡片</td></tr>
+      <tr><td><strong>右栏 · 审批历史</strong></td><td>时间线：提案创建 → 请求审查 → Comment → Awaiting approval</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>审批操作</strong>：</p>
+  <ul style="margin:8px 0 12px 24px;color:var(--text2);font-size:13px;">
+    <li><strong>查看决策链</strong>：跳转 Decision Lineage，查看 Agent 为什么做出此提案</li>
+    <li><strong>驳回</strong>：附理由退回，Agent 可学习修正</li>
+    <li><strong>批准并写入</strong>：将 Draft 变更正式写入生产本体</li>
+  </ul>
+</div>
+
+<div class="section" id="aip-lineage">
+  <div class="subsection-title">决策谱系 <span class="badge badge-teal">可追溯</span></div>
+  <p><strong>用途</strong>：单次 Agent 决策的完整因果链追踪——从输入到输出的每一步都可审计。</p>
+  <p><strong>什么时候用</strong>：排查 Agent 为什么做出某个决策、回溯错误原因、审计合规性时。</p>
+  <p><strong>6 段链路</strong>（按 Trace ID 查询）：</p>
+  <div class="flow-diagram">
+<span class="flow-step"><span class="label">① 输入</span> 用户消息 + Selection 上下文</span>
+<span class="flow-arrow">↓</span>
+<span class="flow-step"><span class="label">② 检索</span> Wiki Tool 调用，命中 SOP v2.3</span>
+<span class="flow-arrow">↓</span>
+<span class="flow-step"><span class="label">③ 推理</span> 模型 gpt-4o-mini 生成方案</span>
+<span class="flow-arrow">↓</span>
+<span class="flow-step"><span class="label">④ 熔断事件</span> L4 自动化熔断触发，降级为 L2</span>
+<span class="flow-arrow">↓</span>
+<span class="flow-step"><span class="label">⑤ 输出</span> 建议派单方案 → 进入 Draft</span>
+<span class="flow-arrow">↓</span>
+<span class="flow-step"><span class="label">⑥ 回填</span> Insight Backfill（知识回填）</span>
+  </div>
+</div>
+
+<div class="section" id="aip-observability">
+  <div class="subsection-title">可观测性 <span class="badge badge-blue">运行监控</span></div>
+  <p><strong>用途</strong>：Agent 运行时的全链路监控。</p>
+  <p><strong>什么时候用</strong>：运维人员监控 Agent 健康状态、排查性能瓶颈、定位失败节点时。</p>
+  <p><strong>两个视图</strong>：</p>
+  <ul style="margin:8px 0 12px 24px;color:var(--text2);font-size:13px;">
+    <li><strong>Workflow Canvas</strong>：工作流画布，节点执行状态可视化（成功绿/失败红/进行中蓝）</li>
+    <li><strong>Trace Timeline</strong>：追踪时间线，每步耗时可视化条，点击查看详细输入输出和错误日志</li>
+  </ul>
+</div>
+
+<div class="section" id="aip-maturity">
+  <div class="subsection-title">成熟度楼梯 <span class="badge badge-purple">L1→L4</span></div>
+  <p><strong>用途</strong>：展示 Agent 从临时分析到全自动化的 4 个成熟度等级，以及升级需要什么条件。</p>
+
+  <div class="layer-stack">
+    <div class="layer" style="border-color:var(--green);">
+      <div class="layer-num" style="color:var(--green);">L1</div>
+      <div class="layer-content">
+        <div class="layer-title">临时分析 <span class="badge badge-green">无自主</span></div>
+        <div class="layer-desc">AIP Threads，拖文档即问即答，只读不写。沙箱环境，无门控要求。</div>
+      </div>
+    </div>
+    <div class="layer" style="border-color:var(--yellow);">
+      <div class="layer-num" style="color:var(--yellow);">L2</div>
+      <div class="layer-content">
+        <div class="layer-title">任务 Agent <span class="badge badge-yellow">人机协作</span></div>
+        <div class="layer-desc">Chatbot Studio + Prompt + 工具 + Ontology/Wiki。<strong>写操作须 HITL 确认</strong>。配置完整即可。</div>
+      </div>
+    </div>
+    <div class="layer" style="border-color:var(--accent);">
+      <div class="layer-num" style="color:var(--accent);">L3</div>
+      <div class="layer-content">
+        <div class="layer-title">Agentic 应用 <span class="badge badge-blue">自主执行</span></div>
+        <div class="layer-desc">工作台/OSDK 嵌入，Agent 组件化，变量绑定，可自主完成多步任务。<strong>门控：L2 验证通过</strong>。</div>
+      </div>
+    </div>
+    <div class="layer" style="border-color:var(--red);">
+      <div class="layer-num" style="color:var(--red);">L4</div>
+      <div class="layer-content">
+        <div class="layer-title">自动化 Agent <span class="badge badge-red">全自动</span></div>
+        <div class="layer-desc">发布为 Function/Automate，无人值守写回。<strong>门控：Eval ≥92% + Draft 审批通过</strong>。失败率 &gt;5% 自动熔断降级回 L3。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 4: MODEL MANAGEMENT ===== -->
+<div class="section" id="model-mgmt">
+  <div class="section-title"><span class="num">4</span>模型管理 — 三层栈架构</div>
+  <p>侧边栏 <strong>「模型管理」</strong> 分区。这是 AIP 智能层的底层依赖——管理 LLM 的连接、路由、目录、配额。</p>
+
+  <div class="callout orange">
+    <strong>三层栈设计意图：</strong>关注点分离。L1 管"能不能连"，L2 管"该用哪个"，L3 管"谁能用"，AIP 只管"调用"。
+  </div>
+
+  <div class="flow-diagram">
+<span class="flow-step">┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐     ┌──────────────┐</span>
+<span class="flow-step">│  L1 模型供应商    │ ──→ │  L2 模型路由      │ ──→ │  L3 已注册模型   │ ──→ │  AIP 智能体  │</span>
+<span class="flow-step">│     连接层        │     │     策略层        │     │     目录层        │     │     消费层    │</span>
+<span class="flow-step">│                  │     │                  │     │                  │     │              │</span>
+<span class="flow-step">│ • API Key 管理   │     │ • 任务→模型映射  │     │ • 模型清单       │     │ • Agent 调用  │</span>
+<span class="flow-step">│ • 健康检查 60s   │     │ • 权重分配       │     │ • 配额配置       │     │ • Logic 调用  │</span>
+<span class="flow-step">│ • 密钥轮换       │     │ • 熔断回退链     │     │ • 启用范围       │     │              │</span>
+<span class="flow-step">│ • KMS 加密       │     │ • 成本/合规控制  │     │                  │     │              │</span>
+<span class="flow-step">└─────────────────┘     └─────────────────┘     └─────────────────┘     └──────────────┘</span>
+  </div>
+</div>
+
+<div class="section" id="model-providers">
+  <div class="subsection-title">L1 模型供应商 <span class="badge badge-orange">连接层</span></div>
+  <p><strong>用途</strong>：管理与模型 API 提供商的连接——认证、健康检查、密钥轮换。</p>
+  <p><strong>什么时候用</strong>：接入新的模型供应商，或检查现有供应商连接健康状态时。</p>
+  <table>
+    <thead><tr><th>功能</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>健康检查</td><td>每 60s 探测各供应商（深度求索 / Azure / vLLM / Anthropic）连接状态</td></tr>
+      <tr><td>KMS 密钥管理</td><td>AES-256-GCM 加密存储，Secret Ref 引用，不落地配置文件</td></tr>
+      <tr><td>密钥轮换</td><td>手动 / 自动 90 天轮换策略</td></tr>
+      <tr><td>支持类型</td><td>OpenAI 兼容 / Azure OpenAI / Anthropic / 本地 vLLM / Ollama / 自定义 Adapter</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" id="model-router">
+  <div class="subsection-title">L2 模型路由 <span class="badge badge-yellow">策略层</span></div>
+  <p><strong>用途</strong>：根据任务类型、数据敏感度、成本预算，将请求路由到最合适的模型。</p>
+  <p><strong>什么时候用</strong>：优化成本（便宜任务用小模型）、保障合规（PII 不出域）、配置高可用回退时。</p>
+  <table>
+    <thead><tr><th>路由规则示例</th><th>策略</th></tr></thead>
+    <tbody>
+      <tr><td>摘要/分类</td><td>本地 vLLM 小模 70% + Azure gpt-4o-mini 30%，禁公网</td></tr>
+      <tr><td>业务问答 + Wiki</td><td>Azure gpt-4o 100%</td></tr>
+      <tr><td>含 PII 字段</td><td>本地 vLLM 100%，<strong>强制不出域</strong></td></tr>
+      <tr><td>Provider 不可用</td><td>熔断降级 → gpt-4o-mini（回退链）</td></tr>
+    </tbody>
+  </table>
+  <div class="callout red">
+    <strong>熔断器状态机：</strong>Closed（正常）→ 错误率 &gt;10% 或 p99 &gt;3000ms → <strong>Open（熔断）</strong> → 等待 30s → <strong>Half-Open（半开探测）</strong> → 3 次探测成功 → Closed。
+  </div>
+</div>
+
+<div class="section" id="model-catalog">
+  <div class="subsection-title">L3 模型目录 <span class="badge badge-blue">目录层</span></div>
+  <p><strong>用途</strong>：模型发现与注册入口。</p>
+  <div class="callout">
+    <strong>目录 vs 已注册的区别：</strong>「目录」是平台支持的所有模型清单（可发现，但未授权使用）；「已注册」是配置了配额、已暴露给 AIP 智能体可选的模型。
+  </div>
+  <p><strong>工作流</strong>：供应商配置（L1）→ 路由策略（L2）→ 目录浏览 → 注册模型（L3）→ AIP 可选。</p>
+</div>
+
+<div class="section" id="model-capacity">
+  <div class="subsection-title">容量管理</div>
+  <p><strong>用途</strong>：管理模型使用量、速率限制和预留容量。</p>
+  <table>
+    <thead><tr><th>Tab</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr><td>查看使用量</td><td>各项目/用户的 Token 消耗统计</td></tr>
+      <tr><td>管理速率限制</td><td>项目级 + 用户级 QPS 配额</td></tr>
+      <tr><td>预留容量</td><td>20% 容量始终保留给实时交互式 AIP</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== SECTION 5: OPS ===== -->
+<div class="section" id="ops">
+  <div class="section-title"><span class="num">5</span>运维交付 — Apollo 体系</div>
+  <p>侧边栏 <strong>「运维交付」</strong> 分区（默认折叠）。Apollo 是多环境管理体系——一个中心 Hub 管理多个 Spoke 边缘环境。</p>
+
+  <div class="flow-diagram">
+<span class="flow-step">         ┌──────────────────┐</span>
+<span class="flow-step">         │   Hub (中心)      │</span>
+<span class="flow-step">         │   cn-east-hub-01  │</span>
+<span class="flow-step">         └───────┬──────────┘</span>
+<span class="flow-step">                 │ Probe 60s 轮询</span>
+<span class="flow-step">    ┌────────────┼────────────────┐</span>
+<span class="flow-step">    ↓            ↓                ↓</span>
+<span class="flow-step">┌────────┐  ┌────────┐      ┌──────────┐</span>
+<span class="flow-step">│ Spoke  │  │ Spoke  │      │  Spoke   │</span>
+<span class="flow-step">│ prod-sh│  │prod-bj │      │edge-factory│</span>
+<span class="flow-step">│stable  │  │stable  │      │ 气隙/离线  │</span>
+<span class="flow-step">│Full    │  │Full    │      │  Ferry   │</span>
+<span class="flow-step">└────────┘  └────────┘      └──────────┘</span>
+  </div>
+</div>
+
+<div class="section" id="ops-hub">
+  <div class="subsection-title">Hub 舰队</div>
+  <p><strong>用途</strong>：中心 Hub 管理各 Spoke 的总览页面，Probe 健康度每 60s 轮询。</p>
+  <p><strong>什么时候用</strong>：监控所有部署环境的健康状态，发现哪个 Spoke 离线或降级时。</p>
+</div>
+
+<div class="section" id="ops-spoke">
+  <div class="subsection-title">Spoke 详情</div>
+  <p><strong>用途</strong>：单个 Spoke（边缘环境）的详细配置和部署状态。</p>
+  <table>
+    <thead><tr><th>形态</th><th>特征</th><th>适用场景</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Full Spoke</strong></td><td>完整运行时，双向同步，Ontology/Pipeline 本地执行</td><td>标准部署</td></tr>
+      <tr><td><strong>Lite Spoke</strong></td><td>轻量代理，仅出站轮询，无本地计算</td><td>边缘/高合规区</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" id="ops-release">
+  <div class="subsection-title">Release 通道</div>
+  <p><strong>用途</strong>：管理资产包从 rc → beta → stable 的灰度发布。</p>
+  <div class="flow-diagram">
+<span class="flow-step"><span style="color:var(--yellow);">rc (候选)</span> 2.15.0-rc.5, 2 个 Spoke</span>
+<span class="flow-arrow">↓ 灰度推进</span>
+<span class="flow-step"><span style="color:var(--accent);">beta (试点)</span> 2.14.2-beta.1, 1 个 Spoke</span>
+<span class="flow-arrow">↓ 全量推广</span>
+<span class="flow-step"><span style="color:var(--green);">stable (稳定)</span> 2.14.1, 4 个 Spoke 全量</span>
+<span class="flow-arrow"></span>
+<span class="flow-step"><span style="color:var(--red);">⚡ Hotfix</span> 旁路 beta，紧急直达选定 Spoke（须变更审批）</span>
+<span class="flow-arrow"></span>
+<span class="flow-step"><span style="color:var(--purple);">↩ Recall</span> 回滚至上一已知良好版本</span>
+  </div>
+</div>
+
+<div class="section" id="ops-ferry">
+  <div class="subsection-title">Ferry 摆渡</div>
+  <p><strong>用途</strong>：气隙环境（无网络连接）下手动导出/导入资产包的向导工具。</p>
+  <p><strong>什么时候用</strong>：为无法联网的工厂/边缘环境部署更新时。通过 USB / 光盘等物理介质传递软件包。</p>
+</div>
+
+<div class="section" id="ops-assets">
+  <div class="subsection-title">FDE 资产包</div>
+  <p><strong>用途</strong>：可交付资产（FDE = Foundry Deployment Entity）的版本化打包管理，绑定 Release Channel 同步推进。</p>
+  <table>
+    <thead><tr><th>资产包</th><th>内容</th><th>绑定通道</th></tr></thead>
+    <tbody>
+      <tr><td>apollo-core</td><td>平台运行时</td><td>stable</td></tr>
+      <tr><td>fde-维修派单</td><td>Ontology + Workshop + AIP Logic</td><td>beta</td></tr>
+      <tr><td>fde-库存预警</td><td>Pipeline + Function</td><td>rc</td></tr>
+      <tr><td>config-overrides</td><td>Spoke 局部覆盖</td><td>stable</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" id="ops-cases">
+  <div class="subsection-title">接入案例</div>
+  <p><strong>用途</strong>：电商平台接入的案例展示和管理。展示 9 个平台的接入状态、端到端链路、阻塞项看板。</p>
+  <p><strong>什么时候用</strong>：了解各平台接入进度、排查阻塞项（G1 REST Connector / G2 OAuth Token Manager）时。</p>
+</div>
+
+<!-- ===== GLOSSARY ===== -->
+<div class="section" id="glossary">
+  <div class="section-title"><span class="num">附录 A</span>术语对照</div>
+  <table>
+    <thead><tr><th>术语</th><th>含义</th><th>对应 Palantir 概念</th></tr></thead>
+    <tbody>
+      <tr><td>Ontology（本体）</td><td>业务实体的语义化数据模型</td><td>Foundry Ontology</td></tr>
+      <tr><td>Object Type</td><td>业务实体类型定义（如 Order）</td><td>Object Type</td></tr>
+      <tr><td>Link Type</td><td>实体间关系定义</td><td>Link Type</td></tr>
+      <tr><td>Action Type</td><td>对实体的写操作定义</td><td>Action Type</td></tr>
+      <tr><td>ObjectSet</td><td>对象集合查询结果</td><td>Object Set</td></tr>
+      <tr><td>Module</td><td>Workshop 应用模块</td><td>Workshop Module</td></tr>
+      <tr><td>Widget</td><td>UI 组件（表格/卡片/图表）</td><td>Workshop Widget</td></tr>
+      <tr><td>Variable</td><td>应用状态变量</td><td>Workshop Variable</td></tr>
+      <tr><td>Pipeline</td><td>数据加工流水线（DAG）</td><td>Data Pipeline</td></tr>
+      <tr><td>Draft</td><td>AI 写操作提案（待审批）</td><td>Propose Edits</td></tr>
+      <tr><td>HITL</td><td>Human-in-the-Loop 人在回路</td><td>HITL</td></tr>
+      <tr><td>Propose Edits</td><td>AI 先提议再写回（不直接落库）</td><td>Propose Edits</td></tr>
+      <tr><td>Hub</td><td>中心部署环境</td><td>—</td></tr>
+      <tr><td>Spoke</td><td>边缘部署环境</td><td>—</td></tr>
+      <tr><td>FDE</td><td>Foundry Deployment Entity 资产包</td><td>—</td></tr>
+      <tr><td>Ferry</td><td>气隙环境手动交付</td><td>—</td></tr>
+      <tr><td>Capability</td><td>外部能力插件（C0/C1/C2）</td><td>—</td></tr>
+      <tr><td>Evals</td><td>AI 质量评测集</td><td>AIP Evals</td></tr>
+      <tr><td>BlockKind</td><td>逻辑画布的块类型</td><td>AIP Logic Node</td></tr>
+      <tr><td>Trace</td><td>决策追踪链</td><td>AIP Trace</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== NAV MAP ===== -->
+<div class="section" id="nav-map">
+  <div class="section-title"><span class="num">附录 B</span>导航全量地图（74 页面）</div>
+  <p>AOS 侧边栏完整结构，8 个分区 · 4 个子分组 · 74 个页面：</p>
+
+  <div class="subsection-title" style="font-size:14px;color:var(--teal);">工作台（8 页）</div>
+  <p style="font-size:12px;color:var(--text2);">应用列表 · 创建应用 · 模块管理 · 订单管理 · 风险告警管理 · 态势大屏 · Buddy 智能助手 · 分析建模</p>
+
+  <div class="subsection-title" style="font-size:14px;color:var(--teal);">应用程序构建工具（7 页）</div>
+  <p style="font-size:12px;color:var(--text2);">画布编辑 · 组件注册表 · 变量管理器 · 主题与样式 · 模块接口 · 事件配置 · 发布入口</p>
+
+  <div class="subsection-title" style="font-size:14px;color:var(--purple);">AIP 决策引擎（15 页）</div>
+  <p style="font-size:12px;color:var(--text2);"><strong>应用层：</strong>AIP 助手 · 对话机器人 · AIP 分析师</p>
+  <p style="font-size:12px;color:var(--text2);"><strong>逻辑编排层：</strong>AIP 逻辑画布 · Agent 工具面板 · 成熟度楼梯</p>
+  <p style="font-size:12px;color:var(--text2);"><strong>智能体：</strong>智能体插件 · 智能体目录 · 智能体列表 · 智能体导入 · 能力导入</p>
+  <p style="font-size:12px;color:var(--text2);"><strong>评测与治理：</strong>Evals 门控 · Draft 审批台 · 决策谱系 · 可观测性</p>
+
+  <div class="subsection-title" style="font-size:14px;color:var(--orange);">模型管理（4 页）</div>
+  <p style="font-size:12px;color:var(--text2);">模型目录 · 模型供应商 · 模型路由 · 容量管理</p>
+
+  <div class="subsection-title" style="font-size:14px;color:var(--accent);">本体 · 数字孪生（9 页）</div>
+  <p style="font-size:12px;color:var(--text2);">本体管理 · 对象探索 · 本体提案 · OKF funnel · OKF 概览 · 图谱健康度 · 活知识 Wiki · Wiki 索引 · 分支管理</p>
+
+  <div class="subsection-title" style="font-size:14px;color:var(--accent);">管道与数据治理（8 页）</div>
+  <p style="font-size:12px;color:var(--text2);">管道构建 · 管道提案 · 计划编辑器 · 搭建 · 数据集预览 · 代码库 · 数据沿袭 · 数据健康</p>
+
+  <div class="subsection-title" style="font-size:14px;color:var(--accent);">数据源与同步（8 页）</div>
+  <p style="font-size:12px;color:var(--text2);">数据链接器 · 数据连接 · 新建数据源 · 边缘代理 · 同步配置 · 同步路由 · 媒体集 · 文档智能</p>
+
+  <div class="subsection-title" style="font-size:14px;color:var(--green);">运维交付（11 页）</div>
+  <p style="font-size:12px;color:var(--text2);">本地平台 · 启停说明 · Hub 舰队 · Release 通道 · Spoke 详情 · Ferry 摆渡 · FDE 资产包 · 变更审批 · 配置与密钥 · 接入案例 · SaaS 开通</p>
+
+</div>
+
+<div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);text-align:center;">
+  AOS 产品使用说明 · v1.0 · 2026-07-27<br>
+  系统基线：3772 路由 · 66 页面全部 live · 9284 测试 PASS · HEAD 351bb1f
+</div>
+
+</main>
+
+<script>
+// Sidebar active link tracking
+const sections = document.querySelectorAll('.section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

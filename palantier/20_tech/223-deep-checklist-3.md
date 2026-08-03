@@ -1,50 +1,61 @@
 # 223-deep-checklist-3 — 详情页/弹出页深度检查（9 页）
 
+> 版本：v1.1（2026-07-29 功能完整度复审）
+> 原生成：2026-07-26
 > 范围：不在侧栏的 9 个二级详情页/弹出页（从一级页面点击进入）
 > 检查标准：每页 7 项 — 页面结构 / 组件盘点 / 数据驱动 / 交互 / 主题样式 / 系统现状 / 风险依赖
-> 生成时间：2026-07-26
+> 配套：[`223-deep-checklist.md`](./223-deep-checklist.md) §1.1 · [`223-deep-checklist-2.md`](./223-deep-checklist-2.md) · [`227-未完成项补齐计划.md`](./227-未完成项补齐计划.md)
 
 ---
 
-## 总览
+## 总览（2026-07-29 最新）
 
-| # | 页面 | 视觉稿 | React 实现 | 路由 | 完整度 | 工作量 |
-|---|------|--------|-----------|------|--------|--------|
-| 1 | 对象类型详情 | `ontology-object.html` | `ObjectTypeDetailPage.tsx` + `objectTypeDetail.tsx` | `/ontology/object-types/:typeId` | ~65% | M (1-2d) |
-| 2 | 链接类型详情 | `ontology-link.html` | `LinkTypeEditorPage.tsx` | `/ontology/link-types/:linkId` | ~35% | L (3-5d) |
-| 3 | Action 详情 | `ontology-action.html` | `ActionTypeEditorPage.tsx` | `/ontology/action-types/:actionId` | ~40% | L (3-5d) |
-| 4 | 属性类型详情 | `ontology-property.html` | 🔴 缺失 | — | 0% | XL (5-8d) |
-| 5 | Function 详情 | `ontology-function.html` | 🔴 缺失 | — | 0% | L (3-5d) |
-| 6 | Wiki 详情 | `ontology-wiki.html` | `ontology.tsx` WikiPage（部分） | `/ontology/wiki` | ~20% | XXL (10-15d) |
-| 7 | Wiki 差异 | `ontology-wiki-diff.html` | 🔴 缺失 | — | 0% | M (2-3d) |
-| 8 | 管道详情（画布） | `pipeline.html` | `pipelineCanvas.tsx` | `/data/pipelines/:pipelineId` | ~45% | L (3-5d) |
-| 9 | 数据源详情 | `source-detail.html` | `sourceDetailPage.tsx` | `/data/sources/:sourceId` | ~35% | L (3-5d) |
+| # | 页面 | 视觉稿 | React 实现 | 路由 | 旧% | **现%** | 工作量(剩) |
+|---|------|--------|-----------|------|-----|--------|-----------|
+| 1 | 对象类型详情 | `../foundry/html/ontology-object.html` | `ObjectTypeDetailPage.tsx` + `objectTypeDetail.tsx` | `/ontology/object-types/:typeId` | ~65 | **65** | M |
+| 2 | 链接类型详情 | `../foundry/html/ontology-link.html` | `LinkTypeEditorPage.tsx` | `/ontology/link-types/:linkId` | ~35 | **50** | L |
+| 3 | Action 详情 | `../foundry/html/ontology-action.html` | `ActionTypeEditorPage.tsx` | `/ontology/action-types/:actionId` | ~40 | **55** | L |
+| 4 | 属性类型详情 | `../foundry/html/ontology-property.html` | `PropertyEditorPage.tsx` | `/ontology/properties/:typeId` | 0（误） | **50** | M–L |
+| 5 | Function 详情 | `../foundry/html/ontology-function.html` | `FunctionEditorPage.tsx` | `/ontology/functions` | 0（误） | **45** | M |
+| 6 | Wiki 详情 | `../foundry/html/ontology-wiki.html` | `WikiDetailPage.tsx` | `/ontology/wiki/:wikiId` | ~20 / 0 | **35** | XL |
+| 7 | Wiki 差异 | `../foundry/html/ontology-wiki-diff.html` | `WikiDiffPage.tsx` | `/ontology/wiki/:wikiId/diff` | 0（误） | **40** | M |
+| 8 | 管道详情（画布） | `../foundry/html/pipeline.html` | `pipelineCanvas.tsx` | `/data/pipelines/:pipelineId` | ~45 | **55** | L |
+| 9 | 数据源详情 | `../foundry/html/source-detail.html` | `sourceDetailPage.tsx` | `/data/sources/:sourceId` | ~35 | **50** | L |
 
-**合计工作量估算：26-42 人天**
+**关键变化（相对 07-26）**：#4/#5/#6/#7 **均已有路由与页面**，不再是「从零新建」；剩余工作是视觉保真 + API 闭环。
+**合计剩余工作量估算：约 18–30 人天**（低于旧估 26–42，因页面已存在）。
+
+### 阅读说明
+
+- 下文各页「🔴 缺失」叙述若仍出现，**以本总览现% 为准**。
+- 详细组件差距清单仍可用于改造；排期见 227 计划。
 
 ---
 
-## 建议实施顺序
+## 建议实施顺序（复审后）
 
 | 优先级 | 页面 | 理由 |
 |--------|------|------|
-| **P0** | #1 对象类型详情 | 已有 65% 基础，补字段+链接图即可 |
-| **P0** | #4 属性类型详情 | 核心功能，从零新建但价值最高 |
-| **P1** | #8 管道详情画布 | DAG 拓扑动态化是画布页核心价值 |
-| **P1** | #9 数据源详情 | ER 图 + Schema 树是 DB Explorer 的基础 |
-| **P1** | #2 链接类型详情 | 已有 CRUD，重构布局+补可视化 |
-| **P1** | #3 Action 详情 | 已有 CRUD+试跑校验，重构布局+补可视化 |
-| **P2** | #7 Wiki 差异 | 依赖 Wiki 版本 API，M 级工作量 |
-| **P2** | #6 Wiki 详情 | XXL 级，建议分 3 期实施 |
-| **P3** | #5 Function 详情 | 只读页面，优先级最低 |
+| **P0** | #6 Wiki 详情 | 现%最低且视觉差距最大（非完整富文本） |
+| **P0** | #1 对象类型详情 | 已有基础，补链接图+元数据即可抬高体验 |
+| **P1** | #8 管道详情画布 | DAG 变换/历史未满 |
+| **P1** | #9 数据源详情 | ER/Schema 树相对视觉仍弱 |
+| **P1** | #4 属性类型详情 | 页已有，对齐双栏+列映射 |
+| **P1** | #2/#3 链接·Action | CRUD 有，补可视化与布局 |
+| **P2** | #7 Wiki 差异 | 依赖版本 API |
+| **P2** | #5 Function 详情 | 列表+编辑器有，对齐视觉即可 |
 
 ---
 
 ## 详细检查报告
 
+> 以下章节保留 07-26 组件级差距；每节开头已加 **现完整度** 标注。
+
 ---
 
 ### 页面 1: 对象类型详情 (`ontology-object`)
+
+> **现完整度（2026-07-29）：65%** · `/ontology/object-types/:typeId` ✅
 
 **视觉稿**: `foundry/html/ontology-object.html`
 **React**: `ObjectTypeDetailPage.tsx` (176行) + `objectTypeDetail.tsx` (700行)
@@ -129,6 +140,8 @@
 
 ### 页面 2: 链接类型详情 (`ontology-link`)
 
+> **现完整度（2026-07-29）：50%** · `/ontology/link-types/:linkId` ✅
+
 **视觉稿**: `foundry/html/ontology-link.html`
 **React**: `LinkTypeEditorPage.tsx` (222行)
 **路由**: `/ontology/link-types/:linkId` ✅ 已注册
@@ -204,6 +217,8 @@
 ---
 
 ### 页面 3: Action 详情 (`ontology-action`)
+
+> **现完整度（2026-07-29）：55%** · `/ontology/action-types/:actionId` ✅
 
 **视觉稿**: `foundry/html/ontology-action.html`
 **React**: `ActionTypeEditorPage.tsx` (285行)
@@ -285,6 +300,8 @@
 ---
 
 ### 页面 4: 属性类型详情 (`ontology-property`) — 🔴 需从零新建
+
+> **现完整度（2026-07-29）：50%** · `/ontology/properties/:typeId` ✅ — **不再缺失**
 
 **视觉稿**: `foundry/html/ontology-property.html`
 **React**: 无（无路由无页面文件）
@@ -369,6 +386,8 @@
 
 ### 页面 5: Function 详情 (`ontology-function`) — 🔴 需从零新建
 
+> **现完整度（2026-07-29）：45%** · `/ontology/functions` ✅ — **不再缺失**
+
 **视觉稿**: `foundry/html/ontology-function.html`
 **React**: 无（无路由无页面文件）
 
@@ -434,6 +453,8 @@
 ---
 
 ### 页面 6: Wiki 详情 (`ontology-wiki`) — 需大幅改造
+
+> **现完整度（2026-07-29）：35%** · `/ontology/wiki/:wikiId` ✅ — **不再缺失**；远低于视觉 Slate
 
 **视觉稿**: `foundry/html/ontology-wiki.html` (794行，最复杂的视觉稿)
 **React**: `ontology.tsx` 中 `WikiPage` 函数（line 334-696），路由 `/ontology/wiki`
@@ -528,6 +549,8 @@
 
 ### 页面 7: Wiki 差异 (`ontology-wiki-diff`) — 🔴 需从零新建
 
+> **现完整度（2026-07-29）：40%** · `/ontology/wiki/:wikiId/diff` ✅ — **不再缺失**
+
 **视觉稿**: `foundry/html/ontology-wiki-diff.html`
 **React**: 无（无路由无页面文件）
 
@@ -601,6 +624,8 @@
 ---
 
 ### 页面 8: 管道详情/画布 (`pipeline`)
+
+> **现完整度（2026-07-29）：55%** · `/data/pipelines/:pipelineId` ✅
 
 **视觉稿**: `foundry/html/pipeline.html`
 **React**: `pipelineCanvas.tsx`
@@ -703,6 +728,8 @@
 ---
 
 ### 页面 9: 数据源详情/DB Explorer (`source-detail`)
+
+> **现完整度（2026-07-29）：50%** · `/data/sources/:sourceId` ✅
 
 **视觉稿**: `foundry/html/source-detail.html`
 **React**: `sourceDetailPage.tsx`
