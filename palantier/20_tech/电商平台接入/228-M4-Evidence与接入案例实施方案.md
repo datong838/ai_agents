@@ -313,6 +313,20 @@ M4-2 生产接线还必须由总控单写 PostgreSQL Reader 与 Marking Resolver
 - W3：detail/timeline 组件。
 - W4：薄页面、scope/选择/错误态集成与静态伪事实清除。
 
+**实施冻结（2026-08-04）：** M4-3 只消费 M4-1 已交付的 `apps/web/src/api/integrationCases/` 五端点 SDK 和 M4-2 已验证的真实响应，不修改后端 DTO、Policy、Store、Service、Router、数据库或 OpenAPI。页面运行路径必须移除 `STATS`、`PLATFORM_CASES` 及“7 已上线”“1.2M 行/日”“live=生产运行”等静态伪事实；测试夹具只能注入组件或 hook，不能作为失败回退数据。
+
+M4-3 读取与交互契约：
+
+- W1 在 `apps/web/src/pages/s2/integrationCases/` 建立单一 read model/hooks；列表、详情和时间线使用独立 request token/abort 或等价世代门，旧 scope/旧 Case 响应不得覆盖新选择。
+- 列表状态覆盖 `idle/loading/ready/empty/forbidden/not_visible_or_missing/error/stale/refreshing`；详情和时间线独立失败，列表仍可用。手动刷新失败可保留最后一次服务端事实，但必须显示 stale，不能静默伪装为最新。
+- scope 只允许 `current/reference`；切换 scope、tenant 或筛选必须清空旧选择、详情、时间线和陈旧错误。reference 不显示 current 专属 owner/Installation/Overlay/Lock，不显示 current stats。
+- W2 的统计卡与目录卡只格式化服务端 `stats/items`；`null` 显示 `—`，明确 `0` 显示 `0`，不得在浏览器重算 eligible/production/connector/pipeline 等聚合。
+- W3 的详情、8 门阶段和时间线只展示服务端 `computedStage`、`stageGates`、`blockers`、Evidence 元数据与 Stage Event；不得由图标、步骤序号、Evidence 数量或文档名称推断阶段。
+- W4 保持 `IntegrationCasesPage.tsx` 为 scope、筛选、选择、刷新和组件组合的薄页面；本波默认只读，不增加创建 Case 或生成 Snapshot 的 UI mutation，避免在浏览器端引入幂等/CAS/未知结果的新状态面。
+- 授权隐藏与不存在继续统一为非披露状态；403、完整性错误、网络错误必须诚实区分。任何错误态都不回退到静态平台数据。
+
+M4-3 退出门：新增组件与 hook 专项测试、原 IntegrationCasesPage 测试、`integrationCases` SDK 累计测试、Web 全量、TypeScript 和 production build 全部 GREEN；运行路径搜索确认静态伪事实清零；浏览器证据留到 M4-4 完成真实后端场景闭环。
+
 ### M4-4：降级、统计与浏览器闭环
 
 - 覆盖 Evidence 新增、最新负向、expiry、revoke、续期、重复 projector。
