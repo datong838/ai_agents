@@ -1,8 +1,8 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-03
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@435de34`
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，`m1@94b08f5`
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@dff51c1`（与 M3-0 GREEN 的 `435de34` tree 完全一致）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，`m1@b8a7274`（本次分支同步记录前基线）
 > 当前门禁：M3-0 最终 GREEN，允许进入 M3-1；M5 完成前不得进入电商 G0～G6。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
