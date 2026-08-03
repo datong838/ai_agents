@@ -1,8 +1,8 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.8 评审通过 · M3-4 GREEN · M3-5 开工边界已冻结**
+> 状态：**v2.0 评审通过 · M3-0～M3-5 最终 GREEN · 允许进入 M4 方案冻结**
 > 起始代码基线：`aos-platform m1@d85992b`
-> 当前代码基线：`aos-platform m1@6432444`（五分支同 HEAD/tree，五个远程分支已更新）
+> 当前代码基线：`aos-platform m1@36b386e`（五分支同 HEAD/tree，五个远程分支已更新）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
 > 后续门禁：M3 GREEN 后方可进入 M4；M5 完成前不得进入电商 G0～G6
 
@@ -428,6 +428,14 @@ W1～W3 测试合入后，Web 138 files / 1923 tests、Web TypeScript 和 produc
 3. 只修改 `apps/web/src/api/assetControl/compositions.ts`、`errors.ts` 及必要的既有测试；不提高 Desktop lib、不引入 polyfill、不改变运行时响应。
 4. 修复后重跑 Web、Desktop、Ontology SDK 与后端累计门；未全部 GREEN 不得标记 M3 完成。
 
+#### M3-5.6 实施结果（2026-08-03）
+
+M3-5 已在 `m1@36b386e` 完成。W1 新增真实本地 JWT、真实 Installation Router/Service 与隔离 PostgreSQL schema 的 HTTP 生命周期测试，按 requester/checker/installer 三个身份验证 `create → submit → approve → apply → verify → rollback`，同时确认自批 403、旧 ETag 409、失败命令零 receipt/revision/event、服务端 Evidence 和首次 active/rollback 空基线 Pointer。W2/W3 只增强 Controller 与页面测试，覆盖连续状态、独立新幂等键、409 实际响应、412 兼容模拟、unknown 原命令恢复、角色/离线门、刷新回读和 UI/Controller 防漂移矩阵；未新增生产状态机或第二套 Controller。
+
+累计门发现并按 M3-5.5 修复共享 SDK 的 Desktop TypeScript lib 兼容问题，只把 `Object.hasOwn` 和双参数 Error 构造替换为等价低 lib 写法，错误 cause、分类和 API 行为不变。最终 Web 138 files / 1923 passed，Web TypeScript 与 production build GREEN（233 modules）；后端 M3/Installation/Composition/Control/OpenAPI 累计 113/113；Desktop 9 files / 40 passed、TypeScript/build GREEN（253 modules）；Ontology SDK 6/6。五分支均为 `36b386e`、tree `1b7c7fed...`、ahead/behind `0/0`，五个远程分支同 HEAD。
+
+浏览器生产组件在本波未变化；M3-4 已保留浏览器 API 不可达时失败关闭证据。M3-5 的真实双角色 POST 由 HTTP TestClient 经过真实 auth/router/service/PostgreSQL 完成，Composition Lock 由测试 Store fixture 预置、release revalidation 使用确定性测试替身；未把未执行的公开 Resolve HTTP 或真实平台接入写成通过。完整证据见 [`2026-08-03-M3-5最终总控收口证据.md`](../evidence/m0/m3-ui-sdk/2026-08-03-M3-5最终总控收口证据.md)。
+
 ## 7. 测试矩阵
 
 ### 7.1 SDK P0
@@ -490,4 +498,4 @@ M3 只有在以下条件全部满足时才可标记 GREEN：
 5. 专项、Web 全量、typecheck/build 和平台累计回归 GREEN，证据归档。
 6. 上位状态和 AOS 项目开发上下文同步更新。
 
-当前结论：**M3-4 已 GREEN；以五分支同步基线 `m1@6432444` 进入 M3-5 总控收口。M3-5 只补 API 可达环境的双角色完整链路、并发冲突与最终证据，不新增架构。**
+当前结论：**M3-0～M3-5 已在五分支同步基线 `m1@36b386e` 最终 GREEN；允许进入 M4 Evidence/Case 方案冻结。M4 编码仍须先冻结专门实施方案，不得提前进入 M5 或电商 G0～G6。**
