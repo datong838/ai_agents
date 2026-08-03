@@ -1,6 +1,6 @@
 # 228-M3 安装管理 UI 与 SDK 实施方案
 
-> 状态：**v1.3 评审通过 · M3-2 GREEN · 允许进入 M3-3**
+> 状态：**v1.4 评审通过 · M3-2 GREEN · M3-3 开工审计与文件所有权已冻结**
 > 起始代码基线：`aos-platform m1@d85992b`
 > 当前代码基线：`aos-platform m1@7f6e80a`（五分支同步，远程 `origin/m1` 已更新）
 > 上位约束：M1、M2-A、M2-B 已冻结并 GREEN；M3 不重画架构
@@ -251,6 +251,48 @@ M3-2 已在 `m1@7f6e80a` 收口。资产页保留 `/apollo/assets` 和原 named 
 - 未签名/未发布/冲突场景失败关闭。
 
 **退出门：** resolve 成功/冲突、重复点击幂等、刷新回读、create 失败场景通过。
+
+#### M3-3 开工审计（2026-08-03）
+
+基于五分支同步基线 `m1@7f6e80a` 的代码、OpenAPI、Pydantic DTO 与 M3-2 页面复核，确认本波不是补建后端能力，而是安全开放已有 `POST /v1/bundle-compositions:resolve`、`GET /v1/bundle-compositions/{composition_id}/locks/{revision}` 和 `POST /v1/bundle-installations`。
+
+审计发现以下 P0 缺口，编码前按本节冻结：
+
+1. `resolveComposition()` 与 `getCompositionLock()` 当前把成功 JSON 直接断言为 `StoredCompositionLock`，没有 Registry/Installation 等价的运行时失败关闭 parser；缺字段、额外字段、非法 UUID/hash/enum/时间均可能进入 UI。
+2. `createInstallation()` 只核对 ETag 与 `etagVersion`，尚未复用 Installation 详情 parser；现有测试使用 active fixture，不能证明首次 draft/revision 1 语义。
+3. resolve/create 出站 body 只受 TypeScript 约束，运行时额外字段仍会被 `JSON.stringify` 发出；本波增加 exact serializer，但复杂 semver 最终仍由服务端裁决，前端不得复制 Resolver。
+4. resolve 成功必须立即 GET 回读同一 `compositionId/revision`，核对完整 payload、revision 与四个服务端 hash；未回读或不一致的 lock 不得用于 create。
+5. 输入字段或 Registry 选择发生变化时，既有 lock 立即标记 stale 并禁用 create。网络/500 结果未知时只允许复用原 `Idempotency-Key` 恢复同一命令，不得换新键重试。
+6. 后端请求校验/解析资源上限可能返回 HTTP 422，`RESOLUTION_LIMIT_EXCEEDED` 必须进入稳定错误矩阵；不能继续落入 unknown。409 冲突详情只有在通过冻结 parser 后才能结构化展示，否则只展示 code/message/traceId。
+7. 页面不运行 Resolver，不重算 canonical hash、diff 或 evidence。依赖“图”首版采用服务端事实表，不推断不存在的层级或历史。
+
+真实契约边界：
+
+- Resolve 请求必含 `requested/platformApiVersion/platformRelease/environment`，可含 `registrySnapshotHash/currentInstallationRef`；`requested` 为 1～64 个唯一坐标。
+- Stored lock 顶层固定为 `compositionId/revision/payload/lockHash/permissionDiffHash/migrationPlanHash/contributionDiffHash/createdAt`；payload 固定包含 canonical request、snapshot hash、resolved、edges、capability providers、三类 diff 和可空 current installation ref。
+- Create body 只允许 `compositionId/lockRevision/overlayRevision/displayName`；成功结果必须是完整 Installation 响应并满足强 ETag。首次创建只获得 draft，不自动提交或安装。
+
+#### M3-3 四路文件所有权（2026-08-03）
+
+| 路线 | 独占文件 | 责任边界 |
+|---|---|---|
+| W1 | `api/assetControl/compositions.ts`、`compositionFixtures.ts`、`compositions.test.ts` | StoredCompositionLock 失败关闭 parser；resolve/create exact serializer；UUID/hash/enum/time/claim/diff 形状与必要交叉引用；禁止重算 hash/diff |
+| W2 | `assetBundles/commandModel.ts`、`commandModel.test.ts`、`resolveCreateHooks.ts`、`resolveCreateHooks.test.tsx` | 独立命令状态、输入 revision、幂等身份、双击抑制、resolve 后 GET 回读、unknown outcome、stale create gate；不渲染 UI |
+| W3 | `assetBundles/CompositionPanel.tsx`、`CompositionLockDetail.tsx`、`CompositionDependencyPanel.tsx`、`CompositionDiffPanel.tsx` 及各自测试 | 受控表单与纯展示组件；完整展示服务端 lock/resolved/edges/providers/三类 diff；不直接调用 API、不生成幂等键 |
+| W4/总控 | 最小修改 `assetControl/client.ts`、`client.test.ts`、`operations.ts`、`errors.ts`/测试、`installationFixtures.ts`；独占 `AssetBundlesPage.tsx` 与两套页面测试 | 接入 parser/serializer、create 详情 parser、422 错误策略、根页流程和成功后只读回读；禁止六个 M3-4 action 入口 |
+
+协作约束：W1 不修改 client；W2 只消费现有 SDK 公共方法并通过依赖注入测试；W3 只消费 props/types；W4/总控不改写 W1～W3 独占文件。共享导出与接线只由总控最小收口。四路完成后按 W1 → W2 → W3 → W4/总控顺序审查集成。
+
+#### M3-3 退出门补充
+
+1. resolve/get 共用失败关闭 parser；出站请求拒绝未知字段、snake_case、租户/权限/hash 注入，create 只发四字段。
+2. resolve 201 后必须 GET 回读；payload、revision 和四 hash 任一不一致即失败关闭，create 不可达。
+3. running/reconciling 阶段双击只产生一次调用；网络/500 的同命令恢复复用原键，新用户命令使用新键。
+4. 409 dependency conflict/cycle 与 422 resolution limit 有稳定失败态；401/403/404 清除残留结果，404 不泄漏 marking 隐藏信息。
+5. 任一输入变化使 lock stale；只有已回读、非 stale 的 lock 可创建 draft。create 成功后回读 Installation list/detail，不乐观伪造状态。
+6. Lock 元信息、canonical request、resolved、capability providers、edge 和 Permission/Migration/Contribution 三类 diff 均来自响应且可验证；四 hash 不可编辑。
+7. submit、approve、reject、apply、verify、rollback、客户端 hash/diff/evidence 计算、离线排队和自动重试全部不可达。
+8. 专项、Asset Control 累计、Web 全量、TypeScript、production build、后端 77 契约回归及浏览器场景全部 GREEN，才允许进入 M3-4。
 
 ### M3-4：审批、Apply/Verify/Rollback
 
