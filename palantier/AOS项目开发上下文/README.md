@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
-> 快照日期：2026-08-03
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@c10d5ee`（五分支与五个远程分支同步）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 M4-0 对账提交
-> 当前门禁：M4-0 GREEN，允许进入 M4-1 PostgreSQL 真源；M5 完成前不得进入电商 G0～G6。
+> 快照日期：2026-08-04
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@14311e2`（五分支与五个远程分支同步）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 M4-1 对账提交
+> 当前门禁：M4-1 GREEN，允许进入 M4-2 Service、Projection 与 API；M5 完成前不得进入电商 G0～G6。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -25,6 +25,7 @@
 - M3 实施方案：[`228-M3-安装管理UI与SDK实施方案.md`](../20_tech/电商平台接入/228-M3-安装管理UI与SDK实施方案.md)
 - M4 实施方案：[`228-M4-Evidence与接入案例实施方案.md`](../20_tech/电商平台接入/228-M4-Evidence与接入案例实施方案.md)
 - M4-0 回归证据：[`2026-08-03-M4-0契约与阶段策略冻结证据.md`](../20_tech/evidence/m0/m4-evidence-case/2026-08-03-M4-0契约与阶段策略冻结证据.md)
+- M4-1 回归证据：[`2026-08-04-M4-1PostgreSQL真源与SDK回归证据.md`](../20_tech/evidence/m0/m4-evidence-case/2026-08-04-M4-1PostgreSQL真源与SDK回归证据.md)
 - M3-0 回归证据：[`2026-08-03-M3-0契约与测试夹具冻结证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)
 - M3-1 回归证据：[`2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)
 - M3-2 回归证据：[`2026-08-03-M3-2真实只读资产页回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)

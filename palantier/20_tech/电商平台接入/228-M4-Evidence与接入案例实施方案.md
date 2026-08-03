@@ -1,8 +1,8 @@
 # 228-M4 Evidence 与接入案例实施方案
 
-> 状态：**v1.1 · M4-0 GREEN · 允许进入 M4-1 PostgreSQL 真源**
+> 状态：**v1.2 · M4-1 GREEN · 允许进入 M4-2 Service、Projection 与 API**
 > 起始代码基线：`aos-platform m1@36b386e`
-> 当前代码基线：`aos-platform m1@c10d5ee`（五分支与五远端同 HEAD/tree）
+> 当前代码基线：`aos-platform m1@14311e2`（五分支与五远端同 HEAD/tree）
 > 上位约束：M1、M2、M3 已最终 GREEN；本方案只细化 M0 已定义的 Evidence/Case 架构
 > 后续门禁：M4 最终 GREEN 后方可进入 M5；M5 完成前不得进入具体电商平台接入
 
@@ -286,9 +286,11 @@ apps/web/src/pages/s2/integrationCases/
 - W1：唯一迁移 `228asset2_integration_cases.py` 与真实 PG migration 测试。
 - W2：`integration_store.py`、canonical snapshot、receipt、并发/重启测试。
 - W3：Web SDK client 与错误映射。
-- W4：Store 对抗、跨租户/marking/corruption 测试。
+- W4：Store 对抗、跨租户/marking/corruption 测试；重启回读必须复验 current instance、最新 snapshot 和 projection 的 revision/ETag/stage/policy/cutoff/gates 镜像及 marking 绑定，命令回执写入失败必须连同 handler 产生的业务写入整体回滚。
 
 迁移全项目只允许 W1 写；公共导出和错误表由总控单写。
+
+**完成状态（2026-08-04）：GREEN。** W1 完成唯一 `228assetintegration` 迁移与 8 表数据库真源；W2 完成 Store、canonical snapshot、receipt、CAS、重启和并发保障；W3 完成五端点 Web SDK 与错误归一；W4 补齐重启时 current instance/latest snapshot/projection/marking 镜像复验与 handler/receipt 整体回滚。最终代码基线 `m1@14311e2`，五分支与五远端同 HEAD/tree、ahead/behind `0/0`、工作树 clean。详见 [M4-1 PostgreSQL 真源与 SDK 回归证据](../evidence/m0/m4-evidence-case/2026-08-04-M4-1PostgreSQL真源与SDK回归证据.md)。
 
 ### M4-2：Service、Projection 与 API
 
