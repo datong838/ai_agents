@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@8964c4b`（五分支与五个远程分支同步）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 M4-5 收口/M5 冻结对账提交
-> 当前门禁：M4 最终 GREEN，M5 专项方案已冻结，允许进入 M5-0；M5 完成前不得进入电商 G0～G6 或具体平台实现。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@4fd9c7f`（五分支与五个远程分支同步）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 M5-0 收口对账提交
+> 当前门禁：M5-0 GREEN，允许进入 M5-1 运行时测试签名与真实 Registry 发布；M5 完成前不得进入电商 G0～G6 或具体平台实现。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -31,6 +31,7 @@
 - M4-4 回归证据：[`2026-08-04-M4-4降级统计与浏览器闭环回归证据.md`](../20_tech/evidence/m0/m4-evidence-case/2026-08-04-M4-4降级统计与浏览器闭环回归证据.md)
 - M4-5 最终证据：[`2026-08-04-M4-5最终累计回归与M4收口证据.md`](../20_tech/evidence/m0/m4-evidence-case/2026-08-04-M4-5最终累计回归与M4收口证据.md)
 - M5 实施方案：[`228-M5-最小电商包组合验证实施方案.md`](../20_tech/电商平台接入/228-M5-最小电商包组合验证实施方案.md)
+- M5-0 回归证据：[`2026-08-04-M5-0契约与无业务骨架回归证据.md`](../20_tech/evidence/m0/m5-ecommerce-bundles/2026-08-04-M5-0契约与无业务骨架回归证据.md)
 - M3-0 回归证据：[`2026-08-03-M3-0契约与测试夹具冻结证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)
 - M3-1 回归证据：[`2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)
 - M3-2 回归证据：[`2026-08-03-M3-2真实只读资产页回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)
