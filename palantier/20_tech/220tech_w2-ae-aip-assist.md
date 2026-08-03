@@ -3,7 +3,7 @@
 > **版本**：v1.0 · 2026-07-22
 > **状态**：✅ 方案定稿 · 可编码
 > **对齐**：
-> - 差距分析 [220w](./220w-与目标系统差距分析.md) §11 #107/#108/#110
+> - 差距分析 [220w](./220w-与目标系统差距对照分析.md) §11 #107/#108/#110
 > - 220plan v4.3 已交付 76/166，本批收口 3 项 → 79/166
 > **范围**：W2-AE 收口代码辅助三件 — AIP Assist（代码解释/漏洞/翻译/补全）+ repoSettings.json（仓库配置）+ 推荐项目结构
 > **不替换底层**：本组是辅助/配置层，不重写 AIP Logic CoT debugger（属 W2-V #78）或 wave_ext code-repos
@@ -46,7 +46,7 @@
 
 ### 1.3 与 #109 的关系
 
-#109「列级血缘」的 CRUD 部分已由 W2-E #4 在 [lineage_views.py:65-78](file:///Users/ddt/work/projects/ai_agent/aos-platform/services/aos-api/aos_api/routers/lineage_views.py) 交付（set_column_lineage / get_column_lineage + `test_column_level_lineage`）。本批不重复开发 #109，留待 W2-AF+ 处理「列级影响分析」增量端点。
+#109「列级血缘」的 CRUD 部分已由 W2-E #4 在 `aos-platform/services/aos-api/aos_api/routers/lineage_views.py:65-78` 交付（set_column_lineage / get_column_lineage + `test_column_level_lineage`）。本批不重复开发 #109，留待 W2-AF+ 处理「列级影响分析」增量端点。
 
 ---
 

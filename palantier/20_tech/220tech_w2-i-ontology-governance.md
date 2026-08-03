@@ -21,7 +21,7 @@
 
 ### 2.1 现有端点
 
-`GET /v1/ontology/graph-health` — [routers/ontology.py](file:///Users/ddt/work/projects/ai_agent/aos-platform/services/aos-api/aos_api/routers/ontology.py#L647-L799)
+`GET /v1/ontology/graph-health` — `aos-platform/services/aos-api/aos_api/routers/ontology.py#L647-L799`
 
 ### 2.2 覆盖核对
 

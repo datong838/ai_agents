@@ -22,7 +22,7 @@
 ### 1.2 预览/编辑切换（视觉稿对齐）
 > "在视觉稿里 紧挨 工作流 的右边 有个 预览，点预览进入预览状态，在预览态 出一个 编辑（紫色字 那行的右边）"
 
-视觉稿 [workshop-canvas.html#L160-L165](file:///Users/ddt/work/projects/ai_agent/docs/palantier/foundry/html/workshop-canvas.html#L160-L165) 工具栏左侧确实是 3 个按钮：
+视觉稿 [workshop-canvas.html#L160-L165](../foundry/html/workshop-canvas.html#L160-L165) 工具栏左侧确实是 3 个按钮：
 ```html
 <button class="p-slate-mode is-active" data-mode="edit">组件</button>
 <button class="p-slate-mode" data-mode="workflow">工作流</button>
