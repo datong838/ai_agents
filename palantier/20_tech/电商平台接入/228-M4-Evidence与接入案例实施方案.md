@@ -1,8 +1,8 @@
 # 228-M4 Evidence 与接入案例实施方案
 
-> 状态：**v1.3 · M4-2 GREEN · 允许进入 M4-3 真实 Case 页面**
+> 状态：**v1.4 · M4-3 GREEN · 允许进入 M4-4 降级、统计与浏览器闭环**
 > 起始代码基线：`aos-platform m1@36b386e`
-> 当前代码基线：`aos-platform m1@483dd0f`（五分支与五远端同 HEAD/tree）
+> 当前代码基线：`aos-platform m1@b2dc69b`（五分支与五远端同 HEAD/tree）
 > 上位约束：M1、M2、M3 已最终 GREEN；本方案只细化 M0 已定义的 Evidence/Case 架构
 > 后续门禁：M4 最终 GREEN 后方可进入 M5；M5 完成前不得进入具体电商平台接入
 
@@ -326,6 +326,8 @@ M4-3 读取与交互契约：
 - 授权隐藏与不存在继续统一为非披露状态；403、完整性错误、网络错误必须诚实区分。任何错误态都不回退到静态平台数据。
 
 M4-3 退出门：新增组件与 hook 专项测试、原 IntegrationCasesPage 测试、`integrationCases` SDK 累计测试、Web 全量、TypeScript 和 production build 全部 GREEN；运行路径搜索确认静态伪事实清零；浏览器证据留到 M4-4 完成真实后端场景闭环。
+
+**完成状态（2026-08-04）：GREEN。** W1 完成单一 read model、九态读取、三路独立 generation gate、tenant/scope/filter 清选与 stale 保留；W2 完成仅格式化服务端统计和目录的 current/reference 组件；W3 完成详情、8 门、Blocker、受限 Evidence 与 Stage Event 时间线组件；总控将 `IntegrationCasesPage.tsx` 收薄为 scope、筛选、选择、刷新和组件组合，并监听租户切换。旧 `STATS`、`PLATFORM_CASES`、`BLOCKERS`、`E2E_STEPS` 以及平台名、1.2M、G1～G10 等静态伪事实已从运行路径清零。最终代码基线 `m1@b2dc69b`，五分支与五远端同 HEAD/tree、ahead/behind `0/0`、工作树 clean。详见 [M4-3 真实 Case 页面回归证据](../evidence/m0/m4-evidence-case/2026-08-04-M4-3真实Case页面回归证据.md)。
 
 ### M4-4：降级、统计与浏览器闭环
 
