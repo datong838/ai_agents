@@ -32,7 +32,7 @@
 
 - 新 revision `228ti4c3contract`，down revision `228ti4d7contract`。
 - 对 5 个 workspace FK 做 orphan precheck 后 Validate。
-- 创建 5 个 policy 并 ENABLE/FORCE；downgrade 只撤销 policy/RLS，不把 validated FK 退回 NOT VALID。
+- 创建 5 个 policy 并 ENABLE/FORCE；downgrade 撤销 policy/RLS，并以 drop/re-add `NOT VALID` 的方式恢复 C1 前态，业务行不变。
 
 ### C3-B Runtime transaction
 
