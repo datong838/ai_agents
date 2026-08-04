@@ -105,6 +105,29 @@ B2 实施结果：`7022ffe` 新增模板/实例负向契约测试并 GREEN。`mo
 - Object/Delta/Stream indexing 等进程内单例的 key、列表、删除和统计按 scope 隔离。
 - 未配置真实后端时只宣告契约与本地 fake GREEN，不冒充外部实盘验证。
 
+### TI-5 C1：对象存储与向量 namespace
+
+当前只读复核：MinIO `aos-media` 共 75 个对象，73 个位于 `dev-org/dev-project/` canonical prefix，2 个为历史 probe（`dev-probe.txt`、`dev-probes/...`）且无可证明客户归属；栖月汇 prefix 为 0。local vector 仅 1 条 `meta_aip_kv`，数据库 scope 为 `dev-org/dev-project`，key 中 collection 亦为 `dev-org__dev-project__demo-pipe-wo`，属于双重 scoped 测试数据。缓存未配置、离线 Store 未实现、消息队列仅进程内，不能虚报外部后端实盘。
+
+C1 冻结：
+
+- `file-object-store` probe 必须接收认证 Principal 的 `TenantScope`，只列 `tenant_key_prefix(scope)`，不得再使用空 prefix 扫全 bucket；返回 sample 只能是本 scope key。
+- 业务对象读写/删除必须先 `assert_object_key_tenant`；workspace clear 只能删除本 scope prefix。底层管理员 adapter 可保留 raw key 能力，但不得直接暴露给租户 API。
+- 两个无 canonical prefix 的 probe 对象只做可逆维护隔离：先本地安全备份 bytes/hash 和 manifest，再复制到 `_maintenance/quarantine/unowned/`，验证后删除旧 key；不得认领给测试组织或客户组织。维护 prefix 永不出现在租户 list/probe。
+- local vector 继续复用 A2 scoped KV + `scoped_collection_name`；补同逻辑 collection 双 scope 与 foreign prefix 拒绝测试。Qdrant 未配置，只验证 collection namespace 契约并保留 `EXTERNAL_BACKEND_UNVERIFIED`。
+
+### TI-5 C2：关键进程内 Singleton
+
+- 首批必须处理已证实的可变租户数据链：`aip_model_catalog.ModelCatalogEngine`、`phase5_pipeline_engine` 的 Dataset/Build/Health/SyncConfig、`wave_ext` Demo Dataset/Media bytes，以及直接关联的 analytics/read 路径。
+- 引擎 key 必须含 `(org_id,project_id,resource_id)`，Router 从 Principal 显式传 `TenantScope`；列表、详情、更新、删除、统计、reset 均只作用当前 scope。同 ID 双 scope不能覆盖。
+- 832 条静态 finding 不是 832 个租户缺口：常量 set/dict、只读 registry、平台模板先排除；可变 Singleton 必须按 Router 可达性和业务数据语义形成机器清单，未分类项阻断 TI-5 D，不凭文件名批量改造。
+
+### TI-5 C3：缓存、队列、离线与剩余进程态收口
+
+- 未配置 Redis/队列/离线后端时建立 canonical key/envelope contract、本地 fake 负向测试和启动状态 `NOT_CONFIGURED`；不得宣称生产后端 GREEN。
+- 对实际可达的 retry/dead-letter/job/offline output，envelope 缺 TenantScope 必须失败关闭；管理统计不得跨 scope 聚合明细。
+- 完成 mutable finding 分类表：`TENANT_OWNED_FIXED`、`PLATFORM_TEMPLATE`、`CONSTANT`、`NOT_REACHABLE`、`EXTERNAL_UNVERIFIED`，每项带代码证据。
+
 ### TI-5 D：总收口
 
 - 全量 schema/resource lint、同 ID 双 scope、跨 scope 负向、无 scope fail-closed。
