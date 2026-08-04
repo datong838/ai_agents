@@ -1,7 +1,7 @@
 # 228 · TI-3 E1 Object/Graph/Draft Runtime 租户列扩展实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：连续执行授权下评审通过 / 待实施
+> 状态：GREEN / 已完成
 > 前置：TI-2 E1～E7 GREEN；代码 `m1@4004170`；共享库 `228ti2e7contract`
 
 ## Rules
@@ -34,6 +34,7 @@
 | `aos_api/tenant_resources.yaml` | 5 个 NO_TENANT 资源更新为带列 WEAK_PK；executionPlan 不变 |
 | `aos_api/tenant_schema_lint.py` | TI-3 E1 只读报告 |
 | `tests/tenant_isolation/test_ti3_e1_object_expand.py` | 迁移、实库 lint、模板不变、行数守恒与升降级门 |
+| `tests/conftest.py` | 隔离库在 TI 迁移前创建既有 Draft runtime 表，修复干净库迁移链 |
 
 ## 备份与 Precheck
 
@@ -51,3 +52,10 @@ E1 downgrade 先删除 9 个 NOT VALID FK，再删除 5 表新增 nullable 列�
 4. Alembic `upgrade → downgrade → upgrade` GREEN，最终 revision `228ti3e1expand`。
 5. TI-3 E1 专项、既有 Tenant Isolation、Object/Graph/Draft/Wiki 回归 GREEN。
 6. 五分支同步后才进入 TI-3 E2 显式 TenantScope；E1 不授权历史回填或具体商城接入。
+
+## 执行结果
+
+- 代码 `7f7d48a`，最终 revision `228ti3e1expand`；5 表新增 10 个 nullable scope 列，9 个工作区 FK 均 NOT VALID。
+- 9 表总计 1,030 行守恒；3 张 Ontology 模板表无 scope 漂移；真实 upgrade/downgrade/upgrade GREEN。
+- Tenant Isolation `100 passed, 7 skipped`；Object/Graph/Draft/Wiki 扩大回归 `705 passed, 45 skipped`，另有 2 个与本波无关的既有 OpenFGA bearer 测试失败（测试种子函数现已 schema-only，单独重跑仍失败），未用放宽隔离方式掩盖。
+- 五分支已同步至 `7f7d48a`。下一门为 TI-3 E2 显式 TenantScope 与新写双写，不回填历史行。
