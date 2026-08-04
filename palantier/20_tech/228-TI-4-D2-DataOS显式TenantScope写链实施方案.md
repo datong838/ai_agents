@@ -1,7 +1,7 @@
 # 228 · TI-4 D2 Data OS 显式 TenantScope 写链实施方案
 
-> 版本：v1.1 · 2026-08-04
-> 状态：D2-A GREEN / D2-B 执行中
+> 版本：v1.2 · 2026-08-04
+> 状态：D2-A / D2-B 全部 GREEN
 > 授权：用户已授权连续完成微商城接入前置；本波不连接具体商城
 > 前置：TI-4 D1 GREEN；代码 `m1@8e49b68`；Alembic `228ti4d1expand`
 
@@ -32,6 +32,8 @@ Router 从 Principal 构造一个 TenantScope，所有关联写入复用同一 s
 D2-A GREEN 后立即进入 D2-B，不提前进入 D3。
 
 D2-A 已由代码 `5155d9b` 完成：六类 Store persist 显式 scope，跨 scope/NULL 历史全局 ID 冲突失败关闭，Dataset History scoped replace，Sync 只联动当前 scope Dataset；专项 12 passed、Tenant Isolation 144 passed / 8 skipped，共享库 297 行零改写。五分支 tree 为 `b9890d897cf973dc6c3100f61f2558b204d16e0d`。
+
+D2-B 已由代码 `7a05bd8` 完成：Graph 读写删与六类删除链显式 scope，nested ID 唯一检查按租户，错租户删除无效，`boot_data_os` 停止无 scope 物理删数。专项 48 passed、相关回归 45 passed、Tenant Isolation 155 passed / 8 skipped；共享库 297 行与 `228ti4d1expand` 均守恒。五分支 tree 为 `ab11617deee2fdf326cef2afe8e531555bb2df79`。
 
 ## 二、写入 Contract
 
@@ -64,4 +66,4 @@ D2-A 已由代码 `5155d9b` 完成：六类 Store persist 显式 scope，跨 sco
 
 ## 五、后续边界
 
-D2 后仍保留全局主键、全局 `load_all/boot_data_os` 和 297 条未决历史，因此不能宣告 Data OS 已隔离。D3 建逐记录 ownership/quarantine ledger；D4 Validate；D5 才切 scoped read/boot；D6 RLS；D7 复合 Contract 与 runtime DDL 收归 migration。
+D2 后仍保留全局主键、全局 `load_all/boot_data_os` 和 293 条缺 scope 历史，因此不能宣告 Data OS 已隔离。下一门为《228-TI-4-D3-DataOS历史归属账本与逻辑隔离实施方案》；随后 D4 Validate、D5 scoped read/boot、D6 RLS、D7 复合 Contract 与 runtime DDL 收归 migration。

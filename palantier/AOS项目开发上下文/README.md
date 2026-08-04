@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@8e49b68`（TI-4 D1 Data OS Expand）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-4 D1 收口提交
-> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2、TI-PRE-1、TI-2 E1～E7、TI-3 E1～E7、TI-4 C1/C2/D1 GREEN；59 条逻辑 QUARANTINE 使 TI-1 E4 BLOCKED；下一门 TI-4 D2，真实平台连接仍暂停。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@7a05bd8`（TI-4 D2 Data OS Write/Graph/Delete）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-4 D2 收口提交
+> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2、TI-PRE-1、TI-2 E1～E7、TI-3 E1～E7、TI-4 C1/C2/D1/D2 GREEN；59 条逻辑 QUARANTINE 使 TI-1 E4 BLOCKED；下一门 TI-4 D3，真实平台连接仍暂停。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -47,6 +47,10 @@
 - TI-4 C2 证据：[`2026-08-04-TI-4-C2-通用Connector显式TenantScope证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-4-C2-通用Connector显式TenantScope证据.md)
 - TI-4 D1 方案：[`228-TI-4-D1-DataOS租户列与工作区外键扩展实施方案.md`](../20_tech/228-TI-4-D1-DataOS租户列与工作区外键扩展实施方案.md)
 - TI-4 D1 证据：[`2026-08-04-TI-4-D1-DataOS租户列与外键扩展证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-4-D1-DataOS租户列与外键扩展证据.md)
+- TI-4 D2 方案：[`228-TI-4-D2-DataOS显式TenantScope写链实施方案.md`](../20_tech/228-TI-4-D2-DataOS显式TenantScope写链实施方案.md)
+- TI-4 D2-A 证据：[`2026-08-04-TI-4-D2A-DataOS显式TenantScope写链证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-4-D2A-DataOS显式TenantScope写链证据.md)
+- TI-4 D2-B 证据：[`2026-08-04-TI-4-D2B-DataOS图谱与删除链TenantScope证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-4-D2B-DataOS图谱与删除链TenantScope证据.md)
+- TI-4 D3 方案：[`228-TI-4-D3-DataOS历史归属账本与逻辑隔离实施方案.md`](../20_tech/228-TI-4-D3-DataOS历史归属账本与逻辑隔离实施方案.md)
 - TI-0B/TI-0C 证据：[`2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md)
 - TI-0D 证据：[`2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md)
 - TI-0E 证据：[`2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md)
