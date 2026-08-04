@@ -1,7 +1,7 @@
 # 228 · TI-2 E4 Module 外键验证实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：执行中
+> 版本：v1.1 · 2026-08-04
+> 状态：GREEN
 > 前置：TI-2 E3 `8e57c8a` GREEN；共享非生产 parent 160、matched child 462 已有 module_pk
 
 ## Rules
@@ -35,3 +35,13 @@
 5. 租户/Module/Workshop 回归和五分支收口 GREEN。
 
 E4 后进入 E5 Read Switch；APP-04/05 仍不得标绿。
+
+## 执行结果
+
+- 代码提交：`129d438`；五分支已同步。
+- 共享非生产库完成 `228ti2e1expand → 228ti2e4validate → 228ti2e1expand → 228ti2e4validate`，最终 Alembic 为 `228ti2e4validate`。
+- 升级后 11/11 FK `convalidated=true`；降级后 11/11 同名 FK 存在且 `convalidated=false`；最终再升级恢复 11/11 validated。
+- 8 张 Module 表行数与 E3 身份计数守恒：parent 160；子表 464，其中 462 已识别、两条孤儿 Event 继续为 NULL/quarantine。
+- 栖月汇 Module 资源仍为 0；RLS enabled/forced 表数仍为 0。
+- 专项 3 passed；Tenant Isolation + Workshop 累计 126 passed，7 个既有 warning。
+- 备份：`/private/var/tmp/aos-ti2-e4.59Pqw3/aos-meta-before.dump`，1,615,511 bytes，mode 600，SHA-256 `7c86c3d252fb147e21d26b6a951cf4203913ff6ba9127645cfd6e56edd65286d`。
