@@ -1,7 +1,7 @@
 # 228 · TI-4 D4 Data OS 工作区外键验证实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：评审授权链内，待执行
+> 状态：GREEN
 > 前置：TI-4 D3 GREEN；代码 `m1@78e16a7`；Alembic `228ti4d1expand`
 
 ## Rules
@@ -29,3 +29,7 @@
 ## 4. 后续边界
 
 D4 后仍不能启用 tenant-scoped 全量读取：当前 `load_all/boot_data_os` 会把 293 条无 scope 数据放入全局内存 Map。下一门 D5 必须先按 Principal/TenantScope 切换读取与启动装载，并让 NULL/quarantine 记录默认不可见。
+
+## 5. 执行结果
+
+代码 `176bdf5` 完成 `228ti4d4validate`；共享库真实 D1→D4→D1→D4 往返、7/7 FK Validate、297 行/293 NULL/293 quarantine 守恒。D1/D4 专项 5 passed，Tenant Isolation 160 passed / 8 skipped。下一门 D5。
