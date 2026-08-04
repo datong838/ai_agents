@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@2b81a1b`（TI-4 D5 Data OS Read/Boot）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-4 D5 收口提交
-> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2、TI-PRE-1、TI-2 E1～E7、TI-3 E1～E7、TI-4 C1/C2/D1～D5 GREEN；59 条公共 QUARANTINE 与 293 条 Data OS 逻辑 QUARANTINE 保持；下一门 TI-4 D6，真实平台连接仍暂停。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@3e9677f`（TI-4 D6 Data OS RLS）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-4 D6 收口提交
+> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2、TI-PRE-1、TI-2 E1～E7、TI-3 E1～E7、TI-4 C1/C2/D1～D6 GREEN；59 条公共 QUARANTINE 与 293 条 Data OS 逻辑 QUARANTINE 保持；下一门 TI-4 D7，真实平台连接仍暂停。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -57,6 +57,8 @@
 - TI-4 D5 方案：[`228-TI-4-D5-DataOS租户读取与启动装载切换实施方案.md`](../20_tech/228-TI-4-D5-DataOS租户读取与启动装载切换实施方案.md)
 - TI-4 D5 证据：[`2026-08-04-TI-4-D5-DataOS租户读取与启动装载切换证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-4-D5-DataOS租户读取与启动装载切换证据.md)
 - TI-4 D6 方案：[`228-TI-4-D6-DataOS行级安全实施方案.md`](../20_tech/228-TI-4-D6-DataOS行级安全实施方案.md)
+- TI-4 D6 证据：[`2026-08-04-TI-4-D6-DataOS行级安全证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-4-D6-DataOS行级安全证据.md)
+- TI-4 D7 方案：[`228-TI-4-D7-DataOS复合主键隔离区与迁移真源实施方案.md`](../20_tech/228-TI-4-D7-DataOS复合主键隔离区与迁移真源实施方案.md)
 - TI-0B/TI-0C 证据：[`2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md)
 - TI-0D 证据：[`2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md)
 - TI-0E 证据：[`2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md)

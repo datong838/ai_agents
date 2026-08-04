@@ -1,7 +1,7 @@
 # 228 · TI-4 D6 Data OS 行级安全实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：评审授权链内，待执行
+> 状态：GREEN / 已完成
 > 前置：TI-4 D5 GREEN；代码 `m1@2b81a1b`；Alembic `228ti4d4validate`
 
 ## Rules
@@ -32,3 +32,10 @@
 ## 4. 后续边界
 
 D6 后仍有全局主键、nullable scope 和 runtime bootstrap DDL。下一门 D7 必须把 293 条未知历史从活跃表物理移入不可变维护隔离区，随后冻结 scope NOT NULL、复合主键/唯一与父子复合 FK，并把 Data OS 建表真源收归 Alembic。完成 D7 前不得开始具体微商城 Connector。
+
+## 5. 执行结果
+
+- 代码 `m1@3e9677f`，Alembic `228ti4d6rls`；7/7 Data OS 表均 ENABLE/FORCE，7 个双 GUC policy 生效。
+- scope A/B、无 GUC、WITH CHECK 与真实 `D4→D6→D4→D6` 全部 GREEN；业务 297 行、293 条 D3 quarantine 守恒。
+- D6 专项 3 passed；Tenant Isolation 累计 165 passed / 8 skipped。
+- 五分支及远端同步到同一 HEAD/tree；下一门为 D7 Contract。
