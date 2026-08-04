@@ -1,7 +1,7 @@
 # 228 · TI-4 D3 Data OS 历史归属账本与逻辑隔离实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：评审授权链内，待执行
+> 状态：GREEN（共享非生产零业务回填）
 > 前置：TI-4 D2 GREEN；代码 `m1@7a05bd8`；Alembic `228ti4d1expand`
 > 边界：本波只建逐记录决策账本和逻辑隔离事实，不回填、不搬迁、不物理删除业务行
 
@@ -76,3 +76,7 @@
 ## 8. 后续边界
 
 D3 GREEN 后，D4 只可验证非 NULL 行的 workspace FK；293 条逻辑隔离记录仍存在于活跃表时，不得把 FK 验证写成“历史数据已归属”。若 PostgreSQL NOT VALID FK 对 NULL 行天然放行，D4 必须同时证明非 NULL orphan=0，并明确 NULL 仍由 D3 逻辑隔离而非数据库 FK 保护。物理隔离留给 D7 Contract，不在 D3 执行。
+
+## 9. 执行结果
+
+代码 `78e16a7` 完成确定性逐记录 plan、复用 TI-1 append-only ledger、角色分离 apply/verify/rollback 与受控 CLI。共享 batch `44902fd4-7390-50ee-ae86-192ebd456c33` 得到 `NO_ACTION=4 / QUARANTINE=293 / ASSIGN=0`，apply/verify 均 GREEN 且 `businessRowsUpdated=0`。Tenant Isolation 累计 158 passed / 8 skipped；共享业务 297 行及 `228ti4d1expand` 守恒。下一门 D4。
