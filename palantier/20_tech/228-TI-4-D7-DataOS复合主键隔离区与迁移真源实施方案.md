@@ -42,9 +42,9 @@
 - Dataset History 的 `dataset_rid` → 同 scope Dataset。
 - Sync 的 `source_id` → 同 scope Source。
 - Schedule 的可选 `pipeline_id` → 同 scope Pipeline。
-- Pipeline Graph 的 `pipeline_id` → 同 scope Pipeline。
+- Pipeline Graph 的 `pipeline_id` 只作为自身 aggregate key；现有 `phase5_pipeline_engine` 支持从外部 Canvas ID 建图并在引擎内创建 owner，不强制依赖 `meta_pipeline`。D7 只把它冻结为 scoped 主键，不新增跨子系统父 FK。
 
-新增父子 FK 前必须验证 4 条 active scoped 记录无断链；历史未知行先进入隔离区。删除语义保持现有服务层显式顺序，不在本波擅自引入级联删除。
+新增 6 条既有语义明确的父子 FK 前必须验证 4 条 active scoped 记录无断链；历史未知行先进入隔离区。删除语义保持现有服务层显式顺序，不在本波擅自引入级联删除。Graph 与 `meta_pipeline` 的同名关系只由应用协调，避免把现有外部 Canvas 建图能力错误收紧。
 
 ### 2.3 不可变维护隔离区
 
@@ -81,7 +81,7 @@
 2. 新建不可变隔离表和 guard；按 D3 决策原样迁移 293 条。
 3. 删除未知行后将 7 表 scope 收紧为 NOT NULL。
 4. 替换 7 个旧全局主键为 scoped 主键。
-5. 新增并验证 scoped 父子 FK。
+5. 新增并验证 6 条 scoped 父子 FK；Graph 不新增未经现有代码支持的 parent FK。
 6. 实现带碰撞 precheck 的可逆 downgrade。
 
 ### D7-C 应用映射与迁移真源
