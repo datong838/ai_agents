@@ -2,7 +2,7 @@
 
 > 状态：Accepted
 > 日期：2026-08-04
-> 实现进度：M5-0～M5-2 已在 `aos-platform m1@2d16a64` GREEN
+> 实现进度：M5 已在 `aos-platform m1@86c3076` 最终 GREEN
 
 ## 背景
 
