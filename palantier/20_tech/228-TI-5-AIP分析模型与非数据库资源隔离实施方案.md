@@ -34,6 +34,8 @@ TI-0E 的冻结执行组在 TI-4 后剩余 TI-5：
 - 仅基于可审计 namespace/父资源关系作 ASSIGN；无法证明的记录 QUARANTINE。
 - 回填/隔离可逆，业务 payload hash 与总数守恒；runtime 不得访问隔离表。
 
+A2 实施冻结：当前共享非生产库 23 条 KV 均由本地测试流程产生，且用户已明确“现有应用作为测试组织、现有数据均为测试数据”，因此本批次以显式 key 清单和源库环境共同作为 `ASSIGN_TEST_ORG` 证据，归属 `dev-org/dev-project`；不使用更新时间或 payload 内容猜测。清单外的 NULL scope 历史一律 QUARANTINE。`meta_aip_kv` 收归 Alembic、主键改为 `(org_id, project_id, key)`、workspace FK/FORCE RLS；request dependency 在路由执行期间绑定 canonical ContextVar，KV 仍显式解析 `require_tenant_scope()`，无请求/无任务 envelope 时失败关闭。降级遇到跨 scope 同 key 冲突必须停止，不覆盖数据。
+
 ### TI-5 A3：Decision Lineage 历史归属
 
 - 增加 TenantScope 与输入/输出/执行上下文证据列，不按 ID 或时间猜测。
