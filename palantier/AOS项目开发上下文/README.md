@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@30137dd`（TI-5 A2）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-5 A2 收口提交
-> 当前门禁：TI-4 全域与 TI-5 A1/A2 GREEN；下一门 TI-5 A3，真实平台连接仍暂停。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@68974ed`（TI-5 A3）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-5 A3 收口提交
+> 当前门禁：TI-4 全域与 TI-5 A1/A2/A3 GREEN；下一门 TI-5 B1/B2，真实平台连接仍暂停。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -67,6 +67,7 @@
 - TI-5 实施方案：[`228-TI-5-AIP分析模型与非数据库资源隔离实施方案.md`](../20_tech/228-TI-5-AIP分析模型与非数据库资源隔离实施方案.md)
 - TI-5 A1 证据：[`2026-08-04-TI-5-A1-AIP运行时Contract证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-5-A1-AIP运行时Contract证据.md)
 - TI-5 A2 证据：[`2026-08-04-TI-5-A2-AIP-KV租户Contract证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-5-A2-AIP-KV租户Contract证据.md)
+- TI-5 A3 证据：[`2026-08-04-TI-5-A3-Decision-Lineage归属与Contract证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-5-A3-Decision-Lineage归属与Contract证据.md)
 - TI-0B/TI-0C 证据：[`2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md)
 - TI-0D 证据：[`2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md)
 - TI-0E 证据：[`2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md)

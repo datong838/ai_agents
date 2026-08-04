@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.3 · 2026-08-04
-> 状态：A1/A2 GREEN，A3 方案冻结待实施
-> 前置：TI-4 全域 GREEN；当前代码 `m1@30137dd`
+> 版本：v1.4 · 2026-08-04
+> 状态：A1/A2/A3 GREEN，B1/B2 待实施
+> 前置：TI-4 全域 GREEN；当前代码 `m1@68974ed`
 
 ## Rules
 
@@ -55,6 +55,8 @@ A3 预计文件边界：
 - Tests：`services/aos-api/tests/tenant_isolation/test_ti5_a3_decision_lineage_contract.py` 及被 Contract 影响的既有 lineage/analytics/demo 用例。
 
 A3 前置备份：`/private/var/tmp/aos-ti5-a3.OAHNwn/aos-meta-before.dump`，1,907,663 bytes，mode `0600`，SHA-256 `3c6ed2195abc836cbede6c8e809a73cb7fb8bd20cf95d95281694157d78b9b0a`。基线 lineage 行数 631，聚合 hash `e0e211357213b2211e7c27c0032e7c4a`。
+
+实施结果：`68974ed` 已完成 `228ti5a3lineage`。631 条 `ASSIGN_FROM_DRAFT` 账本、可逆 quarantine 安全网、workspace/Draft 复合 FK、复合主键、FORCE RLS 及 lineage/analytics/demo scoped read/write。共享库降级到 A2 时 631 行与原始 hash `e0e211357213b2211e7c27c0032e7c4a` 完全恢复，再升级后 631 活跃、631 ledger、0 quarantine、0 orphan。A3/Action/Draft/Analytics 核心 32 passed，Tenant Isolation 195 passed / 7 skipped，9,204 项全量收集 GREEN。同时将 Action/Draft 建表从请求期下沉到 bootstrap，修复 A2 ContextVar 下同步路由的降权 DDL 回归。
 
 ### TI-5 B1/B2：Analytics 与模型目录
 
