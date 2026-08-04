@@ -1,7 +1,7 @@
 # 228 · TI-2 E5 Module 实例键读切换实施方案
 
-> 版本：v1.0 · 2026-08-04  
-> 状态：评审通过 / 执行中  
+> 版本：v1.1 · 2026-08-04
+> 状态：GREEN
 > 前置：TI-2 E4 `129d438` GREEN；共享非生产 11/11 Module 身份 FK validated
 
 ## Rules
@@ -60,3 +60,13 @@ E5 为代码读切换，不含 DDL/DML。回滚只需回退本波代码提交；
 4. Router/OpenAPI 响应保持 `moduleId`，不泄漏内部 UUID。
 5. Tenant Isolation + Workshop 累计回归 GREEN；共享库只读核对 160/462/2 守恒、栖月汇 Module 0、RLS 0。
 6. m1 与四 Worker 同步后进入 E6 RLS；APP-04/05 仍不得标绿。
+
+## 执行结果
+
+- 代码提交 `8aee9f6`；m1 与四 Worker 本地/远端已同步。
+- Module 父实例以稳定 `module_pk` 定位，同时影子核对 scoped legacy `id/module_id`；歧义、NULL 或 UUIDv5 漂移统一失败关闭。
+- 7 张直属子表读、改、删以及 Event seed 均以 `module_pk + org_id + project_id` 为父身份谓词；外部 `moduleId`/OpenAPI 不变。
+- 两条无父 Event 在新读路径不可见，仍保留 E3 quarantine，不删除也不伪造父记录。
+- 测试夹具显式恢复 E3 身份基线，旧的无父子资源用例改为先创建租户内 Module；不向共享库写测试数据。
+- E5 专项 + 相关 Workshop 5 passed；Tenant Isolation + Workshop 累计 130 passed，7 个既有 warning。
+- 共享库只读核对：160 个父影子对读一致、子身份错配 0、孤儿 Event 2、栖月汇 Module 0、RLS 0、Alembic `228ti2e4validate`。
