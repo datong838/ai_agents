@@ -1,7 +1,7 @@
 # 228 · TI-4 C1 电商 Connector 工作区外键扩展实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：评审通过 / 执行中
+> 版本：v1.1 · 2026-08-04
+> 状态：GREEN
 > 授权：用户已明确授权连续执行至具备接入微商城的前期条件；本波仍不连接具体商城
 > 前置：TI-3 E1～E7 GREEN；代码 `m1@fd2a124`；Alembic `228ti3e7contract`
 
@@ -66,3 +66,13 @@
 | 空表直接 Validate/RLS 越级 | P1 | C1 只 NOT VALID Expand，后续逐门验证 |
 | 误把 Strong PK 等同全隔离 | P0 | 状态明确 RLS=0、parent FK 缺失、writer scope 丢失 |
 | 提前连接微商城 | P0 | 不读取凭据、不调用 API、不新增平台 adapter/业务 schema |
+
+## 七、实施结果
+
+- 代码基线由 `fd2a124` 前移至 `ec0d7e7`；最终 Alembic revision 为 `228ti4c1expand`。
+- 5 张电商表均已建立具名 NOT VALID workspace alias FK，最终 `validated=false` 5/5；原有 TenantScope 复合主键与 NOT NULL 未改变。
+- 共享开发库 5 表实施前后均为 0 行；本波业务 DML=0，未写入 token、对象、receipt 或 checkpoint。
+- 已完成真实 `upgrade → downgrade 228ti3e7contract → upgrade` 往返；备份可列举恢复，迁移可逆。
+- 专项测试 3 passed；Tenant Isolation 累计 126 passed、8 skipped、零失败。
+- 五个代码分支和远端均同步到 `ec0d7e7`，tree `7ee529506caf2559b7a97a45899c2454a184d115`。
+- C1 仅完成结构 Expand。Connector ingest 仍失败关闭；下一波为 C2，把 Principal TenantScope 传到 REST/File/MySQL/PostgreSQL/MSSQL 的 Object transaction。
