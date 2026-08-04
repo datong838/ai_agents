@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：连续执行授权内，待实施
-> 前置：TI-4 全域 GREEN；代码 `m1@bbdbd2f`
+> 版本：v1.1 · 2026-08-04
+> 状态：A1 GREEN，A2 待实施
+> 前置：TI-4 全域 GREEN；当前代码 `m1@d381578`
 
 ## Rules
 
@@ -25,6 +25,8 @@ TI-0E 的冻结执行组在 TI-4 后剩余 TI-5：
 - 全部 AIP Store/API/worker 显式传 TenantScope，删除 optional/default scope。
 - scoped transaction 降权，冻结复合主键/父子 FK/NOT NULL，ENABLE/FORCE RLS。
 - 同 ID 双 scope、无 GUC零可见、跨 scope mutation 拒绝。
+
+实施结果：`d381578` 已完成 7 张 AIP 表 workspace FK、FORCE RLS、双 GUC policy，以及 Graph/Run/Eval/Publication Store scoped transaction；共享库可逆往返和 27 行守恒，83 项 AIP 专项与 181 项 Tenant Isolation 回归 GREEN。
 
 ### TI-5 A2：AIP KV 历史归属与 Contract
 
