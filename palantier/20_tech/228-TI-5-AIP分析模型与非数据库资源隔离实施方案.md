@@ -1,7 +1,7 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.4 · 2026-08-04
-> 状态：A1/A2/A3 GREEN，B1/B2 待实施
+> 版本：v1.5 · 2026-08-04
+> 状态：A1/A2/A3 GREEN，B1 方案冻结待实施
 > 前置：TI-4 全域 GREEN；当前代码 `m1@68974ed`
 
 ## Rules
@@ -58,11 +58,32 @@ A3 前置备份：`/private/var/tmp/aos-ti5-a3.OAHNwn/aos-meta-before.dump`，1,
 
 实施结果：`68974ed` 已完成 `228ti5a3lineage`。631 条 `ASSIGN_FROM_DRAFT` 账本、可逆 quarantine 安全网、workspace/Draft 复合 FK、复合主键、FORCE RLS 及 lineage/analytics/demo scoped read/write。共享库降级到 A2 时 631 行与原始 hash `e0e211357213b2211e7c27c0032e7c4a` 完全恢复，再升级后 631 活跃、631 ledger、0 quarantine、0 orphan。A3/Action/Draft/Analytics 核心 32 passed，Tenant Isolation 195 passed / 7 skipped，9,204 项全量收集 GREEN。同时将 Action/Draft 建表从请求期下沉到 bootstrap，修复 A2 ContextVar 下同步路由的降权 DDL 回归。
 
-### TI-5 B1/B2：Analytics 与模型目录
+### TI-5 B1：模型管理运行链与数据库 Contract
 
-- B1：Provider/Model/Route/Usage/Capacity/Health 全链显式 TenantScope 与 scoped transaction。
-- B2：workspace FK Validate、复合主键/父子 FK、scope NOT NULL、FORCE RLS；平台模型模板与组织实例配置保持分离。
-- 组织级供应商启停、路由、额度和健康状态互不影响；不得把共享 catalog 模板误变成租户实例。
+只读核查冻结基线：`capacity_limits=4`、`capacity_usage=30`、`model_catalog=12`、`model_provider=4`、`model_route=5`、`provider_health=4`、`registered_models=6`，共 65 行，全部明确位于测试组织 `dev-org/dev-project`。七表均已有非空 scope，但仍使用全局 `id` 主键、无 workspace/父子 FK、无 RLS；五个 Store 仍把 `_DEFAULT_ORG/_DEFAULT_PROJECT` 写死，四个管理 Router 未绑定 Principal。这些事实只能证明数据来自测试组织，不能证明现有运行链已隔离。
+
+B1 冻结为一个可独立回滚的 PostgreSQL 波次：
+
+- Router：`routers/model_catalog.py`、`routers/model_providers.py`、`routers/model_routes.py`、`routers/model_capacity.py` 全部依赖 `require_principal`，从 Principal 构造 canonical `TenantScope` 并显式传入 Store；客户端 `projectId` 仅可作为额度业务键，不得改写认证 scope。
+- Store：`model_catalog.py`、`registered_models.py`、`model_providers.py`、`model_routes.py`、`model_capacity.py` 删除默认组织常量，公开读写均要求 `TenantScope`，所有连接使用 scoped transaction；请求期 `ensure_schema()` 改为 migration-owned no-op。
+- Migration：七表冻结 `(org_id,project_id,id)` 复合主键、scope NOT NULL、workspace FK、ENABLE/FORCE RLS 与双 GUC policy；`provider_health` 增加同 scope provider 复合 FK，`registered_models` 增加同 scope catalog 复合 FK。`model_route.primary_model/fallback_model` 的旧数据目前是注册模型标识还是供应商模型名需用数据和调用契约判定，未证明前不得强加错误 FK。
+- 历史：65 行均基于用户已确认的“现有测试数据”保持原 scope，不做内容猜测、不新建归属账本；迁移前后逐表 count/hash 守恒。若升级前出现 NULL scope、非 workspace scope 或父记录缺失，迁移必须失败，不自动认领或删除。
+- 回滚：降级前检测跨 scope 同 `id` 冲突；存在冲突则阻断，避免退回全局主键时覆盖。无冲突才撤销 RLS/FK/复合主键，并恢复原全局主键结构。
+- 验证：七表同 ID 双 scope、跨 scope read/update/delete、无 GUC零可见、错误父 scope 拒绝、认证 scope 不可被 query/body 覆盖；共享库真实 downgrade/upgrade 往返并校验 65 行 hash。
+
+B1 预计文件边界：
+
+- Migration：`services/aos-api/alembic/versions/228ti5b1_model_management_contract.py`
+- Runtime：上述五个 Store、四个 Router及四个 demo seed 文件。
+- Registry/lint：`tenant_resources.yaml`、`tenant_schema_lint.py`。
+- Tests：`tests/tenant_isolation/test_ti5_b1_model_management_contract.py`，并更新 `test_model_management.py`、`test_phase5_regression.py` 的显式 scope 调用。
+
+### TI-5 B2：平台模型模板与组织实例分离核验
+
+- 当前 `model_catalog` 本身带组织/工作区 scope，语义上是“组织可发现目录快照”，不是平台全局模板；`registered_models`、provider、route、额度、usage、health 均是组织实例或运行状态。B1 不把它们提升成共享表，也不借隔离补强重新设计模型管理架构。
+- B2 只核验所有平台级只读模型模板来源与组织实例的物化边界：共享模板不得携带客户凭据、启停、额度、健康或路由；组织套用模板后必须产生独立 scoped 实例，组织定制不能反写模板，也不能影响其他组织。
+- 若代码中不存在独立平台模板存储，B2 以“能力缺口 + TI-6 上线阻断”登记，不在租户隔离波次凭空新建一套 catalog。只有现有产品/架构文档已有明确模板实体时，才补对应 Contract 与测试。
+- B2 退出门是形成资源分类、调用证据和负向测试结论；不得把 B1 七表 GREEN 误报为平台模板能力已实现。
 
 ### TI-5 C：非 PostgreSQL 与进程内状态
 
