@@ -1,7 +1,7 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@86c3076`（五分支与五个远程分支同步）
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@4d04e1f`（五分支与五个远程分支同步；M5 功能检查点 `86c3076`）
 > 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 M5 最终收口对账提交
 > 当前门禁：M1～M5 最终 GREEN，已按停止门暂停在具体平台接入编码之前；下一步仅允许评审 G0 与首个平台选择。
 
