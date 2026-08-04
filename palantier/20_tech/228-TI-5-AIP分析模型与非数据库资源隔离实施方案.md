@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.1 · 2026-08-04
-> 状态：A1 GREEN，A2 待实施
-> 前置：TI-4 全域 GREEN；当前代码 `m1@d381578`
+> 版本：v1.2 · 2026-08-04
+> 状态：A1/A2 GREEN，A3 待实施
+> 前置：TI-4 全域 GREEN；当前代码 `m1@30137dd`
 
 ## Rules
 
@@ -35,6 +35,8 @@ TI-0E 的冻结执行组在 TI-4 后剩余 TI-5：
 - 回填/隔离可逆，业务 payload hash 与总数守恒；runtime 不得访问隔离表。
 
 A2 实施冻结：当前共享非生产库 23 条 KV 均由本地测试流程产生，且用户已明确“现有应用作为测试组织、现有数据均为测试数据”，因此本批次以显式 key 清单和源库环境共同作为 `ASSIGN_TEST_ORG` 证据，归属 `dev-org/dev-project`；不使用更新时间或 payload 内容猜测。清单外的 NULL scope 历史一律 QUARANTINE。`meta_aip_kv` 收归 Alembic、主键改为 `(org_id, project_id, key)`、workspace FK/FORCE RLS；request dependency 在路由执行期间绑定 canonical ContextVar，KV 仍显式解析 `require_tenant_scope()`，无请求/无任务 envelope 时失败关闭。降级遇到跨 scope 同 key 冲突必须停止，不覆盖数据。
+
+实施结果：`30137dd` 已完成 `228ti5a2kv` 迁移、23 条显式清单归属账本、workspace FK/FORCE RLS/复合主键、KV scoped transaction 和 request ContextVar 生命周期。共享库完成降级再升级往返，23 条 KV 与 23 条 ledger 守恒；A2 专项 5 passed、相关 API 29 passed、Provider 22 passed / 2 skipped、Tenant Isolation 186 passed / 11 skipped，同时 9,182 项全量测试收集 GREEN。
 
 ### TI-5 A3：Decision Lineage 历史归属
 
