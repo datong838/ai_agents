@@ -1,7 +1,7 @@
 # 228 · TI-4 D7 Data OS 复合主键、隔离区与迁移真源实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：评审授权链内，待执行
+> 状态：GREEN / 已完成
 > 前置：TI-4 D6 GREEN；代码 `m1@3e9677f`；Alembic `228ti4d6rls`
 
 ## Rules
@@ -121,3 +121,10 @@
 ## 7. D7 后边界
 
 D7 只完成 Data OS Contract。完成后仍需对 5 张电商 Connector 真源表补齐 Validate/RLS/数据库 Contract，并完成 TI-5 非表资源及 AIP/Analytics 边界和 TI-6 空数据证明；全部 GREEN 后才达到“可开始微商城接入”的前期条件。
+
+## 8. 执行结果
+
+- 代码 `m1@c890a7a`，Alembic `228ti4d7contract`；活跃 4 + 不可变隔离 293 = 297，hash mismatch=0。
+- 7 表 scope NOT NULL/scoped PK、6 条真实父子 FK、7/7 FORCE RLS 与 fresh database migration 全部 GREEN。
+- 共享库 D6→D7→D6→D7 可逆；相关累计 205 passed / 17 skipped。
+- Data OS D1～D7 最终 GREEN；下一门为 TI-4 C3 Connector Contract。
