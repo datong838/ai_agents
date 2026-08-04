@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@d2d6c3d`（TI-1 E3 append-only ledger、dry-run、可逆执行与恢复库演练；五分支已同步）
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@0ae62bc`（TI-1 E3 + TI-PRE-1 临时 PostgreSQL 测试隔离）
 > 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-1 E3 最终收口提交
-> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2 GREEN；E3 当前执行集合与非生产可逆性 GREEN，E1 历史连续性风险接受，59 条逻辑 QUARANTINE 使 E4 BLOCKED；正在继续完成微商城接入前置租户门，真实平台连接仍暂停。
+> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2 与 TI-PRE-1 GREEN；E3 当前执行集合与非生产可逆性 GREEN，E1 历史连续性风险接受，59 条逻辑 QUARANTINE 使 E4 BLOCKED；下一门为 TI-2 Module 与四应用闭环，真实平台连接仍暂停。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -44,6 +44,7 @@
 - TI-1 E3 已评审方案：[`228-TI-1-E3历史归属隔离区与可逆回填实施方案.md`](../20_tech/228-TI-1-E3历史归属隔离区与可逆回填实施方案.md)
 - TI-1 E3-0 证据：[`2026-08-04-TI-1-E3-0只读重基线与守恒对账证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-1-E3-0只读重基线与守恒对账证据.md)
 - TI-1 E3 最终证据：[`2026-08-04-TI-1-E3最终收口证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-1-E3最终收口证据.md)
+- TI-PRE-1 测试隔离证据：[`2026-08-04-TI-PRE-1共享PostgreSQL测试隔离证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-PRE-1共享PostgreSQL测试隔离证据.md)
 - M3-0 回归证据：[`2026-08-03-M3-0契约与测试夹具冻结证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)
 - M3-1 回归证据：[`2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)
 - M3-2 回归证据：[`2026-08-03-M3-2真实只读资产页回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)
