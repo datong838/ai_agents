@@ -1,7 +1,7 @@
 # 228 · TI-3 E5 Object Runtime 租户读切换与旁路收口实施方案
 
-> 版本：v1.0 · 2026-08-04  
-> 状态：执行中  
+> 版本：v1.0 · 2026-08-04
+> 状态：GREEN（已完成）
 > 前置：TI-3 E4 `c268062` GREEN；9/9 workspace FK validated；1,030 行中 37 条 NULL quarantine
 
 ## Rules
@@ -24,6 +24,8 @@ Connector 的无 scope Object 写入另属 TI-4；TI-3 E5 不伪装其已完成�
 |---|---|
 | `aos_api/vector_index.py` | autoSample 强制传入 TenantScope，PG 取样双租户过滤 |
 | `aos_api/routers/wave_ext.py` | 从 Principal 向 vector upsert/embed 传 TenantScope |
+| `aos_api/demo/scope.py` | 测试组织唯一显式 TenantScope 常量 |
+| `aos_api/db.py` | 停止启动期创建无 scope branch；遗留 demo repair 改为 scoped/fail-closed |
 | `aos_api/demo/demo_story.py` | 所有 Object/Draft 演示读取固定显式测试 TenantScope |
 | `aos_api/demo/order_seed.py` | Order count/insert 显式测试 scope，禁止生成 NULL scope 新数据 |
 | `aos_api/demo/workorder_seed.py` | Object/Graph/Funnel 测试 seed 写入显式测试 scope |
@@ -50,3 +52,13 @@ E5 不含数据库迁移和历史 DML。回滚只回退本波代码；E4 validat
 4. 生产 Object Runtime SELECT 静态门覆盖全 `aos_api`；TI-4 Connector deferred 清单精确、不可静默扩大。
 5. Tenant Isolation 与相关 vector/demo 专项累计 GREEN；五分支同步。
 6. 下一门为 TI-3 E6 RLS；不提前修改主键/NOT NULL/Contract，不开始真实微商城接入。
+
+## 执行结果
+
+- 代码提交 `3d53105`；五分支与五远端同步，tree `7e271e8be2ade100b5e8859359e3f2261504b342`。
+- vector `autoSample` 必须显式 TenantScope；同 ObjectType 的双租户动态夹具只返回当前 scope，缺 scope 返回 `TENANT_SCOPE_REQUIRED`。
+- demo story/Order/WorkOrder seed/read/clear 全部双租户约束；clear 保留其他工作区对象与平台模板，`decision_lineage` 因未租户化而失败关闭、延后 TI-5。
+- 启动期不再制造无 scope `main/sandbox` Branch；既有 3 条 Branch quarantine 不改写。
+- 全包 Object Runtime SELECT 无 scope 命中 0；无 scope writer 精确剩余 `connector_runtime.py`、`mssql_connector.py`、`mysql_connector.py`、`pg_connector.py`，作为 TI-4 阻断清单。
+- 共享库只读守恒：Alembic `228ti3e4validate`，1,030 行、37 quarantine、0 非 NULL orphan；测试组织 autoSample=0，未回退读取 quarantine。
+- E5 专项 3 passed；Tenant Isolation + vector/demo 相关累计 115 passed、18 skipped、零失败。8 个既有 demo/vector 用例因测试夹具缺 `meta_aip_kv` 明确 skip，不属于本波回归失败。
