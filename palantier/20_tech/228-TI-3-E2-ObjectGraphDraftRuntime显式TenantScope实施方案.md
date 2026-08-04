@@ -1,7 +1,7 @@
 # 228 · TI-3 E2 Object/Graph/Draft Runtime 显式 TenantScope 实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：执行中；E2-A/E2-B GREEN，E2-C 待执行
+> 状态：GREEN；E2-A/E2-B/E2-C 全部完成
 > 前置：TI-3 E1 `7f7d48a` GREEN；Alembic `228ti3e1expand`
 
 ## Rules
@@ -67,3 +67,14 @@ E2 的新写必须精确 scope；读取优先精确 scope。历史 NULL scope �
 - 内存 Insight key 扩展为 `(org_id, project_id, id)`，同一 Insight ID 可在不同 scope 独立存在，TTL 状态和候选互不可见。
 - E2-B 专项 3 passed；Tenant Isolation + Draft/Object/Action/TTL 累计 137 passed、17 skipped。17 条 skip 为既有环境/历史条件门，不是本波断言失败。
 - `decision_lineage` 的 631 条历史归属仍缺证据，按总方案保留给 TI-5，E2-B 不新增猜测回填或默认归属；下一波 E2-C 收口目标域全部读路径、内部调用签名与静态阻断门。
+
+## E2-C 执行结果
+
+- 代码提交 `5e58768`；五个代码分支与远端同步至同一提交。
+- Object/Branch effective view、Object Set、Tool、Marking 继承、Graph neighbors/health、Funnel、Analytics 对象浏览均从 Principal 构造或显式接收 TenantScope。
+- Branch Store 的 effective/list/diff/change-count 公共签名强制 scope；Branch 请求期不再执行 DDL，建表职责只属于迁移/启动阶段。
+- Graph health 的实例、边、孤儿、悬空边与属性冲突全部在当前 scope 内聚合，跨租户对象不再影响健康分。
+- Branch merge 对遗留全局 Object 键增加 rowcount 失败关闭，不能清理 overlay 后假报合并成功。
+- 静态门扫描 8 个目标运行文件的 tenant-owned SQL，要求读写同时出现 org_id/project_id；并确认 TI-4 Connector/Vector/Scheduler 与 TI-5 `decision_lineage` 阻断项仍在资源注册表。
+- E2-C 专项 2 passed；Object/Graph/Branch/Marking/Tool/Tenant Isolation 累计 144 passed、40 skipped、零失败。
+- E2 全阶段未运行历史 DML，未认领 1,030 条历史行，未 Validate FK、未启用 RLS、未连接具体商城；下一门为 TI-3 E3 历史归属与隔离方案。

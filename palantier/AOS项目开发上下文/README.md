@@ -67,6 +67,7 @@
 - TI-3 E2 方案：[`228-TI-3-E2-ObjectGraphDraftRuntime显式TenantScope实施方案.md`](../20_tech/228-TI-3-E2-ObjectGraphDraftRuntime显式TenantScope实施方案.md)
 - TI-3 E2-A 证据：[`2026-08-04-TI-3-E2A-ObjectGraphBranch显式TenantScope证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-3-E2A-ObjectGraphBranch显式TenantScope证据.md)
 - TI-3 E2-B 证据：[`2026-08-04-TI-3-E2B-DraftWikiLifecycle显式TenantScope证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-3-E2B-DraftWikiLifecycle显式TenantScope证据.md)
+- TI-3 E2-C 证据：[`2026-08-04-TI-3-E2C-ObjectRuntime读链与静态门证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-3-E2C-ObjectRuntime读链与静态门证据.md)
 - M3-0 回归证据：[`2026-08-03-M3-0契约与测试夹具冻结证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)
 - M3-1 回归证据：[`2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)
 - M3-2 回归证据：[`2026-08-03-M3-2真实只读资产页回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)
