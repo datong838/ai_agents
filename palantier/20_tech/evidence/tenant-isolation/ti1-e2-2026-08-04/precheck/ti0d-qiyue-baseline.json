@@ -1,0 +1,34 @@
+{
+  "blockers": [
+    "UNATTRIBUTED_POSTGRES_ROWS",
+    "UNKNOWN_NON_POSTGRES_PREFIXES",
+    "NON_POSTGRES_PROBES_INCOMPLETE"
+  ],
+  "isProvenEmpty": false,
+  "nonPostgres": {
+    "incompleteResources": [
+      "tenant-cache-namespaces",
+      "tenant-message-queues",
+      "tenant-offline-storage",
+      "tenant-process-memory"
+    ],
+    "targetTenantItemCount": 0,
+    "unknownPrefixItemCount": 3
+  },
+  "postgres": {
+    "blankTenantRowCount": 0,
+    "businessTableCount": 64,
+    "controlPlaneTableCount": 8,
+    "targetBusinessRowCount": 0,
+    "targetControlPlaneRowCount": 2,
+    "targetTenantRowCount": 2,
+    "tenantOwnedTableCount": 72,
+    "testTenantRowCount": 1749,
+    "unattributedRowCount": 986
+  },
+  "stage": "TI-0D",
+  "tenant": {
+    "orgId": "org-org",
+    "projectId": "dev-project"
+  }
+}

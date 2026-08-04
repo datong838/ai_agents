@@ -1,0 +1,1425 @@
+{
+  "blockerCounts": {
+    "EXISTING_FOREIGN_KEY_ORPHANS": 1,
+    "TENANT_COLUMNS_MISSING": 12,
+    "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY": 28,
+    "TENANT_COMPOSITE_FOREIGN_KEY_MISSING": 47,
+    "UNATTRIBUTED_ROWS": 11
+  },
+  "mode": "PLAN_ONLY_NO_MUTATION",
+  "resourceCount": 87,
+  "resources": [
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "aip_eval_report",
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "aip_eval_suite",
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "aip_logic_graph",
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "aip_logic_graph_revision",
+      "rowCount": 7,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "aip_logic_graph_run_nodes",
+      "rowCount": 9,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "aip_logic_graph_runs",
+      "rowCount": 3,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "aip_logic_publication",
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "retain_system_global",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-5",
+      "precheckStatus": "READY",
+      "resource": "alembic_version",
+      "rowCount": 1,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_system_global",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-5",
+      "precheckStatus": "READY",
+      "resource": "apollo_channel",
+      "rowCount": 4,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "apollo_spoke",
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "asset_bundle",
+      "rowCount": 0,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "asset_bundle_artifact",
+      "rowCount": 0,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "asset_bundle_dependency",
+      "rowCount": 0,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "asset_bundle_evidence",
+      "rowCount": 0,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "asset_bundle_version",
+      "rowCount": 0,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "asset_bundle_version_event",
+      "rowCount": 0,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "authz_tuple",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "bundle_composition",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "bundle_composition_lock",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "bundle_installation",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "bundle_installation_command",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "bundle_installation_decision",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "bundle_installation_event",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "bundle_installation_revision",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "capacity_limits",
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "capacity_usage",
+      "rowCount": 30,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "decision_lineage",
+      "rowCount": 631,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "draft_dataset",
+      "rowCount": 925,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "ecom_ingest_receipt",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "ecom_link",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "ecom_object",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "ecom_sync_checkpoint",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "funnel_status",
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "graph_edge",
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "integration_case",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "integration_case_command",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "integration_case_projection",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "integration_evidence",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "integration_evidence_snapshot",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "integration_instance",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "integration_instance_revision",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-2",
+      "precheckStatus": "READY",
+      "resource": "integration_stage_event",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "meta_action_type",
+      "rowCount": 3,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_aip_kv",
+      "rowCount": 23,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_branch",
+      "rowCount": 3,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_dataset",
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_dataset_history",
+      "rowCount": 212,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "meta_link_type",
+      "rowCount": 2,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "CONTROL_PLANE",
+      "blockers": [
+        "EXISTING_FOREIGN_KEY_ORPHANS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_membership",
+      "rowCount": 84,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_module",
+      "rowCount": 160,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "retain_immutable_platform_template",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-4",
+      "precheckStatus": "READY",
+      "resource": "meta_object_type",
+      "rowCount": 4,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_system_global",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-5",
+      "precheckStatus": "READY",
+      "resource": "meta_org",
+      "rowCount": 15,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_pipeline",
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_schedule",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_source",
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_sync",
+      "rowCount": 76,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "CONTROL_PLANE",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "meta_workspace",
+      "rowCount": 18,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "model_catalog",
+      "rowCount": 12,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "model_provider",
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "model_route",
+      "rowCount": 5,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "module_canvas_config",
+      "rowCount": 9,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "module_deployment",
+      "rowCount": 29,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "module_events",
+      "rowCount": 262,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "module_interface",
+      "rowCount": 9,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "module_query",
+      "rowCount": 22,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "module_variable",
+      "rowCount": 25,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "module_widget_instance",
+      "rowCount": 108,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "oauth_token_store",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "obj_branch_overlay",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "obj_instance",
+      "rowCount": 33,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "object_lifecycle",
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_tenant_scope_and_assign_ownership",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_MISSING",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+        "UNATTRIBUTED_ROWS"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "phase5_pipeline_graph",
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "provider_health",
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "registered_models",
+      "rowCount": 6,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "CONTROL_PLANE",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "READY",
+      "resource": "tenant_dual_write_ledger",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "theme",
+      "rowCount": 3,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "CONTROL_PLANE",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "twa_audit",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "CONTROL_PLANE",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "twa_invite",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "CONTROL_PLANE",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "twa_join_request",
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "retain_system_global",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-1",
+      "precheckStatus": "READY",
+      "resource": "twa_org",
+      "rowCount": 1,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_system_global",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-1",
+      "precheckStatus": "READY",
+      "resource": "twa_otp",
+      "rowCount": 0,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "retain_system_global",
+      "baselineScope": "GLOBAL",
+      "blockers": [],
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "migrationWave": "TI-1",
+      "precheckStatus": "READY",
+      "resource": "twa_person_profile",
+      "rowCount": 4,
+      "targetTenantColumns": []
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "CONTROL_PLANE",
+      "blockers": [
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "twa_workspace",
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "add_rls_and_validate_service_scope",
+      "baselineScope": "CONTROL_PLANE",
+      "blockers": [],
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "migrationWave": "TI-1",
+      "precheckStatus": "READY",
+      "resource": "twa_ws_member",
+      "rowCount": 5,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "widget_catalog",
+      "rowCount": 17,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "wiki_page",
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    },
+    {
+      "action": "expand_tenant_composite_key_and_foreign_keys",
+      "baselineScope": "BUSINESS_DATA",
+      "blockers": [
+        "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+        "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+      ],
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "migrationWave": "TI-3",
+      "precheckStatus": "REQUIRES_REMEDIATION",
+      "resource": "wiki_page_version",
+      "rowCount": 65,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ]
+    }
+  ],
+  "stage": "TI-0D"
+}

@@ -1,0 +1,3611 @@
+{
+  "currentStateCounts": {
+    "NO_TENANT": 27,
+    "STRONG_PK": 32,
+    "WEAK_PK": 28
+  },
+  "mode": "READ_ONLY_AGGREGATES",
+  "probedTableCount": 87,
+  "registryValidationIssues": [],
+  "scanErrors": [],
+  "scanOk": true,
+  "stage": "TI-0D",
+  "tableCount": 87,
+  "tables": [
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "aip_eval_report_org_id_project_id_suite_id_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "suite_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "suite_id"
+          ],
+          "targetTable": "aip_eval_suite"
+        },
+        {
+          "constraint": "aip_eval_report_org_id_project_id_target_id_target_revisio_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "target_id",
+            "target_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "revision"
+          ],
+          "targetTable": "aip_logic_graph_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "results": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "aip_eval_report",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "report_id"
+      ],
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 2,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "cases": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "aip_eval_suite",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "suite_id"
+      ],
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 1,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "payload": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "aip_logic_graph",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "graph_id"
+      ],
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 4,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "aip_logic_graph_revision_org_id_project_id_graph_id_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "graph_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "graph_id"
+          ],
+          "targetTable": "aip_logic_graph"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "snapshot": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "aip_logic_graph_revision",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "graph_id",
+        "revision"
+      ],
+      "rowCount": 7,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 7,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "aip_logic_graph_run_nodes_org_id_project_id_graph_id_run_i_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "run_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "run_id"
+          ],
+          "targetTable": "aip_logic_graph_runs"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "error": 0,
+        "input_summary": 0,
+        "output_summary": 0,
+        "proposed_edits": 0,
+        "tool_call": 0,
+        "usage": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "aip_logic_graph_run_nodes",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "graph_id",
+        "run_id",
+        "node_id"
+      ],
+      "rowCount": 9,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 9,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "aip_logic_graph_runs_org_id_project_id_graph_id_evaluated__fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "evaluated_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "revision"
+          ],
+          "targetTable": "aip_logic_graph_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "error": 0,
+        "inputs_snapshot": 0,
+        "output_summary": 0,
+        "proposed_edits": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "aip_logic_graph_runs",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "graph_id",
+        "run_id"
+      ],
+      "rowCount": 3,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 3,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "aip_logic_publication_org_id_project_id_eval_report_id_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "eval_report_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "report_id"
+          ],
+          "targetTable": "aip_eval_report"
+        },
+        {
+          "constraint": "aip_logic_publication_org_id_project_id_graph_id_dry_run_i_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "dry_run_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "run_id"
+          ],
+          "targetTable": "aip_logic_graph_runs"
+        },
+        {
+          "constraint": "aip_logic_publication_org_id_project_id_graph_id_graph_rev_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "graph_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "graph_id",
+            "revision"
+          ],
+          "targetTable": "aip_logic_graph_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "eval_gate": 0,
+        "graph_snapshot": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "aip_logic_publication",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "publication_id"
+      ],
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 1,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-5",
+      "name": "alembic_version",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "version_num"
+      ],
+      "rowCount": 1,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "meta": 0
+      },
+      "migrationWave": "TI-5",
+      "name": "apollo_channel",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 4,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 2,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "apollo_spoke_channel_id_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "channel_id"
+          ],
+          "targetColumns": [
+            "id"
+          ],
+          "targetTable": "apollo_channel"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "meta": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "apollo_spoke",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 1,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 1,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-4",
+      "name": "asset_bundle",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "bundle_pk"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "asset_bundle_artifact_version_pk_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "version_pk"
+          ],
+          "targetColumns": [
+            "version_pk"
+          ],
+          "targetTable": "asset_bundle_version"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-4",
+      "name": "asset_bundle_artifact",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "version_pk",
+        "relative_path"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "asset_bundle_dependency_version_pk_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "version_pk"
+          ],
+          "targetColumns": [
+            "version_pk"
+          ],
+          "targetTable": "asset_bundle_version"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-4",
+      "name": "asset_bundle_dependency",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "version_pk",
+        "optional",
+        "ordinal"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "asset_bundle_evidence_version_pk_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "version_pk"
+          ],
+          "targetColumns": [
+            "version_pk"
+          ],
+          "targetTable": "asset_bundle_version"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "metadata": 0
+      },
+      "migrationWave": "TI-4",
+      "name": "asset_bundle_evidence",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "version_pk",
+        "evidence_type",
+        "artifact_ref"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "asset_bundle_version_bundle_pk_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "bundle_pk"
+          ],
+          "targetColumns": [
+            "bundle_pk"
+          ],
+          "targetTable": "asset_bundle"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "manifest_json": 0,
+        "signature": 0
+      },
+      "migrationWave": "TI-4",
+      "name": "asset_bundle_version",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "version_pk"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "asset_bundle_version_event_version_pk_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "version_pk"
+          ],
+          "targetColumns": [
+            "version_pk"
+          ],
+          "targetTable": "asset_bundle_version"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "evidence_snapshot": 0
+      },
+      "migrationWave": "TI-4",
+      "name": "asset_bundle_version_event",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "event_pk"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_authz_tuple_workspace_ti1",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetTable": "twa_workspace"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "authz_tuple",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "user_key",
+        "relation",
+        "object_key"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "current_installation_ref_json": 0,
+        "registry_snapshot_json": 0,
+        "request_json": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "bundle_composition",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "composition_pk"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_bundle_composition_lock_composition",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "composition_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "composition_pk"
+          ],
+          "targetTable": "bundle_composition"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "contribution_diff_json": 0,
+        "lock_payload": 0,
+        "migration_plan_json": 0,
+        "permission_diff_json": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "bundle_composition_lock",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "composition_pk",
+        "revision"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_bundle_installation_active_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "active_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_installation_revision"
+        },
+        {
+          "constraint": "fk_bundle_installation_current_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "current_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_installation_revision"
+        },
+        {
+          "constraint": "fk_bundle_installation_previous_active_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "previous_active_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_installation_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-2",
+      "name": "bundle_installation",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "installation_pk"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "response_json": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "bundle_installation_command",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "operation",
+        "idempotency_key"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_bundle_installation_decision_installation",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk"
+          ],
+          "targetTable": "bundle_installation"
+        },
+        {
+          "constraint": "fk_bundle_installation_decision_submitted_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "submitted_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_installation_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-2",
+      "name": "bundle_installation_decision",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "decision_id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_bundle_installation_event_from_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "from_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_installation_revision"
+        },
+        {
+          "constraint": "fk_bundle_installation_event_installation",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk"
+          ],
+          "targetTable": "bundle_installation"
+        },
+        {
+          "constraint": "fk_bundle_installation_event_to_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "to_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_installation_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "evidence_json": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "bundle_installation_event",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "installation_pk",
+        "sequence"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_bundle_installation_revision_decision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "decision_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "decision_id"
+          ],
+          "targetTable": "bundle_installation_decision"
+        },
+        {
+          "constraint": "fk_bundle_installation_revision_installation",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk"
+          ],
+          "targetTable": "bundle_installation"
+        },
+        {
+          "constraint": "fk_bundle_installation_revision_lock",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "composition_pk",
+            "lock_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "composition_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_composition_lock"
+        },
+        {
+          "constraint": "fk_bundle_installation_revision_parent",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "parent_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_installation_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-2",
+      "name": "bundle_installation_revision",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "installation_pk",
+        "revision"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-3",
+      "name": "capacity_limits",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 4,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-3",
+      "name": "capacity_usage",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 30,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 30,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "steps": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "decision_lineage",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 631,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 631
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "proposed": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "draft_dataset",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 925,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 925,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "result": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "ecom_ingest_receipt",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "workspace_id",
+        "platform",
+        "shop_or_marketplace_id",
+        "stream",
+        "idempotency_key"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "ecom_link_org_id_workspace_id_source_platform_source_shop__fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "workspace_id",
+            "source_platform",
+            "source_shop_or_marketplace_id",
+            "source_object_type",
+            "source_external_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "workspace_id",
+            "platform",
+            "shop_or_marketplace_id",
+            "object_type",
+            "external_id"
+          ],
+          "targetTable": "ecom_object"
+        },
+        {
+          "constraint": "ecom_link_org_id_workspace_id_target_platform_target_shop__fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "workspace_id",
+            "target_platform",
+            "target_shop_or_marketplace_id",
+            "target_object_type",
+            "target_external_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "workspace_id",
+            "platform",
+            "shop_or_marketplace_id",
+            "object_type",
+            "external_id"
+          ],
+          "targetTable": "ecom_object"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "properties": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "ecom_link",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "workspace_id",
+        "link_type",
+        "source_platform",
+        "source_shop_or_marketplace_id",
+        "source_object_type",
+        "source_external_id",
+        "target_platform",
+        "target_shop_or_marketplace_id",
+        "target_object_type",
+        "target_external_id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "properties": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "ecom_object",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "workspace_id",
+        "platform",
+        "shop_or_marketplace_id",
+        "object_type",
+        "external_id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-2",
+      "name": "ecom_sync_checkpoint",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "workspace_id",
+        "platform",
+        "shop_or_marketplace_id",
+        "stream"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "detail": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "funnel_status",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "object_type"
+      ],
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 1
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-3",
+      "name": "graph_edge",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "src_type",
+        "src_id",
+        "rel",
+        "dst_type",
+        "dst_id"
+      ],
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 2
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "required_markings": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "integration_case",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "case_pk"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_integration_case_command_case",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetTable": "integration_case"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "response_json": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "integration_case_command",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "operation",
+        "idempotency_key"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_integration_projection_case",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetTable": "integration_case"
+        },
+        {
+          "constraint": "fk_integration_projection_instance_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk",
+            "instance_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk",
+            "revision"
+          ],
+          "targetTable": "integration_instance_revision"
+        },
+        {
+          "constraint": "fk_integration_projection_snapshot",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "case_pk",
+            "snapshot_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "case_pk",
+            "snapshot_revision"
+          ],
+          "targetTable": "integration_evidence_snapshot"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "blockers_json": 0,
+        "stage_gates_json": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "integration_case_projection",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "case_pk"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_integration_evidence_case",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetTable": "integration_case"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "claims_json": 0,
+        "envelope_json": 0,
+        "required_markings": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "integration_evidence",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "evidence_pk",
+        "revision"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_integration_snapshot_case",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetTable": "integration_case"
+        },
+        {
+          "constraint": "fk_integration_snapshot_instance_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk",
+            "instance_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk",
+            "revision"
+          ],
+          "targetTable": "integration_instance_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "blocker_refs_json": 0,
+        "snapshot_json": 0,
+        "stage_gates_json": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "integration_evidence_snapshot",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "case_pk",
+        "snapshot_revision"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_integration_instance_case",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "case_pk"
+          ],
+          "targetTable": "integration_case"
+        },
+        {
+          "constraint": "fk_integration_instance_current_revision",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk",
+            "current_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk",
+            "revision"
+          ],
+          "targetTable": "integration_instance_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-2",
+      "name": "integration_instance",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "instance_pk"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_integration_instance_revision_installation",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "installation_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "installation_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_installation_revision"
+        },
+        {
+          "constraint": "fk_integration_instance_revision_instance",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk"
+          ],
+          "targetTable": "integration_instance"
+        },
+        {
+          "constraint": "fk_integration_instance_revision_lock",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "composition_pk",
+            "lock_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "composition_pk",
+            "revision"
+          ],
+          "targetTable": "bundle_composition_lock"
+        },
+        {
+          "constraint": "fk_integration_instance_revision_parent",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk",
+            "parent_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "instance_pk",
+            "revision"
+          ],
+          "targetTable": "integration_instance_revision"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "required_markings": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "integration_instance_revision",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "instance_pk",
+        "revision"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_integration_stage_event_snapshot",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id",
+            "case_pk",
+            "snapshot_revision"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id",
+            "case_pk",
+            "snapshot_revision"
+          ],
+          "targetTable": "integration_evidence_snapshot"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "reason_refs": 0
+      },
+      "migrationWave": "TI-2",
+      "name": "integration_stage_event",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "case_pk",
+        "sequence"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "parameters": 0,
+        "required_markings": 0,
+        "submission_criteria": 0
+      },
+      "migrationWave": "TI-4",
+      "name": "meta_action_type",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 3,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "payload": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "meta_aip_kv",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "key"
+      ],
+      "rowCount": 23,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 23
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-3",
+      "name": "meta_branch",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 3,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 3
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "props": 2
+      },
+      "migrationWave": "TI-3",
+      "name": "meta_dataset",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "rid"
+      ],
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 2
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "payload": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "meta_dataset_history",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 212,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 212
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-4",
+      "name": "meta_link_type",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 2,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "CONTROL_PLANE",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 69,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_meta_membership_workspace_ti1",
+          "orphanRowCount": 53,
+          "sourceColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetTable": "meta_workspace"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "meta_membership",
+      "orphanRowCount": 53,
+      "otherAttributedRowCount": 71,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "subject"
+      ],
+      "rowCount": 84,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 1,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 12,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 2,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "components": 0,
+        "markings": 0,
+        "widgets": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "meta_module",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 1,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 160,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 159,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "PLATFORM_TEMPLATE",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "properties": 0,
+        "required_markings": 0
+      },
+      "migrationWave": "TI-4",
+      "name": "meta_object_type",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 4,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-5",
+      "name": "meta_org",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 15,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "last_build": 0,
+        "props": 2
+      },
+      "migrationWave": "TI-3",
+      "name": "meta_pipeline",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 2
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "ingest": 0,
+        "last_run": 0,
+        "props": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "meta_schedule",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "props": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "meta_source",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 4,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "props": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "meta_sync",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 76,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 76
+    },
+    {
+      "baselineScope": "CONTROL_PLANE",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 18,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_meta_workspace_org_ti1",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id"
+          ],
+          "targetColumns": [
+            "id"
+          ],
+          "targetTable": "meta_org"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "meta_workspace",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 16,
+      "primaryKey": [
+        "org_id",
+        "project_id"
+      ],
+      "rowCount": 18,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 1,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 1,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "capabilities": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "model_catalog",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 12,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 12,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-3",
+      "name": "model_provider",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 4,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-3",
+      "name": "model_route",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 5,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 5,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "components": 0,
+        "layout": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "module_canvas_config",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "module_id"
+      ],
+      "rowCount": 9,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 9,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "config_snapshot": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "module_deployment",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 29,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 29,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "action_config": 0,
+        "trigger_config": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "module_events",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 262,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 262,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "entry_params": 0,
+        "expose": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "module_interface",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "module_id"
+      ],
+      "rowCount": 9,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 9,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "params": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "module_query",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 22,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 22,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "current_value": 0,
+        "initial_value": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "module_variable",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 25,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 25,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "config": 0,
+        "layout": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "module_widget_instance",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 108,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 108,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "payload": 0
+      },
+      "migrationWave": "TI-1",
+      "name": "oauth_token_store",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "workspace_id",
+        "platform",
+        "external_account_id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "workspace_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "obj_branch_overlay_branch_id_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "branch_id"
+          ],
+          "targetColumns": [
+            "id"
+          ],
+          "targetTable": "meta_branch"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "props": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "obj_branch_overlay",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "branch_id",
+        "object_type",
+        "object_id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "obj_instance_object_type_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "object_type"
+          ],
+          "targetColumns": [
+            "id"
+          ],
+          "targetTable": "meta_object_type"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "props": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "obj_instance",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "object_type",
+        "object_id"
+      ],
+      "rowCount": 33,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 33
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "meta": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "object_lifecycle",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "object_type",
+        "object_id"
+      ],
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 2,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "payload": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "phase5_pipeline_graph",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "pipeline_id"
+      ],
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 1
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-3",
+      "name": "provider_health",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 4,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 4,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "quota": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "registered_models",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 6,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 6,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "CONTROL_PLANE",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "tenant_dual_write_ledger_org_id_project_id_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetTable": "twa_workspace"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "tenant_dual_write_ledger",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "ledger_id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "tokens": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "theme",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 3,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 3,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "CONTROL_PLANE",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_twa_audit_workspace_ti1",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetTable": "twa_workspace"
+        }
+      ],
+      "jsonTenantMarkerCounts": {
+        "detail": 0
+      },
+      "migrationWave": "TI-1",
+      "name": "twa_audit",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "CONTROL_PLANE",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_twa_invite_workspace_ti1",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetTable": "twa_workspace"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "twa_invite",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "token"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "CONTROL_PLANE",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_twa_join_request_workspace_ti1",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetTable": "twa_workspace"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "twa_join_request",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "twa_org",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 1,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "twa_otp",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 0,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "GLOBAL",
+      "blankTenantRowCount": 0,
+      "classification": "SYSTEM_GLOBAL",
+      "currentState": "NO_TENANT",
+      "distinctTenantGroupCount": 0,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "twa_person_profile",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "subject"
+      ],
+      "rowCount": 4,
+      "targetTenantColumns": [],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 0,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "CONTROL_PLANE",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 2,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "twa_workspace_org_id_fkey",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id"
+          ],
+          "targetColumns": [
+            "id"
+          ],
+          "targetTable": "twa_org"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "twa_workspace",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 1,
+      "primaryKey": [
+        "org_id",
+        "project_id"
+      ],
+      "rowCount": 2,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 1,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "CONTROL_PLANE",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "STRONG_PK",
+      "distinctTenantGroupCount": 2,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [
+        {
+          "constraint": "fk_twa_ws_member_workspace_ti1",
+          "orphanRowCount": 0,
+          "sourceColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "targetTable": "twa_workspace"
+        }
+      ],
+      "jsonTenantMarkerCounts": {},
+      "migrationWave": "TI-1",
+      "name": "twa_ws_member",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 3,
+      "primaryKey": [
+        "org_id",
+        "project_id",
+        "subject"
+      ],
+      "rowCount": 5,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": true,
+      "testTenantRowCount": 2,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "config_schema": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "widget_catalog",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 17,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 17,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "body": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "wiki_page",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "object_type",
+        "object_id"
+      ],
+      "rowCount": 1,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 1,
+      "unattributedRows": 0
+    },
+    {
+      "baselineScope": "BUSINESS_DATA",
+      "blankTenantRowCount": 0,
+      "classification": "TENANT_OWNED",
+      "currentState": "WEAK_PK",
+      "distinctTenantGroupCount": 1,
+      "duplicateCurrentPrimaryKeyGroups": 0,
+      "foreignKeys": [],
+      "jsonTenantMarkerCounts": {
+        "body": 0
+      },
+      "migrationWave": "TI-3",
+      "name": "wiki_page_version",
+      "orphanRowCount": 0,
+      "otherAttributedRowCount": 0,
+      "primaryKey": [
+        "id"
+      ],
+      "rowCount": 65,
+      "targetTenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "targetTenantRowCount": 0,
+      "tenantColumns": [
+        "org_id",
+        "project_id"
+      ],
+      "tenantForeignKeyPresent": false,
+      "testTenantRowCount": 65,
+      "unattributedRows": 0
+    }
+  ],
+  "targets": {
+    "qiyue": {
+      "orgId": "org-org",
+      "projectId": "dev-project"
+    },
+    "test": {
+      "orgId": "dev-org",
+      "projectId": "dev-project"
+    }
+  }
+}

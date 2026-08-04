@@ -1,0 +1,1633 @@
+{
+  "stage": "TI-0E",
+  "mode": "PLAN_ONLY",
+  "authorization": "PLAN_ONLY",
+  "sourceHashes": {
+    "ti0dMigrationLedger": "e84107f871d3c39d0f0c068b2666545b884f803e6d6cc5ba7f69559ccf6a0ef9",
+    "ti0dNonPostgresInventory": "375fb561052e4e6f21117e548cb68b8020bd464c00de45333389a95401279c01"
+  },
+  "resourceCount": 94,
+  "groupCount": 16,
+  "statusCounts": {
+    "BLOCKED_BEFORE_E3": 56,
+    "READY_FOR_E1_REVIEW": 38
+  },
+  "blockerCounts": {
+    "EXISTING_FOREIGN_KEY_ORPHANS": 1,
+    "NON_POSTGRES_NOT_CONFIGURED": 2,
+    "NON_POSTGRES_NOT_IMPLEMENTED": 1,
+    "NON_POSTGRES_STATIC_ONLY": 1,
+    "TENANT_COLUMNS_MISSING": 12,
+    "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY": 28,
+    "TENANT_COMPOSITE_FOREIGN_KEY_MISSING": 47,
+    "UNATTRIBUTED_ROWS": 11
+  },
+  "groups": [
+    {
+      "ordinal": 1,
+      "id": "ti1-authority-directory",
+      "wave": "TI-1",
+      "worker": "W1",
+      "dependsOn": [],
+      "resources": [
+        {
+          "name": "alembic_version",
+          "kind": "postgres_table",
+          "classification": "SYSTEM_GLOBAL",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-5",
+          "rowCount": 1,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "meta_org",
+          "kind": "postgres_table",
+          "classification": "SYSTEM_GLOBAL",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-5",
+          "rowCount": 15,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "twa_org",
+          "kind": "postgres_table",
+          "classification": "SYSTEM_GLOBAL",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 1,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "twa_otp",
+          "kind": "postgres_table",
+          "classification": "SYSTEM_GLOBAL",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "twa_person_profile",
+          "kind": "postgres_table",
+          "classification": "SYSTEM_GLOBAL",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 4,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "id": "ti1-tenant-scope",
+      "wave": "TI-1",
+      "worker": "W1",
+      "dependsOn": [
+        "ti1-authority-directory"
+      ],
+      "resources": [
+        {
+          "name": "meta_membership",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 84,
+          "blockers": [
+            "EXISTING_FOREIGN_KEY_ORPHANS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "meta_workspace",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 18,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "twa_audit",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "twa_invite",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "twa_join_request",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "twa_workspace",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 2,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "twa_ws_member",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 5,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        }
+      ]
+    },
+    {
+      "ordinal": 3,
+      "id": "ti1-authorization",
+      "wave": "TI-1",
+      "worker": "W1",
+      "dependsOn": [
+        "ti1-tenant-scope"
+      ],
+      "resources": [
+        {
+          "name": "authz_tuple",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "tenant_dual_write_ledger",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        }
+      ]
+    },
+    {
+      "ordinal": 4,
+      "id": "ti2-asset-templates",
+      "wave": "TI-2",
+      "worker": "W2",
+      "dependsOn": [
+        "ti1-authorization"
+      ],
+      "resources": [
+        {
+          "name": "asset_bundle",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "asset_bundle_artifact",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "asset_bundle_dependency",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "asset_bundle_evidence",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "asset_bundle_version",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "asset_bundle_version_event",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        }
+      ]
+    },
+    {
+      "ordinal": 5,
+      "id": "ti2-installations",
+      "wave": "TI-2",
+      "worker": "W2",
+      "dependsOn": [
+        "ti2-asset-templates"
+      ],
+      "resources": [
+        {
+          "name": "bundle_composition",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "bundle_composition_lock",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "bundle_installation",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "bundle_installation_command",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "bundle_installation_decision",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "bundle_installation_event",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "bundle_installation_revision",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        }
+      ]
+    },
+    {
+      "ordinal": 6,
+      "id": "ti2-integration-instances",
+      "wave": "TI-2",
+      "worker": "W2",
+      "dependsOn": [
+        "ti2-installations"
+      ],
+      "resources": [
+        {
+          "name": "integration_case",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "integration_case_command",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "integration_case_projection",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "integration_evidence",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "integration_evidence_snapshot",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "integration_instance",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "integration_instance_revision",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "integration_stage_event",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        }
+      ]
+    },
+    {
+      "ordinal": 7,
+      "id": "ti2-module-instances",
+      "wave": "TI-2",
+      "worker": "W2",
+      "dependsOn": [
+        "ti1-authorization",
+        "ti2-asset-templates"
+      ],
+      "resources": [
+        {
+          "name": "meta_module",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 160,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "module_canvas_config",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 9,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "module_deployment",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 29,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "module_events",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 262,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "module_interface",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 9,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "module_query",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 22,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "module_variable",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 25,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "module_widget_instance",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 108,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "theme",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 3,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "widget_catalog",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 17,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        }
+      ]
+    },
+    {
+      "ordinal": 8,
+      "id": "ti3-ontology-templates",
+      "wave": "TI-3",
+      "worker": "W3",
+      "dependsOn": [
+        "ti1-authorization"
+      ],
+      "resources": [
+        {
+          "name": "meta_action_type",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 3,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "meta_link_type",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 2,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "meta_object_type",
+          "kind": "postgres_table",
+          "classification": "PLATFORM_TEMPLATE",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": 4,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        }
+      ]
+    },
+    {
+      "ordinal": 9,
+      "id": "ti3-object-graph",
+      "wave": "TI-3",
+      "worker": "W3",
+      "dependsOn": [
+        "ti3-ontology-templates"
+      ],
+      "resources": [
+        {
+          "name": "funnel_status",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 1,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "graph_edge",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 2,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "meta_branch",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 3,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "obj_branch_overlay",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "obj_instance",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 33,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "object_lifecycle",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 2,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        }
+      ]
+    },
+    {
+      "ordinal": 10,
+      "id": "ti3-draft-wiki",
+      "wave": "TI-3",
+      "worker": "W3",
+      "dependsOn": [
+        "ti3-object-graph"
+      ],
+      "resources": [
+        {
+          "name": "draft_dataset",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 925,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "wiki_page",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 1,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "wiki_page_version",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 65,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        }
+      ]
+    },
+    {
+      "ordinal": 11,
+      "id": "ti4-connectors",
+      "wave": "TI-4",
+      "worker": "W4",
+      "dependsOn": [
+        "ti1-authorization"
+      ],
+      "resources": [
+        {
+          "name": "ecom_ingest_receipt",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "workspace_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "ecom_link",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "workspace_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "ecom_object",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "workspace_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "ecom_sync_checkpoint",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "workspace_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "oauth_token_store",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "workspace_id"
+          ],
+          "ti0dDiscoveryWave": "TI-1",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        }
+      ]
+    },
+    {
+      "ordinal": 12,
+      "id": "ti4-data-os",
+      "wave": "TI-4",
+      "worker": "W4",
+      "dependsOn": [
+        "ti4-connectors"
+      ],
+      "resources": [
+        {
+          "name": "meta_source",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 4,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "meta_pipeline",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 2,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "meta_dataset",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 2,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "meta_dataset_history",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 212,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "meta_sync",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 76,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "meta_schedule",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 0,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "phase5_pipeline_graph",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 1,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        }
+      ]
+    },
+    {
+      "ordinal": 13,
+      "id": "ti4-async-runtime",
+      "wave": "TI-4",
+      "worker": "W4",
+      "dependsOn": [
+        "ti1-tenant-scope"
+      ],
+      "resources": [
+        {
+          "name": "apollo_channel",
+          "kind": "postgres_table",
+          "classification": "SYSTEM_GLOBAL",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [],
+          "ti0dDiscoveryWave": "TI-5",
+          "rowCount": 4,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "apollo_spoke",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 2,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "tenant-scheduler-jobs",
+          "kind": "scheduler_jobs",
+          "classification": "TENANT_OWNED",
+          "currentState": "N/A",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": null,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        }
+      ]
+    },
+    {
+      "ordinal": 14,
+      "id": "ti5-aip",
+      "wave": "TI-5",
+      "worker": "W4",
+      "dependsOn": [
+        "ti3-object-graph",
+        "ti4-data-os"
+      ],
+      "resources": [
+        {
+          "name": "aip_eval_report",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 2,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "aip_eval_suite",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 1,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "aip_logic_graph",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 4,
+          "blockers": [
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "aip_logic_graph_revision",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 7,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "aip_logic_graph_run_nodes",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 9,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "aip_logic_graph_runs",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 3,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "aip_logic_publication",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "STRONG_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-2",
+          "rowCount": 1,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "meta_aip_kv",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 23,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        }
+      ]
+    },
+    {
+      "ordinal": 15,
+      "id": "ti5-analytics-models",
+      "wave": "TI-5",
+      "worker": "W4",
+      "dependsOn": [
+        "ti5-aip"
+      ],
+      "resources": [
+        {
+          "name": "capacity_limits",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 4,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "capacity_usage",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 30,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "decision_lineage",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "NO_TENANT",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 631,
+          "blockers": [
+            "TENANT_COLUMNS_MISSING",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING",
+            "UNATTRIBUTED_ROWS"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "model_catalog",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 12,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "model_provider",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 4,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "model_route",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 5,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "provider_health",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 4,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "registered_models",
+          "kind": "postgres_table",
+          "classification": "TENANT_OWNED",
+          "currentState": "WEAK_PK",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-3",
+          "rowCount": 6,
+          "blockers": [
+            "TENANT_COLUMNS_NOT_IN_PRIMARY_KEY",
+            "TENANT_COMPOSITE_FOREIGN_KEY_MISSING"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        }
+      ]
+    },
+    {
+      "ordinal": 16,
+      "id": "ti5-non-postgres",
+      "wave": "TI-5",
+      "worker": "W4",
+      "dependsOn": [
+        "ti5-analytics-models"
+      ],
+      "resources": [
+        {
+          "name": "tenant-object-prefixes",
+          "kind": "object_store_prefix",
+          "classification": "TENANT_OWNED",
+          "currentState": "N/A",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": null,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "tenant-vector-records",
+          "kind": "vector_records",
+          "classification": "TENANT_OWNED",
+          "currentState": "N/A",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": null,
+          "blockers": [],
+          "executionStatus": "READY_FOR_E1_REVIEW"
+        },
+        {
+          "name": "tenant-cache-namespaces",
+          "kind": "cache_namespace",
+          "classification": "TENANT_OWNED",
+          "currentState": "N/A",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": null,
+          "blockers": [
+            "NON_POSTGRES_NOT_CONFIGURED"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "tenant-offline-storage",
+          "kind": "offline_storage",
+          "classification": "TENANT_OWNED",
+          "currentState": "N/A",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": null,
+          "blockers": [
+            "NON_POSTGRES_NOT_IMPLEMENTED"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "tenant-message-queues",
+          "kind": "message_queue",
+          "classification": "TENANT_OWNED",
+          "currentState": "N/A",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": null,
+          "blockers": [
+            "NON_POSTGRES_NOT_CONFIGURED"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        },
+        {
+          "name": "tenant-process-memory",
+          "kind": "process_memory",
+          "classification": "TENANT_OWNED",
+          "currentState": "N/A",
+          "targetTenantColumns": [
+            "org_id",
+            "project_id"
+          ],
+          "ti0dDiscoveryWave": "TI-4",
+          "rowCount": null,
+          "blockers": [
+            "NON_POSTGRES_STATIC_ONLY"
+          ],
+          "executionStatus": "BLOCKED_BEFORE_E3"
+        }
+      ]
+    }
+  ]
+}
