@@ -1,0 +1,70 @@
+{
+  "blockers": [
+    "UNEXPLAINED_BASELINE_DRIFT",
+    "E1_ROW_IDENTITY_EVIDENCE_UNAVAILABLE"
+  ],
+  "gate": "BLOCKED",
+  "historyMutated": false,
+  "identityEvidenceAvailable": false,
+  "metrics": [
+    {
+      "baseline": 9,
+      "current": 6,
+      "delta": -3,
+      "metric": "authzTupleRows",
+      "status": "UNEXPLAINED_DRIFT"
+    },
+    {
+      "baseline": 9,
+      "current": 6,
+      "delta": -3,
+      "metric": "authzTupleUnassignedRows",
+      "status": "UNEXPLAINED_DRIFT"
+    },
+    {
+      "baseline": 57,
+      "current": 53,
+      "delta": -4,
+      "metric": "metaMembershipOrphans",
+      "status": "UNEXPLAINED_DRIFT"
+    },
+    {
+      "baseline": 4,
+      "current": 0,
+      "delta": -4,
+      "metric": "twaWsMemberOrphans",
+      "status": "UNEXPLAINED_DRIFT"
+    },
+    {
+      "baseline": 3,
+      "current": 0,
+      "delta": -3,
+      "metric": "twaAuditOrphans",
+      "status": "UNEXPLAINED_DRIFT"
+    },
+    {
+      "baseline": 993,
+      "current": 990,
+      "delta": -3,
+      "metric": "globalUnattributedRows",
+      "status": "UNEXPLAINED_DRIFT"
+    },
+    {
+      "baseline": 0,
+      "current": 0,
+      "delta": 0,
+      "metric": "qiyueBusinessRows",
+      "status": "MATCH"
+    },
+    {
+      "baseline": 5,
+      "current": 2,
+      "delta": -3,
+      "metric": "qiyueControlPlaneRows",
+      "status": "UNEXPLAINED_DRIFT"
+    }
+  ],
+  "mode": "READ_ONLY_BASELINE_RECONCILIATION",
+  "nextAuthorizedStage": null,
+  "stage": "TI-1-E3-0"
+}
