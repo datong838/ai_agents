@@ -1,8 +1,8 @@
 # 228 · TI-4 A1 Apollo 与调度异步 TenantScope 实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：连续执行授权内，执行中
-> 前置：TI-4 Data OS/Connector GREEN；代码 `m1@6feb1cb`
+> 版本：v1.1 · 2026-08-04
+> 状态：GREEN
+> 前置：TI-4 Data OS/Connector GREEN；最终代码 `m1@bbdbd2f`
 
 ## Rules
 
@@ -44,3 +44,13 @@
 - `ti4-async-runtime` 三个资源均有明确边界；Scheduler 不再使用全局 key，Spoke 不再只按 org。
 - 运行时无请求期建表、owner tenant transaction 或无 scope 后台扫描。
 - 完成后才允许宣告 TI-4 全域 GREEN并进入 TI-5。
+
+## 4. 实施结果
+
+- A1-A 已由 `659b1ce` 完成：Schedule、Resource、Execution 均携带 TenantScope，Engine key 和全部读写删/触发/历史 API 按 scope 隔离。
+- A1-B 已由 `bbdbd2f` 完成：`apollo_channel` 保持平台全局模板；`apollo_spoke` 使用 `(org_id, project_id, id)` 主键、workspace FK、FORCE RLS 和 scoped transaction。
+- Alembic 最终 revision 为 `228ti4a1apollo`；共享非生产库完成 C3→A1→C3→A1 可逆往返，2 条内置测试 Spoke 行数与归属守恒。
+- 定向 Scheduler/Apollo/A1 回归 42 passed / 13 skipped；全量 Tenant Isolation 176 passed / 11 skipped；静态检查和 schema report GREEN。
+- `m1` 与四个 Worker 本地/远端最终同一提交 `bbdbd2f`、同一 tree `8e5721b121619b76c3504aead3c62be95ab15d23`。
+
+TI-4 全域至此 GREEN。下一执行域为 TI-5 AIP/Analytics/模型目录与非数据库资源，不授权真实微商城连接。
