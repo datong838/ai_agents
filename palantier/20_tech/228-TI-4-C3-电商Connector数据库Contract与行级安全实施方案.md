@@ -1,7 +1,7 @@
 # 228 · TI-4 C3 电商 Connector 数据库 Contract 与行级安全实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：评审授权链内，待执行
+> 状态：GREEN（2026-08-04）
 > 前置：TI-4 C1/C2、D1～D7 GREEN；代码 `m1@c890a7a`；Alembic `228ti4d7contract`
 
 ## Rules
@@ -55,3 +55,12 @@
 - 既有幂等、checkpoint CAS、对象/Link FK、token version/encryption 语义不变。
 - 本波仍不调用微信小店、微商城、抖音等真实 API，不读取真实凭据。
 - C3 GREEN 后 TI-4 才可总收口；下一执行域为 TI-5 AIP/Analytics 与非数据库资源隔离。
+
+## 5. 实施结论
+
+- 代码提交：`6feb1cb`；Alembic 最终 revision：`228ti4c3contract`。
+- 5/5 workspace FK 已验证，5/5 表均 ENABLE/FORCE RLS，运行角色安全且不拥有表。
+- SQLAlchemy 一致性存储、PostgreSQL OAuth Store 与到期刷新均已显式绑定 TenantScope；无 GUC 零可见，跨 scope 写失败关闭。
+- 专项定向 46 passed；Tenant Isolation + Ecom/OAuth 累计 209 passed / 11 skipped。
+- 共享库 `D7→C3→D7→C3` 往返、5 表 0 行守恒；五个代码分支本地/远端均指向 `6feb1cb`，tree `3bdf778a...`。
+- 未接入任何具体商城、未使用真实凭据或客户数据；TI-4 总收口，下一执行域 TI-5。
