@@ -1,7 +1,7 @@
 # 228 · TI-2 E3 Module 身份可逆回填实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：执行中（方案冻结，待 dry-run/apply/verify/rollback 证据）
+> 版本：v1.1 · 2026-08-04
+> 状态：GREEN（代码 `8e57c8a`，共享非生产最终 batch 已 verify）
 > 前置：TI-2 E1 `e95ae45`、E2 `472728e` GREEN；Alembic `228ti2e1expand`
 
 ## 0. Rules
@@ -92,3 +92,13 @@
 ## 7. E3 后边界
 
 E3 只建立可验证身份，不切读、不解除旧全局 PK。因此 APP-04 同 module_id 双租户共存和 APP-05 卸载继续未完成。下一门为 E4 Validate：仅在 quarantine 不属于 FK 目标或被明确排除后验证可验证约束；随后 E5 才允许按 module_pk 读切换。
+
+## 8. 完成记录
+
+- 只读 dry-run：parent=160、child=464、ASSIGN=622、QUARANTINE=2、BLOCKED=0；栖月汇候选 0。
+- Git 外备份：`/private/var/tmp/aos-ti2-e3.uN6mtv/aos-meta-before.dump`，899051 bytes，mode 600，SHA256 `8510931ac59ee84dc98c82e015507a8118f682f88741b98f4fb9ec0ac99bb4e8`。
+- 恢复库首次 rollback 暴露父先于子导致 FK 拦截；代码 `9502acf` 改为子先父后并新增有子记录回归。重跑 apply/verify/rollback 均为 622 GREEN，临时恢复库已删除。
+- 共享非生产 drill batch `5932fb43-2ff8-50e9-ba4b-92e1b4d53f7e` 完成 622/622/622，回滚后身份计数归零。
+- 最终 batch `f3edf8d9-8cbf-5b5f-8f3c-4a541f240cdd` 完成 apply=622、verify=622；父 160、子 462 非 NULL，2 个 orphan Event 保持 NULL/quarantine。
+- 新写持续性：Module 与 7 类子资源在存在父实例时写入同一稳定 module_pk；124 项租户/Workshop 累计 GREEN。
+- 详细证据：`evidence/tenant-isolation/2026-08-04-TI-2-E3-Module身份可逆回填证据.md`。
