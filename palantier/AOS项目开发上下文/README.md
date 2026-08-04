@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@7f7d48a`（TI-3 E1 Object Expand）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-3 E1 收口提交
-> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2、TI-PRE-1、TI-2 E1～E7、TI-3 E1 GREEN；59 条逻辑 QUARANTINE 使 TI-1 E4 BLOCKED；下一门为 TI-3 E2，真实平台连接仍暂停。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@c268062`（TI-3 E4 Object Runtime workspace FK Validate）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-3 E4 收口提交
+> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2、TI-PRE-1、TI-2 E1～E7、TI-3 E1～E4 GREEN；59 条逻辑 QUARANTINE 使 TI-1 E4 BLOCKED；下一门为 TI-3 E5 Read Switch，真实平台连接仍暂停。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -36,6 +36,7 @@
 - M5-2 回归证据：[`2026-08-04-M5-2Composition与Installation闭环回归证据.md`](../20_tech/evidence/m0/m5-ecommerce-bundles/2026-08-04-M5-2Composition与Installation闭环回归证据.md)
 - M5-3 最终证据：[`2026-08-04-M5-3最终累计回归与M5收口证据.md`](../20_tech/evidence/m0/m5-ecommerce-bundles/2026-08-04-M5-3最终累计回归与M5收口证据.md)
 - 租户隔离总方案：[`228-组织与工作区租户隔离全量补强实施方案.md`](../20_tech/228-组织与工作区租户隔离全量补强实施方案.md)
+- TI-3 E4 证据：[`2026-08-04-TI-3-E4-ObjectRuntime工作区外键验证证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-3-E4-ObjectRuntime工作区外键验证证据.md)
 - TI-0B/TI-0C 证据：[`2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md)
 - TI-0D 证据：[`2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md)
 - TI-0E 证据：[`2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md)
