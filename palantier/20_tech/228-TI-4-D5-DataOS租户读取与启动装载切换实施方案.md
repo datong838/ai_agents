@@ -1,7 +1,7 @@
 # 228 · TI-4 D5 Data OS 租户读取与启动装载切换实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：评审授权链内，待执行
+> 状态：GREEN
 > 前置：TI-4 D4 GREEN；代码 `m1@176bdf5`；Alembic `228ti4d4validate`
 
 ## Rules
@@ -55,3 +55,7 @@
 ## 5. 后续边界
 
 D5 后数据库仍无 Data OS RLS，任何未来漏 scope SQL 仍可能越界。下一门 D6 为 7 表 ENABLE/FORCE RLS 与双 GUC policy；D7 才处理复合主键、NOT NULL、物理隔离和 runtime DDL 收归 migration。
+
+## 6. 执行结果
+
+代码 `2b81a1b` 完成 scoped `load_all`、零全库 startup boot、按 scope 懒加载和七类 API 严格工作区读取。相关 45 passed / 22 skipped，Tenant Isolation 162 passed / 8 skipped；共享 297/293/293 与 `228ti4d4validate` 守恒。下一门 D6。
