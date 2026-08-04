@@ -63,4 +63,4 @@
 - SQLAlchemy 一致性存储、PostgreSQL OAuth Store 与到期刷新均已显式绑定 TenantScope；无 GUC 零可见，跨 scope 写失败关闭。
 - 专项定向 46 passed；Tenant Isolation + Ecom/OAuth 累计 209 passed / 11 skipped。
 - 共享库 `D7→C3→D7→C3` 往返、5 表 0 行守恒；五个代码分支本地/远端均指向 `6feb1cb`，tree `3bdf778a...`。
-- 未接入任何具体商城、未使用真实凭据或客户数据；TI-4 总收口，下一执行域 TI-5。
+- 未接入任何具体商城、未使用真实凭据或客户数据；Data OS/Connector 收口，TI-4 全域还需完成注册表中的 `ti4-async-runtime`。

@@ -1,8 +1,8 @@
 # TI-4 C3 电商 Connector 数据库 Contract 与行级安全证据
 
-> 日期：2026-08-04  
-> 结论：GREEN  
-> 代码：`m1@6feb1cb`，tree `3bdf778af9a36c4e1c045afc29861ab74c088219`  
+> 日期：2026-08-04
+> 结论：GREEN
+> 代码：`m1@6feb1cb`，tree `3bdf778af9a36c4e1c045afc29861ab74c088219`
 > 数据库：`228ti4c3contract`
 
 ## 1. 交付
@@ -43,4 +43,4 @@
 
 `m1`、w1、w2、w3、w4 本地与远端均指向 `6feb1cb`，tree 完全一致；四个 worker clean，主工作树仅保留用户 `docs/toutiao-series` 改动且未夹带。
 
-TI-4 Data OS 与 Connector 已总收口。此结论只证明通用隔离底座，不代表已接入微信小店、微商城、抖音或任何真实平台；下一执行域为 TI-5。
+TI-4 Data OS 与 Connector 已收口。冻结注册表中的 `ti4-async-runtime` 仍需完成后才能宣告 TI-4 全域总收口；此结论不代表已接入微信小店、微商城、抖音或任何真实平台。
