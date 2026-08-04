@@ -1,7 +1,7 @@
 # 228 · TI-3 E6 Object Runtime 行级安全实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：执行中
+> 状态：GREEN（已完成）
 > 前置：TI-3 E5 `3d53105` GREEN；共享库 `228ti3e4validate`；1,030/37/0 守恒
 
 ## Rules
@@ -56,3 +56,14 @@ AND project_id = current_setting('aos.project_id', true)
 5. 37 条 quarantine 在 runtime 零可见；共享库 upgrade/downgrade/upgrade 后 1,030/37/0 守恒。
 6. Tenant Isolation 累计 GREEN，五分支同步；下一门 TI-3 E7 Contract。
 7. E6 GREEN 不代表 4 个 Connector writer 或真实微商城已可接入。
+
+## 执行结果
+
+- 代码 `8dfa626`；五分支/五远端同步，tree `0a0dd922a0b114ecab84527c67e6ce34f707b9b4`。
+- 9 表 policy、ENABLE/FORCE 均为 9/9；共享 `aos_runtime` 仍 NOLOGIN/NOSUPERUSER/NOBYPASSRLS/非 owner。
+- 动态测试：scope A 可读写 A，B 不可见 A，伪造 B scope 被 WITH CHECK 拒绝；无 GUC 可见 0、NULL quarantine 不可见、事务后 role/GUC 不泄漏。
+- 真实开发库完成 `228ti3e4validate → 228ti3e6rls → downgrade → upgrade`；降级 policy/RLS=0，最终 9/9。
+- 数据守恒：1,030 行、37 quarantine、0 非 NULL orphan，业务 DML=0。
+- Tenant Isolation：119 passed、7 skipped、零失败；关键 lint/compile GREEN。
+- 备份：`/private/var/tmp/aos-ti3-e6.QWSrwy/aos-meta-before.dump`，1,791,098 bytes，mode 600，SHA-256 `21f45853fe6cb7e891b7186c59b584c3efc848320ae6ac1aaa1bd6dc26ec84a7`。
+- 下一门 TI-3 E7 Contract；4 个 Connector writer 继续由 TI-4 阻断。
