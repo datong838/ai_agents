@@ -1,7 +1,7 @@
 # 228 · TI-4 D2 Data OS 显式 TenantScope 写链实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：评审通过 / D2-A 执行中
+> 版本：v1.1 · 2026-08-04
+> 状态：D2-A GREEN / D2-B 执行中
 > 授权：用户已授权连续完成微商城接入前置；本波不连接具体商城
 > 前置：TI-4 D1 GREEN；代码 `m1@8e49b68`；Alembic `228ti4d1expand`
 
@@ -30,6 +30,8 @@ Router 从 Principal 构造一个 TenantScope，所有关联写入复用同一 s
 - `boot_data_os` 的 demo 清理不得无 scope 扫删，改为只处理显式测试 scope 或停止自动物理删除。
 
 D2-A GREEN 后立即进入 D2-B，不提前进入 D3。
+
+D2-A 已由代码 `5155d9b` 完成：六类 Store persist 显式 scope，跨 scope/NULL 历史全局 ID 冲突失败关闭，Dataset History scoped replace，Sync 只联动当前 scope Dataset；专项 12 passed、Tenant Isolation 144 passed / 8 skipped，共享库 297 行零改写。五分支 tree 为 `b9890d897cf973dc6c3100f61f2558b204d16e0d`。
 
 ## 二、写入 Contract
 
