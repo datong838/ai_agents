@@ -23,7 +23,7 @@
 | `module_variable` | 25 | 25 | 25 |
 | `module_widget_instance` | 108 | 108 | 108 |
 
-`meta_module` 分布为 `dev-org/dev-project=159`、`dev-org/prj-ops=1`，栖月汇为 0。两条 `module_events`（legacy module_id=`order-mgmt`）找不到同 scope 父 Module，必须 quarantine。可确定回填集合为 160 个父 Module + 642 个子记录。
+`meta_module` 分布为 `dev-org/dev-project=159`、`dev-org/prj-ops=1`，栖月汇为 0。两条 `module_events`（legacy module_id=`order-mgmt`）找不到同 scope 父 Module，必须 quarantine。7 张子表合计 464 行，其中可确定回填集合为 462 行；因此本波 ASSIGN 总数为 160 个父 Module + 462 个子记录 = 622。E1 的 644 行总量还包含不使用 module_pk 的 Theme 3 行与 Widget Catalog 17 行，不得混入 E3 算术。
 
 ## 2. 稳定身份规则
 
@@ -50,7 +50,7 @@
 
 1. 取 advisory transaction lock。
 2. 冻结行数、scope 分布、旧 ID、NULL 状态和逐记录 before hash。
-3. 计算 802 条 ASSIGN 决策（160+642）与 2 条 QUARANTINE 决策。
+3. 计算 622 条 ASSIGN 决策（160+462）与 2 条 QUARANTINE 决策。
 4. 检查 module_pk UUID 碰撞、父关联多义、非 NULL 冲突、栖月汇候选数；任一异常 BLOCKED。
 5. 持久化 append-only ledger，输出脱敏 JSON 摘要。
 
@@ -60,7 +60,7 @@
 - 子表仅当 `module_pk IS NULL` 且精确父关联及 before hash 匹配时填写。
 - 两条孤儿事件保持原行和 NULL module_pk，不创建假父记录。
 - Apply 全部在一个事务内；任一冲突不做部分提交。
-- Verify 对 802 个 APPLIED after hash、父子 module_pk 一致性、总行数守恒、栖月汇 0、quarantine 2 逐项检查。
+- Verify 对 622 个 APPLIED after hash、父子 module_pk 一致性、总行数守恒、栖月汇 0、quarantine 2 逐项检查。
 
 ### 4.3 Rollback 演练
 
@@ -82,9 +82,9 @@
 
 ## 6. 退出门
 
-1. dry-run 精确得到 ASSIGN=802、QUARANTINE=2，栖月汇候选=0。
+1. dry-run 精确得到 ASSIGN=622、QUARANTINE=2，栖月汇候选=0。
 2. 备份文件 Git 外、权限 600、记录 SHA256；恢复库演练 GREEN。
-3. 共享非生产 apply/verify/rollback 后 identity NULL 计数回到基线；最终新 batch apply/verify 后父 160、子 642 非 NULL，孤儿 2 仍 NULL。
+3. 共享非生产 apply/verify/rollback 后 identity NULL 计数回到基线；最终新 batch apply/verify 后父 160、子 462 非 NULL，孤儿 2 仍 NULL。
 4. 8 张表总行数逐表不变；非身份字段聚合 hash 不变。
 5. 所有 TI-2 FK 仍 NOT VALID；Alembic 仍为 `228ti2e1expand`；RLS 仍为 0。
 6. 租户隔离、Module/Workshop 累计测试 GREEN；五分支同 HEAD。
