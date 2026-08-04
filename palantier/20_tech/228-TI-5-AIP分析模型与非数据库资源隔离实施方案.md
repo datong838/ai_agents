@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.5 · 2026-08-04
-> 状态：A1/A2/A3 GREEN，B1 方案冻结待实施
-> 前置：TI-4 全域 GREEN；当前代码 `m1@68974ed`
+> 版本：v1.6 · 2026-08-04
+> 状态：A1/A2/A3/B1 GREEN，B2 待验证
+> 前置：TI-4 全域 GREEN；当前代码 `m1@044f5a5`
 
 ## Rules
 
@@ -78,12 +78,22 @@ B1 预计文件边界：
 - Registry/lint：`tenant_resources.yaml`、`tenant_schema_lint.py`。
 - Tests：`tests/tenant_isolation/test_ti5_b1_model_management_contract.py`，并更新 `test_model_management.py`、`test_phase5_regression.py` 的显式 scope 调用。
 
+B1 实施结果：`044f5a5` 已完成 `228ti5b1models`。七表均为 `(org_id,project_id,id)` 主键、validated workspace FK、双 GUC FORCE RLS；Provider Health→Provider 与 Registered Model→Catalog 使用同 scope 复合 FK。四个 Router 从 Principal 取 scope，五个 Store 删除默认组织并使用 scoped transaction，demo seed 只在显式测试 scope 内执行。共享库 65 行完成真实降级/升级，七表逐表 count/hash 全部不变；模型管理 33 passed，B1 专项 4 passed，Tenant Isolation 199 passed / 7 skipped，9,191 项全量收集无错误。备份：`/private/var/tmp/aos-ti5-b1.0If0El/aos-meta-before.dump`，1,944,971 bytes，mode `0600`，SHA-256 `ebdcbe71e0b020465873a7f29fff96e031310e336ee449f22ed53479aa31b3f4`。
+
 ### TI-5 B2：平台模型模板与组织实例分离核验
 
 - 当前 `model_catalog` 本身带组织/工作区 scope，语义上是“组织可发现目录快照”，不是平台全局模板；`registered_models`、provider、route、额度、usage、health 均是组织实例或运行状态。B1 不把它们提升成共享表，也不借隔离补强重新设计模型管理架构。
 - B2 只核验所有平台级只读模型模板来源与组织实例的物化边界：共享模板不得携带客户凭据、启停、额度、健康或路由；组织套用模板后必须产生独立 scoped 实例，组织定制不能反写模板，也不能影响其他组织。
 - 若代码中不存在独立平台模板存储，B2 以“能力缺口 + TI-6 上线阻断”登记，不在租户隔离波次凭空新建一套 catalog。只有现有产品/架构文档已有明确模板实体时，才补对应 Contract 与测试。
 - B2 退出门是形成资源分类、调用证据和负向测试结论；不得把 B1 七表 GREEN 误报为平台模板能力已实现。
+
+B2 代码/产品核查结论与验证边界冻结如下：
+
+- 平台模板已有真实载体：`plugins/llm-providers/*/manifest.json` 由 `llm_provider_registry._scan_disk()` 只读扫描，包含 provider 类型、能力、默认模型和配置 Schema，不含客户凭据、启停、健康、额度或路由状态。
+- 组织实例已有真实载体：安装状态、自定义插件、ready、组织配置与凭据槽分别落在 `meta_aip_kv` 的 `llm_provider_installs/custom/ready/configs/secrets`；A2 已使同 key 可跨 scope 共存并由 canonical ContextVar + RLS 隔离。
+- B1 七表是组织的模型管理实例/可发现目录快照，不是平台模板；12 条 seed 只属于测试组织，不得展示给栖月汇空组织。
+- `aip_model_catalog.ModelCatalogEngine` 是另一条进程内 Singleton CRUD，既不是只读 manifest，也未绑定 TenantScope；它归 TI-5 C 修复，不得用 B1 PostgreSQL GREEN 掩盖。
+- B2 只新增契约测试：同一磁盘 manifest 对两 scope 均只读可见；A scope 安装/配置不得改变 B scope，也不得修改 manifest 文件 hash；不新增表、不改变产品三层栈式架构。
 
 ### TI-5 C：非 PostgreSQL 与进程内状态
 
