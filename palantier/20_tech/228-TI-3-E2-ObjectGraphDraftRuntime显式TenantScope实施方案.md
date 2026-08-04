@@ -1,7 +1,7 @@
 # 228 · TI-3 E2 Object/Graph/Draft Runtime 显式 TenantScope 实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：执行中；E2-A GREEN，E2-B/C 待执行
+> 状态：执行中；E2-A/E2-B GREEN，E2-C 待执行
 > 前置：TI-3 E1 `7f7d48a` GREEN；Alembic `228ti3e1expand`
 
 ## Rules
@@ -57,3 +57,13 @@ E2 的新写必须精确 scope；读取优先精确 scope。历史 NULL scope �
 - Branch/Overlay 新写继承 Principal scope；checkout/merge 的对象 mutation 和 overlay 清理同时约束 org/project。
 - E2-A 专项 2 passed；Branch/Ontology/Funnel + Tenant Isolation 累计 185 passed、15 skipped。
 - E2-A 未回填历史 NULL scope，读取全面切换仍留给 E2-C/E3/E5；下一波为 E2-B Draft/Wiki/Lifecycle。
+
+## E2-B 执行结果
+
+- 代码提交 `561148f`；`m1/w1/w2/w3/w4` 本地与远端同步至同一提交。
+- Draft approval 读取、更新 `obj_instance` 及更新 Draft 状态均约束 Principal 的 org/project；遗留全局 Object 键被其他 scope 占用时返回 409，不接管原对象。
+- Wiki upsert 只允许同 scope 更新；跨 scope 同键返回 409，事务回滚后原 Wiki、版本链和 Draft 状态均不变。
+- Lifecycle 候选、归档、计数、HTTP Ops 与 CLI 全部要求显式 TenantScope；CLI 必须给出 `--org-id/--project-id`，不再隐式扫描全库。
+- 内存 Insight key 扩展为 `(org_id, project_id, id)`，同一 Insight ID 可在不同 scope 独立存在，TTL 状态和候选互不可见。
+- E2-B 专项 3 passed；Tenant Isolation + Draft/Object/Action/TTL 累计 137 passed、17 skipped。17 条 skip 为既有环境/历史条件门，不是本波断言失败。
+- `decision_lineage` 的 631 条历史归属仍缺证据，按总方案保留给 TI-5，E2-B 不新增猜测回填或默认归属；下一波 E2-C 收口目标域全部读路径、内部调用签名与静态阻断门。
