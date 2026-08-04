@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.6 · 2026-08-04
-> 状态：A1/A2/A3/B1 GREEN，B2 待验证
-> 前置：TI-4 全域 GREEN；当前代码 `m1@044f5a5`
+> 版本：v1.7 · 2026-08-04
+> 状态：A1/A2/A3/B1/B2 GREEN，下一门 C
+> 前置：TI-4 全域 GREEN；当前代码 `m1@7022ffe`
 
 ## Rules
 
@@ -94,6 +94,8 @@ B2 代码/产品核查结论与验证边界冻结如下：
 - B1 七表是组织的模型管理实例/可发现目录快照，不是平台模板；12 条 seed 只属于测试组织，不得展示给栖月汇空组织。
 - `aip_model_catalog.ModelCatalogEngine` 是另一条进程内 Singleton CRUD，既不是只读 manifest，也未绑定 TenantScope；它归 TI-5 C 修复，不得用 B1 PostgreSQL GREEN 掩盖。
 - B2 只新增契约测试：同一磁盘 manifest 对两 scope 均只读可见；A scope 安装/配置不得改变 B scope，也不得修改 manifest 文件 hash；不新增表、不改变产品三层栈式架构。
+
+B2 实施结果：`7022ffe` 新增模板/实例负向契约测试并 GREEN。`moonshot` 磁盘 manifest 在两个 synthetic scope 中版本一致；A scope 安装后仅 A 的 scoped KV 状态变为 installed，B 仍为 false，manifest SHA-256 前后不变。平台 Provider manifest 与组织安装/配置实例分离得到代码证据；`aip_model_catalog` Singleton 明确转入 TI-5 C。
 
 ### TI-5 C：非 PostgreSQL 与进程内状态
 
