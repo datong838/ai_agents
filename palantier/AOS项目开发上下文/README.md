@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@ec0d7e7`（TI-4 C1 Connector Workspace Expand）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-4 C1 收口提交
-> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2、TI-PRE-1、TI-2 E1～E7、TI-3 E1～E7、TI-4 C1 GREEN；59 条逻辑 QUARANTINE 使 TI-1 E4 BLOCKED；当前执行 TI-4 C2，真实平台连接仍暂停。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@4ae0492`（TI-4 C2 Connector TenantScope）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-4 C2 收口提交
+> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1/E2、TI-PRE-1、TI-2 E1～E7、TI-3 E1～E7、TI-4 C1/C2 GREEN；59 条逻辑 QUARANTINE 使 TI-1 E4 BLOCKED；下一门 TI-4 D1，真实平台连接仍暂停。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -43,6 +43,8 @@
 - TI-3 E7 证据：[`2026-08-04-TI-3-E7-ObjectRuntime复合主键与隔离区Contract证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-3-E7-ObjectRuntime复合主键与隔离区Contract证据.md)
 - TI-4 C1 方案：[`228-TI-4-C1-电商Connector工作区外键扩展实施方案.md`](../20_tech/228-TI-4-C1-电商Connector工作区外键扩展实施方案.md)
 - TI-4 C1 证据：[`2026-08-04-TI-4-C1-电商Connector工作区外键扩展证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-4-C1-电商Connector工作区外键扩展证据.md)
+- TI-4 C2 方案：[`228-TI-4-C2-通用Connector显式TenantScope与对象写入实施方案.md`](../20_tech/228-TI-4-C2-通用Connector显式TenantScope与对象写入实施方案.md)
+- TI-4 C2 证据：[`2026-08-04-TI-4-C2-通用Connector显式TenantScope证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-4-C2-通用Connector显式TenantScope证据.md)
 - TI-0B/TI-0C 证据：[`2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md)
 - TI-0D 证据：[`2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md)
 - TI-0E 证据：[`2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md)

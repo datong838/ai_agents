@@ -1,7 +1,7 @@
 # 228 · TI-4 C2 通用 Connector 显式 TenantScope 与对象写入实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：评审通过 / 执行中
+> 版本：v1.1 · 2026-08-04
+> 状态：GREEN
 > 授权：用户已授权连续完成微商城接入前置；本波不连接具体商城
 > 前置：TI-4 C1 GREEN；代码 `m1@ec0d7e7`；Alembic `228ti4c1expand`
 
@@ -69,3 +69,13 @@ C2 无 schema 迁移。代码回滚恢复为失败关闭的旧 writer，不删�
 | owner 绕过 RLS | P0 | 所有业务写事务使用 `connect(scope)`；不得改 `db.connect` 降权规则 |
 | 测试误连真实上游 | P0 | 只用 mock/patch；不读取客户 endpoint 或凭据 |
 | 自动创建全局 Object Type | P1 | `autoCreateObjectType` 默认关闭；模板治理留给既定 TI-5 边界 |
+
+## 七、实施结果
+
+- 代码提交 `4ae0492` 已让 REST/File/MySQL/PostgreSQL/SQL Server 五类通用 ingest 使用同一个显式 TenantScope。
+- 所有 `obj_instance` insert/upsert 已包含 `org_id/project_id`，conflict target 固定为 `(org_id, project_id, object_type, object_id)`；TI-3 E5 的 4 个 deferred writer 已收口为 0。
+- 缺 scope 或空白 scope 失败关闭；REST/File 同业务 ID 双租户共存，三类 JDBC mock/sample scoped write 通过。
+- Connector 相关回归 28 passed、1 skipped；Tenant Isolation 累计 132 passed、8 skipped；lint/compile/diff check GREEN。
+- 共享开发库 Alembic 仍为 `228ti4c1expand`，`obj_instance=0`，5 张电商表均为 0；本波共享库业务 DML=0。
+- 五分支/五远端同步至 `4ae0492`，tree `d25c6cea776fa764687172cefce1002eaf11b45d`。
+- 下一波进入 TI-4 D1 Data OS Scope Expand；不开始具体商城 Connector。
