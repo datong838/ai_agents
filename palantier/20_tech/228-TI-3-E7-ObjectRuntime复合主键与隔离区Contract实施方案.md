@@ -1,7 +1,7 @@
 # 228 · TI-3 E7 Object Runtime 复合主键与隔离区 Contract 实施方案
 
 > 版本：v1.0 · 2026-08-04  
-> 状态：评审通过 / 执行中  
+> 状态：GREEN / 已完成
 > 授权：用户已明确授权连续执行 TI-1 E3 全链路前置工作，直至具备接入微商城条件  
 > 前置：TI-3 E6 `8dfa626` GREEN；共享库 Alembic `228ti3e6rls`
 
@@ -81,7 +81,7 @@ E7 不新增业务 API，只把既有写能力的 conflict target 映射到新 C
 | 测试组织样例 | `db.py`、`demo/workorder_seed.py`、`demo/order_seed.py` | 仅改 conflict target，不改变样例内容或归属 |
 | Connector 导入 | 4 个 Connector writer | 不改；保持 TI-4 阻断，缺 scope/旧键均失败关闭 |
 
-运行时 `CREATE TABLE IF NOT EXISTS` 兼容 DDL 同步改成 E7 复合主键，避免新测试库或局部初始化继续表达旧 Contract；不在运行时执行 ALTER。
+`branch_store`、`retention_jobs` 等迁移后才可能执行的叶子兼容 DDL 同步表达 E7 复合主键；`db.py`/Draft 的历史 bootstrap DDL 继续作为 E1～E7 迁移输入，不能提前改成 E7 结构，否则空库会在 E1 重复加列。最终 Contract 只以 managed migration 与 schema lint 为真源；任何运行时 DDL 都不得执行 ALTER 或绕过迁移链。
 
 ## 四、实施拆分
 
@@ -132,3 +132,11 @@ E7 不新增业务 API，只把既有写能力的 conflict target 映射到新 C
 
 回滚以 Alembic downgrade 为首选，但只在碰撞检查通过时允许；否则停止自动降级，以执行前完整备份恢复。任何回滚均不得把隔离数据伪造到测试组织或栖月汇组织。
 
+## 七、执行结果
+
+- 代码基线：`m1@fd2a124`；最终 Alembic：`228ti3e7contract`。
+- 9 表复合主键、scope NOT NULL、scoped branch FK 全部生效；37 条历史未知归属原样隔离，活跃 993 + 隔离 37 = 1,030。
+- 共享开发库 `upgrade → downgrade → upgrade` GREEN；降级恢复 1,030/37，再升级回到 993/37/0。
+- 隔离 payload hash mismatch=0，两个 guard trigger 生效，`aos_runtime` 无访问权。
+- 最终累计 `160 passed, 26 skipped`，零失败；五分支同步至 `fd2a124`，tree `09b896a07d8dcead7f9b64fe24f87018063175be`。
+- TI-3 E1～E7 最终 GREEN；下一执行域为 TI-4 Data OS 与 Connector，4 个通用 Connector writer 仍失败关闭，尚未开始具体商城接入。
