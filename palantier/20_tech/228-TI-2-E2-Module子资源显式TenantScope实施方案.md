@@ -1,7 +1,7 @@
 # 228 · TI-2 E2 Module 子资源显式 TenantScope 实施方案
 
-> 版本：v1.0 · 2026-08-04  
-> 状态：执行中（E2-A GREEN，代码 `b7cfb34`）  
+> 版本：v1.1 · 2026-08-04
+> 状态：执行中（E2-A/E2-B GREEN，代码 `5df9b5e`）
 > 前置：TI-2 E1 `e95ae45` GREEN
 
 ## Rules
@@ -22,6 +22,8 @@
 | E2-D | Module aggregate、静态默认常量门、APP-01～APP-05 基础 | 业务方法默认常量 0 命中，累计回归 GREEN |
 
 E2-A 完成记录：Canvas/Widget/Variable 和 Query list 已显式接收 TenantScope；53 项分片累计与 77 项租户累计 GREEN。详细证据见 `evidence/tenant-isolation/2026-08-04-TI-2-E2A-CanvasWidgetVariable显式TenantScope证据.md`。
+
+E2-B 完成记录：Query 写路径、Event 全 CRUD、Interface 读写均显式接收 TenantScope；资源定位同时约束 scope、module_id 和资源 ID，Interface 遗留全局 module_id 冲突失败关闭。47 项分片累计与 80 项租户累计 GREEN。详细证据见 `evidence/tenant-isolation/2026-08-04-TI-2-E2B-QueryEventInterface显式TenantScope证据.md`。
 
 ## 固定方法规则
 
