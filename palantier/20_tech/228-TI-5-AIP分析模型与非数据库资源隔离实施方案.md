@@ -1,7 +1,7 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.2 · 2026-08-04
-> 状态：A1/A2 GREEN，A3 待实施
+> 版本：v1.3 · 2026-08-04
+> 状态：A1/A2 GREEN，A3 方案冻结待实施
 > 前置：TI-4 全域 GREEN；当前代码 `m1@30137dd`
 
 ## Rules
@@ -15,7 +15,7 @@ TI-0E 的冻结执行组在 TI-4 后剩余 TI-5：
 - AIP 运行表：eval report、suite、logic graph、revision、run、run node、publication；已有 scope，但仍需运行链与 RLS/Contract 收口。
 - `meta_aip_kv`：23 条历史记录，无完整 scope，先做 namespace 决策账本，未知归属进入维护隔离区。
 - Analytics/模型目录：capacity、usage、catalog、provider、route、health、registered model；已有 dev scope，但仍是弱全局主键、无 RLS。
-- `decision_lineage`：631 条无 scope 历史，当前与对象引用匹配为 0；禁止默认认领，先逐记录决策并可逆隔离。
+- `decision_lineage`：631 条无 scope 历史，与 `obj_instance` 直接匹配为 0，但只读 A3 precheck 已证明全部与唯一 Draft 父记录四重一致；必须以父 Draft 作为归属真源，不得仅因对象匹配为 0 就丢失可恢复归属。
 - 非 PostgreSQL：对象前缀、向量、缓存、队列、离线产物和进程内引擎。
 
 ## 2. 分波
@@ -40,9 +40,21 @@ A2 实施冻结：当前共享非生产库 23 条 KV 均由本地测试流程产
 
 ### TI-5 A3：Decision Lineage 历史归属
 
-- 增加 TenantScope 与输入/输出/执行上下文证据列，不按 ID 或时间猜测。
-- 当前 631 条引用无法证明时全部进入可逆维护隔离，不伪造测试组织归属。
-- 新写 lineage 必须从 Principal/执行 envelope 继承完整 scope。
+- 增加 TenantScope，以 `draft_dataset(org_id, project_id, id)` 作为执行上下文父记录；不按时间、payload 或对象 ID 名称猜测。
+- A3 precheck 冻结基线：631/631 满足 `lineage.id = 'lin-' || draft_id`，631/631 唯一命中 Draft，631/631 的 action/object 字段与父 Draft 一致，父 Draft 均为 `dev-org/dev-project`，无 NULL scope、无一对多命中。因此本批次逐条 `ASSIGN_FROM_DRAFT`，而非默认认领。
+- 任一四重证据不满足的旧行必须原样移入 `decision_lineage_orphan_quarantine`，记录 payload hash 与原因，runtime 不得访问；本次预期 quarantine=0，但不删除该安全网。
+- 新写 lineage 必须从 Principal/执行 envelope 继承完整 scope，使用 scoped transaction，写入 `(org_id, project_id, id)` 且父 Draft scope 必须一致。
+- 活跃表冻结 scope NOT NULL、workspace FK、父 Draft 复合 FK、复合主键与 FORCE RLS；Analytics/Quiver/Demo read 全部使用完整 scope。`ensure_lineage_schema()` 改为 migration-owned no-op，禁止请求期 DDL。
+- 降级前若同 id 已跨 scope 共存则阻断，不静默合并；无冲突时将 quarantine 原样恢复并撤销 Contract。
+
+A3 预计文件边界：
+
+- Migration：`services/aos-api/alembic/versions/228ti5a3_decision_lineage_contract.py`
+- Runtime：`services/aos-api/aos_api/routers/runtime_write.py`、`routers/analytics.py`、`demo/demo_story.py`、`demo/seed.py`
+- Schema report：`services/aos-api/aos_api/tenant_schema_lint.py`
+- Tests：`services/aos-api/tests/tenant_isolation/test_ti5_a3_decision_lineage_contract.py` 及被 Contract 影响的既有 lineage/analytics/demo 用例。
+
+A3 前置备份：`/private/var/tmp/aos-ti5-a3.OAHNwn/aos-meta-before.dump`，1,907,663 bytes，mode `0600`，SHA-256 `3c6ed2195abc836cbede6c8e809a73cb7fb8bd20cf95d95281694157d78b9b0a`。基线 lineage 行数 631，聚合 hash `e0e211357213b2211e7c27c0032e7c4a`。
 
 ### TI-5 B1/B2：Analytics 与模型目录
 
