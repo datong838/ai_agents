@@ -50,7 +50,7 @@
 
 新增 `data_os_orphan_quarantine`，保存 `source_table`、稳定 `source_key`、原始整行 JSONB `payload`、`payload_hash`、`reason_code`、D3 batch/decision 证据引用、`source_revision` 与时间戳。
 
-- 只从 D3 已判定 `QUARANTINE` 的 293 条记录迁入；逐条核对稳定 key 与 before hash。
+- 只从目标环境 D3 最新完整快照中已判定 `QUARANTINE` 的记录迁入；迁移按当前总行数、未知行数、`ASSIGN/BLOCKED=0` 自动选择匹配 batch，不硬编码共享开发库 batch ID。共享开发库对应 293 条。
 - `REVOKE ALL ... FROM aos_runtime`；UPDATE、DELETE、TRUNCATE 由 guard 阻断。
 - 升级必须满足：迁入数 = 从活跃表移出数 = 293，且活跃 4 + 隔离 293 = 原总量 297，payload hash mismatch=0。
 - 降级只在旧全局键未被 D7 后数据占用时原样恢复；有碰撞即 BLOCKED，转完整备份恢复，不覆盖新数据。
@@ -71,7 +71,7 @@
 
 ### D7-A 只读预检与备份
 
-1. 冻结 `228ti4d6rls`、297/293/4、D3 batch 和 7 表哈希。
+1. 冻结 `228ti4d6rls`、297/293/4、目标环境匹配的 D3 batch 和 7 表哈希。
 2. 检查 scoped 键重复、父子断链、旧 FK 引用和降级冲突。
 3. 生成 mode 0600 的完整 PostgreSQL custom-format 备份，记录 bytes 与 SHA-256。
 
