@@ -1,7 +1,7 @@
 # 228 · TI-3 E3 Object/Graph/Draft/Wiki 历史归属隔离实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：执行中
+> 状态：GREEN（代码 `21f8803`，共享非生产最终 batch 已 verify）
 > 前置：TI-3 E1/E2 GREEN；代码 `m1@5e58768`；Alembic `228ti3e1expand`
 
 ## 0. Rules
@@ -72,3 +72,11 @@
 ## 7. 下一门
 
 E3 GREEN 后进入 E4：只验证不会被 37 条 NULL scope 阻断的工作区 FK（NULL 对 FK 合法），同时单独证明 993 条完整 scope 无父断链。不得以 E4 Validate 冒充历史归属已恢复。之后 E5 才做全面 Read Switch，E6 RLS，E7 Contract。
+
+## 8. 完成记录
+
+- 共享实盘 dry-run：total=1,030、NO_ACTION=993、QUARANTINE=37、ASSIGN/BLOCKED=0；source snapshot `efbc1fc7…fcde`。
+- Git 外备份：`/private/var/tmp/aos-ti3-e3.ZH8MTl/aos-meta-before.dump`，1,656,851 bytes，mode 600，SHA256 `5ed0331c02b3181faabdd7dde17656945fe05479a05eb1626ea66c62cf108915`。
+- 恢复库 batch `75da9e3e-601e-590a-acb2-13487d2c636e`：approve/apply/verify/rollback GREEN，verified=1,030、quarantine=37、businessRowsUpdated=0；临时恢复库已删除。
+- 共享最终 batch `7c82803d-1b18-5df0-9a52-46b8f831f376`：Planner/Approver/Executor/Verifier 分离，apply/verify GREEN，verified=1,030、quarantine=37、businessRowsUpdated=0。
+- 专项 2 passed；Tenant Isolation 109 passed、7 skipped；五分支同步至 `21f8803`。
