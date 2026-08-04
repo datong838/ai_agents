@@ -1,7 +1,7 @@
 # 228 · TI-3 E2 Object/Graph/Draft Runtime 显式 TenantScope 实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：连续执行授权下评审通过 / 待实施
+> 状态：执行中；E2-A GREEN，E2-B/C 待执行
 > 前置：TI-3 E1 `7f7d48a` GREEN；Alembic `228ti3e1expand`
 
 ## Rules
@@ -49,3 +49,11 @@ E2 的新写必须精确 scope；读取优先精确 scope。历史 NULL scope �
 4. 三张平台模板表继续共享，未被错误租户化。
 5. Tenant Isolation 与 Object/Graph/Draft/Wiki 累计回归保持 GREEN；既有 OpenFGA seed 漂移单列，不得掩盖。
 6. 五分支同步后进入 TI-3 E3 历史归属与隔离方案；具体商城仍暂停。
+
+## E2-A 执行结果
+
+- 代码功能提交 `f5f0b7c`，格式收口 `5cdafea`；五分支同步至 `5cdafea`。
+- Graph/Funnel 新写显式写入 Principal scope；遗留全局键被另一 scope 重用时返回 409，不覆盖原归属。
+- Branch/Overlay 新写继承 Principal scope；checkout/merge 的对象 mutation 和 overlay 清理同时约束 org/project。
+- E2-A 专项 2 passed；Branch/Ontology/Funnel + Tenant Isolation 累计 185 passed、15 skipped。
+- E2-A 未回填历史 NULL scope，读取全面切换仍留给 E2-C/E3/E5；下一波为 E2-B Draft/Wiki/Lifecycle。
