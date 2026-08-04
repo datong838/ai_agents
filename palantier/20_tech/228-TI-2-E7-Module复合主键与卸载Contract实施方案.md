@@ -1,7 +1,7 @@
 # 228 · TI-2 E7 Module 复合主键与卸载 Contract 实施方案
 
 > 版本：v1.0 · 2026-08-04
-> 状态：评审通过 / 执行中
+> 状态：GREEN / 已完成
 > 前置：TI-2 E6 `846b49a` GREEN；共享库 Alembic `228ti2e6rls`
 
 ## Rules
@@ -54,3 +54,12 @@
 4. APP-04：两个 scope 创建相同 moduleId、相同 Canvas/Interface 和子 ID，读写互不影响。
 5. APP-05：scope A 卸载后 A 不可见/事件停止，scope B 同名实例保持可用，独立业务对象计数不变。
 6. Router/OpenAPI、Tenant Isolation、Workshop 累计 GREEN；五分支同步后 TI-2 才可最终 GREEN。
+
+## 执行结果
+
+- 代码基线：`m1@4004170`；最终 Alembic：`228ti2e7contract`。
+- 共享库 8 张活跃表复合主键与 `module_pk` 非空 Contract 生效；2 条孤儿 Event 进入维护隔离表，runtime 无访问权。
+- APP-04 已证明两个 scope 可创建相同 Module/Canvas/Interface/子资源 ID；APP-05 已证明带 ETag 的软卸载只影响当前 scope，独立业务对象计数不变。
+- 真实 `upgrade → downgrade → upgrade` GREEN：降级恢复 2 条 orphan、旧主键与 nullable；再升级重新隔离且活跃 NULL=0。
+- Tenant Isolation + Workshop 累计 `272 passed, 3 skipped`；3 个 skip 是 E7 已由 NOT NULL 拒绝的 E3/E5 历史非法注入测试，替代门由 E7 quarantine/contract 测试覆盖。
+- `m1` 与 w1～w4 已同步至 `4004170`。TI-2 E1～E7 最终 GREEN，下一执行域为 TI-3 Object/Graph/Draft/Action Runtime，仍不接具体商城。
