@@ -1,0 +1,33 @@
+{
+  "stage": "TI-1-E3-1",
+  "mode": "READ_ONLY_SCHEMA_LINT",
+  "ok": true,
+  "issues": [],
+  "alembicRevision": "228ti1e3exec",
+  "authzTenantColumns": [
+    "org_id",
+    "project_id"
+  ],
+  "authzNonNullableColumns": [],
+  "foreignKeyCount": 7,
+  "missingForeignKeys": [],
+  "prematurelyValidatedForeignKeys": [],
+  "rlsEnabledOrForcedTableCount": 0,
+  "dualWriteLedgerColumns": [
+    "created_at",
+    "key_hash",
+    "ledger_id",
+    "observed_org_id",
+    "observed_project_id",
+    "operation",
+    "org_id",
+    "project_id",
+    "resource",
+    "status"
+  ],
+  "dualWriteLedgerMissingColumns": [],
+  "dualWriteLedgerUnexpectedlyNullableColumns": [],
+  "e3MissingColumnsByTable": {},
+  "e3NullableScopeByTable": {},
+  "e3MissingAppendOnlyTriggers": []
+}

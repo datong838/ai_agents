@@ -1,0 +1,16 @@
+{
+  "actorRolesDistinct": true,
+  "alembicRevision": "228ti1e3exec",
+  "applyCount": 1,
+  "backupRestoreDatabase": true,
+  "batchHash": "ac83c656faf20f4a83d0f43421d91952f8ef6fe954178365edcd7173ad007896",
+  "beforeAfterRollbackHashEqual": true,
+  "decisionEventCount": 3,
+  "gate": "GREEN",
+  "rawKeysReturned": false,
+  "rawPayloadReturned": false,
+  "rollbackCount": 1,
+  "rowCountConservedAcrossCycle": true,
+  "stage": "TI-1-E3-3",
+  "verifyCount": 1
+}
