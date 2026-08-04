@@ -1,7 +1,7 @@
 # 228 · TI-4 D1 Data OS 租户列与工作区外键扩展实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：评审通过 / 执行中
+> 版本：v1.1 · 2026-08-04
+> 状态：GREEN
 > 授权：用户已授权连续完成微商城接入前置；本波不连接具体商城
 > 前置：TI-4 C1/C2 GREEN；代码 `m1@4ae0492`；Alembic `228ti4c1expand`
 
@@ -71,3 +71,15 @@
 | history 子表先丢失父 scope | P0 | D2 写入时从同一 TenantScope 传递，D4 再验证父关系 |
 | 运行期 DDL 覆盖 migration | P1 | 后续 D2 同步更新 schema 声明；D1 先以 Alembic 为真源 |
 | 提前启用 RLS 导致全链中断 | P0 | D1 禁止 RLS；按 D2→D3→D4→D5→D6→D7 顺序 |
+
+## 七、实施结果
+
+- 代码提交 `8e49b68`；最终 Alembic revision `228ti4d1expand`。
+- 5 表新增 nullable `org_id/project_id` 共 10 列；7 表新增 NOT VALID workspace FK 共 7 个。
+- 共享库 7 表逐表行数未变，总计 297；业务 DML=0，payload/主键未改。
+- 真实 `C1 → D1 → C1 → D1` 往返 GREEN；最终 lint `ok=true`。
+- D1/C1 专项 6 passed；Tenant Isolation 累计 135 passed、8 skipped。
+- 备份 `/private/var/tmp/aos-ti4-d1.9lThiP/aos-meta-before.dump`，1,807,164 bytes，0600，SHA-256 `4412e640e251036e155824125b41480ee59d9fe12cde6e9628e8f69403cd95e7`，`pg_restore -l` GREEN。
+- 五分支/五远端为 `8e49b68`，tree `c43cc5063f011d6deec31121ff4c908eb9d8a7b3`。
+- 暴露并固化了“Data OS 基表仍由既有 runtime bootstrap 创建”的过渡事实；D1 对缺表失败关闭，D7 Contract 前必须把建表真源收归 migration。
+- 下一波 D2：显式 TenantScope 写链，不回填历史、不切换全局读取。
