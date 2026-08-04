@@ -1,7 +1,7 @@
 # 228 · TI-2 E6 Module 行级安全实施方案
 
-> 版本：v1.0 · 2026-08-04
-> 状态：评审通过 / 执行中
+> 版本：v1.1 · 2026-08-04
+> 状态：GREEN
 > 前置：TI-2 E5 `8aee9f6` GREEN；共享库 Alembic `228ti2e4validate`
 
 ## Rules
@@ -14,7 +14,7 @@
 
 - Alembic/维护连接继续使用 owner 角色，负责 DDL、备份和经批准的离线操作；
 - 带 `TenantScope` 的应用连接在事务内 `SET LOCAL ROLE aos_runtime`，再设置 `aos.org_id/aos.project_id`；
-- `aos_runtime` 为 `NOLOGIN NOSUPERUSER NOBYPASSRLS`，不是表 owner，仅获 Module 族最小 DML 权限；
+- `aos_runtime` 为 `NOLOGIN NOSUPERUSER NOBYPASSRLS`，不是表 owner；因当前所有已隔离 Store 统一复用 `connect(scope)`，且部分 legacy `ensure_schema()` 会在迁移后动态建表，它获得 public 表普通 DML 与 sequence 使用权及同类默认权限，但没有 DDL、TRUNCATE、REFERENCES、TRIGGER或角色管理；
 - 无 scope 的连接不自动切运行角色，不得作为 HTTP 业务路径使用。
 
 ## RLS 清单
@@ -46,7 +46,7 @@
 
 ## 权限与回滚
 
-`aos_runtime` 只授予 `public` schema USAGE 以及上述 11 表的 SELECT/INSERT/UPDATE/DELETE；不授予 CREATE、TRUNCATE、REFERENCES、TRIGGER 或角色管理。E6 downgrade 删除 11 个 policy 并 DISABLE/FORCE OFF，但保留无登录运行角色及其最小 grant，避免全局角色 DROP 误伤其他数据库/并发会话；代码回滚同时撤销 scoped connection 的 `SET LOCAL ROLE`。E3 身份和 E4 FK 均不回退。
+`aos_runtime` 授予 `public` schema USAGE、表 SELECT/INSERT/UPDATE/DELETE 与 sequence USAGE/SELECT；同样的 `ALTER DEFAULT PRIVILEGES` 只由迁移 owner 配置，以兼容 Theme/Widget 等迁移后动态建表。运行角色自身不拥有 ALTER DEFAULT PRIVILEGES、CREATE、TRUNCATE、REFERENCES、TRIGGER 或角色管理能力。默认 DML grant 不是默认隔离证明：任何新 tenant-owned 表仍必须注册、显式 TenantScope 并在对应 E6 波加入 RLS policy，否则资源覆盖门不得 GREEN。E6 仅对上述 11 张 Module 表建立 policy。downgrade 删除 11 个 policy 并 DISABLE/FORCE OFF，但保留无登录运行角色及其 grant，避免全局角色 DROP 误伤其他数据库/并发会话；代码回滚同时撤销 scoped connection 的 `SET LOCAL ROLE`。E3 身份和 E4 FK 均不回退。
 
 ## 退出门
 
@@ -56,3 +56,14 @@
 4. 切到运行角色但不设 GUC时 11 表读取为 0、写入拒绝；事务结束后角色与 GUC 不泄漏。
 5. `upgrade → downgrade → upgrade` 可逆，行数/身份 hash 不变，栖月汇 Module 0。
 6. Tenant Isolation + Workshop 累计 GREEN，五分支同步后进入 E7 Contract；APP-04/05 仍不得提前标绿。
+
+## 执行结果
+
+- 代码 `846b49a`；m1 与四 Worker 本地/远端同步。
+- 新增 `aos_runtime`：NOLOGIN/NOSUPERUSER/NOBYPASSRLS/非 owner；scoped transaction 先 `SET LOCAL ROLE` 再设置 GUC。
+- 11 张 Module 实例表全部 ENABLE+FORCE RLS，每表一个 `FOR ALL` USING/WITH CHECK policy；10 表 org+project，Profile 仅 org。
+- 为兼容迁移后动态 `ensure_schema()`，迁移 owner 给现有及未来 public 表/sequence 配置普通运行 DML 默认 grant；运行角色无 DDL/角色能力，新 tenant 表仍必须另过注册/RLS门。
+- 共享库完成 upgrade/downgrade/upgrade 多轮演练；降级 policy/RLS=0，最终 Alembic `228ti2e6rls`。
+- 无 GUC运行角色可见 0；测试工作区可见 159，owner 总量 160；跨 scope 与 WITH CHECK 负向 GREEN。
+- 专项 12 passed；Tenant Isolation + Workshop 累计 134 passed，7 个既有 warning。
+- 备份：`/private/var/tmp/aos-ti2-e6.WHDDpN/aos-meta-before.dump`，1,615,403 bytes，mode 600，SHA-256 `91c573644ce17a6c25f57db4dc697c5e0dd29c482cc38a960cdcfdb9f24ea4a3`。
