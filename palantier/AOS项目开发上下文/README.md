@@ -1,9 +1,9 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-04
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@dc32c31`（TI-0E 功能提交；五分支同步以实时 Git 核验为准）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-0E 收口对账提交
-> 当前门禁：M1～M5、TI-0B～TI-0E GREEN；栖月汇业务数据为 0，但全资源空数据证明为 YELLOW；下一步 TI-1 E1 方案评审，具体平台接入仍暂停。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@621a1bb`（TI-1 E1 功能提交；五分支同步以实时 Git 核验为准）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-1 E1 收口对账提交
+> 当前门禁：M1～M5、TI-0B～TI-0E、TI-1 E1 GREEN；栖月汇业务数据为 0，但全资源空数据证明为 YELLOW；下一步 TI-1 E2 方案评审，具体平台接入仍暂停。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -39,6 +39,7 @@
 - TI-0B/TI-0C 证据：[`2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0B-TI-0C资源注册与鉴权失败关闭证据.md)
 - TI-0D 证据：[`2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0D归属Precheck与栖月汇空数据基线证据.md)
 - TI-0E 证据：[`2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-0E实施分波与迁移门禁冻结证据.md)
+- TI-1 E1 证据：[`2026-08-04-TI-1-E1公共TenantScope与Nullable-Expand证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-1-E1公共TenantScope与Nullable-Expand证据.md)
 - M3-0 回归证据：[`2026-08-03-M3-0契约与测试夹具冻结证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-0契约与测试夹具冻结证据.md)
 - M3-1 回归证据：[`2026-08-03-M3-1专用SDK-Adapter回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-1专用SDK-Adapter回归证据.md)
 - M3-2 回归证据：[`2026-08-03-M3-2真实只读资产页回归证据.md`](../20_tech/evidence/m0/m3-ui-sdk/2026-08-03-M3-2真实只读资产页回归证据.md)

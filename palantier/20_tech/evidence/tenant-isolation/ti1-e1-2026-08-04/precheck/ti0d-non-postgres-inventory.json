@@ -1,0 +1,4229 @@
+{
+  "mode": "READ_ONLY_REDACTED",
+  "resourceCount": 7,
+  "resources": [
+    {
+      "backend": "s3-compatible",
+      "bucket": "aos-media",
+      "canonicalPrefixItemCount": 68,
+      "contentInspected": false,
+      "itemCount": 70,
+      "name": "tenant-object-prefixes",
+      "status": "PROBED",
+      "targetTenantItemCount": 0,
+      "testTenantItemCount": 68,
+      "unknownPrefixItemCount": 2
+    },
+    {
+      "backend": "meta_aip_kv",
+      "contentInspected": false,
+      "itemCount": 1,
+      "name": "tenant-vector-records",
+      "status": "PROBED",
+      "targetTenantItemCount": 0,
+      "testTenantItemCount": 0,
+      "unknownPrefixItemCount": 1
+    },
+    {
+      "backend": "none",
+      "name": "tenant-cache-namespaces",
+      "status": "NOT_CONFIGURED"
+    },
+    {
+      "backend": "no-tenant-owned-offline-store-identified",
+      "name": "tenant-offline-storage",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "backend": "process-local-only",
+      "name": "tenant-message-queues",
+      "status": "NOT_CONFIGURED"
+    },
+    {
+      "backend": "meta_schedule",
+      "itemCount": 0,
+      "name": "tenant-scheduler-jobs",
+      "status": "PROBED",
+      "targetTenantItemCount": 0,
+      "testTenantItemCount": 0,
+      "unknownPrefixItemCount": 0
+    },
+    {
+      "contentInspected": false,
+      "findingCount": 832,
+      "findings": [
+        {
+          "kind": "list",
+          "path": "__init__.py",
+          "symbol": "__all__"
+        },
+        {
+          "kind": "list",
+          "path": "account_link.py",
+          "symbol": "_LINKS"
+        },
+        {
+          "kind": "set",
+          "path": "action_finale.py",
+          "symbol": "_VALID_LOG_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "action_finale.py",
+          "symbol": "_VALID_INTEGRATION_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "action_finale.py",
+          "symbol": "_VALID_BUTTON_LOCATIONS"
+        },
+        {
+          "kind": "set",
+          "path": "action_finale.py",
+          "symbol": "_VALID_LAYOUTS"
+        },
+        {
+          "kind": "set",
+          "path": "action_finale.py",
+          "symbol": "_VALID_SAGA_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "action_finale.py",
+          "symbol": "_VALID_STEP_STATUSES"
+        },
+        {
+          "kind": "dict",
+          "path": "action_finale.py",
+          "symbol": "_SAGA_TRANSITIONS"
+        },
+        {
+          "kind": "set",
+          "path": "action_further.py",
+          "symbol": "_VALID_SEVERITIES"
+        },
+        {
+          "kind": "set",
+          "path": "action_further.py",
+          "symbol": "_VALID_LEAF_OPS"
+        },
+        {
+          "kind": "set",
+          "path": "action_further.py",
+          "symbol": "_VALID_RECIPIENT_SOURCES"
+        },
+        {
+          "kind": "set",
+          "path": "action_further.py",
+          "symbol": "_VALID_CHANNELS"
+        },
+        {
+          "kind": "set",
+          "path": "action_params.py",
+          "symbol": "_VALID_CONSTRAINT_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "action_params.py",
+          "symbol": "_VALID_SOURCES"
+        },
+        {
+          "kind": "dict",
+          "path": "action_params.py",
+          "symbol": "_TYPE_CLASS_DEFAULTS"
+        },
+        {
+          "kind": "dict",
+          "path": "action_visual_editor.py",
+          "symbol": "_PARAM_TYPE_MAP"
+        },
+        {
+          "kind": "set",
+          "path": "action_webhook.py",
+          "symbol": "_VALID_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "action_webhook.py",
+          "symbol": "_VALID_METHODS"
+        },
+        {
+          "kind": "set",
+          "path": "action_webhook.py",
+          "symbol": "_VALID_AUTH"
+        },
+        {
+          "kind": "set",
+          "path": "action_webhook.py",
+          "symbol": "_VALID_LAYOUTS"
+        },
+        {
+          "kind": "set",
+          "path": "action_webhook.py",
+          "symbol": "_VALID_STATUSES"
+        },
+        {
+          "kind": "dict",
+          "path": "action_webhook.py",
+          "symbol": "_TRANSITIONS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "af_action_types.py",
+          "symbol": "AfActionTypesEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "af_archetypes_toggle.py",
+          "symbol": "AfArchetypesToggleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "af_capabilities.py",
+          "symbol": "AfCapabilityEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "af_edit_counter.py",
+          "symbol": "EditCounterEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "af_edited_marker.py",
+          "symbol": "EditedMarkerEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "af_oma_editor.py",
+          "symbol": "OmaEditorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "af_param_help.py",
+          "symbol": "ParamHelpEngine"
+        },
+        {
+          "kind": "set",
+          "path": "agent_health_migration_webhook.py",
+          "symbol": "_VALID_METRICS"
+        },
+        {
+          "kind": "set",
+          "path": "agent_health_migration_webhook.py",
+          "symbol": "_VALID_SEVERITIES"
+        },
+        {
+          "kind": "set",
+          "path": "agent_health_migration_webhook.py",
+          "symbol": "_VALID_ALERT_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "agent_health_migration_webhook.py",
+          "symbol": "_VALID_PLAN_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "agent_health_migration_webhook.py",
+          "symbol": "_VALID_STEP_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "agent_health_migration_webhook.py",
+          "symbol": "_VALID_SOURCE_TYPES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_agents_engine.py",
+          "symbol": "AgentsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_alerts.py",
+          "symbol": "AlertsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_analyst_chart.py",
+          "symbol": "AnalystChartEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_analyst_explore.py",
+          "symbol": "AnalystExploreEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_analyst_query.py",
+          "symbol": "_TABLES"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_analyst_query.py",
+          "symbol": "_FALLBACK"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_app_state.py",
+          "symbol": "AppStateEngine"
+        },
+        {
+          "kind": "set",
+          "path": "aip_assist.py",
+          "symbol": "_VALID_ASSIST_KINDS"
+        },
+        {
+          "kind": "set",
+          "path": "aip_assist.py",
+          "symbol": "_VALID_ASSIST_LANGUAGES"
+        },
+        {
+          "kind": "set",
+          "path": "aip_assist.py",
+          "symbol": "_VALID_ASSIST_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "aip_assist.py",
+          "symbol": "_VALID_RULE_KINDS"
+        },
+        {
+          "kind": "set",
+          "path": "aip_assist.py",
+          "symbol": "_VALID_LAYERS"
+        },
+        {
+          "kind": "set",
+          "path": "aip_assist.py",
+          "symbol": "_VALID_COMPONENT_TYPES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_assist_context.py",
+          "symbol": "AssistContextEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_assist_engine.py",
+          "symbol": "_ROLE_TAGS"
+        },
+        {
+          "kind": "list",
+          "path": "aip_assist_engine.py",
+          "symbol": "_FAQ_REPLIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_assist_engine.py",
+          "symbol": "AssistEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_assist_perms.py",
+          "symbol": "AssistPermsEngine"
+        },
+        {
+          "kind": "list",
+          "path": "aip_capabilities_engine.py",
+          "symbol": "PLUGIN_DEFAULTS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_capabilities_engine.py",
+          "symbol": "CapabilitiesEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_debug_cot.py",
+          "symbol": "DebugCotEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_debug_tools.py",
+          "symbol": "DebugToolsEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_docintel_extract.py",
+          "symbol": "_TEMPLATE_FIELDS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_docintel_extract.py",
+          "symbol": "DocintelExtractEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_docintel_parse.py",
+          "symbol": "DocintelParseEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_docintel_semantic.py",
+          "symbol": "DocintelSemanticEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_drafts_engine.py",
+          "symbol": "VALID_TRANSITIONS"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_drafts_engine.py",
+          "symbol": "_STATUS_TO_ACTION"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_drafts_engine.py",
+          "symbol": "DraftsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_eval_cross_model.py",
+          "symbol": "EvalCrossModelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_eval_crud.py",
+          "symbol": "EvalCrudEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_eval_dashboard.py",
+          "symbol": "EvalDashboardEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_eval_gate.py",
+          "symbol": "EvalGateEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_eval_gen.py",
+          "symbol": "EvalGenEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_eval_rag.py",
+          "symbol": "EvalRagEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_eval_tool.py",
+          "symbol": "EvalToolEngine"
+        },
+        {
+          "kind": "set",
+          "path": "aip_extras.py",
+          "symbol": "_VALID_BLOCK_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "aip_extras.py",
+          "symbol": "_VALID_EVENT_TYPES"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_extras.py",
+          "symbol": "DEFAULT_LEVELS"
+        },
+        {
+          "kind": "list",
+          "path": "aip_extras.py",
+          "symbol": "_LEVEL_ORDER"
+        },
+        {
+          "kind": "list",
+          "path": "aip_kv_store.py",
+          "symbol": "DEFAULT_ROUTE_DEFS"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_kv_store.py",
+          "symbol": "EGRESS_DEFAULTS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_l4_circuit.py",
+          "symbol": "L4CircuitEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_l4_gate.py",
+          "symbol": "L4GateEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_langgraph_runtime.py",
+          "symbol": "LangGraphRuntimeEngine"
+        },
+        {
+          "kind": "list",
+          "path": "aip_lineage_engine.py",
+          "symbol": "TRACE_SEGMENTS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_lineage_engine.py",
+          "symbol": "LineageEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "aip_logic_dry_run_executor.py",
+          "symbol": "_CONFIG_BY_KIND"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_logic_engine.py",
+          "symbol": "LogicEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_logic_state.py",
+          "symbol": "LogicStateEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_logic_version.py",
+          "symbol": "LogicVersionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_long_memory.py",
+          "symbol": "LongMemoryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_metrics.py",
+          "symbol": "MetricsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_model_capacity.py",
+          "symbol": "ModelCapacityEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_model_catalog.py",
+          "symbol": "ModelCatalogEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_model_lifecycle.py",
+          "symbol": "ModelLifecycleEngine"
+        },
+        {
+          "kind": "list",
+          "path": "aip_nodes.py",
+          "symbol": "_DEFAULT_TEMPLATES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_obs_dashboard.py",
+          "symbol": "ObsDashboardEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_propose_edits.py",
+          "symbol": "ProposeEditsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_rag_context.py",
+          "symbol": "RagContextEngine"
+        },
+        {
+          "kind": "list",
+          "path": "aip_tools_engine.py",
+          "symbol": "TOOL_CATEGORIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_tools_engine.py",
+          "symbol": "ToolsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_trace_logic.py",
+          "symbol": "TraceLogicEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "aip_wiki_field.py",
+          "symbol": "WikiFieldEngine"
+        },
+        {
+          "kind": "list",
+          "path": "asset_registry/__init__.py",
+          "symbol": "__all__"
+        },
+        {
+          "kind": "dict",
+          "path": "asset_registry/control_policy.py",
+          "symbol": "CONTROL_OPERATION_ROLES"
+        },
+        {
+          "kind": "dict",
+          "path": "asset_registry/dependency_graph.py",
+          "symbol": "RESOURCE_LIMITS"
+        },
+        {
+          "kind": "dict",
+          "path": "asset_registry/errors.py",
+          "symbol": "ERROR_HTTP_STATUS"
+        },
+        {
+          "kind": "dict",
+          "path": "asset_registry/installation_evidence.py",
+          "symbol": "_TRANSITIONS"
+        },
+        {
+          "kind": "dict",
+          "path": "asset_registry/integration_policy.py",
+          "symbol": "INTEGRATION_CASE_OPERATION_ROLES"
+        },
+        {
+          "kind": "dict",
+          "path": "asset_registry/integration_stage_policy.py",
+          "symbol": "_CLAIMS_TYPE_BY_EVIDENCE"
+        },
+        {
+          "kind": "dict",
+          "path": "asset_registry/integration_stage_policy.py",
+          "symbol": "_STAGE_REQUIREMENTS"
+        },
+        {
+          "kind": "set",
+          "path": "asset_registry/manifest_loader.py",
+          "symbol": "_SENSITIVE_FILENAMES"
+        },
+        {
+          "kind": "set",
+          "path": "asset_registry/manifest_loader.py",
+          "symbol": "_SENSITIVE_SUFFIXES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_action_apply_perm.py",
+          "symbol": "ActionApplyPermEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_archetypes_toggle.py",
+          "symbol": "AtArchetypesToggleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_edit_count_warn.py",
+          "symbol": "EditCountWarnEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_edit_only_mode.py",
+          "symbol": "EditOnlyModeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_edited_marker.py",
+          "symbol": "AtEditedMarkerEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_func_onboarding.py",
+          "symbol": "FuncOnboardingEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_func_op_types.py",
+          "symbol": "FuncOpTypesEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_marketplace_types.py",
+          "symbol": "MarketplaceTypeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_notification_link.py",
+          "symbol": "NotificationLinkEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_notification_permission.py",
+          "symbol": "NotificationPermEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_oma_7tab.py",
+          "symbol": "OmaSevenTabEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_param_desc.py",
+          "symbol": "ParamDescEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_rule_order_conflict.py",
+          "symbol": "RuleOrderConflictEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_side_effect_perm.py",
+          "symbol": "SideEffectPermEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "at_value_source.py",
+          "symbol": "ValueSourceEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "au_policy_hot_reload.py",
+          "symbol": "PolicyHotReloadEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "bd_dep_task_abort.py",
+          "symbol": "DepTaskAbortEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "bd_force_build.py",
+          "symbol": "BdForceBuildEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "bd_freshness.py",
+          "symbol": "BdFreshnessEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ca_heavy_capability.py",
+          "symbol": "HeavyCapabilityEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ca_platform_facade.py",
+          "symbol": "PlatformFacadeEngine"
+        },
+        {
+          "kind": "list",
+          "path": "cap_and_markings.py",
+          "symbol": "DEFAULT_CAP_RULES"
+        },
+        {
+          "kind": "set",
+          "path": "cap_and_markings.py",
+          "symbol": "_VALID_ENFORCEMENTS"
+        },
+        {
+          "kind": "set",
+          "path": "cap_and_markings.py",
+          "symbol": "_VALID_SEVERITIES"
+        },
+        {
+          "kind": "set",
+          "path": "cap_and_markings.py",
+          "symbol": "_VALID_SECURITY_LABELS"
+        },
+        {
+          "kind": "set",
+          "path": "cap_and_markings.py",
+          "symbol": "_VALID_STRATEGIES"
+        },
+        {
+          "kind": "dict",
+          "path": "channel_runtime.py",
+          "symbol": "_HANDLERS"
+        },
+        {
+          "kind": "set",
+          "path": "code_collaboration.py",
+          "symbol": "_VALID_BRANCH_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "code_collaboration.py",
+          "symbol": "_VALID_MERGE_STRATEGIES"
+        },
+        {
+          "kind": "set",
+          "path": "code_collaboration.py",
+          "symbol": "_VALID_PR_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "code_collaboration.py",
+          "symbol": "_VALID_CI_STATUSES"
+        },
+        {
+          "kind": "dict",
+          "path": "code_collaboration.py",
+          "symbol": "_VALID_PR_TRANSITIONS"
+        },
+        {
+          "kind": "set",
+          "path": "code_collaboration.py",
+          "symbol": "_VALID_PREVIEW_LANGUAGES"
+        },
+        {
+          "kind": "set",
+          "path": "code_collaboration.py",
+          "symbol": "_VALID_PREVIEW_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module.py",
+          "symbol": "_VALID_MODULE_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module.py",
+          "symbol": "ComputeSchedulerEngine"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module.py",
+          "symbol": "_VALID_POLICY_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module.py",
+          "symbol": "_VALID_REPLICA_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module.py",
+          "symbol": "ComputeScalerEngine"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module.py",
+          "symbol": "_VALID_GPU_TYPES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module.py",
+          "symbol": "ComputeResourceEngine"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_extras.py",
+          "symbol": "_VALID_TAB_NAMES"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_extras.py",
+          "symbol": "_VALID_CONFIG_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module_extras.py",
+          "symbol": "ContainerConfigEngine"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_extras.py",
+          "symbol": "_VALID_SCALE_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_extras.py",
+          "symbol": "_VALID_ALERT_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_extras.py",
+          "symbol": "_VALID_SEVERITIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module_extras.py",
+          "symbol": "ScaleToZeroEngine"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_extras.py",
+          "symbol": "_VALID_SCAFFOLD_LANGUAGES"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_extras.py",
+          "symbol": "_VALID_SCAFFOLD_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module_extras.py",
+          "symbol": "DevScaffoldEngine"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_publish.py",
+          "symbol": "_VALID_BUILD_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module_publish.py",
+          "symbol": "BuildConfigEngine"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_publish.py",
+          "symbol": "_VALID_DOCKER_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module_publish.py",
+          "symbol": "DockerPublishEngine"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_publish.py",
+          "symbol": "_VALID_ACCESS_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_publish.py",
+          "symbol": "_VALID_AUTH_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "compute_module_publish.py",
+          "symbol": "_VALID_ACCESS_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "compute_module_publish.py",
+          "symbol": "ExternalAccessEngine"
+        },
+        {
+          "kind": "set",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "_CDC_CAPTURE_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "_CDC_STATUS_VALUES"
+        },
+        {
+          "kind": "set",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "_SCHEDULE_TARGET_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "_SCHEDULE_STATUS_VALUES"
+        },
+        {
+          "kind": "set",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "_STORAGE_ROUTE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "_STORAGE_SCHEDULE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "_STORAGE_ROUTE_STATUS_VALUES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "ConnectionCdcEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "ScheduleTriggerEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "connection_cdc_schedule.py",
+          "symbol": "StorageRouteGuideEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "connector_registry.py",
+          "symbol": "TYPE_ALIASES"
+        },
+        {
+          "kind": "dict",
+          "path": "connector_runtime.py",
+          "symbol": "_HANDLERS"
+        },
+        {
+          "kind": "dict",
+          "path": "connector_runtime.py",
+          "symbol": "_ALIASES"
+        },
+        {
+          "kind": "list",
+          "path": "constitution.py",
+          "symbol": "RULES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cp_alert.py",
+          "symbol": "CpAlertEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cp_multi_spoke_monitor.py",
+          "symbol": "MultiSpokeMonitorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cp_realtime_situation.py",
+          "symbol": "CpRealtimeSituationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_ai_error_enhance.py",
+          "symbol": "AiErrorEnhanceEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_aip_template_recommend.py",
+          "symbol": "AipTemplateRecommendEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_artifact_credential.py",
+          "symbol": "ArtifactCredentialEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_artifact_registry.py",
+          "symbol": "ArtifactRegistryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_branch_menu.py",
+          "symbol": "BranchMenuEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_build_affected.py",
+          "symbol": "BuildAffectedEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_code_autocomplete.py",
+          "symbol": "CodeAutocompleteEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_code_review_req.py",
+          "symbol": "CodeReviewReqEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_dataset_alias.py",
+          "symbol": "DatasetAliasEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_default_branch.py",
+          "symbol": "DefaultBranchEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_doc_assist.py",
+          "symbol": "DocAssistEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_docker_artifact_publish.py",
+          "symbol": "DockerArtifactPublishEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_editor_context_menu.py",
+          "symbol": "EditorContextMenuEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_fallback_branch.py",
+          "symbol": "FallbackBranchEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_impact_analysis.py",
+          "symbol": "CrImpactAnalysisEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_model_dev_repo.py",
+          "symbol": "ModelDevRepoEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_multi_artifact.py",
+          "symbol": "MultiArtifactEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_pipeline_review.py",
+          "symbol": "PipelineReviewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_pr_review.py",
+          "symbol": "PrReviewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_spark_profiles.py",
+          "symbol": "SparkProfileEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "cr_transform_repo.py",
+          "symbol": "TransformRepoEngine"
+        },
+        {
+          "kind": "set",
+          "path": "csv_ontology_export_action_metrics.py",
+          "symbol": "_DEFAULT_NA_TOKENS"
+        },
+        {
+          "kind": "set",
+          "path": "csv_ontology_export_action_metrics.py",
+          "symbol": "_INT_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "csv_ontology_export_action_metrics.py",
+          "symbol": "_FLOAT_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "csv_ontology_export_action_metrics.py",
+          "symbol": "_VALID_PARSER_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "csv_ontology_export_action_metrics.py",
+          "symbol": "_VALID_RESOURCE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "csv_ontology_export_action_metrics.py",
+          "symbol": "_VALID_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_admin.py",
+          "symbol": "_VALID_ADMIN_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_admin.py",
+          "symbol": "_VALID_DRIVER_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_admin.py",
+          "symbol": "_VALID_LOG_LEVELS"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_admin.py",
+          "symbol": "_VALID_RELATION_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_admin.py",
+          "symbol": "_VALID_RESOURCE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_export.py",
+          "symbol": "_VALID_AUTH_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_export.py",
+          "symbol": "_VALID_TARGET_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_export.py",
+          "symbol": "_VALID_FILE_FORMATS"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_export.py",
+          "symbol": "_VALID_COMPRESSIONS"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_export.py",
+          "symbol": "_VALID_EXPORT_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_extras.py",
+          "symbol": "_VALID_CLOUD_PROVIDERS"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_extras.py",
+          "symbol": "_VALID_IDENTITY_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_connection_extras.py",
+          "symbol": "CloudIdentityEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_extras.py",
+          "symbol": "_VALID_SYNC_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_extras.py",
+          "symbol": "_VALID_VIRTUAL_TABLE_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_connection_extras.py",
+          "symbol": "VirtualTableEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_extras.py",
+          "symbol": "_VALID_METRICS_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_connection_extras.py",
+          "symbol": "AgentMetricsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_connection_security.py",
+          "symbol": "WebhookExecutionPolicyEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_security.py",
+          "symbol": "_VALID_EGRESS_EFFECTS"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_security.py",
+          "symbol": "_VALID_PROTOCOLS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_connection_security.py",
+          "symbol": "EgressPolicyEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_security.py",
+          "symbol": "_VALID_MARKING_LEVELS"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_security.py",
+          "symbol": "_VALID_EXPORT_ACTIONS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_connection_security.py",
+          "symbol": "ExportableMarkingEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_webhook.py",
+          "symbol": "_VALID_STREAM_TARGETS"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_webhook.py",
+          "symbol": "_VALID_PARTITION_STRATEGIES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_webhook.py",
+          "symbol": "_VALID_HTTP_METHODS"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_webhook.py",
+          "symbol": "_VALID_WEBHOOK_AUTH_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "data_connection_webhook.py",
+          "symbol": "_VALID_TARGET_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health.py",
+          "symbol": "_VALID_CHECK_KINDS"
+        },
+        {
+          "kind": "set",
+          "path": "data_health.py",
+          "symbol": "_VALID_SEVERITIES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health.py",
+          "symbol": "_VALID_RESULT_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health.py",
+          "symbol": "_VALID_SCHEDULE_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_integration.py",
+          "symbol": "_VALID_ISSUE_SEVERITIES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_integration.py",
+          "symbol": "_VALID_ISSUE_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_health_integration.py",
+          "symbol": "HealthIssuesIntegrationEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_integration.py",
+          "symbol": "_VALID_TAB_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_health_integration.py",
+          "symbol": "DatasetHealthTabEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_integration.py",
+          "symbol": "_VALID_HEALTH_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_integration.py",
+          "symbol": "_VALID_COLOR_CODES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_integration.py",
+          "symbol": "_VALID_COLOR_SCHEMES"
+        },
+        {
+          "kind": "dict",
+          "path": "data_health_integration.py",
+          "symbol": "_DEFAULT_TRAFFIC_LIGHT_MAPPING"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_health_integration.py",
+          "symbol": "LineageHealthColoringEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_plus.py",
+          "symbol": "_VALID_GROUPING_STRATEGIES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_plus.py",
+          "symbol": "_VALID_SEVERITIES"
+        },
+        {
+          "kind": "list",
+          "path": "data_health_plus.py",
+          "symbol": "_CHECK_KINDS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_health_plus.py",
+          "symbol": "HealthDiagnosticsEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_plus.py",
+          "symbol": "_VALID_NOTIFICATION_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_plus.py",
+          "symbol": "_VALID_CHANNELS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_health_plus.py",
+          "symbol": "HealthMonitoringOptionsEngine"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_plus.py",
+          "symbol": "_VALID_NOTIFICATION_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "data_health_plus.py",
+          "symbol": "_VALID_NOTIFICATION_SEVERITIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "data_health_plus.py",
+          "symbol": "HealthNotificationEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "data_os_store.py",
+          "symbol": "DEMO_SURFACE_IDS"
+        },
+        {
+          "kind": "set",
+          "path": "data_transaction.py",
+          "symbol": "ALL_WRITE_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "dataset_preview_health.py",
+          "symbol": "_VALID_VIEW_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "dataset_preview_health.py",
+          "symbol": "_VALID_CHECK_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "dataset_preview_health.py",
+          "symbol": "_VALID_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "dataset_preview_health.py",
+          "symbol": "_VALID_SEVERITIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dataset_preview_health.py",
+          "symbol": "ColumnStatsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dataset_preview_health.py",
+          "symbol": "DatasetPreviewViewsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dataset_preview_health.py",
+          "symbol": "DataHealthCheckEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_agent_yaml.py",
+          "symbol": "AgentYamlEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_app_state.py",
+          "symbol": "AppStateEngine"
+        },
+        {
+          "kind": "set",
+          "path": "dc_completion_strategy.py",
+          "symbol": "_VALID_TRIGGERS"
+        },
+        {
+          "kind": "set",
+          "path": "dc_completion_strategy.py",
+          "symbol": "_VALID_TASK_RESULTS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_completion_strategy.py",
+          "symbol": "CompletionStrategyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_curl_import.py",
+          "symbol": "CurlImportEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_erp_crm.py",
+          "symbol": "ErpCrmConnectorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_export_tasks.py",
+          "symbol": "ExportTaskEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_stream_mgmt.py",
+          "symbol": "StreamManagementEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_stream_preview.py",
+          "symbol": "StreamPreviewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_sync_troubleshoot.py",
+          "symbol": "SyncTroubleshootEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_test_connection.py",
+          "symbol": "TestConnectionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dc_webhook_source.py",
+          "symbol": "WebhookSourceEngine"
+        },
+        {
+          "kind": "set",
+          "path": "decision_audit.py",
+          "symbol": "_VALID_CAPABILITY_CLASSES"
+        },
+        {
+          "kind": "set",
+          "path": "decision_audit.py",
+          "symbol": "_VALID_AUTH_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "decision_audit.py",
+          "symbol": "_VALID_OPERATIONS"
+        },
+        {
+          "kind": "dict",
+          "path": "decision_audit.py",
+          "symbol": "_OPERATION_BY_CLASS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/__init__.py",
+          "symbol": "__all__"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_model_catalog.py",
+          "symbol": "_CATALOG"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_model_routes.py",
+          "symbol": "_ROUTES"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_module_deployments.py",
+          "symbol": "_ENVS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_module_deployments.py",
+          "symbol": "_MODULE_IDS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_module_events.py",
+          "symbol": "_TRIGGERS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_module_events.py",
+          "symbol": "_TARGET_MODULES"
+        },
+        {
+          "kind": "dict",
+          "path": "demo/seed_module_interfaces.py",
+          "symbol": "_INTERFACES"
+        },
+        {
+          "kind": "dict",
+          "path": "demo/seed_module_queries.py",
+          "symbol": "_QUERIES"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_module_variables.py",
+          "symbol": "_MODULE_IDS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_module_variables.py",
+          "symbol": "_PRIMARY_VARS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_module_widgets.py",
+          "symbol": "_MODULE_IDS"
+        },
+        {
+          "kind": "dict",
+          "path": "demo/seed_modules_ext.py",
+          "symbol": "_ORDER_COMPONENTS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_modules_ext.py",
+          "symbol": "_MODULES"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase4_ontology_actions.py",
+          "symbol": "_ACTIONS_SPEC"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase4_ontology_branches.py",
+          "symbol": "_BRANCHES_SPEC"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase4_ontology_functions.py",
+          "symbol": "_FUNCTIONS_SPEC"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase4_ontology_links.py",
+          "symbol": "_LINK_TYPES_SPEC"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase4_ontology_types.py",
+          "symbol": "_TYPES_SPEC"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase4_ontology_wikis.py",
+          "symbol": "_WIKIS_SPEC"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase5_pipeline.py",
+          "symbol": "_PIPELINES"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase5_pipeline.py",
+          "symbol": "_NODE_SPECS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_CONNECTORS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_SOURCE_SPECS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_SCHEMA_SPECS"
+        },
+        {
+          "kind": "dict",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_TABLE_COLS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_AGENT_SPECS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_MEDIA_SET_SPECS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_DOCUMENT_SPECS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_TEMPLATE_SPECS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_phase6_datasource.py",
+          "symbol": "_PROJECT_SPECS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_providers.py",
+          "symbol": "_PROVIDERS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_registered_models.py",
+          "symbol": "_REGISTERED"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_themes.py",
+          "symbol": "_THEMES"
+        },
+        {
+          "kind": "list",
+          "path": "demo/seed_widgets.py",
+          "symbol": "_WIDGETS"
+        },
+        {
+          "kind": "list",
+          "path": "demo/workorder_seed.py",
+          "symbol": "_WORKORDER_SAMPLES"
+        },
+        {
+          "kind": "set",
+          "path": "dev_tooling.py",
+          "symbol": "_VALID_DEBUG_STATES"
+        },
+        {
+          "kind": "set",
+          "path": "dev_tooling.py",
+          "symbol": "_VALID_TEST_LANGUAGES"
+        },
+        {
+          "kind": "set",
+          "path": "dev_tooling.py",
+          "symbol": "_VALID_TEST_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "dev_tooling.py",
+          "symbol": "_VALID_ARTIFACT_FORMATS"
+        },
+        {
+          "kind": "set",
+          "path": "dev_tooling.py",
+          "symbol": "_BANNED_BUILTINS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dh_escalate.py",
+          "symbol": "EscalateRuleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dh_health_summary.py",
+          "symbol": "HealthSummaryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dh_troubleshoot_guide.py",
+          "symbol": "TroubleshootGuideEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_auto_dedup.py",
+          "symbol": "AutoDedupEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_auto_register.py",
+          "symbol": "AutoRegisterEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_backing_ds.py",
+          "symbol": "BackingDatasetEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_checkpoint_ft.py",
+          "symbol": "CheckpointFaultToleranceEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_compression_toggle.py",
+          "symbol": "CompressionToggleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_consistency_guarantee.py",
+          "symbol": "ConsistencyGuaranteeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_data_consistency.py",
+          "symbol": "DataConsistencyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_dataset_branch.py",
+          "symbol": "DatasetBranchEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_db_schema_table.py",
+          "symbol": "DbSchemaTableEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_detail_subpanel.py",
+          "symbol": "DetailSubpanelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_export_config.py",
+          "symbol": "ExportConfigEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_external_access.py",
+          "symbol": "ExternalAccessEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_external_transforms.py",
+          "symbol": "ExternalTransformsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_force_build.py",
+          "symbol": "DiForceBuildEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_freshness_detect.py",
+          "symbol": "FreshnessDetectEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_hot_cold_storage.py",
+          "symbol": "HotColdStorageEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_key_by.py",
+          "symbol": "KeyByEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_latency_sampling.py",
+          "symbol": "LatencySamplingEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_live_archive.py",
+          "symbol": "LiveArchiveEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_live_log.py",
+          "symbol": "LiveLogEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_logic_change_trigger.py",
+          "symbol": "LogicChangeTriggerEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_monitor_rule.py",
+          "symbol": "MonitorRuleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_notif_sub.py",
+          "symbol": "NotifSubscriptionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_output_path.py",
+          "symbol": "OutputPathEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_partition_control.py",
+          "symbol": "PartitionControlEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_permission_roles.py",
+          "symbol": "PermissionRolesEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_primary_key_config.py",
+          "symbol": "PrimaryKeyConfigEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_reset_stream.py",
+          "symbol": "ResetStreamEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_s3_api.py",
+          "symbol": "S3ApiEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_schema_config.py",
+          "symbol": "SchemaConfigEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_source_based_transform.py",
+          "symbol": "SourceBasedTransformEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_spark_engine.py",
+          "symbol": "SparkEngineEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_stream_alert.py",
+          "symbol": "StreamAlertEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_stream_schema.py",
+          "symbol": "StreamSchemaDefEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_streaming_latency.py",
+          "symbol": "StreamingLatencyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_task_debug.py",
+          "symbol": "TaskDebugEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_text_extraction.py",
+          "symbol": "TextExtractionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_third_party_access.py",
+          "symbol": "ThirdPartyAccessEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_transforms_external.py",
+          "symbol": "TransformsExternalEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_view_creation.py",
+          "symbol": "ViewCreationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_view_lineage.py",
+          "symbol": "ViewLineageEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_virtual_storage.py",
+          "symbol": "VirtualStorageEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_virtual_table.py",
+          "symbol": "VirtualTableEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "di_virtual_table_create.py",
+          "symbol": "VirtualTableCreateEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dicom_workshop_docintel.py",
+          "symbol": "DicomEngine"
+        },
+        {
+          "kind": "set",
+          "path": "dicom_workshop_docintel.py",
+          "symbol": "_VALID_OBJECT_TYPES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dicom_workshop_docintel.py",
+          "symbol": "WorkshopAutoGenEngine"
+        },
+        {
+          "kind": "set",
+          "path": "dicom_workshop_docintel.py",
+          "symbol": "_VALID_STATUSES"
+        },
+        {
+          "kind": "list",
+          "path": "dicom_workshop_docintel.py",
+          "symbol": "_VALID_STEPS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dicom_workshop_docintel.py",
+          "symbol": "DocIntelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_branch_aware.py",
+          "symbol": "BranchAwareEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_build_preview.py",
+          "symbol": "BuildPreviewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_build_strategy.py",
+          "symbol": "BuildStrategyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_chart_tools.py",
+          "symbol": "ChartToolEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_dataset_preview_300.py",
+          "symbol": "DatasetPreview300Engine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_dep_order.py",
+          "symbol": "DependencyOrderEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_faq_troubleshoot.py",
+          "symbol": "FaqTroubleshootEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_flow_animation.py",
+          "symbol": "FlowAnimationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_history_detail.py",
+          "symbol": "HistoryDetailEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_node_indicators.py",
+          "symbol": "NodeIndicatorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_ontology_browse.py",
+          "symbol": "OntologyBrowseEntryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_permission_coloring.py",
+          "symbol": "PermissionColoringEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_permission_simulation.py",
+          "symbol": "PermissionSimulationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_plan_management.py",
+          "symbol": "PlanManagementEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_property_histogram.py",
+          "symbol": "PropertyHistogramEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_related_artifacts.py",
+          "symbol": "RelatedArtifactEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_save_open_chart.py",
+          "symbol": "SavedChartEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_share_link.py",
+          "symbol": "ShareLinkEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_share_permission.py",
+          "symbol": "SharePermissionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_stale_coloring.py",
+          "symbol": "StaleColoringEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_stale_diagnosis.py",
+          "symbol": "StaleDiagnosisEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_svg_export.py",
+          "symbol": "SvgExportEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "dl_user_permission_view.py",
+          "symbol": "UserPermissionViewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_backtick_search.py",
+          "symbol": "BacktickSearchEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_col_autocomplete.py",
+          "symbol": "ColumnAutocompleteEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_context_menu.py",
+          "symbol": "DatasetContextMenuEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_edit_schema_view.py",
+          "symbol": "EditSchemaViewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_inline_upload.py",
+          "symbol": "InlineUploadEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_keyboard_shortcut.py",
+          "symbol": "KeyboardShortcutEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_resize_panel.py",
+          "symbol": "ResizePanelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_same_name_logic.py",
+          "symbol": "SameNameLogicEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_schedule_panel.py",
+          "symbol": "SchedulePanelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_schema_infer.py",
+          "symbol": "SchemaInferenceEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_share_move_rename.py",
+          "symbol": "ShareMoveRenameEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_sql_draft.py",
+          "symbol": "SqlDraftEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_stream_preview.py",
+          "symbol": "StreamPreviewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ds_stream_tag.py",
+          "symbol": "StreamTagEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "ecom_core_models.py",
+          "symbol": "CORE_LINK_TYPES"
+        },
+        {
+          "kind": "dict",
+          "path": "ecom_core_models.py",
+          "symbol": "REQUIRED_PROPERTIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "es_auto_ontology_gen.py",
+          "symbol": "AutoOntologyGenEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "es_derived_element_intel.py",
+          "symbol": "DerivedElementIntelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "es_sap_batch_import.py",
+          "symbol": "SapBatchImportEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "es_sap_stream.py",
+          "symbol": "SapStreamEngine"
+        },
+        {
+          "kind": "set",
+          "path": "file_processing.py",
+          "symbol": "_VALID_TRANSFORM_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "file_processing.py",
+          "symbol": "_VALID_SOURCE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "file_processing.py",
+          "symbol": "_VALID_SYNC_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "file_processing.py",
+          "symbol": "_VALID_RECORD_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "fn_pipeline_status.py",
+          "symbol": "FnPipelineStatusEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "fr2_incremental_package.py",
+          "symbol": "IncrementalPackageEngine"
+        },
+        {
+          "kind": "set",
+          "path": "function_engine.py",
+          "symbol": "_TWO_CHAR_OPS"
+        },
+        {
+          "kind": "set",
+          "path": "function_engine.py",
+          "symbol": "_SINGLE_OPS"
+        },
+        {
+          "kind": "set",
+          "path": "function_engine.py",
+          "symbol": "_KEYWORDS"
+        },
+        {
+          "kind": "dict",
+          "path": "function_engine.py",
+          "symbol": "_BUILTINS"
+        },
+        {
+          "kind": "dict",
+          "path": "function_sandbox.py",
+          "symbol": "_TS_MAP"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_TEST_LANGUAGES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_TEST_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_DEBUG_STATES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "functions_dev_tools.py",
+          "symbol": "FunctionsTestDebugEngine"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_CALL_LANGUAGES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_HTTP_METHODS"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_AUTH_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_CALL_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "functions_dev_tools.py",
+          "symbol": "ExternalApiCallEngine"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_HEALTH_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_COMPARE_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_STREAM_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_VALID_STREAM_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_dev_tools.py",
+          "symbol": "_TAB_NAMES"
+        },
+        {
+          "kind": "dict",
+          "path": "functions_dev_tools.py",
+          "symbol": "_TAB_FIELD_MAP"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "functions_dev_tools.py",
+          "symbol": "DatasetPreviewTabsEngine"
+        },
+        {
+          "kind": "set",
+          "path": "functions_python_builder.py",
+          "symbol": "_BLOCKED_MODULES"
+        },
+        {
+          "kind": "set",
+          "path": "functions_python_builder.py",
+          "symbol": "_BLOCKED_BUILTINS"
+        },
+        {
+          "kind": "dict",
+          "path": "functions_python_builder.py",
+          "symbol": "_SAFE_BUILTINS"
+        },
+        {
+          "kind": "list",
+          "path": "funnel_engine.py",
+          "symbol": "STAGE_ORDER"
+        },
+        {
+          "kind": "set",
+          "path": "funnel_engine.py",
+          "symbol": "_VALID_OPS"
+        },
+        {
+          "kind": "dict",
+          "path": "funnel_mapping.py",
+          "symbol": "_COMPAT"
+        },
+        {
+          "kind": "dict",
+          "path": "funnel_mapping.py",
+          "symbol": "TEMPLATES"
+        },
+        {
+          "kind": "list",
+          "path": "gantt.py",
+          "symbol": "ALLOCATION_BEHAVIORS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_causal_analysis.py",
+          "symbol": "CausalAnalysisEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_coord_projection.py",
+          "symbol": "CoordProjectionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_digital_twin_engine.py",
+          "symbol": "DigitalTwinEngineEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_geospatial_framework.py",
+          "symbol": "GeospatialFrameworkEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_map_layer_overlay.py",
+          "symbol": "MapLayerOverlayEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_map_template.py",
+          "symbol": "MapTemplateEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_ontology_geo.py",
+          "symbol": "OntologyGeoEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_realtime_situation.py",
+          "symbol": "RealtimeSituationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_sensor_data_model.py",
+          "symbol": "SensorDataModelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "gs_timeseries_object_type.py",
+          "symbol": "TimeseriesObjectTypeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "hs_remote_dispatch.py",
+          "symbol": "RemoteDispatchEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "hs_status_report_back.py",
+          "symbol": "StatusReportBackEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_build_panel.py",
+          "symbol": "BuildPanelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_build_status.py",
+          "symbol": "BuildStatusMonitorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_command_palette.py",
+          "symbol": "CommandPaletteEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_feature_matrix.py",
+          "symbol": "FeatureMatrixEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_geospatial_framework.py",
+          "symbol": "IdGeospatialFrameworkEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_install_python_env.py",
+          "symbol": "InstallPythonEnvEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_key_binding.py",
+          "symbol": "KeyBindingEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_osdk_react.py",
+          "symbol": "OsdkReactEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_public_extension.py",
+          "symbol": "PublicExtensionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_py_transform_preview.py",
+          "symbol": "PyTransformPreviewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_python_snippet.py",
+          "symbol": "PythonSnippetEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_refresh_token.py",
+          "symbol": "RefreshTokenEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_shell_terminal.py",
+          "symbol": "ShellTerminalEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_timeseries.py",
+          "symbol": "IdTimeseriesEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_vertex_digital_twin.py",
+          "symbol": "VertexDigitalTwinEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "id_vsix_install.py",
+          "symbol": "VsixInstallEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "if_interface_metadata.py",
+          "symbol": "InterfaceMetadataEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "integration_maintenance.py",
+          "symbol": "DataIntegrationFrameworkEngine"
+        },
+        {
+          "kind": "set",
+          "path": "integration_maintenance.py",
+          "symbol": "_VALID_CHECK_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "integration_maintenance.py",
+          "symbol": "_VALID_SEVERITIES"
+        },
+        {
+          "kind": "set",
+          "path": "integration_maintenance.py",
+          "symbol": "_VALID_PRIORITIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "integration_maintenance.py",
+          "symbol": "PipelineMaintenanceEngine"
+        },
+        {
+          "kind": "set",
+          "path": "integration_maintenance.py",
+          "symbol": "_VALID_CARDINALITIES"
+        },
+        {
+          "kind": "set",
+          "path": "integration_maintenance.py",
+          "symbol": "_VALID_LISTING_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "integration_maintenance.py",
+          "symbol": "OntologyInterfaceExtensionEngine"
+        },
+        {
+          "kind": "set",
+          "path": "l4_automation.py",
+          "symbol": "_VALID_WARMUP_STATES"
+        },
+        {
+          "kind": "dict",
+          "path": "l4_automation.py",
+          "symbol": "DEFAULT_CHANNELS"
+        },
+        {
+          "kind": "set",
+          "path": "l4_automation.py",
+          "symbol": "_VALID_CHANNEL_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "lineage_graph.py",
+          "symbol": "NODE_TYPES"
+        },
+        {
+          "kind": "dict",
+          "path": "lineage_views.py",
+          "symbol": "PALETTE_22"
+        },
+        {
+          "kind": "list",
+          "path": "lineage_views.py",
+          "symbol": "_DEPTH_SHADES"
+        },
+        {
+          "kind": "dict",
+          "path": "lineage_views.py",
+          "symbol": "NODE_KIND_4"
+        },
+        {
+          "kind": "set",
+          "path": "lineage_visualization.py",
+          "symbol": "_VALID_GRAPH_MODES"
+        },
+        {
+          "kind": "set",
+          "path": "lineage_visualization.py",
+          "symbol": "_VALID_DIRECTIONS"
+        },
+        {
+          "kind": "set",
+          "path": "lineage_visualization.py",
+          "symbol": "_VALID_LAYOUTS"
+        },
+        {
+          "kind": "set",
+          "path": "lineage_visualization.py",
+          "symbol": "_VALID_COLOR_BY"
+        },
+        {
+          "kind": "dict",
+          "path": "lineage_visualization.py",
+          "symbol": "_TYPE_COLORS"
+        },
+        {
+          "kind": "dict",
+          "path": "lineage_visualization.py",
+          "symbol": "_HEALTH_COLORS"
+        },
+        {
+          "kind": "list",
+          "path": "lineage_visualization.py",
+          "symbol": "_NODE_TYPES"
+        },
+        {
+          "kind": "list",
+          "path": "lineage_visualization.py",
+          "symbol": "_HEALTH_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "lineage_visualization.py",
+          "symbol": "LineageVisualizationEngine"
+        },
+        {
+          "kind": "set",
+          "path": "lineage_visualization.py",
+          "symbol": "_VALID_TRACE_DIRECTIONS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "lineage_visualization.py",
+          "symbol": "ColumnLineageSearchEngine"
+        },
+        {
+          "kind": "set",
+          "path": "lineage_visualization.py",
+          "symbol": "_VALID_SCHEDULE_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "lineage_visualization.py",
+          "symbol": "_VALID_RUN_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "lineage_visualization.py",
+          "symbol": "LineageBuildTimelineEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "llm_extras.py",
+          "symbol": "_DEFAULT_EGRESS_MAP"
+        },
+        {
+          "kind": "set",
+          "path": "llm_extras.py",
+          "symbol": "_VALID_SOURCE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "llm_extras.py",
+          "symbol": "_VALID_WEBHOOK_METHODS"
+        },
+        {
+          "kind": "set",
+          "path": "llm_extras.py",
+          "symbol": "_VALID_WEBHOOK_AUTH"
+        },
+        {
+          "kind": "set",
+          "path": "llm_node_agent_proxy.py",
+          "symbol": "_VALID_NODE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "llm_node_agent_proxy.py",
+          "symbol": "_VALID_PROXY_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "llm_node_agent_proxy.py",
+          "symbol": "_VALID_SCENARIO_TYPES"
+        },
+        {
+          "kind": "dict",
+          "path": "llm_routing.py",
+          "symbol": "_TIER_RANK"
+        },
+        {
+          "kind": "dict",
+          "path": "llm_routing.py",
+          "symbol": "_SECURITY_RANK"
+        },
+        {
+          "kind": "dict",
+          "path": "llm_routing.py",
+          "symbol": "_EGRESS_RANK"
+        },
+        {
+          "kind": "set",
+          "path": "llm_routing.py",
+          "symbol": "_VALID_TASK_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "llm_routing.py",
+          "symbol": "_VALID_EGRESS"
+        },
+        {
+          "kind": "list",
+          "path": "logic_engine.py",
+          "symbol": "BLOCK_CATALOG"
+        },
+        {
+          "kind": "set",
+          "path": "logic_flows.py",
+          "symbol": "_VALID_STEP_KINDS"
+        },
+        {
+          "kind": "set",
+          "path": "logic_flows.py",
+          "symbol": "_VALID_FLOW_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "logic_flows.py",
+          "symbol": "_VALID_EXEC_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "logic_flows.py",
+          "symbol": "_VALID_PROXY_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "logic_flows.py",
+          "symbol": "_VALID_WORKER_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "logic_flows.py",
+          "symbol": "_VALID_JOB_STATUSES"
+        },
+        {
+          "kind": "dict",
+          "path": "media_set.py",
+          "symbol": "_TYPE_ACCEPTS"
+        },
+        {
+          "kind": "dict",
+          "path": "media_set.py",
+          "symbol": "_DEFAULT_SCHEMA"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "media_set_browser_interaction.py",
+          "symbol": "MediaSetBrowserEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "media_set_browser_interaction.py",
+          "symbol": "MediaInteractionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "media_set_browser_interaction.py",
+          "symbol": "AudioTranscriptionEngine"
+        },
+        {
+          "kind": "set",
+          "path": "membership.py",
+          "symbol": "ROLES"
+        },
+        {
+          "kind": "set",
+          "path": "membership.py",
+          "symbol": "ADMIN_ROLES"
+        },
+        {
+          "kind": "dict",
+          "path": "membership.py",
+          "symbol": "_MEMBERS"
+        },
+        {
+          "kind": "list",
+          "path": "membership.py",
+          "symbol": "_AUDIT"
+        },
+        {
+          "kind": "defaultdict",
+          "path": "metrics.py",
+          "symbol": "_counters"
+        },
+        {
+          "kind": "list",
+          "path": "metrics.py",
+          "symbol": "_PATH_RULES"
+        },
+        {
+          "kind": "dict",
+          "path": "migrations.py",
+          "symbol": "REQUIRED_LEGACY_SCHEMA"
+        },
+        {
+          "kind": "list",
+          "path": "mock_data.py",
+          "symbol": "_MODULES"
+        },
+        {
+          "kind": "dict",
+          "path": "model_provider_credential.py",
+          "symbol": "_ROTATION_DAYS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "model_provider_credential.py",
+          "symbol": "ProviderCredentialEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "model_router_config.py",
+          "symbol": "DEFAULT_GLOBAL_CIRCUIT"
+        },
+        {
+          "kind": "list",
+          "path": "model_router_config.py",
+          "symbol": "STRATEGIES"
+        },
+        {
+          "kind": "list",
+          "path": "module_events.py",
+          "symbol": "_DEFAULT_EVENTS"
+        },
+        {
+          "kind": "dict",
+          "path": "module_store.py",
+          "symbol": "_ORDER_COMPONENTS"
+        },
+        {
+          "kind": "list",
+          "path": "module_store.py",
+          "symbol": "_SEED"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_api_javadoc.py",
+          "symbol": "ApiJavadocEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_audio_import_path.py",
+          "symbol": "AudioImportPathEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_create_pipeline_menu.py",
+          "symbol": "CreatePipelineMenuEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_docintel_dlq.py",
+          "symbol": "DocIntelDlqEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_error_dataframe.py",
+          "symbol": "ErrorDataframeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_file_add.py",
+          "symbol": "MsFileAddEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_form_parser.py",
+          "symbol": "FormParserEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_header_extractor.py",
+          "symbol": "HeaderExtractorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_incremental_process.py",
+          "symbol": "IncrementalProcessEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_java_transform_integration.py",
+          "symbol": "JavaTransformIntegrationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_latency_policy.py",
+          "symbol": "LatencyPolicyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_multi_sheet_output.py",
+          "symbol": "MultiSheetOutputEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_primary_key.py",
+          "symbol": "PrimaryKeyConfigEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_small_file_shortcut.py",
+          "symbol": "SmallFileShortcutEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_spark_mem_config.py",
+          "symbol": "SparkMemConfigEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_transcript_output.py",
+          "symbol": "TranscriptOutputEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ms_transcript_postproc.py",
+          "symbol": "TranscriptPostprocEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "mssql_connector.py",
+          "symbol": "DEFAULT_MAPPING"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "mt_code_reuse.py",
+          "symbol": "TransformCodeReuseEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "mt_data_expectations.py",
+          "symbol": "DataExpectationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "mt_java_transform_api.py",
+          "symbol": "JavaTransformApiEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "mt_python_transform_df.py",
+          "symbol": "PythonTransformDfEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "mt_r_transform.py",
+          "symbol": "RTransformEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "mt_spark_version_mgmt.py",
+          "symbol": "SparkVersionMgmtEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "mt_unit_test.py",
+          "symbol": "MtUnitTestEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "multi_language_transform.py",
+          "symbol": "_LANGUAGE_AVAILABLE"
+        },
+        {
+          "kind": "dict",
+          "path": "mysql_connector.py",
+          "symbol": "DEFAULT_MAPPING"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_agg_precision.py",
+          "symbol": "AggPrecisionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_batch_reindex.py",
+          "symbol": "BatchReindexEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_billion_throughput.py",
+          "symbol": "BillionThroughputEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_edit_history.py",
+          "symbol": "EditHistoryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_granular_policy.py",
+          "symbol": "GranularPolicyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_index_debug.py",
+          "symbol": "IndexDebugEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_index_monitor.py",
+          "symbol": "IndexMonitorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_inline_edit.py",
+          "symbol": "InlineEditEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_monitor_activity.py",
+          "symbol": "MonitorActivityEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_monitor_notify.py",
+          "symbol": "MonitorNotifyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_monitor_to_action.py",
+          "symbol": "MonitorToActionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_object_monitor.py",
+          "symbol": "ObjectMonitorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_osv1_osv2.py",
+          "symbol": "OsvMigrationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_realtime_eval.py",
+          "symbol": "RealtimeEvalEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ob_stream_permission.py",
+          "symbol": "StreamPermissionEngine"
+        },
+        {
+          "kind": "set",
+          "path": "object_editing.py",
+          "symbol": "_VALID_INSTRUCTIONS"
+        },
+        {
+          "kind": "list",
+          "path": "object_explorer.py",
+          "symbol": "CHART_CATALOG"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "object_storage_indexing.py",
+          "symbol": "ObjectStorageEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "object_storage_indexing.py",
+          "symbol": "DeltaIndexEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "object_storage_indexing.py",
+          "symbol": "StreamIndexEngine"
+        },
+        {
+          "kind": "list",
+          "path": "object_views.py",
+          "symbol": "WIDGET_CATALOG"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_audit_edit_dialog.py",
+          "symbol": "AuditEditDialogEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_compute_attribution.py",
+          "symbol": "ComputeAttributionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_cross_ontology_migrate.py",
+          "symbol": "CrossOntologyMigrateEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_destructive_confirm.py",
+          "symbol": "DestructiveConfirmEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_global_search.py",
+          "symbol": "GlobalSearchEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_metric_toggle.py",
+          "symbol": "MetricToggleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_model_aiml.py",
+          "symbol": "ModelAiMlEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_ontology_switcher.py",
+          "symbol": "OntologySwitcherEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_org_level_toggle.py",
+          "symbol": "OrgLevelToggleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_permission_migration.py",
+          "symbol": "PermissionMigrationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_review_view.py",
+          "symbol": "ReviewViewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_shared_ontology.py",
+          "symbol": "SharedOntologyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_sidebar_filter.py",
+          "symbol": "SidebarFilterEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oc_task_model.py",
+          "symbol": "TaskModelEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_admin_config.py",
+          "symbol": "OeAdminConfigEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_app_sidebar.py",
+          "symbol": "OeAppSidebarEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_column_config.py",
+          "symbol": "OeColumnConfigEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_comment_system.py",
+          "symbol": "CommentEntryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_compare_objects.py",
+          "symbol": "CompareObjectsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_gotham_integration.py",
+          "symbol": "GothamIntegrationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_linked_view.py",
+          "symbol": "LinkedObjectViewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_metadata_state.py",
+          "symbol": "MetadataStateEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_pivot_linked.py",
+          "symbol": "PivotLinkedEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_render_hint.py",
+          "symbol": "RenderHintEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "oe_version_mgmt.py",
+          "symbol": "VersionMgmtEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "oma_editor.py",
+          "symbol": "_TRANSITIONS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ontology_action_engine.py",
+          "symbol": "ActionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ontology_engine.py",
+          "symbol": "OntologyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ontology_function_engine.py",
+          "symbol": "FunctionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ontology_link_engine.py",
+          "symbol": "LinkEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "ontology_roles.py",
+          "symbol": "ROLE_PERMISSIONS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "ontology_wiki_engine.py",
+          "symbol": "WikiEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "openfga.py",
+          "symbol": "MODEL_CATALOG"
+        },
+        {
+          "kind": "dict",
+          "path": "org_invites.py",
+          "symbol": "_INVITES"
+        },
+        {
+          "kind": "dict",
+          "path": "org_invites.py",
+          "symbol": "_JOIN_REQS"
+        },
+        {
+          "kind": "dict",
+          "path": "orgs.py",
+          "symbol": "_ORGS"
+        },
+        {
+          "kind": "dict",
+          "path": "otp.py",
+          "symbol": "_OTP"
+        },
+        {
+          "kind": "dict",
+          "path": "otp.py",
+          "symbol": "_TICKETS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_add_data_modes.py",
+          "symbol": "AddDataModeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_ai_functions.py",
+          "symbol": "AiFunctionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_branch_activity.py",
+          "symbol": "BranchActivityEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_branch_version.py",
+          "symbol": "PbBranchVersionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_breaking_change_detect.py",
+          "symbol": "BreakingChangeDetectEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_build_profiles.py",
+          "symbol": "BuildProfilesEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_build_vs_deploy.py",
+          "symbol": "BuildDeploySeparationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_color_groups.py",
+          "symbol": "ColorGroupEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_data_expectations.py",
+          "symbol": "DataExpectationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_detail_sidebar.py",
+          "symbol": "DetailSidebarEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_export_java.py",
+          "symbol": "ExportJavaEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_expr_func_index.py",
+          "symbol": "ExprFuncIndexEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_fp_growth.py",
+          "symbol": "FpGrowthEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_health_checks.py",
+          "symbol": "HealthCheckEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_history_records.py",
+          "symbol": "HistoryRecordEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_marketplace_pkg.py",
+          "symbol": "MarketplacePkgEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_override_dataset.py",
+          "symbol": "OverrideDatasetEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_param_system.py",
+          "symbol": "ParamSystemEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_show_hide_nodes.py",
+          "symbol": "ShowHideNodeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_snapshot_incremental.py",
+          "symbol": "SnapshotIncrementalEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_structured_semi.py",
+          "symbol": "StructuredSemiEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_task_groups.py",
+          "symbol": "TaskGroupsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_transform_library.py",
+          "symbol": "TransformLibraryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_unit_test.py",
+          "symbol": "PbUnitTestEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_view_switch.py",
+          "symbol": "ViewSwitchEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pb_virtual_data_gen.py",
+          "symbol": "VirtualDataGenEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "person_identity.py",
+          "symbol": "_PERSONS"
+        },
+        {
+          "kind": "dict",
+          "path": "pg_connector.py",
+          "symbol": "DEFAULT_MAPPING"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "phase5_pipeline_engine.py",
+          "symbol": "PipelineEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "phase6_datasource_engine.py",
+          "symbol": "DataSourceEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "phase7_ops_engine.py",
+          "symbol": "OpsDeliveryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pipeline_builder_extra.py",
+          "symbol": "PipelineBranchEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pipeline_builder_extra.py",
+          "symbol": "PipelineManagementEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pipeline_builder_extra.py",
+          "symbol": "PipelineDataExpectationEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pipeline_canvas_extras.py",
+          "symbol": "PipelineCanvasEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pipeline_canvas_extras.py",
+          "symbol": "CodeRepositoryEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pipeline_canvas_extras.py",
+          "symbol": "MediaSetShardingEngine"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "_VALID_PIPELINE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "_VALID_TRIGGER_SEMANTICS"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "_VALID_FAULT_STRATEGIES"
+        },
+        {
+          "kind": "list",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "DEFAULT_PIPELINE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "_VALID_OPERATIONS"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "_VALID_WINDOW_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "_VALID_COMPUTE_PROFILES"
+        },
+        {
+          "kind": "list",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "DEFAULT_COMPUTE_PROFILES"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "_VALID_BACKPRESSURE"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_type_semantics.py",
+          "symbol": "_VALID_FAULT_TOLERANCE"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_ui_components.py",
+          "symbol": "_VALID_REGIONS"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_ui_components.py",
+          "symbol": "_VALID_TOOLBAR_ITEM_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_ui_components.py",
+          "symbol": "_VALID_SIDEBAR_ITEM_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_ui_components.py",
+          "symbol": "_VALID_PROPOSAL_STATUSES"
+        },
+        {
+          "kind": "set",
+          "path": "pipeline_ui_components.py",
+          "symbol": "_VALID_HISTORY_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "platform_integrations.py",
+          "symbol": "_VALID_HEALTH_APP_CATEGORIES"
+        },
+        {
+          "kind": "set",
+          "path": "platform_integrations.py",
+          "symbol": "_VALID_HEALTH_APP_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "platform_integrations.py",
+          "symbol": "HealthAppEngine"
+        },
+        {
+          "kind": "set",
+          "path": "platform_integrations.py",
+          "symbol": "_VALID_BACKEND_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "platform_integrations.py",
+          "symbol": "_VALID_TRIGGER_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "platform_integrations.py",
+          "symbol": "_VALID_FUNCTION_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "platform_integrations.py",
+          "symbol": "FunctionIntegrationEngine"
+        },
+        {
+          "kind": "set",
+          "path": "platform_integrations.py",
+          "symbol": "_VALID_PACKAGE_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "platform_integrations.py",
+          "symbol": "_VALID_PACKAGE_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "platform_integrations.py",
+          "symbol": "FerryPackageEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_advanced_schedule.py",
+          "symbol": "AdvancedScheduleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_chart_drag_select.py",
+          "symbol": "ChartDragSelectEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_chart_pan.py",
+          "symbol": "ChartPanEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_classify_tag.py",
+          "symbol": "ClassifyTagEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_connect_stream.py",
+          "symbol": "ConnectStreamEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_cross_project_flow.py",
+          "symbol": "CrossProjectFlowEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_dev_best_practice.py",
+          "symbol": "DevBestPracticeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_folder_convention.py",
+          "symbol": "FolderConventionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_incremental_perf.py",
+          "symbol": "IncrementalPerfEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_io_classify.py",
+          "symbol": "IOClassifyEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_mediasets_code.py",
+          "symbol": "MediasetsCodeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_org_tag.py",
+          "symbol": "OrgTagEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_parse_paths.py",
+          "symbol": "ParsePathEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_prod_pipeline_build.py",
+          "symbol": "ProdPipelineBuildEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_propagate_view.py",
+          "symbol": "PropagateViewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_role_permission.py",
+          "symbol": "PpRolePermissionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_schedule_best_practice.py",
+          "symbol": "ScheduleBestPracticeEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_schedule_coloring.py",
+          "symbol": "ScheduleColoringEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_schedule_template.py",
+          "symbol": "ScheduleTemplateEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_schedule_troubleshoot.py",
+          "symbol": "ScheduleTroubleshootEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_schema_infer.py",
+          "symbol": "PpSchemaInferEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_tag_reapproval.py",
+          "symbol": "TagReapprovalEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_toolbar_settings.py",
+          "symbol": "ToolbarSettingsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "pp_toolbar_share.py",
+          "symbol": "ToolbarShareEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "provider_call_log.py",
+          "symbol": "ProviderCallLogEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "provider_security.py",
+          "symbol": "_DEFAULT_SECURITY"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "provider_security.py",
+          "symbol": "ProviderSecurityEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "provisioning.py",
+          "symbol": "_TENANTS"
+        },
+        {
+          "kind": "dict",
+          "path": "provisioning.py",
+          "symbol": "DEFAULT_QUOTA"
+        },
+        {
+          "kind": "dict",
+          "path": "provisioning.py",
+          "symbol": "_STORAGE_USAGE"
+        },
+        {
+          "kind": "dict",
+          "path": "public_contracts.py",
+          "symbol": "_LEGACY_TASK_STATUS"
+        },
+        {
+          "kind": "dict",
+          "path": "public_contracts.py",
+          "symbol": "_TASK_TRANSITIONS"
+        },
+        {
+          "kind": "dict",
+          "path": "public_contracts.py",
+          "symbol": "_CURRENCY_SCALES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "rl_rule_workflow.py",
+          "symbol": "RuleWorkflowEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "rl_transform_pipeline_rule.py",
+          "symbol": "TransformPipelineRuleEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "rl_workshop_integration.py",
+          "symbol": "WorkshopIntegrationEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/bundle_compositions.py",
+          "symbol": "_ERRORS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/bundle_compositions.py",
+          "symbol": "_IDEMPOTENCY_PARAMETER"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/bundle_installations.py",
+          "symbol": "_BASE_ERRORS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/bundle_installations.py",
+          "symbol": "_COMMAND_ERRORS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/bundle_installations.py",
+          "symbol": "_ACTION_ERRORS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/bundle_installations.py",
+          "symbol": "_IDEMPOTENCY_PARAMETER"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/bundle_installations.py",
+          "symbol": "_IF_MATCH_PARAMETER"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/bundle_installations.py",
+          "symbol": "_ETAG_HEADER"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/domain_aggregates.py",
+          "symbol": "ROUTER_SPECS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/domain_aggregates.py",
+          "symbol": "DOMAIN_ROUTERS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/integration_cases.py",
+          "symbol": "_BASE_ERRORS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/integration_cases.py",
+          "symbol": "_COMMAND_ERRORS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/integration_cases.py",
+          "symbol": "_SNAPSHOT_ERRORS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/integration_cases.py",
+          "symbol": "_IDEMPOTENCY_PARAMETER"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/integration_cases.py",
+          "symbol": "_IF_MATCH_PARAMETER"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/integration_cases.py",
+          "symbol": "_ETAG_HEADER"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/ontology.py",
+          "symbol": "_OKF_DEFAULTS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/phase3_aip_logic.py",
+          "symbol": "_tasks"
+        },
+        {
+          "kind": "list",
+          "path": "routers/plugins.py",
+          "symbol": "_CATALOG"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/plugins.py",
+          "symbol": "_CONFIGS"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_circuit"
+        },
+        {
+          "kind": "list",
+          "path": "routers/wave_ext.py",
+          "symbol": "_tools"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_capabilities"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_jobs"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_media"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_media_bytes"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_connectors"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_pipelines"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_schedules"
+        },
+        {
+          "kind": "list",
+          "path": "routers/wave_ext.py",
+          "symbol": "_dlq"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_syncs"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_datasets"
+        },
+        {
+          "kind": "dict",
+          "path": "routers/wave_ext.py",
+          "symbol": "_dataset_history"
+        },
+        {
+          "kind": "list",
+          "path": "routers/wave_ext.py",
+          "symbol": "_CODE_REPOS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "sc_calendar_view.py",
+          "symbol": "CalendarViewEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "sc_dynamic_drag_drop.py",
+          "symbol": "DynamicDragDropEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "sc_logic_change_trigger.py",
+          "symbol": "LogicChangeTriggerEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "sc_readonly_dynamic.py",
+          "symbol": "ReadonlyDynamicEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "scalar_functions.py",
+          "symbol": "SCALAR_FN_REGISTRY"
+        },
+        {
+          "kind": "dict",
+          "path": "scalar_functions.py",
+          "symbol": "SCALAR_FN_CATEGORIES"
+        },
+        {
+          "kind": "dict",
+          "path": "shell_core.py",
+          "symbol": "_TYPE_MAP"
+        },
+        {
+          "kind": "list",
+          "path": "sql_console.py",
+          "symbol": "_SQL_KEYWORDS"
+        },
+        {
+          "kind": "set",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "_VALID_TS_OBJECT_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "_VALID_SENSOR_DATA_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "_VALID_SENSOR_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "TimeSeriesEngine"
+        },
+        {
+          "kind": "set",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "_VALID_SAP_SYSTEM_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "_VALID_SAP_AUTH_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "_VALID_SAP_OBJECT_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "_VALID_SAP_JOB_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "SapIntegrationEngine"
+        },
+        {
+          "kind": "set",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "_VALID_PB_CATEGORIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "timeseries_sap_functions.py",
+          "symbol": "PbFunctionsEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "tool_runtime.py",
+          "symbol": "KNOWN"
+        },
+        {
+          "kind": "dict",
+          "path": "transform_ops.py",
+          "symbol": "TRANSFORM_REGISTRY"
+        },
+        {
+          "kind": "dict",
+          "path": "transform_ops.py",
+          "symbol": "_BUILTIN_OP_DESCRIPTIONS"
+        },
+        {
+          "kind": "set",
+          "path": "triggers_and_link_output.py",
+          "symbol": "_VALID_EVENT_SOURCES"
+        },
+        {
+          "kind": "set",
+          "path": "triggers_and_link_output.py",
+          "symbol": "_VALID_COMPOSITE_LOGICS"
+        },
+        {
+          "kind": "set",
+          "path": "triggers_and_link_output.py",
+          "symbol": "_VALID_CARDINALITIES"
+        },
+        {
+          "kind": "dict",
+          "path": "ttl_job.py",
+          "symbol": "_INSIGHTS"
+        },
+        {
+          "kind": "dict",
+          "path": "version_matrix.py",
+          "symbol": "_MATRIX"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "vs_event_idempotent.py",
+          "symbol": "EventIdempotentEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "vs_events.py",
+          "symbol": "VsEventsEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "vs_module_interface.py",
+          "symbol": "VsModuleInterfaceEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "vs_timeseries_set.py",
+          "symbol": "TimeseriesSetEngine"
+        },
+        {
+          "kind": "list",
+          "path": "web_ide.py",
+          "symbol": "_PYTHON_BUILTINS_COMPLETIONS"
+        },
+        {
+          "kind": "list",
+          "path": "web_ide.py",
+          "symbol": "_TRANSFORM_KEYWORDS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "wk_conditional_section.py",
+          "symbol": "ConditionalSectionEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "wk_embedded_copilot.py",
+          "symbol": "EmbeddedCopilotEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "wk_object_table_advanced.py",
+          "symbol": "ObjectTableAdvancedEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "wk_overlay.py",
+          "symbol": "WkOverlayEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "wk_widget_permission.py",
+          "symbol": "WidgetPermissionEngine"
+        },
+        {
+          "kind": "set",
+          "path": "workshop_compute_api.py",
+          "symbol": "_VALID_VAR_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "workshop_compute_api.py",
+          "symbol": "_VALID_DEFINITION_TYPES"
+        },
+        {
+          "kind": "set",
+          "path": "workshop_compute_api.py",
+          "symbol": "_VALID_RECOMPUTE_STRATEGIES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "workshop_compute_api.py",
+          "symbol": "WorkshopVariableEngine"
+        },
+        {
+          "kind": "set",
+          "path": "workshop_compute_api.py",
+          "symbol": "_VALID_JOB_STATUSES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "workshop_compute_api.py",
+          "symbol": "ComputeJobPollingEngine"
+        },
+        {
+          "kind": "set",
+          "path": "workshop_compute_api.py",
+          "symbol": "_VALID_RETURN_TYPES"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "workshop_compute_api.py",
+          "symbol": "AppEntryConventionEngine"
+        },
+        {
+          "kind": "dict",
+          "path": "workspace_isolation.py",
+          "symbol": "_ITEMS"
+        },
+        {
+          "kind": "dict",
+          "path": "workspaces_catalog.py",
+          "symbol": "_WS"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "zz_function_type_editor.py",
+          "symbol": "FunctionTypeEditorEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "zz_graph_health.py",
+          "symbol": "GraphHealthEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "zz_multi_source_heterogeneous.py",
+          "symbol": "MultiSourceHeterogeneousEngine"
+        },
+        {
+          "kind": "singleton_class",
+          "path": "zz_property_editor.py",
+          "symbol": "PropertyEditorEngine"
+        }
+      ],
+      "name": "tenant-process-memory",
+      "parseErrorCount": 0,
+      "sourceFileCount": 1175,
+      "status": "STATIC_ONLY"
+    }
+  ],
+  "stage": "TI-0D",
+  "statusCounts": {
+    "NOT_CONFIGURED": 2,
+    "NOT_IMPLEMENTED": 1,
+    "PROBED": 3,
+    "STATIC_ONLY": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "stage": "TI-1-E1",
+  "mode": "READ_ONLY_SCHEMA_LINT",
+  "ok": true,
+  "issues": [],
+  "alembicRevision": "228ti1e1expand",
+  "authzTenantColumns": [
+    "org_id",
+    "project_id"
+  ],
+  "authzNonNullableColumns": [],
+  "foreignKeyCount": 7,
+  "missingForeignKeys": [],
+  "prematurelyValidatedForeignKeys": [],
+  "rlsEnabledOrForcedTableCount": 0
+}

@@ -1,0 +1,181 @@
+{
+  "stage": "TI-0E",
+  "mode": "PLAN_ONLY",
+  "waves": [
+    {
+      "wave": "TI-1",
+      "tests": [
+        {
+          "id": "TI-1-01",
+          "type": "SCHEMA",
+          "required": true
+        },
+        {
+          "id": "TI-1-02",
+          "type": "STORE",
+          "required": true
+        },
+        {
+          "id": "TI-1-03",
+          "type": "CROSS_TENANT_NEGATIVE",
+          "required": true
+        },
+        {
+          "id": "TI-1-04",
+          "type": "RECONCILIATION",
+          "required": true
+        },
+        {
+          "id": "TI-1-05",
+          "type": "QIYUE_BASELINE",
+          "required": true
+        },
+        {
+          "id": "TI-1-06",
+          "type": "ROLLBACK",
+          "required": true
+        }
+      ]
+    },
+    {
+      "wave": "TI-2",
+      "tests": [
+        {
+          "id": "TI-2-01",
+          "type": "SCHEMA",
+          "required": true
+        },
+        {
+          "id": "TI-2-02",
+          "type": "STORE",
+          "required": true
+        },
+        {
+          "id": "TI-2-03",
+          "type": "CROSS_TENANT_NEGATIVE",
+          "required": true
+        },
+        {
+          "id": "TI-2-04",
+          "type": "RECONCILIATION",
+          "required": true
+        },
+        {
+          "id": "TI-2-05",
+          "type": "QIYUE_BASELINE",
+          "required": true
+        },
+        {
+          "id": "TI-2-06",
+          "type": "ROLLBACK",
+          "required": true
+        }
+      ]
+    },
+    {
+      "wave": "TI-3",
+      "tests": [
+        {
+          "id": "TI-3-01",
+          "type": "SCHEMA",
+          "required": true
+        },
+        {
+          "id": "TI-3-02",
+          "type": "STORE",
+          "required": true
+        },
+        {
+          "id": "TI-3-03",
+          "type": "CROSS_TENANT_NEGATIVE",
+          "required": true
+        },
+        {
+          "id": "TI-3-04",
+          "type": "RECONCILIATION",
+          "required": true
+        },
+        {
+          "id": "TI-3-05",
+          "type": "QIYUE_BASELINE",
+          "required": true
+        },
+        {
+          "id": "TI-3-06",
+          "type": "ROLLBACK",
+          "required": true
+        }
+      ]
+    },
+    {
+      "wave": "TI-4",
+      "tests": [
+        {
+          "id": "TI-4-01",
+          "type": "SCHEMA",
+          "required": true
+        },
+        {
+          "id": "TI-4-02",
+          "type": "STORE",
+          "required": true
+        },
+        {
+          "id": "TI-4-03",
+          "type": "CROSS_TENANT_NEGATIVE",
+          "required": true
+        },
+        {
+          "id": "TI-4-04",
+          "type": "RECONCILIATION",
+          "required": true
+        },
+        {
+          "id": "TI-4-05",
+          "type": "QIYUE_BASELINE",
+          "required": true
+        },
+        {
+          "id": "TI-4-06",
+          "type": "ROLLBACK",
+          "required": true
+        }
+      ]
+    },
+    {
+      "wave": "TI-5",
+      "tests": [
+        {
+          "id": "TI-5-01",
+          "type": "SCHEMA",
+          "required": true
+        },
+        {
+          "id": "TI-5-02",
+          "type": "STORE",
+          "required": true
+        },
+        {
+          "id": "TI-5-03",
+          "type": "CROSS_TENANT_NEGATIVE",
+          "required": true
+        },
+        {
+          "id": "TI-5-04",
+          "type": "RECONCILIATION",
+          "required": true
+        },
+        {
+          "id": "TI-5-05",
+          "type": "QIYUE_BASELINE",
+          "required": true
+        },
+        {
+          "id": "TI-5-06",
+          "type": "ROLLBACK",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

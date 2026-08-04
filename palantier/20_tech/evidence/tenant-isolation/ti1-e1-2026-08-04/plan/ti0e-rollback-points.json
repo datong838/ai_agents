@@ -1,0 +1,49 @@
+{
+  "stage": "TI-0E",
+  "mode": "PLAN_ONLY",
+  "points": [
+    {
+      "stage": "E1_EXPAND",
+      "allowedAction": "add_nullable_structure_only",
+      "rollback": "drop_or_ignore_new_nullable_structure",
+      "authorization": "TI_WAVE_E1_APPROVAL_REQUIRED"
+    },
+    {
+      "stage": "E2_DUAL_WRITE",
+      "allowedAction": "dual_write_behind_feature_flag",
+      "rollback": "disable_feature_flag",
+      "authorization": "SEPARATE_APPROVAL_REQUIRED"
+    },
+    {
+      "stage": "E3_BACKFILL",
+      "allowedAction": "ledger_backed_evidence_only_assignment",
+      "rollback": "restore_original_values_from_immutable_ledger",
+      "authorization": "SEPARATE_APPROVAL_REQUIRED"
+    },
+    {
+      "stage": "E4_VALIDATE",
+      "allowedAction": "read_only_reconciliation",
+      "rollback": "do_not_switch_reads",
+      "authorization": "SEPARATE_APPROVAL_REQUIRED"
+    },
+    {
+      "stage": "E5_READ_SWITCH",
+      "allowedAction": "switch_scoped_read_path",
+      "rollback": "switch_back_to_legacy_read_path",
+      "authorization": "SEPARATE_APPROVAL_REQUIRED"
+    },
+    {
+      "stage": "E6_RLS",
+      "allowedAction": "enable_policy_after_observe_mode",
+      "rollback": "disable_policy_keep_tenant_keys",
+      "authorization": "SEPARATE_APPROVAL_REQUIRED"
+    },
+    {
+      "stage": "E7_CONTRACT",
+      "allowedAction": "not_null_fk_validate_and_legacy_contract",
+      "rollback": "full_backup_restore_procedure_required",
+      "authorization": "TI_6_APPROVAL_REQUIRED"
+    }
+  ],
+  "automaticExecutionAllowed": false
+}
