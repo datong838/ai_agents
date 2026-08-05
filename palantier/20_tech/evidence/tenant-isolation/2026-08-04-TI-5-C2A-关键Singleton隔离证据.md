@@ -33,3 +33,10 @@
 - `/v1/datasets` GET 存在 Phase5 与 `wave_ext` 重复路由；当前有效响应来自 wave_ext，不能仅凭 Phase5 Router scoped 就宣告 URL 真源已统一。
 - `wave_ext` 的 `_datasets/_media/_media_bytes` 仍需在 C2-B 按 scope 分桶，并覆盖关联 analytics/read/delete/clear。
 - Phase5 的 Pipeline/Node/Schedule 等非本子波进程态需进入剩余 finding 分类，不能被 C2-A 结果自动标绿。
+
+## 5. 2026-08-05 接续复验
+
+- 执行：`pytest tests/tenant_isolation/test_ti5_c2a_singleton_scope.py tests/test_aip_model_catalog.py tests/test_phase5_pipelines.py tests/test_ec_pipeline_honesty.py` → **77 passed**。
+- 执行：`pytest tests/tenant_isolation` → **206 passed / 8 skipped**。
+- Git：`aos-platform` 与 w1–w4 均为 `a302544` / tree `4481f57d1011138138ac5094e68468e59f55fa8b`；四 Worker clean；主工作树仅保留用户 `docs/toutiao-series/*`。
+- 结论：维持 C2-A GREEN；下一门仍为 C2-B，未授权前不启动。
