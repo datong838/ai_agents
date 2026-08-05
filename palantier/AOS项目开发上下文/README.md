@@ -1,10 +1,10 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-05
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@b96eaf2`（TI-5 C3-A）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-5 C3-A 收口提交
-> 当前门禁：TI-4 全域与 TI-5 A1/A2/A3/B1/B2/C1/C2/C3-A GREEN；下一门 TI-5 C3-B，真实平台连接仍暂停。
-> C3-A 收口：相关 19 项通过；Tenant Isolation 222 项收集并全套通过；五工作树本地/远端同 HEAD `b96eaf2` / tree `724edafa...`。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@56405f1`（TI-5 C3）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-5 C3 收口提交
+> 当前门禁：TI-4 全域与 TI-5 A1/A2/A3/B1/B2/C1/C2/C3 GREEN；下一门 TI-5 D，真实平台连接仍暂停。
+> C3 收口：C3-B 71 passed，C3-C 16 passed；Tenant Isolation 227 项收集并全套通过；全量 9,212 collected；五工作树本地/远端同 HEAD `56405f1` / tree `12a676ac...`。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 

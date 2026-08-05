@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.11 · 2026-08-05
-> 状态：A1/A2/A3/B1/B2/C1/C2/C3-A GREEN，下一门 C3-B
-> 前置：TI-4 全域 GREEN；当前代码 `m1@b96eaf2`
+> 版本：v1.12 · 2026-08-05
+> 状态：A1/A2/A3/B1/B2/C1/C2/C3 GREEN，下一门 D
+> 前置：TI-4 全域 GREEN；当前代码 `m1@56405f1`
 
 ## Rules
 
@@ -173,11 +173,15 @@ C3-B 实施时确认 Schedule dispatch 与 Pipeline/Node 快照存在同一调�
 
 C3-C 文件边界冻结为新增 `tenant_non_postgres_classification.yaml`、对应只读 loader/validator、`tenant_precheck.py` 的未配置状态纠正和专项测试。分类文件必须覆盖 7 个 TI-5 非表资源以及本轮确认的平台模板、重复路由和局部执行队列；每项只允许 `TENANT_OWNED_FIXED/PLATFORM_TEMPLATE/CONSTANT/NOT_REACHABLE/EXTERNAL_UNVERIFIED`，并带代码证据。当前没有 Redis/broker/tenant offline backend 配置时必须分别记录 `NOT_CONFIGURED`，不得启动或连接外部服务；Object/Vector 已有 C1 证据，Scheduler/Process Memory 已有 TI-4/C2/C3 证据。退出门为机器分类 validator、无 scope 合同负向、既有 precheck/registry/migration plan 与 Tenant Isolation 回归通过。
 
+C3-C 实施结果：`56405f1` 新增 12 项机器分类，完整覆盖 7 类 TI-5 非表资源以及 capability/executor 平台模板、局部 dispatch queue 和重复路由；Redis、broker、租户离线存储均明确 `NOT_CONFIGURED`。分类/预检/registry/plan 16 passed，Tenant Isolation 227 项收集并全套通过，全量 9,212 项收集无错误；五分支同 HEAD/tree。外部对象/向量后端继续保留 `EXTERNAL_UNVERIFIED`，不影响本地合同门 GREEN，但仍是 TI-6 生产部署条件。C3 与 TI-5 实施子波全部 GREEN，下一门 D 总收口。
+
 ### TI-5 D：总收口
 
 - 全量 schema/resource lint、同 ID 双 scope、跨 scope 负向、无 scope fail-closed。
 - PostgreSQL 真实备份、降级、升级与行数/hash 守恒。
 - Tenant Isolation 累计回归、五分支同 HEAD/tree、上下文与证据更新。
+
+D 仅做收口验证与机器对账，不再新增业务架构：D1 运行 schema/resource/classification lint、同 ID 双 scope 和无 scope 失败关闭累计门；D2 对 TI-5 PostgreSQL 迁移链执行真实临时库 upgrade/downgrade/upgrade 与共享非生产库只读行数/hash 核对，禁止改写业务数据；D3 执行 Tenant Isolation、全量 collection、必要的 Phase5/AIP 直接回归、五分支同步和文档总对账。若外部后端未配置，只保留生产条件阻断，不得把“未配置”误判为本地合同失败。
 
 ## 3. 文件边界
 
