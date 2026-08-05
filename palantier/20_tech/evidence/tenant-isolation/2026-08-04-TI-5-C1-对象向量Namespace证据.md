@@ -1,7 +1,7 @@
 # TI-5 C1 对象与向量 Namespace 证据
 
-> 日期：2026-08-04  
-> 代码：`m1@bb0773c`  
+> 日期：2026-08-04
+> 代码：`m1@bb0773c`
 > 结论：GREEN；外部 Qdrant 保持 `EXTERNAL_BACKEND_UNVERIFIED`
 
 ## 1. 代码收口

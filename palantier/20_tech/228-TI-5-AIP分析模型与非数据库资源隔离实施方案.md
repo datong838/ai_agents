@@ -124,6 +124,15 @@ C1 实施结果：`bb0773c` 将 `file-object-store` probe 改为必须接收认�
 - 引擎 key 必须含 `(org_id,project_id,resource_id)`，Router 从 Principal 显式传 `TenantScope`；列表、详情、更新、删除、统计、reset 均只作用当前 scope。同 ID 双 scope不能覆盖。
 - 832 条静态 finding 不是 832 个租户缺口：常量 set/dict、只读 registry、平台模板先排除；可变 Singleton 必须按 Router 可达性和业务数据语义形成机器清单，未分类项阻断 TI-5 D，不凭文件名批量改造。
 
+C2 按可独立验证、可独立回滚的两个子波实施，避免一次改动整个进程态：
+
+- **C2-A Model Catalog + Phase5 Dataset 链**：`aip_model_catalog.ModelCatalogEngine` 的 CRUD 改为 `(scope.key,item_id)`；`phase5_pipeline_engine` 仅将 Dataset/Build/Health/SyncConfig 四组容器改为 scoped key，Pipeline/Node/Schedule 等其他状态不在本子波扩张。两个 Router 全部依赖 `require_principal`，且每个 engine 调用显式传 `TenantScope`。
+- C2-A 容量上限按 scope 计算；list/detail/update/delete/preview/build/health/sync-config 均只见当前 scope。同 ID 双 scope 可共存；A scope 的 reset 不能清 B scope。仅测试基础设施允许命名明确的 `reset_all_for_tests()`，生产路由不得调用。
+- C2-A demo seed 必须显式接收 scope，禁止把示例 Dataset 隐式灌入全局空间；既有直接 engine 测试改为显式 `TEST_SCOPE`，不得引入默认组织常量。
+- **C2-B Wave Ext Demo Dataset/Media**：在 C2-A GREEN 后单独处理 `wave_ext` 的 `_datasets/_media/_media_bytes` 及关联 analytics/read；按 scope 分桶并补跨 scope 同 RID、bytes、list、delete/clear 负向门。
+- C2-A 文件边界：`aip_model_catalog.py`、`aip_model_catalog_router.py`、`phase5_pipeline_engine.py`、`routers/phase5_datasets.py`、`demo/seed_phase5_pipeline.py`，以及对应既有测试和 `tests/tenant_isolation/test_ti5_c2a_singleton_scope.py`。不新增数据库表，不改变公开响应 DTO。
+- C2-A 退出门：专项同 ID 双 scope、跨 scope 404/不可见、scope reset、容量分租户、无鉴权拒绝；既有 AIP Catalog、Phase5 Dataset 与 Router 回归全部通过。若发现其他调用者无法安全获得 scope，则失败关闭并登记到 C2-B/后续清单，不以默认 scope 兼容。
+
 ### TI-5 C3：缓存、队列、离线与剩余进程态收口
 
 - 未配置 Redis/队列/离线后端时建立 canonical key/envelope contract、本地 fake 负向测试和启动状态 `NOT_CONFIGURED`；不得宣称生产后端 GREEN。
