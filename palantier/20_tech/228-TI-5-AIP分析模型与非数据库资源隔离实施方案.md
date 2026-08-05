@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.12 · 2026-08-05
-> 状态：A1/A2/A3/B1/B2/C1/C2/C3 GREEN，下一门 D
-> 前置：TI-4 全域 GREEN；当前代码 `m1@56405f1`
+> 版本：v1.13 · 2026-08-05
+> 状态：A1/A2/A3/B1/B2/C1/C2/C3/D 全部 GREEN，TI-5 最终 GREEN
+> 前置：TI-4 全域 GREEN；最终代码 `m1@4f27243`
 
 ## Rules
 
@@ -182,6 +182,8 @@ C3-C 实施结果：`56405f1` 新增 12 项机器分类，完整覆盖 7 类 TI-
 - Tenant Isolation 累计回归、五分支同 HEAD/tree、上下文与证据更新。
 
 D 仅做收口验证与机器对账，不再新增业务架构：D1 运行 schema/resource/classification lint、同 ID 双 scope 和无 scope 失败关闭累计门；D2 对 TI-5 PostgreSQL 迁移链执行真实临时库 upgrade/downgrade/upgrade 与共享非生产库只读行数/hash 核对，禁止改写业务数据；D3 执行 Tenant Isolation、全量 collection、必要的 Phase5/AIP 直接回归、五分支同步和文档总对账。若外部后端未配置，只保留生产条件阻断，不得把“未配置”误判为本地合同失败。
+
+D 实施结果：`4f27243` 补齐 B1 七张模型表的临时库 downgrade→upgrade 行数/hash 守恒门；TI-5 全专项 41 passed，Tenant Isolation 228 项收集且全套通过，全量 9,213 项收集无错误。共享非生产库只读核对 revision `228ti5b1models`，16 张 TI-5 表冻结数量/hash，栖月汇 `org-org/dev-project` 在其中合计 0。五分支同 HEAD `4f27243` / tree `1db8d949...`。TI-5 最终 GREEN；外部后端未配置项仍作为 TI-6 生产条件，不授权真实平台连接。
 
 ## 3. 文件边界
 
