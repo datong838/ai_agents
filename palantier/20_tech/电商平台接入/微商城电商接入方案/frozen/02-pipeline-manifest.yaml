@@ -114,6 +114,24 @@ Source → TenantFilter(site_id=1) → Normalize → Validate → Deduplicate
 | Link | `ships: Shipment → Order (order_id)` |
 | 数据现状 | count=19 |
 
+## P08 — CustomerLite（D1.5 才落地）
+
+> **波次声明**：P08 不在 D1 范围。本规格在 D0 冻结，作为 D1.5 实施时的契约依据。前置依赖 `placedByLite` Link 已在 D1 P05 侧保留 `member_id` 关联键，P08 落地时不需要回改 P05。
+
+| 项 | 值 |
+|---|---|
+| 源表 / 主键 | `ns_member` / `member_id` |
+| 源过滤 | `site_id=1` |
+| 增量游标 | `(modify_time, member_id)`，`modify_time=0` 回退 `create_time` |
+| 目标 OT | `CustomerLite` |
+| 唯一键 | `niushop:1:{member_id}` |
+| **隐私最小化映射** | 只保留 `member_id`/`member_level`/`status`/`create_time`/`modify_time` 等脱敏键 |
+| **PII 排除清单** | **不读** `mobile`/`wx_openid`/`nickname`/`avatar`/`reg_address`/`last_login_ip`/`password`/`pay_password`；这些字段在 Project 节点显式 drop |
+| 派生指标 | `order_count Δ`（由 P05 通过 `placedByLite` 反向聚合，按 `member_id` 计算）；`last_order_days Δ`（`now - max(Order.create_time)`，按天） |
+| Link | `placedByLite: Order → CustomerLite (member_id)`（D1 P05 侧已保留关联键） |
+| 落地波次 | **D1.5**（与 G1/G2 同期） |
+| 数据现状 | count=53 |
+
 ---
 
 ## 核心 Link 汇总（与上位方案第 5.4 节一致）
