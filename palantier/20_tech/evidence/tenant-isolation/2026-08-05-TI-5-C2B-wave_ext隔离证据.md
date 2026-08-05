@@ -2,7 +2,7 @@
 
 ## 结论
 
-`m1@4e5d069` 完成 TI-5 C2-B：`wave_ext` 的 `_datasets` / `_dataset_history` / `_media` / `_media_bytes` 统一使用 `(org_id, project_id, rid)` scoped key；analytics lookup、demo seed、purge、parser/docintel 均显式 TenantScope。`GET /v1/datasets` 运行时真源为 wave_ext Data OS；Phase5 同名 GET 为 `NOT_REACHABLE_DUPLICATE`。C2 总门 GREEN。
+`m1@b249a2d` 完成 TI-5 C2-B：主实现 `4e5d069` 将 `wave_ext` 的 `_datasets` / `_dataset_history` / `_media` / `_media_bytes` 统一使用 `(org_id, project_id, rid)` scoped key；analytics lookup、demo seed、purge、parser/docintel 均显式 TenantScope，`b249a2d` 补齐 Parser 直接单测的 ContextVar scope。`GET /v1/datasets` 运行时真源为 wave_ext Data OS；Phase5 同名 GET 为 `NOT_REACHABLE_DUPLICATE`。C2 总门 GREEN。
 
 ## 代码边界
 
@@ -13,16 +13,18 @@
 - `services/aos-api/aos_api/routers/phase5_datasets.py`（仅文档化 NOT_REACHABLE_DUPLICATE）
 - `services/aos-api/tests/tenant_isolation/test_ti5_c2b_wave_ext_scope.py`
 - 既有相关回归：`test_analytics_ta4_113.py`、`test_vector_index_104.py`、`test_data_os_store_185.py`、`test_demo_story.py`
+- Parser scope 回归：`test_file_parsers.py`
 
 ## 验证
 
 | 门 | 结果 |
 |---|---|
-| C2-B 专项 | 7 passed |
-| C2-B 相关回归（含 analytics/vector/data_os/demo） | 27 passed |
+| C2-B 相关回归（含 analytics/vector/data_os/demo/media） | 80 passed / 1 skipped |
+| Parser 专项 | 7 passed |
 | Tenant Isolation 累计 | 211 passed / 8 skipped |
+| 全量测试收集 | 9,204 collected，零错误 |
 | Alembic head | `228ti5b1models`（本波无新迁移） |
-| 五工作树 | 同 HEAD `4e5d069` / tree `ee00025e...` |
+| 五工作树 | 本地/远端同 HEAD `b249a2d` / tree `b3f4ddda21a2921122b49223b888cb195aa017a0` |
 
 ## 冻结判定
 

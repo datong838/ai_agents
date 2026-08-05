@@ -2,7 +2,7 @@
 
 > 版本：v1.10 · 2026-08-05
 > 状态：A1/A2/A3/B1/B2/C1/C2 GREEN，下一门 C3
-> 前置：TI-4 全域 GREEN；当前代码 `m1@4e5d069`
+> 前置：TI-4 全域 GREEN；当前代码 `m1@b249a2d`
 
 ## Rules
 
@@ -144,7 +144,7 @@ C2-B 编码边界进一步冻结如下：
 - `/v1/datasets` GET 的运行时真源按现有 Router 注册顺序认定为 `wave_ext` Data OS；Phase5 同名 GET 定义登记为 `NOT_REACHABLE_DUPLICATE`，本波不改变已冻结 route manifest/operationId。其存储已在 C2-A scoped，不作为绕过路径；后续 API 去重须单独兼容性评审。
 - C2-B 文件边界：`routers/wave_ext.py`、`routers/analytics.py`、`data_os_store.py`、`demo/demo_story.py`，对应既有测试及 `tests/tenant_isolation/test_ti5_c2b_wave_ext_scope.py`。退出门包含同 RID 双 scope Dataset/History、Media metadata/bytes/parse、hydrate、analytics rail/preview、demo seed 显式 scope与现有 Data OS/Media 回归。
 
-C2-B 实施结果：`4e5d069` 已将 `_datasets/_dataset_history/_media/_media_bytes` 统一为 `(org_id,project_id,rid)` key；hydrate、analytics lookup、demo seed、purge 与 parser/docintel 均显式 TenantScope。`GET /v1/datasets` 运行时真源冻结为 wave_ext Data OS；Phase5 同名 GET 登记为 `NOT_REACHABLE_DUPLICATE`（manifest 仍 2 条，本波不改 route 契约）。专项 7 passed；相关回归与 Tenant Isolation 211 passed / 8 skipped；五分支同 HEAD/tree。C2 总门 GREEN；下一门 C3。
+C2-B 实施结果：`4e5d069` 已将 `_datasets/_dataset_history/_media/_media_bytes` 统一为 `(org_id,project_id,rid)` key；hydrate、analytics lookup、demo seed、purge 与 parser/docintel 均显式 TenantScope。`b249a2d` 补齐 Parser registry 直接单测的显式 ContextVar scope。`GET /v1/datasets` 运行时真源冻结为 wave_ext Data OS；Phase5 同名 GET 登记为 `NOT_REACHABLE_DUPLICATE`（manifest 仍 2 条，本波不改 route 契约）。相关回归 80 passed / 1 skipped，Parser 7 passed，Tenant Isolation 211 passed / 8 skipped，全量 9,204 项收集无错误；五分支同 HEAD/tree。C2 总门 GREEN；下一门 C3。
 
 ### TI-5 C3：缓存、队列、离线与剩余进程态收口
 
