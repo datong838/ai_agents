@@ -1,10 +1,10 @@
 # AOS 项目开发上下文
 
 > 快照日期：2026-08-05
-> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@4f27243`（TI-5 最终）
-> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-5 最终收口提交
-> 当前门禁：TI-4/TI-5 与 TI-6-1 GREEN；下一门 TI-6-2，真实平台连接仍暂停。
-> TI-5 收口：专项 41 passed；Tenant Isolation 228 collected 且全套通过；全量 9,213 collected；五工作树本地/远端同 HEAD `4f27243` / tree `1db8d949...`。
+> 代码基线：`/Users/ddt/work/projects/ai_agent/aos-platform`，`m1@44887c1`（TI-6-4）
+> 文档基线：`/Users/ddt/work/projects/ai_agent/docs`，当前 `m1` 的 TI-6-4 收口提交
+> 当前门禁：TI-4/TI-5 与 TI-6-1～6-4 GREEN；下一门 TI-6-5 最终对账，真实微商城 Connector 仍暂停。
+> TI-6-4 收口：Tenant Isolation 239 passed / 10 skipped；备份恢复库 101/101、schema drift=0；五工作树本地/远端同 HEAD `44887c1` / tree `c587ab87...`。
 
 本目录是 AOS 后续人工或 AI 开发的最小可信入口。它不替代详细技术方案，而是固化“当前在哪里、现有架构是什么、各分支包含什么、哪些决策不能重开、下一位开发者如何安全接续”。
 
@@ -37,6 +37,7 @@
 - M5-2 回归证据：[`2026-08-04-M5-2Composition与Installation闭环回归证据.md`](../20_tech/evidence/m0/m5-ecommerce-bundles/2026-08-04-M5-2Composition与Installation闭环回归证据.md)
 - M5-3 最终证据：[`2026-08-04-M5-3最终累计回归与M5收口证据.md`](../20_tech/evidence/m0/m5-ecommerce-bundles/2026-08-04-M5-3最终累计回归与M5收口证据.md)
 - 租户隔离总方案：[`228-组织与工作区租户隔离全量补强实施方案.md`](../20_tech/228-组织与工作区租户隔离全量补强实施方案.md)
+- TI-6-4 证据：[`2026-08-05-TI-6-4清理恢复演练证据.md`](../20_tech/evidence/tenant-isolation/2026-08-05-TI-6-4清理恢复演练证据.md)
 - TI-3 E4 证据：[`2026-08-04-TI-3-E4-ObjectRuntime工作区外键验证证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-3-E4-ObjectRuntime工作区外键验证证据.md)
 - TI-3 E5 证据：[`2026-08-04-TI-3-E5-ObjectRuntime租户读切换与旁路收口证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-3-E5-ObjectRuntime租户读切换与旁路收口证据.md)
 - TI-3 E6 证据：[`2026-08-04-TI-3-E6-ObjectRuntime行级安全证据.md`](../20_tech/evidence/tenant-isolation/2026-08-04-TI-3-E6-ObjectRuntime行级安全证据.md)
