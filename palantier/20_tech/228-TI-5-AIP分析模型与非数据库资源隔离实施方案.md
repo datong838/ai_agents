@@ -169,6 +169,10 @@ C3-B 代码复核后再拆为两个原子子波：
 
 C3-B1 文件边界冻结为 `phase5_pipeline_engine.py`、`routers/phase5_pipelines.py`、Phase5 pipeline 既有测试和新增 `tests/tenant_isolation/test_ti5_c3b1_phase5_pipeline_scope.py`。不处理 Schedule、Dataset、公开 route manifest 或数据库结构。退出门为五类对象同 ID 双 scope、跨 scope 404/不可见、graph persistence 与内存一致、reset 只清当前 scope、相关既有 Phase5 回归通过。
 
+C3-B 实施时确认 Schedule dispatch 与 Pipeline/Node 快照存在同一调用链，B1 与 B2 不能形成可独立运行的中间版本，因此在一个编译波内共同收口。`bb795dc` 已将七类容器统一为 scoped key，所有 Engine 调用显式 TenantScope，Schedule Router 补 Principal，dispatch 只复制当前 scope 节点；新增 3 个跨 scope 场景。Phase5/执行回归 71 passed，Tenant Isolation 全套通过，全量 9,210 项收集无错误；五分支同 HEAD/tree。C3-B GREEN，下一门 C3-C。
+
+C3-C 文件边界冻结为新增 `tenant_non_postgres_classification.yaml`、对应只读 loader/validator、`tenant_precheck.py` 的未配置状态纠正和专项测试。分类文件必须覆盖 7 个 TI-5 非表资源以及本轮确认的平台模板、重复路由和局部执行队列；每项只允许 `TENANT_OWNED_FIXED/PLATFORM_TEMPLATE/CONSTANT/NOT_REACHABLE/EXTERNAL_UNVERIFIED`，并带代码证据。当前没有 Redis/broker/tenant offline backend 配置时必须分别记录 `NOT_CONFIGURED`，不得启动或连接外部服务；Object/Vector 已有 C1 证据，Scheduler/Process Memory 已有 TI-4/C2/C3 证据。退出门为机器分类 validator、无 scope 合同负向、既有 precheck/registry/migration plan 与 Tenant Isolation 回归通过。
+
 ### TI-5 D：总收口
 
 - 全量 schema/resource lint、同 ID 双 scope、跨 scope 负向、无 scope fail-closed。
