@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.10 · 2026-08-05
-> 状态：A1/A2/A3/B1/B2/C1/C2 GREEN，下一门 C3
-> 前置：TI-4 全域 GREEN；当前代码 `m1@b249a2d`
+> 版本：v1.11 · 2026-08-05
+> 状态：A1/A2/A3/B1/B2/C1/C2/C3-A GREEN，下一门 C3-B
+> 前置：TI-4 全域 GREEN；当前代码 `m1@b96eaf2`
 
 ## Rules
 
@@ -159,6 +159,8 @@ C3 按真实路由可达性拆成三个最小子波，禁止用静态命中数�
 - **C3-C 外部后端与机器分类**：机器生成剩余 finding 清单并逐项归类。未配置 Redis、外部队列、离线结果存储时，运行状态明确为 `NOT_CONFIGURED` / `EXTERNAL_UNVERIFIED`；本地 fake 只验证 key/envelope 合同和缺 scope fail-closed，不能替代生产后端验证。进程内执行局部 `queue.Queue` 若不跨请求持久化，登记为 `CONSTANT_EXECUTION_LOCAL`。
 
 C3-A 编码边界冻结为 `routers/wave_ext.py`、`data_os_store.py`、受影响 demo/现有测试以及新增 `tests/tenant_isolation/test_ti5_c3a_job_dlq_scope.py`；不得修改 Phase5 Engine、数据库迁移或公开 DTO 结构。退出门为 capability job 同 ID 双 scope、status 跨 scope 404、DLQ 同 ID双 scope、list/retry 隔离、docintel failure scope envelope、demo purge 不误删其他 scope，并通过相关既有回归。
+
+C3-A 实施结果：`b96eaf2` 已将 capability job 与 DLQ 统一改为 `(org_id,project_id,rid)` key，返回 envelope 固化 `orgId/projectId`；status/list/retry、docintel failure 与 demo seed/purge 均按调用 scope 工作。能力定义继续作为 `PLATFORM_TEMPLATE`。新增 3 个专项场景，相关 19 项通过，Tenant Isolation 222 项收集并全套通过；五分支同 HEAD `b96eaf2` / tree `724edafa...`。C3-A GREEN，下一门 C3-B。
 
 ### TI-5 D：总收口
 
