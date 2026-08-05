@@ -152,6 +152,14 @@ C2-B 实施结果：`4e5d069` 已将 `_datasets/_dataset_history/_media/_media_b
 - 对实际可达的 retry/dead-letter/job/offline output，envelope 缺 TenantScope 必须失败关闭；管理统计不得跨 scope 聚合明细。
 - 完成 mutable finding 分类表：`TENANT_OWNED_FIXED`、`PLATFORM_TEMPLATE`、`CONSTANT`、`NOT_REACHABLE`、`EXTERNAL_UNVERIFIED`，每项带代码证据。
 
+C3 按真实路由可达性拆成三个最小子波，禁止用静态命中数量驱动大范围重构：
+
+- **C3-A Job / DLQ envelope**：只处理 `wave_ext` 中实际可达的 capability job、DLQ、docintel failure 与 demo purge。`_jobs`、`_dlq` 使用完整 `(org_id,project_id,rid)` key；返回 envelope 固化 `orgId/projectId`。list/status/retry 只能访问当前 scope，同 ID 双 scope 可共存，跨 scope 必须 404/不可见。`_capabilities` 是平台级开发能力模板，登记为 `PLATFORM_TEMPLATE`，但由模板产生的 job 必须属于调用 scope。
+- **C3-B Phase5 剩余进程态**：对 `Pipeline/Node/Edge/Proposal/History/Schedule/ScheduleRun` 的实际可达 Router 与 Engine 调用逐项加 TenantScope，统一 scoped key，并保证父子查找、执行回调、历史、文件树、预览和 schedule run 不跨 scope。与 `wave_ext` 重复且被注册顺序遮蔽的路由只登记 `NOT_REACHABLE_DUPLICATE`，不借 C3 改公开 route manifest。
+- **C3-C 外部后端与机器分类**：机器生成剩余 finding 清单并逐项归类。未配置 Redis、外部队列、离线结果存储时，运行状态明确为 `NOT_CONFIGURED` / `EXTERNAL_UNVERIFIED`；本地 fake 只验证 key/envelope 合同和缺 scope fail-closed，不能替代生产后端验证。进程内执行局部 `queue.Queue` 若不跨请求持久化，登记为 `CONSTANT_EXECUTION_LOCAL`。
+
+C3-A 编码边界冻结为 `routers/wave_ext.py`、`data_os_store.py`、受影响 demo/现有测试以及新增 `tests/tenant_isolation/test_ti5_c3a_job_dlq_scope.py`；不得修改 Phase5 Engine、数据库迁移或公开 DTO 结构。退出门为 capability job 同 ID 双 scope、status 跨 scope 404、DLQ 同 ID双 scope、list/retry 隔离、docintel failure scope envelope、demo purge 不误删其他 scope，并通过相关既有回归。
+
 ### TI-5 D：总收口
 
 - 全量 schema/resource lint、同 ID 双 scope、跨 scope 负向、无 scope fail-closed。
