@@ -162,6 +162,13 @@ C3-A 编码边界冻结为 `routers/wave_ext.py`、`data_os_store.py`、受影�
 
 C3-A 实施结果：`b96eaf2` 已将 capability job 与 DLQ 统一改为 `(org_id,project_id,rid)` key，返回 envelope 固化 `orgId/projectId`；status/list/retry、docintel failure 与 demo seed/purge 均按调用 scope 工作。能力定义继续作为 `PLATFORM_TEMPLATE`。新增 3 个专项场景，相关 19 项通过，Tenant Isolation 222 项收集并全套通过；五分支同 HEAD `b96eaf2` / tree `724edafa...`。C3-A GREEN，下一门 C3-B。
 
+C3-B 代码复核后再拆为两个原子子波：
+
+- **C3-B1 Pipeline Graph/Node/Proposal/History**：`phase5_pipeline_engine.py` 中上述七类容器先处理 Pipeline、Node、Edge、Proposal、History；Engine 所有相关公开方法必须显式接收 TenantScope，Router 每个 handler 必须显式注入 Principal，不以 `APIRouter.dependencies` 代替传 scope。持久化 graph 的 scope 与内存 hydrate key 必须一致；同 pipeline/node/proposal ID 双 scope 可共存。`/v1/pipelines` 的 list/post/detail 等若被 wave_ext 同方法同路径遮蔽，登记为 `NOT_REACHABLE_DUPLICATE`，但 Engine 直接调用和 graph/files/node/proposal/history 等可达子路径仍须完成隔离。
+- **C3-B2 Schedule/ScheduleRun/dispatch**：随后处理 Schedule 与 ScheduleRun；给当前无鉴权的 Phase5 schedule Router 增加 Principal 门并传 scope。schedule 只能运行同 scope pipeline；run/history 使用同 scope key。executor 注册表与 evidence resolver 是平台级运行能力，登记 `PLATFORM_TEMPLATE`；本地 `queue.Queue` 是单次 dispatch 局部对象，登记 `CONSTANT_EXECUTION_LOCAL`，但 executor callback 的 pipeline/node 快照必须来自当前 scope。
+
+C3-B1 文件边界冻结为 `phase5_pipeline_engine.py`、`routers/phase5_pipelines.py`、Phase5 pipeline 既有测试和新增 `tests/tenant_isolation/test_ti5_c3b1_phase5_pipeline_scope.py`。不处理 Schedule、Dataset、公开 route manifest 或数据库结构。退出门为五类对象同 ID 双 scope、跨 scope 404/不可见、graph persistence 与内存一致、reset 只清当前 scope、相关既有 Phase5 回归通过。
+
 ### TI-5 D：总收口
 
 - 全量 schema/resource lint、同 ID 双 scope、跨 scope 负向、无 scope fail-closed。
