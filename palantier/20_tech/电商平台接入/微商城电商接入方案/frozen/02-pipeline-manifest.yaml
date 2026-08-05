@@ -1,0 +1,141 @@
+# frozen/02 — 7 Pipeline 规格（D0 冻结）
+
+> 上位方案：[228-微商城专项](../228-微商城专项实施准备与FDE全链路规格.md) 第 5 节。
+> 落点说明：本文件是**规格文档，非 bundle 资产**。`BundleExports` 是 StrictContract，不支持 pipeline 字段；边界门禁 [test_m5_ecommerce_boundaries.py](../../../../../aos-platform/services/aos-api/tests/asset_registry/test_m5_ecommerce_boundaries.py) 禁止 niushop bundle 携带可执行资产。Pipeline 通过 `/v1/pipelines` 运行时创建到 `meta_pipeline` 表，本规格是 D1 运行时创建的契约依据。
+> 本文件已纳入 [frozen/04 差异报告](./04-discovery-report.md) 的修正项。
+
+---
+
+## 通用骨架
+
+每条 Pipeline 统一使用：
+
+```text
+Source → TenantFilter(site_id=1) → Normalize → Validate → Deduplicate
+       → QualityGate ┬→ Dataset / OT sink
+                     └→ DLQ（只存键、错误码与脱敏摘要）
+```
+
+通用约束：
+- `org_id` / `project_id` 由实施上下文注入（栖月汇：`org-org` / `dev-project`）
+- `site_id=1` 是源过滤与 Sink 租户键的一部分
+- 唯一键命名空间：`niushop:1:{source_pk}`
+- Unix 秒 → UTC，`0` 转 `null`
+- 增量游标 `(watermark, primary_key)` 稳定二元组
+- D1 不做多表 JOIN Sink（按 P 按 Link 独立落地）
+
+---
+
+## P01 — Shop
+
+| 项 | 值 |
+|---|---|
+| 源表 / 主键 | `ns_site` / `site_id` |
+| 源过滤 | `site_id=1` |
+| 增量策略 | 每日快照 |
+| 目标 OT | `Shop` |
+| 唯一键 | `niushop:1:{site_id}` |
+| 校验 | `site_name` 非空 |
+| 游标字段 | 无（快照模式） |
+
+## P02 — Product
+
+| 项 | 值 |
+|---|---|
+| 源表 / 主键 | `ns_goods` / `goods_id` |
+| 源过滤 | `site_id=1 AND is_delete=0` |
+| 增量游标 | `(modify_time, goods_id)`，`modify_time=0` 回退 `create_time` |
+| 目标 OT | `Product` |
+| 唯一键 | `niushop:1:{goods_id}` |
+| 关键映射 | `price decimal(10,2)` 非负；`goods_state` 枚举 {0,1}；`0` 时间转 null |
+| 软删处置 | `is_delete=1`（8 行）不入 OT，进 DLQ 计数 |
+| 数据现状 | count=65（含软删），有效 57 |
+
+## P03 — ProductSku
+
+| 项 | 值 |
+|---|---|
+| 源表 / 主键 | `ns_goods_sku` / `sku_id` |
+| 源过滤 | `site_id=1 AND is_delete=0` |
+| 增量游标 | `(modify_time, sku_id)`，`modify_time=0` 回退 `create_time` |
+| 目标 OT | `ProductSku` |
+| 唯一键 | `niushop:1:{sku_id}` |
+| 关键映射 | `product_id` 指向 P02；价格/库存非负；孤儿进 DLQ |
+| Link | `hasSku: Product → ProductSku (goods_id)` |
+
+## P04 — Category
+
+| 项 | 值 |
+|---|---|
+| 源表 / 主键 | `ns_goods_category` / `category_id` |
+| 源过滤 | `site_id=1` |
+| 增量策略 | 每日快照 |
+| 目标 OT | `Category` |
+| 唯一键 | `niushop:1:{category_id}` |
+| 关键校验 | `pid=0` 为根；检测分类环和孤儿父级 |
+| Link | `inCategory: Product → Category (category_id)`（多分类字符串需先定义拆分契约） |
+
+## P05 — Order
+
+| 项 | 值 |
+|---|---|
+| 源表 / 主键 | `ns_order` / `order_id` |
+| 源过滤 | `site_id=1 AND is_delete=0` |
+| 增量游标 | 初装 `(create_time, order_id)`；每小时重扫最近 7 天；每日全状态对账 |
+| 目标 OT | `Order` |
+| 唯一键 | `niushop:1:{order_id}` |
+| 关键映射 | `order_no`；`member_id` 仅保留关联键（不引 PII）；状态四元组（`order_status`/`pay_status`/`delivery_status`/`is_delete`）；金额 decimal |
+| **状态字段修正** | 上位方案写的 `shipping_status` **不存在**，真实字段是 `delivery_status`（见差异报告 D-001） |
+| 软删处置 | `is_delete=1`（60 行）不入 OT，进 DLQ 计数 |
+| 数据现状 | count=177（含软删），有效 117 |
+
+## P06 — OrderLine
+
+| 项 | 值 |
+|---|---|
+| 源表 / 主键 | `ns_order_goods` / `order_goods_id` |
+| 源过滤 | `site_id=1` |
+| **增量游标修正** | 上位方案写 `(create_time, order_goods_id)` **不可用**：`create_time` 227 行全为 0（见差异报告 D-002）。改用 `refund_action_time` 为辅游标，主策略退回**每日快照 + order_id 关联重扫** |
+| 目标 OT | `OrderLine` |
+| 唯一键 | `niushop:1:{order_goods_id}` |
+| 关键映射 | 指向 Order/Product/ProductSku；数量/金额非负；`refund_status` 枚举 {-3,0,3}；`delivery_status` 保留 |
+| Link | `contains: Order → OrderLine (order_id)`；`forProduct: OrderLine → Product (goods_id)`；`forSku: OrderLine → ProductSku (sku_id)` |
+
+## P07 — Shipment
+
+| 项 | 值 |
+|---|---|
+| 源表 / 主键 | `ns_express_delivery_package` / `id` |
+| 源过滤 | `site_id=1` |
+| 增量策略 | 每日快照（`delivery_time` 可用性核验后可转增量） |
+| 目标 OT | `Shipment` |
+| 唯一键 | `niushop:1:{id}` |
+| 关键映射 | 指向 Order；`delivery_no` 物流号按敏感级别遮罩 |
+| Link | `ships: Shipment → Order (order_id)` |
+| 数据现状 | count=19 |
+
+---
+
+## 核心 Link 汇总（与上位方案第 5.4 节一致）
+
+| Link | From → To | 来源字段 | 完整性门禁 |
+|---|---|---|---|
+| `hasSku` | Product → ProductSku | `goods_id` | SKU 不得指向不存在 Product |
+| `inCategory` | Product → Category | `category_id` | 多分类字符串需先定义拆分契约 |
+| `contains` | Order → OrderLine | `order_id` | 行必须有订单头 |
+| `forProduct` | OrderLine → Product | `goods_id` | 缺失进 DLQ，不自动造对象 |
+| `forSku` | OrderLine → ProductSku | `sku_id` | `sku_id=0` 规则需样本核验 |
+| `ships` | Shipment → Order | `order_id` | 包裹必须有订单头 |
+| `placedByLite` | Order → CustomerLite | `member_id` | 仅脱敏键，D1.5 落地 |
+
+---
+
+## 与平台-电商域-微商城三层自洽性
+
+| 层 | 契约来源 | 本规格对齐点 |
+|---|---|---|
+| 平台（AOS 通用） | `BundleExports` StrictContract / 边界门禁 | Pipeline 不入 bundle，走运行时 `/v1/pipelines` |
+| 电商域 | [228-EC-Pipeline 诚实执行](../../228-EC-Pipeline诚实执行与负向验收方案.md) / [228-EC-核心本体](../../228-EC-核心本体与增量一致性方案.md) | 通用骨架、DLQ、QualityGate、7 OT 唯一键、Link 完整性门禁 |
+| 微商城 | [228-微商城专项](../228-微商城专项实施准备与FDE全链路规格.md) 第 5 节 | 7 Pipeline 映射、site_id=1、软删过滤、时间转换 |
+
+D1 真实 executor/sink 完成前，本规格仅作为"画布可配置 ≠ 生产可执行"的诚实声明依据。
