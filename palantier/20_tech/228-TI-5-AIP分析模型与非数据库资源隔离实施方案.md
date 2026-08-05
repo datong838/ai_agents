@@ -135,6 +135,15 @@ C2 按可独立验证、可独立回滚的两个子波实施，避免一次改�
 
 C2-A 实施结果：`a302544` 已将 AIP Model Catalog CRUD/容量/reset 与 Phase5 Dataset/Build/Health/SyncConfig 全链改为显式 TenantScope 和 scoped key；两个 Router 均从认证 Principal 构造 scope，demo seed 也必须显式传 scope。专项及相关回归 77 passed，Tenant Isolation 206 passed / 8 skipped，全量 9,199 项收集无错误；五条代码分支同步到同一 HEAD/tree。复核同时确认 `/v1/datasets` GET 与 `wave_ext` 存在既有重复路由，当前有效 GET 由已做 metadata scope 过滤的 wave_ext 响应；该路由真源冲突与 `_datasets/_media/_media_bytes` 全链必须在 C2-B 收口，因此 C2 总门尚未 GREEN。
 
+C2-B 编码边界进一步冻结如下：
+
+- `_datasets`、`_dataset_history`、`_media`、`_media_bytes` 统一使用 `(org_id,project_id,rid)` key；所有 get/list/enrich/parse/reference/docintel、pipeline create/patch、sync history 与 hydrate 都先由 Principal/显式 TenantScope 生成 key，禁止“全局 rid 命中后再看 metadata”的兼容路径。
+- `data_os_store.load_all(scope)` 仍返回本 scope 的 RID 映射，但 `wave_ext._hydrate_data_os_scope` 必须逐项转换为 scoped key；boot 只清运行缓存。demo seed 改为显式 `scope`，不再生成无归属 Dataset/History。
+- Analytics 的 dataset lookup/ontology rail 必须接收 Principal scope，只读取该 scope 的 wave_ext Dataset；测试直接注入内存数据也必须使用 scoped helper，不得写裸 RID key。
+- Media bytes 与 metadata 必须使用同一个 scoped key。parser/docintel 通过 `mediaRid` 读 bytes 前必须先命中本 scope metadata；即便 A/B 使用相同 RID，也只能解析各自 bytes。对象存储 key 继续由 C1 tenant prefix 保护。
+- `/v1/datasets` GET 的运行时真源按现有 Router 注册顺序认定为 `wave_ext` Data OS；Phase5 同名 GET 定义登记为 `NOT_REACHABLE_DUPLICATE`，本波不改变已冻结 route manifest/operationId。其存储已在 C2-A scoped，不作为绕过路径；后续 API 去重须单独兼容性评审。
+- C2-B 文件边界：`routers/wave_ext.py`、`routers/analytics.py`、`data_os_store.py`、`demo/demo_story.py`，对应既有测试及 `tests/tenant_isolation/test_ti5_c2b_wave_ext_scope.py`。退出门包含同 RID 双 scope Dataset/History、Media metadata/bytes/parse、hydrate、analytics rail/preview、demo seed 显式 scope与现有 Data OS/Media 回归。
+
 ### TI-5 C3：缓存、队列、离线与剩余进程态收口
 
 - 未配置 Redis/队列/离线后端时建立 canonical key/envelope contract、本地 fake 负向测试和启动状态 `NOT_CONFIGURED`；不得宣称生产后端 GREEN。
