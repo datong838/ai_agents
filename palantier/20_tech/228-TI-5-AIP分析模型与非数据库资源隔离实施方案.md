@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.9 · 2026-08-04
-> 状态：A1/A2/A3/B1/B2/C1/C2-A GREEN，下一门 C2-B
-> 前置：TI-4 全域 GREEN；当前代码 `m1@a302544`
+> 版本：v1.10 · 2026-08-05
+> 状态：A1/A2/A3/B1/B2/C1/C2 GREEN，下一门 C3
+> 前置：TI-4 全域 GREEN；当前代码 `m1@4e5d069`
 
 ## Rules
 
@@ -143,6 +143,8 @@ C2-B 编码边界进一步冻结如下：
 - Media bytes 与 metadata 必须使用同一个 scoped key。parser/docintel 通过 `mediaRid` 读 bytes 前必须先命中本 scope metadata；即便 A/B 使用相同 RID，也只能解析各自 bytes。对象存储 key 继续由 C1 tenant prefix 保护。
 - `/v1/datasets` GET 的运行时真源按现有 Router 注册顺序认定为 `wave_ext` Data OS；Phase5 同名 GET 定义登记为 `NOT_REACHABLE_DUPLICATE`，本波不改变已冻结 route manifest/operationId。其存储已在 C2-A scoped，不作为绕过路径；后续 API 去重须单独兼容性评审。
 - C2-B 文件边界：`routers/wave_ext.py`、`routers/analytics.py`、`data_os_store.py`、`demo/demo_story.py`，对应既有测试及 `tests/tenant_isolation/test_ti5_c2b_wave_ext_scope.py`。退出门包含同 RID 双 scope Dataset/History、Media metadata/bytes/parse、hydrate、analytics rail/preview、demo seed 显式 scope与现有 Data OS/Media 回归。
+
+C2-B 实施结果：`4e5d069` 已将 `_datasets/_dataset_history/_media/_media_bytes` 统一为 `(org_id,project_id,rid)` key；hydrate、analytics lookup、demo seed、purge 与 parser/docintel 均显式 TenantScope。`GET /v1/datasets` 运行时真源冻结为 wave_ext Data OS；Phase5 同名 GET 登记为 `NOT_REACHABLE_DUPLICATE`（manifest 仍 2 条，本波不改 route 契约）。专项 7 passed；相关回归与 Tenant Isolation 211 passed / 8 skipped；五分支同 HEAD/tree。C2 总门 GREEN；下一门 C3。
 
 ### TI-5 C3：缓存、队列、离线与剩余进程态收口
 
