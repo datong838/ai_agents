@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.7 · 2026-08-04
-> 状态：A1/A2/A3/B1/B2 GREEN，下一门 C
-> 前置：TI-4 全域 GREEN；当前代码 `m1@7022ffe`
+> 版本：v1.8 · 2026-08-04
+> 状态：A1/A2/A3/B1/B2/C1 GREEN，下一门 C2
+> 前置：TI-4 全域 GREEN；当前代码 `m1@bb0773c`
 
 ## Rules
 
@@ -115,6 +115,8 @@ C1 冻结：
 - 业务对象读写/删除必须先 `assert_object_key_tenant`；workspace clear 只能删除本 scope prefix。底层管理员 adapter 可保留 raw key 能力，但不得直接暴露给租户 API。
 - 两个无 canonical prefix 的 probe 对象只做可逆维护隔离：先本地安全备份 bytes/hash 和 manifest，再复制到 `_maintenance/quarantine/unowned/`，验证后删除旧 key；不得认领给测试组织或客户组织。维护 prefix 永不出现在租户 list/probe。
 - local vector 继续复用 A2 scoped KV + `scoped_collection_name`；补同逻辑 collection 双 scope 与 foreign prefix 拒绝测试。Qdrant 未配置，只验证 collection namespace 契约并保留 `EXTERNAL_BACKEND_UNVERIFIED`。
+
+C1 实施结果：`bb0773c` 将 `file-object-store` probe 改为必须接收认证 Principal 的完整 TenantScope，只能列 `tenant_key_prefix(scope)`；无 scope 失败关闭。新增对象/向量 namespace 专项 3 passed，相关 Connector 回归 18 passed。MinIO 两个无归属历史 probe 已先备份到 `/private/var/tmp/aos-ti5-c1-bzbep_4o`，再复制到 `_maintenance/quarantine/unowned/<sha256>` 并完成读回 hash 校验后删除旧 key；总对象数仍为 75，其中测试组织 canonical prefix 73、维护隔离 2、栖月汇 prefix 0。local vector 唯一 KV 同时具备数据库 scope 与 scoped collection name；Qdrant 未配置，状态保持 `EXTERNAL_BACKEND_UNVERIFIED`，不宣称外部实盘 GREEN。
 
 ### TI-5 C2：关键进程内 Singleton
 
