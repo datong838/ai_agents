@@ -1,8 +1,8 @@
 # 228 · TI-5 AIP、分析模型与非数据库资源隔离实施方案
 
-> 版本：v1.8 · 2026-08-04
-> 状态：A1/A2/A3/B1/B2/C1 GREEN，下一门 C2
-> 前置：TI-4 全域 GREEN；当前代码 `m1@bb0773c`
+> 版本：v1.9 · 2026-08-04
+> 状态：A1/A2/A3/B1/B2/C1/C2-A GREEN，下一门 C2-B
+> 前置：TI-4 全域 GREEN；当前代码 `m1@a302544`
 
 ## Rules
 
@@ -132,6 +132,8 @@ C2 按可独立验证、可独立回滚的两个子波实施，避免一次改�
 - **C2-B Wave Ext Demo Dataset/Media**：在 C2-A GREEN 后单独处理 `wave_ext` 的 `_datasets/_media/_media_bytes` 及关联 analytics/read；按 scope 分桶并补跨 scope 同 RID、bytes、list、delete/clear 负向门。
 - C2-A 文件边界：`aip_model_catalog.py`、`aip_model_catalog_router.py`、`phase5_pipeline_engine.py`、`routers/phase5_datasets.py`、`demo/seed_phase5_pipeline.py`，以及对应既有测试和 `tests/tenant_isolation/test_ti5_c2a_singleton_scope.py`。不新增数据库表，不改变公开响应 DTO。
 - C2-A 退出门：专项同 ID 双 scope、跨 scope 404/不可见、scope reset、容量分租户、无鉴权拒绝；既有 AIP Catalog、Phase5 Dataset 与 Router 回归全部通过。若发现其他调用者无法安全获得 scope，则失败关闭并登记到 C2-B/后续清单，不以默认 scope 兼容。
+
+C2-A 实施结果：`a302544` 已将 AIP Model Catalog CRUD/容量/reset 与 Phase5 Dataset/Build/Health/SyncConfig 全链改为显式 TenantScope 和 scoped key；两个 Router 均从认证 Principal 构造 scope，demo seed 也必须显式传 scope。专项及相关回归 77 passed，Tenant Isolation 206 passed / 8 skipped，全量 9,199 项收集无错误；五条代码分支同步到同一 HEAD/tree。复核同时确认 `/v1/datasets` GET 与 `wave_ext` 存在既有重复路由，当前有效 GET 由已做 metadata scope 过滤的 wave_ext 响应；该路由真源冲突与 `_datasets/_media/_media_bytes` 全链必须在 C2-B 收口，因此 C2 总门尚未 GREEN。
 
 ### TI-5 C3：缓存、队列、离线与剩余进程态收口
 
