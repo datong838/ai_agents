@@ -1,0 +1,24 @@
+{
+  "wave": "O1-UX0",
+  "status": "GREEN",
+  "codeCommit": "71f97ea",
+  "branch": "m1",
+  "scope": {"orgId": "org-org", "workspaceId": "dev-project"},
+  "featureFlags": [],
+  "databaseMigration": "not-applicable-contract-only-wave",
+  "evidence": [
+    "test-summary.txt",
+    "browser-steps.json",
+    "api-contract.json",
+    "db-assertions.json",
+    "tenant-canary.json"
+  ],
+  "sha256": {
+    "test-summary.txt": "d7f6b37a1c3b8dec48e69bf0daceb714c54bd634526538dbbf65737ad6f39d30",
+    "browser-steps.json": "5ee2303fbb34e6b156b6958ac78f51afca9289682183d8a61d15d55f9a35eca7",
+    "api-contract.json": "8967d35932c148e9a41c76118f65fa397df6e0800244bc4c9e919df74bf1338d",
+    "db-assertions.json": "27d68e7357a696986b3a5c0be8cd0910737d9c17cbf340bc96b779081456b0e1",
+    "tenant-canary.json": "e10ed755787bd9e31dcb5635c341e07daa6e42fce0e21758f83ada08967e3f18"
+  },
+  "conclusion": "O1-UX0 contract and interaction honesty gates passed; no persistence or layout completion claimed"
+}

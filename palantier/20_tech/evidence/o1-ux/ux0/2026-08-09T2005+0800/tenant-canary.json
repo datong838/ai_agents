@@ -1,0 +1,6 @@
+{
+  "result": "PASS_FOR_READ_ONLY_BROWSER_SCOPE",
+  "expected": {"orgId": "org-org", "workspaceId": "dev-project"},
+  "observed": {"organizationName": "栖月汇商贸有限公司", "workspaceName": "默认工作区"},
+  "crossTenantMutation": "not-applicable-no-write-route-added"
+}

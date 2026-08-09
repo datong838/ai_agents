@@ -1,0 +1,16 @@
+{
+  "browser": "Codex in-app browser",
+  "url": "http://localhost:5173/workshop/graph?type=Order&id=1",
+  "scopeObserved": "栖月汇商贸有限公司 / 默认工作区",
+  "steps": [
+    "打开对象探索真实 Order/1",
+    "切换图谱视图",
+    "点击邻居 niushop:1:2 Order.lines",
+    "确认 URL 变为 type=OrderLine&id=2",
+    "确认类型选择器为 OrderLine 且详情为 OrderLine/2",
+    "刷新页面并确认 URL、类型和详情保持一致",
+    "检查共享、保存、新建对象集、注释、展开、更多均不存在",
+    "检查主区域 disabled button 数量为 0"
+  ],
+  "result": "PASS"
+}

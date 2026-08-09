@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "contracts": ["ExplorationCreate", "ObjectSetCreate", "GraphQuery", "GraphSnapshot"],
+  "tenantFieldsAcceptedFromClient": false,
+  "errorCodeCount": 13,
+  "graphLimits": {"maxHops": 5, "maxNodes": 500},
+  "objectSetV1": "single-object-type-only"
+}

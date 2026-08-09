@@ -1,0 +1,4 @@
+{
+  "result": "NOT_APPLICABLE",
+  "reason": "O1-UX0 freezes DTOs and interaction honesty only; no database schema or persisted asset was added"
+}
