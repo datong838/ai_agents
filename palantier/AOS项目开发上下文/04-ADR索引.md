@@ -11,5 +11,6 @@
 | [ADR-005](ADR/ADR-005-M4证据不可变与服务端阶段投影.md) | Accepted | M4 Evidence 不可变，阶段与统计只由服务端连续证据门投影 |
 | [ADR-006](ADR/ADR-006-M5无业务骨架与Overlay文件契约边界.md) | Accepted | M5 电商包只做 test-only 无业务组合验证，Overlay 只以文件契约和 opaque hash 接入现有安装控制面 |
 | [ADR-007](ADR/ADR-007-组织工作区硬边界与模板实例分离.md) | Accepted | 组织/工作区双硬边界；平台模板共享，租户实例与受治理 Overlay 隔离 |
+| [ADR-008](ADR/ADR-008-O1权威写入单一Projector与安装绑定组织Overlay.md) | Accepted | 电商权威写入只产生事务 Outbox，由单一 Projector 投影；组织定制使用 Installation 绑定不可变 Overlay |
 
 新增或反转决策必须：先更新上位方案，新增 ADR 记录上下文、取舍和迁移影响，再编码与回归；不得静默覆盖历史 ADR。
