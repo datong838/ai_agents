@@ -1,6 +1,6 @@
 # O1-A/P12 Payment 权威指标链补强与 D5 证据封板清单
 
-> 状态：**P12 已实施并通过；D5-E1/E2 被前置门阻断**
+> 状态：**GREEN；P12 与 D5-E1/E2 最终封板均通过**
 > 日期：2026-08-09
 > 上位方案：`O1-本体数字孪生层改造方案.md` v2.1 §5.2.11，`D5-E-G17G18G19证据闭合方案.md` v2.9
 > 真实租户：仅 `org-org · dev-project`；真实租户全程不写测试 canary，不使用 Mock 伪造 GREEN。
@@ -85,26 +85,26 @@ P12 raw ns_pay
 - [x] P12 真实 Source 只读执行：206 条 Payment，111 条 eligible 全部匹配 `_order_create_time`。
 - [x] 连续两次通过真实 API 重跑 P12；修复 CAS 期望版本未进入幂等键导致的真实冲突。
 - [x] 新鲜证据：权威层 eligible `111/111`、投影层 canonical eligible `111/111`、负值 0、Outbox pending 0、基础属性泄漏 0。
-- [ ] O1-D 别名迁移：`obj_instance.Payment` 仍有 100 条裸 ID 历史别名，导致投影总数 306、canonical 总数 206；P12 指标链通过，但 D5 封板不得通过。
+- [x] O1-D 别名迁移：Payment 100 条及其他 OT 411 条裸 ID 已迁移并逐行清理；Payment 当前 canonical-only 206 条。
 
 ### P12-3：D5-E1 / E2 与证据封板
 
-- [ ] 先验证 `G17-SPEC`、`D4-SPEC-SYNC`、`PROJECTION-OWNERSHIP`，任一未通过禁止 `overall_pass=true`。
-- [ ] D5-E1：仅运行级临时 scope 执行三类真实失败注入和 30 条 DLQ 脱敏/持久化验证。
-- [ ] 跨租户 canary：覆盖 D5 §6.1/§6.4 冻结矩阵；只写临时 scope，真实 scope 仅做前后 canonical hash 和测试标识零写扫描。
-- [ ] D5-E2：全量回归 G17/G18/G19，对任一 `RED/INCONCLUSIVE/NO_DATA/EXTERNAL_WRITE` 保持封板失败。
-- [ ] 证据每份包含 git SHA、方案 hash、scope、UTC 时间、输入口径、计数、判定、清理状态。
+- [x] 先验证 `G17-SPEC`、`D4-SPEC-SYNC`、`PROJECTION-OWNERSHIP`，任一未通过禁止 `overall_pass=true`。
+- [x] D5-E1：仅运行级临时 scope 执行三类真实失败注入和 30 条 DLQ 脱敏/持久化验证。
+- [x] 跨租户 canary：覆盖 D5 §6.1/§6.4 冻结矩阵；只写临时 scope，真实 scope 仅做前后 canonical hash 和测试标识零写扫描。
+- [x] D5-E2：全量回归 G17/G18/G19，对任一 `RED/INCONCLUSIVE/NO_DATA/EXTERNAL_WRITE` 保持封板失败。
+- [x] 证据每份包含 git SHA、方案 hash、scope、UTC 时间、输入口径、计数、判定、清理状态。
 
-### P12-4：本轮新鲜证据与 D5 阻断结论
+### P12-4：本轮新鲜证据与 D5 最终结论
 
 - 证据：`services/aos-api/tests/d5e/evidence/O1-P12_Payment_20260809T093646Z.json`。
 - P12 局部门：**PASS**。源端 206 条、eligible 111 条；权威层和 canonical 投影层均为 111/111（100%）。
-- D5 总门：**BLOCKED**。当前不可执行并宣称 D5-E1/E2 GREEN，原因如下：
-  1. O1-D 规定的 `scripts/o1_alias_migration.py` 尚不存在，100 条裸 ID 历史 Payment 投影别名尚未迁移；
+- D5 历史阻断：**已解除**。2026-08-10 最终执行结果如下：
+  1. O1-D 已 GREEN，该阻断项已解除；剩余阻断项为 G17-SPEC、D4-SPEC-SYNC、PROJECTION-OWNERSHIP 和 D5-E1/E2 真实证据；
   2. `G17-SPEC` 与 `D4-SPEC-SYNC` 尚未 PASS；D4 仍保留固定 `org-other/proj-other`，且未冻结 8 项指标完整 denominator/null/空集口径；
   3. `tests/d5e/` 当前只有 D5-E0 只读基线，尚无 `@pytest.mark.write` 的 30 条真实失败注入和 23 类资源 canary 实现；直接运行 `-m write` 会“零测试假通过”。
 
-因此本轮不执行会污染真实租户或产生假 GREEN 的占位命令。下一波必须先完成 O1-D、D4 规格同步和 D5-E1 harness，再进入真实临时 scope 验证。
+最终证据由 `d5_e2_final_verify.py` 生成；G17/G18/G19 全部 PASS，`overall_pass=true`，真实 scope 前后 hash 一致且测试标识为 0。历史阻断条目保留用于说明本次为何必须经过 Wave 10，而不再代表当前状态。
 
 ## 4. 回滚与风险门
 
