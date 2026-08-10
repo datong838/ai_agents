@@ -1,7 +1,19 @@
 # 228-AIP 任务编排、TAOR 与执行内核实施方案
 
-> 状态：**评审通过 · v1.0 方案基线（仍不授权编码）**
+> 状态：**IMPLEMENTING · v1.1 实时基线（已获用户全量编码授权）**
 > 对应阶段：AIP-1、AIP-2。
+>
+> 2026-08-11 补充：外部 ResearchJob 契约 v1.2 已评审通过，不改变当前编码门禁。
+>
+> 2026-08-11 实施门更新：AIP-0 已以 `8a01222` 封板；用户随后明确授权清单内全部编码并要求串行 Loop。授权不取消租户、安全、证据和逐波复审门。
+
+## 0.1 2026-08-11 实时代码裁决
+
+- 当前 `/v1/aip/tasks` 仍由 `routers/phase3_aip_logic.py` 的进程内 `_tasks` 提供，且该组遗留 Task 路由没有 `require_principal`；它不是可保留的生产真源。
+- `aip_taor_loop.py` 已具备 Think/Act/Verify 函数，但成功路径没有调用 `_observe`，Checkpoint 也只存在于 Task 内存对象。
+- 已封板的 `aip_logic_graph_store.py`、`aip_logic_run_store.py` 是本阶段 PostgreSQL、scope、CAS、幂等和恢复实现的直接范式；不另建 ORM 或 Redis 真源。
+- Alembic 当前唯一 head 为 `o1ux2_001`；AIP-1 迁移必须从该 head 线性展开，禁止生成并行 migration head。
+- AIP-1 按三个可独立回退的子波串行实施：AIP-1A 数据模型/store/service/canonical API；AIP-1B TAOR/Observe/lease/checkpoint/recovery；AIP-1C SDK/页面/浏览器/EvidencePack。
 
 ## 0. 目标与非目标
 
@@ -49,6 +61,31 @@ Create Task
 - LLM、Tool、Ontology Query、ActionProposal 统一走注册 Adapter；未注册即失败关闭。
 - Think 只接收按需装配的 Wiki/Memory 引用，不注入全量文本。
 - Observe 必须写入 StepRun、Artifact/Evidence refs 和下一步上下文；不能只改内存字典。
+
+### 3.1 外部长任务 ResearchJob
+
+外部研究/长任务统一作为 C1 Job Adapter 接入。AOS 先创建 `TaskRun` 与不可变执行清单，再提交外部任务；禁止外部系统事后反向补建 AOS Task，或把外部 checkpoint 当成第二套 Task store。
+
+```text
+AOS TaskRun
+ -> submit(manifest_hash, idempotency_key, budget, scoped refs)
+ -> external_execution_id
+ -> status/events(cursor)
+ -> artifacts + delivery receipt
+ -> verify/hash/lineage
+ -> complete | failed | cancelled | unknown/reconcile
+```
+
+Adapter 最小契约为 `submit/status/events/artifacts/cancel/health`，并满足：
+
+- 提交以 `TaskRun + manifest_hash + idempotency_key` 幂等；同键不得产生两个有效外部执行。
+- AOS worker lease、heartbeat 和预算仍是控制权威；外部状态只作为受验证的执行事实回传。
+- 超时、断连或取消结果不确定时进入 `unknown/reconcile`，不得盲重试；产生外部副作用的步骤继续受 AIP-3 Receipt 对账约束。
+- Checkpoint 只保存 provider、external execution id、event cursor、artifact refs 与 provider version，不保存外部凭据或不可验证内存对象。
+- DeerFlow 是该契约的首个候选 provider，不是 AIP-1/AIP-2 的强制依赖；未安装或停用时 canonical Task/Run 历史仍可完整回读。
+- 外部事件使用 `provider_execution_id + monotonic sequence/event_id` 去重；重复、乱序、迟到事件不得回退 canonical 终态。
+- Callback 只触发主动回读，必须校验签名、时间戳、nonce、body hash 与 replay window；不直接相信 callback body 的 succeeded/artifact 信息。
+- 输出 schema/hash、provider/binding version、traceparent 和 deadline 必须写入不可变 manifest；版本不兼容时阻止提交。
 
 ## 4. API 草案
 
@@ -111,3 +148,4 @@ apps/web/src/pages/s2/LogicRunPanel.tsx
 6. `org-org` 真实数据不进入 `dev-org`，反向同样不可见。
 7. 两个 worker 竞争同一步骤时只有一个 lease 生效；崩溃恢复不重复外部动作。
 8. 旧 `/api/aip/*`、phase3 与 `/v1/aip/*` 的保留/转发/下线路由表有唯一 owner 和删除门。
+9. 外部 Job 重复提交、断连、取消、超时与迟到回执均可收敛到唯一 TaskRun，且 provider 停用后历史 Artifact/Lineage 仍可解释。

@@ -1,0 +1,40 @@
+{
+  "wave": "AIP-1A",
+  "status": "IMPLEMENTED_GREEN",
+  "scope": {
+    "positive": "org-org/dev-project",
+    "negativeCanaryOnly": "dev-org/dev-project"
+  },
+  "codeCommit": "0077055",
+  "branch": "m1",
+  "migrationHead": "aip1_001",
+  "deliverables": [
+    "PostgreSQL Task/PlanRevision/TaskRun/StepRun/Checkpoint/Artifact/Evidence schema",
+    "FORCE RLS and workspace foreign keys for seven canonical tables",
+    "scoped Task/Plan/Run store with idempotency and task-version CAS",
+    "exact Plan revision/content-hash approval",
+    "single canonical /v1/aip/tasks owner with legacy in-memory Task routes removed",
+    "deterministic OpenAPI and route inventory refresh"
+  ],
+  "verification": {
+    "targetedTests": "30 passed",
+    "subtests": "2 passed",
+    "aipContractExport": "PASS",
+    "routerDuplicatesUnderV1Aip": 0,
+    "migrationHeads": ["aip1_001"],
+    "localDatabaseCurrent": "aip1_001"
+  },
+  "deferredToAip1B": [
+    "TAOR persistence and exact runtime binding",
+    "Think/Act/Verify/Observe immutable evidence",
+    "worker lease/heartbeat/recovery",
+    "pause/resume/retry/rollback",
+    "ResearchJob adapter"
+  ],
+  "deferredToAip1C": [
+    "TypeScript SDK",
+    "Logic Run Panel",
+    "built-in browser acceptance",
+    "final AIP-1 evidence manifest"
+  ]
+}
