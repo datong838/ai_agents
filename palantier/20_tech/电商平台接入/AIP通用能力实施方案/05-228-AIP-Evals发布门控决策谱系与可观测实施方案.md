@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**待评审 · 不授权编码**
+> 状态：**评审通过 · v1.0 方案基线（仍不授权编码）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 
 ## 1. 目标
@@ -66,10 +66,21 @@ apps/web/src/pages/s2/LogicPublicationPanel.tsx
 - E4：Lineage 页面由真实 run 查询驱动。
 - E5：Dashboard persistence、alert ack/silence receipt。
 
-## 7. 验收
+## 7. 发布、撤回与数据治理
+
+- EvalCase、Judge、数据集、报告和 Publication 都是带 version/hash 的独立资产；重新运行不得覆盖旧报告。
+- ReleaseGate 只接受同一资产组合生成的报告；任一 Template/Skill/Logic/ModelRoute/Policy revision 变化都使旧门控失效。
+- 发布后的 revoke/deprecate 创建新 PublicationEvent，阻止新 Run，不修改历史运行事实。
+- Trace 与 UsageReceipt 按租户分区；PII 默认不写 span attribute，ObjectReference 和 secretRef 只记录不可逆标识。
+- 指标定义包含 name、unit、source、window、aggregation、quality；estimated 与 measured 不得聚合成同一确定值。
+- retention、导出、删除请求必须区分可删除 payload 与依法/审计需保留的不可变哈希和事件引用。
+
+## 8. 验收
 
 - 页面不能手工设置 GREEN。
 - 运行 revision 与报告 revision 不一致时发布拒绝。
 - 模型 fallback、工具失败、Draft 驳回、unknown external state 均出现在同一谱系。
 - 真实 Token/成本缺失时显示 unknown，不用估算补成确定值。
 - 双租户查询和导出均隔离；导出脱敏且保留 source metadata。
+- Publication revoke 后新 Run 被阻断，历史报告和 Lineage 仍可复验。
+- 时钟偏差、乱序 span、重复 UsageReceipt 和迟到事件不会造成重复成本或错误 GREEN。

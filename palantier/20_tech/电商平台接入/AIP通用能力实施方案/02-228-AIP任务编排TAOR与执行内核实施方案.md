@@ -1,6 +1,6 @@
 # 228-AIP 任务编排、TAOR 与执行内核实施方案
 
-> 状态：**待评审 · 不授权编码**
+> 状态：**评审通过 · v1.0 方案基线（仍不授权编码）**
 > 对应阶段：AIP-1、AIP-2。
 
 ## 0. 目标与非目标
@@ -16,7 +16,7 @@
 
 ## 2. Canonical 模型
 
-所有表和 API 必带：`org_id`、`project_id`、`created_by`、`revision`、`payload_hash`、`created_at`。
+所有持久化记录必须包含 `org_id`、`project_id`；它们从认证上下文写入，API 不接受客户端覆盖。可变聚合包含 `revision`、`updated_at`，不可变事件包含 `event_id`、`payload_hash`、`created_at`、`created_by`。
 
 | 对象 | 关键字段 |
 |---|---|
@@ -66,6 +66,8 @@ GET    /v1/aip/task-runs/{runId}/timeline
 
 写请求必须带 `Idempotency-Key`、预期 revision；响应返回 canonical receipt 与最新状态链接。
 
+统一错误语义：`400 schema_invalid`、`401 unauthenticated`、`403 scope_or_policy_denied`、`404 not_found_in_scope`、`409 revision_or_idempotency_conflict`、`422 transition_blocked`、`429 budget_or_capacity_exceeded`、`503 dependency_unavailable`。跨租户资源不得通过错误差异泄漏是否存在。
+
 ## 5. 计划修改文件
 
 ```text
@@ -91,7 +93,15 @@ apps/web/src/pages/s2/LogicRunPanel.tsx
 - T4：Logic Canvas 绑定 TaskRun 与 timeline。
 - T5：累计回归、跨租户 canary、重启恢复和浏览器验收。
 
-## 7. 验收
+## 7. 存储、并发与回滚
+
+- `Task(org_id, project_id, id)`、`PlanRevision(task_id, revision)`、`TaskRun(task_id, idempotency_key)` 使用租户内唯一约束；所有查询同时受 RLS 和服务层 scope guard 约束。
+- Worker 通过有期限 lease 领取 StepRun；心跳丢失只能重新领取未产生外部副作用的步骤，副作用步骤必须先按 ActionReceipt 对账。
+- Checkpoint 保存 schema version 与引用，不序列化凭据、数据库连接或不可验证的内存对象。
+- 迁移按 expand/backfill/compare/cutover/contract 执行；旧单例只读迁移，不能双写成第二真源。
+- rollback 默认暂停新 run、切回上一兼容读路径并保留新表；禁止删除已生成的 Evidence、Receipt 和历史 Lineage。
+
+## 8. 验收
 
 1. 同一 idempotency key 不产生两个 Task/Run。
 2. 重启后 Task、Plan、Run、Checkpoint、Artifact 可回读。
@@ -99,3 +109,5 @@ apps/web/src/pages/s2/LogicRunPanel.tsx
 4. 每个成功步骤均有 Think/Act/Verify/Observe 四段证据。
 5. 未注册模型/工具、超时、撤权、旧 revision、跨租户均失败关闭。
 6. `org-org` 真实数据不进入 `dev-org`，反向同样不可见。
+7. 两个 worker 竞争同一步骤时只有一个 lease 生效；崩溃恢复不重复外部动作。
+8. 旧 `/api/aip/*`、phase3 与 `/v1/aip/*` 的保留/转发/下线路由表有唯一 owner 和删除门。

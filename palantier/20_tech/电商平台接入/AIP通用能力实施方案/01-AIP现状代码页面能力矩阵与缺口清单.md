@@ -1,6 +1,6 @@
 # AIP 现状代码、API、页面能力矩阵与缺口清单
 
-> 状态：**2026-08-10 审计快照 · 待评审**
+> 状态：**评审通过 · v1.0 审计基线（2026-08-10）**
 > 范围：`aos-platform/m1`、`org-org/dev-project`、AIP 菜单 19 个页面。
 > 说明：本文件记录事实，不构成编码授权。
 
@@ -77,3 +77,15 @@
 ## 5. 已暂停的小项
 
 O1 对象探索下拉、真实订单字段、商品筛选、图谱布局等 UX7 小项已记录并暂停。本轮仅在 AIP 方案中保留其上游依赖：AIP 分析师/Agent 必须消费 O1 canonical read model；不重新打开 O1 Waves 1～10。
+
+## 6. 缺口优先级与关闭条件
+
+| 优先级 | 缺口 | 关闭条件 |
+|---|---|---|
+| P0 | C01～C06、C10 | canonical store、真实 Registry、默认 fail-closed、路由去重和跨租户证据完成 |
+| P0 | Action/Draft/Receipt 与 Task/Run 未成主链 | 未批准副作用不可达；unknown/reconcile 可验证 |
+| P1 | C07～C09 | Analyst、Lineage、Token/成本全部由真实 run/receipt 驱动 |
+| P1 | 双导航、Focus Mode、状态时序 | 1280/1440/1920 浏览器矩阵通过，主按钮无静默 no-op |
+| P2 | 已暂停 O1 UX7 小项 | 进入独立新方案评审，不作为本轮 AIP 阻断或夹带实现 |
+
+本审计覆盖 19 个 AIP/Agent/Eval/Model 页面路由、相关 API 回读和关键实现文件。页面观察只证明当时状态；后续每个编码波次必须重新生成时间戳、commit、scope、请求摘要和截图证据，不能复用本快照宣称 GREEN。

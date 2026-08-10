@@ -1,6 +1,6 @@
 # 228-AIP 三层运行记忆、行业 Wiki 与知识治理实施方案
 
-> 状态：**待评审 · 不授权编码**
+> 状态：**评审通过 · v1.0 方案基线（仍不授权编码）**
 > 对应阶段：AIP-5。
 
 ## 1. 统一模型
@@ -50,6 +50,8 @@ Task/Effect evidence
 - 输出是引用集合：Wiki revision、field/value、source、freshness、confidence、applicability。
 - TAOR Think 按 Skill manifest 声明的知识依赖渐进加载。
 - 过期、冲突、无权限、来源撤回时明确降级或阻断，不返回旧知识伪装新鲜。
+- 向量库/全文索引只保存可重建索引和 scoped reference，不是授权、revision、source 或知识内容的权威真源。
+- 公共行业包、组织知识和工作区运行记忆分别建 scope；“共享”必须显式发布投影，不能通过缺省查询跨 scope 命中。
 
 ## 5. 文件边界
 
@@ -65,10 +67,21 @@ apps/web/src/pages/s2/MemoryGovernancePage.tsx
 apps/web/src/pages/ontology/Wiki*.tsx
 ```
 
-## 6. 验收
+新增候选为 Candidate store、retrieval 和 governance service；现有 `aip_long_memory.py`、`aip_taor_loop.py`、`ontology_wiki_engine.py` 为迁移/适配修改。不得直接改写已封板 O1 Wiki authority；新增能力通过其公共写契约或独立候选区接入。
+
+## 6. 生命周期与失败语义
+
+- Candidate 状态：`pending -> quarantined/rejected -> approved -> promoted`；MemoryItem 状态：`active -> stale -> revoked/expired`。
+- source 撤回先停止新检索，再异步重建索引；索引尚未清理期间由权威状态在查询层 fail-closed。
+- 用户删除/PII 撤回删除可删除 payload 和索引，历史 Lineage 仅保留最小审计哈希、删除事件和不可反查引用。
+- 检索超时、索引缺失、来源冲突时按 Skill policy 返回 blocked/degraded，绝不静默改用其他租户或旧缓存。
+
+## 7. 验收
 
 1. 同一知识在不同 org/project 下不可见，除非是授权公共包。
 2. 每个回答/决策可查看使用了哪些 Wiki revision 与 source。
 3. stale/conflict/revoked 知识不能静默进入上下文。
 4. Candidate 未经 Eval/Draft 不得成为正式共享知识。
 5. 删除/撤回知识后，新运行不再使用；历史谱系仍保留不可变引用。
+6. 公共包、组织知识、工作区记忆三类同名条目按适用范围和优先级稳定解析，并显示冲突。
+7. 重建或清空向量索引不改变 canonical Wiki/Memory 状态，恢复后查询结果可复验。

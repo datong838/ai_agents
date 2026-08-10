@@ -1,6 +1,6 @@
 # 228-AIP 内容官多媒体生产与平台 Harness 实施方案
 
-> 状态：**待评审 · 不授权编码**
+> 状态：**评审通过 · v1.0 方案基线（仍不授权编码）**
 > 对应阶段：AIP-9。
 
 ## 1. 边界
@@ -61,19 +61,33 @@ apps/web/src/pages/ecommerce/ContentWorkbench.tsx
 apps/web/src/pages/ecommerce/ContentPipelineRunPage.tsx
 ```
 
+上述 SolutionPack、AdapterPack、media/avatar service 与页面均为新增候选；不得在 AIP-9 前预建空目录并宣称能力完成。现有内容官方案和素材只作为输入，进入交付包前必须逐项核对许可证、来源和真实上架商品引用。
+
 ## 7. 分波
 
-- C0：ContentBrief/Asset/License/StageGate 契约。
-- C1：只生成文案/脚本/标题草稿。
-- C2：短视频 MediaJob，使用真实上架商品素材。
-- C3：直播稿与 Session 沙箱，必须人工在场和 kill switch。
-- C4：平台 Harness capability probe 与发布草稿。
-- C5：G5/G6 评审后逐平台开放受控发布。
+- Content-0：ContentBrief/Asset/License/StageGate 契约。
+- Content-1：只生成文案/脚本/标题草稿。
+- Content-2：短视频 MediaJob，使用真实上架商品素材。
+- Content-3：直播稿与 Session 沙箱，必须人工在场和 kill switch。
+- Content-4：平台 Harness capability probe 与发布草稿。
+- Content-5：G5/G6 评审后逐平台开放受控发布。
 
-## 8. 验收
+此处 Content-0～5 是实施子波，不能与 Capability 的 C0 Function、C1 Job、C2 Session 分类混用。
+
+## 8. 作业、会话与回滚
+
+- MediaJob 使用不可变输入 manifest、idempotency key、lease、心跳和产物 hash；取消只停止未完成阶段，不删除已产生的审计 Artifact。
+- AvatarSession 必须有最大时长、人工在场心跳、内容缓冲、敏感词中断、平台断线检测和四级 kill switch。
+- 平台 capability probe 只读且限频；未获授权的 UI 自动化或账号会话不得作为默认降级。
+- 删除素材前检查所有 ContentDraft/Job/Publication 引用；授权撤回立即阻止新 Job，并标记受影响的历史产物。
+- 发布补偿不是“删除本地记录”；必须按平台回执生成新的下架/撤回 Proposal 并重新审批。
+
+## 9. 验收
 
 - 所有素材可追溯来源、授权和 hash。
 - C1/C2 超时、GPU 不可用、产物损坏不显示成功。
 - 高风险宣传、未验证功效、过期价格/库存被质量门拦截。
 - 发布按钮在 G6 前只能创建 Proposal/Draft。
 - 同一 ContentBrief 可派生平台版本，但共享事实不可被平台 Prompt 改写。
+- Job 重试、Session 断线、素材授权撤回和平台规则过期均不产生假成功。
+- 平台版文案可差异化表达，但商品、价格、库存、功效和授权事实与同一 Evidence revision 一致。
