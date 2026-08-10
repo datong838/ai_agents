@@ -1,0 +1,38 @@
+{
+  "runId": "AIP-0_20260811T065500+0800",
+  "status": "IMPLEMENTED_GREEN",
+  "scope": {"orgId": "org-org", "projectId": "dev-project"},
+  "negativeCanary": {"orgId": "dev-org", "projectId": "dev-project"},
+  "baselineCommit": "f1b9314",
+  "routeInventory": {
+    "manifestRows": 4075,
+    "uniqueOperations": 4065,
+    "runtimeRoutes": 4079,
+    "openapiPaths": 2311,
+    "aipDuplicatePublicRoutes": 0,
+    "historicalNonAipDuplicateRoutes": 10,
+    "runtimeHash": "58548a9d39c73ae992f7913857204477bc96f598fdb4a5ee4f80163aef80285e"
+  },
+  "verification": {
+    "backendTargeted": "27 passed, 2 subtests passed",
+    "backendLegacyRegression": "39 tests executed; TTL authority regression repaired; final targeted rerun GREEN",
+    "frontendTargeted": "260 passed",
+    "typescript": "PASS",
+    "interactionHonesty": "PASS (46 pages)",
+    "openapiDeterminism": "PASS",
+    "aipContractDeterminism": "PASS",
+    "browser": [
+      "栖月汇商贸有限公司 / 默认工作区",
+      "Draft live empty without sample injection",
+      "Agent and Registry real empty without static rows",
+      "Capability unregistered templates have disabled operations",
+      "Model Catalog live empty without fallback catalog"
+    ]
+  },
+  "dataMutation": "No real business data mutation; only disposable test-database canary rows",
+  "knownDeferred": [
+    "Capability and Agent process-local legacy stores remain non-canonical and are kept closed/labelled until AIP-6",
+    "Task/Plan/Run PostgreSQL authority starts in AIP-1",
+    "historical non-AIP duplicate routes remain outside AIP-0 scope"
+  ]
+}
