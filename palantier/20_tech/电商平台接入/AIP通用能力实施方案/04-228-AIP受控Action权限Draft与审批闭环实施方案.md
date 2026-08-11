@@ -1,6 +1,6 @@
 # 228-AIP 受控 Action、权限、Draft 与审批闭环实施方案
 
-> 状态：**评审通过 · v1.4 实施中（AIP-3A / AIP-3B `IMPLEMENTED_GREEN`，进入 AIP-3C）**
+> 状态：**评审通过 · v1.5 `IMPLEMENTED_GREEN`（AIP-3A / AIP-3B / AIP-3C 全部封板）**
 > 对应阶段：AIP-3。
 
 ## 1. 目标
@@ -179,6 +179,16 @@ services/aos-api/tests/aip/test_aip3b_legacy_write_closed.py
 
 新增唯一 `apps/web/src/api/aipActions/` SDK；修改 `DraftInboxPage.tsx` 和 Logic Run 入口。UI 必须分别展示“已批准”“已获执行租约”“已提交外部系统”“结果待对账”“已应用”，且服务不可用时不注入示例 Draft、不启用本地状态机。
 
+#### AIP-3C 前端消费契约（冻结）
+
+1. 增加只读 `GET /v1/aip/action-proposals/{proposal_id}/execution`，返回当前 Proposal、Lease 与 immutable Receipt 链；这是刷新后恢复执行事实的唯一入口，前端不得从本地状态或 timeline 文案猜测 Receipt。
+2. `apps/web/src/api/aipActions/` 作为唯一 Action SDK，严格解析 Proposal/Draft/Approval/Lease/Receipt；未知状态、跨资源引用、重复 Receipt 或缺失 hash 均失败关闭。TenantScope 只从统一请求头注入，body 禁止携带 org/project。
+3. Draft Inbox 只读取 canonical Proposal；查询参数 `taskId/runId` 仅作当前租户内客户端筛选。页面分别展示待审批、已批准、执行中、待对账、已完成/失败，不把 approved 文案写成“已落生产”。
+4. approve/reject 绑定当前 Proposal version/hash 并写幂等键；lease/execute/reconcile 只在服务端状态允许时开放。每次写操作后必须重新读取 canonical bundle/execution view；服务失败时保留最后一次已核验快照但禁用写操作。
+5. Logic Run 的 canonical TaskRun 面板提供“查看本次受控 Action”入口，携带服务端 Task/Run id 跳转，不创建第二套 Action 状态。
+6. 正向浏览器验收只读 `org-org/dev-project`；功能写路径由前端契约/交互测试覆盖，跨租户由后端 canary 覆盖。不得为浏览器展示向真实租户插入验收 Proposal 或调用真实外部 Adapter。
+7. 清查仍调用旧 `/v1/actions/execute` 的页面：禁止发送 `autoApprove=true`，兼容入口只能诚实显示“待审草稿已创建”，不得显示“执行成功”或刷新业务对象来暗示已落生产；后续由上层场景在具备精确 Action revision/evidence 后改为创建 canonical Proposal。
+
 ## 10. AIP-3A 实施结果（2026-08-11）
 
 - 代码基线：`aos-platform/m1@60344d5`；开发库与唯一迁移 head 均为 `aip3_001`。
@@ -200,3 +210,13 @@ services/aos-api/tests/aip/test_aip3b_legacy_write_closed.py
 - 旧 Draft approve、`autoApprove=true` 和携带 `draftId` 的旧执行入口统一返回 `AIP_LEGACY_WRITE_PATH_DISABLED`；仅保留无外部副作用的 Draft-only 兼容创建。
 - 验证：AIP 与相关契约/旧入口回归共 76 passed + 2 subtests；OpenAPI 确定性检查、Python compileall、diff check 通过；真实服务只读烟测 `org-org/dev-project=0`、`dev-org/dev-project=0`，未产生验收垃圾数据。
 - 下一门：AIP-3C 只负责 canonical SDK、Draft Inbox/Logic Run 的真实状态投影与浏览器证据，不在前端复制策略引擎或本地伪造状态迁移。
+
+## 12. AIP-3C 实施结果（2026-08-11）
+
+- 代码基线：`aos-platform/m1@b7bcb76`；新增只读 execution view，使刷新后的 UI 从服务端恢复 Lease 与 immutable Receipt 链。
+- `apps/web/src/api/aipActions/` 成为 Action 前端唯一 SDK，严格解析 Proposal/Draft/Approval/Lease/Receipt；Draft Inbox 已切换至 canonical Proposal，不再注入示例数据或维护本地状态机。
+- 页面明确区分 approved、leased、executing、unknown、applied/reconciled；所有写按钮绑定当前 version/hash，成功后重读权威状态，失败后停止继续写入。
+- Canonical TaskRun 已提供 taskId/runId 受控 Action 入口；订单管理旧调用已关闭 `autoApprove=true`，只允许诚实创建“待审草稿”，不再误报执行成功。
+- 验证：后端相关回归 77 passed + 2 subtests；前端定向 114 passed，补充修正后专项 20 passed；OpenAPI 12 passed、Router 8 passed + 2 subtests；TypeScript、生产构建、diff check 通过。
+- 真实服务只读烟测 `org-org/dev-project=0`、`dev-org/dev-project=0`；内置浏览器确认“栖月汇商贸有限公司 / 默认工作区”真实空态，刷新一致，未写验收 Proposal、未调用真实 Adapter。
+- 下一门：进入 AIP-4 Evals 发布门控、决策谱系与可观测性权威链，不重开 AIP-3 状态机。

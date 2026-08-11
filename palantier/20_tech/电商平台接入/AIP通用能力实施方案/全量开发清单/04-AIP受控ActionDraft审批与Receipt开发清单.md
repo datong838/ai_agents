@@ -1,6 +1,6 @@
 # 04 AIP 受控 Action、Draft、审批与 Receipt 开发清单
 
-> 状态：**v1.4 · IMPLEMENTING（AIP-3A / AIP-3B `IMPLEMENTED_GREEN`，进入 AIP-3C）**
+> 状态：**v1.5 · IMPLEMENTED_GREEN（AIP-3A / AIP-3B / AIP-3C 全部封板）**
 > 上位依据：`../04-228-AIP受控Action权限Draft与审批闭环实施方案.md`
 > 对应阶段：AIP-3；前置：02 Task/Run 主链 GREEN。
 
@@ -29,7 +29,7 @@
 | 04-08 | ✅ 实现 immutable Receipt 与 unknown/reconcile | reconciler | 超时不直接失败或盲重试 |
 | 04-09 | ✅ 实现 compensation 为新 Proposal | compensation service | 不把数据库回滚当补偿 |
 | 04-10 | ✅ 收敛 O1 Draft、`runtime_write.py` 与旧 phase3 | routes/compat | 无双写、无 transition 绕权 |
-| 04-11 | Draft Inbox/Logic Run UI 对接 canonical 状态 | SDK/pages | 批准不等于已执行，Receipt 才 applied |
+| 04-11 | ✅ Draft Inbox/Logic Run UI 对接 canonical 状态 | SDK/pages | 批准不等于已执行，Receipt 才 applied |
 
 ### AIP-3B 编码顺序（已评审）
 
@@ -43,6 +43,16 @@
 6. compensation 只创建新 Proposal，并绑定原 Proposal/Receipt evidence；R4 无专项 policy 继续拒绝。
 7. 旧 `/v1/actions/execute` 只保留 `autoApprove=false` 的 Draft-only 兼容；`autoApprove=true`、`draftId` 执行和旧 Draft approve 均改为 `AIP_LEGACY_WRITE_PATH_DISABLED`；保留历史读/拒绝兼容，不迁移、不双写、不直写生产对象。
 8. 完成迁移/RLS、职责分离、并发 Lease、预算/频控/kill switch、超时 unknown、reconcile、补偿、跨租户及旧旁路测试；随后更新 OpenAPI/route inventory，才进入 AIP-3C。
+
+### AIP-3C 编码顺序（已评审）
+
+1. 增加只读 execution view API，让刷新后的 UI 可恢复 Lease 与 Receipt 链，不从 Proposal 状态或 timeline 文案反推执行事实。
+2. 建立 `apps/web/src/api/aipActions/` 严格 contracts/client/test，覆盖 list/get/timeline/decision/lease/execute/reconcile；统一使用 AIP client 和租户请求头。
+3. Draft Inbox 切换至 canonical Proposal，删除生产路径的 Mock/本地状态机；展示审批、租约、外部提交、unknown/reconcile、applied/failed 的真实区别。
+4. 每个写按钮绑定当前 version/hash 和幂等键，成功后服务端重读；失败或响应不一致时禁用继续写入并显示可行动错误。
+5. Canonical TaskRun 面板增加按 taskId/runId 打开受控 Action Inbox 的入口。
+6. 完成 SDK/组件/交互、TypeScript/build、真实租户只读、跨租户 canary 与内置浏览器验收后，更新 EvidencePack 和项目上下文。
+7. 清查旧页面调用方；把订单管理的 `autoApprove=true` 改为 Draft-only，并把成功文案改为“待审草稿已创建”，禁止误报外部动作已经执行。
 
 ### AIP-3A 编码顺序（已评审）
 
@@ -67,6 +77,14 @@
 - OpenAPI/Router inventory 已更新且确定性检查通过；Python compileall 与 diff check 通过，当前环境无 `ruff`，不计为通过。
 - 开发 API 已重启到新代码；只读烟测 `org-org/dev-project=0`、`dev-org/dev-project=0`，未调用真实外部 Adapter，未写真实业务对象和验收 Proposal。
 
+### AIP-3C GREEN 证据（2026-08-11）
+
+- commit：`b7bcb76`；新增 execution view、唯一 Action SDK、canonical Draft Inbox 与 TaskRun 深链。
+- 后端相关回归 77 passed + 2 subtests；OpenAPI 12 passed；Router 8 passed + 2 subtests。
+- 前端定向 114 passed，补充专项 20 passed；TypeScript 与 production build PASS。
+- 双租户只读列表均为 200/count=0；内置浏览器确认 `org-org/dev-project` 的栖月汇真实空态与刷新一致，未注入 Mock、未执行写操作。
+- EvidencePack：`20_tech/evidence/aip/aip-3/AIP-3C_20260811T180832+0800/summary.json`。
+
 ## 2. 安全测试矩阵
 
 - R0～R4、字段 marking、purpose、权限撤回、过期批准、预算、频控、kill switch。
@@ -78,4 +96,4 @@
 - [x] 无批准时 R2+ adapter 不可达；R4 默认禁止。
 - [x] proposal 修改、批准过期、撤权、预算耗尽均阻止执行。
 - [x] unknown 可对账并收敛；重复请求不产生双外部动作。
-- [ ] UI、API、数据库事件、Receipt、Lineage 状态一致；回滚不删除审计事实。
+- [x] UI、API、数据库事件、Receipt 状态一致；AIP-3C 不删除审计事实，Lineage 深化进入 AIP-4。
