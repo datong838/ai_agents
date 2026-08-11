@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v1.5 · E0A/E0B/E1A IMPLEMENTED_GREEN / E1B APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v1.6 · E0A/E0B/E1A/E1B IMPLEMENTED_GREEN / E1C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -142,6 +142,8 @@ E1A 退出门：
 - 在 AIP-6 的 Agent/Skill revision 发布前，不生成六同事或 37 Logic 的假 EvalPack。
 
 E1A 已以 `aos-platform/m1@134b7e8` 实施：真实库单 head 为 `aip4_002`；20 项组合回归通过；`org-org/dev-project` 与 `dev-org/dev-project` 的 Suite revision 均为 0，没有用测试 EvalPack 污染业务数据。E1B 获准进入不可变 report 与 runner 实施。
+
+E1B 已以 `aos-platform/m1@7e255ed` 实施：真实库单 head 为 `aip4_003`；28 项组合回归通过。Report 仅保存 case/result hash、结构化 detail code、计数和 exact refs，不保存输入/期望/输出业务明文。Resolver 内容、Artifact ref、target 或 judge 任一漂移都会将 Run 置为 failed，且不生成报告。E1C 获准迁移旧 Logic Eval API/夹具；不得以删除测试或放松 RLS 方式消红。
 
 ## 7. 发布、撤回与数据治理
 

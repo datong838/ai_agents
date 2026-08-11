@@ -1,0 +1,22 @@
+{
+  "wave": "AIP-4-E1B",
+  "status": "IMPLEMENTED_GREEN",
+  "code_commit": "7e255ed",
+  "migration_head": "aip4_003",
+  "verification": {
+    "passed": 28,
+    "python_compile": "PASS",
+    "diff_check": "PASS",
+    "real_scope": {"suites": 0, "reports": 0},
+    "negative_canary": {"suites": 0, "reports": 0}
+  },
+  "drift_guards": [
+    "artifact_reference",
+    "artifact_content_hash",
+    "target_revision_hash",
+    "judge_revision_hash"
+  ],
+  "business_writes": 0,
+  "known_red_owner": "AIP-4-E1C",
+  "next_wave": "AIP-4-E1C"
+}
