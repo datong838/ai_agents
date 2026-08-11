@@ -169,6 +169,7 @@
 - AIP-4 E3A 权威谱系投影对账：[`44-2026-08-11-AIP-4-E3A权威谱系投影对账.md`](44-2026-08-11-AIP-4-E3A权威谱系投影对账.md)
 - AIP-4 E3B 持久化观测与真实用量对账：[`45-2026-08-12-AIP-4-E3B持久化观测与真实用量对账.md`](45-2026-08-12-AIP-4-E3B持久化观测与真实用量对账.md)
 - AIP-4 E3C 成本归因与 Capability Receipt 对账：[`46-2026-08-12-AIP-4-E3C成本归因与CapabilityReceipt对账.md`](46-2026-08-12-AIP-4-E3C成本归因与CapabilityReceipt对账.md)
+- AIP-4 E3D 外部 ResearchJob 权威链对账：[`47-2026-08-12-AIP-4-E3D外部ResearchJob权威链对账.md`](47-2026-08-12-AIP-4-E3D外部ResearchJob权威链对账.md)
 
 ## 更新规则
 

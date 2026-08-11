@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v2.4 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C IMPLEMENTED_GREEN / E3D APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**v2.5 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C/E3D IMPLEMENTED_GREEN / E4 APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -38,8 +38,8 @@
 | E3A | 05-06 | `IMPLEMENTED_GREEN` | `16aed87`；权威源事件引用与真实 Lineage 投影；无固定六段 |
 | E3B | 05-07、05-08 的 span/usage 基础 | `IMPLEMENTED_GREEN` | `ea1f1c5`；持久化 span；unknown quantity 为空；provider receipt 重放不重计 |
 | E3C | 05-08 成本归因与 Capability Receipt | `IMPLEMENTED_GREEN` | `f7179ce`；分质量/币种归因、Adjustment 复算、exact capability receipt |
-| E3D | 05-10 与 E3 总回归 | `APPROVED_TO_IMPLEMENT` | 外部 provider/artifact/delivery/reconcile 失败关闭 |
-| E4 | 05-11 | `PENDING` | 三页面唯一 SDK、无固定 trace/Mock/合成趋势 |
+| E3D | 05-10 与 E3 总回归 | `IMPLEMENTED_GREEN` | `849f40d` + `e7542db` + `a88cad1`；118 passed；单 head `aip4_008`；真实租户零伪造 |
+| E4 | 05-11 | `APPROVED_TO_IMPLEMENT` | 三页面唯一 SDK、无固定 trace/Mock/合成趋势 |
 | E5 | 05-12～05-15 | `PENDING` | 37 Logic、场景和专项门在其真实资产存在后逐项封板 |
 
 E0A 文件边界固定为：
@@ -137,12 +137,12 @@ E3C 实施结论：代码 `f7179ce`；20 项 E3C/路由定向测试与 105 项 `
 E3D 下一波清单：
 
 - [x] 复核已评审 ResearchJob v1.2、`aip_research_job.py` 与 TAOR 现有 Job 事件链，裁决唯一兼容真源，禁止平行内存实现。
-- [ ] 建租户范围、版本化 Provider authority；disabled/unregistered/revision drift 均在提交前失败关闭。
-- [ ] ResearchJob 提交绑定 exact provider、capability、PlanStep、TaskRun 与 lineage；外部 job id 只由受信 Adapter Receipt 回写。
-- [ ] callback 验签、nonce 防重放、provider event id 幂等且 sequence 单调；gap/乱序保留并进入 reconcile，不伪装完成。
-- [ ] Artifact/Delivery Receipt 保存 immutable URI/hash/media type/exact capability；交付前复验内容 hash 与当前绑定。
-- [ ] timeout/断网/外部未知状态进入 unknown；禁止盲重试副作用，只有 Reconcile Receipt 可推进最终状态。
-- [ ] 完成 E3A～E3D 累计回归、双租户负向、OpenAPI/路由唯一性、迁移单 head 与真实租户零伪造证据。
+- [x] 建租户范围、版本化 Provider authority；disabled/unregistered/revision drift 均在提交前失败关闭。
+- [x] ResearchJob 提交绑定 exact provider、capability、PlanStep、TaskRun 与 lineage；外部 job id 只由受信 Adapter Receipt 回写。
+- [x] callback 验签、nonce 防重放、provider event id 幂等且 sequence 单调；gap/乱序保留并进入 reconcile，不伪装完成。
+- [x] Artifact/Delivery Receipt 保存 immutable URI/hash/media type/exact capability；交付前复验内容 hash 与当前绑定。
+- [x] timeout/断网/外部未知状态进入 unknown；禁止盲重试副作用，只有 Reconcile Receipt 可推进最终状态。
+- [x] 完成 E3A～E3D 累计回归、双租户负向、OpenAPI/路由唯一性、迁移单 head 与真实租户零伪造证据。
 
 E3D 代码实况与文件边界：
 
@@ -154,9 +154,11 @@ E3D 代码实况与文件边界：
 
 E3D 最终复审补强：
 
-- [ ] 追加 `aip4_008_research_job_lineage_binding.py`，不改写已执行的 `aip4_007`；JobManifest 固化 exact `lineage_id/sequence/event_id`。
-- [ ] `lineageRef` 必须指向当前 TaskRun 根的最新 lineage event；跨 run、跨租户、旧 sequence 和无 lineage 均失败关闭。
-- [ ] `aip4_008` 对既有 ResearchJob 行拒绝猜测式回填；完成专项测试后重新执行累计回归、迁移与零伪造证据。
+- [x] 追加 `aip4_008_research_job_lineage_binding.py`，不改写已执行的 `aip4_007`；JobManifest 固化 exact `lineage_id/sequence/event_id`。
+- [x] `lineageRef` 必须指向当前 TaskRun 根的最新 lineage event；跨 run、跨租户、旧 sequence 和无 lineage 均失败关闭。
+- [x] `aip4_008` 对既有 ResearchJob 行拒绝猜测式回填；完成专项测试后重新执行累计回归、迁移与零伪造证据。
+
+E3D 实施结论：代码 `849f40d`、`e7542db`、`a88cad1`；13 项 migration/store/API 补强门与 118 项 AIP 累计回归通过。OpenAPI 确定性导出、Ruff、compile 通过；开发库单 head/current=`aip4_008`。真实租户和 canary 七表均为 0；各表 RLS/FORCE RLS/双 guard 有效。下一门 E4 只做三页面对唯一 SDK 与真实权威读模型的消费，不在前端构造固定 trace、Mock 或趋势。
 
 ## 2. 退出门
 

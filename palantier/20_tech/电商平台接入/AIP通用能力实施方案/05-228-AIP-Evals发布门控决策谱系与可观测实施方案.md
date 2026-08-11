@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v2.2 · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C IMPLEMENTED_GREEN / E3D APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v2.3 · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C/E3D IMPLEMENTED_GREEN / E4 APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -227,6 +227,8 @@ services/aos-api/tests/aip/test_aip_research_job_api.py
 `aip4_007` 仅新增 append-only ProviderRevision、JobManifest、SubmissionReceipt、ProviderEventReceipt、CallbackNonce、ArtifactReceipt、Delivery/Reconcile Receipt。Job 当前观察由持久化事件推导；sequence gap 可保存并显示 `has_gap`，但不得推进 canonical 成功。Provider disable 通过追加更高 revision 的 disabled 记录实现，提交时 exact revision 必须同时是当前最高且 enabled。Callback 只记录验签后的 nonce/body hash 并触发主动回读，不接受 body 自报状态。ArtifactReceipt 必须与既有 `aip_artifact` 同事务绑定并复验 content hash；Delivery succeeded 需要无 gap 的 provider succeeded 观察、全部 Artifact hash 有效和 exact capability 未漂移。unknown 只能由追加 Reconcile Receipt 收敛，不覆盖历史。
 
 E3D 最终方案一致性复审发现：`aip4_007` 已绑定 TaskRun、PlanRevision、PlanStep 和 capability，但尚未把同一 TaskRun 根的 exact lineage event 固化到 JobManifest。该缺口不得带入封板。补强采用线性追加迁移 `aip4_008_research_job_lineage_binding.py`，不改写已推送/已执行的 `aip4_007`：为 JobManifest 增加 `lineage_id + lineage_sequence + lineage_event_id`，以 `(org_id, project_id, lineage_id, sequence)` 外键引用 `aip_lineage_event`。创建 Job 必须提交 `lineageRef(resourceType=aip.lineage, authority=aos.lineage, revision=sequence)`，且该事件必须是当前 lineage 最新序列、root_type=`task_run`、root_id=当前 run；跨 run、跨租户、旧序列或不存在事件全部失败关闭。`aip4_008` 若发现既有 ResearchJob 行则拒绝无证据回填；当前开发库七表均为 0，可安全线性升级。
+
+E3D 实施结论：核心事实层、Canonical API 与 exact lineage 补强分别提交 `849f40d`、`e7542db`、`a88cad1`。JobManifest 以 `(org_id, project_id, lineage_id, sequence, event_id)` 五列外键绑定唯一谱系事件；缺失、旧 sequence、跨 Run/跨 scope 均失败关闭。13 项补强定向门、118 项 `tests/aip` 累计回归、Ruff、compile、OpenAPI 确定性导出全部通过。开发库单 head/current 均为 `aip4_008`；`org-org/dev-project` 与 canary 的七张 ResearchJob 权威表均为 0，RLS/FORCE RLS/双 append-only guard 全部有效。E3D 可封板为 `IMPLEMENTED_GREEN`，下一门为 E4 三页面真实 SDK 消费。
 
 ## 7. 发布、撤回与数据治理
 
