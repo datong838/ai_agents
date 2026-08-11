@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v1.7 · E0A/E0B/E1A/E1B/E1C IMPLEMENTED_GREEN / E2 APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v1.8 · E0A/E0B/E1A/E1B/E1C/E2 IMPLEMENTED_GREEN / E3 APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -146,6 +146,29 @@ E1A 已以 `aos-platform/m1@134b7e8` 实施：真实库单 head 为 `aip4_002`�
 E1B 已以 `aos-platform/m1@7e255ed` 实施：真实库单 head 为 `aip4_003`；28 项组合回归通过。Report 仅保存 case/result hash、结构化 detail code、计数和 exact refs，不保存输入/期望/输出业务明文。Resolver 内容、Artifact ref、target 或 judge 任一漂移都会将 Run 置为 failed，且不生成报告。E1C 获准迁移旧 Logic Eval API/夹具；不得以删除测试或放松 RLS 方式消红。
 
 E1C 已以 `aos-platform/m1@f359534` 实施：旧 Logic Eval API 保留为 compatibility surface，生产真值仍由 PostgreSQL Suite/Report 与 E1 Registry/Runner 承担。隔离测试 schema 仅向 `aos_runtime` 授予 USAGE 和表级最小 DML 权限，并设置 transaction-local tenant GUC；未关闭 FORCE RLS、未恢复进程内生产真源。旧 Eval 文件 17 passed / 1 个显式 Agnes 实连 skipped；E0A～E1C、旧 Publication 与 OpenAPI 组合收集 80 项并以退出码 0 完成。伪造未知租户请求按当前认证契约返回 `403 AUTH_TENANT_UNKNOWN`。E2 获准进入 ReleaseGate 与 PublicationEvent/revoke 实施。
+
+### 6.5 E2 实施边界（编码前冻结）
+
+E2 复用 `aip4_001` 已有的 `aip_release_gate_decision`、`aip_publication_event`、RLS/FORCE RLS 和 append-only 触发器，不新增第二套门控或发布表。新增唯一权威服务，在单事务内完成以下步骤：
+
+1. 读取 `aip_eval_report_revision` exact `report_id/revision/hash`，重新计算内容 hash；读取其 `aip_eval_run` 与 `aip_eval_suite_revision`，要求 Run=`succeeded`，Suite/Target/Dataset/Judge 引用全部一致。
+2. ReleaseGate 状态只能由不可变 Report 和 Suite threshold 推导；请求不得携带 `passed/GREEN` 字段。未通过的 Report 可形成 `failed` 决策，但绝不能追加 `published` 事件。
+3. E2 仅开放 `logic_graph` 发布：必须在 `aip_logic_graph_revision` 找到 exact revision/hash。`agent_template/agent_instance/skill_template` 等 registry 尚未落地的资产一律以明确错误失败关闭。
+4. 发布与撤销都是追加 `PublicationEvent`；撤销要求同 publication 已存在 `published` 且尚无 `revoked`，不得 UPDATE/DELETE 历史发布、Report、Gate 或 Lineage。
+5. 幂等键只用于确定性生成 decision/event 标识；同键同请求回放返回同一事实，同键异请求冲突。所有读取和写入均带 `org_id/project_id`，负向租户只能得到 scoped not found。
+
+E2 计划修改文件：
+
+- 新增 `services/aos-api/aos_api/aip_release_publication_models.py`
+- 新增 `services/aos-api/aos_api/aip_release_publication_service.py`
+- 新增 `services/aos-api/aos_api/routers/aip_release_publications.py`
+- 修改 `services/aos-api/aos_api/routers/domain_aggregates.py` 注册 canonical API
+- 新增 `services/aos-api/tests/aip/test_aip_release_publication_service.py`
+- 新增 `services/aos-api/tests/aip/test_aip_release_publication_api.py`
+
+本波不修改页面、不执行真实线上 Eval/Publication，不向 `org-org/dev-project` 或 canary 写业务事实；以隔离 PostgreSQL 正向/负向、跨租户、幂等、hash 漂移、失败报告、重复撤销和 append-only 测试封板。
+
+E2 已以 `aos-platform/m1@fb525cc` 实施：ReleaseGate 只接受 E1B exact report revision/hash，并在同一 scoped transaction 复验 succeeded Run、Suite threshold、Target/Dataset/Judge 和当前 Logic revision/hash；请求契约不存在手工 GREEN/status 字段。`published/revoked` 均为 append-only `PublicationEvent`，撤销后同一 exact target 的新 Eval Run 失败关闭，历史 Report/Gate/Event 不改写。Agent/Skill registry 未落地类型保持 unsupported。AIP-4 E0A～E2 合并回归 95 passed / 1 个显式 Agnes 集成项 skipped / 2 subtests passed；OpenAPI 为 2335 paths、1569 schemas、4100 route rows、4090 unique operation pairs。真实库保持单 head `aip4_003`，`org-org/dev-project` 与 `dev-org/dev-project` 的新 Suite/Report/Gate/Event 均为 0。E3 获准进入真实 Lineage/Telemetry/Usage/Cost 实施。
 
 ## 7. 发布、撤回与数据治理
 
