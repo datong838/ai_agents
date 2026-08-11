@@ -156,4 +156,13 @@ apps/web/src/pages/s2/LogicRunPanel.tsx
 - AIP-1B `IMPLEMENTED_GREEN`：提交 `1d7aeff`、`96df508`、`461c1a6`，完成 canonical TAOR、四段 Evidence、Artifact、Checkpoint、lease/heartbeat、控制幂等收据、unknown/reconcile fail-closed 以及 C1 ResearchJob 公共契约。
 - legacy 收口：`org-org/dev-project` 不可再进入旧 Mock 或内存 Automation 创建；仅 `dev-org + AIP_DEMO_MOCK_ENABLED=1` 保留明确标记为非权威的兼容演示。
 - 累计验证：59 tests + 2 subtests GREEN；OpenAPI、AIP contract 与 route inventory 已重新生成并通过双进程确定性检查。
-- 尚未封板 AIP-1：AIP-1C SDK、Logic Run Panel、七态/unknown 交互、刷新恢复、浏览器验收与 EvidencePack 仍待完成。
+- AIP-1C `IMPLEMENTED_GREEN`：提交 `9bf5757`。唯一 SDK、服务端 Run discovery、权威 TaskRun 面板、七态控制、accepted/最终状态区分、刷新恢复和跨租户 canary 已完成。
+- AIP-1 阶段现已封板：AIP-1A/AIP-1B/AIP-1C 均 GREEN；下一阶段进入 AIP-2 Proposal/Draft/Approval/Action 安全执行闭环。
+
+### 9.1 AIP-1C 前端消费闭环增补
+
+1. 新增 `GET /v1/aip/task-runs?logic_graph_id=...`，按当前租户范围和 `updated_at DESC` 返回运行列表。它是 Logic 页面刷新恢复的服务端发现契约；前端不得用 localStorage 保存完成状态或把旧 runId 当真源。
+2. `apps/web/src/api/aipTasks/` 是 Task/Plan/Run/timeline/control 的唯一前端 SDK。所有 DTO 必须严格校验状态枚举；未知状态、缺字段和跨资源引用不一致均失败关闭。
+3. Logic 页面保留既有只读 Dry-Run 证据面板，同时增加权威 TaskRun 面板。后者必须展示 Task、精确 Plan revision、七类可见运行态、StepRun、Checkpoint、Artifact 和 Evidence，不得以固定 trace 或本地假数据填充。
+4. start/pause/resume/cancel/rollback 的 HTTP 成功只表示控制请求已接受；页面必须立即回读 timeline 展示最终服务端状态。`unknown` 只允许刷新/对账，不允许重复外部动作。
+5. 终态 `failed/cancelled/rolled_back` 不复活原 Task；“重新执行”必须显式创建新的 Task、PlanRevision 和 TaskRun，并保留原运行证据。

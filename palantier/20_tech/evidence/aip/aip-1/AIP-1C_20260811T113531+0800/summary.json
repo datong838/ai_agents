@@ -1,0 +1,28 @@
+{
+  "wave": "AIP-1C",
+  "status": "IMPLEMENTED_GREEN",
+  "codeCommit": "9bf575718992cd746d78814b062fa6b2ffa3ee82",
+  "scope": { "orgId": "org-org", "projectId": "dev-project" },
+  "browser": {
+    "logicGraphId": "logic-mso3quyh-2",
+    "logicRevision": 1,
+    "taskId": "task-bdf006e693354d948b90",
+    "runId": "run-4029db53c3b04c6c94ee",
+    "states": ["queued", "running", "paused", "running", "cancelled"],
+    "refreshRecovered": true,
+    "finalRunVersion": 5,
+    "finalTaskVersion": 7,
+    "evidenceCount": 4,
+    "consoleErrors": 0
+  },
+  "tenantCanary": { "org-org": 1, "dev-org": 0 },
+  "verification": {
+    "backendTests": 60,
+    "frontendTests": 30,
+    "typescript": "PASS",
+    "viteBuild": "PASS",
+    "routeRows": 4084,
+    "uniqueOperationPairs": 4074,
+    "openapiPaths": 2320
+  }
+}

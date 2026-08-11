@@ -1,12 +1,12 @@
 # 02 AIP Task、TAOR 与执行内核开发清单
 
-> 状态：**v1.1 · IMPLEMENTING（已获用户全量编码授权）**
+> 状态：**v1.2 · AIP-1 IMPLEMENTED_GREEN / AIP-2 PENDING（已获用户全量编码授权）**
 > 上位依据：`../02-228-AIP任务编排TAOR与执行内核实施方案.md`
 > 对应阶段：AIP-1、AIP-2；前置：01、14、15 GREEN。
 
 ## 0. 本轮实施基线与子波
 
-- 当前基线 commit：`461c1a6`；分支：仅 `m1`；远端与本地一致。
+- 当前基线 commit：`9bf5757`；分支：仅 `m1`；远端与本地一致。
 - 迁移 head：`o1ux2_001`；正向范围：仅 `org-org/dev-project`；`dev-org` 仅负向 canary。
 - 既有无关未跟踪文件不纳入提交：`scripts/browser-pilot-verification/` 与三份历史 D5 evidence JSON。
 - AIP-1A：02-01～02-04、02-11 的 Task/Plan/Run 基础 API；先完成迁移、FORCE RLS、scoped store、CAS/幂等、状态转换和路由替换。
@@ -21,7 +21,7 @@
 |---|---|---|---|
 | AIP-1A | `IMPLEMENTED_GREEN` | `0077055` | 单 head `aip1_001`；Task/Plan/Run PostgreSQL authority；30 tests + 2 subtests GREEN |
 | AIP-1B | `IMPLEMENTED_GREEN` | `1d7aeff`、`96df508`、`461c1a6` | canonical TAOR、四段证据、lease/heartbeat、checkpoint、控制幂等收据、C1 ResearchJob 契约及 legacy fail-closed；59 tests + 2 subtests GREEN |
-| AIP-1C | `PENDING` | — | SDK/页面/浏览器/EvidencePack 待实施 |
+| AIP-1C | `IMPLEMENTED_GREEN` | `9bf5757` | 唯一 SDK、权威 TaskRun 面板、服务端刷新恢复、七态控制、浏览器与跨租户 EvidencePack GREEN |
 
 ## 1. 后端与数据工作包
 
@@ -56,6 +56,15 @@
 - 02-F3：pause/resume/cancel/retry 显示 accepted 与最终状态差异；unknown 提供 reconcile 状态。
 - 02-F4：刷新页面从服务端恢复，不以 localStorage 判完成。
 
+### AIP-1C 编码顺序（已评审）
+
+1. 后端补 `GET /v1/aip/task-runs?logic_graph_id=` 的 scoped discovery，只返回当前组织/工作区数据，并补 OpenAPI、路由真值和跨租户测试。
+2. 建立 `apps/web/src/api/aipTasks/` 唯一 SDK，覆盖 Task、Plan、approve、Run、timeline、start/pause/resume/cancel/rollback；严格解析 DTO 与全部状态。
+3. 在 Logic Canvas 增加权威 TaskRun 面板：可从当前已保存 Logic revision 创建 Task→Plan→批准→queued Run，并显示 accepted 后的服务端回读状态。
+4. 控制按钮按服务端 Task/Run 版本进行 CAS；每次控制后回读 timeline。`unknown` 显示“结果待对账”并禁止重新执行动作。
+5. 页面刷新按 Logic Graph ID 从服务端恢复最新 Run；失败/取消后的“重新执行”创建新 Task 链，不复活终态。
+6. 完成 SDK/组件测试、TypeScript/build、真实租户浏览器点验、跨租户 canary 与 EvidencePack 后，才能把 AIP-1C 标为 GREEN。
+
 ## 3. 测试、证据与回滚
 
 - 后端：状态机、CAS、幂等、双 worker lease、重启恢复、checkpoint 兼容、legacy fail-closed。
@@ -69,4 +78,12 @@
 - [x] 重启后 AIP-1B canonical 资源可回读；真实范围默认 Mock 不可达。
 - [x] 同幂等键不产生双 Task/Run/控制动作；双 worker 不重复执行。
 - [x] 每个成功步骤都有四段证据，失败/unknown 不伪装成功。
-- [ ] AIP-0 contract hash、OpenAPI、迁移、前端 SDK、浏览器和 EvidencePack 全部对账。
+- [x] AIP-0 contract hash、OpenAPI、迁移、前端 SDK、浏览器和 EvidencePack 全部对账。
+
+### AIP-1C 实施回写（2026-08-11）
+
+- 服务端新增按 `logic_graph_id` 的 scoped TaskRun discovery；`org-org/dev-project` 可回读当前 Graph 的 Run，`dev-org/dev-project` 对同一 Graph 返回空集合。
+- `apps/web/src/api/aipTasks/` 成为 Task/Plan/Run/timeline/control 的唯一 SDK，未知状态和 Task/Plan/Run 引用不一致失败关闭。
+- Logic Canvas 同时保留安全 Dry-Run 证据面板和权威 TaskRun 面板；两者明确分离。TaskRun 面板展示 queued/running/paused/succeeded/failed/cancelled/unknown，控制操作采用 Run/Task 双版本 CAS，并在 accepted 后回读 timeline。
+- 真实浏览器在栖月汇租户创建 `logic-mso3quyh-2` 与 `run-4029db53c3b04c6c94ee`，点验 `queued → running → paused → running → cancelled`；页面刷新后仍恢复 cancelled，Evidence=4，浏览器控制台无错误。
+- 验证：AIP 后端累计 60 tests（另有 2 个子进程确定性门）、前端定向 30 tests、TypeScript、Vite production build、OpenAPI 4084 rows / 4074 unique pairs / 2320 paths 全部通过。
