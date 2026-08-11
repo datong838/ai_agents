@@ -208,6 +208,24 @@ E3C 已以 `aos-platform/m1@f7179ce` 实施：`aip4_006` 新增 tenant-scoped、
 
 E3D 编码前门禁冻结为：只收口外部 ResearchJob provider/artifact/delivery/reconcile 契约和 E3 总回归，不把内存 Job 状态或回调到达等同于成功。Provider 必须来自租户范围、版本化且已启用的权威注册；提交请求绑定 exact provider/capability/plan/lineage，外部 job id 只由受信 Adapter 回写。回调必须验签、nonce 防重放、事件序列单调；Artifact 必须保存 immutable URI/hash/media type/producer receipt，交付前复验 hash 与 capability revision。timeout/网络断开进入 unknown/reconcile，不自动重试外部副作用；只有 reconcile receipt 可推进最终状态。实现前先复核现有 `aip_research_job.py`、TAOR ResearchJob 兼容链和已评审 v1.2 方案，优先兼容扩展，禁止再建第二套 Job 真源。
 
+E3D 实时代码复核确认：`aip_research_job.py` 只有 v1.2 DTO、纯函数事件合并和 HMAC 验签，nonce 仍由调用方进程内 `set` 保存；仓库没有 tenant-scoped Provider Registry、不可变 Job Manifest/Submission Receipt、持久化 provider event、Artifact/Delivery/Reconcile Receipt 或 canonical API。现有 `aip_task_run/aip_plan_revision` 已是 Task/Run 权威，`aip_artifact` 已是通用产物真源，因此 E3D 只增加外部 Adapter 事实层并复用上述外键，不创建第二套 Task 状态机或平行 Artifact 库。
+
+E3D 计划文件边界固定为：
+
+```text
+services/aos-api/alembic/versions/aip4_007_research_job_authority.py
+services/aos-api/aos_api/aip_research_job.py
+services/aos-api/aos_api/aip_research_job_store.py
+services/aos-api/aos_api/aip_research_job_service.py
+services/aos-api/aos_api/routers/aip_research_jobs.py
+services/aos-api/aos_api/routers/domain_manifest.json
+services/aos-api/tests/aip/test_aip4_research_job_migration.py
+services/aos-api/tests/aip/test_aip_research_job_store.py
+services/aos-api/tests/aip/test_aip_research_job_api.py
+```
+
+`aip4_007` 仅新增 append-only ProviderRevision、JobManifest、SubmissionReceipt、ProviderEventReceipt、CallbackNonce、ArtifactReceipt、Delivery/Reconcile Receipt。Job 当前观察由持久化事件推导；sequence gap 可保存并显示 `has_gap`，但不得推进 canonical 成功。Provider disable 通过追加更高 revision 的 disabled 记录实现，提交时 exact revision 必须同时是当前最高且 enabled。Callback 只记录验签后的 nonce/body hash 并触发主动回读，不接受 body 自报状态。ArtifactReceipt 必须与既有 `aip_artifact` 同事务绑定并复验 content hash；Delivery succeeded 需要无 gap 的 provider succeeded 观察、全部 Artifact hash 有效和 exact capability 未漂移。unknown 只能由追加 Reconcile Receipt 收敛，不覆盖历史。
+
 ## 7. 发布、撤回与数据治理
 
 - EvalCase、Judge、数据集、报告和 Publication 都是带 version/hash 的独立资产；重新运行不得覆盖旧报告。

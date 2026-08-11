@@ -136,13 +136,21 @@ E3C 实施结论：代码 `f7179ce`；20 项 E3C/路由定向测试与 105 项 `
 
 E3D 下一波清单：
 
-- [ ] 复核已评审 ResearchJob v1.2、`aip_research_job.py` 与 TAOR 现有 Job 事件链，裁决唯一兼容真源，禁止平行内存实现。
+- [x] 复核已评审 ResearchJob v1.2、`aip_research_job.py` 与 TAOR 现有 Job 事件链，裁决唯一兼容真源，禁止平行内存实现。
 - [ ] 建租户范围、版本化 Provider authority；disabled/unregistered/revision drift 均在提交前失败关闭。
 - [ ] ResearchJob 提交绑定 exact provider、capability、PlanStep、TaskRun 与 lineage；外部 job id 只由受信 Adapter Receipt 回写。
 - [ ] callback 验签、nonce 防重放、provider event id 幂等且 sequence 单调；gap/乱序保留并进入 reconcile，不伪装完成。
 - [ ] Artifact/Delivery Receipt 保存 immutable URI/hash/media type/exact capability；交付前复验内容 hash 与当前绑定。
 - [ ] timeout/断网/外部未知状态进入 unknown；禁止盲重试副作用，只有 Reconcile Receipt 可推进最终状态。
 - [ ] 完成 E3A～E3D 累计回归、双租户负向、OpenAPI/路由唯一性、迁移单 head 与真实租户零伪造证据。
+
+E3D 代码实况与文件边界：
+
+- 保留 `aip_research_job.py` 的 v1.2 DTO、事件单调合并和 HMAC 回调验签；其当前 nonce `set` 不是可重启真值。
+- 唯一 Task/Run 真源继续是 `aip_task_run/aip_plan_revision`；唯一产物真源继续是 `aip_artifact`。
+- 新增 `aip4_007_research_job_authority.py`、`aip_research_job_store.py`、`aip_research_job_service.py`、`routers/aip_research_jobs.py` 和 migration/store/API 定向测试。
+- 只追加 ProviderRevision、JobManifest、Submission、Event、CallbackNonce、Artifact、Delivery/Reconcile Receipt；当前状态由 Receipt 推导，不写第二套 Task 状态。
+- Provider exact revision 必须是租户内当前最高且 enabled；sequence gap 持久保留但不能完成；callback body 只作唤醒信号；Artifact hash/capability 漂移或 unknown 均阻断 delivery。
 
 ## 2. 退出门
 

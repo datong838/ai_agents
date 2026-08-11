@@ -1,9 +1,9 @@
 # AIP-4 E3C 成本归因与 Capability Receipt 对账
 
-> 日期：2026-08-12  
-> 状态：**IMPLEMENTED_GREEN**  
-> 代码基线：`aos-platform/m1@f7179ce`  
-> 真实目标：`org-org / dev-project`  
+> 日期：2026-08-12
+> 状态：**IMPLEMENTED_GREEN**
+> 代码基线：`aos-platform/m1@f7179ce`
+> 真实目标：`org-org / dev-project`
 > 隔离 canary：`dev-org / dev-project`（仅负向验证）
 
 ## 1. 本波结果
