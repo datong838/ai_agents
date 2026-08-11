@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v1.5 · AIP-4 IMPLEMENTING · E0A/E0B1/E0B2 IMPLEMENTED_GREEN / E1 待实施（已获用户全量编码授权）**
+> 状态：**v1.6 · AIP-4 IMPLEMENTING · E0A/E0B IMPLEMENTED_GREEN / E1A APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -31,7 +31,9 @@
 | E0A | 05-01、05-02 的公共契约与 additive migration | `IMPLEMENTED_GREEN` | `2c02d1f`；26 passed；单 head/守恒/FORCE RLS/append-only 通过 |
 | E0B1 | 05-02 tenant-scoped store + immutable semantics | `IMPLEMENTED_GREEN` | `4f9f471`；31 passed；双租户/幂等/冲突/重启回读通过 |
 | E0B2 | 05-02 最小只读 API/OpenAPI + Publication 权限测试校正 | `IMPLEMENTED_GREEN` | `0996704`；55 passed + 2 subtests；真实租户与 canary 只读负向冒烟通过 |
-| E1 | 05-03、05-04 | `APPROVED_TO_IMPLEMENT` | 真实数据来源、judge/dataset 漂移使旧门失效；收口旧 `evals_engine` RLS 测试债 |
+| E1A | 05-03 Registry + 真实 Dataset manifest 门 | `APPROVED_TO_IMPLEMENT` | Suite revision 真源、exact refs、无内联 PII/Mock、双租户隔离 |
+| E1B | 05-04 runner + 不可变 report | `PENDING` | judge/dataset/target 漂移使旧门失效 |
+| E1C | 旧 Logic Eval compatibility 收口 | `PENDING` | 旧内存真源退出生产；FORCE RLS 夹具恢复或明确替代 |
 | E2 | 05-05 | `PENDING` | gate 不可手工改绿、revoke 追加事件 |
 | E3 | 05-06～05-10 | `PENDING` | 真实事件/usage；unknown/乱序/重复可收敛 |
 | E4 | 05-11 | `PENDING` | 三页面唯一 SDK、无固定 trace/Mock/合成趋势 |
@@ -69,6 +71,13 @@ E0B2 封板说明：
 - OpenAPI 固定为 2332 paths、1562 schemas、4097 route rows、4087 unique operation pairs；domain manifest 固定为 514 routers。
 - `org-org/dev-project` 与 `dev-org/dev-project` 对不存在的 Run 均返回 scoped 404、对不存在的 Lineage 均返回 scoped 空列表；没有写入 AIP-4 业务记录。
 - 历史 `tests/test_evals_engine.py` API 夹具在当前 FORCE RLS 数据库下未设置 tenant GUC，独立扩展回归为 7 failed / 65 passed / 1 skipped / 2 subtests passed；该 RED 不属于 E0B2 只读路由回归，也不得隐藏，纳入 E1 旧引擎迁移与测试夹具收口。
+
+E1A 文件边界和门禁：
+
+- 新增 `aip4_002_eval_pack_registry.py`、`aip_eval_pack_registry.py` 及其迁移/store 测试；仅兼容扩展，不覆盖旧 Suite/Report。
+- Registry 写入前必须验证同租户 Dataset revision 已存在；Suite/target/dataset/judge 全部绑定 exact revision/hash。
+- Dataset manifest 禁止内联业务记录、明文 PII、`mock/synthetic/demo` 来源；必须包含 source reference/hash、字段 allowlist、redaction receipt/hash 和 case count。
+- 六同事/37 Logic 等待 AIP-6 真实资产 revision，不生成占位目录。
 
 ## 2. 退出门
 

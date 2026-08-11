@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v1.3 · E0A/E0B1 IMPLEMENTED_GREEN / E0B2 待实施（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v1.4 · E0A/E0B IMPLEMENTED_GREEN / E1A APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -113,6 +113,33 @@ E0B 分为 E0B1/E0B2：E0B1 先建立唯一 tenant-scoped store 与不可变语�
 E0B1 已以 `aos-platform/m1@4f9f471` 实施：新增唯一 authority store，补齐 EvalRunAuthorityRecord/Event，对 Dataset/Run/Gate/Publication/Lineage/Usage/Adjustment/MetricDefinition 建立 scoped persistence。31 项定向回归通过，真实库仅双租户空读，业务写入为 0。
 
 E0B2 只开放三个只读入口：Dataset revision、EvalRun snapshot、Lineage events。不开放 Gate/Publication/Usage 手工写 API，不让页面越过 E1/E2 服务直写绿灯或用量事实。
+
+E0B2 已以 `aos-platform/m1@0996704` 实施，文档证据 `docs/m1@d718b78`。冻结范围 55 passed + 2 subtests，真实租户和负向 canary 只读冒烟通过，AIP-4 业务写入为 0。历史 `tests/test_evals_engine.py` FORCE RLS 夹具缺 tenant GUC 的 7 项 RED 已登记并转入 E1，不冒充全后端 GREEN。
+
+### 6.4 E1 实施裁决与文件边界（2026-08-11）
+
+E1 不把旧 `aip_eval_suite/report` 直接包装成新 Registry。E0A 只有版本化 DTO，尚缺版本化 Suite/Report 数据表；若跳过该缺口，dataset/judge 漂移后仍可能复用旧报告。因此拆为：
+
+- E1A：新增 append-only `aip_eval_suite_revision`，实现 tenant-scoped EvalPack Registry；Dataset manifest 只接受可复验 source reference/hash、字段 allowlist 和脱敏证明，不复制 PII 到 Registry。
+- E1B：新增 append-only `aip_eval_report_revision`，实现 runner、judge adapter 和不可变报告；精确绑定 suite/target/dataset/judge revision+hash，任一引用漂移均拒绝复用旧报告。
+- E1C：迁移旧 Logic Eval API 到新服务或明确 compatibility adapter，并修正 FORCE RLS 测试夹具；旧内存 `EvalsEngine` 不再作为生产 Suite/Report 真源。
+
+E1A 计划修改文件：
+
+```text
+services/aos-api/alembic/versions/aip4_002_eval_pack_registry.py
+services/aos-api/aos_api/aip_eval_contracts.py
+services/aos-api/aos_api/aip_eval_pack_registry.py
+services/aos-api/tests/aip/test_aip4_eval_pack_registry_migration.py
+services/aos-api/tests/aip/test_aip_eval_pack_registry.py
+```
+
+E1A 退出门：
+
+- 同一租户内 `suite_id + revision` immutable/idempotent，hash 或内容不同必须冲突；跨租户不可见。
+- Suite 的 target、dataset、judge 都是 exact revision/hash，Dataset 必须已存在于同租户 authority store。
+- Dataset manifest 必须有真实 source kind/id/revision/hash、字段 allowlist、redaction receipt/hash、case count；出现内联业务行、明文 PII、Mock/synthetic 标记时失败关闭。
+- 在 AIP-6 的 Agent/Skill revision 发布前，不生成六同事或 37 Logic 的假 EvalPack。
 
 ## 7. 发布、撤回与数据治理
 
