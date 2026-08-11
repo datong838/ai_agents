@@ -1,0 +1,21 @@
+{
+  "wave": "AIP-4-E1A",
+  "status": "IMPLEMENTED_GREEN",
+  "code_commit": "134b7e8",
+  "plan_commit": "834b3f2",
+  "migration_head": "aip4_002",
+  "verification": {
+    "passed": 20,
+    "real_scope_suite_revisions": 0,
+    "negative_canary_suite_revisions": 0,
+    "python_compile": "PASS",
+    "diff_check": "PASS",
+    "ruff": "NOT_INSTALLED"
+  },
+  "scope": {
+    "real": "org-org/dev-project",
+    "negative_canary": "dev-org/dev-project"
+  },
+  "business_writes": 0,
+  "next_wave": "AIP-4-E1B"
+}
