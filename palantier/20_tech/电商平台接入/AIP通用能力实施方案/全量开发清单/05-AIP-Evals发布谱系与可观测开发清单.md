@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v2.0 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2 IMPLEMENTED_GREEN / E3 APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**v2.1 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2 IMPLEMENTED_GREEN / E3A APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -35,7 +35,10 @@
 | E1B | 05-04 runner + 不可变 report | `IMPLEMENTED_GREEN` | `7e255ed`；28 passed；exact ref/content drift 全部失败关闭 |
 | E1C | 旧 Logic Eval compatibility 收口 | `IMPLEMENTED_GREEN` | `f359534`；17 passed / 1 skipped；运行角色最小授权，未知租户 403 fail-closed |
 | E2 | 05-05 | `IMPLEMENTED_GREEN` | `fb525cc`；gate 服务端推导、发布/撤销追加事件、撤销后阻断同 exact target 新 Run |
-| E3 | 05-06～05-10 | `APPROVED_TO_IMPLEMENT` | 真实事件/usage；unknown/乱序/重复可收敛 |
+| E3A | 05-06 | `APPROVED_TO_IMPLEMENT` | 权威源事件引用与真实 Lineage 投影；无固定六段 |
+| E3B | 05-07、05-08 的 span/usage 基础 | `PENDING` | 持久化 span；unknown quantity 为空；重复收据不重计 |
+| E3C | 05-08 成本归因与 Capability Receipt | `PENDING` | measured/estimated/unknown 分离；调整可复算 |
+| E3D | 05-10 与 E3 总回归 | `PENDING` | 外部 provider/artifact/delivery/reconcile 失败关闭 |
 | E4 | 05-11 | `PENDING` | 三页面唯一 SDK、无固定 trace/Mock/合成趋势 |
 | E5 | 05-12～05-15 | `PENDING` | 37 Logic、场景和专项门在其真实资产存在后逐项封板 |
 
@@ -95,6 +98,16 @@ E2 编码清单已冻结：
 - [x] 隔离 PostgreSQL 覆盖跨租户、报告/资产漂移、失败报告、同键异载荷、append-only；真实 `org-org/dev-project` 与 canary 不写业务事实。
 
 E2 实施结论：代码 `fb525cc`；新增 3 个 canonical API，不产生 AIP 重复路由；OpenAPI 更新为 2335 paths、1569 schemas、4100 route rows、4090 unique operation pairs。AIP-4 E0A～E2 合并回归 95 passed / 1 skipped / 2 subtests passed；真实库单 head `aip4_003`，两个既定租户的新 Suite/Report/Gate/Event 计数均为 0。下一门为 E3 真实 LineageEvent、Telemetry、UsageReceipt/Adjustment 与成本口径。
+
+E3A 编码清单已冻结：
+
+- [ ] additive migration 为 `aip_lineage_event` 增加权威 `source_kind/source_id/source_hash`，建立租户内同源唯一约束并保持 append-only、RLS/FORCE RLS。
+- [ ] 建立唯一 `aip_lineage_service.py`，仅从真实 TaskRun/Action/Eval/Publication 表读取和投影；事件 id/sequence/hash 确定性且可重放。
+- [ ] 投影只落 exact 引用、类型、时间和哈希，不复制业务 payload、模型 prompt、对象字段或 PII。
+- [ ] canonical 查询返回持久化真实事件；空谱系诚实返回空，不使用 `aip_lineage_engine.py` 固定六段回退。
+- [ ] 对账投影写入口只授予受信运行角色；请求只选择 root，不允许提交 event_type、quality、payload_hash 或手工 source。
+- [ ] 覆盖同源重放、同源 hash 冲突、源事实不存在、跨租户、Action unknown/reconcile、Publication revoke、Eval failed 与 append-only 负向测试。
+- [ ] 迁移回演、OpenAPI/路由唯一性、真实租户/canary 只读零写入与 E0A-E2 回归通过后再进入 E3B。
 
 ## 2. 退出门
 

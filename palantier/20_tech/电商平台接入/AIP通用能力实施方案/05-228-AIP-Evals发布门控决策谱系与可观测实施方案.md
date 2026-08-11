@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v1.8 · E0A/E0B/E1A/E1B/E1C/E2 IMPLEMENTED_GREEN / E3 APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v1.9 · E0A/E0B/E1A/E1B/E1C/E2 IMPLEMENTED_GREEN / E3A APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -169,6 +169,34 @@ E2 计划修改文件：
 本波不修改页面、不执行真实线上 Eval/Publication，不向 `org-org/dev-project` 或 canary 写业务事实；以隔离 PostgreSQL 正向/负向、跨租户、幂等、hash 漂移、失败报告、重复撤销和 append-only 测试封板。
 
 E2 已以 `aos-platform/m1@fb525cc` 实施：ReleaseGate 只接受 E1B exact report revision/hash，并在同一 scoped transaction 复验 succeeded Run、Suite threshold、Target/Dataset/Judge 和当前 Logic revision/hash；请求契约不存在手工 GREEN/status 字段。`published/revoked` 均为 append-only `PublicationEvent`，撤销后同一 exact target 的新 Eval Run 失败关闭，历史 Report/Gate/Event 不改写。Agent/Skill registry 未落地类型保持 unsupported。AIP-4 E0A～E2 合并回归 95 passed / 1 个显式 Agnes 集成项 skipped / 2 subtests passed；OpenAPI 为 2335 paths、1569 schemas、4100 route rows、4090 unique operation pairs。真实库保持单 head `aip4_003`，`org-org/dev-project` 与 `dev-org/dev-project` 的新 Suite/Report/Gate/Event 均为 0。E3 获准进入真实 Lineage/Telemetry/Usage/Cost 实施。
+
+### 6.6 E3 实施裁决与子波冻结（2026-08-11）
+
+E3 不得直接把现有 `aip_lineage_engine.py`、`tracing_perf_geo_map.py` 或 `aip_observability.py` 包装成真值。实时代码复核确认：固定六段 Trace、内存 span、`request_count×230` Token 和合成趋势都不具备发布门证据资格；现有 `UsageReceipt.quality=unknown` 仍要求数值，也会把未知误写为 0。E3 拆为四个可独立回滚的子波：
+
+| 子波 | 范围 | 退出门 |
+|---|---|---|
+| E3A | TaskRun、Action、Eval、Publication 权威源事件投影到 append-only `LineageEvent`；建立唯一 canonical 查询 | 每个事件带 source kind/id/hash；同源幂等、异载荷冲突、跨租户不可见；不生成固定六段 |
+| E3B | 持久化 span 与 provider UsageReceipt/Adjustment；纠正 unknown 数量语义 | 乱序/迟到/时钟偏差保留 producer 与 observed 时间；unknown 的 quantity 为空；重复 provider receipt 不重复计量 |
+| E3C | model/tool/capability/task/agent 成本归因与 Capability Receipt | 仅 measured receipt 可进入硬预算门；estimated 单独展示；缺失为 unknown；调整事件可复算且不覆盖原收据 |
+| E3D | E3 总回归、ResearchJob provider/artifact/delivery/reconcile 契约与失败关闭 | provider 未注册、回调重放、Artifact hash 错或 capability 漂移均阻断；不伪造外部 Job 成功事实 |
+
+E3A 计划修改文件：
+
+```text
+services/aos-api/alembic/versions/aip4_004_lineage_source_authority.py
+services/aos-api/aos_api/aip_eval_contracts.py
+services/aos-api/aos_api/aip_lineage_service.py
+services/aos-api/aos_api/routers/aip_lineage_authority.py
+services/aos-api/aos_api/routers/domain_manifest.json
+services/aos-api/tests/aip/test_aip4_lineage_source_migration.py
+services/aos-api/tests/aip/test_aip_lineage_service.py
+services/aos-api/tests/aip/test_aip_lineage_authority_api.py
+```
+
+E3A 先覆盖已经存在且可复验的源事实：`aip_task_run/aip_step_run/aip_checkpoint/aip_artifact/aip_evidence`、`aip_action_event/aip_action_receipt`、`aip_eval_run_event/aip_eval_report_revision`、`aip_publication_event`。事件标识由 scope + source kind + source id + source hash 确定性生成；投影只保存引用、结构化事件类型和哈希，不复制输入、Action payload、模型提示词、业务对象字段或 PII。历史 `decision_lineage` 仅通过 `legacy_decision_lineage` root 兼容读取，不倒灌为新运行真值。
+
+E3A API 只允许读取谱系和由受信运行角色触发“按 root 对账投影”；普通页面不能 POST 任意事件。若源事实不存在、跨租户、hash 漂移或 root/source 不匹配必须失败关闭。投影事务失败不得伪装运行已具备完整谱系；页面在 E4 前仍不得使用旧固定六段作为回退。
 
 ## 7. 发布、撤回与数据治理
 
