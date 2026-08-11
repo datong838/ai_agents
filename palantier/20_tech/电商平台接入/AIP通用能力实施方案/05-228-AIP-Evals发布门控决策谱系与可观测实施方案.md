@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v2.0 · E0A/E0B/E1A/E1B/E1C/E2/E3A IMPLEMENTED_GREEN / E3B APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v2.1 · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B IMPLEMENTED_GREEN / E3C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -199,6 +199,10 @@ E3A 先覆盖已经存在且可复验的源事实：`aip_task_run/aip_step_run/a
 E3A API 只允许读取谱系和由受信运行角色触发“按 root 对账投影”；普通页面不能 POST 任意事件。若源事实不存在、跨租户、hash 漂移或 root/source 不匹配必须失败关闭。投影事务失败不得伪装运行已具备完整谱系；页面在 E4 前仍不得使用旧固定六段作为回退。
 
 E3A 已以 `aos-platform/m1@16aed87` 实施：`aip4_004` 为 `aip_lineage_event` 增加完整 source tuple、租户内同源唯一索引和 root timeline 索引，并保留原有 RLS/FORCE RLS 与 append-only 触发器。唯一 `AipLineageService` 只从 PostgreSQL TaskRun/Step/Checkpoint/Artifact/Evidence、ActionEvent/Receipt、EvalRun/Event/Report 和 PublicationEvent 生成确定性事件；普通 API 只能查询，受信运行角色只能选择 root 触发对账，不能提交手工事件或 GREEN。累计 107 项测试退出码 0，静态检查、编译、路由/OpenAPI 固定契约通过；OpenAPI 更新为 2337 paths、1570 schemas、4102 route rows、4092 unique operation pairs。开发库已线性升级到单 head `aip4_004`，`org-org/dev-project` 与 canary 的新谱系记录均为 0，未伪造验收事实。下一门为 E3B 持久化 spans、provider UsageReceipt/Adjustment 与 unknown 数量语义。
+
+E3B 已以 `aos-platform/m1@ea1f1c5` 实施：`aip4_005` 新增 tenant-scoped `aip_telemetry_span`，区分 producer/observed/ingested 时间并保留原始时钟偏差；`UsageReceipt` 将 unknown 数量纠正为 `NULL`，measured/estimated 强制非负数值。span 与 usage 均以 scope + provider + provider receipt 唯一，同载荷重放幂等、异载荷冲突；Adjustment 继续只追加且不覆盖原收据。canonical API 只允许受信运行角色写入并要求既有 lineage，PII attribute 只接受哈希。39 项 E3B 定向测试、95 项 `tests/aip` 累计回归、ruff、compileall、OpenAPI 双进程确定性检查和路由固定契约均退出码 0；OpenAPI 为 2343 paths、1579 schemas、4108 route rows、4098 unique operation pairs。开发库单 head 为 `aip4_005`；`org-org/dev-project` 与 canary 的 span/usage/adjustment 均为 0。
+
+E3C 编码边界冻结为：新增 `aip4_006_cost_attribution_capability_receipt.py`、`aip_cost_attribution_service.py`、`routers/aip_cost_attribution.py` 及对应迁移/service/API 测试，并兼容扩展 `aip_eval_contracts.py`、`aip_eval_authority_store.py`、`aip_telemetry_usage_service.py`。本波建立 append-only UsageAttribution 与 CapabilityReceipt，不改写 E3B 原始 span/usage；成本聚合必须按 currency 和 measured/estimated/unknown 分桶，Adjustment 继承原 Receipt 质量并参与复算，复算后不得为负。CapabilityReceipt 只能引用同租户 TaskRun 已批准 PlanStep 中 exact revision 的 `capabilityRef`，且必须与 lineage root 一致；AIP-6/AIP-7 尚无权威 registry 的 model/tool/agent 引用不得冒充 measured 归因，只能 unknown/estimated 或明确失败关闭。硬预算读模型仅在 measured、币种单一、无 unknown/estimated 缺口时标记 eligible；缺收据、缺价格或缺权威归因一律 unknown，不把 0 当真值。
 
 ## 7. 发布、撤回与数据治理
 

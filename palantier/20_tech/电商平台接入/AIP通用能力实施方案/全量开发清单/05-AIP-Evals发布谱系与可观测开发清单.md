@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v2.2 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A IMPLEMENTED_GREEN / E3B APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**v2.3 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B IMPLEMENTED_GREEN / E3C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -36,8 +36,8 @@
 | E1C | 旧 Logic Eval compatibility 收口 | `IMPLEMENTED_GREEN` | `f359534`；17 passed / 1 skipped；运行角色最小授权，未知租户 403 fail-closed |
 | E2 | 05-05 | `IMPLEMENTED_GREEN` | `fb525cc`；gate 服务端推导、发布/撤销追加事件、撤销后阻断同 exact target 新 Run |
 | E3A | 05-06 | `IMPLEMENTED_GREEN` | `16aed87`；权威源事件引用与真实 Lineage 投影；无固定六段 |
-| E3B | 05-07、05-08 的 span/usage 基础 | `APPROVED_TO_IMPLEMENT` | 持久化 span；unknown quantity 为空；重复收据不重计 |
-| E3C | 05-08 成本归因与 Capability Receipt | `PENDING` | measured/estimated/unknown 分离；调整可复算 |
+| E3B | 05-07、05-08 的 span/usage 基础 | `IMPLEMENTED_GREEN` | `ea1f1c5`；持久化 span；unknown quantity 为空；provider receipt 重放不重计 |
+| E3C | 05-08 成本归因与 Capability Receipt | `APPROVED_TO_IMPLEMENT` | measured/estimated/unknown 分离；调整可复算；exact capability binding |
 | E3D | 05-10 与 E3 总回归 | `PENDING` | 外部 provider/artifact/delivery/reconcile 失败关闭 |
 | E4 | 05-11 | `PENDING` | 三页面唯一 SDK、无固定 trace/Mock/合成趋势 |
 | E5 | 05-12～05-15 | `PENDING` | 37 Logic、场景和专项门在其真实资产存在后逐项封板 |
@@ -111,14 +111,26 @@ E3A 编码清单已冻结：
 
 E3A 实施结论：代码 `16aed87`；累计 107 tests collected 并以退出码 0 完成，ruff、compileall、OpenAPI exporter 和路由固定契约通过。OpenAPI 为 2337 paths、1570 schemas、4102 route rows、4092 unique operation pairs；开发库单 head `aip4_004`。真实租户和 canary 的 canonical lineage 新记录均为 0，本波只增加权威投影能力，未生成假谱系。
 
-E3B 下一波清单：
+E3B 实施清单：
 
-- [ ] additive migration 建立 tenant-scoped persistent span authority，区分 producer 时间、ingest 时间和 observed 时间，并保留乱序/迟到事实。
-- [ ] 调整 `UsageReceipt`：`quality=unknown` 时 quantity 必须为空；measured/estimated 必须有非负 quantity，成本仍要求 currency。
-- [ ] provider receipt 以 scope + provider + provider_receipt_id 唯一；同载荷重放幂等，异载荷冲突，不把重复回调重复计费。
-- [ ] `AdjustmentEvent` 仅追加、引用原 Receipt；原收据不得 UPDATE/DELETE，聚合按 Adjustment 复算。
-- [ ] span/usage canonical 写入口只授予受信运行角色，并绑定既有 lineage/root；不接收页面手工 GREEN、估算趋势或 PII attribute。
-- [ ] 覆盖乱序、迟到、时钟偏差、unknown、重复 provider receipt、adjustment 重放/冲突、跨租户与 append-only 负向门。
+- [x] additive migration 建立 tenant-scoped persistent span authority，区分 producer 时间、ingest 时间和 observed 时间，并保留乱序/迟到事实。
+- [x] 调整 `UsageReceipt`：`quality=unknown` 时 quantity 必须为空；measured/estimated 必须有非负 quantity，成本仍要求 currency。
+- [x] provider receipt 以 scope + provider + provider_receipt_id 唯一；同载荷重放幂等，异载荷冲突，不把重复回调重复计费。
+- [x] `AdjustmentEvent` 仅追加、引用原 Receipt；原收据不得 UPDATE/DELETE，聚合按 Adjustment 复算。
+- [x] span/usage canonical 写入口只授予受信运行角色，并绑定既有 lineage/root；不接收页面手工 GREEN、估算趋势或 PII attribute。
+- [x] 覆盖乱序、迟到、时钟偏差、unknown、重复 provider receipt、adjustment 重放/冲突、跨租户与 append-only 负向门。
+
+E3B 实施结论：代码 `ea1f1c5`；39 项定向测试与 95 项 `tests/aip` 累计回归退出码 0，ruff、compileall、OpenAPI/路由固定契约通过。OpenAPI 为 2343 paths、1579 schemas、4108 route rows、4098 unique operation pairs；开发库单 head `aip4_005`，真实租户和 canary 的 span/usage/adjustment 均为 0。
+
+E3C 下一波清单：
+
+- [ ] additive migration 新增 append-only `aip_usage_attribution` 与 `aip_capability_receipt`，保持 RLS/FORCE RLS、truncate guard 和租户复合键。
+- [ ] UsageAttribution 引用原 Receipt 与同一 lineage；按 model/tool/capability/task/agent 维度保存 exact subject ref、quality、weight/source hash，不复制业务 payload。
+- [ ] CapabilityReceipt 绑定同租户 TaskRun、PlanRevision、PlanStep 和 exact `capabilityRef.revision`；lineage root/run 不一致、未批准计划或 binding 漂移必须失败关闭。
+- [ ] 成本汇总按 currency 与 measured/estimated/unknown 分桶；Adjustment 继承原 Receipt quality 并复算，结果不得为负，原 Receipt 不修改。
+- [ ] 只有 measured cost + measured attribution + 单一币种 + 无未知缺口可形成 hard-budget eligible 读模型；其余明确 unknown/estimated。
+- [ ] AIP-6/AIP-7 权威 registry 未落地的 model/tool/agent measured attribution 失败关闭，不以 legacy 内存目录补真值。
+- [ ] canonical 写入口仅授予受信运行角色，覆盖跨租户、幂等/冲突、未知价格/收据、调整并发、负数复算与 append-only 负向门。
 
 ## 2. 退出门
 
