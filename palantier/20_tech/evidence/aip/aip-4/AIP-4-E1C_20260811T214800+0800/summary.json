@@ -1,0 +1,27 @@
+{
+  "wave": "AIP-4-E1C",
+  "status": "IMPLEMENTED_GREEN",
+  "date": "2026-08-11",
+  "tenantScope": "org-org/dev-project",
+  "negativeCanary": "dev-org/dev-project",
+  "codeCommit": "f359534",
+  "scope": [
+    "legacy Logic Eval API compatibility fixture",
+    "aos_runtime isolated-schema minimum grants",
+    "transaction-local tenant GUC",
+    "cross-tenant authentication fail-closed expectation"
+  ],
+  "verification": {
+    "legacyEval": "17 passed, 1 skipped",
+    "combinedCollected": 80,
+    "combinedExitCode": 0,
+    "diffCheck": "PASS"
+  },
+  "boundaries": {
+    "productionRlsRelaxed": false,
+    "inMemoryEvalRestoredAsTruth": false,
+    "businessRecordsWritten": false,
+    "browserRequired": false
+  },
+  "nextGate": "AIP-4 E2 ReleaseGate and append-only PublicationEvent/revoke"
+}

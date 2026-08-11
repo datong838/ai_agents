@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v1.8 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B IMPLEMENTED_GREEN / E1C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**v1.9 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C IMPLEMENTED_GREEN / E2 APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -33,8 +33,8 @@
 | E0B2 | 05-02 最小只读 API/OpenAPI + Publication 权限测试校正 | `IMPLEMENTED_GREEN` | `0996704`；55 passed + 2 subtests；真实租户与 canary 只读负向冒烟通过 |
 | E1A | 05-03 Registry + 真实 Dataset manifest 门 | `IMPLEMENTED_GREEN` | `134b7e8`；20 passed；单 head `aip4_002`；双租户真实库空读 |
 | E1B | 05-04 runner + 不可变 report | `IMPLEMENTED_GREEN` | `7e255ed`；28 passed；exact ref/content drift 全部失败关闭 |
-| E1C | 旧 Logic Eval compatibility 收口 | `APPROVED_TO_IMPLEMENT` | 旧内存真源退出生产；FORCE RLS 夹具恢复或明确替代 |
-| E2 | 05-05 | `PENDING` | gate 不可手工改绿、revoke 追加事件 |
+| E1C | 旧 Logic Eval compatibility 收口 | `IMPLEMENTED_GREEN` | `f359534`；17 passed / 1 skipped；运行角色最小授权，未知租户 403 fail-closed |
+| E2 | 05-05 | `APPROVED_TO_IMPLEMENT` | gate 不可手工改绿、revoke 追加事件 |
 | E3 | 05-06～05-10 | `PENDING` | 真实事件/usage；unknown/乱序/重复可收敛 |
 | E4 | 05-11 | `PENDING` | 三页面唯一 SDK、无固定 trace/Mock/合成趋势 |
 | E5 | 05-12～05-15 | `PENDING` | 37 Logic、场景和专项门在其真实资产存在后逐项封板 |
@@ -82,6 +82,8 @@ E1A 文件边界和门禁：
 E1B 计划边界：新增 `aip4_003_eval_report_revision.py`、`aip_eval_runner.py` 及定向测试；Report 只保存 case/result hash 和结构化 detail code，不保存业务明文。Runner 必须从 Registry 读取 Suite，并逐项复验 target/dataset/judge/artifact exact refs；任何漂移、解析失败或 judge 错误使 Run failed，不生成可过门报告。
 
 E1C 禁止通过删除旧测试、关闭 FORCE RLS 或恢复进程内 Suite/Report 真源消红。优先将旧夹具的 scoped connection 设置 tenant GUC，使兼容 API 在当前 RLS 军规下恢复；随后明确旧 API 仅为 compatibility surface，新写链进入 E1 Registry/Runner。
+
+E1C 实施结论：隔离 schema 明确授予 `aos_runtime` USAGE 与表级最小 DML 权限，并在连接内设置 transaction-local tenant GUC；未修改生产表策略。旧文件 17 passed / 1 个需显式 Agnes 配置的集成项 skipped；组合范围共收集 80 项并退出码 0。跨租户 header 伪造在 Store 前由 Auth 以 `403 AUTH_TENANT_UNKNOWN` 拒绝，符合 fail-closed 边界。
 
 ## 2. 退出门
 

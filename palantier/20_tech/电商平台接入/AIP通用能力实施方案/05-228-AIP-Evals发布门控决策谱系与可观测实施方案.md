@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v1.6 · E0A/E0B/E1A/E1B IMPLEMENTED_GREEN / E1C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v1.7 · E0A/E0B/E1A/E1B/E1C IMPLEMENTED_GREEN / E2 APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -144,6 +144,8 @@ E1A 退出门：
 E1A 已以 `aos-platform/m1@134b7e8` 实施：真实库单 head 为 `aip4_002`；20 项组合回归通过；`org-org/dev-project` 与 `dev-org/dev-project` 的 Suite revision 均为 0，没有用测试 EvalPack 污染业务数据。E1B 获准进入不可变 report 与 runner 实施。
 
 E1B 已以 `aos-platform/m1@7e255ed` 实施：真实库单 head 为 `aip4_003`；28 项组合回归通过。Report 仅保存 case/result hash、结构化 detail code、计数和 exact refs，不保存输入/期望/输出业务明文。Resolver 内容、Artifact ref、target 或 judge 任一漂移都会将 Run 置为 failed，且不生成报告。E1C 获准迁移旧 Logic Eval API/夹具；不得以删除测试或放松 RLS 方式消红。
+
+E1C 已以 `aos-platform/m1@f359534` 实施：旧 Logic Eval API 保留为 compatibility surface，生产真值仍由 PostgreSQL Suite/Report 与 E1 Registry/Runner 承担。隔离测试 schema 仅向 `aos_runtime` 授予 USAGE 和表级最小 DML 权限，并设置 transaction-local tenant GUC；未关闭 FORCE RLS、未恢复进程内生产真源。旧 Eval 文件 17 passed / 1 个显式 Agnes 实连 skipped；E0A～E1C、旧 Publication 与 OpenAPI 组合收集 80 项并以退出码 0 完成。伪造未知租户请求按当前认证契约返回 `403 AUTH_TENANT_UNKNOWN`。E2 获准进入 ReleaseGate 与 PublicationEvent/revoke 实施。
 
 ## 7. 发布、撤回与数据治理
 

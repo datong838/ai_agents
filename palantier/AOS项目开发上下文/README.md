@@ -39,6 +39,11 @@
 27. [35-2026-08-11-AIP-3A受控Action审批权威链对账](35-2026-08-11-AIP-3A受控Action审批权威链对账.md)
 28. [36-2026-08-11-AIP-3B受控Action执行权威链对账](36-2026-08-11-AIP-3B受控Action执行权威链对账.md)
 29. [37-2026-08-11-AIP-3C受控Action前端消费闭环对账](37-2026-08-11-AIP-3C受控Action前端消费闭环对账.md)
+30. [38-2026-08-11-AIP-4-E0A公共契约与数据权威骨架对账](38-2026-08-11-AIP-4-E0A公共契约与数据权威骨架对账.md)
+31. [39-2026-08-11-AIP-4-E0B权威存储与只读API对账](39-2026-08-11-AIP-4-E0B权威存储与只读API对账.md)
+32. [40-2026-08-11-AIP-4-E1A版本化EvalPackRegistry对账](40-2026-08-11-AIP-4-E1A版本化EvalPackRegistry对账.md)
+33. [41-2026-08-11-AIP-4-E1B精确引用Runner与不可变Report对账](41-2026-08-11-AIP-4-E1B精确引用Runner与不可变Report对账.md)
+34. [42-2026-08-11-AIP-4-E1C旧Eval兼容与租户运行角色对账](42-2026-08-11-AIP-4-E1C旧Eval兼容与租户运行角色对账.md)
 
 ## 权威来源
 
@@ -157,6 +162,7 @@
 - AIP-4 E0B 权威存储与只读 API 对账：[`39-2026-08-11-AIP-4-E0B权威存储与只读API对账.md`](39-2026-08-11-AIP-4-E0B权威存储与只读API对账.md)
 - AIP-4 E1A 版本化 EvalPack Registry 对账：[`40-2026-08-11-AIP-4-E1A版本化EvalPackRegistry对账.md`](40-2026-08-11-AIP-4-E1A版本化EvalPackRegistry对账.md)
 - AIP-4 E1B 精确引用 Runner 与不可变 Report 对账：[`41-2026-08-11-AIP-4-E1B精确引用Runner与不可变Report对账.md`](41-2026-08-11-AIP-4-E1B精确引用Runner与不可变Report对账.md)
+- AIP-4 E1C 旧 Eval 兼容与租户运行角色对账：[`42-2026-08-11-AIP-4-E1C旧Eval兼容与租户运行角色对账.md`](42-2026-08-11-AIP-4-E1C旧Eval兼容与租户运行角色对账.md)
 
 ## 更新规则
 
