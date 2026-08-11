@@ -1,13 +1,13 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v1.1 实时代码复核与分波冻结（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v1.2 · E0A IMPLEMENTED_GREEN / E0B 待实施（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
 
 ## 0. 2026-08-11 实时代码与数据裁决
 
-1. AIP-0～AIP-3 已封板；当前 Alembic 本地与数据库均为单 head `aip3b_002`，AIP-4 新迁移只能从该 head 线性展开。
+1. AIP-0～AIP-3 已封板；AIP-4 E0A 已从 `aip3b_002` 线性新增单 head `aip4_001`，已完成 downgrade/upgrade 回演。
 2. 现有 Eval 不是全空白：`aip_eval_suite`、`aip_eval_report` 已是租户范围 PostgreSQL 真值，真实库当前有 1 个 Suite、2 个 immutable Report；但 Suite 缺 revision/hash/dataset/judge，Report 只支持 `logic_graph`，不能冒充完整 AIP-4。
 3. 现有 Logic Publication 已把 graph revision/hash、dry-run 和 Eval report 绑定在单事务内，真实库有 1 条 immutable Publication；本轮扩展为通用 ReleaseGate/PublicationEvent，不重写这条正常链。
 4. `decision_lineage` 已有 631 条组织/工作区隔离的历史 Action lineage，必须保留；但 `/v1/aip/lineage` 仍读取进程内 `aip_lineage_engine.py`，页面还保留固定六段 trace，二者不是真实 Task/Run 谱系。
@@ -97,6 +97,18 @@ services/aos-api/tests/aip/test_aip4_migration.py
 ```
 
 E0A 只做兼容扩展：不得删除/覆盖 1 个 Suite、2 个 Report、1 个 Publication 或 631 条历史 lineage；不得向 `org-org/dev-project` 写验收业务数据。
+
+### 6.2 E0A 实施结论（2026-08-11）
+
+- 代码基线：`aos-platform/m1@2c02d1f`。
+- 新增 9 组权威表，全部启用 `RLS + FORCE RLS`；除可转移的 `aip_eval_run` 外均为 append-only。
+- 定向验证 26 passed；单 head、迁移回演和历史计数守恒通过。
+- 历史 Suite=1、Report=2、Publication=1、lineage=631 均属于 `dev-org/dev-project`，仅作兼容基线，不作真实租户 GREEN 证据。
+- `org-org/dev-project` 本波新增业务记录为 0；未开放新 API/页面，未执行 Eval、Publication 或外部 Adapter。
+
+### 6.3 E0B 实施边界
+
+E0B 分为 E0B1/E0B2：E0B1 先建立唯一 tenant-scoped store 与不可变语义；E0B2 再开放最小 API/OpenAPI，校正 Logic Publication 测试夹具的权限身份。不在 E0B 构造虚假 EvalRun、ReleaseGate 或 UsageReceipt。
 
 ## 7. 发布、撤回与数据治理
 
