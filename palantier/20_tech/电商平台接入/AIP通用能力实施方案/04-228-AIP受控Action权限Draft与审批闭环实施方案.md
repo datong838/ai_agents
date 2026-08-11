@@ -1,6 +1,6 @@
 # 228-AIP 受控 Action、权限、Draft 与审批闭环实施方案
 
-> 状态：**评审通过 · v1.2 实施中（AIP-3A `IMPLEMENTED_GREEN`，AIP-3B 待实施）**
+> 状态：**评审通过 · v1.4 实施中（AIP-3A / AIP-3B `IMPLEMENTED_GREEN`，进入 AIP-3C）**
 > 对应阶段：AIP-3。
 
 ## 1. 目标
@@ -142,6 +142,39 @@ services/aos-api/tests/openapi/*
 
 在同一 canonical service/store 上增加 lease、预算/频控/kill switch、adapter registry、Receipt/reconcile；修改 `routers/runtime_write.py` 关闭 `autoApprove` 与直接批准写生产旁路。任何超时先写 unknown，只有主动回读可收敛；compensation 必须创建新 Proposal。
 
+#### AIP-3B 权威执行契约（冻结）
+
+1. `POST /v1/aip/action-proposals/{proposal_id}/lease` 只允许 `aip_executor/admin`，且执行人不得是 maker 或任一 approver；服务端在同一事务内锁定 Proposal，重新检查精确 hash/version、Action revision、审批角色当前有效性、审批时限、Proposal expiry、R4 默认禁用、预算/频控和四级 kill switch。
+2. 每个 Proposal 只允许一个 attempt=1 的租约；并发申请通过 advisory lock 与唯一键收敛为同一 Lease。租约过期、撤销或已消费后不得复用，也不自动创建 attempt=2。
+3. `POST /v1/aip/action-leases/{lease_id}/execute` 只能消费一次 active Lease。Adapter Registry 只接受明确注册的 adapter；调用参数使用 Proposal 冻结 payload，外部幂等键固定为 Proposal idempotency key + proposal hash，不接受客户端临时改写。
+4. Adapter 返回 applied/failed 时追加初始 Receipt；超时、连接中断或无法判断外部效果时只追加 `unknown` Receipt，并返回 `AIP_OUTCOME_UNKNOWN` 语义，禁止自动重试。
+5. `POST /v1/aip/action-receipts/{receipt_id}/reconcile` 仅允许授权只读 provider 查询。Receipt 不更新、不删除：对账结果以新的 Receipt 追加，使用 `supersedes_receipt_id` 指向 unknown Receipt；Proposal 的展示状态投影到最新 Receipt。
+6. `POST /v1/aip/action-proposals/{proposal_id}/compensation` 不执行回滚，只以原 Proposal/Receipt 为 evidence 创建新的受控 Proposal；R4 在没有专项 policy 时仍拒绝。
+7. kill switch 采用平台、组织、工作区、ActionType 四级匹配，任一级启用即阻止新 Lease；已发送请求仍允许只读 reconcile。预算按工作区 + ActionType + UTC 日窗口记账；频控按工作区 + ActionType 滚动分钟窗口计数。
+8. `aip3_001` 已应用，不得修改。新增 `aip3b_001` 扩展 Receipt 追加链、执行 policy/usage 表与 RLS，`aip3b_002` 用数据库触发器阻断 Receipt UPDATE/DELETE/TRUNCATE；迁移必须保持单一 head。
+
+#### 旧入口兼容裁决（冻结）
+
+- `POST /v1/actions/execute` 仅在 `autoApprove=false` 且未传 `draftId` 时保留“只创建旧 Draft、不写生产”的兼容行为；`autoApprove=true`、传 `draftId` 及 `POST /v1/aip/drafts/{draft_id}/approve` 均返回 `AIP_LEGACY_WRITE_PATH_DISABLED`，不再写 `obj_instance/wiki_page`。
+- 旧 Draft 的 create/list/get/reject 可保留为历史只读/撤回兼容，但不能反向驱动 AIP 权威状态机。
+- 不迁移或伪造历史旧 Draft 为新 Proposal；需要继续执行时由调用方显式创建 canonical Proposal，确保新的 hash、risk、policy 与审批事实完整。
+
+#### AIP-3B 新增及修改文件
+
+```text
+services/aos-api/alembic/versions/aip3b_001_action_execution.py
+services/aos-api/alembic/versions/aip3b_002_receipt_immutability.py
+services/aos-api/aos_api/aip_action_adapters.py
+services/aos-api/aos_api/aip_action_execution.py
+services/aos-api/aos_api/aip_action_models.py
+services/aos-api/aos_api/aip_action_store.py
+services/aos-api/aos_api/aip_action_service.py
+services/aos-api/aos_api/routers/aip_actions.py
+services/aos-api/aos_api/routers/runtime_write.py
+services/aos-api/tests/aip/test_aip3b_action_execution.py
+services/aos-api/tests/aip/test_aip3b_legacy_write_closed.py
+```
+
 ### AIP-3C：前端消费与浏览器封板
 
 新增唯一 `apps/web/src/api/aipActions/` SDK；修改 `DraftInboxPage.tsx` 和 Logic Run 入口。UI 必须分别展示“已批准”“已获执行租约”“已提交外部系统”“结果待对账”“已应用”，且服务不可用时不注入示例 Draft、不启用本地状态机。
@@ -156,3 +189,14 @@ services/aos-api/tests/openapi/*
 - 幂等键在事务级 advisory lock 下串行化；并发 Proposal 与并发 Approval 重放均只产生一份权威事实，不同 payload 重用幂等键返回冲突。
 - 验证：AIP/OpenAPI/router 定向集 54 passed + 2 subtests；OpenAPI 4089 route rows / 4079 unique pairs / 2324 paths，AIP 无重复 owner；真实开发服务中 `org-org/dev-project` 与 `dev-org/dev-project` 列表均为 200/0，未写验收垃圾数据。
 - 下一门：AIP-3B 必须在执行前重验审批人/执行人职责、权限撤回、expiry、预算/频控/kill switch；超时只允许进入 unknown，禁止盲重试。
+
+## 11. AIP-3B 实施结果（2026-08-11）
+
+- 代码基线：`aos-platform/m1@a7f3aa2`；唯一迁移 head 与开发库均为 `aip3b_002`。
+- 已发布 canonical lease、execute、reconcile、compensation API；职责分离、当前 Action revision/hash、Approval 时限、Proposal expiry、字段权限、R4、预算/频控与四级 kill switch 在获取 Lease 前统一重验。
+- 每个 Proposal 只产生 attempt=1 Lease；未注册 Adapter 在消费 Lease 前失败关闭。Adapter 超时/连接中断只追加 immutable `unknown` Receipt，禁止盲重试；只读 reconcile 通过追加 Receipt 收敛。
+- Receipt 以数据库触发器阻断 UPDATE/DELETE/TRUNCATE；initial 与 reconcile 使用局部唯一索引和 `supersedes_receipt_id` 形成可审计追加链。
+- compensation 只创建绑定原 Receipt evidence 的新 Proposal，不把数据库回滚冒充外部补偿。
+- 旧 Draft approve、`autoApprove=true` 和携带 `draftId` 的旧执行入口统一返回 `AIP_LEGACY_WRITE_PATH_DISABLED`；仅保留无外部副作用的 Draft-only 兼容创建。
+- 验证：AIP 与相关契约/旧入口回归共 76 passed + 2 subtests；OpenAPI 确定性检查、Python compileall、diff check 通过；真实服务只读烟测 `org-org/dev-project=0`、`dev-org/dev-project=0`，未产生验收垃圾数据。
+- 下一门：AIP-3C 只负责 canonical SDK、Draft Inbox/Logic Run 的真实状态投影与浏览器证据，不在前端复制策略引擎或本地伪造状态迁移。
