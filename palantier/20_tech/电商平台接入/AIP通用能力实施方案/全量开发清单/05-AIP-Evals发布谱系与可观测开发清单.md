@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v2.1 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2 IMPLEMENTED_GREEN / E3A APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**v2.2 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A IMPLEMENTED_GREEN / E3B APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -35,8 +35,8 @@
 | E1B | 05-04 runner + 不可变 report | `IMPLEMENTED_GREEN` | `7e255ed`；28 passed；exact ref/content drift 全部失败关闭 |
 | E1C | 旧 Logic Eval compatibility 收口 | `IMPLEMENTED_GREEN` | `f359534`；17 passed / 1 skipped；运行角色最小授权，未知租户 403 fail-closed |
 | E2 | 05-05 | `IMPLEMENTED_GREEN` | `fb525cc`；gate 服务端推导、发布/撤销追加事件、撤销后阻断同 exact target 新 Run |
-| E3A | 05-06 | `APPROVED_TO_IMPLEMENT` | 权威源事件引用与真实 Lineage 投影；无固定六段 |
-| E3B | 05-07、05-08 的 span/usage 基础 | `PENDING` | 持久化 span；unknown quantity 为空；重复收据不重计 |
+| E3A | 05-06 | `IMPLEMENTED_GREEN` | `16aed87`；权威源事件引用与真实 Lineage 投影；无固定六段 |
+| E3B | 05-07、05-08 的 span/usage 基础 | `APPROVED_TO_IMPLEMENT` | 持久化 span；unknown quantity 为空；重复收据不重计 |
 | E3C | 05-08 成本归因与 Capability Receipt | `PENDING` | measured/estimated/unknown 分离；调整可复算 |
 | E3D | 05-10 与 E3 总回归 | `PENDING` | 外部 provider/artifact/delivery/reconcile 失败关闭 |
 | E4 | 05-11 | `PENDING` | 三页面唯一 SDK、无固定 trace/Mock/合成趋势 |
@@ -101,13 +101,24 @@ E2 实施结论：代码 `fb525cc`；新增 3 个 canonical API，不产生 AIP 
 
 E3A 编码清单已冻结：
 
-- [ ] additive migration 为 `aip_lineage_event` 增加权威 `source_kind/source_id/source_hash`，建立租户内同源唯一约束并保持 append-only、RLS/FORCE RLS。
-- [ ] 建立唯一 `aip_lineage_service.py`，仅从真实 TaskRun/Action/Eval/Publication 表读取和投影；事件 id/sequence/hash 确定性且可重放。
-- [ ] 投影只落 exact 引用、类型、时间和哈希，不复制业务 payload、模型 prompt、对象字段或 PII。
-- [ ] canonical 查询返回持久化真实事件；空谱系诚实返回空，不使用 `aip_lineage_engine.py` 固定六段回退。
-- [ ] 对账投影写入口只授予受信运行角色；请求只选择 root，不允许提交 event_type、quality、payload_hash 或手工 source。
-- [ ] 覆盖同源重放、同源 hash 冲突、源事实不存在、跨租户、Action unknown/reconcile、Publication revoke、Eval failed 与 append-only 负向测试。
-- [ ] 迁移回演、OpenAPI/路由唯一性、真实租户/canary 只读零写入与 E0A-E2 回归通过后再进入 E3B。
+- [x] additive migration 为 `aip_lineage_event` 增加权威 `source_kind/source_id/source_hash`，建立租户内同源唯一约束并保持 append-only、RLS/FORCE RLS。
+- [x] 建立唯一 `aip_lineage_service.py`，仅从真实 TaskRun/Action/Eval/Publication 表读取和投影；事件 id/sequence/hash 确定性且可重放。
+- [x] 投影只落 exact 引用、类型、时间和哈希，不复制业务 payload、模型 prompt、对象字段或 PII。
+- [x] canonical 查询返回持久化真实事件；空谱系诚实返回空，不使用 `aip_lineage_engine.py` 固定六段回退。
+- [x] 对账投影写入口只授予受信运行角色；请求只选择 root，不允许提交 event_type、quality、payload_hash 或手工 source。
+- [x] 覆盖同源重放、同源 hash 冲突、源事实不存在、跨租户、Action unknown/reconcile、Publication revoke、Eval failed 与 append-only 负向测试。
+- [x] disposable PostgreSQL 从全量基线迁移到 `aip4_004`，downgrade SQL 静态复核、OpenAPI/路由唯一性、真实租户/canary 只读零写入与 E0A-E2 回归通过，进入 E3B。
+
+E3A 实施结论：代码 `16aed87`；累计 107 tests collected 并以退出码 0 完成，ruff、compileall、OpenAPI exporter 和路由固定契约通过。OpenAPI 为 2337 paths、1570 schemas、4102 route rows、4092 unique operation pairs；开发库单 head `aip4_004`。真实租户和 canary 的 canonical lineage 新记录均为 0，本波只增加权威投影能力，未生成假谱系。
+
+E3B 下一波清单：
+
+- [ ] additive migration 建立 tenant-scoped persistent span authority，区分 producer 时间、ingest 时间和 observed 时间，并保留乱序/迟到事实。
+- [ ] 调整 `UsageReceipt`：`quality=unknown` 时 quantity 必须为空；measured/estimated 必须有非负 quantity，成本仍要求 currency。
+- [ ] provider receipt 以 scope + provider + provider_receipt_id 唯一；同载荷重放幂等，异载荷冲突，不把重复回调重复计费。
+- [ ] `AdjustmentEvent` 仅追加、引用原 Receipt；原收据不得 UPDATE/DELETE，聚合按 Adjustment 复算。
+- [ ] span/usage canonical 写入口只授予受信运行角色，并绑定既有 lineage/root；不接收页面手工 GREEN、估算趋势或 PII attribute。
+- [ ] 覆盖乱序、迟到、时钟偏差、unknown、重复 provider receipt、adjustment 重放/冲突、跨租户与 append-only 负向门。
 
 ## 2. 退出门
 

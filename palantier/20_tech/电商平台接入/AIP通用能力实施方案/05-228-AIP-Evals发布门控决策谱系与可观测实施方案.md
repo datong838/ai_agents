@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v1.9 · E0A/E0B/E1A/E1B/E1C/E2 IMPLEMENTED_GREEN / E3A APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v2.0 · E0A/E0B/E1A/E1B/E1C/E2/E3A IMPLEMENTED_GREEN / E3B APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -197,6 +197,8 @@ services/aos-api/tests/aip/test_aip_lineage_authority_api.py
 E3A 先覆盖已经存在且可复验的源事实：`aip_task_run/aip_step_run/aip_checkpoint/aip_artifact/aip_evidence`、`aip_action_event/aip_action_receipt`、`aip_eval_run_event/aip_eval_report_revision`、`aip_publication_event`。事件标识由 scope + source kind + source id + source hash 确定性生成；投影只保存引用、结构化事件类型和哈希，不复制输入、Action payload、模型提示词、业务对象字段或 PII。历史 `decision_lineage` 仅通过 `legacy_decision_lineage` root 兼容读取，不倒灌为新运行真值。
 
 E3A API 只允许读取谱系和由受信运行角色触发“按 root 对账投影”；普通页面不能 POST 任意事件。若源事实不存在、跨租户、hash 漂移或 root/source 不匹配必须失败关闭。投影事务失败不得伪装运行已具备完整谱系；页面在 E4 前仍不得使用旧固定六段作为回退。
+
+E3A 已以 `aos-platform/m1@16aed87` 实施：`aip4_004` 为 `aip_lineage_event` 增加完整 source tuple、租户内同源唯一索引和 root timeline 索引，并保留原有 RLS/FORCE RLS 与 append-only 触发器。唯一 `AipLineageService` 只从 PostgreSQL TaskRun/Step/Checkpoint/Artifact/Evidence、ActionEvent/Receipt、EvalRun/Event/Report 和 PublicationEvent 生成确定性事件；普通 API 只能查询，受信运行角色只能选择 root 触发对账，不能提交手工事件或 GREEN。累计 107 项测试退出码 0，静态检查、编译、路由/OpenAPI 固定契约通过；OpenAPI 更新为 2337 paths、1570 schemas、4102 route rows、4092 unique operation pairs。开发库已线性升级到单 head `aip4_004`，`org-org/dev-project` 与 canary 的新谱系记录均为 0，未伪造验收事实。下一门为 E3B 持久化 spans、provider UsageReceipt/Adjustment 与 unknown 数量语义。
 
 ## 7. 发布、撤回与数据治理
 
