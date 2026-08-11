@@ -1,0 +1,61 @@
+{
+  "wave": "AIP-4-E0B",
+  "status": "IMPLEMENTED_GREEN",
+  "recorded_at": "2026-08-11T20:26:52+08:00",
+  "scope": {
+    "real": "org-org/dev-project",
+    "negative_canary": "dev-org/dev-project"
+  },
+  "commits": {
+    "e0b1_store": "4f9f471",
+    "e0b2_read_api": "09967045f7f942ce147b2150a0b450c89fd29265"
+  },
+  "verification": {
+    "frozen_scope": {
+      "passed": 55,
+      "subtests_passed": 2
+    },
+    "openapi": {
+      "paths": 2332,
+      "schemas": 1562,
+      "route_rows": 4097,
+      "unique_operation_pairs": 4087,
+      "sha256": "812cbffa7d30b4cce82f2316b33bf048ecf46a43e94ac34804bb77f2654d68a9"
+    },
+    "domain_manifest": {
+      "routers": 514,
+      "runtime_routes": 4101,
+      "sha256": "ac5664acacbb929e1e187adad35b210208116d94648cfd6d34583357fcc3cd03"
+    },
+    "readonly_http_smoke": {
+      "org-org/dev-project": {
+        "missing_run": 404,
+        "missing_lineage": 200,
+        "lineage_body": []
+      },
+      "dev-org/dev-project": {
+        "missing_run": 404,
+        "missing_lineage": 200,
+        "lineage_body": []
+      }
+    },
+    "aip4_business_writes": 0
+  },
+  "known_red": {
+    "suite": "services/aos-api/tests/test_evals_engine.py",
+    "result": {
+      "failed": 7,
+      "passed": 65,
+      "skipped": 1,
+      "subtests_passed": 2
+    },
+    "cause": "legacy isolated-schema fixture does not set tenant GUC under current FORCE RLS",
+    "owner_wave": "AIP-4-E1",
+    "not_counted_as_e0b2_regression": true
+  },
+  "claims": [
+    "E0B authority persistence and minimal read API are implemented and frozen",
+    "no manual Gate Publication or Usage write API was exposed",
+    "no real-tenant business Eval GREEN is claimed"
+  ]
+}
