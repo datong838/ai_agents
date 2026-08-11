@@ -166,6 +166,7 @@
 - AIP-4 E2 ReleaseGate 与追加式发布撤销对账：[`43-2026-08-11-AIP-4-E2-ReleaseGate与追加式发布撤销对账.md`](43-2026-08-11-AIP-4-E2-ReleaseGate与追加式发布撤销对账.md)
 - AIP-4 E3A 权威谱系投影对账：[`44-2026-08-11-AIP-4-E3A权威谱系投影对账.md`](44-2026-08-11-AIP-4-E3A权威谱系投影对账.md)
 - AIP-4 E3B 持久化观测与真实用量对账：[`45-2026-08-12-AIP-4-E3B持久化观测与真实用量对账.md`](45-2026-08-12-AIP-4-E3B持久化观测与真实用量对账.md)
+- AIP-4 E3C 成本归因与 Capability Receipt 对账：[`46-2026-08-12-AIP-4-E3C成本归因与CapabilityReceipt对账.md`](46-2026-08-12-AIP-4-E3C成本归因与CapabilityReceipt对账.md)
 
 ## 更新规则
 

@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v2.1 · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B IMPLEMENTED_GREEN / E3C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v2.2 · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C IMPLEMENTED_GREEN / E3D APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -203,6 +203,10 @@ E3A 已以 `aos-platform/m1@16aed87` 实施：`aip4_004` 为 `aip_lineage_event`
 E3B 已以 `aos-platform/m1@ea1f1c5` 实施：`aip4_005` 新增 tenant-scoped `aip_telemetry_span`，区分 producer/observed/ingested 时间并保留原始时钟偏差；`UsageReceipt` 将 unknown 数量纠正为 `NULL`，measured/estimated 强制非负数值。span 与 usage 均以 scope + provider + provider receipt 唯一，同载荷重放幂等、异载荷冲突；Adjustment 继续只追加且不覆盖原收据。canonical API 只允许受信运行角色写入并要求既有 lineage，PII attribute 只接受哈希。39 项 E3B 定向测试、95 项 `tests/aip` 累计回归、ruff、compileall、OpenAPI 双进程确定性检查和路由固定契约均退出码 0；OpenAPI 为 2343 paths、1579 schemas、4108 route rows、4098 unique operation pairs。开发库单 head 为 `aip4_005`；`org-org/dev-project` 与 canary 的 span/usage/adjustment 均为 0。
 
 E3C 编码边界冻结为：新增 `aip4_006_cost_attribution_capability_receipt.py`、`aip_cost_attribution_service.py`、`routers/aip_cost_attribution.py` 及对应迁移/service/API 测试，并兼容扩展 `aip_eval_contracts.py`、`aip_eval_authority_store.py`、`aip_telemetry_usage_service.py`。本波建立 append-only UsageAttribution 与 CapabilityReceipt，不改写 E3B 原始 span/usage；成本聚合必须按 currency 和 measured/estimated/unknown 分桶，Adjustment 继承原 Receipt 质量并参与复算，复算后不得为负。CapabilityReceipt 只能引用同租户 TaskRun 已批准 PlanStep 中 exact revision 的 `capabilityRef`，且必须与 lineage root 一致；AIP-6/AIP-7 尚无权威 registry 的 model/tool/agent 引用不得冒充 measured 归因，只能 unknown/estimated 或明确失败关闭。硬预算读模型仅在 measured、币种单一、无 unknown/estimated 缺口时标记 eligible；缺收据、缺价格或缺权威归因一律 unknown，不把 0 当真值。
+
+E3C 已以 `aos-platform/m1@f7179ce` 实施：`aip4_006` 新增 tenant-scoped、RLS/FORCE RLS、append-only 的 `aip_usage_attribution` 与 `aip_capability_receipt`；UsageAttribution 引用原 UsageReceipt 与同一 lineage，并限制同一收据/维度权重总和不超过 1。CapabilityReceipt 只接受同租户已批准 PlanStep 的 exact capability revision，provider receipt 同载荷重放幂等、异载荷冲突。成本按币种与 measured/estimated/unknown 分桶，Adjustment 在锁定原 Receipt 后追加，禁止把有效用量调成负数；只有无估算、无未知缺口的 measured 单币种汇总才可进入硬预算。AIP-6/AIP-7 权威 registry 未落地前，model/tool/agent measured 归因明确失败关闭。20 项 E3C/路由定向测试、105 项 `tests/aip` 累计回归、ruff、compileall、OpenAPI 确定性与固定路由契约均完成；OpenAPI 为 2347 paths、1586 schemas、4112 route rows、4102 unique operation pairs。开发库已线性升级至单 head `aip4_006`；`org-org/dev-project` 与 canary 的两张新增表均为 0，未写入虚假验收事实。
+
+E3D 编码前门禁冻结为：只收口外部 ResearchJob provider/artifact/delivery/reconcile 契约和 E3 总回归，不把内存 Job 状态或回调到达等同于成功。Provider 必须来自租户范围、版本化且已启用的权威注册；提交请求绑定 exact provider/capability/plan/lineage，外部 job id 只由受信 Adapter 回写。回调必须验签、nonce 防重放、事件序列单调；Artifact 必须保存 immutable URI/hash/media type/producer receipt，交付前复验 hash 与 capability revision。timeout/网络断开进入 unknown/reconcile，不自动重试外部副作用；只有 reconcile receipt 可推进最终状态。实现前先复核现有 `aip_research_job.py`、TAOR ResearchJob 兼容链和已评审 v1.2 方案，优先兼容扩展，禁止再建第二套 Job 真源。
 
 ## 7. 发布、撤回与数据治理
 

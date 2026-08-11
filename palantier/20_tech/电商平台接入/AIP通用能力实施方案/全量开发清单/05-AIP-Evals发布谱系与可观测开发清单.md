@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v2.3 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B IMPLEMENTED_GREEN / E3C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**v2.4 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C IMPLEMENTED_GREEN / E3D APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -37,8 +37,8 @@
 | E2 | 05-05 | `IMPLEMENTED_GREEN` | `fb525cc`；gate 服务端推导、发布/撤销追加事件、撤销后阻断同 exact target 新 Run |
 | E3A | 05-06 | `IMPLEMENTED_GREEN` | `16aed87`；权威源事件引用与真实 Lineage 投影；无固定六段 |
 | E3B | 05-07、05-08 的 span/usage 基础 | `IMPLEMENTED_GREEN` | `ea1f1c5`；持久化 span；unknown quantity 为空；provider receipt 重放不重计 |
-| E3C | 05-08 成本归因与 Capability Receipt | `APPROVED_TO_IMPLEMENT` | measured/estimated/unknown 分离；调整可复算；exact capability binding |
-| E3D | 05-10 与 E3 总回归 | `PENDING` | 外部 provider/artifact/delivery/reconcile 失败关闭 |
+| E3C | 05-08 成本归因与 Capability Receipt | `IMPLEMENTED_GREEN` | `f7179ce`；分质量/币种归因、Adjustment 复算、exact capability receipt |
+| E3D | 05-10 与 E3 总回归 | `APPROVED_TO_IMPLEMENT` | 外部 provider/artifact/delivery/reconcile 失败关闭 |
 | E4 | 05-11 | `PENDING` | 三页面唯一 SDK、无固定 trace/Mock/合成趋势 |
 | E5 | 05-12～05-15 | `PENDING` | 37 Logic、场景和专项门在其真实资产存在后逐项封板 |
 
@@ -122,15 +122,27 @@ E3B 实施清单：
 
 E3B 实施结论：代码 `ea1f1c5`；39 项定向测试与 95 项 `tests/aip` 累计回归退出码 0，ruff、compileall、OpenAPI/路由固定契约通过。OpenAPI 为 2343 paths、1579 schemas、4108 route rows、4098 unique operation pairs；开发库单 head `aip4_005`，真实租户和 canary 的 span/usage/adjustment 均为 0。
 
-E3C 下一波清单：
+E3C 实施清单：
 
-- [ ] additive migration 新增 append-only `aip_usage_attribution` 与 `aip_capability_receipt`，保持 RLS/FORCE RLS、truncate guard 和租户复合键。
-- [ ] UsageAttribution 引用原 Receipt 与同一 lineage；按 model/tool/capability/task/agent 维度保存 exact subject ref、quality、weight/source hash，不复制业务 payload。
-- [ ] CapabilityReceipt 绑定同租户 TaskRun、PlanRevision、PlanStep 和 exact `capabilityRef.revision`；lineage root/run 不一致、未批准计划或 binding 漂移必须失败关闭。
-- [ ] 成本汇总按 currency 与 measured/estimated/unknown 分桶；Adjustment 继承原 Receipt quality 并复算，结果不得为负，原 Receipt 不修改。
-- [ ] 只有 measured cost + measured attribution + 单一币种 + 无未知缺口可形成 hard-budget eligible 读模型；其余明确 unknown/estimated。
-- [ ] AIP-6/AIP-7 权威 registry 未落地的 model/tool/agent measured attribution 失败关闭，不以 legacy 内存目录补真值。
-- [ ] canonical 写入口仅授予受信运行角色，覆盖跨租户、幂等/冲突、未知价格/收据、调整并发、负数复算与 append-only 负向门。
+- [x] additive migration 新增 append-only `aip_usage_attribution` 与 `aip_capability_receipt`，保持 RLS/FORCE RLS、truncate guard 和租户复合键。
+- [x] UsageAttribution 引用原 Receipt 与同一 lineage；按 model/tool/capability/task/agent 维度保存 exact subject ref、quality、weight/source hash，不复制业务 payload。
+- [x] CapabilityReceipt 绑定同租户 TaskRun、PlanRevision、PlanStep 和 exact `capabilityRef.revision`；lineage root/run 不一致、未批准计划或 binding 漂移必须失败关闭。
+- [x] 成本汇总按 currency 与 measured/estimated/unknown 分桶；Adjustment 继承原 Receipt quality 并复算，结果不得为负，原 Receipt 不修改。
+- [x] 只有 measured cost + measured attribution + 单一币种 + 无未知缺口可形成 hard-budget eligible 读模型；其余明确 unknown/estimated。
+- [x] AIP-6/AIP-7 权威 registry 未落地的 model/tool/agent measured attribution 失败关闭，不以 legacy 内存目录补真值。
+- [x] canonical 写入口仅授予受信运行角色，覆盖跨租户、幂等/冲突、未知收据、权重超配、负数复算与 append-only 负向门。
+
+E3C 实施结论：代码 `f7179ce`；20 项 E3C/路由定向测试与 105 项 `tests/aip` 累计回归完成，ruff、compileall、OpenAPI exporter 和固定路由契约通过。OpenAPI 为 2347 paths、1586 schemas、4112 route rows、4102 unique operation pairs；开发库单 head `aip4_006`，真实租户与 canary 的 attribution/capability receipt 均为 0。
+
+E3D 下一波清单：
+
+- [ ] 复核已评审 ResearchJob v1.2、`aip_research_job.py` 与 TAOR 现有 Job 事件链，裁决唯一兼容真源，禁止平行内存实现。
+- [ ] 建租户范围、版本化 Provider authority；disabled/unregistered/revision drift 均在提交前失败关闭。
+- [ ] ResearchJob 提交绑定 exact provider、capability、PlanStep、TaskRun 与 lineage；外部 job id 只由受信 Adapter Receipt 回写。
+- [ ] callback 验签、nonce 防重放、provider event id 幂等且 sequence 单调；gap/乱序保留并进入 reconcile，不伪装完成。
+- [ ] Artifact/Delivery Receipt 保存 immutable URI/hash/media type/exact capability；交付前复验内容 hash 与当前绑定。
+- [ ] timeout/断网/外部未知状态进入 unknown；禁止盲重试副作用，只有 Reconcile Receipt 可推进最终状态。
+- [ ] 完成 E3A～E3D 累计回归、双租户负向、OpenAPI/路由唯一性、迁移单 head 与真实租户零伪造证据。
 
 ## 2. 退出门
 
