@@ -230,6 +230,41 @@ E3D 最终方案一致性复审发现：`aip4_007` 已绑定 TaskRun、PlanRevis
 
 E3D 实施结论：核心事实层、Canonical API 与 exact lineage 补强分别提交 `849f40d`、`e7542db`、`a88cad1`。JobManifest 以 `(org_id, project_id, lineage_id, sequence, event_id)` 五列外键绑定唯一谱系事件；缺失、旧 sequence、跨 Run/跨 scope 均失败关闭。13 项补强定向门、118 项 `tests/aip` 累计回归、Ruff、compile、OpenAPI 确定性导出全部通过。开发库单 head/current 均为 `aip4_008`；`org-org/dev-project` 与 canary 的七张 ResearchJob 权威表均为 0，RLS/FORCE RLS/双 append-only guard 全部有效。E3D 可封板为 `IMPLEMENTED_GREEN`，下一门为 E4 三页面真实 SDK 消费。
 
+### 6.7 E4 页面真实化实施裁决（2026-08-12）
+
+E4 代码复核确认，服务端权威读模型已具备，但三个消费面仍未统一：
+
+- 决策谱系页仍调用历史 `/v1/aip/lineage/{id}`，并在空响应时展示固定六段 `defaultSteps`、固定 Trace ID 与固定标题；这不构成 E3A 权威谱系证据。
+- 可观测页仍调用 `/v1/aip/observability/summary|traces`；该旧实现包含 `request_count × 230` Token、合成趋势和采样路由 Trace，页面还初始化 `MOCK_WIDGETS`，不得继续标为确定性真实数据。
+- Evals 门控页已有真实 Suite/Run/Report/Gate 兼容链，Logic Publication Panel 也已有严格 revision/hash 重读，但二者仍各自直接调用 API；E4 必须统一到一个强类型 SDK，且不得新增页面手工 GREEN 或 Publication 写真源。
+
+“三页面”在本轮固定为导航中的 `Evals 门控`、`决策谱系`、`可观测性`。Publication 的写动作仍留在现有 Logic Canvas/Publication Panel；Evals 门控页承担发布前 Gate/Report 证据面，不再新建第二个 Publication 页面或第二套发布状态机。
+
+E4 分为三个独立安全提交：
+
+| 子步 | 范围 | 退出门 |
+|---|---|---|
+| E4A | 新建唯一 `aipEvidence` SDK；决策谱系页切换 `/v1/aip/lineage-authority/roots/{root_type}/{root_id}` | 无固定 Trace/六段回退；真实 idle/loading/empty/error/partial；跨租户由现有认证 scope 失败关闭 |
+| E4B | 可观测页切换 `/v1/aip/telemetry-authority/lineages/{lineage_id}/spans|usage-receipts` | Overview 只聚合权威事实；measured/estimated/unknown 分桶；无合成趋势、伪 Token、生产 Mock Widget |
+| E4C | Evals 门控读链与 Logic Publication 严格读链统一经 SDK；三页回归和内置浏览器验收 | 页面不可手工 GREEN；revision/hash/readback 不弱化；真实租户诚实空态，canary 不作正向证据 |
+
+E4 计划修改文件：
+
+```text
+apps/web/src/api/aipEvidence/contracts.ts
+apps/web/src/api/aipEvidence/client.ts
+apps/web/src/api/aipEvidence/index.ts
+apps/web/src/api/aipEvidence/client.test.ts
+apps/web/src/pages/s2/aip.tsx
+apps/web/src/pages/s2/ObservabilityPage.tsx
+apps/web/src/pages/s2/EvalsPage.test.tsx
+apps/web/src/pages/s2/ObservabilityPage.test.ts
+apps/web/src/pages/W3BPageInteraction.test.tsx
+apps/web/src/interactionHonestyManifest.ts
+```
+
+若 E4C 复核发现现有服务端缺少只读 Gate/Publication 查询，只允许对 `aip_release_publication_service.py` 和 `routers/aip_release_publications.py` 做 additive GET 扩展并补 OpenAPI/隔离测试；不得为了页面展示写入真实业务记录。页面验收只使用 `org-org/dev-project`，`dev-org/dev-project` 只做负向 canary。
+
 ## 7. 发布、撤回与数据治理
 
 - EvalCase、Judge、数据集、报告和 Publication 都是带 version/hash 的独立资产；重新运行不得覆盖旧报告。

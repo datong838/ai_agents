@@ -160,6 +160,17 @@ E3D 最终复审补强：
 
 E3D 实施结论：代码 `849f40d`、`e7542db`、`a88cad1`；13 项 migration/store/API 补强门与 118 项 AIP 累计回归通过。OpenAPI 确定性导出、Ruff、compile 通过；开发库单 head/current=`aip4_008`。真实租户和 canary 七表均为 0；各表 RLS/FORCE RLS/双 guard 有效。下一门 E4 只做三页面对唯一 SDK 与真实权威读模型的消费，不在前端构造固定 trace、Mock 或趋势。
 
+E4 编码清单已冻结：
+
+- [ ] E4A：建立唯一 `apps/web/src/api/aipEvidence/` SDK，强类型解析 LineageEvent、TelemetrySpan、UsageReceipt 与 Eval/Publication 证据；禁止组件自行拼接 canonical path。
+- [ ] E4A：决策谱系页以 root type + root id 查询权威事件；删除固定 Trace ID、固定标题与 `defaultSteps`；空、错、partial 和 unknown 诚实展示。
+- [ ] E4B：可观测页改为按 lineage ID 查询真实 spans/usage；Overview 只由返回事实聚合，quantity 缺失显示 unknown，不把 estimated 合并成 measured。
+- [ ] E4B：删除生产路径 `MOCK_KPIS/MOCK_TREND/MOCK_TRACES/MOCK_SPANS/MOCK_METRICS/MOCK_WIDGETS`、`request_count × 230` 展示和合成趋势；未实现 Dashboard 显式不可用，不伪装演示目录为真实能力。
+- [ ] E4C：Evals 门控与现有 Logic Publication 严格 revision/hash/readback 通过同一 SDK 消费；不新增手工 GREEN，不重写正常 Publication 写链。
+- [ ] E4C：更新交互诚实清单、定向测试、TypeScript、前端全量测试和构建；在内置浏览器以 `org-org/dev-project` 验收三页，并以 canary 做隔离负向门。
+
+E4 三页面裁决：导航页为 Evals 门控、决策谱系、可观测性；Publication 写动作继续由 Logic Canvas/Publication Panel 承担，Evals 页承载发布前 Gate/Report 证据，不创建平行发布页。
+
 ## 2. 退出门
 
 - [ ] 任一 Agent/Skill/Logic/Model/Policy revision 变化，旧 ReleaseGate 自动失效。
