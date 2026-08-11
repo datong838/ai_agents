@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v1.2 · E0A IMPLEMENTED_GREEN / E0B 待实施（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v1.3 · E0A/E0B1 IMPLEMENTED_GREEN / E0B2 待实施（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -109,6 +109,10 @@ E0A 只做兼容扩展：不得删除/覆盖 1 个 Suite、2 个 Report、1 个 
 ### 6.3 E0B 实施边界
 
 E0B 分为 E0B1/E0B2：E0B1 先建立唯一 tenant-scoped store 与不可变语义；E0B2 再开放最小 API/OpenAPI，校正 Logic Publication 测试夹具的权限身份。不在 E0B 构造虚假 EvalRun、ReleaseGate 或 UsageReceipt。
+
+E0B1 已以 `aos-platform/m1@4f9f471` 实施：新增唯一 authority store，补齐 EvalRunAuthorityRecord/Event，对 Dataset/Run/Gate/Publication/Lineage/Usage/Adjustment/MetricDefinition 建立 scoped persistence。31 项定向回归通过，真实库仅双租户空读，业务写入为 0。
+
+E0B2 只开放三个只读入口：Dataset revision、EvalRun snapshot、Lineage events。不开放 Gate/Publication/Usage 手工写 API，不让页面越过 E1/E2 服务直写绿灯或用量事实。
 
 ## 7. 发布、撤回与数据治理
 

@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v1.3 · AIP-4 IMPLEMENTING · E0A IMPLEMENTED_GREEN / E0B 待实施（已获用户全量编码授权）**
+> 状态：**v1.4 · AIP-4 IMPLEMENTING · E0A/E0B1 IMPLEMENTED_GREEN / E0B2 待实施（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -29,8 +29,8 @@
 | 子波 | 工作包 | 当前状态 | 退出门 |
 |---|---|---|---|
 | E0A | 05-01、05-02 的公共契约与 additive migration | `IMPLEMENTED_GREEN` | `2c02d1f`；26 passed；单 head/守恒/FORCE RLS/append-only 通过 |
-| E0B1 | 05-02 tenant-scoped store + immutable semantics | `APPROVED_TO_IMPLEMENT` | 双租户、幂等、冲突、重启回读 |
-| E0B2 | 05-02 最小 API/OpenAPI + Publication 权限测试校正 | `PENDING` | OpenAPI/route/authz/负向 canary |
+| E0B1 | 05-02 tenant-scoped store + immutable semantics | `IMPLEMENTED_GREEN` | `4f9f471`；31 passed；双租户/幂等/冲突/重启回读通过 |
+| E0B2 | 05-02 最小只读 API/OpenAPI + Publication 权限测试校正 | `APPROVED_TO_IMPLEMENT` | OpenAPI/route/authz/负向 canary |
 | E1 | 05-03、05-04 | `PENDING` | 真实数据来源、judge/dataset 漂移使旧门失效 |
 | E2 | 05-05 | `PENDING` | gate 不可手工改绿、revoke 追加事件 |
 | E3 | 05-06～05-10 | `PENDING` | 真实事件/usage；unknown/乱序/重复可收敛 |
@@ -53,6 +53,16 @@ E0B1 计划文件边界：
 - 如需对契约做兼容修正，仅允许修改 `aip_eval_contracts.py` 及其定向测试。
 
 E0B1 只实现 Dataset revision、EvalRun/event、Gate decision、Publication/Lineage event、Usage/Adjustment 和 MetricDefinition 的 scoped persistence；不开放路由、不写 `org-org/dev-project` 验收数据。
+
+E0B2 计划文件边界：
+
+- 新增 `services/aos-api/aos_api/routers/aip_eval_authority.py`
+- 新增 `services/aos-api/tests/aip/test_aip_eval_authority_api.py`
+- 修改 `services/aos-api/aos_api/routers/domain_aggregates.py`
+- 修改 `services/aos-api/tests/test_aip_logic_publication_api.py`，仅校正测试 principal/scope，不放宽生产鉴权。
+- 如 route/OpenAPI inventory 为确定性快照，按实际新路由精确更新对应测试基线。
+
+E0B2 仅允许 GET Dataset revision、GET EvalRun snapshot、GET Lineage events；不开放手工写 Gate/Publication/Usage 事实的 API。
 
 ## 2. 退出门
 
