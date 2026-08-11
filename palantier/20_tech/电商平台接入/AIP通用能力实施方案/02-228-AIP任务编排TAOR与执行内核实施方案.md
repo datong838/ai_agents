@@ -1,6 +1,6 @@
 # 228-AIP 任务编排、TAOR 与执行内核实施方案
 
-> 状态：**IMPLEMENTING · v1.1 实时基线（已获用户全量编码授权）**
+> 状态：**IMPLEMENTED_GREEN · v1.2（AIP-1 / AIP-2 已封板）**
 > 对应阶段：AIP-1、AIP-2。
 >
 > 2026-08-11 补充：外部 ResearchJob 契约 v1.2 已评审通过，不改变当前编码门禁。
@@ -157,7 +157,8 @@ apps/web/src/pages/s2/LogicRunPanel.tsx
 - legacy 收口：`org-org/dev-project` 不可再进入旧 Mock 或内存 Automation 创建；仅 `dev-org + AIP_DEMO_MOCK_ENABLED=1` 保留明确标记为非权威的兼容演示。
 - 累计验证：59 tests + 2 subtests GREEN；OpenAPI、AIP contract 与 route inventory 已重新生成并通过双进程确定性检查。
 - AIP-1C `IMPLEMENTED_GREEN`：提交 `9bf5757`。唯一 SDK、服务端 Run discovery、权威 TaskRun 面板、七态控制、accepted/最终状态区分、刷新恢复和跨租户 canary 已完成。
-- AIP-1 阶段现已封板：AIP-1A/AIP-1B/AIP-1C 均 GREEN；下一阶段进入 AIP-2 Proposal/Draft/Approval/Action 安全执行闭环。
+- AIP-1 / AIP-2 已封板：AIP-1A/AIP-1B/AIP-1C 覆盖 Task/Plan/Run、Logic/TAOR、Observe、lease、Checkpoint、ResearchJob 与前端消费，均为 GREEN。
+- 历史“下一阶段进入 AIP-2 Proposal/Draft/Approval/Action”属于命名漂移；Proposal/Draft/Approval/Action 的权威阶段是 AIP-3，且现已由 04 方案完成封板。当前下一门为 AIP-4。
 
 ### 9.1 AIP-1C 前端消费闭环增补
 

@@ -1,6 +1,6 @@
 # 02 AIP Task、TAOR 与执行内核开发清单
 
-> 状态：**v1.2 · AIP-1 IMPLEMENTED_GREEN / AIP-2 PENDING（已获用户全量编码授权）**
+> 状态：**v1.3 · AIP-1 / AIP-2 IMPLEMENTED_GREEN（已封板）**
 > 上位依据：`../02-228-AIP任务编排TAOR与执行内核实施方案.md`
 > 对应阶段：AIP-1、AIP-2；前置：01、14、15 GREEN。
 
@@ -22,6 +22,8 @@
 | AIP-1A | `IMPLEMENTED_GREEN` | `0077055` | 单 head `aip1_001`；Task/Plan/Run PostgreSQL authority；30 tests + 2 subtests GREEN |
 | AIP-1B | `IMPLEMENTED_GREEN` | `1d7aeff`、`96df508`、`461c1a6` | canonical TAOR、四段证据、lease/heartbeat、checkpoint、控制幂等收据、C1 ResearchJob 契约及 legacy fail-closed；59 tests + 2 subtests GREEN |
 | AIP-1C | `IMPLEMENTED_GREEN` | `9bf5757` | 唯一 SDK、权威 TaskRun 面板、服务端刷新恢复、七态控制、浏览器与跨租户 EvidencePack GREEN |
+
+说明：AIP-2 Logic/TAOR 的工作已包含在 AIP-1B 的 02-05～02-10 中；旧标题中的 `AIP-2 PENDING` 是状态回写遗漏，不代表另有一套待实现 TAOR。
 
 ## 1. 后端与数据工作包
 
