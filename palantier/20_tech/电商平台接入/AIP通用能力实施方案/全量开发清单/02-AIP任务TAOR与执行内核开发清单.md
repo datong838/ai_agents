@@ -6,7 +6,7 @@
 
 ## 0. 本轮实施基线与子波
 
-- 基线 commit：`8a01222`；分支：仅 `m1`；远端与本地一致。
+- 当前基线 commit：`461c1a6`；分支：仅 `m1`；远端与本地一致。
 - 迁移 head：`o1ux2_001`；正向范围：仅 `org-org/dev-project`；`dev-org` 仅负向 canary。
 - 既有无关未跟踪文件不纳入提交：`scripts/browser-pilot-verification/` 与三份历史 D5 evidence JSON。
 - AIP-1A：02-01～02-04、02-11 的 Task/Plan/Run 基础 API；先完成迁移、FORCE RLS、scoped store、CAS/幂等、状态转换和路由替换。
@@ -20,7 +20,7 @@
 | 子波 | 状态 | 代码提交 | 当前证据 |
 |---|---|---|---|
 | AIP-1A | `IMPLEMENTED_GREEN` | `0077055` | 单 head `aip1_001`；Task/Plan/Run PostgreSQL authority；30 tests + 2 subtests GREEN |
-| AIP-1B | `IN_PROGRESS` | — | TAOR/Observe/lease/checkpoint/recovery 待实施 |
+| AIP-1B | `IMPLEMENTED_GREEN` | `1d7aeff`、`96df508`、`461c1a6` | canonical TAOR、四段证据、lease/heartbeat、checkpoint、控制幂等收据、C1 ResearchJob 契约及 legacy fail-closed；59 tests + 2 subtests GREEN |
 | AIP-1C | `PENDING` | — | SDK/页面/浏览器/EvidencePack 待实施 |
 
 ## 1. 后端与数据工作包
@@ -40,6 +40,15 @@
 | 02-11 | 发布 `/v1/aip/tasks`、runs、timeline API | `routers/aip_tasks.py` | 统一错误/分页/receipt |
 | 02-12 | 迁移 legacy 内存 Task/TAOR | compatibility/backfill | demo 可丢、配置可导出、伪业务不迁移 |
 
+### AIP-1B 实施回写（2026-08-11）
+
+- 02-05～02-06：`CanonicalTaorRunner` 只接受已批准的精确 PlanRevision；存在 capabilityRef 时必须绑定 revision。每个成功步骤均持久化 Think/Act/Verify/Observe 四段 Evidence，Observe 产物进入 `aip_artifact`，完成后生成 schema v1 Checkpoint。
+- 02-07、02-12：真实组织 `org-org/dev-project` 的旧 `/v1/aip/logic/execute` 与内存 Automation 创建均失败关闭；Mock 仅在 `AIP_DEMO_MOCK_ENABLED=1 + dev-org` 时返回 `source=demo/nonAuthoritative=true`。旧 `get_controller()` 不再返回内存 TAOR 执行器。
+- 02-08～02-09：StepRun 通过有期限 lease/heartbeat 领取；双 worker 只有一个成功。Act 前崩溃可安全重领，Act 后租约过期则 StepRun/TaskRun=`unknown`、Task=`paused`，等待 reconcile，禁止重复外部动作。start/pause/resume/cancel/rollback 使用 CAS，并在同 Run 的不可变 Evidence 内保存事务级幂等收据。
+- 02-10：新增 C1 ResearchJob 公共 Adapter/Manifest/Event/Observation 契约；事件要求 execution id 一致、payload hash 正确、sequence 连续、event id 去重和终态单调。Callback 校验 timestamp、nonce、body hash、HMAC 和 replay window，回调只触发主动回读。
+- 02-11：新增 5 个 Run 控制 API；OpenAPI 路由为 4083 rows / 4073 unique pairs / 2319 paths，AIP 路由无重复 owner。
+- 验证：`tests/aip`、Task、legacy Logic、OpenAPI 与 router manifest 累计 `59 passed + 2 subtests`；真实正向测试范围为 `org-org/dev-project`，`dev-org` 只验证显式 demo/负向边界。
+
 ## 2. 前端工作包
 
 - 02-F1：`apps/web/src/api/aipTasks/*` 生成/封装唯一 SDK，未知状态失败关闭。
@@ -57,7 +66,7 @@
 
 ## 4. 退出门
 
-- [ ] 重启后全部 canonical 资源可回读；真实范围默认 Mock 不可达。
-- [ ] 同幂等键不产生双 Task/Run；双 worker 不重复执行。
-- [ ] 每个成功步骤都有四段证据，失败/unknown 不伪装成功。
+- [x] 重启后 AIP-1B canonical 资源可回读；真实范围默认 Mock 不可达。
+- [x] 同幂等键不产生双 Task/Run/控制动作；双 worker 不重复执行。
+- [x] 每个成功步骤都有四段证据，失败/unknown 不伪装成功。
 - [ ] AIP-0 contract hash、OpenAPI、迁移、前端 SDK、浏览器和 EvidencePack 全部对账。

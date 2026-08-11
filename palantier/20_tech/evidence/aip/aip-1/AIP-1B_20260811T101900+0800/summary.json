@@ -1,0 +1,26 @@
+{
+  "wave": "AIP-1B",
+  "status": "IMPLEMENTED_GREEN",
+  "scope": {"orgId": "org-org", "projectId": "dev-project"},
+  "branch": "m1",
+  "commits": ["1d7aeff", "96df508", "461c1a6"],
+  "verification": {
+    "tests": 59,
+    "subtests": 2,
+    "result": "GREEN",
+    "routeRows": 4083,
+    "uniqueOperationPairs": 4073,
+    "openapiPaths": 2319
+  },
+  "capabilities": [
+    "canonical TAOR",
+    "Think/Act/Verify/Observe evidence",
+    "worker lease and heartbeat",
+    "checkpoint and artifact persistence",
+    "CAS and idempotent run control receipts",
+    "unknown/reconcile fail-closed recovery",
+    "C1 ResearchJob public contract",
+    "legacy real-scope mock fail-closed"
+  ],
+  "next": "AIP-1C SDK, Logic Run Panel, browser acceptance and EvidencePack"
+}

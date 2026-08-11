@@ -149,3 +149,11 @@ apps/web/src/pages/s2/LogicRunPanel.tsx
 7. 两个 worker 竞争同一步骤时只有一个 lease 生效；崩溃恢复不重复外部动作。
 8. 旧 `/api/aip/*`、phase3 与 `/v1/aip/*` 的保留/转发/下线路由表有唯一 owner 和删除门。
 9. 外部 Job 重复提交、断连、取消、超时与迟到回执均可收敛到唯一 TaskRun，且 provider 停用后历史 Artifact/Lineage 仍可解释。
+
+## 9. 实施状态回写（2026-08-11）
+
+- AIP-1A `IMPLEMENTED_GREEN`：提交 `0077055`，完成 PostgreSQL authority、FORCE RLS、Task/Plan/Run API、精确 hash 审批、CAS 与创建幂等。
+- AIP-1B `IMPLEMENTED_GREEN`：提交 `1d7aeff`、`96df508`、`461c1a6`，完成 canonical TAOR、四段 Evidence、Artifact、Checkpoint、lease/heartbeat、控制幂等收据、unknown/reconcile fail-closed 以及 C1 ResearchJob 公共契约。
+- legacy 收口：`org-org/dev-project` 不可再进入旧 Mock 或内存 Automation 创建；仅 `dev-org + AIP_DEMO_MOCK_ENABLED=1` 保留明确标记为非权威的兼容演示。
+- 累计验证：59 tests + 2 subtests GREEN；OpenAPI、AIP contract 与 route inventory 已重新生成并通过双进程确定性检查。
+- 尚未封板 AIP-1：AIP-1C SDK、Logic Run Panel、七态/unknown 交互、刷新恢复、浏览器验收与 EvidencePack 仍待完成。
