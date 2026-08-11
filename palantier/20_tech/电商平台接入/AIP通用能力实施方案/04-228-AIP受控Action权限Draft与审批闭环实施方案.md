@@ -1,6 +1,6 @@
 # 228-AIP 受控 Action、权限、Draft 与审批闭环实施方案
 
-> 状态：**评审通过 · v1.1 实施基线（用户已授权编码，AIP-3A 进行中）**
+> 状态：**评审通过 · v1.2 实施中（AIP-3A `IMPLEMENTED_GREEN`，AIP-3B 待实施）**
 > 对应阶段：AIP-3。
 
 ## 1. 目标
@@ -145,3 +145,14 @@ services/aos-api/tests/openapi/*
 ### AIP-3C：前端消费与浏览器封板
 
 新增唯一 `apps/web/src/api/aipActions/` SDK；修改 `DraftInboxPage.tsx` 和 Logic Run 入口。UI 必须分别展示“已批准”“已获执行租约”“已提交外部系统”“结果待对账”“已应用”，且服务不可用时不注入示例 Draft、不启用本地状态机。
+
+## 10. AIP-3A 实施结果（2026-08-11）
+
+- 代码基线：`aos-platform/m1@60344d5`；开发库与唯一迁移 head 均为 `aip3_001`。
+- 已建立 Proposal、Draft、ApprovalEvent、ExecutionLease、Receipt、Event 六张租户权威表；全部使用复合租户键、组合外键和 FORCE RLS，审批与事件事实 append-only。
+- Proposal hash 已绑定 TenantScope、发起人、ActionType 精确 revision、task/run/object/purpose/payload/diff/evidence/expiry；客户端风险提示只能抬高、不能降低服务端风险下限。
+- canonical API 为 create/list/get/decision/timeline；`decision` 用严格 decision DTO 统一承载 approve/reject，避免两个动作端点产生状态机分叉。Proposal 创建同步产生不可外发 Draft。
+- maker-checker 同时校验不同 actor 与审批角色；R3/R4 至少双人审批，R4 仍 `executionAllowed=false`，本子波未发布 lease/execute，也未调用 Adapter 或写业务对象。
+- 幂等键在事务级 advisory lock 下串行化；并发 Proposal 与并发 Approval 重放均只产生一份权威事实，不同 payload 重用幂等键返回冲突。
+- 验证：AIP/OpenAPI/router 定向集 54 passed + 2 subtests；OpenAPI 4089 route rows / 4079 unique pairs / 2324 paths，AIP 无重复 owner；真实开发服务中 `org-org/dev-project` 与 `dev-org/dev-project` 列表均为 200/0，未写验收垃圾数据。
+- 下一门：AIP-3B 必须在执行前重验审批人/执行人职责、权限撤回、expiry、预算/频控/kill switch；超时只允许进入 unknown，禁止盲重试。
