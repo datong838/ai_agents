@@ -226,6 +226,8 @@ services/aos-api/tests/aip/test_aip_research_job_api.py
 
 `aip4_007` 仅新增 append-only ProviderRevision、JobManifest、SubmissionReceipt、ProviderEventReceipt、CallbackNonce、ArtifactReceipt、Delivery/Reconcile Receipt。Job 当前观察由持久化事件推导；sequence gap 可保存并显示 `has_gap`，但不得推进 canonical 成功。Provider disable 通过追加更高 revision 的 disabled 记录实现，提交时 exact revision 必须同时是当前最高且 enabled。Callback 只记录验签后的 nonce/body hash 并触发主动回读，不接受 body 自报状态。ArtifactReceipt 必须与既有 `aip_artifact` 同事务绑定并复验 content hash；Delivery succeeded 需要无 gap 的 provider succeeded 观察、全部 Artifact hash 有效和 exact capability 未漂移。unknown 只能由追加 Reconcile Receipt 收敛，不覆盖历史。
 
+E3D 最终方案一致性复审发现：`aip4_007` 已绑定 TaskRun、PlanRevision、PlanStep 和 capability，但尚未把同一 TaskRun 根的 exact lineage event 固化到 JobManifest。该缺口不得带入封板。补强采用线性追加迁移 `aip4_008_research_job_lineage_binding.py`，不改写已推送/已执行的 `aip4_007`：为 JobManifest 增加 `lineage_id + lineage_sequence + lineage_event_id`，以 `(org_id, project_id, lineage_id, sequence)` 外键引用 `aip_lineage_event`。创建 Job 必须提交 `lineageRef(resourceType=aip.lineage, authority=aos.lineage, revision=sequence)`，且该事件必须是当前 lineage 最新序列、root_type=`task_run`、root_id=当前 run；跨 run、跨租户、旧序列或不存在事件全部失败关闭。`aip4_008` 若发现既有 ResearchJob 行则拒绝无证据回填；当前开发库七表均为 0，可安全线性升级。
+
 ## 7. 发布、撤回与数据治理
 
 - EvalCase、Judge、数据集、报告和 Publication 都是带 version/hash 的独立资产；重新运行不得覆盖旧报告。

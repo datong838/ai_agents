@@ -152,6 +152,12 @@ E3D 代码实况与文件边界：
 - 只追加 ProviderRevision、JobManifest、Submission、Event、CallbackNonce、Artifact、Delivery/Reconcile Receipt；当前状态由 Receipt 推导，不写第二套 Task 状态。
 - Provider exact revision 必须是租户内当前最高且 enabled；sequence gap 持久保留但不能完成；callback body 只作唤醒信号；Artifact hash/capability 漂移或 unknown 均阻断 delivery。
 
+E3D 最终复审补强：
+
+- [ ] 追加 `aip4_008_research_job_lineage_binding.py`，不改写已执行的 `aip4_007`；JobManifest 固化 exact `lineage_id/sequence/event_id`。
+- [ ] `lineageRef` 必须指向当前 TaskRun 根的最新 lineage event；跨 run、跨租户、旧 sequence 和无 lineage 均失败关闭。
+- [ ] `aip4_008` 对既有 ResearchJob 行拒绝猜测式回填；完成专项测试后重新执行累计回归、迁移与零伪造证据。
+
 ## 2. 退出门
 
 - [ ] 任一 Agent/Skill/Logic/Model/Policy revision 变化，旧 ReleaseGate 自动失效。
