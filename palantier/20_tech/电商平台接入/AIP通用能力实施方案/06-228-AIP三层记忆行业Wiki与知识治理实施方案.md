@@ -1,6 +1,6 @@
 # 228-AIP 三层运行记忆、行业 Wiki 与知识治理实施方案
 
-> 状态：**IMPLEMENTING · v1.3 · 已获用户全量编码授权 · E0～E3 IMPLEMENTED_GREEN · E4 APPROVED_TO_IMPLEMENT**
+> 状态：**IMPLEMENTING · v1.4 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · 按用户要求暂停于 E5 前**
 > 对应阶段：AIP-5。
 >
 > 2026-08-11 补充：外部研究 Harness 的知识入口 v1.2 已评审通过。2026-08-12 对账：总控全量编码授权已取代历史“不授权编码”门，但每个子波仍需方案、检查点、测试、浏览器与安全提交。
@@ -145,3 +145,11 @@ Canonical operations 冻结如下：
 错误映射冻结：not found=404、CAS/conflict=409、治理/状态/授权门=422、角色不足=403、authority/payload resolver unavailable=503；未知异常不回显内部 SQL。OpenAPI DTO 必须 camelCase 且 `extra=forbid`。
 
 前端唯一入口为 `apps/web/src/api/aipMemory/`，严禁页面散落 `apiGet/apiPost` 或继续调用 in-memory Wiki API 冒充治理。新增 `MemoryGovernancePage` 作为候选/正式 Memory/Knowledge Query 三视图；O1 `WikiPage` 保持原职责，并增加“治理权威”入口与 citation/blocked 解释。页面必须真实覆盖 idle/loading/empty/error/blocked/degraded/complete；没有权威数据时显示空态或阻断原因，禁止 MOCK、默认知识和示例命中。浏览器验收只使用 `org-org/dev-project`，`dev-org` 只作 API 负向 canary。
+
+### 6.3 E4 实施结论（2026-08-12）
+
+E4 已完成并封板：Canonical `/v1/aip/memory-authority` API、唯一 `apps/web/src/api/aipMemory/` SDK、`MemoryGovernancePage`、AIP 导航和 O1 Wiki 治理/Citation 入口均已落地。SDK 复审补强为深层严格解析 tenant、Candidate request/source/governance、不可变 Event、Item/Revision、payload hash 与 Citation/Chunk 一一对应；事件、审批、晋升、检索全部复用唯一 AIP client。代码提交依次为 `17817db`、`cc8f216`、`8b08792`、`038b9da`。
+
+页面包含 Candidate、正式 Memory、Knowledge Query 三视图；真实空列表不注入示例，blocked/degraded/complete 与错误分别显示。批准/晋升没有用不完整表单开放：缺精确 Eval report、Draft、ApprovalEvent 时必须继续由服务端 Governance Service 失败关闭。O1 Wiki 原 Draft 写链未改，仅新增治理入口和 Agent 读取前的 scope/freshness/applicability/marking/Citation 说明。
+
+验证结果：AIP-5 后端 contracts/store/governance/retrieval/API 累计 38 passed；前端定向 4 文件 21 tests、全量 174 文件 2053 tests、TypeScript、Vite production build（274 modules）和 diff check 全部 GREEN。内置浏览器确认 `org-org/dev-project`、新导航、三视图、客户端必填阻断、API 异常诚实展示、Wiki 双向跳转及控制台错误 0。当前本机 `aos-api health HTTP 500`，因此只声明 UI/失败关闭浏览器 GREEN，不伪称真实正向回包 GREEN。按用户要求，本波结束后暂停，不自动进入 E5。
