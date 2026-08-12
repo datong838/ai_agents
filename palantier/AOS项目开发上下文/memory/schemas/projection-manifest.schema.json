@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.local/schemas/memory/projection-manifest.schema.json",
+  "title": "AOS Memory Projection Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "authority", "projections"],
+  "properties": {
+    "schema": {"const": "aos-memory-projection-manifest/v1"},
+    "authority": {"type": "string", "minLength": 1},
+    "projections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "adapter", "consistency"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "adapter": {"enum": ["json_file", "authority_frontmatter", "prime_harness", "codex_ad_hoc"]},
+          "consistency": {"enum": ["strong", "eventual"]},
+          "path": {"type": "string"},
+          "entry_id": {"type": "string"}
+        }
+      }
+    }
+  }
+}

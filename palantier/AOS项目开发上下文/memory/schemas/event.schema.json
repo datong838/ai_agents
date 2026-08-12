@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.local/schemas/memory/event.schema.json",
+  "title": "AOS Memory Event",
+  "type": "object",
+  "required": ["schema", "occurred_at", "type"],
+  "properties": {
+    "schema": {"const": "aos-memory-event/v1"},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "type": {"type": "string", "minLength": 1}
+  }
+}

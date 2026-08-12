@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.local/schemas/memory/projection.schema.json",
+  "title": "AOS Memory Projection",
+  "type": "object",
+  "required": [
+    "projection_schema",
+    "project",
+    "project_revision",
+    "content_hash",
+    "current_phase",
+    "delivery_status",
+    "last_green_gate",
+    "next_gate",
+    "source_commits",
+    "source_files",
+    "hard_boundaries",
+    "completed",
+    "incomplete",
+    "next_steps",
+    "evidence",
+    "generated_at"
+  ],
+  "properties": {
+    "projection_schema": {"const": "aos-memory-projection/v1"},
+    "project_revision": {"type": "string", "pattern": "^AOS-[0-9]{6}$"},
+    "content_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "generated_at": {"type": "string", "format": "date-time"}
+  }
+}

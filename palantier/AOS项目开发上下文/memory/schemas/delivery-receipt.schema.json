@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.local/schemas/memory/delivery-receipt.schema.json",
+  "title": "AOS Memory Delivery Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "task_id",
+    "base_revision",
+    "completed_revision",
+    "result",
+    "changed_files",
+    "commits",
+    "verification",
+    "risks",
+    "blockers",
+    "completed_at"
+  ],
+  "properties": {
+    "schema": {"const": "aos-memory-delivery-receipt/v1"},
+    "task_id": {"type": "string", "minLength": 1},
+    "base_revision": {"type": "string", "pattern": "^AOS-[0-9]{6}$"},
+    "completed_revision": {"type": "string", "pattern": "^AOS-[0-9]{6}$"},
+    "result": {"type": "string", "minLength": 1},
+    "changed_files": {"type": "array", "items": {"type": "string"}},
+    "commits": {"type": "array", "items": {"type": "string"}},
+    "verification": {"type": "array", "items": {"type": "string"}},
+    "risks": {"type": "array", "items": {"type": "string"}},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "completed_at": {"type": "string", "format": "date-time"}
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.local/schemas/memory/health.schema.json",
+  "title": "AOS Memory Health Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "observed_at",
+    "project_revision",
+    "delivery_status",
+    "memory_health",
+    "can_change_state",
+    "projections"
+  ],
+  "properties": {
+    "schema": {"const": "aos-memory-health/v1"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "project_revision": {"type": "string", "pattern": "^AOS-[0-9]{6}$"},
+    "delivery_status": {"type": "string", "minLength": 1},
+    "memory_health": {"enum": ["GREEN", "GREEN_WITH_WARNINGS", "RED"]},
+    "can_change_state": {"type": "boolean"},
+    "projections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "consistency", "status", "location"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "consistency": {"enum": ["strong", "eventual"]},
+          "status": {"enum": ["CURRENT", "STALE", "AHEAD", "DRIFTED", "UNVERSIONED", "UNAVAILABLE", "PENDING_ASYNC"]},
+          "location": {"type": "string"}
+        }
+      }
+    }
+  }
+}

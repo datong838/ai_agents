@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.local/schemas/memory/task-receipt.schema.json",
+  "title": "AOS Memory Task Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "task_id",
+    "owner",
+    "base_revision",
+    "scope",
+    "excluded_scope",
+    "expected_outputs",
+    "lease_expires_at",
+    "status",
+    "created_at"
+  ],
+  "properties": {
+    "schema": {"const": "aos-memory-task-receipt/v1"},
+    "task_id": {"type": "string", "minLength": 1},
+    "owner": {"type": "string", "minLength": 1},
+    "base_revision": {"type": "string", "pattern": "^AOS-[0-9]{6}$"},
+    "scope": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "excluded_scope": {"type": "array", "items": {"type": "string"}},
+    "expected_outputs": {"type": "array", "items": {"type": "string"}},
+    "lease_expires_at": {"type": "string", "format": "date-time"},
+    "status": {"const": "ACTIVE"},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

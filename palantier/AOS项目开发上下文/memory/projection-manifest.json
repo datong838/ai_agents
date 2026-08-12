@@ -1,0 +1,54 @@
+{
+  "schema": "aos-memory-projection-manifest/v1",
+  "authority": "${CONTEXT_ROOT}/memory/authority.json",
+  "projections": [
+    {
+      "id": "context-current-status",
+      "adapter": "authority_frontmatter",
+      "consistency": "strong",
+      "path": "${CONTEXT_ROOT}/01-当前项目状态.md"
+    },
+    {
+      "id": "context-checkpoint",
+      "adapter": "authority_frontmatter",
+      "consistency": "strong",
+      "path": "${CONTEXT_ROOT}/06-当前执行检查点.md"
+    },
+    {
+      "id": "project-shared",
+      "adapter": "json_file",
+      "consistency": "strong",
+      "path": "${CONTEXT_ROOT}/memory/projections/aos-project.json"
+    },
+    {
+      "id": "workbuddy-project",
+      "adapter": "json_file",
+      "consistency": "strong",
+      "path": "${AI_ROOT}/.workbuddy/memory/aos-project-projection.json"
+    },
+    {
+      "id": "prime-milestones",
+      "adapter": "prime_harness",
+      "consistency": "strong",
+      "entry_id": "aos-milestones"
+    },
+    {
+      "id": "prime-current-delivery",
+      "adapter": "prime_harness",
+      "consistency": "strong",
+      "entry_id": "aos-current-delivery"
+    },
+    {
+      "id": "prime-aip-checklists",
+      "adapter": "prime_harness",
+      "consistency": "strong",
+      "entry_id": "aos-aip-full-checklists"
+    },
+    {
+      "id": "codex-project-note",
+      "adapter": "codex_ad_hoc",
+      "consistency": "eventual",
+      "path": "${CODEX_MEMORY_ROOT}/extensions/ad_hoc/notes"
+    }
+  ]
+}

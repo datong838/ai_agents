@@ -1,0 +1,13 @@
+{
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "replace-me",
+  "base_revision": "AOS-000001",
+  "completed_revision": "AOS-000002",
+  "result": "IMPLEMENTED_UNVERIFIED",
+  "changed_files": [],
+  "commits": [],
+  "verification": [],
+  "risks": [],
+  "blockers": [],
+  "completed_at": "2026-08-12T19:30:00+08:00"
+}
