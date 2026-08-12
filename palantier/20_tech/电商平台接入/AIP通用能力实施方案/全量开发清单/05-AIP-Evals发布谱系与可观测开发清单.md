@@ -1,6 +1,6 @@
 # 05 AIP Evals、发布门、决策谱系与可观测开发清单
 
-> 状态：**v2.6 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C/E3D/E4A IMPLEMENTED_GREEN / E4B APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**v2.7 · AIP-4 IMPLEMENTING · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C/E3D/E4A/E4B IMPLEMENTED_GREEN / E4C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 上位依据：`../05-228-AIP-Evals发布门控决策谱系与可观测实施方案.md`
 > 对应阶段：AIP-4、AIP-7 观测侧；前置：02、04 GREEN。
 
@@ -164,14 +164,16 @@ E4 编码清单已冻结：
 
 - [x] E4A：建立唯一 `apps/web/src/api/aipEvidence/` SDK 基座，强类型解析 LineageEvent 并预注册 Telemetry canonical operations；禁止谱系组件自行拼接 canonical path。
 - [x] E4A：决策谱系页以 root type + root id 查询权威事件；删除固定 Trace ID、固定标题与 `defaultSteps`；空、错、partial 和 unknown 诚实展示。
-- [ ] E4B：可观测页改为按 lineage ID 查询真实 spans/usage；Overview 只由返回事实聚合，quantity 缺失显示 unknown，不把 estimated 合并成 measured。
-- [ ] E4B：删除生产路径 `MOCK_KPIS/MOCK_TREND/MOCK_TRACES/MOCK_SPANS/MOCK_METRICS/MOCK_WIDGETS`、`request_count × 230` 展示和合成趋势；未实现 Dashboard 显式不可用，不伪装演示目录为真实能力。
+- [x] E4B：可观测页改为按 lineage ID 查询真实 spans/usage；Overview 只由返回事实聚合，quantity 缺失显示 unknown，不把 estimated 合并成 measured。
+- [x] E4B：删除生产路径 `MOCK_KPIS/MOCK_TREND/MOCK_TRACES/MOCK_SPANS/MOCK_METRICS/MOCK_WIDGETS`、`request_count × 230` 展示和合成趋势；删除无权威后端的 Dashboard/Alerts 演示能力。
 - [ ] E4C：Evals 门控与现有 Logic Publication 严格 revision/hash/readback 通过同一 SDK 消费；不新增手工 GREEN，不重写正常 Publication 写链。
 - [ ] E4C：更新交互诚实清单、定向测试、TypeScript、前端全量测试和构建；在内置浏览器以 `org-org/dev-project` 验收三页，并以 canary 做隔离负向门。
 
 E4 三页面裁决：导航页为 Evals 门控、决策谱系、可观测性；Publication 写动作继续由 Logic Canvas/Publication Panel 承担，Evals 页承载发布前 Gate/Report 证据，不创建平行发布页。
 
 E4A 实施结论：代码 `84dac50`；9 项 SDK/页面定向测试与 TypeScript 通过。内置浏览器确认 `org-org/dev-project`、root 类型下拉、空输入说明和 API 失败关闭态，固定示例命中 0。因本机 API health=500，本子步未宣称真实事件正向浏览器证据 GREEN；该项随 E4C 服务恢复后补齐。下一门 E4B。
+
+E4B 实施结论：代码 `9fcd203`；3 文件 14 tests、TypeScript、diff check 通过。Telemetry/Usage 契约对跨 lineage、重复 provider receipt、quantity/quality 和 currency/usageKind 不一致失败关闭；内置浏览器确认真实组织/工作区、idle/error 诚实展示，伪 Token 和 Dashboard 命中 0。API health=500 的正向浏览器证据保留至 E4C。
 
 ## 2. 退出门
 

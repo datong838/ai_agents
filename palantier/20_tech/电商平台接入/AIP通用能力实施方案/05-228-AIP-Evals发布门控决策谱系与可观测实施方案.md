@@ -1,6 +1,6 @@
 # 228-AIP Evals、发布门控、决策谱系与可观测实施方案
 
-> 状态：**IMPLEMENTING · v2.4 · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C/E3D/E4A IMPLEMENTED_GREEN / E4B APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
+> 状态：**IMPLEMENTING · v2.5 · E0A/E0B/E1A/E1B/E1C/E2/E3A/E3B/E3C/E3D/E4A/E4B IMPLEMENTED_GREEN / E4C APPROVED_TO_IMPLEMENT（已获用户全量编码授权）**
 > 对应阶段：AIP-4、AIP-7（观测侧）。
 >
 > 2026-08-11 补充：外部 ResearchJob Eval/Lineage v1.2 已评审通过，不改变当前编码门禁。
@@ -266,6 +266,8 @@ apps/web/src/interactionHonestyManifest.ts
 若 E4C 复核发现现有服务端缺少只读 Gate/Publication 查询，只允许对 `aip_release_publication_service.py` 和 `routers/aip_release_publications.py` 做 additive GET 扩展并补 OpenAPI/隔离测试；不得为了页面展示写入真实业务记录。页面验收只使用 `org-org/dev-project`，`dev-org/dev-project` 只做负向 canary。
 
 E4A 已以 `aos-platform/m1@84dac50` 实施：新增唯一 `aipEvidence` contracts/client/index，对 LineageEvent 的 root、连续 sequence、source tuple、sha256 与 quality 做前端失败关闭解析；决策谱系页改为 root type + root id 查询 canonical `/v1/aip/lineage-authority/roots/...`，删除固定 Trace ID、固定六段和失效治理探针。9 项 SDK/页面定向测试与 TypeScript 通过；内置浏览器在 `org-org/dev-project` 验证 idle 和 API 错误态均不注入示例谱系。当前本机 API health=500，因此本步浏览器证据只声明页面渲染/失败关闭 GREEN，不冒充真实事件正向回包已验收。下一子步 E4B。
+
+E4B 已以 `aos-platform/m1@9fcd203` 实施：`aipEvidence` 增加 TelemetrySpan/UsageReceipt 严格契约和 canonical client；可观测页按 lineage 并发读取权威 spans/usage，Overview 仅直接计数，measured/estimated/unknown 独立展示，unknown quantity 保持未知。生产 `MOCK_*`、合成趋势、`request_count × 230` 伪 Token 和无权威后端的 Alerts/Dashboards 已删除。14 项定向测试、TypeScript 与内置浏览器 idle/error 失败关闭通过；因 API health=500，正向真实回包仍留 E4C 恢复服务后补验。
 
 ## 7. 发布、撤回与数据治理
 
