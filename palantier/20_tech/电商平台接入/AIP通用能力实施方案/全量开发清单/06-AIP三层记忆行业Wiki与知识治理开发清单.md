@@ -159,7 +159,8 @@ E4D 实施结论：E4B 复审补强 `8b08792`，深层严格解析 tenant/source
 - [ ] 在 `/v1/aip/memory-authority/pipelines` 增 schedule/run/receipt/checkpoint/alert 的 tenant-scoped API；内部 complete 接口只允许受信 executor。
 - [ ] 角色矩阵：GET=认证租户；Schedule 写=admin/reviewer；Run 登记=admin/executor/aip_executor；complete=executor/aip_executor + 当前 lease owner；不接收 caller 自报 tenant/hash/dependency-ready。
 - [ ] `apps/web/src/api/aipMemory/` 扩展唯一严格 SDK；未知枚举/缺失 hash/version/tenant 失败关闭。
-- [ ] `MemoryGovernancePage` 增“知识管道”视图，覆盖 loading/empty/error/disabled/paused/active/running/failed/blocked；每个操作有真实 API 或明确禁用理由。
+- [x] `MemoryGovernancePage` 增“知识管道”视图，覆盖 loading/empty/error/disabled/paused/active/running/failed/blocked；每个操作有真实 API 或明确禁用理由。
+- [x] SDK 严格对齐 Canonical `ResourceRef.authority` 与 `ArtifactRef.artifactType/artifactId/revision/contentHash`；可空 Receipt/Checkpoint 使用对象信封，未知枚举/缺 hash/tenant 漂移失败关闭。
 - [ ] 后端专项/累计、前端定向/全量、TypeScript/build、OpenAPI/diff check、`org-org/dev-project` 内置浏览器验收；`dev-org` 只作 API 负向 canary。
 - [ ] 更新 `01-当前项目状态.md`、`06-当前执行检查点.md`、Prime/shared-memory 投影并形成代码/文档安全提交。
 
