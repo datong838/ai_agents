@@ -130,3 +130,18 @@ E3 已以代码 `81c5f82` 实现权威 `KnowledgeQuery`、渐进上下文、O1 W
 上下文按主 subject 后接去重的 `object_refs` 渐进装配，token 预算只允许完整 chunk，不截断半条知识；每个 chunk 与 citation 一一对应且 token 总数由契约复核。索引只保存 `memory_item_id/revision/content_hash/subject_key`，不保存知识正文；索引 unavailable 时显式降级为 PostgreSQL authority scan，清空或重建不改变 canonical Memory。
 
 O1 Wiki adapter 不改写既有 `wiki_page`，只有具备完整 governance envelope、精确 source/freshness/license/applicability/markings、正文 hash 与 payload hash 一致的页面才可读取；历史 legacy 页面继续 blocked。E3 8 个专项 PostgreSQL 场景、AIP-5 全链及相邻 AIP-3/AIP-4 累计 50 tests passed，compileall 与 diff check GREEN。全文/向量召回、融合与重排仍留在 E6，没有在 E3 伪装完成。
+
+### 6.2 E4 Canonical API、SDK 与页面冻结（2026-08-12）
+
+现状核查确认 `/v1/ontology/wikis` 仍由历史 in-memory `ontology_wiki_engine` 驱动，`/v1/wiki/*` 与 `/ontology/wiki` 属于 O1 对象 Wiki/Draft 链；两者都不得改名或包装成 AIP-5 Memory authority。E4 新增独立 `/v1/aip/memory-authority`，只暴露 E1～E3 已存在的 PostgreSQL authority、Governance Service 与 KnowledgeQuery，不修改 O1 写路由。
+
+Canonical operations 冻结如下：
+
+- `GET /candidates`、`GET /candidates/{id}`、`GET /candidates/{id}/events`：租户范围内治理候选、详情和不可变事件；支持服务端枚举状态过滤与有界 limit。
+- `POST /candidates/{id}/approve`、`POST /candidates/{id}/promote`：仅 `admin/reviewer`；调用唯一 Governance Service，客户端只提交 expected version、精确 Governance refs、适用范围和目标 item ID，不提交 org/project、PII 或许可证结论。
+- `GET /memories`、`GET /memories/{id}`：租户范围内正式 Memory 与精确 current revision；无权或跨租户统一不可见。
+- `POST /knowledge-queries`：仅 `admin/reviewer/executor/aip_executor/developer`；authorized markings 只取认证 Principal，客户端 `markings` 只是请求约束，不能授权自己；payload resolver 未配置或 hash 漂移时返回契约内 blocked/degraded，不生成静态正文。
+
+错误映射冻结：not found=404、CAS/conflict=409、治理/状态/授权门=422、角色不足=403、authority/payload resolver unavailable=503；未知异常不回显内部 SQL。OpenAPI DTO 必须 camelCase 且 `extra=forbid`。
+
+前端唯一入口为 `apps/web/src/api/aipMemory/`，严禁页面散落 `apiGet/apiPost` 或继续调用 in-memory Wiki API 冒充治理。新增 `MemoryGovernancePage` 作为候选/正式 Memory/Knowledge Query 三视图；O1 `WikiPage` 保持原职责，并增加“治理权威”入口与 citation/blocked 解释。页面必须真实覆盖 idle/loading/empty/error/blocked/degraded/complete；没有权威数据时显示空态或阻断原因，禁止 MOCK、默认知识和示例命中。浏览器验收只使用 `org-org/dev-project`，`dev-org` 只作 API 负向 canary。
