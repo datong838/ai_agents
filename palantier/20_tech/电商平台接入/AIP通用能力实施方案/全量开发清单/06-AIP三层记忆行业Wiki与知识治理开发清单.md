@@ -92,3 +92,19 @@ E0 实施结论：运行层只允许 Working/Episodic/Semantic；Procedural 继�
 E1A 实施结论：新增 SourceRevision、Candidate、CandidateEvent、Item、ItemRevision 五张 additive authority 表；全部 FORCE RLS。Source/Event/Revision 追加不可变，Candidate/Item 为后续 CAS 状态载体；Candidate 外键绑定同租户 Task/Run，Item.current_revision 精确绑定自己的 Revision。disposable PostgreSQL 验证正向 `org-org/dev-project`、负向 `dev-org/dev-project`、无 scope 零可见/禁止写、迁移降升级与既有权威表行数守恒；本波未注册 API、未写真实业务记录。
 
 E1B 实施结论：新增唯一 `AipMemoryStore`，实现 SourceRevision 与 Candidate 精确幂等、Candidate 事件时间线、expected-version CAS、合法状态迁移、治理证据绑定及 Candidate→Item+Revision 原子晋升。网络重试可精确回读同一晋升结果；Working 禁止持久化；跨租户、旧版本、来源漂移、非法状态和绕过 Item 的直接 promoted 均失败关闭。Store 重建后仍从 PostgreSQL 回读；本波仍未注册 API。
+
+### 6.1 E2 统一治理服务冻结（2026-08-12）
+
+E2 不新增审批、Eval、PII 或许可证真源，而是在 `AipMemoryStore` 之上新增唯一 Governance Service：
+
+1. `tenant`：仅使用服务端 `TenantScope`，Candidate/Task/Run/Source/Memory 全部由 RLS 和 scoped query 回读；缺失或跨租户按不可见失败关闭。
+2. `source`：受信 Artifact Inspector 必须返回与 Candidate payload 完全一致的 `artifact_id/revision/content_hash`；不接受调用方自报的哈希或脱敏结果。
+3. `PII`：Inspector 只允许 `clear` 或有精确脱敏证据的 `redacted`；`contains_pii/unknown`均隔离。
+4. `license`：由受信 License Policy Resolver 核验 SourceRevision 的 `license_id + usage_policy`；`denied/unknown`均隔离。
+5. `freshness`：审批和晋升两个时点均检查 `freshness_expires_at > now`，防止审批后过期仍晋升。
+6. `dedupe/conflict`：在同租户、同 subject 的正式 Memory authority 中查询；同 hash 是 duplicate，异 hash 是 conflict，均不默认覆盖。
+7. `applicability`：请求的适用目标必须是 SourceRevision `applicability` 的子集；缺失、空值或越界均隔离。
+
+reason codes 冻结为：`tenant_scope_invalid`、`source_artifact_unverified`、`source_hash_mismatch`、`pii_detected`、`pii_status_unknown`、`license_denied`、`license_status_unknown`、`source_stale`、`duplicate_memory`、`memory_conflict`、`applicability_missing`、`applicability_mismatch`、`eval_authority_invalid`、`draft_authority_invalid`、`approval_authority_invalid`。
+
+统一入口执行 `pending/quarantined -> approved`；任一门失败或未知时原子转为 `quarantined` 并写 CandidateEvent。只有全门通过且 PostgreSQL 精确回读 Eval report `gate_passed=true`、Draft `status=approved`、ApprovalEvent `decision=approved` 且三者 proposal version/hash 自洽时才允许 approved。晋升入口在调用 Store 原子晋升前重检时效、Artifact/PII/许可和去重冲突；调用方不得直接将 Candidate 写为 approved/promoted。
