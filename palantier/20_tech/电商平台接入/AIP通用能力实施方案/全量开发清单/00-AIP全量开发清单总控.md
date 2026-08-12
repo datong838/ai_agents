@@ -1,6 +1,6 @@
 # AIP 全量开发清单总控
 
-> 状态：**v1.5 · 已获用户全量编码授权 · AIP-0～AIP-3 IMPLEMENTED_GREEN · AIP-4 E0A～E3D IMPLEMENTED_GREEN，下一门 E4**
+> 状态：**v1.6 · 已获用户全量编码授权 · AIP-0～AIP-4 IMPLEMENTED_GREEN · 下一门 AIP-5 E0**
 > 上位总控：`../00-228-AIP通用能力与六数字同事统一实施总方案.md`
 > 范围：把上位 `01～15` 和 38 份电商 AIP/FDE/Wiki/内容官/增长参谋长方案转换为可执行、可验收、可回滚的明细清单；完整覆盖由 `17` 矩阵证明。
 
