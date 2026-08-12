@@ -216,13 +216,31 @@ E5 只建设知识摄取控制面，不复制 AIP-1/2 的 `Task/Plan/Run/Checkpo
 
 E5 不导入美妆知识，不启用网络/竞品/专业库真实抓取，不实现 E6 的全文/向量融合，也不实现 E7 的六同事共享投影。上述能力不得用 seed、Mock 或静态页面提前冒充完成。
 
-#### 6.4.6 E5A 实施结论（2026-08-12）
+#### 6.4.6 E5C 策略与可信适配边界
+
+E5C 的依赖判断使用服务端生成的 `PipelineDependencySnapshot`，每个依赖只能是 `available/unavailable/unknown`，并绑定精确 PostgreSQL `aip.eval_report`。缺项、unknown、过期或依赖集合与管道策略不一致都失败关闭；前端或 provider 自报 `ready=true` 不构成启用依据。七类策略冻结如下：
+
+| kind | 必需依赖（除公共 `task_run_authority/memory_governance/license/freshness`） | 允许的权威输入 Receipt | 默认状态 |
+|---|---|---|---|
+| `seed_import` | `authorized_source` | `aip.artifact_receipt` | paused |
+| `operational_learning` | `effect_evidence` | `aip.effect_receipt` | paused |
+| `network_learning` | `trusted_adapter/source_allowlist/prompt_injection_guard` | `aip.research_artifact_receipt` | disabled |
+| `competitor_analysis` | `trusted_adapter/source_allowlist/summary_only/prompt_injection_guard` | `aip.research_artifact_receipt` | disabled |
+| `professional_database` | `trusted_adapter/source_version` | `aip.research_artifact_receipt` | disabled |
+| `customer_feedback` | `aggregate_redaction` | `aip.customer_aggregate_receipt` | paused |
+| `human_experience` | `author/applicability/review_due` | `aip.artifact_receipt` | paused |
+
+可信 adapter registry 只注册 `adapter_id + revision + contract_hash + 允许 kind + 允许 Receipt 类型`，默认注册表为空且不保存密钥。adapter 只能接收由服务端 Receipt resolver 回读的精确 `ResourceRef + ArtifactRef`，返回严格 `SubmitMemoryCandidateRequest`；Service 必须再次校验 receipt、kind、Task/Run、SourceKind、source_ref、许可和 freshness，再经 `AipMemoryStore` 登记 Source revision 与 Candidate。adapter 不得直接写 Memory、checkpoint 或 Receipt，也不得执行外部抓取；provider checkpoint/memory、裸 URL、未版本化 Artifact 和调用方自报 Candidate ref 全部拒绝。
+
+paused 管道仅允许有权限的人工单次运行，自动触发必须为 active；disabled 一律不能启动。Schedule 创建状态必须等于该 kind 的默认状态，恢复或激活必须重新通过完整依赖快照，不能只凭一个非结构化“复核通过”引用。
+
+#### 6.4.7 E5A 实施结论（2026-08-12）
 
 E5A 已以代码 `0f40442` 实现七知识管道公共契约和 `aip5_002` PostgreSQL authority。新增 Schedule/Run/Receipt/ReceiptCandidate/CheckpointRevision/Alert 六表；全部 RLS + FORCE RLS，Receipt/ReceiptCandidate/CheckpointRevision/Alert 追加不可变。Schedule/Run 具备租户内 idempotency key、request hash 和 version/CAS 字段；Run 精确外键绑定 AIP Task/Run，每个 Receipt 输出 Candidate 通过独立关联表绑定同租户 `aip_memory_candidate`，没有只靠 JSON 声明引用。
 
 迁移未创建真实租户 Schedule，未复用 `meta_schedule_run`，未注册 API 或拉取外部数据。disposable PostgreSQL 覆盖 upgrade/downgrade、单 head `aip5_002`、无 scope 零可见/禁止写、`org-org/dev-project` 与 `dev-org/dev-project` 隔离、追加不可变触发器和既有 AIP authority 行数守恒；E5A 12 tests、累计 AIP-5 55 tests、compileall、diff/敏感词检查 GREEN。当前 venv 未安装 Ruff，故不声明 Ruff 结果。下一门为 E5B Store/CAS/恢复。
 
-#### 6.4.7 E5B 实施结论（2026-08-13）
+#### 6.4.8 E5B 实施结论（2026-08-13）
 
 E5B 已以代码 `25ada61` 实现 tenant-scoped `AipMemoryPipelineStore`。Schedule 和 Run 写 DTO 不接受调用方自报 idempotency key/request hash；Store 以可信服务参数接收 key，并将 actor 与规范化严格 DTO 一起服务端哈希。同 scope + key + hash 精确重放，异 hash 失败冲突；Schedule/Run 通过 expected-version CAS 变更。
 

@@ -147,8 +147,11 @@ E4D 实施结论：E4B 复审补强 `8b08792`，深层严格解析 tenant/source
 #### E5C：七管道策略与可信适配器门
 
 - [ ] `aip_memory_pipeline_service.py`：七 kind 各自 trigger allowlist、默认状态、依赖门、source/license/freshness policy。
+- [ ] 冻结 `PipelineDependencySnapshot`：服务端生成、精确绑定 PostgreSQL `aip.eval_report`；缺项/unknown/过期/集合漂移均 fail closed。
 - [ ] `seed_import/human_experience` 首期 paused，可授权人工单次执行；`operational_learning/customer_feedback` paused；`network_learning/competitor_analysis/professional_database` 在真实适配器和许可未就绪时 disabled。
 - [ ] 外部 DeerFlow/Harness 只提交 Artifact/Research receipt，再经可信 adapter 产生 Candidate；provider checkpoint/memory 不成为 AOS 真源。
+- [ ] adapter registry 默认空，只登记版本化 contract/kind/Receipt allowlist；Service 回读 Receipt 后二次校验 Task/Run/SourceKind/source_ref/license/freshness，再经 `AipMemoryStore` 写 Source revision 与 Candidate。
+- [ ] paused 只允许授权人工单次 Run；disabled 全部阻断；自动 trigger 只允许 active，Schedule 创建状态必须等于 kind 默认状态。
 - [ ] 本子门只实现 adapter registry/调用边界和 fake adapter 单元测试，不拉真实外部数据，不导入示例知识。
 
 #### E5D：Canonical API、SDK/页面与封板
