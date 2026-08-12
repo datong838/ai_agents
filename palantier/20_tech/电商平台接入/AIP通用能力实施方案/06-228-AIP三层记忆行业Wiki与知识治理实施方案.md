@@ -232,7 +232,7 @@ E5C 的依赖判断使用服务端生成的 `PipelineDependencySnapshot`，每�
 
 可信 adapter registry 只注册 `adapter_id + revision + contract_hash + 允许 kind + 允许 Receipt 类型`，默认注册表为空且不保存密钥。adapter 只能接收由服务端 Receipt resolver 回读的精确 `ResourceRef + ArtifactRef`，返回严格 `SubmitMemoryCandidateRequest`；Service 必须再次校验 receipt、kind、Task/Run、SourceKind、source_ref、许可和 freshness，再经 `AipMemoryStore` 登记 Source revision 与 Candidate。adapter 不得直接写 Memory、checkpoint 或 Receipt，也不得执行外部抓取；provider checkpoint/memory、裸 URL、未版本化 Artifact 和调用方自报 Candidate ref 全部拒绝。
 
-paused 管道仅允许有权限的人工单次运行，自动触发必须为 active；disabled 一律不能启动。Schedule 创建状态必须等于该 kind 的默认状态，恢复或激活必须重新通过完整依赖快照，不能只凭一个非结构化“复核通过”引用。
+paused 管道不接受自动触发；仅当该 kind 明确允许 `manual` 且调用方具有权限时才能人工单次运行，其余 kind 需依赖复核后先激活；disabled 一律不能启动。Schedule 创建状态必须等于该 kind 的默认状态，恢复或激活必须重新通过完整依赖快照，不能只凭一个非结构化“复核通过”引用。
 
 #### 6.4.7 E5A 实施结论（2026-08-12）
 
@@ -247,3 +247,11 @@ E5B 已以代码 `25ada61` 实现 tenant-scoped `AipMemoryPipelineStore`。Sched
 `aip5_003` 新增追加不可变 ScheduleEvent/RunEvent，create、transition、enqueue、claim、pause/resume、terminal 和 lease-expired 都在同一事务留痕。Run 精确绑定 AIP Task/Run 和 Candidate revision；过期租约只能原子转 `unknown + Receipt + Alert`，不假定外部未执行。成功/如实 partial 才能以 checkpoint expected-version 前进；失败、unknown、Candidate 漂移和 checkpoint 冲突失败关闭，且不产生虚假 terminal Receipt。
 
 disposable PostgreSQL 验证了重启回读、服务端哈希重放/冲突、CAS、审计原子性、事件不可变、租约超时、retry attempt、Candidate/Task/Run 精确绑定、checkpoint 成功/失败和跨租户零可见。E5A–E5B 专项 21 tests、累计 AIP-5 64 tests、Alembic 单 head `aip5_003`、compileall、diff/敏感信息检查 GREEN；Ruff 仍 unavailable。未写真实租户 Schedule，未拉取外部数据。下一门为 E5C 七管道策略与可信 adapter 门。
+
+#### 6.4.9 E5C 实施结论（2026-08-13）
+
+E5C 已以代码 `c0282d4` 落地七类独立策略、服务端依赖快照和默认空的版本化可信 adapter registry。Schedule 创建只能使用 kind 的允许 trigger 与默认状态；paused 不接受自动 trigger，仅允许 manual 的 kind 可经授权人工单次运行；disabled 全部阻断。恢复/激活由 Service 回读完整 `PipelineDependencySnapshot`，缺项、unknown、过期、kind/集合漂移或未注册 adapter 均失败关闭。
+
+外部结果只允许以精确 PostgreSQL Receipt + Artifact 进入。Service 在 adapter 调用前复核租户、Task/Run、Receipt 类型、SourceKind、source_ref、许可和 freshness；adapter 输出再次经严格 DTO 解析，并由 Service 绑定原 Receipt 的 Artifact/Source 后调用 `AipMemoryStore` 创建 Source revision 与 Candidate。adapter 无权直写 Memory、Receipt 或 checkpoint。没有注册真实 adapter、没有外部抓取、没有导入 seed/示例知识，也没有创建真实租户 Schedule。
+
+E5C 专项 17 tests、AIP-5 累计 75 tests、compileall、diff/敏感信息检查 GREEN；现有 Pydantic/Starlette warnings 不属于本波，Ruff 仍 unavailable。下一门为 E5D Canonical API、严格 SDK、知识管道页面和浏览器封板。
