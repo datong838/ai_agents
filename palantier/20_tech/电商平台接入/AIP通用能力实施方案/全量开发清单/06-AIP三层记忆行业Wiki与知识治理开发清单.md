@@ -1,6 +1,6 @@
 # 06 AIP 三层运行记忆、行业 Wiki 与知识治理开发清单
 
-> 状态：**v1.3 · 已获用户全量编码授权 · E0 IMPLEMENTED_GREEN · E1A APPROVED_TO_IMPLEMENT**
+> 状态：**v1.4 · 已获用户全量编码授权 · E0/E1A IMPLEMENTED_GREEN · E1B APPROVED_TO_IMPLEMENT**
 > 上位依据：`../06-228-AIP三层记忆行业Wiki与知识治理实施方案.md`
 > 对应阶段：AIP-5；前置：02、04、05 GREEN。
 
@@ -76,7 +76,7 @@
 ## 6. 当前执行顺序
 
 - [x] E0：冻结公共契约与 ADR；复核 `aip_long_memory.py`/TAOR/O1 Wiki 现状，证明没有平行生产真源。代码 `bb84fc3`；新旧兼容记忆回归 15 passed，compile/diff check GREEN。
-- [ ] E1A：Candidate/Item/Source/Revision/Event authority migration、RLS/FORCE RLS、升降级与隔离测试。
+- [x] E1A：Candidate/Item/Source/Revision/Event authority migration、RLS/FORCE RLS、升降级与隔离测试。代码 `07c974e`；20 passed；单 head `aip5_001`。
 - [ ] E1B：Candidate store、CAS 和合法状态机。
 - [ ] E2：七类治理门与统一晋升服务。
 - [ ] E3：KnowledgeQuery、渐进上下文、O1 Wiki adapter 和可重建索引。
@@ -88,3 +88,5 @@
 本清单中的全量授权不允许跨波偷跑；每个子波必须更新 `01-当前项目状态.md` 和 `06-当前执行检查点.md` 并形成安全提交。
 
 E0 实施结论：运行层只允许 Working/Episodic/Semantic；Procedural 继续作为版本化 Skill/Logic/Policy/Playbook，Shared 只作治理投影。Working 不进入 Candidate 晋升链；写请求 DTO 不接受租户字段；Semantic Candidate 必须保留精确来源、hash、新鲜度、适用范围，并在批准/晋升前绑定 Eval report、Draft 和 ApprovalEvent。旧 `aip_long_memory.py` 与 `ontology_wiki_engine.py` singleton 明确降级为兼容层，不是生产权威。
+
+E1A 实施结论：新增 SourceRevision、Candidate、CandidateEvent、Item、ItemRevision 五张 additive authority 表；全部 FORCE RLS。Source/Event/Revision 追加不可变，Candidate/Item 为后续 CAS 状态载体；Candidate 外键绑定同租户 Task/Run，Item.current_revision 精确绑定自己的 Revision。disposable PostgreSQL 验证正向 `org-org/dev-project`、负向 `dev-org/dev-project`、无 scope 零可见/禁止写、迁移降升级与既有权威表行数守恒；本波未注册 API、未写真实业务记录。
