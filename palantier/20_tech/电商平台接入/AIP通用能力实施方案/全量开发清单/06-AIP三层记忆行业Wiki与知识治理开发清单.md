@@ -124,13 +124,13 @@ E4D 实施结论：E4B 复审补强 `8b08792`，深层严格解析 tenant/source
 
 ### 6.4 E5 执行拆分（2026-08-12 复审通过）
 
-#### E5A：契约与 PostgreSQL authority
+#### E5A：契约与 PostgreSQL authority（IMPLEMENTED_GREEN · `0f40442`）
 
-- [ ] `aip_memory_pipeline_contracts.py`：冻结七种 `pipelineKind`、Schedule/Run/Receipt/Checkpoint/Alert DTO 与状态机；写 DTO 不接受 org/project、凭据或任意 provider payload。
-- [ ] `aip5_002_memory_pipeline_control.py`：新增 schedule/run/receipt/checkpoint revision/alert 五类 authority；全部 RLS + FORCE RLS。
-- [ ] Schedule/Run 使用 expected-version 和 idempotency key/request hash；Receipt、Checkpoint revision、Alert 追加不可变。
-- [ ] Run 外键精确绑定同租户 `aip_task/aip_task_run`；输出 Candidate 必须由 Store 在同 scope 校验。
-- [ ] disposable PostgreSQL 验证 upgrade/downgrade、单 Alembic head、无 scope、`org-org/dev-project`、`dev-org/dev-project` canary 和既有表行数守恒。
+- [x] `aip_memory_pipeline_contracts.py`：冻结七种 `pipelineKind`、Schedule/Run/Receipt/Checkpoint/Alert DTO 与状态机；写 DTO 不接受 org/project、凭据或任意 provider payload。
+- [x] `aip5_002_memory_pipeline_control.py`：新增 schedule/run/receipt/receipt-candidate/checkpoint revision/alert 六类 authority；全部 RLS + FORCE RLS。
+- [x] Schedule/Run 使用 expected-version 和 idempotency key/request hash；Receipt、ReceiptCandidate、Checkpoint revision、Alert 追加不可变。
+- [x] Run 外键精确绑定同租户 `aip_task/aip_task_run`；每个输出 Candidate 由独立关联表在同 scope 做 FK 约束。
+- [x] disposable PostgreSQL 验证 upgrade/downgrade、单 Alembic head、无 scope、`org-org/dev-project`、`dev-org/dev-project` canary 和既有表行数守恒；12 targeted / 55 cumulative passed，compileall/diff/敏感词 GREEN，Ruff unavailable。
 
 #### E5B：Store、CAS 与恢复
 

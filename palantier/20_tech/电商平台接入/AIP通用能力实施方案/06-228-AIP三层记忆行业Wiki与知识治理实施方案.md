@@ -210,3 +210,9 @@ E5 只建设知识摄取控制面，不复制 AIP-1/2 的 `Task/Plan/Run/Checkpo
 | E5D | Canonical API、SDK/页面、累计回归与浏览器 | 角色矩阵、严格 DTO、真实状态/禁用原因、`org-org/dev-project` 浏览器验收、canary 负向证据 |
 
 E5 不导入美妆知识，不启用网络/竞品/专业库真实抓取，不实现 E6 的全文/向量融合，也不实现 E7 的六同事共享投影。上述能力不得用 seed、Mock 或静态页面提前冒充完成。
+
+#### 6.4.6 E5A 实施结论（2026-08-12）
+
+E5A 已以代码 `0f40442` 实现七知识管道公共契约和 `aip5_002` PostgreSQL authority。新增 Schedule/Run/Receipt/ReceiptCandidate/CheckpointRevision/Alert 六表；全部 RLS + FORCE RLS，Receipt/ReceiptCandidate/CheckpointRevision/Alert 追加不可变。Schedule/Run 具备租户内 idempotency key、request hash 和 version/CAS 字段；Run 精确外键绑定 AIP Task/Run，每个 Receipt 输出 Candidate 通过独立关联表绑定同租户 `aip_memory_candidate`，没有只靠 JSON 声明引用。
+
+迁移未创建真实租户 Schedule，未复用 `meta_schedule_run`，未注册 API 或拉取外部数据。disposable PostgreSQL 覆盖 upgrade/downgrade、单 head `aip5_002`、无 scope 零可见/禁止写、`org-org/dev-project` 与 `dev-org/dev-project` 隔离、追加不可变触发器和既有 AIP authority 行数守恒；E5A 12 tests、累计 AIP-5 55 tests、compileall、diff/敏感词检查 GREEN。当前 venv 未安装 Ruff，故不声明 Ruff 结果。下一门为 E5B Store/CAS/恢复。
