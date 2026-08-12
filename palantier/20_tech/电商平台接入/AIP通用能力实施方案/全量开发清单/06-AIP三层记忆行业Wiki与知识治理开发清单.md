@@ -1,6 +1,6 @@
 # 06 AIP 三层运行记忆、行业 Wiki 与知识治理开发清单
 
-> 状态：**v1.5 · 已获用户全量编码授权 · E0/E1A/E1B IMPLEMENTED_GREEN · E2 APPROVED_TO_IMPLEMENT**
+> 状态：**v1.6 · 已获用户全量编码授权 · E0/E1A/E1B/E2 IMPLEMENTED_GREEN · E3 APPROVED_TO_IMPLEMENT**
 > 上位依据：`../06-228-AIP三层记忆行业Wiki与知识治理实施方案.md`
 > 对应阶段：AIP-5；前置：02、04、05 GREEN。
 
@@ -78,7 +78,7 @@
 - [x] E0：冻结公共契约与 ADR；复核 `aip_long_memory.py`/TAOR/O1 Wiki 现状，证明没有平行生产真源。代码 `bb84fc3`；新旧兼容记忆回归 15 passed，compile/diff check GREEN。
 - [x] E1A：Candidate/Item/Source/Revision/Event authority migration、RLS/FORCE RLS、升降级与隔离测试。代码 `07c974e`；20 passed；单 head `aip5_001`。
 - [x] E1B：Candidate store、CAS 和合法状态机。代码 `2692f1e`；AIP-5 与邻接 AIP-4 Store 33 passed。
-- [ ] E2：七类治理门与统一晋升服务。
+- [x] E2：七类治理门与统一晋升服务。代码 `ab7b8aa`；累计 41 tests passed。
 - [ ] E3：KnowledgeQuery、渐进上下文、O1 Wiki adapter 和可重建索引。
 - [ ] E4：Canonical API/SDK/治理页面与浏览器验收。
 - [ ] E5：七知识管道的 Schedule/Run/Receipt/checkpoint。
@@ -108,3 +108,5 @@ E2 不新增审批、Eval、PII 或许可证真源，而是在 `AipMemoryStore` 
 reason codes 冻结为：`tenant_scope_invalid`、`source_artifact_unverified`、`source_hash_mismatch`、`pii_detected`、`pii_status_unknown`、`license_denied`、`license_status_unknown`、`source_stale`、`duplicate_memory`、`memory_conflict`、`applicability_missing`、`applicability_mismatch`、`eval_authority_invalid`、`draft_authority_invalid`、`approval_authority_invalid`。
 
 统一入口执行 `pending/quarantined -> approved`；任一门失败或未知时原子转为 `quarantined` 并写 CandidateEvent。只有全门通过且 PostgreSQL 精确回读 Eval report `gate_passed=true`、Draft `status=approved`、ApprovalEvent `decision=approved` 且三者 proposal version/hash 自洽时才允许 approved。晋升入口在调用 Store 原子晋升前重检时效、Artifact/PII/许可和去重冲突；调用方不得直接将 Candidate 写为 approved/promoted。
+
+E2 实施结论：`AipMemoryGovernanceService` 已成为唯一治理决策入口；精确 Artifact Inspection 与 redaction Receipt、License Resolver、时效、适用范围、同 subject 去重/冲突、PostgreSQL Eval/Draft/Approval authority 全部 fail closed。审批失败写入 quarantined CandidateEvent；晋升前重做时效与治理检查。新增 14 个 PostgreSQL 集成用例，与 E0/E1A/E1B、AIP-3/AIP-4 相邻权威累计 41 tests passed；compileall 和 diff check GREEN。
