@@ -2,34 +2,31 @@
   "completed": [
     "AIP-5 E0-E4 IMPLEMENTED_GREEN",
     "AIP-5 E5A contracts and PostgreSQL authority IMPLEMENTED_GREEN",
-    "AIP-5 E5B Store, CAS, immutable events, Receipt, Alert and checkpoint recovery IMPLEMENTED_GREEN"
+    "AIP-5 E5B Store, CAS, immutable events, Receipt, Alert and checkpoint recovery IMPLEMENTED_GREEN",
+    "AIP-5 E5C seven-pipeline policy and trusted adapter boundary IMPLEMENTED_GREEN"
   ],
-  "content_hash": "sha256:b5cc944ddd413b194e74a68121c122d109ea71ae9f115260e0d7ce6be337d7d6",
-  "current_phase": "AIP5_E5C",
+  "content_hash": "sha256:67b2a608ad1e2a7b49b4d0ebda8f5ff8c49210c274db376aa3874458e2283651",
+  "current_phase": "AIP5_E5D",
   "delivery_status": "IMPLEMENTING",
   "evidence": [
     {
       "kind": "tests",
-      "ref": "E5B-21-passed"
+      "ref": "E5C-17-passed"
     },
     {
       "kind": "regression",
-      "ref": "AIP5-64-passed"
-    },
-    {
-      "kind": "migration",
-      "ref": "aip5_003-single-head"
+      "ref": "AIP5-75-passed"
     },
     {
       "kind": "commit",
-      "ref": "25ada61"
+      "ref": "c0282d4"
     },
     {
       "kind": "docs",
-      "ref": "5142344"
+      "ref": "80d330b"
     }
   ],
-  "generated_at": "2026-08-13T00:19:49+08:00",
+  "generated_at": "2026-08-13T01:04:01+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only real target",
     "dev-org/dev-project is a negative isolation canary only",
@@ -37,21 +34,21 @@
     "credentials and customer-sensitive data never enter shared memory"
   ],
   "incomplete": [
-    "AIP-5 E5C-E5D implementation and verification",
+    "AIP-5 E5D Canonical API, SDK, UI and browser verification",
     "AIP-5 E6-E7 remain gated"
   ],
-  "last_green_gate": "AIP5_E5B_COMPLETE",
-  "next_gate": "AIP5_E5C_COMPLETE",
+  "last_green_gate": "AIP5_E5C_COMPLETE",
+  "next_gate": "AIP5_E5D_COMPLETE",
   "next_steps": [
-    "Implement E5C seven-pipeline policy and trusted adapter registry with failing tests first",
-    "Verify dependency unknown fail-closed and no external fetch"
+    "Implement E5D tenant-scoped Canonical API and strict SDK with failing tests first",
+    "Add knowledge pipeline UI states and complete org-org browser plus dev-org negative canary evidence"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000011",
+  "project_revision": "AOS-000012",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "1c31673",
-    "docs": "3688ef3",
+    "aos-platform": "c0282d4",
+    "docs": "80d330b",
     "prime-agent": "ee254c81"
   },
   "source_files": [
