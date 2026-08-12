@@ -115,7 +115,7 @@ E3 实施结论：`AipMemoryRetrieval` 只从 tenant-scoped PostgreSQL authority
 
 ### 6.3 E4 执行拆分
 
-- [ ] E4A：新增 `/v1/aip/memory-authority` Canonical API；候选/事件/正式 Memory 列表与详情，approve/promote，KnowledgeQuery；认证租户与角色矩阵、错误映射、OpenAPI 和 `extra=forbid` 测试。
+- [x] E4A：新增 `/v1/aip/memory-authority` Canonical API；候选/事件/正式 Memory 列表与详情，approve/promote，KnowledgeQuery；认证租户与角色矩阵、错误映射、OpenAPI 和 `extra=forbid` 测试。代码 `17817db`；AIP-5 相关 38 tests passed，路由聚合 520 项一致。
 - [ ] E4B：新增唯一 `apps/web/src/api/aipMemory/` contracts/client；严格解析 tenant、revision/hash/source/freshness/applicability/citation，不接受缺字段成功响应。
 - [ ] E4C：新增 `MemoryGovernancePage` 并接导航；候选、正式 Memory、Knowledge Query 三视图覆盖 idle/loading/empty/error/blocked/degraded/complete；O1 Wiki 只增加治理入口和引用解释，不改变 Draft 写链。
 - [ ] E4D：后端累计回归、前端定向/全量、TypeScript/build、`org-org/dev-project` 内置浏览器逐项点击；`dev-org` 仅 API 负向 canary；更新上下文、记忆与安全提交。
