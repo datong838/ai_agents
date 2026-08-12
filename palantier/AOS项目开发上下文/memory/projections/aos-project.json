@@ -2,24 +2,29 @@
   "completed": [
     "AIP-5 E0-E4 IMPLEMENTED_GREEN and PAUSED_BEFORE_E5",
     "Prime Agent keyless launch, AUTH_OK readback and launchd ownership GREEN",
-    "shared-memory Phase 0-5 IMPLEMENTED_GREEN with authority, CAS, manifest, 8 Schemas, projections, gate, Receipt/Lease/Event and monitor",
+    "shared-memory Phase 0-5 IMPLEMENTED_GREEN with CAS, flock, manifest, 8 Schemas, deterministic projections, gate, Receipt/Lease/Event and monitor",
+    "shared reads hold flock and lease scopes reject unsafe path expressions",
     "strong projections CURRENT across context, project, WorkBuddy and Prime"
   ],
-  "content_hash": "sha256:dfa868da92478bfba8a3e03b07c6c64c549f2edc62010fd91193b13ca9182ce2",
+  "content_hash": "sha256:b3e93489ab282e2bece53e1de5a9c9123bdcea00401df5e73d00584a2cc8dd81",
   "current_phase": "SHARED_MEMORY_PHASE5",
   "delivery_status": "IMPLEMENTED_GREEN",
   "evidence": [
     {
       "kind": "git_commit",
-      "ref": "aos-platform/m1@3196251"
+      "ref": "aos-platform/m1@20d6ec5"
     },
     {
       "kind": "git_commit",
-      "ref": "docs/m1@17e9233"
+      "ref": "docs/m1@855624b"
     },
     {
       "kind": "delivery_receipt",
       "ref": "SHARED-MEMORY-PHASE1-5-20260812"
+    },
+    {
+      "kind": "delivery_receipt",
+      "ref": "SHARED-MEMORY-HARDENING-20260812"
     },
     {
       "kind": "test",
@@ -34,7 +39,7 @@
       "ref": "Prime three projections CURRENT and health monitor installed"
     }
   ],
-  "generated_at": "2026-08-12T19:30:20+08:00",
+  "generated_at": "2026-08-12T19:45:48+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only real target",
     "dev-org/dev-project is a negative isolation canary only",
@@ -45,18 +50,18 @@
     "AGNES provider credential rotation after historical exposure",
     "AIP-5 E5-E7 remains intentionally paused before review"
   ],
-  "last_green_gate": "SHARED_MEMORY_PHASE5",
+  "last_green_gate": "SHARED_MEMORY_PHASE5_HARDENED",
   "next_gate": "PAUSED_BEFORE_AIP5_E5_REVIEW",
   "next_steps": [
     "rotate the historically exposed AGNES credential at the provider and update auth.json only",
     "when AIP resumes, review and freeze AIP-5 E5 checklist before coding"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000005",
+  "project_revision": "AOS-000006",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "3196251",
-    "docs": "17e9233"
+    "aos-platform": "20d6ec5",
+    "docs": "855624b"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

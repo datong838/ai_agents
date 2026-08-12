@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000006",
+  "blockers": [],
+  "changed_files": [
+    "scripts/memory/memoryctl.py",
+    "prime-agent-runtime/src/rlm/harness.py",
+    "prime-agent-runtime/test/test_harness.py",
+    "docs/palantier/AOS项目开发上下文/memory/prime-version-state.json"
+  ],
+  "commits": [
+    "aos-platform/m1@8492880",
+    "prime-agent/main@ee254c81"
+  ],
+  "completed_at": "2026-08-12T21:00:43+08:00",
+  "completed_revision": "AOS-000006",
+  "result": "IMPLEMENTED_GREEN",
+  "risks": [
+    "AGNES historical provider credential still requires external rotation"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "SHARED-MEMORY-PRIME-ADAPTER-20260812",
+  "verification": [
+    "14 shared-memory tests passed",
+    "36 Prime Harness tests passed",
+    "Prime clean-baseline npm run check GREEN",
+    "Prime versions recovered monotonically to v22/v24/v18 and idempotent resync wrote 0 changes",
+    "Prime runtime reinstalled, launchd restarted, process args key-free, auth file 0600"
+  ]
+}

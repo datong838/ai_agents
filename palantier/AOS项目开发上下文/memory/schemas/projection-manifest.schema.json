@@ -19,7 +19,8 @@
           "adapter": {"enum": ["json_file", "authority_frontmatter", "prime_harness", "codex_ad_hoc"]},
           "consistency": {"enum": ["strong", "eventual"]},
           "path": {"type": "string"},
-          "entry_id": {"type": "string"}
+          "entry_id": {"type": "string"},
+          "title": {"type": "string"}
         }
       }
     }

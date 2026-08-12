@@ -26,6 +26,8 @@
 - `aos-platform/scripts/memory/memory-validate`
 - `aos-platform/scripts/memory/memory-watch`
 - `aos-platform/scripts/memory/tests/test_memoryctl.py`
+- `prime-agent/prime-agent-runtime/src/rlm/harness.py`
+- `prime-agent/prime-agent-runtime/test/test_harness.py`
 
 ## 2. 阶段与退出门
 
@@ -58,11 +60,23 @@ Phase 4 只以强一致投影作为状态变更门；最终一致延迟必须显
 - 所有输出经过秘密模式扫描；命中 Key、Token、Cookie、Password、私钥时拒绝写入。
 - 权威更新必须提供 `expected_revision`；不匹配拒绝。
 - 文件在同目录临时文件写入、`fsync` 后 `os.replace`；事件日志 append-only。
-- Prime 同步只通过无 Key 环境调用现有 CLI，并回读 `harness_state.json` 的 revision/hash marker。
-- 不直接写 Prime 内部存储；Prime 不可用时保留候选并报告 `UNAVAILABLE/STALE`。
+- Prime 投影不再委托模型根据 prompt 创建/更新条目；`memory-sync` 确定性读写 global Harness JSON，避免 session scope 漂移和模型自由裁决。
+- Prime 三条投影除 revision/hash marker 外，还由 `prime-version-state.json` 维护最后成功版本与内容哈希；版本低于最后成功值时必须报 `DRIFTED`。
+- Prime 写入前在本机建立 `0600` 备份，采用独占 `flock` + mtime 并发检测 + 原子替换；Prime 原生 Harness 写入使用同一把锁并在陈旧快照保存时失败关闭；任一写后回读失败时恢复备份并保留 RED。
+- 仅替换每个 Prime 条目中受管投影段，保留旧有历史叙述、其他 Harness 条目和 refinements。
+- Prime 不可用时报告 `UNAVAILABLE/STALE/DRIFTED`；禁止从旧 Prime 投影反向覆盖 authority。
 - 不自动修改 Codex 主记忆索引；仅生成用户已授权的 ad-hoc ingestion note。
 - `flock` 保护同机临界区，语义 Lease 保护跨对话 scope；守护只读且健康快照权限 `0600`。
 - Prime 子进程使用最小环境白名单，不继承 `AGNES_API_KEY` 或无关 shell 环境。
+
+### 4.1 Prime 版本恢复门
+
+2026-08-12 真实故障中，模型驱动的脱离 session 未读到 global 条目，将三条已有历史的投影重建为 `v1`。因此增加强制恢复门：
+
+1. 最后已验证版本基线为 `aos-milestones=v21`、`aos-current-delivery=v23`、`aos-aip-full-checklists=v17`；
+2. 恢复 `AOS-000006` 时必须从该基线单调提升到 `v22/v24/v18`，不得接受当前错误 `v1`；
+3. 同一 authority revision 重复同步必须幂等，不得继续增加版本；
+4. 回读版本、revision、content hash 和投影内容哈希全部一致后，才能重新开门。
 
 ## 5. 最终封板
 

@@ -1,0 +1,24 @@
+{
+  "entries": {
+    "aos-aip-full-checklists": {
+      "authority_content_hash": "sha256:b3e93489ab282e2bece53e1de5a9c9123bdcea00401df5e73d00584a2cc8dd81",
+      "entry_content_hash": "sha256:ce898c23074f474eb52ee7dda84ffbd6315a4d1f6938d293a23393a42a0c746f",
+      "project_revision": "AOS-000006",
+      "version": 18
+    },
+    "aos-current-delivery": {
+      "authority_content_hash": "sha256:b3e93489ab282e2bece53e1de5a9c9123bdcea00401df5e73d00584a2cc8dd81",
+      "entry_content_hash": "sha256:fc6b5c1bc8c04f2723f0895c9c7262e4cf1b87f43da59ae625fe709046479cae",
+      "project_revision": "AOS-000006",
+      "version": 24
+    },
+    "aos-milestones": {
+      "authority_content_hash": "sha256:b3e93489ab282e2bece53e1de5a9c9123bdcea00401df5e73d00584a2cc8dd81",
+      "entry_content_hash": "sha256:012002031e478e63825de7593aa61c84260d505a097adcc6d81972c808e2733c",
+      "project_revision": "AOS-000006",
+      "version": 22
+    }
+  },
+  "schema": "aos-memory-prime-version-state/v1",
+  "updated_at": "2026-08-12T20:22:44+08:00"
+}

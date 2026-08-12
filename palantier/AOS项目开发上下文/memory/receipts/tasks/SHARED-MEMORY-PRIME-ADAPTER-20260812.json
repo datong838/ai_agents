@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000006",
+  "created_at": "2026-08-12T20:04:08+08:00",
+  "excluded_scope": [
+    "services"
+  ],
+  "expected_outputs": [
+    "scripts/memory/memoryctl.py",
+    "deterministic Prime adapter and monotonic version recovery"
+  ],
+  "lease_expires_at": "2026-08-13T03:00:00+08:00",
+  "owner": "codex-main",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "scripts/memory",
+    "docs/palantier/AOS项目开发上下文/memory",
+    "docs/多对话共享记忆机制.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "SHARED-MEMORY-PRIME-ADAPTER-20260812"
+}

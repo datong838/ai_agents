@@ -30,19 +30,25 @@
       "id": "prime-milestones",
       "adapter": "prime_harness",
       "consistency": "strong",
-      "entry_id": "aos-milestones"
+      "entry_id": "aos-milestones",
+      "title": "AOS Milestones and Authority Projection",
+      "path": "aos/milestones"
     },
     {
       "id": "prime-current-delivery",
       "adapter": "prime_harness",
       "consistency": "strong",
-      "entry_id": "aos-current-delivery"
+      "entry_id": "aos-current-delivery",
+      "title": "AOS Current Delivery Status",
+      "path": "aos/delivery"
     },
     {
       "id": "prime-aip-checklists",
       "adapter": "prime_harness",
       "consistency": "strong",
-      "entry_id": "aos-aip-full-checklists"
+      "entry_id": "aos-aip-full-checklists",
+      "title": "AIP Full Checklist Status",
+      "path": "aos/aip"
     },
     {
       "id": "codex-project-note",

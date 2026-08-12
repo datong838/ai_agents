@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aos.local/schemas/memory/prime-version-state.schema.json",
+  "title": "AOS Prime Projection Version State",
+  "type": "object",
+  "required": ["schema", "updated_at", "entries"],
+  "properties": {
+    "schema": {"const": "aos-memory-prime-version-state/v1"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "entries": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["version", "project_revision", "authority_content_hash", "entry_content_hash"],
+        "properties": {
+          "version": {"type": "integer"},
+          "project_revision": {"type": "string", "pattern": "^AOS-[0-9]{6}$"},
+          "authority_content_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+          "entry_content_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
