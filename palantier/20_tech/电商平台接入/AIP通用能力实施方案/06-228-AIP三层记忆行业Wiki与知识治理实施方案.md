@@ -1,6 +1,6 @@
 # 228-AIP 三层运行记忆、行业 Wiki 与知识治理实施方案
 
-> 状态：**IMPLEMENTING · v1.1 · 已获用户全量编码授权 · E0 APPROVED_TO_IMPLEMENT**
+> 状态：**IMPLEMENTING · v1.2 · 已获用户全量编码授权 · E0～E2 IMPLEMENTED_GREEN · E3 APPROVED_TO_IMPLEMENT**
 > 对应阶段：AIP-5。
 >
 > 2026-08-11 补充：外部研究 Harness 的知识入口 v1.2 已评审通过。2026-08-12 对账：总控全量编码授权已取代历史“不授权编码”门，但每个子波仍需方案、检查点、测试、浏览器与安全提交。
@@ -63,6 +63,15 @@ Task/Effect evidence
 - 过期、冲突、无权限、来源撤回时明确降级或阻断，不返回旧知识伪装新鲜。
 - 向量库/全文索引只保存可重建索引和 scoped reference，不是授权、revision、source 或知识内容的权威真源。
 - 公共行业包、组织知识和工作区运行记忆分别建 scope；“共享”必须显式发布投影，不能通过缺省查询跨 scope 命中。
+
+### 4.1 E3 权威过滤与可重建索引裁决（2026-08-12）
+
+- E3 的 `KnowledgeQuery` 是 subject/task/skill/object refs 驱动的渐进上下文装配，不是任意自由文本搜索。混合全文/向量召回、融合和重排仍属 E6，E3 不提前偷跑。
+- 解析顺序固定为 `workspace -> organization -> public_package`；高优先级 scope 只能覆盖精确同 subject 且适用范围满足的低优先级条目。同 scope/同 subject 异 hash 为 conflict，不任选其一。
+- 先从 PostgreSQL Memory/Wiki authority 执行 tenant、marking、status、time cutoff、source freshness、applicability 过滤，再允许索引 reference 参与排序；“先向量命中后补权限”禁止。
+- token 预算按确定性 citation 优先级从高到低装配；单条超预算不截断成无法校验的半条知识，而是跳过并返回 degraded reason。
+- 索引只存 `org/project + memory_item_id + revision + content_hash + searchable terms`；不存知识正文、不授权、不替代 revision/source。索引丢失时可从 PostgreSQL authority 重建，重建前可用 authority scan 诚实降级。
+- O1 `wiki_page/wiki_page_version` 保持只读适配，不改已封板表与写路由。只有 Wiki body 内已含完整 governance envelope（source/hash/license/freshness/confidence/applicability/markings）的精确 revision 可转为 citation；历史缺字段页面返回 degraded/blocked，禁止填默认值伪装已治理。
 
 ## 5. 文件边界
 
