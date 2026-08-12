@@ -185,7 +185,8 @@ E5 只建设知识摄取控制面，不复制 AIP-1/2 的 `Task/Plan/Run/Checkpo
 6. 所有权威表具备 `org_id + project_id` 主键前缀、RLS + FORCE RLS；无 scope 零可见/禁止写，`dev-org/dev-project` 仅作负向 canary。
 7. Run 输出的每个 Candidate 必须已存在于同租户 `aip_memory_candidate`，且其 `task_id/run_id` 与 Pipeline Run 绑定一致；外部 DeerFlow/Harness 结果只能先成为 Artifact/Research receipt，再由可信适配器提交 Candidate。
 8. `PipelineScheduleEvent`：Schedule create/transition 每次写入一条追加不可变事件，记录 from/to status、version、actor、reason和 dependency review；可变 Schedule 行不能单独充当启停证据。
-9. idempotency key 由可信请求头/服务参数传入，request hash 必须由服务端对严格 DTO 规范化后生成；写 DTO 不接受调用方自报 request hash，防止伪造幂等证据。
+9. `PipelineRunEvent`：Run enqueue/claim/pause/resume/terminal/lease-expired 每次写入追加不可变事件；状态、version、actor、reason 和 lease owner 必须精确绑定，不能接收 `reasonCode` 后丢弃。
+10. idempotency key 由可信请求头/服务参数传入，request hash 必须由服务端对严格 DTO 规范化后生成；写 DTO 不接受调用方自报 request hash，防止伪造幂等证据。
 
 #### 6.4.3 状态机与恢复
 
@@ -194,6 +195,7 @@ E5 只建设知识摄取控制面，不复制 AIP-1/2 的 `Task/Plan/Run/Checkpo
 - worker 领取运行必须使用短租约；租约超时只能把结果标记 unknown/告警，不能假定未执行并重复写外部系统。
 - 相同 idempotency key + request hash 精确回读；同 key 异 hash 返回 conflict。服务重启后从 PostgreSQL 回读 schedule/run/receipt/checkpoint，不依赖进程内字典。
 - Schedule 状态变更必须在同一事务中推进 expected-version 并写入追加不可变 `PipelineScheduleEvent`；事件写入失败时 Schedule 变更整体回滚。
+- Run 的所有状态变更必须与 `PipelineRunEvent` 同事务提交；terminal Receipt/Alert 与 terminal RunEvent 精确共享同一版本事实。
 - checkpoint 冲突、Candidate 漂移、来源许可/新鲜度 unknown、AIP Task/Run 不匹配全部 fail closed；不得静默跳过或跨租户回退。
 
 #### 6.4.4 Canonical API 与页面边界
@@ -208,7 +210,7 @@ E5 只建设知识摄取控制面，不复制 AIP-1/2 的 `Task/Plan/Run/Checkpo
 | 子门 | 范围 | 退出门 |
 |---|---|---|
 | E5A | 契约、migration、RLS/FK/append-only | disposable PostgreSQL upgrade/downgrade；单 head；无 scope 零可见；既有行数守恒 |
-| E5B | Store、幂等/CAS、ScheduleEvent、checkpoint/Receipt/Alert | 服务端哈希、重启回读、同 key 重放、异 hash conflict、启停事件不可变、失败不推进 checkpoint、跨租户不可见 |
+| E5B | Store、幂等/CAS、ScheduleEvent/RunEvent、checkpoint/Receipt/Alert | 服务端哈希、重启回读、同 key 重放、异 hash conflict、所有状态事件不可变、失败不推进 checkpoint、跨租户不可见 |
 | E5C | Service、七管道策略、adapter registry | 七 kind 独立开关；依赖未知 fail closed；Task/Run/Candidate 精确绑定；无真实外部抓取 |
 | E5D | Canonical API、SDK/页面、累计回归与浏览器 | 角色矩阵、严格 DTO、真实状态/禁用原因、`org-org/dev-project` 浏览器验收、canary 负向证据 |
 

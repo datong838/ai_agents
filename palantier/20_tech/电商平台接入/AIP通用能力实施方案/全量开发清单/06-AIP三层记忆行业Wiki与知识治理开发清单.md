@@ -137,7 +137,8 @@ E4D 实施结论：E4B 复审补强 `8b08792`，深层严格解析 tenant/source
 - [ ] `aip_memory_pipeline_store.py`：Schedule create/read/list/transition；Run enqueue/claim/read/list/transition；terminal Receipt、Alert 和 checkpoint 原子提交。
 - [ ] idempotency key 仅从可信请求头/服务参数进入，request hash 由服务端对严格 DTO 生成；同 scope + key + hash 精确重放，异 hash conflict。
 - [ ] Schedule create/transition 与追加不可变 `PipelineScheduleEvent` 同事务提交；变更失败不留可变行脏状态。
-- [ ] 服务重建后 PostgreSQL 回读 Schedule/Run/Receipt/checkpoint/event 一致，不使用进程内字典。
+- [ ] Run enqueue/claim/pause/resume/terminal/lease-expired 与追加不可变 `PipelineRunEvent` 同事务提交；非终态 `reasonCode` 不得丢弃。
+- [ ] 服务重建后 PostgreSQL 回读 Schedule/Run/Receipt/checkpoint/ScheduleEvent/RunEvent 一致，不使用进程内字典。
 - [ ] 失败/取消/unknown/暂停不推进 checkpoint；成功/partial 仅可 expected-version CAS 前进，不能回退。
 - [ ] Candidate 的 tenant/task/run 必须与 Pipeline Run 一致；漂移或跨租户失败关闭。
 - [ ] retry 创建新 run/attempt 并绑定 `retryOfRunId`；terminal run 不重开。
