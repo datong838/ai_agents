@@ -1,8 +1,8 @@
 # 共享记忆 Phase 1～5 实施清单
 
-> 状态：`IMPLEMENTED_GREEN / FINAL_REVIEW`
-> 基线：`aos-platform/m1@b17e169`、`docs/m1@8c79419`
-> 上位方案：`/Users/ddt/work/projects/ai_agent/docs/多对话共享记忆机制.md` v1.1
+> 状态：`IMPLEMENTED_GREEN / SEALED`
+> 实施提交：`aos-platform/m1@3196251`、`docs/m1@17e9233`
+> 上位方案：`/Users/ddt/work/projects/ai_agent/docs/多对话共享记忆机制.md` v1.2
 > 边界：不进入 AIP-5 E5，不读写真实业务数据，不保存凭据。
 
 ## 1. 文件范围

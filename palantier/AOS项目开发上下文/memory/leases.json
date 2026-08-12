@@ -1,26 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000001",
-      "created_at": "2026-08-12T18:44:43+08:00",
-      "excluded_scope": [],
-      "expected_outputs": [
-        "memory-status",
-        "memory-sync",
-        "delivery-receipt"
-      ],
-      "lease_expires_at": "2026-08-13T06:00:00+08:00",
-      "owner": "codex-main",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "scripts/memory",
-        "docs/palantier/AOS项目开发上下文/memory",
-        "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
-        "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
-      ],
-      "status": "ACTIVE",
-      "task_id": "SHARED-MEMORY-PHASE1-5-20260812"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
