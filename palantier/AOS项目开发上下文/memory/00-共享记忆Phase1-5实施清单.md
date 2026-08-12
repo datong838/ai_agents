@@ -1,7 +1,7 @@
 # 共享记忆 Phase 1～5 实施清单
 
 > 状态：`IMPLEMENTED_GREEN / SEALED`
-> 实施提交：`aos-platform/m1@8492880`、`prime-agent/main@ee254c81`、`docs/m1@f0096c7`
+> 实施提交：`aos-platform/m1@ca5a042`、`prime-agent/main@ee254c81`、`docs/m1@11b7f76`
 > 上位方案：`/Users/ddt/work/projects/ai_agent/docs/多对话共享记忆机制.md` v1.2
 > 边界：不进入 AIP-5 E5，不读写真实业务数据，不保存凭据。
 

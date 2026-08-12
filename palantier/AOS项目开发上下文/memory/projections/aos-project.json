@@ -2,22 +2,23 @@
   "completed": [
     "AIP-5 E0-E4 IMPLEMENTED_GREEN and PAUSED_BEFORE_E5",
     "Prime Agent keyless launch, AUTH_OK readback and launchd ownership GREEN",
-    "shared-memory Phase 0-5 IMPLEMENTED_GREEN with authority CAS, schemas, deterministic projections, gate, Receipt, Lease, Event and monitor",
+    "shared-memory Phase 0-5 IMPLEMENTED_GREEN with authority CAS, 9 schemas, deterministic projections, gate, Receipt, Lease, Event and monitor",
     "Prime three projections use deterministic direct adapter, monotonic version ledger, rollback backups and idempotent sync",
     "Prime native Harness CRUD shares the AOS file lock, rejects stale snapshots and writes atomically",
+    "Prime authority block is first; retained legacy text is explicitly historical and cannot satisfy CURRENT",
     "strong projections CURRENT across context, project, WorkBuddy and Prime"
   ],
-  "content_hash": "sha256:e9664c6157ea4535e530ee7cd98741329455d10cba66d89b5e722198cee39384",
+  "content_hash": "sha256:305c0e4b0625f36ccf7512c08eafa139aa001402975adedc6cbcdbf770023082",
   "current_phase": "SHARED_MEMORY_PHASE5",
   "delivery_status": "IMPLEMENTED_GREEN",
   "evidence": [
     {
       "kind": "git_commit",
-      "ref": "aos-platform/m1@8492880"
+      "ref": "aos-platform/m1@ca5a042"
     },
     {
       "kind": "git_commit",
-      "ref": "docs/m1@f0096c7"
+      "ref": "docs/m1@11b7f76"
     },
     {
       "kind": "git_commit",
@@ -26,6 +27,10 @@
     {
       "kind": "delivery_receipt",
       "ref": "SHARED-MEMORY-PRIME-ADAPTER-20260812"
+    },
+    {
+      "kind": "delivery_receipt",
+      "ref": "SHARED-MEMORY-SEMANTIC-ORDER-20260812"
     },
     {
       "kind": "test",
@@ -40,15 +45,19 @@
       "ref": "Prime clean-baseline npm run check GREEN"
     },
     {
+      "kind": "fault_injection",
+      "ref": "legacy-first Prime projection became DRIFTED and closed gate"
+    },
+    {
       "kind": "runtime_probe",
-      "ref": "Prime direct projections v22/v24/v18 CURRENT and resync idempotent"
+      "ref": "Prime authority-first projections v24/v26/v20 CURRENT and resync idempotent"
     },
     {
       "kind": "runtime_probe",
       "ref": "Prime runtime installed, launchd running, process args key-free, auth file 0600"
     }
   ],
-  "generated_at": "2026-08-12T21:06:45+08:00",
+  "generated_at": "2026-08-12T21:22:43+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only real target",
     "dev-org/dev-project is a negative isolation canary only",
@@ -59,18 +68,18 @@
     "AGNES provider credential rotation after historical exposure",
     "AIP-5 E5-E7 remains intentionally paused before review"
   ],
-  "last_green_gate": "SHARED_MEMORY_PHASE5_PRIME_DETERMINISTIC",
+  "last_green_gate": "SHARED_MEMORY_PHASE5_COMPLETE",
   "next_gate": "PAUSED_BEFORE_AIP5_E5_REVIEW",
   "next_steps": [
     "rotate the historically exposed AGNES credential at the provider and update auth.json only",
     "when AIP resumes, review and freeze AIP-5 E5 checklist before coding"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000007",
+  "project_revision": "AOS-000008",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "8492880",
-    "docs": "f0096c7",
+    "aos-platform": "ca5a042",
+    "docs": "11b7f76",
     "prime-agent": "ee254c81"
   },
   "source_files": [
