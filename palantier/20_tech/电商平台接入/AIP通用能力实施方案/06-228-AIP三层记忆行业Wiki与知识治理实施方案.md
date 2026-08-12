@@ -205,6 +205,8 @@ E5 只建设知识摄取控制面，不复制 AIP-1/2 的 `Task/Plan/Run/Checkpo
 - `/v1/aip/memory-authority/pipelines/runs/{id}/complete`：可信内部 executor 写 terminal Receipt、Candidate refs 和 checkpoint；普通前端用户不可调用。
 - Memory Governance 页面增加“知识管道”只读/受控操作视图，覆盖 loading/empty/error/disabled/paused/active/running/failed/blocked；按钮必须有真实 API 或明确禁用原因。
 
+E5D 角色矩阵冻结：所有 GET 仍由认证 Principal 的租户 scope + RLS 限制；Schedule 创建/状态变更只允许 `admin/reviewer`；Run 登记只允许 `admin/executor/aip_executor`，paused 人工单次运行还必须显式声明授权；`claim/complete/lease-expire` 不暴露给普通页面，complete 首期仅 `executor/aip_executor` 且必须提交当前 lease owner。API 不接受 caller 自报 tenant、request hash、依赖结果或 adapter ready 状态。
+
 #### 6.4.5 E5 子门与退出证据
 
 | 子门 | 范围 | 退出门 |
