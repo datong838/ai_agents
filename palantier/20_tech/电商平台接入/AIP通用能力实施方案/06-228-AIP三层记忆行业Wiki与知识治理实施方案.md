@@ -1,6 +1,6 @@
 # 228-AIP 三层运行记忆、行业 Wiki 与知识治理实施方案
 
-> 状态：**IMPLEMENTING · v1.2 · 已获用户全量编码授权 · E0～E2 IMPLEMENTED_GREEN · E3 APPROVED_TO_IMPLEMENT**
+> 状态：**IMPLEMENTING · v1.3 · 已获用户全量编码授权 · E0～E3 IMPLEMENTED_GREEN · E4 APPROVED_TO_IMPLEMENT**
 > 对应阶段：AIP-5。
 >
 > 2026-08-11 补充：外部研究 Harness 的知识入口 v1.2 已评审通过。2026-08-12 对账：总控全量编码授权已取代历史“不授权编码”门，但每个子波仍需方案、检查点、测试、浏览器与安全提交。
@@ -122,3 +122,11 @@ apps/web/src/pages/ontology/Wiki*.tsx
 | E7 | 六同事个人记忆、共享投影、改进度量、撤回影响分析 | projection/evals/web | 最小披露；不跨租户共享业务明细；以 Eval/人工修改率证明改进 |
 
 执行顺序固定 E0→E1A→E1B→E2→E3→E4→E5→E6→E7。每个子波完成后更新 `AOS项目开发上下文/01-当前项目状态.md`、`06-当前执行检查点.md`，形成代码与文档安全提交；若实时代码与本表冲突，以 PostgreSQL/O1 公共契约和代码真值为准，先修订方案再编码。
+
+### 6.1 E3 实施结论（2026-08-12）
+
+E3 已以代码 `81c5f82` 实现权威 `KnowledgeQuery`、渐进上下文、O1 Wiki 只读适配器与可清空重建的 reference-only 索引。检索按 `workspace → organization → public_package` 稳定解析；服务端授权 markings、applicability、time cutoff、Memory 状态、source freshness 均在 payload 解析和上下文组装前过滤。请求 markings 不能扩大服务端授权，同层异 hash 冲突、撤回、未来生效、过期来源、跨租户、payload/hash 漂移均失败关闭。
+
+上下文按主 subject 后接去重的 `object_refs` 渐进装配，token 预算只允许完整 chunk，不截断半条知识；每个 chunk 与 citation 一一对应且 token 总数由契约复核。索引只保存 `memory_item_id/revision/content_hash/subject_key`，不保存知识正文；索引 unavailable 时显式降级为 PostgreSQL authority scan，清空或重建不改变 canonical Memory。
+
+O1 Wiki adapter 不改写既有 `wiki_page`，只有具备完整 governance envelope、精确 source/freshness/license/applicability/markings、正文 hash 与 payload hash 一致的页面才可读取；历史 legacy 页面继续 blocked。E3 8 个专项 PostgreSQL 场景、AIP-5 全链及相邻 AIP-3/AIP-4 累计 50 tests passed，compileall 与 diff check GREEN。全文/向量召回、融合与重排仍留在 E6，没有在 E3 伪装完成。
