@@ -1,7 +1,7 @@
 # 共享记忆 Phase 1～5 实施清单
 
 > 状态：`IMPLEMENTED_GREEN / SEALED`
-> 实施提交：`aos-platform/m1@3196251`、`docs/m1@17e9233`
+> 实施提交：`aos-platform/m1@8492880`、`prime-agent/main@ee254c81`、`docs/m1@f0096c7`
 > 上位方案：`/Users/ddt/work/projects/ai_agent/docs/多对话共享记忆机制.md` v1.2
 > 边界：不进入 AIP-5 E5，不读写真实业务数据，不保存凭据。
 
@@ -62,6 +62,7 @@ Phase 4 只以强一致投影作为状态变更门；最终一致延迟必须显
 - 文件在同目录临时文件写入、`fsync` 后 `os.replace`；事件日志 append-only。
 - Prime 投影不再委托模型根据 prompt 创建/更新条目；`memory-sync` 确定性读写 global Harness JSON，避免 session scope 漂移和模型自由裁决。
 - Prime 三条投影除 revision/hash marker 外，还由 `prime-version-state.json` 维护最后成功版本与内容哈希；版本低于最后成功值时必须报 `DRIFTED`。
+- Prime 条目必须把当前权威块放在首部；保留的旧正文统一降级到“历史材料（仅供追溯，可能过时）”，不得让旧状态先于当前权威事实被读取。
 - Prime 写入前在本机建立 `0600` 备份，采用独占 `flock` + mtime 并发检测 + 原子替换；Prime 原生 Harness 写入使用同一把锁并在陈旧快照保存时失败关闭；任一写后回读失败时恢复备份并保留 RED。
 - 仅替换每个 Prime 条目中受管投影段，保留旧有历史叙述、其他 Harness 条目和 refinements。
 - Prime 不可用时报告 `UNAVAILABLE/STALE/DRIFTED`；禁止从旧 Prime 投影反向覆盖 authority。
@@ -80,7 +81,7 @@ Phase 4 只以强一致投影作为状态变更门；最终一致延迟必须显
 
 ## 5. 最终封板
 
-- 所有单元测试、故障注入和真实 Prime 回读 GREEN（当前 13 tests）。
+- 所有单元测试、故障注入和真实 Prime 回读 GREEN（当前共享记忆 14 tests、Prime Harness 36 tests）。
 - `memory-status --json` 的 blocking projections 全 CURRENT。
 - `gate` 返回 delivery GREEN、memory GREEN 或 GREEN_WITH_WARNINGS。
 - 01/06、Git、Prime、WorkBuddy、Codex 候选投影对账。

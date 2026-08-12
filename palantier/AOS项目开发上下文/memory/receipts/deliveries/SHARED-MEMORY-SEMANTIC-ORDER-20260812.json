@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000007",
+  "blockers": [],
+  "changed_files": [
+    "scripts/memory/memoryctl.py",
+    "scripts/memory/tests/test_memoryctl.py",
+    "docs/多对话共享记忆机制.md",
+    "docs/palantier/AOS项目开发上下文/memory/00-共享记忆Phase1-5实施清单.md"
+  ],
+  "commits": [
+    "aos-platform/m1@ca5a042"
+  ],
+  "completed_at": "2026-08-12T21:20:39+08:00",
+  "completed_revision": "AOS-000007",
+  "result": "IMPLEMENTED_GREEN",
+  "risks": [
+    "AGNES historical provider credential still requires external rotation"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "SHARED-MEMORY-SEMANTIC-ORDER-20260812",
+  "verification": [
+    "14 shared-memory tests passed",
+    "Legacy-first Prime entries became DRIFTED and closed the gate",
+    "Deterministic repair placed authority first; second sync changed 0",
+    "Prime versions v24/v26/v20, authority-first and history labels verified"
+  ]
+}
