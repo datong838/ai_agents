@@ -132,16 +132,17 @@ E4D 实施结论：E4B 复审补强 `8b08792`，深层严格解析 tenant/source
 - [x] Run 外键精确绑定同租户 `aip_task/aip_task_run`；每个输出 Candidate 由独立关联表在同 scope 做 FK 约束。
 - [x] disposable PostgreSQL 验证 upgrade/downgrade、单 Alembic head、无 scope、`org-org/dev-project`、`dev-org/dev-project` canary 和既有表行数守恒；12 targeted / 55 cumulative passed，compileall/diff/敏感词 GREEN，Ruff unavailable。
 
-#### E5B：Store、CAS 与恢复
+#### E5B：Store、CAS 与恢复（IMPLEMENTED_GREEN · `25ada61`）
 
-- [ ] `aip_memory_pipeline_store.py`：Schedule create/read/list/transition；Run enqueue/claim/read/list/transition；terminal Receipt、Alert 和 checkpoint 原子提交。
-- [ ] idempotency key 仅从可信请求头/服务参数进入，request hash 由服务端对严格 DTO 生成；同 scope + key + hash 精确重放，异 hash conflict。
-- [ ] Schedule create/transition 与追加不可变 `PipelineScheduleEvent` 同事务提交；变更失败不留可变行脏状态。
-- [ ] Run enqueue/claim/pause/resume/terminal/lease-expired 与追加不可变 `PipelineRunEvent` 同事务提交；非终态 `reasonCode` 不得丢弃。
-- [ ] 服务重建后 PostgreSQL 回读 Schedule/Run/Receipt/checkpoint/ScheduleEvent/RunEvent 一致，不使用进程内字典。
-- [ ] 失败/取消/unknown/暂停不推进 checkpoint；成功/partial 仅可 expected-version CAS 前进，不能回退。
-- [ ] Candidate 的 tenant/task/run 必须与 Pipeline Run 一致；漂移或跨租户失败关闭。
-- [ ] retry 创建新 run/attempt 并绑定 `retryOfRunId`；terminal run 不重开。
+- [x] `aip_memory_pipeline_store.py`：Schedule create/read/list/transition；Run enqueue/claim/read/list/transition；terminal Receipt、Alert 和 checkpoint 原子提交。
+- [x] idempotency key 仅从可信请求头/服务参数进入，request hash 由服务端对 actor + 严格 DTO 生成；同 scope + key + hash 精确重放，异 hash conflict。
+- [x] Schedule create/transition 与追加不可变 `PipelineScheduleEvent` 同事务提交；变更失败不留可变行脏状态。
+- [x] Run enqueue/claim/pause/resume/terminal/lease-expired 与追加不可变 `PipelineRunEvent` 同事务提交；非终态 `reasonCode` 不丢弃。
+- [x] 服务重建后 PostgreSQL 回读 Schedule/Run/Receipt/checkpoint/ScheduleEvent/RunEvent 一致，不使用进程内字典。
+- [x] 失败/取消/unknown/暂停不推进 checkpoint；成功/partial 仅可 expected-version CAS 前进，不能回退。
+- [x] Candidate 的 tenant/task/run/revision 必须与 Pipeline Run 一致；漂移或跨租户失败关闭并留 Alert。
+- [x] retry 创建新 run/attempt 并绑定 `retryOfRunId`；terminal run 不重开；租约过期仅原子转 unknown。
+- [x] E5A–E5B 专项 21 tests / 累计 AIP-5 64 tests passed；单 head `aip5_003`，compileall/diff/敏感信息 GREEN，Ruff unavailable。
 
 #### E5C：七管道策略与可信适配器门
 

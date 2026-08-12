@@ -221,3 +221,11 @@ E5 不导入美妆知识，不启用网络/竞品/专业库真实抓取，不实
 E5A 已以代码 `0f40442` 实现七知识管道公共契约和 `aip5_002` PostgreSQL authority。新增 Schedule/Run/Receipt/ReceiptCandidate/CheckpointRevision/Alert 六表；全部 RLS + FORCE RLS，Receipt/ReceiptCandidate/CheckpointRevision/Alert 追加不可变。Schedule/Run 具备租户内 idempotency key、request hash 和 version/CAS 字段；Run 精确外键绑定 AIP Task/Run，每个 Receipt 输出 Candidate 通过独立关联表绑定同租户 `aip_memory_candidate`，没有只靠 JSON 声明引用。
 
 迁移未创建真实租户 Schedule，未复用 `meta_schedule_run`，未注册 API 或拉取外部数据。disposable PostgreSQL 覆盖 upgrade/downgrade、单 head `aip5_002`、无 scope 零可见/禁止写、`org-org/dev-project` 与 `dev-org/dev-project` 隔离、追加不可变触发器和既有 AIP authority 行数守恒；E5A 12 tests、累计 AIP-5 55 tests、compileall、diff/敏感词检查 GREEN。当前 venv 未安装 Ruff，故不声明 Ruff 结果。下一门为 E5B Store/CAS/恢复。
+
+#### 6.4.7 E5B 实施结论（2026-08-13）
+
+E5B 已以代码 `25ada61` 实现 tenant-scoped `AipMemoryPipelineStore`。Schedule 和 Run 写 DTO 不接受调用方自报 idempotency key/request hash；Store 以可信服务参数接收 key，并将 actor 与规范化严格 DTO 一起服务端哈希。同 scope + key + hash 精确重放，异 hash 失败冲突；Schedule/Run 通过 expected-version CAS 变更。
+
+`aip5_003` 新增追加不可变 ScheduleEvent/RunEvent，create、transition、enqueue、claim、pause/resume、terminal 和 lease-expired 都在同一事务留痕。Run 精确绑定 AIP Task/Run 和 Candidate revision；过期租约只能原子转 `unknown + Receipt + Alert`，不假定外部未执行。成功/如实 partial 才能以 checkpoint expected-version 前进；失败、unknown、Candidate 漂移和 checkpoint 冲突失败关闭，且不产生虚假 terminal Receipt。
+
+disposable PostgreSQL 验证了重启回读、服务端哈希重放/冲突、CAS、审计原子性、事件不可变、租约超时、retry attempt、Candidate/Task/Run 精确绑定、checkpoint 成功/失败和跨租户零可见。E5A–E5B 专项 21 tests、累计 AIP-5 64 tests、Alembic 单 head `aip5_003`、compileall、diff/敏感信息检查 GREEN；Ruff 仍 unavailable。未写真实租户 Schedule，未拉取外部数据。下一门为 E5C 七管道策略与可信 adapter 门。
