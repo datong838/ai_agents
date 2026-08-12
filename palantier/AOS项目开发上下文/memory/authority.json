@@ -2,47 +2,56 @@
   "authority_owner": "aos-main-development",
   "completed": [
     "AIP-5 E0-E4 IMPLEMENTED_GREEN",
-    "AIP-5 E5A contracts and PostgreSQL authority IMPLEMENTED_GREEN"
+    "AIP-5 E5A contracts and PostgreSQL authority IMPLEMENTED_GREEN",
+    "AIP-5 E5B Store, CAS, immutable events, Receipt, Alert and checkpoint recovery IMPLEMENTED_GREEN"
   ],
-  "current_phase": "AIP5_E5B",
+  "current_phase": "AIP5_E5C",
   "delivery_status": "IMPLEMENTING",
   "evidence": [
     {
       "kind": "tests",
-      "ref": "E5A-12-passed"
+      "ref": "E5B-21-passed"
     },
     {
       "kind": "regression",
-      "ref": "AIP5-55-passed"
+      "ref": "AIP5-64-passed"
     },
     {
       "kind": "migration",
-      "ref": "aip5_002-single-head"
+      "ref": "aip5_003-single-head"
+    },
+    {
+      "kind": "commit",
+      "ref": "25ada61"
+    },
+    {
+      "kind": "docs",
+      "ref": "5142344"
     }
   ],
-  "evidence_cutoff": "2026-08-12T21:22:00+08:00",
+  "evidence_cutoff": "2026-08-13T00:45:00+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only real target",
     "dev-org/dev-project is a negative isolation canary only",
-    "AIP remains PAUSED_BEFORE_E5",
+    "AIP-5 E5 is authorized only through E5A-E5D gated execution",
     "credentials and customer-sensitive data never enter shared memory"
   ],
   "incomplete": [
-    "AIP-5 E5B-E5D implementation and verification",
+    "AIP-5 E5C-E5D implementation and verification",
     "AIP-5 E6-E7 remain gated"
   ],
-  "last_green_gate": "AIP5_E5A_COMPLETE",
-  "next_gate": "AIP5_E5B_COMPLETE",
+  "last_green_gate": "AIP5_E5B_COMPLETE",
+  "next_gate": "AIP5_E5C_COMPLETE",
   "next_steps": [
-    "Implement E5B Store, idempotency, CAS, terminal Receipt and checkpoint recovery with failing tests first",
-    "Verify restart readback and cross-tenant failure closure"
+    "Implement E5C seven-pipeline policy and trusted adapter registry with failing tests first",
+    "Verify dependency unknown fail-closed and no external fetch"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000010",
+  "project_revision": "AOS-000011",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "0f40442",
-    "docs": "d497d42",
+    "aos-platform": "1c31673",
+    "docs": "3688ef3",
     "prime-agent": "ee254c81"
   },
   "source_files": [
@@ -50,5 +59,5 @@
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
     "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
   ],
-  "updated_at": "2026-08-12T23:05:32+08:00"
+  "updated_at": "2026-08-13T00:19:49+08:00"
 }
