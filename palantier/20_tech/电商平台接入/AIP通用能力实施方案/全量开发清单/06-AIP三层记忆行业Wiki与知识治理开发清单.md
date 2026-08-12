@@ -1,6 +1,6 @@
 # 06 AIP 三层运行记忆、行业 Wiki 与知识治理开发清单
 
-> 状态：**v1.7 · 已获用户全量编码授权 · E0～E3 IMPLEMENTED_GREEN · E4 APPROVED_TO_IMPLEMENT**
+> 状态：**v1.8 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · E5 REVIEWED_APPROVED_TO_IMPLEMENT**
 > 上位依据：`../06-228-AIP三层记忆行业Wiki与知识治理实施方案.md`
 > 对应阶段：AIP-5；前置：02、04、05 GREEN。
 
@@ -80,8 +80,8 @@
 - [x] E1B：Candidate store、CAS 和合法状态机。代码 `2692f1e`；AIP-5 与邻接 AIP-4 Store 33 passed。
 - [x] E2：七类治理门与统一晋升服务。代码 `ab7b8aa`；累计 41 tests passed。
 - [x] E3：KnowledgeQuery、渐进上下文、O1 Wiki adapter 和可重建索引。代码 `81c5f82`；8 个专项、累计 50 tests passed。
-- [ ] E4：Canonical API/SDK/治理页面与浏览器验收。
-- [ ] E5：七知识管道的 Schedule/Run/Receipt/checkpoint。
+- [x] E4：Canonical API/SDK/治理页面与浏览器验收。
+- [ ] E5：七知识管道的 Schedule/Run/Receipt/checkpoint；按 E5A→E5B→E5C→E5D 执行。
 - [ ] E6：美妆知识包冷启动、混合检索与量化 Eval。
 - [ ] E7：六同事个人记忆/共享投影、撤回影响与改进度量。
 
@@ -121,3 +121,38 @@ E3 实施结论：`AipMemoryRetrieval` 只从 tenant-scoped PostgreSQL authority
 - [x] E4D：后端累计回归、前端定向/全量、TypeScript/build、`org-org/dev-project` 内置浏览器逐项点击；`dev-org` 仅 API 负向 canary；更新上下文、记忆与安全提交。
 
 E4D 实施结论：E4B 复审补强 `8b08792`，深层严格解析 tenant/source/governance/Event/Item/Revision/Citation 并补齐 events/approve/promote SDK；E4C 页面 `038b9da`，三视图、导航、O1 Wiki 治理入口与交互诚实清单完成。后端 38 passed；前端定向 21、全量 2053 tests、TypeScript、Vite build（274 modules）与 diff check GREEN。内置浏览器只使用 `org-org/dev-project`，验证导航、三视图、必填阻断、API 500 错误态、Wiki 入口和控制台错误 0；不把环境 500 冒充正向回包。按用户要求暂停于 E5 前。
+
+### 6.4 E5 执行拆分（2026-08-12 复审通过）
+
+#### E5A：契约与 PostgreSQL authority
+
+- [ ] `aip_memory_pipeline_contracts.py`：冻结七种 `pipelineKind`、Schedule/Run/Receipt/Checkpoint/Alert DTO 与状态机；写 DTO 不接受 org/project、凭据或任意 provider payload。
+- [ ] `aip5_002_memory_pipeline_control.py`：新增 schedule/run/receipt/checkpoint revision/alert 五类 authority；全部 RLS + FORCE RLS。
+- [ ] Schedule/Run 使用 expected-version 和 idempotency key/request hash；Receipt、Checkpoint revision、Alert 追加不可变。
+- [ ] Run 外键精确绑定同租户 `aip_task/aip_task_run`；输出 Candidate 必须由 Store 在同 scope 校验。
+- [ ] disposable PostgreSQL 验证 upgrade/downgrade、单 Alembic head、无 scope、`org-org/dev-project`、`dev-org/dev-project` canary 和既有表行数守恒。
+
+#### E5B：Store、CAS 与恢复
+
+- [ ] `aip_memory_pipeline_store.py`：Schedule create/read/list/transition；Run enqueue/claim/read/list/transition；terminal Receipt、Alert 和 checkpoint 原子提交。
+- [ ] 同 scope + idempotency key + request hash 精确重放；异 hash conflict；服务重建后 PostgreSQL 回读一致。
+- [ ] 失败/取消/unknown/暂停不推进 checkpoint；成功/partial 仅可 expected-version CAS 前进，不能回退。
+- [ ] Candidate 的 tenant/task/run 必须与 Pipeline Run 一致；漂移或跨租户失败关闭。
+- [ ] retry 创建新 run/attempt 并绑定 `retryOfRunId`；terminal run 不重开。
+
+#### E5C：七管道策略与可信适配器门
+
+- [ ] `aip_memory_pipeline_service.py`：七 kind 各自 trigger allowlist、默认状态、依赖门、source/license/freshness policy。
+- [ ] `seed_import/human_experience` 首期 paused，可授权人工单次执行；`operational_learning/customer_feedback` paused；`network_learning/competitor_analysis/professional_database` 在真实适配器和许可未就绪时 disabled。
+- [ ] 外部 DeerFlow/Harness 只提交 Artifact/Research receipt，再经可信 adapter 产生 Candidate；provider checkpoint/memory 不成为 AOS 真源。
+- [ ] 本子门只实现 adapter registry/调用边界和 fake adapter 单元测试，不拉真实外部数据，不导入示例知识。
+
+#### E5D：Canonical API、SDK/页面与封板
+
+- [ ] 在 `/v1/aip/memory-authority/pipelines` 增 schedule/run/receipt/checkpoint/alert 的 tenant-scoped API；内部 complete 接口只允许受信 executor。
+- [ ] `apps/web/src/api/aipMemory/` 扩展唯一严格 SDK；未知枚举/缺失 hash/version/tenant 失败关闭。
+- [ ] `MemoryGovernancePage` 增“知识管道”视图，覆盖 loading/empty/error/disabled/paused/active/running/failed/blocked；每个操作有真实 API 或明确禁用理由。
+- [ ] 后端专项/累计、前端定向/全量、TypeScript/build、OpenAPI/diff check、`org-org/dev-project` 内置浏览器验收；`dev-org` 只作 API 负向 canary。
+- [ ] 更新 `01-当前项目状态.md`、`06-当前执行检查点.md`、Prime/shared-memory 投影并形成代码/文档安全提交。
+
+E5 统一边界：不复制 AIP Task/Run/Checkpoint，不以 `meta_schedule_run` 冒充 AIP-5 控制面，不保存外部全文/PII/密钥，不在 migration 创建真实租户 schedule，不提前执行 E6 冷启动或 E7 个人/共享记忆。

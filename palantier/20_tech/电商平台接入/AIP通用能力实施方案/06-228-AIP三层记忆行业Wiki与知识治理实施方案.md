@@ -1,6 +1,6 @@
 # 228-AIP 三层运行记忆、行业 Wiki 与知识治理实施方案
 
-> 状态：**IMPLEMENTING · v1.4 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · 按用户要求暂停于 E5 前**
+> 状态：**IMPLEMENTING · v1.5 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · E5 REVIEWED_APPROVED_TO_IMPLEMENT**
 > 对应阶段：AIP-5。
 >
 > 2026-08-11 补充：外部研究 Harness 的知识入口 v1.2 已评审通过。2026-08-12 对账：总控全量编码授权已取代历史“不授权编码”门，但每个子波仍需方案、检查点、测试、浏览器与安全提交。
@@ -77,9 +77,12 @@ Task/Effect evidence
 
 ```text
 services/aos-api/alembic/versions/*_aip_memory_governance.py
-services/aos-api/aos_api/aip_memory_candidate_store.py
+services/aos-api/aos_api/aip_memory_store.py
 services/aos-api/aos_api/aip_memory_retrieval.py
 services/aos-api/aos_api/aip_memory_governance.py
+services/aos-api/aos_api/aip_memory_pipeline_contracts.py
+services/aos-api/aos_api/aip_memory_pipeline_store.py
+services/aos-api/aos_api/aip_memory_pipeline_service.py
 services/aos-api/aos_api/aip_taor_loop.py
 services/aos-api/aos_api/ontology_wiki_engine.py
 apps/web/src/api/aipMemory/*
@@ -113,7 +116,7 @@ apps/web/src/pages/ontology/Wiki*.tsx
 |---|---|---|---|
 | E0 | 运行记忆/Procedural/Shared 裁决、公共契约、ADR、现状真值测试 | `aip_memory_contracts.py`、契约测试、ADR/清单 | 不建第四套运行记忆库；scope/source/license/freshness/applicability 字段冻结；无数据库变更 |
 | E1A | Candidate/Item/Source/Revision authority schema、RLS/FORCE RLS、append-only event | migration、schema tests | 单一 Alembic head；无 GUC 零可见；同 ID 跨 scope 隔离；升降级可逆 |
-| E1B | Candidate authority store 与状态转换 | `aip_memory_candidate_store.py`、store tests | pending→quarantined/rejected/approved/promoted 合法；非法跳转、CAS、跨租户失败关闭 |
+| E1B | Candidate authority store 与状态转换 | `aip_memory_store.py`、store tests | pending→quarantined/rejected/approved/promoted 合法；非法跳转、CAS、跨租户失败关闭 |
 | E2 | PII/source/license/freshness/dedupe/conflict/applicability 治理服务 | `aip_memory_governance.py` | 缺治理字段隔离；一次成功/模型自述不可晋升；Eval/Draft 引用精确 |
 | E3 | KnowledgeQuery、渐进上下文与 O1 Wiki adapter | `aip_memory_retrieval.py`、`ontology_wiki_engine.py` adapter | 权限先于召回；stale/conflict/revoked 不返回；索引只存可重建 refs |
 | E4 | Canonical API、OpenAPI、Memory Governance/Wiki 页面 | router、`apps/web/src/api/aipMemory/`、页面 | 唯一 SDK；真实 idle/loading/empty/error；无静态知识回填 |
@@ -153,3 +156,57 @@ E4 已完成并封板：Canonical `/v1/aip/memory-authority` API、唯一 `apps/
 页面包含 Candidate、正式 Memory、Knowledge Query 三视图；真实空列表不注入示例，blocked/degraded/complete 与错误分别显示。批准/晋升没有用不完整表单开放：缺精确 Eval report、Draft、ApprovalEvent 时必须继续由服务端 Governance Service 失败关闭。O1 Wiki 原 Draft 写链未改，仅新增治理入口和 Agent 读取前的 scope/freshness/applicability/marking/Citation 说明。
 
 验证结果：AIP-5 后端 contracts/store/governance/retrieval/API 累计 38 passed；前端定向 4 文件 21 tests、全量 174 文件 2053 tests、TypeScript、Vite production build（274 modules）和 diff check 全部 GREEN。内置浏览器确认 `org-org/dev-project`、新导航、三视图、客户端必填阻断、API 异常诚实展示、Wiki 双向跳转及控制台错误 0。当前本机 `aos-api health HTTP 500`，因此只声明 UI/失败关闭浏览器 GREEN，不伪称真实正向回包 GREEN。按用户要求，本波结束后暂停，不自动进入 E5。
+
+### 6.4 E5 七知识管道控制面冻结（2026-08-12）
+
+E5 只建设知识摄取控制面，不复制 AIP-1/2 的 `Task/Plan/Run/Checkpoint` 业务执行真源，也不把历史 `meta_schedule_run` 包装成 AIP-5 权威。知识管道 Run 必须精确绑定同租户既有 `aip_task + aip_task_run`；其 checkpoint 仅表示外部来源游标，不能代替 Task checkpoint 或 Memory revision。
+
+#### 6.4.1 七管道与默认策略
+
+| kind | 中文名 | 允许触发 | 默认状态 | 首期输出约束 |
+|---|---|---|---|---|
+| `seed_import` | 种子知识导入 | manual | paused | 已授权文档；只生成 Candidate |
+| `operational_learning` | 运营实践自学习 | task_event | paused | 绑定 Effect/Evidence；一次成功不得晋升 |
+| `network_learning` | 网络学习 | scheduled/manual | disabled | 未配置可信来源/许可/防注入 Harness 时保持 disabled |
+| `competitor_analysis` | 竞品分析 | scheduled/manual | disabled | 只允许事实摘要和引用，不保存未授权全文 |
+| `professional_database` | 专业数据库 | scheduled/version_event | disabled | 适配器、许可和来源版本缺一即 blocked |
+| `customer_feedback` | 客户数据反哺 | domain_event/scheduled | paused | 只允许组织内聚合去敏事实 |
+| `human_experience` | 人工经验注入 | manual | paused | 作者、适用范围、复审时间齐全；仍走统一治理 |
+
+`disabled` 表示依赖尚未具备，不能触发；`paused` 表示配置存在但不接受自动触发，允许有权限的人工单次运行；`active` 才接受声明的自动触发。安装/迁移不得创建真实租户 schedule 或自动拉取外部数据，真实启用必须由 Canonical API 产生 Receipt。
+
+#### 6.4.2 权威模型与不变量
+
+1. `PipelineSchedule`：租户内独立配置，保存 kind、触发类型、规范化 schedule spec、配置 ArtifactRef、状态、next run、expected-version CAS 与当前外部游标版本；不保存凭据。
+2. `PipelineRun`：绑定 schedule、AIP Task/Run、trigger、attempt、idempotency key/request hash 和状态；同 scope + idempotency key 只能对应完全相同请求。
+3. `PipelineReceipt`：每次 terminal Run 唯一、追加不可变，记录结果、输入/输出 hash、Candidate refs、checkpoint 前后版本、计数、错误码与 receipt hash；不得包含外部全文、PII 或密钥。
+4. `PipelineCheckpointRevision`：追加不可变；只有成功或诚实的部分成功 Receipt 可在同一事务以 expected-version CAS 推进，失败、unknown、暂停和重放不得推进。
+5. `PipelineAlert`：由失败、重试耗尽、source blocked、checkpoint conflict 生成追加不可变告警；ack/silence 通过新 Event/Receipt 表达，不覆盖历史事实。
+6. 所有权威表具备 `org_id + project_id` 主键前缀、RLS + FORCE RLS；无 scope 零可见/禁止写，`dev-org/dev-project` 仅作负向 canary。
+7. Run 输出的每个 Candidate 必须已存在于同租户 `aip_memory_candidate`，且其 `task_id/run_id` 与 Pipeline Run 绑定一致；外部 DeerFlow/Harness 结果只能先成为 Artifact/Research receipt，再由可信适配器提交 Candidate。
+
+#### 6.4.3 状态机与恢复
+
+- Schedule：`active <-> paused`，`active/paused -> disabled`；disabled 只能在依赖复核和 expected-version CAS 后恢复为 paused，不能直接 active。
+- Run：`queued -> running -> succeeded/partial/failed/cancelled`；`running -> paused -> queued` 仅用于可恢复内部执行。terminal 状态不可重开，重试创建新 attempt/new run，并通过 `retry_of_run_id` 关联。
+- worker 领取运行必须使用短租约；租约超时只能把结果标记 unknown/告警，不能假定未执行并重复写外部系统。
+- 相同 idempotency key + request hash 精确回读；同 key 异 hash 返回 conflict。服务重启后从 PostgreSQL 回读 schedule/run/receipt/checkpoint，不依赖进程内字典。
+- checkpoint 冲突、Candidate 漂移、来源许可/新鲜度 unknown、AIP Task/Run 不匹配全部 fail closed；不得静默跳过或跨租户回退。
+
+#### 6.4.4 Canonical API 与页面边界
+
+- `/v1/aip/memory-authority/pipelines/schedules`：列出/创建；`/{id}` 回读；`/{id}/transitions` 执行 CAS pause/resume/disable。
+- `/v1/aip/memory-authority/pipelines/runs`：列出/创建人工或事件运行；`/{id}`、`/{id}/receipts`、`/{id}/alerts` 回读。首期 API 不直接执行外部抓取，只登记/驱动已注册 adapter。
+- `/v1/aip/memory-authority/pipelines/runs/{id}/complete`：可信内部 executor 写 terminal Receipt、Candidate refs 和 checkpoint；普通前端用户不可调用。
+- Memory Governance 页面增加“知识管道”只读/受控操作视图，覆盖 loading/empty/error/disabled/paused/active/running/failed/blocked；按钮必须有真实 API 或明确禁用原因。
+
+#### 6.4.5 E5 子门与退出证据
+
+| 子门 | 范围 | 退出门 |
+|---|---|---|
+| E5A | 契约、migration、RLS/FK/append-only | disposable PostgreSQL upgrade/downgrade；单 head；无 scope 零可见；既有行数守恒 |
+| E5B | Store、幂等/CAS、checkpoint/Receipt/Alert | 重启回读、同 key 重放、异 hash conflict、失败不推进 checkpoint、跨租户不可见 |
+| E5C | Service、七管道策略、adapter registry | 七 kind 独立开关；依赖未知 fail closed；Task/Run/Candidate 精确绑定；无真实外部抓取 |
+| E5D | Canonical API、SDK/页面、累计回归与浏览器 | 角色矩阵、严格 DTO、真实状态/禁用原因、`org-org/dev-project` 浏览器验收、canary 负向证据 |
+
+E5 不导入美妆知识，不启用网络/竞品/专业库真实抓取，不实现 E6 的全文/向量融合，也不实现 E7 的六同事共享投影。上述能力不得用 seed、Mock 或静态页面提前冒充完成。
