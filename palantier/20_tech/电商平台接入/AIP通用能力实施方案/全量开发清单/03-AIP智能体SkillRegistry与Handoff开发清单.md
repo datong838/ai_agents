@@ -1,8 +1,9 @@
 # 03 AIP 智能体、Skill Registry 与 Handoff 开发清单
 
-> 状态：**v1.2 · A6D IMPLEMENTED_GREEN / A6E 前置 W0A 待执行**
+> 状态：**v1.3 · A6D IMPLEMENTED_GREEN / W0A APPROVED / A6E READY**
 > 上位依据：`../03-228-AIP智能体SkillRegistry与Handoff实施方案.md`
 > 对应阶段：AIP-6；前置：02、04、05 公共契约 GREEN。
+> A6E 目录输入：`../18-AIP-W0A十类共享专业Capability目录别名与六角色职责Crosswalk.md`。
 
 ## 1. 工作包
 
@@ -68,4 +69,4 @@
 - 28 项 A6A～A6D 累计定向测试、compileall、迁移降升级、真实 Logic publication exact 查询、唯一 `aip6_003 (head)` 和 `git diff --check` 均 GREEN。
 - A6D 未注册 HTTP 路由、未切换旧 singleton、未创建领域六角色或真实 Provider；这些仍归 A6E/A6F 与 AIP-7。
 
-下一安全步骤：先执行 W0A 十 capability catalog/alias/crosswalk 文档门，再进入 A6E 六角色/37 Logic/职责模板领域包；不得跳过 W0A 直接硬编码名称。
+W0A 已评审通过。下一安全步骤：进入 A6E 六角色/37 Logic/十 capability/职责模板领域 SolutionPack；stable ID、alias、Schema 和 Coordinator 裁决必须原样消费 W0A，不得另建目录。

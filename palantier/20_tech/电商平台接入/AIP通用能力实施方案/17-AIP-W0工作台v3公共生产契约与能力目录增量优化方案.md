@@ -1,6 +1,6 @@
 # AIP-W0 工作台 v3 公共生产契约与能力目录增量优化方案
 
-> 状态：`REVIEWED / APPROVED_FOR_PLAN_INTEGRATION / NOT_CODE_AUTHORITY`
+> 状态：`REVIEWED / APPROVED_FOR_PLAN_INTEGRATION / W0A_APPROVED / NOT_W2_CODE_AUTHORITY`
 > 日期：2026-08-13
 > 触发来源：`16-AIP对八工作台六数字同事与共享专业Agent全量支撑审查报告.md`
 > 唯一真实范围：`org-org/dev-project`
@@ -18,7 +18,7 @@
 - AIP-3：ActionProposal/Draft/Approval/Lease/Receipt/unknown/reconcile 可复用。
 - AIP-4：Eval/Publication/Lineage/Telemetry/Usage/Capability Receipt 可复用。
 - AIP-5：治理记忆、七知识管道、KnowledgeSearch/readiness 已有底座；E6 外部门、E7 未闭合。
-- AIP-6 A6A～A6C：`aip6_002`、Agent/Skill revision、Instance/SkillBinding、Store/CAS/durable Receipt GREEN；A6D～A6F 未完成。
+- AIP-6 A6A～A6D：`aip6_003`、Agent/Skill revision、Instance/Skill/Capability Binding、AgentRun、Handoff、exact refs、Store/CAS/durable Receipt GREEN；A6E～A6F 未完成。
 - 工作台 v3 八公共对象没有 canonical L0 authority；代码检索无 `TaskBriefRevision`、`EvidenceBundleRevision`、`EvalContractRevision`、`ResponsibilityPlanRevision`、`StageTemplate`、`ReviewIssue/ReturnDecision`、`ImpactPreview` 实现。
 
 ## 3. 八公共对象 owner 裁决
@@ -44,7 +44,7 @@
 4. `标题生成` 是 `文案生成` 子能力/alias；不重复计数。`Coordinator/内容总监` 是内容官在内容生产范围的 `production.coordination` responsibility profile，不占第十一类 capability。
 5. 素材采集是数据/知识/ResearchJob/媒体资产/许可 authority 的受治理组合，不复制数据真源。
 
-正式稳定 ID、父子关系、input/output schema、risk、Eval、required data/tool、readiness 在 A6E manifest/crosswalk 中冻结；未冻结前不得用显示名作为 API identity。
+正式稳定 ID、父子关系、input/output schema、risk、Eval、required data/tool、readiness 已由 [W0A 十类 Capability 与职责 Crosswalk](18-AIP-W0A十类共享专业Capability目录别名与六角色职责Crosswalk.md) 冻结；A6E 必须原样消费 stable ID，不得再用显示名作为 API identity。
 
 ## 5. Handoff、Memory 与运行依赖
 
@@ -56,13 +56,13 @@
 
 ## 6. 实施波次与插入点
 
-### W0A · 来源与术语冻结
+### W0A · 来源与术语冻结（已通过）
 
 - 将 229、工作台产品 v3、产品吸收矩阵、技术 22/23 加入 AIP 来源索引/覆盖矩阵。
 - 冻结 AgentTemplate、SkillTemplate、Capability、ResponsibilitySlot、HandoffEnvelope canonical 术语与 alias。
 - 形成十 capability ID/crosswalk 草案和六角色 ownership 表。
 
-退出门：P0-01/P0-04/P0-05/P0-06 的方案差异为 0。
+退出门：P0-01/P0-04/P0-05/P0-06 的方案差异为 0。证据见 `18-AIP-W0A十类共享专业Capability目录别名与六角色职责Crosswalk.md`；状态 `APPROVED_FOR_A6E_INPUT`。
 
 ### W0B · 公共 authority ADR 与契约清单
 
@@ -94,4 +94,4 @@
 
 整改后复审：owner、复用/增量裁决、身份/职责/能力正交关系、Handoff/E7/A6E/AIP-9 依赖、插入顺序和失败语义已闭合；方案可作为总计划增量输入。它不替代具体 W0B 编码清单，也不授权在清单评审前实现八对象。
 
-最终结论：`APPROVED_FOR_PLAN_INTEGRATION`。当前允许继续 A6D 基础 authority；A6E 前完成 W0A catalog/crosswalk，AIP-9 前完成 W0B/W2 公共生产契约。
+最终结论：`APPROVED_FOR_PLAN_INTEGRATION`。A6D 与 W0A 已完成，当前允许进入 A6E 领域目录；AIP-9 前仍须完成 W0B/W2 公共生产契约。
