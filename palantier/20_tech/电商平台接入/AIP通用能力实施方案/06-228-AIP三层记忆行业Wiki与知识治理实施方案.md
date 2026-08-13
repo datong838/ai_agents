@@ -318,3 +318,7 @@ GoldSet 需要稳定 id/revision/hash、reviewer/approvedAt；每条至少包含
 Top-1 采用实际首条 Citation 的 Memory/revision/hash 精确匹配；另计 Citation coverage 和权限/stale/revoked/conflict 负向保护。任一负向泄露总门 RED。runner 是纯计算器，不生成 gold、不调用 LLM 补答案、不写 Memory/Index；当前真实金标计数仍为 0。
 
 E6E 已以代码 `3d3ee69` 实现严格 GoldSet、Observation、Report 与纯计算 runner。正样本 Top-1/Citation coverage 和负样本泄漏分别计量，正确空返回的负样本不稀释正样本指标；全负样本也不得计算指标。未审核、少于 50、六角色覆盖缺口、重复或不完整结果均失败关闭。12 项专项、26 项 E6C-E6E 邻接、compileall、diff check GREEN；真实审核 GoldSet 仍为 0，故保持 `CODE_GREEN / EVAL_BLOCKED`。下一门为 E6F 控制面与 `org-org/dev-project` 内置浏览器验收。
+
+### 7.6 E6F 只读控制面冻结
+
+E6F 使用后端单一 `KnowledgeReadiness` 聚合，禁止前端跨 Source/Index/Installation/Eval 自行推断。Source/license/usage/freshness、reference 数和三 lane 来自当前租户 PostgreSQL 真值；未登记 lane 只可补成 `unbuilt/capability_not_registered`。当前尚无 KnowledgePackage installation identity 映射和 GoldSet registry，因此 package/Eval 两块返回 `authority_unavailable` 与空计数，不得显示猜测的 0。页面新增“冷启动与检索”视图，真实空态、provider 未装配、许可与 capability blocker 均可见；API 失败时失败关闭。浏览器正向验收只认 `org-org/dev-project`，`dev-org/dev-project` 仅作隔离 canary。
