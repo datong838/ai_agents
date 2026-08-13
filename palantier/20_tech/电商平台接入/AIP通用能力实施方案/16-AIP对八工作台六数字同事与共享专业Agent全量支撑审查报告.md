@@ -8,7 +8,7 @@
 > 工作台技术基线：`APPROVED_TECHNICAL_BASELINE_V2`，其中 TaskBrief、自适应生产编排仍为目标态契约。
 > 唯一真实业务范围：`org-org / dev-project`；`dev-org / dev-project` 仅作负向隔离 canary。
 > 增量复核：2026-08-13，基于 `AOS-000017 / AIP6_AGENT_SKILL_HANDOFF_REVIEW_FREEZE` 进一步核对“标题生成/文案生成”“内容总监/Coordinator”和“素材采集”；修正初版按名称计数造成的过严判断，但不改变总体审查状态。
-> A6C 实时复核：`aos-platform/m1@561d82c` 已实现 Agent/Skill revision、AgentInstance、SkillBinding、CAS、组织 Overlay 和 durable Receipt；本报告据此缩小 P0-03，但 A6D～A6F、领域目录和公共生产契约仍未闭合，总体审查状态不变。
+> A6D 实时复核：`aos-platform/m1@650981c` 已继续实现 CapabilityBinding、AgentRun、Handoff、exact Task/Run/Plan/Instance refs、实例快照、一次性 token 与接收方重授权失败关闭；本报告据此继续缩小 P0-03，但 A6E/A6F、领域目录、ModelRouteRevision authority 和公共生产契约仍未闭合，总体审查状态不变。
 
 ## 0. 使用的 Rules
 
@@ -70,7 +70,7 @@
 ### 2.3 当前阻断全面支撑的部分
 
 1. 工作台 v3 新增的 `TaskBriefRevision`、`EvidenceBundleRevision`、`EvalContractRevision`、`ResponsibilityPlanRevision`、`StageTemplate`、`ReviewIssue/ReturnDecision`、`ImpactPreview` 等尚未进入 AIP 总方案和全量清单的正式覆盖基线。
-2. AIP-6 A6A～A6C 已落地通用 DTO、PostgreSQL revision/Instance/Binding authority、Store、CAS 与 durable Receipt；但 CapabilityBinding/AgentRun/Handoff service、Canonical API/Principal、领域六角色/37 Logic/10 capability contribution 和页面切换尚未完成。当前 `/v1/aip/agents`、`/v1/aip/agent-registry` 仍是进程内 singleton/过渡入口，不能把页面记录当作权威实例。
+2. AIP-6 A6A～A6D 已落地通用 DTO、PostgreSQL revision/Instance/Binding/Run/Handoff authority、Store、CAS、durable Receipt、exact runtime refs 与最小披露交接；但 Canonical API/Principal、领域六角色/37 Logic/10 capability contribution、AIP-7 ModelRouteRevision authority 和页面切换尚未完成。当前 `/v1/aip/agents`、`/v1/aip/agent-registry` 仍是进程内 singleton/过渡入口，不能把页面记录当作权威实例。
 3. AIP 已在不同方案和清单中覆盖 10 类共享 capability 的业务语义，但尚未冻结唯一稳定目录、别名 crosswalk 与 Coordinator ownership；按 Agent 显示名直接计数会同时产生漏计和重复计数。
 4. 六数字同事已经进入 AIP-6 与 AIP-11 清单，通用 Agent identity/instance authority 已具备 A6C 底座；但六角色领域模板尚未发布，AIP-5 E7 仍必须等待 A6E exact identity，不能按角色字符串硬编码。
 5. AIP-8、AIP-9、AIP-10 尚未整体实现；AIP-5 E6 仍受真实知识、trusted provider、专家 GoldSet 和向量能力外部门约束。
@@ -106,7 +106,7 @@
 | AIP-3 Action | `IMPLEMENTED_GREEN` | Draft/Approval/Lease/Receipt/unknown 可复用 | 强支撑，但 ImpactPreview exact binding 缺失 |
 | AIP-4 Eval/Lineage/Usage | `IMPLEMENTED_GREEN` | Eval、谱系、成本和外部 Job Receipt 可复用 | 强支撑，但单任务 EvalContract/ReviewIssue 缺失 |
 | AIP-5 Memory/Wiki | E0～E5 GREEN；E6 code/control GREEN、外部门 BLOCKED；E7 未做 | Candidate/治理/知识状态可消费 | 部分支撑；不能宣称美妆知识和六同事共享记忆 operational |
-| AIP-6 Agent/Skill/Handoff | A6A～A6C GREEN：DTO、9 张权威表、Store、CAS、revision/Instance/Binding 和 durable Receipt 已实现；A6D～A6F 未完成 | 可持久化通用模板和实例，但六同事/共享 Agent 页面仍只能 disabled/blocked | P0 已部分关闭；Run/Handoff/API/领域包/页面仍是共同前置 |
+| AIP-6 Agent/Skill/Handoff | A6A～A6D GREEN：DTO、9 张权威表、Store、CAS、revision/Instance/Binding/Run/Handoff、exact runtime refs 和 durable Receipt 已实现；A6E/A6F 未完成 | 可持久化通用模板、实例、排队 Run 和一次性交接；六同事/共享 Agent 页面仍只能 disabled/blocked | P0 继续部分关闭；API/领域包/页面与 AIP-7 运行门仍是共同前置 |
 | AIP-7 Model/Capacity | 方案态；部分 Usage/成本原语已在 AIP-4 落地 | provider/route 不就绪时必须失败关闭 | 部分基础可复用，端到端未 GREEN |
 | AIP-8 Assistant/Analyst/Workbench | 方案态；SavedExploration 有 O1 既有 authority 可复用 | 通用查询壳和真实分析链未整体 GREEN | 经营参谋、总控等保持 gated |
 | AIP-9 Content/Media/Harness | 方案态 | 多媒体 target-state/disabled | 多媒体和内容 Module 关键阻断 |
@@ -254,7 +254,7 @@ script.compose                 脚本撰写（canonical）
 
 ### 7.4 当前 AIP-6 代码证据的边界
 
-当前 A6A～A6C 已冻结 DTO，并新增 PostgreSQL revision/instance/binding authority、Store、expected-version CAS、append-only revoke/deprecate 与 durable Receipt；它仍**未注册 Canonical 路由，也未把旧内存 Engine 变成 authority**。当前实现尚未表达：
+当前 A6A～A6D 已冻结 DTO，并新增 PostgreSQL revision/instance/binding/run/handoff authority、Store、expected-version CAS、append-only revoke/deprecate、durable Receipt、exact runtime refs 与一次性交接；它仍**未注册 Canonical 路由，也未把旧内存 Engine 变成 authority**。当前实现尚未表达：
 
 - 电商 10 capability 的稳定 catalog/alias/父子关系；
 - 内容官与 Coordinator responsibility profile 的绑定；
@@ -333,7 +333,7 @@ script.compose                 脚本撰写（canonical）
 |---|---|---|---|
 | P0-01 | AIP 全量覆盖矩阵只审了 2026-08-11 的 38 份旧来源，未纳入 229、产品 v3、产品吸收矩阵、技术 22/23 | “全量覆盖”结论对当前上层目标失真 | 新增 delta source inventory 和逐对象/逐 Module 覆盖矩阵 |
 | P0-02 | 八类公共生产对象缺 L0 authority/typed projection ADR | Workshop/BFF 各造一套 Brief、Evidence、Stage 和 Issue | 每个对象完成 owner/API/store/RLS/迁移/失败语义/回滚裁决 |
-| P0-03 | AIP-6 通用 Registry/Store 已落地 A6C，但 Handoff/Run/Capability service、Principal API、领域包与页面仍未切换；agents/registry 仍是过渡 singleton | 六同事、共享 Agent、readiness 和运行绑定尚无端到端权威真值 | 完成 A6D～A6F；双 scope、版本/撤销、真实空态、Run/Handoff/API/浏览器 GREEN |
+| P0-03 | AIP-6 A6D 已落地 Handoff/Run/Capability service 与 exact runtime refs，但 Principal API、领域包与页面仍未切换；agents/registry 仍是过渡 singleton，Run 启动受 AIP-7 exact route authority 阻断 | 六同事、共享 Agent、readiness 和运行绑定尚无端到端权威真值 | 完成 W0A、A6E/A6F 与 AIP-7 route authority；双 scope、版本/撤销、真实空态、API/浏览器 GREEN |
 | P0-04 | AIP 对 10 capability 已有分散的 10/10 语义覆盖，但没有 canonical catalog/crosswalk；标题/文案、内容官/Coordinator、素材组合容易被按名称误计 | UI、Registry、manifest 与 ResponsibilityPlan 形成不同计数；重复建 Agent 或漏绑既有能力 | 冻结 10 capability 稳定 ID、父子能力/alias 和 Schema；`标题生成 ⊂ 文案生成`；Coordinator 归属内容官且不计入共享目录；素材采集组合复用既有数据/知识/研究/资产 authority |
 | P0-05 | AIP-11 使用 `HandoffContext`，与 canonical `HandoffEnvelope` 冲突 | 产生第二交接协议 | 清单、DTO、测试只保留 HandoffEnvelope；旧名只作输入迁移别名 |
 | P0-06 | AIP-5 E7 若早于 A6E 六角色 exact identity | 个人/共享记忆被迫硬编码六角色或另建身份 | 保持已调整顺序：A6E 发布 exact identity 后再做 E7 角色集成 |
@@ -365,7 +365,7 @@ script.compose                 脚本撰写（canonical）
 
 ### W1 · AIP-6 Registry 与电商角色/能力目录
 
-- A6A～A6C 已完成领域无关 Agent/Skill Template、Instance/SkillBinding 与 Receipt；继续完成 CapabilityBinding、Run、Handoff、Canonical API/Principal；
+- A6A～A6D 已完成领域无关 Agent/Skill Template、Instance/Skill/Capability Binding、Run、Handoff、exact refs 与 Receipt；继续完成 W0A、领域目录和 Canonical API/Principal；
 - 再由 `solution.ecommerce.growth` 发布六角色、37 Logic 和 10 capability contribution；已有分散语义通过 alias/crosswalk 归并，不复制 Agent 或数据真源；
 - 组织安装形成六数字同事实例和按需专业 Agent/Provider binding；
 - Registry、readiness、revoke、license、budget、跨租户和真实空态封板。
@@ -418,7 +418,7 @@ script.compose                 脚本撰写（canonical）
 - **架构可支撑**：四层分治、Task/Action/Eval/Memory 等主干方向正确，且已有大量高质量实现；
 - **方案部分支撑**：六数字同事、37 Logic、内容生产、通用工作台均有规划，但没有吸收工作台 v3 的全部新增契约；
 - **清单未全覆盖**：旧“全量”矩阵不包含 229 与 v3 增量；10 capability 业务语义虽已分散覆盖 10/10，但 canonical catalog、alias/crosswalk、Coordinator ownership 和运行绑定尚未冻结；
-- **运行态未支撑完整工作台**：AIP-6 已部分 GREEN但 A6D～A6F未完成，AIP-8/9/10 未整体 GREEN，AIP-5 E6 外部门和 E7 仍未闭合。
+- **运行态未支撑完整工作台**：AIP-6 已部分 GREEN但 A6E/A6F 未完成，AgentRun 启动仍受 AIP-7 exact route authority 阻断；AIP-8/9/10 未整体 GREEN，AIP-5 E6 外部门和 E7 仍未闭合。
 
 ### 13.2 对三份 229 相关文档的回答
 
@@ -429,4 +429,4 @@ script.compose                 脚本撰写（canonical）
 
 ### 13.3 当前安全下一步
 
-先完成 W0：更新 AIP 来源覆盖、公共 authority ADR、六角色/10 capability 唯一目录与依赖裁决。A6A～A6C 已按原批准清单安全完成；W0 评审通过前可继续不依赖新增公共对象的 A6D 基础 authority，但不得进入 A6E 领域目录、AIP-5 E7、AIP-9 或工作台 v3 新对象编码。
+先完成 W0：更新 AIP 来源覆盖、公共 authority ADR、六角色/10 capability 唯一目录与依赖裁决。A6A～A6D 已按原批准清单安全完成；下一步必须先完成 W0A catalog/crosswalk，再进入 A6E 领域目录，不得提前进入 AIP-5 E7、AIP-9 或工作台 v3 新对象编码。
