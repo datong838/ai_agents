@@ -46,7 +46,7 @@
 
 实施结果：`aip6_001` 从唯一 head `aip5_004` 线性增加 8 张权威表。平台模板/Skill revision 与 Handoff event 追加不可变；6 张租户表 RLS/FORCE RLS；Handoff 只存 token hash，Capability 只存 secretRef。双租户、无 scope、约束/FK、降升级守恒 7 项，A6A/A6B/E6C 邻接累计 16 项、compileall、单 head/current、diff check GREEN。
 
-### A6C：Store、CAS 与生命周期
+### A6C：Store、CAS 与生命周期（IMPLEMENTED_GREEN）
 
 文件：
 
@@ -56,6 +56,8 @@
 - 对应 `tests/aip/test_aip_agent_*.py`
 
 实现 publish 后不可变、实例 Overlay allowlist、binding exact revision、revoke/suspend/deprecate、历史回读和幂等 Receipt。
+
+实施结果：新增线性 `aip6_002` 持久化命令 Receipt，不回改 A6B 历史迁移；Agent/Skill revision 只追加，组织实例/绑定使用 exact revision/hash、Overlay allowlist 与 expected-version CAS。最新 append-only revoke/deprecate revision 阻断旧 published revision 的新实例/绑定，历史 revision 仍可读。创建/更新命令支持跨 Store 重启幂等重放；真实租户与 canary 隔离。27 项累计测试、compileall、迁移独立降升级、开发库单 head/current 和 diff check GREEN。旧 singleton API/页面未切换。
 
 ### A6D：Handoff、AgentRun 与 CapabilityBinding
 
