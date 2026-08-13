@@ -5,19 +5,31 @@
     "AIP-5 E5A contracts and PostgreSQL authority IMPLEMENTED_GREEN",
     "AIP-5 E5B Store, CAS, immutable events, Receipt, Alert and checkpoint recovery IMPLEMENTED_GREEN",
     "AIP-5 E5C seven-pipeline policy and trusted adapter boundary IMPLEMENTED_GREEN",
-    "AIP-5 E5D Canonical API, strict SDK and knowledge-pipeline UI CODE_GREEN",
+    "AIP-5 E5D Canonical API, strict SDK, knowledge-pipeline UI, HTTP and browser evidence IMPLEMENTED_GREEN",
     "Codex external watchdog with five-minute recovery and visible wake notice IMPLEMENTED_GREEN"
   ],
-  "current_phase": "AIP5_E5D_BROWSER_EVIDENCE",
+  "current_phase": "AIP5_E6_REVIEW",
   "delivery_status": "IMPLEMENTING",
   "evidence": [
     {
       "kind": "tests",
-      "ref": "E5D-backend-36-and-AIP5-74-passed"
+      "ref": "E5D-backend-44-passed"
     },
     {
       "kind": "tests",
-      "ref": "E5D-frontend-12-and-full-2057-passed"
+      "ref": "E5D-frontend-12-passed"
+    },
+    {
+      "kind": "browser",
+      "ref": "org-org-seven-policies-zero-schedules-zero-runs-console-zero-errors"
+    },
+    {
+      "kind": "http",
+      "ref": "org-org-200-dev-org-canary-empty-unknown-workspace-403"
+    },
+    {
+      "kind": "screenshot",
+      "ref": "AIP5-E5D-knowledge-pipelines-org-org.png"
     },
     {
       "kind": "tests",
@@ -37,33 +49,33 @@
     },
     {
       "kind": "docs",
-      "ref": "da9e469"
+      "ref": "72b98ff"
     }
   ],
-  "evidence_cutoff": "2026-08-13T11:04:26+08:00",
+  "evidence_cutoff": "2026-08-13T11:50:50+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only real target",
     "dev-org/dev-project is a negative isolation canary only",
-    "E5D code green is not browser green and does not authorize E6 completion",
+    "E5D is implemented green but does not authorize skipping E6 review freeze",
     "watchdog never carries API keys, waits for 300 seconds of transcript silence, and resumes only the same thread",
     "watchdog wake must begin with a visible user notice before checkpoint recovery"
   ],
   "incomplete": [
-    "AIP-5 E5D org-org built-in browser interaction and screenshot evidence",
-    "AIP-5 E6-E7 remain gated"
+    "AIP-5 E6 plan review, live code delta audit and checklist freeze",
+    "AIP-5 E7 remains gated"
   ],
-  "last_green_gate": "AIP5_E5D_CODE_GREEN",
-  "next_gate": "AIP5_E5D_BROWSER_COMPLETE",
+  "last_green_gate": "AIP5_E5D_IMPLEMENTED_GREEN",
+  "next_gate": "AIP5_E6_REVIEW_FREEZE",
   "next_steps": [
-    "Complete org-org/dev-project E5D built-in browser interaction and screenshot evidence without redoing code",
-    "After E5D browser seal, review and freeze E6 checklist before coding"
+    "Review E6 existing plan and checklist against live code, routes, database and upstream dependencies",
+    "Freeze E6 exact implementation, test and browser acceptance matrix before coding"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000014",
+  "project_revision": "AOS-000015",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
     "aos-platform": "599a4f1",
-    "docs": "da9e469",
+    "docs": "72b98ff",
     "prime-agent": "ee254c81"
   },
   "source_files": [
@@ -71,5 +83,5 @@
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
     "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
   ],
-  "updated_at": "2026-08-13T11:04:26+08:00"
+  "updated_at": "2026-08-13T11:50:50+08:00"
 }
