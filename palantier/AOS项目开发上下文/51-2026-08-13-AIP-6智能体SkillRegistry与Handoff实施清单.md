@@ -35,7 +35,7 @@
 
 实施结果：新增 `aip_agent_registry_contracts.py` 与 6 项专项测试；exact asset revision/hash、模板/实例/Run 状态、Overlay 白名单、secretRef-only、Handoff 最小披露和 AgentRun 五类 exact ref 全部失败关闭。compileall 与 diff check GREEN；未注册路由、未写数据库。
 
-### A6B：PostgreSQL authority
+### A6B：PostgreSQL authority（IMPLEMENTED_GREEN · `aos-platform/m1` 待提交）
 
 文件：
 
@@ -43,6 +43,8 @@
 - `services/aos-api/tests/aip/test_aip6_001_migration.py`
 
 新增模板 revision、实例、Skill revision/binding、Capability binding、AgentRun、Handoff/event 表；组织表与工作区表分别 RLS/FORCE RLS；模板 revision append-only；Handoff token 只存 hash。验证升级/降级、双租户、无 scope、跨租户 FK 和原表行数守恒。
+
+实施结果：`aip6_001` 从唯一 head `aip5_004` 线性增加 8 张权威表。平台模板/Skill revision 与 Handoff event 追加不可变；6 张租户表 RLS/FORCE RLS；Handoff 只存 token hash，Capability 只存 secretRef。双租户、无 scope、约束/FK、降升级守恒 7 项，A6A/A6B/E6C 邻接累计 16 项、compileall、单 head/current、diff check GREEN。
 
 ### A6C：Store、CAS 与生命周期
 
