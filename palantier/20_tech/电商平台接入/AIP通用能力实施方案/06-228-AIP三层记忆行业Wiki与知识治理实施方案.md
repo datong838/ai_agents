@@ -308,3 +308,5 @@ E6C 已以代码 `e581a99` 实现并复审通过。migration `aip5_004` 可逆�
 E6D 只增量新增自然语言 `KnowledgeSearch`，不改变 E3 精确 `KnowledgeQuery`。tenant RLS 与请求 marking 先约束 reference 候选；全文索引只给出 id/revision/hash/score，随后必须回查 canonical Item/Revision/Source 的 active、time window、freshness、markings、applicability、revision/hash，全部通过后才解析 payload。每条正文必须与 Citation 同序一一绑定。
 
 响应按 fulltext/vector/rerank lane 明示状态和 reason；只有 ready lane 参与。所有 lane 不可用时 blocked 空结果；部分 lane 不可用时 degraded。当前真实租户 0 reference/0 capability，因此不得返回知识正文；vector/rerank 不得以假实现参与融合。E6D 首期排序仅采用 PostgreSQL fulltext rank + stable id tie-break，RRF 只有两个以上 ready lane 时才启用。
+
+E6D 已以代码 `9bfec8c` 实现 `KnowledgeSearch` DTO、reference fulltext rank、lane 状态、canonical authority 二次过滤、payload 延迟解析、Citation 一一绑定和 `/knowledge-searches` 路由。2 项新 API、21 项核心邻接、compileall/diff check GREEN；默认 trusted resolver 未装配、真实租户 capability/reference 为空，所以只宣告 `CODE_GREEN / PROVIDER_BLOCKED / DATA_BLOCKED`。RRF 因只有零个 ready lane 未执行，不得宣告混合检索 GREEN。
