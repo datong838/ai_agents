@@ -14,6 +14,7 @@
 > A6F 实时复核：`aos-platform/m1@556e92c + 914cff2` 已完成 Principal tenant Canonical API、唯一严格 SDK/UI 和组织安装；`org-org/dev-project` 精确存在 6 个 AgentInstance，SkillBinding/CapabilityBinding/AgentRun 均为 0，`dev-org/dev-project` 为 0 实例 canary。页面真实展示 6/6/37/10/0 runnable，旧 singleton 能力页已退出正式路由。P0-03 的 API/安装/UI 部分关闭，但 AIP-7 exact route、Provider/Eval、Binding 与 P0-02/P0-07 仍未关闭。
 > W2-A 实时复核：`aos-platform/m1@4288591 + daeb9d3 + ab762ae` 已完成 `TaskBriefRevision` 与 `EvidenceBundleRevision` 的 migration/Store/Canonical API/strict SDK/UI/browser 全链路；`org-org/dev-project` 与 canary 均为真实 0 Brief/0 Bundle，页面诚实 empty/blocked 且未制造 Mock。P0-02 已从“八类公共对象全部缺失”缩小为 W2-B～D 六个对象族尚未闭合。
 > AIP-7 实时裁决：`22-AIP-7-exact模型路由Provider-Eval与运行就绪增量优化方案.md` 已完成评审—整改—复审并获增量实施通过。旧 `model_provider/model_catalog/registered_models/model_route/meta_aip_kv` 只保留兼容发现/迁移输入；新运行必须引用 immutable ProviderInstanceRevision、RegisteredModelRevision、ModelRouteRevision、RuntimePolicyRevision，并复用 AIP-4 Eval/Usage 与 AIP-6 Run/Binding。`org-org/dev-project` 当前模型链仍为真实 0，不能宣告 runnable。
+> 全量关闭路线：本报告剩余 P0/P1、新增开发与完成定义已由 `23-AIP第16号审查问题全量关闭与新增开发实施方案.md` 统一映射到 W2-B～D、A7-1～6、E7、BIND-1、P8、P9、P10 与 W4；该方案经 9 项整改及第二轮 8/8 复审通过，避免只优化 AIP-7 而遗漏其余新增开发。
 
 ## 0. 使用的 Rules
 
@@ -435,3 +436,5 @@ W1 退出门已通过：六角色 6/6、37 Logic 37/37、capability 10/10 均按
 ### 13.3 当前安全下一步
 
 W0A/W0B、A6E/A6F 与 W2-A 已 GREEN，数据库精确回读 6/37/10，并在 `org-org/dev-project` 安装六个 exact AgentInstance；Brief/EvidenceBundle 控制面当前为真实 0/0 空态。当前安全下一步是继续 W2-B～D，并按 22 号方案实施 AIP-7 exact Provider/RegisteredModel/ModelRoute/RuntimePolicy authority；随后进入 AIP-5 E7、AIP-8/AIP-9。AIP-7、Provider/Eval 与 Binding 未就绪时必须保持 `blocked`，不得因目录、实例、旧测试数据或页面存在而提前硬编码“在线”。
+
+上述新增开发不再只作为“建议”：其统一实施、依赖和退出证据以 23 号方案为准；21/22 号分别提供 W2/AIP-7 细化，E7、BIND-1、P8/P9/P10 和 W4 必须继续执行后才能最终关闭本报告。
