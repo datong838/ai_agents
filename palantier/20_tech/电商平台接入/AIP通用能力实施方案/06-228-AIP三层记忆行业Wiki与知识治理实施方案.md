@@ -322,3 +322,7 @@ E6E 已以代码 `3d3ee69` 实现严格 GoldSet、Observation、Report 与纯计
 ### 7.6 E6F 只读控制面冻结
 
 E6F 使用后端单一 `KnowledgeReadiness` 聚合，禁止前端跨 Source/Index/Installation/Eval 自行推断。Source/license/usage/freshness、reference 数和三 lane 来自当前租户 PostgreSQL 真值；未登记 lane 只可补成 `unbuilt/capability_not_registered`。当前尚无 KnowledgePackage installation identity 映射和 GoldSet registry，因此 package/Eval 两块返回 `authority_unavailable` 与空计数，不得显示猜测的 0。页面新增“冷启动与检索”视图，真实空态、provider 未装配、许可与 capability blocker 均可见；API 失败时失败关闭。浏览器正向验收只认 `org-org/dev-project`，`dev-org/dev-project` 仅作隔离 canary。
+
+E6F 已以代码 `7e76886` 实现并通过复审。后端新增 tenant-scoped 只读 `KnowledgeReadiness` API；package/Eval 权威缺失保持空计数，Source/reference/capability 读取 PostgreSQL 真值，三 lane 缺失补为明确 `unbuilt`，存储失败映射 503。前端通过唯一严格 SDK 增加“冷启动与检索”视图，不从多接口自行推断。11 项后端邻接、14 项前端定向、TypeScript、Vite 274 modules、compileall、diff check 和内置浏览器 GREEN；`org-org/dev-project` 真实空态及全部阻断原因可见，`dev-org/dev-project` 独立 canary 无串租户。浏览器发现的嵌套 snake_case 契约漂移与 blocker 文本溢出均已修复。
+
+因此 E6 当前结论为：**E6A～E6F CODE/CONTROL_IMPLEMENTED_GREEN；真实知识包、外部知识正文、可信检索 provider、向量能力和专家 GoldSet 仍分别 DATA/PROVIDER/EVAL_BLOCKED。** 这不是 operational hybrid search 或检索效果 GREEN；不得跳过外部门控宣告 E6 全量业务完成。
