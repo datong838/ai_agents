@@ -6,7 +6,7 @@
     "AIP-5 E5B Store, CAS, immutable events, Receipt, Alert and checkpoint recovery IMPLEMENTED_GREEN",
     "AIP-5 E5C seven-pipeline policy and trusted adapter boundary IMPLEMENTED_GREEN",
     "AIP-5 E5D Canonical API, strict SDK and knowledge-pipeline UI CODE_GREEN",
-    "Codex long-task external watchdog IMPLEMENTED_GREEN"
+    "Codex external watchdog with five-minute recovery and visible wake notice IMPLEMENTED_GREEN"
   ],
   "current_phase": "AIP5_E5D_BROWSER_EVIDENCE",
   "delivery_status": "IMPLEMENTING",
@@ -33,19 +33,20 @@
     },
     {
       "kind": "commit",
-      "ref": "3cd6247"
+      "ref": "599a4f1"
     },
     {
       "kind": "docs",
-      "ref": "6034255"
+      "ref": "da9e469"
     }
   ],
-  "evidence_cutoff": "2026-08-13T10:41:00+08:00",
+  "evidence_cutoff": "2026-08-13T11:04:26+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only real target",
     "dev-org/dev-project is a negative isolation canary only",
     "E5D code green is not browser green and does not authorize E6 completion",
-    "watchdog never carries API keys and never starts duplicate execution while a turn or tool is active"
+    "watchdog never carries API keys, waits for 300 seconds of transcript silence, and resumes only the same thread",
+    "watchdog wake must begin with a visible user notice before checkpoint recovery"
   ],
   "incomplete": [
     "AIP-5 E5D org-org built-in browser interaction and screenshot evidence",
@@ -58,11 +59,11 @@
     "After E5D browser seal, review and freeze E6 checklist before coding"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000013",
+  "project_revision": "AOS-000014",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "3cd6247",
-    "docs": "6034255",
+    "aos-platform": "599a4f1",
+    "docs": "da9e469",
     "prime-agent": "ee254c81"
   },
   "source_files": [
@@ -70,5 +71,5 @@
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
     "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
   ],
-  "updated_at": "2026-08-13T10:43:10+08:00"
+  "updated_at": "2026-08-13T11:04:26+08:00"
 }

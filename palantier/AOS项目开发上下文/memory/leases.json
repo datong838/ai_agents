@@ -1,24 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000013",
-      "created_at": "2026-08-13T10:44:59+08:00",
-      "excluded_scope": [
-        "aos-platform business code, database, HTML visual drafts, AIP5 active delivery facts, unrelated document edits"
-      ],
-      "expected_outputs": [
-        "Detailed eight-Module product plans reconciled with four-layer doctrine; explicit retained/merged/deprecated ledger; source-goal coverage and two-pass review with no unexplained loss"
-      ],
-      "lease_expires_at": "2026-08-15T12:00:00+08:00",
-      "owner": "codex-root",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "docs/palantier/20_tech/电商平台接入/12-工作台层方案/",
-        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-PRODUCT-V2-产品方案循环整改与技术方案编制总清单.md"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-product-detailed-convergence-20260813"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
