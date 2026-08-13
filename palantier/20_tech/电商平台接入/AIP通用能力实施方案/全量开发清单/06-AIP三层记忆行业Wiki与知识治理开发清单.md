@@ -168,7 +168,7 @@ E5 统一边界：不复制 AIP Task/Run/Checkpoint，不以 `meta_schedule_run`
 
 ### 6.5 E6 执行拆分（2026-08-13 复审通过）
 
-- [ ] E6A：为 `VerticalPack` 冻结知识出口、package manifest/source inventory/hash/回滚契约；未知许可、路径穿越和 hash 漂移失败关闭。
+- [x] E6A：为 `VerticalPack` 冻结知识出口、package manifest/source inventory/hash/回滚契约；未知许可、路径穿越和 hash 漂移失败关闭。代码 `f3415a9`；212 回归、compileall、diff check GREEN。
 - [ ] E6B：实现可信 bundle seed adapter，只经 E5 Receipt + Candidate 链导入；重放幂等，异 hash 冲突，失败不推进 checkpoint。
 - [ ] E6C：实现 tenant-scoped 全文 reference index 与 capability registry；RLS/FORCE，索引可重建且不存正文/PII。
 - [ ] E6D：新增自然语言 `KnowledgeSearch`，保留 E3 精确 `KnowledgeQuery`；授权先行，全文/向量/重排独立 capability，Citation 必填。

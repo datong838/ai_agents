@@ -280,3 +280,9 @@ E6 以 `AOS项目开发上下文/50-2026-08-13-AIP-5-E6美妆知识包与混合�
 6. CosDNA 等来源在许可未知时保持 disabled；NMPA 等官方来源也必须登记当前版本、时效和使用政策，不能因“官方”绕过来源门。
 
 E6 拆为 E6A 知识包契约、E6B Candidate 导入、E6C 全文 reference index、E6D 检索融合/Citation、E6E Eval runner、E6F 控制面与浏览器验收。只有各子门的代码、真实数据和 Eval 证据分别成立后，才允许宣告 E6 完成。
+
+### 7.1 E6A 实施结论（2026-08-13）
+
+E6A 已以代码 `f3415a9` 冻结 `VerticalPack` 专属 `knowledge` export、严格 KnowledgePackage/source inventory/entry/rollback DTO 和共享 JSON Schema。serialized loader 拒绝重复 JSON key；路径穿越、绝对/Windows/URL payload path、非 HTTPS 或带凭据/fragment 的 source URI、未知字段、hash 漂移、孤立 source、重复 entry/path 和无 Receipt rollback 全部失败关闭。非 VerticalPack 不得声明知识出口。
+
+readiness 只返回稳定 `license_unknown/license_denied/source_stale` blocker，不修改 bundle authority。当前未创建美妆 bundle、未导入正文、未注册 adapter、未写租户数据。专项与 asset-registry 邻接回归 212 passed，compileall 与 diff check GREEN；venv 无 Ruff，不声明 Ruff。下一门为 E6B 可信 bundle seed adapter 与 Candidate 批量导入。
