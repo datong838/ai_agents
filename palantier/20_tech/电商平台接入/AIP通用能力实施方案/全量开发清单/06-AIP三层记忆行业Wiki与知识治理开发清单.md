@@ -1,6 +1,6 @@
 # 06 AIP 三层运行记忆、行业 Wiki 与知识治理开发清单
 
-> 状态：**v1.8 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · E5 REVIEWED_APPROVED_TO_IMPLEMENT**
+> 状态：**v1.9 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · E5 CODE_GREEN / BROWSER_EVIDENCE_PENDING**
 > 上位依据：`../06-228-AIP三层记忆行业Wiki与知识治理实施方案.md`
 > 对应阶段：AIP-5；前置：02、04、05 GREEN。
 
@@ -81,7 +81,7 @@
 - [x] E2：七类治理门与统一晋升服务。代码 `ab7b8aa`；累计 41 tests passed。
 - [x] E3：KnowledgeQuery、渐进上下文、O1 Wiki adapter 和可重建索引。代码 `81c5f82`；8 个专项、累计 50 tests passed。
 - [x] E4：Canonical API/SDK/治理页面与浏览器验收。
-- [ ] E5：七知识管道的 Schedule/Run/Receipt/checkpoint；按 E5A→E5B→E5C→E5D 执行。
+- [ ] E5：七知识管道的 Schedule/Run/Receipt/checkpoint；E5A～E5D 代码与自动化验证完成，待补内置浏览器交互截图证据后封板。
 - [ ] E6：美妆知识包冷启动、混合检索与量化 Eval。
 - [ ] E7：六同事个人记忆/共享投影、撤回影响与改进度量。
 
@@ -156,12 +156,12 @@ E4D 实施结论：E4B 复审补强 `8b08792`，深层严格解析 tenant/source
 
 #### E5D：Canonical API、SDK/页面与封板
 
-- [ ] 在 `/v1/aip/memory-authority/pipelines` 增 schedule/run/receipt/checkpoint/alert 的 tenant-scoped API；内部 complete 接口只允许受信 executor。
-- [ ] 角色矩阵：GET=认证租户；Schedule 写=admin/reviewer；Run 登记=admin/executor/aip_executor；complete=executor/aip_executor + 当前 lease owner；不接收 caller 自报 tenant/hash/dependency-ready。
-- [ ] `apps/web/src/api/aipMemory/` 扩展唯一严格 SDK；未知枚举/缺失 hash/version/tenant 失败关闭。
+- [x] 在 `/v1/aip/memory-authority/pipelines` 增 schedule/run/receipt/checkpoint/alert 的 tenant-scoped API；内部 complete 接口只允许受信 executor。代码 `db27919`。
+- [x] 角色矩阵：GET=认证租户；Schedule 写=admin/reviewer；Run 登记=admin/executor/aip_executor；complete=executor/aip_executor + 当前 lease owner；不接收 caller 自报 tenant/hash/dependency-ready。
+- [x] `apps/web/src/api/aipMemory/` 扩展唯一严格 SDK；未知枚举/缺失 hash/version/tenant 失败关闭。代码 `3492970`。
 - [x] `MemoryGovernancePage` 增“知识管道”视图，覆盖 loading/empty/error/disabled/paused/active/running/failed/blocked；每个操作有真实 API 或明确禁用理由。
 - [x] SDK 严格对齐 Canonical `ResourceRef.authority` 与 `ArtifactRef.artifactType/artifactId/revision/contentHash`；可空 Receipt/Checkpoint 使用对象信封，未知枚举/缺 hash/tenant 漂移失败关闭。
-- [ ] 后端专项/累计、前端定向/全量、TypeScript/build、OpenAPI/diff check、`org-org/dev-project` 内置浏览器验收；`dev-org` 只作 API 负向 canary。
+- [ ] 后端专项/累计、前端定向/全量、TypeScript/build、OpenAPI/diff check、`org-org/dev-project` 内置浏览器验收；自动化部分已 GREEN：后端累计 74、前端定向 12、前端全量 174 files / 2057 tests、TypeScript、Vite build、OpenAPI 六路由、diff check；真实 API Policy=7、Schedule=[]/200。内置浏览器已确认正确租户、页面入口和四页签，切换/截图因控制通道连续超时待补；`dev-org` 只作 API/测试负向 canary。
 - [ ] 更新 `01-当前项目状态.md`、`06-当前执行检查点.md`、Prime/shared-memory 投影并形成代码/文档安全提交。
 
 E5 统一边界：不复制 AIP Task/Run/Checkpoint，不以 `meta_schedule_run` 冒充 AIP-5 控制面，不保存外部全文/PII/密钥，不在 migration 创建真实租户 schedule，不提前执行 E6 冷启动或 E7 个人/共享记忆。

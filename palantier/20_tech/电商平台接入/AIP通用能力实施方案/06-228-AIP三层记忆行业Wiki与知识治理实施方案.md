@@ -1,6 +1,6 @@
 # 228-AIP 三层运行记忆、行业 Wiki 与知识治理实施方案
 
-> 状态：**IMPLEMENTING · v1.5 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · E5 REVIEWED_APPROVED_TO_IMPLEMENT**
+> 状态：**IMPLEMENTING · v1.6 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · E5 CODE_GREEN / BROWSER_EVIDENCE_PENDING**
 > 对应阶段：AIP-5。
 >
 > 2026-08-11 补充：外部研究 Harness 的知识入口 v1.2 已评审通过。2026-08-12 对账：总控全量编码授权已取代历史“不授权编码”门，但每个子波仍需方案、检查点、测试、浏览器与安全提交。
@@ -259,3 +259,11 @@ E5C 已以代码 `c0282d4` 落地七类独立策略、服务端依赖快照和�
 外部结果只允许以精确 PostgreSQL Receipt + Artifact 进入。Service 在 adapter 调用前复核租户、Task/Run、Receipt 类型、SourceKind、source_ref、许可和 freshness；adapter 输出再次经严格 DTO 解析，并由 Service 绑定原 Receipt 的 Artifact/Source 后调用 `AipMemoryStore` 创建 Source revision 与 Candidate。adapter 无权直写 Memory、Receipt 或 checkpoint。没有注册真实 adapter、没有外部抓取、没有导入 seed/示例知识，也没有创建真实租户 Schedule。
 
 E5C 专项 17 tests、AIP-5 累计 75 tests、compileall、diff/敏感信息检查 GREEN；现有 Pydantic/Starlette warnings 不属于本波，Ruff 仍 unavailable。下一门为 E5D Canonical API、严格 SDK、知识管道页面和浏览器封板。
+
+#### 6.4.10 E5D 实施结论（2026-08-13）
+
+E5D 已由代码提交 `db27919`、`3492970` 完成 Canonical API、唯一严格 SDK 与 Memory Governance“知识管道”控制面。API 覆盖七类 Policy、Schedule 创建/迁移、Run 登记、Receipt、Checkpoint 与 Alert 回读；GET 只依赖认证 Principal 的 tenant scope，Schedule 写只允许 `admin/reviewer`，Run 登记只允许 `admin/executor/aip_executor`。写 DTO 不接受调用方自报租户、request hash、依赖 ready 或 adapter ready；页面只展示 PostgreSQL 权威状态，没有 Schedule 时显示诚实空态和禁用理由，不生成示例 Schedule。
+
+前端 SDK 已严格对齐 `ResourceRef.authority` 与 `ArtifactRef.artifactType/artifactId/revision/contentHash`；可空 Receipt/Checkpoint 使用对象信封，未知枚举、缺 hash/version、tenant 漂移全部失败关闭。后端 AIP-5 累计 74 tests、前端定向 12 tests、前端全量 174 files / 2057 tests、TypeScript、Vite production build、OpenAPI 六条必需路由和 diff check 均 GREEN。开发库已从 `aip4_008` 升级到单 head `aip5_003`；`org-org/dev-project` 真实 API 验证 Policy 7 条、Schedule 空集合 200，未写入业务数据。
+
+内置浏览器已确认页面加载、`组织 · 栖月汇商贸有限公司`、`默认工作区`、Memory Governance 入口及四个治理页签；但控制通道在切换“知识管道”和截图时连续超时。因此当前不能把交互截图补采冒充为 GREEN，E5 保持 `CODE_GREEN / BROWSER_EVIDENCE_PENDING`。待浏览器控制恢复后补采知识管道空态、七策略卡、禁用理由和控制台错误清单，再进入 E6 编码；E6 方案复审可先行。
