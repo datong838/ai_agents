@@ -3,52 +3,66 @@
     "AIP-5 E0-E4 IMPLEMENTED_GREEN",
     "AIP-5 E5A contracts and PostgreSQL authority IMPLEMENTED_GREEN",
     "AIP-5 E5B Store, CAS, immutable events, Receipt, Alert and checkpoint recovery IMPLEMENTED_GREEN",
-    "AIP-5 E5C seven-pipeline policy and trusted adapter boundary IMPLEMENTED_GREEN"
+    "AIP-5 E5C seven-pipeline policy and trusted adapter boundary IMPLEMENTED_GREEN",
+    "AIP-5 E5D Canonical API, strict SDK and knowledge-pipeline UI CODE_GREEN",
+    "Codex long-task external watchdog IMPLEMENTED_GREEN"
   ],
-  "content_hash": "sha256:67b2a608ad1e2a7b49b4d0ebda8f5ff8c49210c274db376aa3874458e2283651",
-  "current_phase": "AIP5_E5D",
+  "content_hash": "sha256:e2f1083f1a76ffdca7692bb8de8697917616bef39459e134098c16fee4b64891",
+  "current_phase": "AIP5_E5D_BROWSER_EVIDENCE",
   "delivery_status": "IMPLEMENTING",
   "evidence": [
     {
       "kind": "tests",
-      "ref": "E5C-17-passed"
+      "ref": "E5D-backend-36-and-AIP5-74-passed"
     },
     {
-      "kind": "regression",
-      "ref": "AIP5-75-passed"
+      "kind": "tests",
+      "ref": "E5D-frontend-12-and-full-2057-passed"
+    },
+    {
+      "kind": "tests",
+      "ref": "watchdog-10-passed"
     },
     {
       "kind": "commit",
-      "ref": "c0282d4"
+      "ref": "db27919"
+    },
+    {
+      "kind": "commit",
+      "ref": "3492970"
+    },
+    {
+      "kind": "commit",
+      "ref": "3cd6247"
     },
     {
       "kind": "docs",
-      "ref": "80d330b"
+      "ref": "6034255"
     }
   ],
-  "generated_at": "2026-08-13T01:04:01+08:00",
+  "generated_at": "2026-08-13T10:43:10+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only real target",
     "dev-org/dev-project is a negative isolation canary only",
-    "AIP-5 E5 is authorized only through E5A-E5D gated execution",
-    "credentials and customer-sensitive data never enter shared memory"
+    "E5D code green is not browser green and does not authorize E6 completion",
+    "watchdog never carries API keys and never starts duplicate execution while a turn or tool is active"
   ],
   "incomplete": [
-    "AIP-5 E5D Canonical API, SDK, UI and browser verification",
+    "AIP-5 E5D org-org built-in browser interaction and screenshot evidence",
     "AIP-5 E6-E7 remain gated"
   ],
-  "last_green_gate": "AIP5_E5C_COMPLETE",
-  "next_gate": "AIP5_E5D_COMPLETE",
+  "last_green_gate": "AIP5_E5D_CODE_GREEN",
+  "next_gate": "AIP5_E5D_BROWSER_COMPLETE",
   "next_steps": [
-    "Implement E5D tenant-scoped Canonical API and strict SDK with failing tests first",
-    "Add knowledge pipeline UI states and complete org-org browser plus dev-org negative canary evidence"
+    "Complete org-org/dev-project E5D built-in browser interaction and screenshot evidence without redoing code",
+    "After E5D browser seal, review and freeze E6 checklist before coding"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000012",
+  "project_revision": "AOS-000013",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "c0282d4",
-    "docs": "80d330b",
+    "aos-platform": "3cd6247",
+    "docs": "6034255",
     "prime-agent": "ee254c81"
   },
   "source_files": [

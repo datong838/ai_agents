@@ -1,26 +1,23 @@
 {
   "leases": [
     {
-      "base_revision": "AOS-000008",
-      "created_at": "2026-08-12T22:29:05+08:00",
-      "excluded_scope": [],
-      "expected_outputs": [
-        "AIP-5 E5A-E5D implementation and evidence"
+      "base_revision": "AOS-000013",
+      "created_at": "2026-08-13T10:44:59+08:00",
+      "excluded_scope": [
+        "aos-platform business code, database, HTML visual drafts, AIP5 active delivery facts, unrelated document edits"
       ],
-      "lease_expires_at": "2026-08-13T02:29:05+00:00",
-      "owner": "codex",
+      "expected_outputs": [
+        "Detailed eight-Module product plans reconciled with four-layer doctrine; explicit retained/merged/deprecated ledger; source-goal coverage and two-pass review with no unexplained loss"
+      ],
+      "lease_expires_at": "2026-08-15T12:00:00+08:00",
+      "owner": "codex-root",
       "schema": "aos-memory-task-receipt/v1",
       "scope": [
-        "aos-platform/services/aos-api/aos_api",
-        "aos-platform/services/aos-api/alembic/versions",
-        "aos-platform/services/aos-api/tests/aip",
-        "aos-platform/apps/web/src/api/aipMemory",
-        "aos-platform/apps/web/src/pages/s2/MemoryGovernancePage.tsx",
-        "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案",
-        "docs/palantier/AOS项目开发上下文"
+        "docs/palantier/20_tech/电商平台接入/12-工作台层方案/",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-PRODUCT-V2-产品方案循环整改与技术方案编制总清单.md"
       ],
       "status": "ACTIVE",
-      "task_id": "aip5-e5"
+      "task_id": "workshop-product-detailed-convergence-20260813"
     }
   ],
   "schema": "aos-memory-leases/v1"
