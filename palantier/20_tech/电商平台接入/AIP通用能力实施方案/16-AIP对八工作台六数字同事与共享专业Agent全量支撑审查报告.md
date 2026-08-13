@@ -432,4 +432,4 @@ W1 退出门已通过：六角色 6/6、37 Logic 37/37、capability 10/10 均按
 
 ### 13.3 当前安全下一步
 
-W0A 与 A6E 已 GREEN，数据库精确回读 6/37/10。当前安全下一步是 A6F Canonical API/Principal、组织安装/实例化、唯一 SDK/UI 与内置浏览器验收；随后立即完成 W0B/W2 公共生产契约，再进入 AIP-5 E7、AIP-8/AIP-9。AIP-7 Provider/Route/Eval 未就绪时必须保持 `blocked`，不得因目录或页面存在而提前硬编码“在线”。
+W0A、A6E 与 A6F 已 GREEN，数据库精确回读 6/37/10，并在 `org-org/dev-project` 安装六个 exact AgentInstance。当前安全下一步是完成 W0B/W2 公共生产契约，并正交推进 AIP-7 exact ModelRoute/Provider/Eval 门；随后进入 AIP-5 E7、AIP-8/AIP-9。AIP-7 与 Binding 未就绪时必须保持 `blocked`，不得因目录、实例或页面存在而提前硬编码“在线”。
