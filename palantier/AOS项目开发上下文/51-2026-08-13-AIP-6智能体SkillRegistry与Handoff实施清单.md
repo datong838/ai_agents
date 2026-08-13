@@ -24,7 +24,7 @@
 
 ## 3. 分波
 
-### A6A：公共契约冻结
+### A6A：公共契约冻结（IMPLEMENTED_GREEN · `aos-platform/m1` 待提交）
 
 文件：
 
@@ -32,6 +32,8 @@
 - `services/aos-api/tests/aip/test_aip_agent_registry_contracts.py`
 
 完成 DTO、状态机、exact ref、hash、overlay allowlist、Handoff 最小披露和错误语义。不得注册路由或写库。
+
+实施结果：新增 `aip_agent_registry_contracts.py` 与 6 项专项测试；exact asset revision/hash、模板/实例/Run 状态、Overlay 白名单、secretRef-only、Handoff 最小披露和 AgentRun 五类 exact ref 全部失败关闭。compileall 与 diff check GREEN；未注册路由、未写数据库。
 
 ### A6B：PostgreSQL authority
 
