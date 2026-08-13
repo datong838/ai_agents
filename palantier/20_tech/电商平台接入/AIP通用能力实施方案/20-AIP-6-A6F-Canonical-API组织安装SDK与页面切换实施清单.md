@@ -1,6 +1,6 @@
 # AIP-6 A6F Canonical API、组织安装、SDK 与页面切换实施清单
 
-> 状态：`APPROVED_FOR_IMPLEMENTATION`
+> 状态：`IMPLEMENTED_GREEN / RUNTIME_READINESS_BLOCKED`
 > 日期：2026-08-13
 > 唯一代码分支：`aos-platform/m1`
 > 上位门：A6E `IMPLEMENTED_GREEN / DEFINITION_AUTHORITY_READY / RUNTIME_READINESS_BLOCKED`
@@ -158,3 +158,37 @@
 | 未越过 AIP-7/E7/W0B/AIP-9 | PASS |
 
 最终评审结论：`APPROVED_FOR_IMPLEMENTATION`。
+
+## 10. 实施与验收结果（2026-08-13）
+
+### 10.1 代码提交
+
+- 后端 Canonical API、组织安装与聚合：`aos-platform/m1@556e92c`。
+- 前端唯一严格 SDK、三页面切换及重复路由消除：`aos-platform/m1@914cff2`。
+- A6E 定义基线：`aos-platform/m1@8b4022b`。
+
+### 10.2 权威数据结果
+
+| 范围 | AgentInstance | SkillBinding | CapabilityBinding | AgentRun | 结论 |
+|---|---:|---:|---:|---:|---|
+| `org-org/dev-project` | 6 | 0 | 0 | 0 | 六数字同事已安装，仍待配置，不可运行 |
+| `dev-org/dev-project` | 0 | 0 | 0 | 0 | 负向隔离 canary 通过 |
+
+- 目录精确展示 `6 definition / 6 installed / 37 evaluated skill definition / 10 blocked capability / 0 runnable`。
+- 六实例稳定 ID、模板 revision/hash 与组织/工作区均来自 PostgreSQL authority；没有前端或 Bundle 第二真源。
+- 安装没有越权创建 SkillBinding、CapabilityBinding 或 AgentRun；因此 `provisioning/blocked` 是正确结果。
+
+### 10.3 验证结果
+
+- 后端 A6F 定向及邻接回归：24 项通过；compileall 与 OpenAPI path 检查通过。
+- 前端严格 parser 定向 3 项通过；TypeScript `--noEmit` 通过；Vite production build 276 modules 通过。
+- 内置浏览器：智能体目录、智能体列表、Canonical 能力目录均读取 `org-org/dev-project` 真 API；控制台 error 为 0。
+- 浏览器自检发现并关闭重复 `/aip/capabilities` 路由：旧 singleton 页面不再抢占 Canonical 页面。
+- parser 已对 lifecycle、SHA-256、resource ref、readiness 与 runnableCount 失败关闭，不再以类型强转掩盖响应漂移。
+- 历史 `CapabilityPage.test.ts` 单独运行时 1 项因未启用 jsdom 而失败（`localStorage is not defined`）；这是旧页面测试环境约束，旧页面已退出正式路由，未改写为假通过。
+
+### 10.4 最终裁决
+
+`A6F_IMPLEMENTED_GREEN / SIX_AGENT_INSTANCES_INSTALLED / RUNTIME_READINESS_BLOCKED`。
+
+A6F 已关闭 P0-03 中的 Canonical API、Principal tenant、组织安装、唯一 SDK/UI 和双租户隔离部分；没有关闭 AIP-7 exact ModelRouteRevision、Provider/Eval、Skill/Capability Binding 与 W0B/W2 公共生产对象。因此“六数字同事已安装”不能表述为“六数字同事已在线运行”。

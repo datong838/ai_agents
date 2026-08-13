@@ -11,6 +11,7 @@
 > A6D 实时复核：`aos-platform/m1@650981c` 已继续实现 CapabilityBinding、AgentRun、Handoff、exact Task/Run/Plan/Instance refs、实例快照、一次性 token 与接收方重授权失败关闭；本报告据此继续缩小 P0-03，但 A6E/A6F、领域目录、ModelRouteRevision authority 和公共生产契约仍未闭合，总体审查状态不变。
 > W0A 复核：`18-AIP-W0A十类共享专业Capability目录别名与六角色职责Crosswalk.md` 已冻结 DS-01～DS-06 增量来源、十类 stable ID/Schema/alias、六角色与 37 Logic crosswalk、Coordinator ownership、readiness 和 `HandoffEnvelope` 唯一协议；P0-01/P0-04/P0-05/P0-06 的方案差异归零，可进入 A6E，但总体状态仍受 P0-02/P0-03/P0-07 与运行外部门阻断。
 > A6E 实时复核：`aos-platform/m1@8b4022b` 已发布 `solution.ecommerce.growth@1.2.0`，真实 PostgreSQL 精确回读为 6 AgentTemplate / 37 evaluated SkillTemplate / 10 published CapabilityRevision，`title.generate → copy.generate` 唯一别名成立，累计 38 项回归 GREEN；全部 Capability readiness 仍为 `blocked`，未创建组织实例或运行绑定。P0-04 与 P0-06 的代码前置门据此关闭，但总体状态仍受 P0-02、A6F、AIP-7、P0-07 和外部数据门阻断。
+> A6F 实时复核：`aos-platform/m1@556e92c + 914cff2` 已完成 Principal tenant Canonical API、唯一严格 SDK/UI 和组织安装；`org-org/dev-project` 精确存在 6 个 AgentInstance，SkillBinding/CapabilityBinding/AgentRun 均为 0，`dev-org/dev-project` 为 0 实例 canary。页面真实展示 6/6/37/10/0 runnable，旧 singleton 能力页已退出正式路由。P0-03 的 API/安装/UI 部分关闭，但 AIP-7 exact route、Provider/Eval、Binding 与 P0-02/P0-07 仍未关闭。
 
 ## 0. 使用的 Rules
 
@@ -72,9 +73,9 @@
 ### 2.3 当前阻断全面支撑的部分
 
 1. 工作台 v3 新增的 `TaskBriefRevision`、`EvidenceBundleRevision`、`EvalContractRevision`、`ResponsibilityPlanRevision`、`StageTemplate`、`ReviewIssue/ReturnDecision`、`ImpactPreview` 等尚未进入 AIP 总方案和全量清单的正式覆盖基线。
-2. AIP-6 A6A～A6E 已落地通用 DTO、PostgreSQL revision/Instance/Binding/Run/Handoff/Capability authority、Store、CAS、durable Receipt、exact runtime refs、最小披露交接和领域 6/37/10 定义发布；但 Canonical API/Principal、组织安装/实例化、唯一 SDK/UI、AIP-7 ModelRouteRevision authority 和页面切换尚未完成。当前 `/v1/aip/agents`、`/v1/aip/agent-registry` 仍是进程内 singleton/过渡入口，不能把页面记录当作权威实例。
+2. AIP-6 A6A～A6F 已落地通用 DTO、PostgreSQL revision/Instance/Binding/Run/Handoff/Capability authority、Store、CAS、durable Receipt、exact runtime refs、最小披露交接、领域 6/37/10 定义、Canonical API/Principal、组织安装和唯一 SDK/UI。`org-org/dev-project` 已有 6 个 exact AgentInstance，旧 singleton 不再是正式页面真源；但 AIP-7 ModelRouteRevision authority、Provider/Eval 与 Skill/Capability Binding 尚未完成，所以 0 runnable 是权威状态。
 3. 10 类共享 capability 已具有唯一稳定目录、别名 crosswalk、Schema/Policy exact refs 和 PostgreSQL 不可变 revision；但 Provider、EvalPack、W0B 数据契约与 AIP-7 Route 未就绪，10/10 readiness 均诚实 `blocked`，不能按目录发布推断可运行。
-4. 六数字同事的 exact AgentTemplate 已发布，37 Logic 对应 SkillTemplate 已以 `evaluated` 状态发布；AIP-5 E7 可以在 A6F 创建 exact AgentInstance 后引用身份，不再允许按角色字符串硬编码。
+4. 六数字同事的 exact AgentTemplate 已发布，37 Logic 对应 SkillTemplate 已以 `evaluated` 状态发布，六个组织 exact AgentInstance 已由 A6F 安装；AIP-5 E7 必须直接引用这些实例，不再允许按角色字符串硬编码。
 5. AIP-8、AIP-9、AIP-10 尚未整体实现；AIP-5 E6 仍受真实知识、trusted provider、专家 GoldSet 和向量能力外部门约束。
 
 因此本轮结论是：**基础能力较强，目标态可支撑；清单覆盖不完整，运行态仅部分支撑。**
@@ -108,7 +109,7 @@
 | AIP-3 Action | `IMPLEMENTED_GREEN` | Draft/Approval/Lease/Receipt/unknown 可复用 | 强支撑，但 ImpactPreview exact binding 缺失 |
 | AIP-4 Eval/Lineage/Usage | `IMPLEMENTED_GREEN` | Eval、谱系、成本和外部 Job Receipt 可复用 | 强支撑，但单任务 EvalContract/ReviewIssue 缺失 |
 | AIP-5 Memory/Wiki | E0～E5 GREEN；E6 code/control GREEN、外部门 BLOCKED；E7 未做 | Candidate/治理/知识状态可消费 | 部分支撑；不能宣称美妆知识和六同事共享记忆 operational |
-| AIP-6 Agent/Skill/Handoff | A6A～A6E GREEN：DTO、全局/租户 authority、Store、CAS、revision/Instance/Binding/Run/Handoff、6/37/10 领域定义、exact refs 和 durable Receipt 已实现；A6F 未完成 | 可精确回读模板/目录并持久化实例、排队 Run 和一次性交接；六同事/共享能力页面仍只能 disabled/blocked | 领域定义门已关闭；Canonical API/组织安装/UI 与 AIP-7 运行门仍是共同前置 |
+| AIP-6 Agent/Skill/Handoff | A6A～A6F GREEN：DTO、全局/租户 authority、Store、CAS、revision/Instance/Binding/Run/Handoff、6/37/10 领域定义、Canonical API/Principal、组织安装、唯一 SDK/UI、exact refs 和 durable Receipt 已实现 | `org-org/dev-project` 可精确回读 6 实例，页面展示 37 evaluated/10 blocked/0 runnable；可排队 Run 和一次性交接，但不得进入 running | W1 身份/API/UI 门已关闭；AIP-7、Provider/Eval 和 Binding 是运行前置 |
 | AIP-7 Model/Capacity | 方案态；部分 Usage/成本原语已在 AIP-4 落地 | provider/route 不就绪时必须失败关闭 | 部分基础可复用，端到端未 GREEN |
 | AIP-8 Assistant/Analyst/Workbench | 方案态；SavedExploration 有 O1 既有 authority 可复用 | 通用查询壳和真实分析链未整体 GREEN | 经营参谋、总控等保持 gated |
 | AIP-9 Content/Media/Harness | 方案态 | 多媒体 target-state/disabled | 多媒体和内容 Module 关键阻断 |
@@ -142,9 +143,9 @@
 
 ### 6.2 未覆盖或冲突
 
-1. PostgreSQL Registry/Store 与六角色领域模板已经存在，但当前真实路由仍指向过渡 singleton，`/v1/aip/agents` 尚未形成最终 Principal + PostgreSQL authority；必须由 A6F 通过组织安装创建 exact AgentInstance，不能由页面据显示名自行实例化。
+1. PostgreSQL Registry/Store、六角色领域模板、Principal Canonical API 与六个组织实例均已存在；正式目录/实例/能力页面已切换到唯一严格 SDK。后续不得恢复 singleton 或由页面按显示名自行实例化。
 2. AIP-11.3 仍写 `HandoffContext`，与 AIP-6 已冻结“只使用 `HandoffEnvelope`”冲突。
-3. AIP-5 E7 要做“六同事个人记忆/共享投影”；六角色 exact template 已由 A6E 发布，但组织 exact instance 尚待 A6F。E7 必须引用 A6F 实例，不得退回角色字符串。
+3. AIP-5 E7 要做“六同事个人记忆/共享投影”；六角色 exact template 与组织 exact instance 已由 A6E/A6F 提供。E7 必须引用 A6F 实例，不得退回角色字符串。
 4. `AgentDefinition` 与 `AgentTemplate`、`SkillDefinition` 与 `SkillTemplate` 在 20d 和 AIP 文档中并存，缺唯一 canonical 名/兼容别名 ADR。
 5. “职责、输入、输出、可调用 Skill 明确且单一”容易被实现成“一角色一固定 Skill/一固定 Agent”。应改成“角色 identity 与 accountable 边界唯一；任务职责和执行者可按 ResponsibilityPlan 动态组合”。
 
@@ -335,10 +336,10 @@ script.compose                 脚本撰写（canonical）
 |---|---|---|---|
 | P0-01 | **方案门已关闭**：W0A DS-01～DS-06 已纳入 229、产品 v3、产品吸收矩阵、技术 22/23 和正式开发清单 | 仍需后续代码/运行证据，不能以 plan 替代 GREEN | A6E/W0B/W2 按 delta matrix 逐项实现 |
 | P0-02 | 八类公共生产对象缺 L0 authority/typed projection ADR | Workshop/BFF 各造一套 Brief、Evidence、Stage 和 Issue | 每个对象完成 owner/API/store/RLS/迁移/失败语义/回滚裁决 |
-| P0-03 | AIP-6 A6E 已落地领域 6/37/10 定义与 exact readback，但 Principal API、组织安装和页面仍未切换；agents/registry 仍是过渡 singleton，Run 启动受 AIP-7 exact route authority 阻断 | 六同事实例、共享能力 readiness 和运行绑定尚无端到端权威真值 | 完成 A6F 与 AIP-7 route authority；双 scope、版本/撤销、真实空态、API/浏览器 GREEN |
+| P0-03 | **身份/API/UI 门已关闭**：A6F 已完成 Principal API、组织安装、唯一 SDK/UI 和双租户浏览器验收；Run 启动仍受 AIP-7 exact route、Provider/Eval 与 Binding 阻断 | 六实例已有权威真值，但共享能力还没有 operational binding/readiness | 完成 AIP-7 route authority、Provider/Eval 与按需 binding；版本/撤销、真实空态、API/浏览器继续 GREEN |
 | P0-04 | **定义门已关闭**：W0A 冻结且 A6E 发布 10 stable ID/profile/alias/Schema/Policy exact revision | 10/10 readiness 仍 blocked，不能误报运行完成 | A6F 展示目录与绑定分层状态；AIP-7/Provider/Eval 分别解锁 |
 | P0-05 | **已关闭**：AIP-11 已统一为 `HandoffEnvelope`；`HandoffContext` 仅保留历史输入 alias | 后续代码若再输出旧名会形成协议漂移 | DTO/OpenAPI/测试继续禁止第二协议 |
-| P0-06 | **模板身份门已关闭**：A6E 已发布六角色 exact AgentTemplate | E7 仍不能缺少组织 AgentInstance | A6F 安装 exact instance 后再做 E7 |
+| P0-06 | **身份门已关闭**：A6E 已发布六角色 exact AgentTemplate，A6F 已安装六个组织 exact AgentInstance | E7 仍需严格引用实例并验证撤回/最小披露 | 可进入 E7 方案复审与实现，不得退回角色字符串 |
 | P0-07 | AIP-9 仍以固定内容 Agent 团队为主，未消费 ResponsibilityPlan/Stage/EvalContract | 自适应生产只能停留在工作台文档 | AIP-9 绑定 common contracts、10 capability 和 LITE/STANDARD/FULL 组合验收 |
 
 ### 10.2 P1：实施前应关闭
@@ -372,7 +373,7 @@ script.compose                 脚本撰写（canonical）
 - 组织安装形成六数字同事实例和按需专业 Agent/Provider binding；
 - Registry、readiness、revoke、license、budget、跨租户和真实空态封板。
 
-定义退出门已通过：六角色 6/6、37 Logic 37/37、capability 10/10 均已按 exact revision 回读。W1 剩余退出门为 A6F API/安装/UI 与真实租户隔离；这不要求运行时固定 10 个 Agent。
+W1 退出门已通过：六角色 6/6、37 Logic 37/37、capability 10/10 均按 exact revision 回读；A6F API/安装/UI 与真实租户隔离 GREEN。这不代表运行时固定 10 个 Agent，也不代表 10 capability 已 operational。
 
 ### W2 · 公共生产契约
 
@@ -420,7 +421,7 @@ script.compose                 脚本撰写（canonical）
 - **架构可支撑**：四层分治、Task/Action/Eval/Memory 等主干方向正确，且已有大量高质量实现；
 - **方案部分支撑**：六数字同事、37 Logic、内容生产、通用工作台均有规划，但没有吸收工作台 v3 的全部新增契约；
 - **清单增量已识别但未实施完整**：229 与 v3 增量已进入 W0/W0A；canonical catalog、alias/crosswalk 与 Coordinator ownership 已冻结并由 A6E 发布，W0B/W2 公共生产契约仍未完成；
-- **运行态未支撑完整工作台**：AIP-6 A6A～A6E GREEN，但 A6F 未完成，AgentRun 启动仍受 AIP-7 exact route authority 阻断；AIP-8/9/10 未整体 GREEN，AIP-5 E6 外部门和 E7 仍未闭合。
+- **运行态未支撑完整工作台**：AIP-6 A6A～A6F GREEN，六实例已安装但 0 runnable；AgentRun 启动仍受 AIP-7 exact route、Provider/Eval 与 Binding 阻断；AIP-8/9/10 未整体 GREEN，AIP-5 E6 外部门和 E7 仍未闭合。
 
 ### 13.2 对三份 229 相关文档的回答
 
