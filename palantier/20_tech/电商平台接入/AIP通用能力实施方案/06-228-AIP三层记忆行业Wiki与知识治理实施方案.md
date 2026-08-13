@@ -290,3 +290,7 @@ readiness 只返回稳定 `license_unknown/license_denied/source_stale` blocker�
 ### 7.2 E6B 导入边界冻结
 
 KnowledgePackage 只组织批量目录；每个 entry 必须有独立 subject、confidence、payload path/hash 和 source。E5 的 `KnowledgePipelineInputReceipt` 仍保持“一条 Receipt 对应一个精确 Artifact”，因此 E6B adapter 每次只把一个 entry Receipt 转换为一个确定性 Candidate Draft，批量由多个 Receipt 组成。禁止把整包 Artifact 复用为多条 Candidate payload，也禁止 adapter 直接写 Candidate、checkpoint 或正式 Wiki。
+
+E6B 已以代码 `67cf0a8` 实现 `VerticalPackSeedAdapter`。adapter 只允许 `seed_import + authorized_document + aip.artifact_receipt`，每次把一个精确 entry Receipt 映射为一个确定性 Semantic Candidate Draft；entry id、payload hash、许可、usage policy、provider/version、observed/freshness 和 applicability 任一漂移均失败关闭。`PUBLIC_PACKAGE` 仍不允许由租户 adapter 直接发布，需另行 release authority。
+
+E6A/E6B/Pipeline 专项 43 passed，compileall 与 diff check GREEN。包含更大邻接集合时 246 passed，另有 1 个既有签名时间 ISO 尾随零文本断言漂移（时间值相同），不属于本波逻辑。未注册生产 adapter、未创建真实租户 Candidate、未导入知识正文。下一门为 E6C tenant-scoped 全文 reference index 与 capability registry。
