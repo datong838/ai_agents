@@ -300,3 +300,5 @@ E6A/E6B/Pipeline 专项 43 passed，compileall 与 diff check GREEN。包含更�
 E6C 将 E3 的进程内 reference cache 升级为 PostgreSQL 可重建投影，但不替换 E3 的 canonical authority 查询。`aip_memory_search_reference` 仅保存同租户 Memory revision 的 id/revision/hash、subject/source reference、受限 search terms、markings/applicability/freshness；严禁 payload reference、正文、embedding 和 PII。`aip_memory_search_capability` 仅保存 fulltext/vector/rerank lane 的状态、原因、provider/revision、CAS version 和观测时间，不承担授权。
 
 两表均启用并强制 RLS；无 scope 零可见。reference 清空/重建不修改 Source/Candidate/Memory；capability 更新必须 CAS。当前 PostgreSQL 只使用内建 `simple` 全文索引，不安装扩展；vector 明确为 `degraded_vector_unavailable`，rerank 未配置为 `unbuilt`。E6C 不返回知识正文，权限先行、融合、重排和 Citation 装配留在 E6D。
+
+E6C 已以代码 `e581a99` 实现并复审通过。migration `aip5_004` 可逆升级且保持唯一 head；两张投影表 RLS/FORCE、同 scope FK、无 payload/正文/embedding 字段。Store 在写 reference 前逐项复核 canonical subject/hash/source/markings/applicability/freshness，terms 拒绝手机号、身份证、邮箱和 URL；vector 在数据库未安装 pgvector 时禁止写成 ready。6 项专项、32 项邻接、downgrade/upgrade、compileall、diff check GREEN；真实租户投影仍为空。下一门为 E6D `KnowledgeSearch` 与 Citation 装配。

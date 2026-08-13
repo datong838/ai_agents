@@ -170,7 +170,7 @@ E5 统一边界：不复制 AIP Task/Run/Checkpoint，不以 `meta_schedule_run`
 
 - [x] E6A：为 `VerticalPack` 冻结知识出口、package manifest/source inventory/hash/回滚契约；未知许可、路径穿越和 hash 漂移失败关闭。代码 `f3415a9`；212 回归、compileall、diff check GREEN。
 - [x] E6B：实现可信 bundle seed adapter，只经 E5 Receipt + Candidate 链导入；每 entry 独立 Artifact/Receipt/Candidate，确定性 ID，许可/hash/source/applicability 漂移失败关闭。代码 `67cf0a8`；43 专项 GREEN。
-- [~] E6C：实现 tenant-scoped 全文 reference index 与 capability registry；已冻结两张 PostgreSQL 投影表、revision FK、RLS/FORCE、reference 清空重建、capability CAS、fulltext ready/vector degraded/rerank unbuilt；编码中，且不存正文/PII/payload/embedding。
+- [x] E6C：tenant-scoped 全文 reference index 与 capability registry 已实现；代码 `e581a99`，migration `aip5_004`，RLS/FORCE、revision/source FK、reference 清空重建、capability CAS、PII gate 和无 pgvector 禁止 vector ready；6 专项/32 邻接 GREEN。
 - [ ] E6D：新增自然语言 `KnowledgeSearch`，保留 E3 精确 `KnowledgeQuery`；授权先行，全文/向量/重排独立 capability，Citation 必填。
 - [ ] E6E：实现 gold-set schema、Eval runner 和六角色语义依赖检查；未审核或少于 50 条时禁止生成 Top-1 GREEN。
 - [ ] E6F：控制面展示知识包、来源门、检索 lane、Eval 与阻断原因；完成 `org-org/dev-project` 内置浏览器验收。
