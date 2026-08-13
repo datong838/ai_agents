@@ -302,3 +302,9 @@ E6C 将 E3 的进程内 reference cache 升级为 PostgreSQL 可重建投影，�
 两表均启用并强制 RLS；无 scope 零可见。reference 清空/重建不修改 Source/Candidate/Memory；capability 更新必须 CAS。当前 PostgreSQL 只使用内建 `simple` 全文索引，不安装扩展；vector 明确为 `degraded_vector_unavailable`，rerank 未配置为 `unbuilt`。E6C 不返回知识正文，权限先行、融合、重排和 Citation 装配留在 E6D。
 
 E6C 已以代码 `e581a99` 实现并复审通过。migration `aip5_004` 可逆升级且保持唯一 head；两张投影表 RLS/FORCE、同 scope FK、无 payload/正文/embedding 字段。Store 在写 reference 前逐项复核 canonical subject/hash/source/markings/applicability/freshness，terms 拒绝手机号、身份证、邮箱和 URL；vector 在数据库未安装 pgvector 时禁止写成 ready。6 项专项、32 项邻接、downgrade/upgrade、compileall、diff check GREEN；真实租户投影仍为空。下一门为 E6D `KnowledgeSearch` 与 Citation 装配。
+
+### 7.4 E6D KnowledgeSearch 冻结
+
+E6D 只增量新增自然语言 `KnowledgeSearch`，不改变 E3 精确 `KnowledgeQuery`。tenant RLS 与请求 marking 先约束 reference 候选；全文索引只给出 id/revision/hash/score，随后必须回查 canonical Item/Revision/Source 的 active、time window、freshness、markings、applicability、revision/hash，全部通过后才解析 payload。每条正文必须与 Citation 同序一一绑定。
+
+响应按 fulltext/vector/rerank lane 明示状态和 reason；只有 ready lane 参与。所有 lane 不可用时 blocked 空结果；部分 lane 不可用时 degraded。当前真实租户 0 reference/0 capability，因此不得返回知识正文；vector/rerank 不得以假实现参与融合。E6D 首期排序仅采用 PostgreSQL fulltext rank + stable id tie-break，RRF 只有两个以上 ready lane 时才启用。
