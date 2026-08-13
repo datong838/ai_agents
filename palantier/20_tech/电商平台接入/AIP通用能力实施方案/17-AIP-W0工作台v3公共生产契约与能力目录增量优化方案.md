@@ -18,7 +18,7 @@
 - AIP-3：ActionProposal/Draft/Approval/Lease/Receipt/unknown/reconcile 可复用。
 - AIP-4：Eval/Publication/Lineage/Telemetry/Usage/Capability Receipt 可复用。
 - AIP-5：治理记忆、七知识管道、KnowledgeSearch/readiness 已有底座；E6 外部门、E7 未闭合。
-- AIP-6 A6A～A6D：`aip6_003`、Agent/Skill revision、Instance/Skill/Capability Binding、AgentRun、Handoff、exact refs、Store/CAS/durable Receipt GREEN；A6E～A6F 未完成。
+- AIP-6 A6A～A6E：`aip6_004`、Agent/Skill/Capability revision、Instance/Skill/Capability Binding、AgentRun、Handoff、exact refs、Store/CAS/durable Receipt 与领域 6/37/10 定义发布 GREEN；A6F 未完成。
 - 工作台 v3 八公共对象没有 canonical L0 authority；代码检索无 `TaskBriefRevision`、`EvidenceBundleRevision`、`EvalContractRevision`、`ResponsibilityPlanRevision`、`StageTemplate`、`ReviewIssue/ReturnDecision`、`ImpactPreview` 实现。
 
 ## 3. 八公共对象 owner 裁决
@@ -94,4 +94,4 @@
 
 整改后复审：owner、复用/增量裁决、身份/职责/能力正交关系、Handoff/E7/A6E/AIP-9 依赖、插入顺序和失败语义已闭合；方案可作为总计划增量输入。它不替代具体 W0B 编码清单，也不授权在清单评审前实现八对象。
 
-最终结论：`APPROVED_FOR_PLAN_INTEGRATION`。A6D 与 W0A 已完成，当前允许进入 A6E 领域目录；AIP-9 前仍须完成 W0B/W2 公共生产契约。
+最终结论：`APPROVED_FOR_PLAN_INTEGRATION`。A6D、W0A 与 A6E 已完成，当前允许进入 A6F Canonical API/组织安装/UI；AIP-9 前仍须完成 W0B/W2 公共生产契约。

@@ -1,6 +1,6 @@
 # AIP-6 A6E 电商领域 SolutionPack 实施清单与评审结论
 
-> 状态：`APPROVED_FOR_IMPLEMENTATION`
+> 状态：`IMPLEMENTED_GREEN / RUNTIME_READINESS_BLOCKED`
 > 日期：2026-08-13
 > 唯一代码分支：`aos-platform/m1`
 > 上位目录：`18-AIP-W0A十类共享专业Capability目录别名与六角色职责Crosswalk.md`
@@ -194,3 +194,14 @@ Capability 目录 revision 可发布为 `published`，但 contribution 内 readi
 | 迁移、测试、exact readback 和零业务数据副作用可执行 | PASS |
 
 最终结论：`APPROVED_FOR_IMPLEMENTATION`。本清单授权 A6E，不授权 A6F 或 W0B/W2 越门编码。
+
+## 10. 实施与最终复审结果
+
+- 代码提交：`aos-platform/m1@cd1d07a`（CapabilityRevision/alias authority）与 `aos-platform/m1@8b4022b`（SolutionPack 1.2.0 发布闭环）。
+- Bundle 已移除三同事/Logic placeholder，保留 D3 W03/L05/dry-run，并新增六角色、37 Logic、十 Capability、Schema 与 Policy contribution。
+- 发布器连续执行两次均返回 `agentCount=6 / skillCount=37 / capabilityCount=10`；数据库精确回读同为 6/37/10，alias `title.generate → copy.generate` 唯一。
+- 38 项 A6A～A6E 与 Asset Registry 累计回归 GREEN；compileall、JSON、`git diff --check` GREEN。当前锁定环境无 Ruff，未将 Ruff 写成通过证据。
+- 发布前严格校验数量、ID、字段、crosswalk、Schema/Policy 闭包和 capability 引用；漂移与未知 capability 失败关闭。
+- 没有创建 AgentInstance、SkillBinding、CapabilityBinding、AgentRun 或 Handoff；十 Capability readiness 均为 `blocked`，没有伪造 Provider/Eval/Route 可用。
+
+最终实施判定：`IMPLEMENTED_GREEN / DEFINITION_AUTHORITY_READY / RUNTIME_READINESS_BLOCKED`。下一门为 A6F，且必须保持目录状态与运行状态分层展示。
