@@ -12,5 +12,7 @@
 | [ADR-006](ADR/ADR-006-M5无业务骨架与Overlay文件契约边界.md) | Accepted | M5 电商包只做 test-only 无业务组合验证，Overlay 只以文件契约和 opaque hash 接入现有安装控制面 |
 | [ADR-007](ADR/ADR-007-组织工作区硬边界与模板实例分离.md) | Accepted | 组织/工作区双硬边界；平台模板共享，租户实例与受治理 Overlay 隔离 |
 | [ADR-008](ADR/ADR-008-O1权威写入单一Projector与安装绑定组织Overlay.md) | Accepted | 电商权威写入只产生事务 Outbox，由单一 Projector 投影；组织定制使用 Installation 绑定不可变 Overlay |
+| [ADR-009](ADR/ADR-009-O1共同引用图域与Authority合同.md) | Accepted | 本体、知识、任务与证据使用共同引用；领域图与运行血缘分域，不混真源 |
+| [ADR-010](ADR/ADR-010-AIP与Workshop双开发线及共享文档单写边界.md) | Accepted | m1 为稳定集成线；AIP/Workshop 使用独立工作树，docs 按目录单写且上下文采用 CAS 串行提交 |
 
 新增或反转决策必须：先更新上位方案，新增 ADR 记录上下文、取舍和迁移影响，再编码与回归；不得静默覆盖历史 ADR。
