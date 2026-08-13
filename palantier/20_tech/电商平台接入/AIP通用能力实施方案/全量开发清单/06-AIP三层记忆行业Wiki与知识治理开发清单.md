@@ -1,6 +1,6 @@
 # 06 AIP 三层运行记忆、行业 Wiki 与知识治理开发清单
 
-> 状态：**v1.9 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · E5 CODE_GREEN / BROWSER_EVIDENCE_PENDING**
+> 状态：**v2.0 · 已获用户全量编码授权 · E0～E5 IMPLEMENTED_GREEN · E6 REVIEWED / APPROVED_FOR_IMPLEMENTATION_WITH_EXTERNAL_DATA_GATE**
 > 上位依据：`../06-228-AIP三层记忆行业Wiki与知识治理实施方案.md`
 > 对应阶段：AIP-5；前置：02、04、05 GREEN。
 
@@ -27,9 +27,9 @@
 | 06-17 | 管道5 专业知识库 | professional adapter | CosDNA/NMPA 等来源先过授权、许可与版本核验 |
 | 06-18 | 管道6 客户反哺、管道7 人工经验 | event/manual candidate jobs | 聚合/去敏；人工经验也需冲突与适用范围治理 |
 | 06-19 | 建七管道 Scheduler、Run、Receipt、checkpoint 和状态看板 | scheduler/API/web | 七条独立开关、重试、暂停、回读、告警 |
-| 06-20 | 建美妆知识包冷启动 manifest、导入与回滚 | vertical knowledge bundle | ≥300 总量、≥200 成分、≥50 话术、≥30 规则 |
-| 06-21 | 建冷启动标注集和检索/角色覆盖 Eval | evals/retrieval | 50 查询 Top-1≥80%，六角色依赖覆盖 100% |
-| 06-22 | 实现全文+向量召回、融合、重排和引用装配 | retrieval adapters | 权限先于召回；索引空/坏时诚实降级 |
+| 06-20 | 建美妆 VerticalPack manifest、来源清单、Candidate 导入与回滚 | vertical knowledge bundle | 先通过逐条 source/license/hash 门；目标量不足时 DATA_BLOCKED，不用示例凑数 |
+| 06-21 | 建审核制金标集、检索质量和六角色语义依赖 Eval | evals/retrieval | ≥50 条已审核 gold 才计算 Top-1≥80%；不足时 EVAL_BLOCKED |
+| 06-22 | 实现全文召回、可选向量、RRF/重排和引用装配 | retrieval adapters | 权限先于召回；lane 独立报 capability；空/坏/缺依赖诚实降级 |
 | 06-23 | 建个人记忆、共享投影和跨角色最小披露 | memory projection | 不共享工作记忆/敏感会话；共享项有治理 revision |
 | 06-24 | 建记忆改进度量与撤回影响分析 | evals/governance | 用 Eval/人工修改率/事实率证明改进，不以文本量代替 |
 
@@ -81,8 +81,8 @@
 - [x] E2：七类治理门与统一晋升服务。代码 `ab7b8aa`；累计 41 tests passed。
 - [x] E3：KnowledgeQuery、渐进上下文、O1 Wiki adapter 和可重建索引。代码 `81c5f82`；8 个专项、累计 50 tests passed。
 - [x] E4：Canonical API/SDK/治理页面与浏览器验收。
-- [ ] E5：七知识管道的 Schedule/Run/Receipt/checkpoint；E5A～E5D 代码与自动化验证完成，待补内置浏览器交互截图证据后封板。
-- [ ] E6：美妆知识包冷启动、混合检索与量化 Eval。
+- [x] E5：七知识管道的 Schedule/Run/Receipt/checkpoint；E5A～E5D 代码、自动化、真实 API 与内置浏览器证据已封板。
+- [ ] E6：美妆 VerticalPack、全文/可选向量检索与量化 Eval；方案已通过，外部数据门独立阻断。
 - [ ] E7：六同事个人记忆/共享投影、撤回影响与改进度量。
 
 本清单中的全量授权不允许跨波偷跑；每个子波必须更新 `01-当前项目状态.md` 和 `06-当前执行检查点.md` 并形成安全提交。
@@ -161,7 +161,18 @@ E4D 实施结论：E4B 复审补强 `8b08792`，深层严格解析 tenant/source
 - [x] `apps/web/src/api/aipMemory/` 扩展唯一严格 SDK；未知枚举/缺失 hash/version/tenant 失败关闭。代码 `3492970`。
 - [x] `MemoryGovernancePage` 增“知识管道”视图，覆盖 loading/empty/error/disabled/paused/active/running/failed/blocked；每个操作有真实 API 或明确禁用理由。
 - [x] SDK 严格对齐 Canonical `ResourceRef.authority` 与 `ArtifactRef.artifactType/artifactId/revision/contentHash`；可空 Receipt/Checkpoint 使用对象信封，未知枚举/缺 hash/tenant 漂移失败关闭。
-- [ ] 后端专项/累计、前端定向/全量、TypeScript/build、OpenAPI/diff check、`org-org/dev-project` 内置浏览器验收；自动化部分已 GREEN：后端累计 74、前端定向 12、前端全量 174 files / 2057 tests、TypeScript、Vite build、OpenAPI 六路由、diff check；真实 API Policy=7、Schedule=[]/200。内置浏览器已确认正确租户、页面入口和四页签，切换/截图因控制通道连续超时待补；`dev-org` 只作 API/测试负向 canary。
-- [ ] 更新 `01-当前项目状态.md`、`06-当前执行检查点.md`、Prime/shared-memory 投影并形成代码/文档安全提交。
+- [x] 后端累计 74、前端定向 12、前端全量 174 files / 2057 tests、TypeScript、Vite build、OpenAPI 六路由、diff check、真实 API 7/0/0 与 `org-org/dev-project` 内置浏览器验收；`dev-org` 只作 API/测试负向 canary。
+- [x] 更新 `01-当前项目状态.md`、`06-当前执行检查点.md`、Prime/shared-memory 投影并形成代码/文档安全提交。
 
 E5 统一边界：不复制 AIP Task/Run/Checkpoint，不以 `meta_schedule_run` 冒充 AIP-5 控制面，不保存外部全文/PII/密钥，不在 migration 创建真实租户 schedule，不提前执行 E6 冷启动或 E7 个人/共享记忆。
+
+### 6.5 E6 执行拆分（2026-08-13 复审通过）
+
+- [ ] E6A：为 `VerticalPack` 冻结知识出口、package manifest/source inventory/hash/回滚契约；未知许可、路径穿越和 hash 漂移失败关闭。
+- [ ] E6B：实现可信 bundle seed adapter，只经 E5 Receipt + Candidate 链导入；重放幂等，异 hash 冲突，失败不推进 checkpoint。
+- [ ] E6C：实现 tenant-scoped 全文 reference index 与 capability registry；RLS/FORCE，索引可重建且不存正文/PII。
+- [ ] E6D：新增自然语言 `KnowledgeSearch`，保留 E3 精确 `KnowledgeQuery`；授权先行，全文/向量/重排独立 capability，Citation 必填。
+- [ ] E6E：实现 gold-set schema、Eval runner 和六角色语义依赖检查；未审核或少于 50 条时禁止生成 Top-1 GREEN。
+- [ ] E6F：控制面展示知识包、来源门、检索 lane、Eval 与阻断原因；完成 `org-org/dev-project` 内置浏览器验收。
+
+E6 外部数据门：CosDNA 许可未知，保持 disabled；NMPA 需登记当前动态清单版本与使用政策；旧方案 353 条只作目标，不是资产；当前无 pgvector，向量 lane 必须 degraded。详见 `AOS项目开发上下文/50-2026-08-13-AIP-5-E6美妆知识包与混合检索评审清单.md`。

@@ -1,5 +1,7 @@
 # 行业 Wiki 架构总览 — 三层记忆 · 七条管道 · 治理全景 · 实施路线
 
+> **2026-08-13 AIP-5 E6 权威覆盖：** 本文继续作为产品架构索引；工程权威已统一到 AIP-5 E0-E6。行业 Wiki 以 `VerticalPack + Candidate 治理 + canonical Memory/Wiki + 可重建检索投影` 实现；旧 mock、直写、平行存储和未经许可的抓取路径均已废止。
+
 > 创建时间：2026-07-29
 > 状态：方案设计（先方案后编码）
 > 关联：`00-总览-三层记忆系统.md`（骨架）· `01-三层记忆系统设计.md`（数据模型/接口/存储/检索）· `02-七条知识管道设计.md`（管道实现）· `03-知识治理三层过滤.md`（治理细节）· `04-美妆行业Wiki冷启动方案.md`（落地）
@@ -129,17 +131,16 @@ Semantic Memory（L2级，无需审核）
 ### 3.2 管道数据流
 
 ```
-外部来源                          Semantic Layer
-─────────                        ──────────────
-23篇方案 ──→ 管道1 ──→ L1 ──→ 直接入库
-CosDNA   ──→ 管道5 ──→ L2 ──→ 直接入库
-NMPA     ──→ 管道5 ──→ L1 ──→ 直接入库
-运营经验 ──→ 管道7 ──→ L2 ──→ 直接入库
-                           ──────────────────────
-TaskResult ─→ 管道2 ──→ L3 ──→ Draft审核 → 入库
-客户行为   ──→ 管道6 ──→ L3 ──→ Draft审核 → 入库
-网页爬取   ──→ 管道3 ──→ L4 ──→ Draft审核 → 入库
-竞品数据   ──→ 管道4 ──→ L4 ──→ Draft审核 → 入库
+外部来源                    E5 Pipeline / Candidate / Governance
+─────────                  ───────────────────────────────────
+授权方案 ─→ 管道1 ─→ Receipt/Candidate ─→ 统一治理
+CosDNA   ─→ 许可未知，disabled
+NMPA     ─→ 版本/使用政策核验 ─→ Receipt/Candidate ─→ 统一治理
+运营经验 ─→ 管道7 ─→ Receipt/Candidate ─→ 统一治理
+TaskResult ─→ 管道2 ─→ Receipt/Candidate ─→ 统一治理
+客户行为   ─→ 管道6 ─→ 聚合去敏 ─→ Receipt/Candidate ─→ 统一治理
+网页研究   ─→ 管道3 ─→ 受信 Research Receipt ─→ Candidate
+竞品事实   ─→ 管道4 ─→ 允许摘要/引用 ─→ Candidate
 ```
 
 详见 `02-七条知识管道设计.md`。
@@ -152,14 +153,14 @@ TaskResult ─→ 管道2 ──→ L3 ──→ Draft审核 → 入库
 
 ```
 第一层：可信度分级（L1-L4）
-  ├─ L1 权威（官方/法规/种子）→ 自动使用，不引用来源
-  ├─ L2 专业（第三方库/人工）→ 自动使用，引用来源
+  ├─ L1 权威（官方/法规/种子）→ 仍需治理和引用来源
+  ├─ L2 专业（第三方库/人工）→ 仍需治理和引用来源
   ├─ L3 经验（自学习/客户）→ 需审核，引用来源
   └─ L4 推测（网络/竞品）→ 需审核，引用来源
 
-第二层：写入门控
-  ├─ L1/L2 → 直接入库 Semantic
-  └─ L3/L4 → Draft 草稿区 → 人工审核 → 通过入库 / 驳回 / 7天过期
+第二层：统一写入门控
+  ├─ L1-L4 → Candidate + source/license/freshness/applicability
+  └─ Eval + Draft + Approval 通过后晋升正式 Memory/Wiki
 
 第三层：时效管理
   ├─ 每日 03:30 检查过期知识
@@ -238,7 +239,7 @@ Evals 门控使用规则验证
 | `aip_knowledge_governance.py` | 同上 | 03 §二~§四 | 三层过滤治理 |
 | `aip_knowledge_review.py` | 同上 | 03 §三 | Draft 审批处理器 |
 | `scripts/bootstrap_beauty_wiki.py` | `aos-platform-w4/services/aos-api/` | 04 §四 | 冷启动脚本 |
-| `scripts/cosdna_crawler.py` | 同上 | 04 §三 | CosDNA 爬取器 |
+| CosDNA adapter | E5 trusted adapter registry | 04 §三 | 许可未知时不实现、不注册、不运行 |
 | `scripts/nmpa_syncer.py` | 同上 | 04 §三 | NMPA 同步器 |
 | `tests/test_aip_memory.py` | `aos-platform-w4/services/aos-api/tests/` | 01 §十 | 记忆系统测试 |
 | `tests/test_aip_knowledge_governance.py` | 同上 | 03 §七 | 治理测试 |
@@ -270,10 +271,10 @@ Evals 门控使用规则验证
 
 | 里程碑 | 验收标准 | 优先级 |
 |--------|---------|--------|
-| M1：三层记忆可用 | Semantic/Espisodic/Working 接口可用，pgvector + bge 部署完成 | P0 |
+| M1：三层记忆可用 | canonical Semantic/Episodic/Working authority 可用；索引 capability 独立报告 | P0 |
 | M2：管道运行 | 7 条管道可触发，管道状态看板可查 | P0 |
-| M3：治理生效 | L1-L4 分级正确，L3/L4 进 Draft 审核，时效检查运行 | P1 |
-| M4：美妆冷启动 | 353 条知识入库，检索准确率 ≥80%，依赖覆盖 100% | P0 |
+| M3：治理生效 | L1-L4 均经 Candidate/Eval/Draft/Approval，时效检查运行 | P1 |
+| M4：美妆冷启动 | 目标 353 条须逐条授权；≥50 条审核金标后才计算 Top-1≥80% 与六角色语义覆盖 | P0 |
 | M5：FDE 复用 | 第二次接入同类平台耗时降低 ≥50% | P2 |
 
 ---

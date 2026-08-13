@@ -1,6 +1,6 @@
 # 228-AIP 三层运行记忆、行业 Wiki 与知识治理实施方案
 
-> 状态：**IMPLEMENTING · v1.6 · 已获用户全量编码授权 · E0～E4 IMPLEMENTED_GREEN · E5 CODE_GREEN / BROWSER_EVIDENCE_PENDING**
+> 状态：**IMPLEMENTING · v1.7 · 已获用户全量编码授权 · E0～E5 IMPLEMENTED_GREEN · E6 REVIEWED / APPROVED_FOR_IMPLEMENTATION_WITH_EXTERNAL_DATA_GATE**
 > 对应阶段：AIP-5。
 >
 > 2026-08-11 补充：外部研究 Harness 的知识入口 v1.2 已评审通过。2026-08-12 对账：总控全量编码授权已取代历史“不授权编码”门，但每个子波仍需方案、检查点、测试、浏览器与安全提交。
@@ -266,4 +266,17 @@ E5D 已由代码提交 `db27919`、`3492970` 完成 Canonical API、唯一严格
 
 前端 SDK 已严格对齐 `ResourceRef.authority` 与 `ArtifactRef.artifactType/artifactId/revision/contentHash`；可空 Receipt/Checkpoint 使用对象信封，未知枚举、缺 hash/version、tenant 漂移全部失败关闭。后端 AIP-5 累计 74 tests、前端定向 12 tests、前端全量 174 files / 2057 tests、TypeScript、Vite production build、OpenAPI 六条必需路由和 diff check 均 GREEN。开发库已从 `aip4_008` 升级到单 head `aip5_003`；`org-org/dev-project` 真实 API 验证 Policy 7 条、Schedule 空集合 200，未写入业务数据。
 
-内置浏览器已确认页面加载、`组织 · 栖月汇商贸有限公司`、`默认工作区`、Memory Governance 入口及四个治理页签；但控制通道在切换“知识管道”和截图时连续超时。因此当前不能把交互截图补采冒充为 GREEN，E5 保持 `CODE_GREEN / BROWSER_EVIDENCE_PENDING`。待浏览器控制恢复后补采知识管道空态、七策略卡、禁用理由和控制台错误清单，再进入 E6 编码；E6 方案复审可先行。
+内置浏览器已补采 `org-org/dev-project` 的“知识管道”页签、7 条权威策略、0 Schedule/Run、7 个禁用动作、刷新与控制台 0 error；证据为 `AOS项目开发上下文/evidence/2026-08-13-AIP5-E5D-knowledge-pipelines-org-org.png`。因此 E5D 与 E5 总门均为 `IMPLEMENTED_GREEN`。
+
+## 7. E6 美妆 VerticalPack、混合检索与量化 Eval 冻结（2026-08-13）
+
+E6 以 `AOS项目开发上下文/50-2026-08-13-AIP-5-E6美妆知识包与混合检索评审清单.md` 为唯一执行清单。14-Wiki 系列中与下列规则冲突的历史段落只保留背景价值，不再授权实现：
+
+1. 美妆知识必须作为可安装、可卸载、可回滚的 `VerticalPack` 交付，核心 AOS 不内置行业正文；组织/工作区实例可独立安装和定制。
+2. bundle/source inventory/Receipt/Task/Run/source/license/freshness/hash 全部自洽后，可信 adapter 才能批量提交 Candidate；任何入口都不得直写 Semantic/Wiki。
+3. 自然语言 `KnowledgeSearch` 是 E3 `KnowledgeQuery` 的增量能力，不替换精确 subject 解析；授权和治理过滤先于索引召回和 payload 解析。
+4. 全文、向量、重排是独立 capability。当前环境无 pgvector 时必须返回 `degraded_vector_unavailable`，不能把全文命中称为混合检索 GREEN。
+5. 353 条种子和 50 条金标均为目标门，不是已有数据。缺逐条授权 Receipt 或专家审核时分别保持 `DATA_BLOCKED` 与 `EVAL_BLOCKED`。
+6. CosDNA 等来源在许可未知时保持 disabled；NMPA 等官方来源也必须登记当前版本、时效和使用政策，不能因“官方”绕过来源门。
+
+E6 拆为 E6A 知识包契约、E6B Candidate 导入、E6C 全文 reference index、E6D 检索融合/Citation、E6E Eval runner、E6F 控制面与浏览器验收。只有各子门的代码、真实数据和 Eval 证据分别成立后，才允许宣告 E6 完成。
