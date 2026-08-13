@@ -310,3 +310,9 @@ E6D 只增量新增自然语言 `KnowledgeSearch`，不改变 E3 精确 `Knowled
 响应按 fulltext/vector/rerank lane 明示状态和 reason；只有 ready lane 参与。所有 lane 不可用时 blocked 空结果；部分 lane 不可用时 degraded。当前真实租户 0 reference/0 capability，因此不得返回知识正文；vector/rerank 不得以假实现参与融合。E6D 首期排序仅采用 PostgreSQL fulltext rank + stable id tie-break，RRF 只有两个以上 ready lane 时才启用。
 
 E6D 已以代码 `9bfec8c` 实现 `KnowledgeSearch` DTO、reference fulltext rank、lane 状态、canonical authority 二次过滤、payload 延迟解析、Citation 一一绑定和 `/knowledge-searches` 路由。2 项新 API、21 项核心邻接、compileall/diff check GREEN；默认 trusted resolver 未装配、真实租户 capability/reference 为空，所以只宣告 `CODE_GREEN / PROVIDER_BLOCKED / DATA_BLOCKED`。RRF 因只有零个 ready lane 未执行，不得宣告混合检索 GREEN。
+
+### 7.5 E6E GoldSet 与 Eval runner 冻结
+
+GoldSet 需要稳定 id/revision/hash、reviewer/approvedAt；每条至少包含自然语言、Skill、六角色依赖、精确 gold Memory/revision/hash/Citation 和负向期望。少于 50、未审核、六角色语义覆盖不全、重复 query/citation 或结果缺失时，runner 只能返回 `EVAL_BLOCKED` 且不计算指标。
+
+Top-1 采用实际首条 Citation 的 Memory/revision/hash 精确匹配；另计 Citation coverage 和权限/stale/revoked/conflict 负向保护。任一负向泄露总门 RED。runner 是纯计算器，不生成 gold、不调用 LLM 补答案、不写 Memory/Index；当前真实金标计数仍为 0。
