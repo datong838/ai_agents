@@ -1,0 +1,25 @@
+{"base_revision":"AOS-000010","occurred_at":"2026-08-13T00:10:56+08:00","schema":"aos-memory-event/v1","task_id":"workshop-product-review-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T00:19:49+08:00","project_revision":"AOS-000011","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-13T00:25:57+08:00","result":"COMPLETED_READ_ONLY_PRODUCT_AUDIT","schema":"aos-memory-event/v1","task_id":"workshop-product-review-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000011","occurred_at":"2026-08-13T00:43:54+08:00","schema":"aos-memory-event/v1","task_id":"workshop-product-v2-wave1-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T00:55:56+08:00","result":"APPROVED_PRODUCT_BASELINE","schema":"aos-memory-event/v1","task_id":"workshop-product-v2-wave1-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000011","occurred_at":"2026-08-13T00:55:56+08:00","schema":"aos-memory-event/v1","task_id":"workshop-tech-design-wave3-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T01:04:01+08:00","project_revision":"AOS-000012","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-13T01:11:02+08:00","result":"APPROVED_TECHNICAL_BASELINE","schema":"aos-memory-event/v1","task_id":"workshop-tech-design-wave3-20260813","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-13T10:43:10+08:00","project_revision":"AOS-000013","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000013","occurred_at":"2026-08-13T10:44:59+08:00","schema":"aos-memory-event/v1","task_id":"workshop-product-detailed-convergence-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T11:00:40+08:00","result":"APPROVED_DETAILED_PRODUCT_BASELINE","schema":"aos-memory-event/v1","task_id":"workshop-product-detailed-convergence-20260813","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-13T11:04:26+08:00","project_revision":"AOS-000014","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000014","occurred_at":"2026-08-13T11:41:56+08:00","schema":"aos-memory-event/v1","task_id":"workshop-smartlib-product-tech-convergence-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T11:50:50+08:00","project_revision":"AOS-000015","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-13T12:28:18+08:00","result":"APPROVED_DETAILED_PRODUCT_BASELINE_V3_AND_APPROVED_TECHNICAL_BASELINE_V2","schema":"aos-memory-event/v1","task_id":"workshop-smartlib-product-tech-convergence-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000015","occurred_at":"2026-08-13T12:53:56+08:00","schema":"aos-memory-event/v1","task_id":"workshop-media-lifecycle-visual-wave-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T13:15:22+08:00","result":"APPROVED_MEDIA_LIFECYCLE_VISUAL_BASELINE_V3_1","schema":"aos-memory-event/v1","task_id":"workshop-media-lifecycle-visual-wave-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000015","occurred_at":"2026-08-13T13:24:02+08:00","schema":"aos-memory-event/v1","task_id":"workshop-seven-pages-visual-audit-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T13:38:13+08:00","result":"REVIEWED_WITH_TARGETED_VISUAL_IMPROVEMENTS","schema":"aos-memory-event/v1","task_id":"workshop-seven-pages-visual-audit-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000015","occurred_at":"2026-08-13T14:09:21+08:00","schema":"aos-memory-event/v1","task_id":"workshop-seven-pages-visual-v1-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T15:54:10+08:00","result":"V1 视觉与语义止血已完成：内容与价格 1280 可读性修复，三页重复侧栏控制去重，内容/经营参谋嵌套 Tab 无障碍语义与键盘切换补齐，经营参谋用户可见术语改为决策摘要/证据链/归因路径；八页与多视口浏览器验收通过。","schema":"aos-memory-event/v1","task_id":"workshop-seven-pages-visual-v1-20260813","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-13T15:55:17+08:00","project_revision":"AOS-000016","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000016","occurred_at":"2026-08-13T17:14:38+08:00","schema":"aos-memory-event/v1","task_id":"workshop-aip-support-audit-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T17:36:21+08:00","result":"REVIEWED_WITH_BLOCKERS：AIP架构方向可支撑，但现行方案、开发清单与运行态尚未全面支撑工作台v3目标态","schema":"aos-memory-event/v1","task_id":"workshop-aip-support-audit-20260813","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-13T17:51:30+08:00","project_revision":"AOS-000017","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

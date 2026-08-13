@@ -1,29 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000014",
-      "created_at": "2026-08-13T11:41:56+08:00",
-      "excluded_scope": [
-        "docs/palantier/foundry/html/",
-        "aos-platform code and database"
-      ],
-      "expected_outputs": [
-        "影视专业职责与现有多媒体方案裁决",
-        "229十二项机制进入产品方案的逐项归并与审查",
-        "工作台层技术方案与新产品契约双向追踪升级",
-        "产品与技术两轮复审、废弃裁决、D-waves对账"
-      ],
-      "lease_expires_at": "2026-08-15T23:59:59+08:00",
-      "owner": "codex-root",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "docs/palantier/20_tech/229-smart_lib早期探索成果吸收与工作台产品设计借鉴.md",
-        "docs/palantier/20_tech/电商平台接入/12-工作台层方案/",
-        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-smartlib-product-tech-convergence-20260813"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }

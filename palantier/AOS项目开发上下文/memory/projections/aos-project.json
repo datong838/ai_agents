@@ -1,82 +1,43 @@
 {
   "completed": [
-    "AIP-5 E0-E4 IMPLEMENTED_GREEN",
-    "AIP-5 E5A contracts and PostgreSQL authority IMPLEMENTED_GREEN",
-    "AIP-5 E5B Store, CAS, immutable events, Receipt, Alert and checkpoint recovery IMPLEMENTED_GREEN",
-    "AIP-5 E5C seven-pipeline policy and trusted adapter boundary IMPLEMENTED_GREEN",
-    "AIP-5 E5D Canonical API, strict SDK, knowledge-pipeline UI, HTTP and browser evidence IMPLEMENTED_GREEN",
-    "Codex external watchdog with five-minute recovery and visible wake notice IMPLEMENTED_GREEN"
+    "AIP-5 E6A-E6F code and control plane implemented; external knowledge/provider/GoldSet gates remain blocked",
+    "Watchdog active-turn reentry and recovery episode validation fixed in e095b05"
   ],
-  "content_hash": "sha256:e662ac6378ec644402ff91b3b396575ae631fd65bd2957978c708d2ecd165150",
-  "current_phase": "AIP5_E6_REVIEW",
+  "content_hash": "sha256:1014d827fa7f3cb885cd0e241512a588f1d72861474a495548127e224489d2e9",
+  "current_phase": "AIP6_AGENT_SKILL_HANDOFF_REVIEW_FREEZE",
   "delivery_status": "IMPLEMENTING",
   "evidence": [
     {
       "kind": "tests",
-      "ref": "E5D-backend-44-passed"
+      "ref": "watchdog-13-passed"
     },
     {
-      "kind": "tests",
-      "ref": "E5D-frontend-12-passed"
-    },
-    {
-      "kind": "browser",
-      "ref": "org-org-seven-policies-zero-schedules-zero-runs-console-zero-errors"
-    },
-    {
-      "kind": "http",
-      "ref": "org-org-200-dev-org-canary-empty-unknown-workspace-403"
-    },
-    {
-      "kind": "screenshot",
-      "ref": "AIP5-E5D-knowledge-pipelines-org-org.png"
-    },
-    {
-      "kind": "tests",
-      "ref": "watchdog-10-passed"
-    },
-    {
-      "kind": "commit",
-      "ref": "db27919"
-    },
-    {
-      "kind": "commit",
-      "ref": "3492970"
-    },
-    {
-      "kind": "commit",
-      "ref": "599a4f1"
-    },
-    {
-      "kind": "docs",
-      "ref": "72b98ff"
+      "kind": "runtime",
+      "ref": "watchdog-turn-running-no-reentry"
     }
   ],
-  "generated_at": "2026-08-13T11:50:50+08:00",
+  "generated_at": "2026-08-13T17:51:30+08:00",
   "hard_boundaries": [
-    "org-org/dev-project is the only real target",
-    "dev-org/dev-project is a negative isolation canary only",
-    "E5D is implemented green but does not authorize skipping E6 review freeze",
-    "watchdog never carries API keys, waits for 300 seconds of transcript silence, and resumes only the same thread",
-    "watchdog wake must begin with a visible user notice before checkpoint recovery"
+    "org-org/dev-project is the only real target; dev-org/dev-project is negative canary only",
+    "AIP-5 E7 must not create identity before AIP-6 authority is GREEN",
+    "Watchdog reports recovered only with current episode exit zero and a new assistant final"
   ],
   "incomplete": [
-    "AIP-5 E6 plan review, live code delta audit and checklist freeze",
-    "AIP-5 E7 remains gated"
+    "AIP-6 Agent/Skill/Handoff authority and UI",
+    "AIP-5 E7 depends on AIP-6 identity authority",
+    "AIP-7 through AIP-10 and six colleague real scenarios"
   ],
-  "last_green_gate": "AIP5_E5D_IMPLEMENTED_GREEN",
-  "next_gate": "AIP5_E6_REVIEW_FREEZE",
+  "last_green_gate": "AIP5_E6_CODE_CONTROL_GREEN_EXTERNAL_GATES_BLOCKED",
+  "next_gate": "AIP6_AUTHORITY_IMPLEMENTATION_FREEZE",
   "next_steps": [
-    "Review E6 existing plan and checklist against live code, routes, database and upstream dependencies",
-    "Freeze E6 exact implementation, test and browser acceptance matrix before coding"
+    "Freeze AIP-6 additive authority, Store/API/SDK/UI and browser acceptance waves against live code"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000015",
+  "project_revision": "AOS-000017",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "599a4f1",
-    "docs": "72b98ff",
-    "prime-agent": "ee254c81"
+    "aos-platform": "e095b05",
+    "docs": "1a7aa38"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
