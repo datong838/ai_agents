@@ -286,3 +286,7 @@ E6 拆为 E6A 知识包契约、E6B Candidate 导入、E6C 全文 reference inde
 E6A 已以代码 `f3415a9` 冻结 `VerticalPack` 专属 `knowledge` export、严格 KnowledgePackage/source inventory/entry/rollback DTO 和共享 JSON Schema。serialized loader 拒绝重复 JSON key；路径穿越、绝对/Windows/URL payload path、非 HTTPS 或带凭据/fragment 的 source URI、未知字段、hash 漂移、孤立 source、重复 entry/path 和无 Receipt rollback 全部失败关闭。非 VerticalPack 不得声明知识出口。
 
 readiness 只返回稳定 `license_unknown/license_denied/source_stale` blocker，不修改 bundle authority。当前未创建美妆 bundle、未导入正文、未注册 adapter、未写租户数据。专项与 asset-registry 邻接回归 212 passed，compileall 与 diff check GREEN；venv 无 Ruff，不声明 Ruff。下一门为 E6B 可信 bundle seed adapter 与 Candidate 批量导入。
+
+### 7.2 E6B 导入边界冻结
+
+KnowledgePackage 只组织批量目录；每个 entry 必须有独立 subject、confidence、payload path/hash 和 source。E5 的 `KnowledgePipelineInputReceipt` 仍保持“一条 Receipt 对应一个精确 Artifact”，因此 E6B adapter 每次只把一个 entry Receipt 转换为一个确定性 Candidate Draft，批量由多个 Receipt 组成。禁止把整包 Artifact 复用为多条 Candidate payload，也禁止 adapter 直接写 Candidate、checkpoint 或正式 Wiki。
