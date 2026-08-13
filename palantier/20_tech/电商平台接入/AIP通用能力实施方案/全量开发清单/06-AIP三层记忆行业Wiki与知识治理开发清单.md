@@ -172,7 +172,7 @@ E5 统一边界：不复制 AIP Task/Run/Checkpoint，不以 `meta_schedule_run`
 - [x] E6B：实现可信 bundle seed adapter，只经 E5 Receipt + Candidate 链导入；每 entry 独立 Artifact/Receipt/Candidate，确定性 ID，许可/hash/source/applicability 漂移失败关闭。代码 `67cf0a8`；43 专项 GREEN。
 - [x] E6C：tenant-scoped 全文 reference index 与 capability registry 已实现；代码 `e581a99`，migration `aip5_004`，RLS/FORCE、revision/source FK、reference 清空重建、capability CAS、PII gate 和无 pgvector 禁止 vector ready；6 专项/32 邻接 GREEN。
 - [x] E6D 代码：自然语言 `KnowledgeSearch`、全文 reference、authority-first 二次过滤、lane 降级、Citation 必填与 Canonical 路由已实现，代码 `9bfec8c`；2 API/21 邻接 GREEN。真实 provider/data/capability 仍 BLOCKED，不等于 operational GREEN。
-- [ ] E6E：实现 gold-set schema、Eval runner 和六角色语义依赖检查；未审核或少于 50 条时禁止生成 Top-1 GREEN。
+- [x] E6E：gold-set schema、纯 Eval runner、六角色覆盖、精确 Top-1/Citation 与负向泄漏门已实现，代码 `3d3ee69`；12 专项/26 邻接 GREEN。真实审核金标仍为 0，状态为 `CODE_GREEN / EVAL_BLOCKED`。
 - [ ] E6F：控制面展示知识包、来源门、检索 lane、Eval 与阻断原因；完成 `org-org/dev-project` 内置浏览器验收。
 
 E6 外部数据门：CosDNA 许可未知，保持 disabled；NMPA 需登记当前动态清单版本与使用政策；旧方案 353 条只作目标，不是资产；当前无 pgvector，向量 lane 必须 degraded。详见 `AOS项目开发上下文/50-2026-08-13-AIP-5-E6美妆知识包与混合检索评审清单.md`。

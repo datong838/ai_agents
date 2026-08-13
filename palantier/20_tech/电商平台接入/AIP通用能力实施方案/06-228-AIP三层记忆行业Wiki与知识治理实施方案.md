@@ -316,3 +316,5 @@ E6D 已以代码 `9bfec8c` 实现 `KnowledgeSearch` DTO、reference fulltext ran
 GoldSet 需要稳定 id/revision/hash、reviewer/approvedAt；每条至少包含自然语言、Skill、六角色依赖、精确 gold Memory/revision/hash/Citation 和负向期望。少于 50、未审核、六角色语义覆盖不全、重复 query/citation 或结果缺失时，runner 只能返回 `EVAL_BLOCKED` 且不计算指标。
 
 Top-1 采用实际首条 Citation 的 Memory/revision/hash 精确匹配；另计 Citation coverage 和权限/stale/revoked/conflict 负向保护。任一负向泄露总门 RED。runner 是纯计算器，不生成 gold、不调用 LLM 补答案、不写 Memory/Index；当前真实金标计数仍为 0。
+
+E6E 已以代码 `3d3ee69` 实现严格 GoldSet、Observation、Report 与纯计算 runner。正样本 Top-1/Citation coverage 和负样本泄漏分别计量，正确空返回的负样本不稀释正样本指标；全负样本也不得计算指标。未审核、少于 50、六角色覆盖缺口、重复或不完整结果均失败关闭。12 项专项、26 项 E6C-E6E 邻接、compileall、diff check GREEN；真实审核 GoldSet 仍为 0，故保持 `CODE_GREEN / EVAL_BLOCKED`。下一门为 E6F 控制面与 `org-org/dev-project` 内置浏览器验收。
