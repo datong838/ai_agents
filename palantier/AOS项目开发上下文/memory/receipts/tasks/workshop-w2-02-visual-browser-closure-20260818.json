@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000094",
+  "created_at": "2026-08-18T12:29:29+08:00",
+  "excluded_scope": [
+    "source code,backend,database,migrations,Provider calls,business writes,authority,01/06,Prime,w1-aip"
+  ],
+  "expected_outputs": [
+    "Append-only browser acceptance closure for W2-02-VISUAL with no runtime mutation"
+  ],
+  "lease_expires_at": "2026-08-18T18:30:00+08:00",
+  "owner": "codex-w2-workshop",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    ".evidence/workshop/2026-08-18-w2-02-readonly-visual-sync-browser.json",
+    ".evidence/workshop/2026-08-18-w2-02-readonly-visual-sync-delivery-receipt.json",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/108-W2-02日常总控真实只读视觉同步与浏览器验收ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-TECH-FORMAL-REVIEW-工作台层开发详细清单与依赖关系.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w2-02-visual-browser-closure-20260818"
+}
