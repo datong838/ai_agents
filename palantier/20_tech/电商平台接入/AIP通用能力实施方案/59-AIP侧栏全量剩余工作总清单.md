@@ -473,8 +473,8 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-D3 | D | 工具依赖 refs | P1-4 | `待开发` |
 | W-D4 | D | 供应商/路由投影定义层 | §0 四类红字 | `待开发` |
 | W-E1 | E | Responsibility Plan | B3 / P1-5 | `已完成` |
-| W-E2 | E | StageTemplate | B3 | `待开发` |
-| W-E3 | E | ImpactPreview+启动门 | B3 | `待开发` |
+| W-E2 | E | StageTemplate | B3 | `已完成` |
+| W-E3 | E | ImpactPreview+启动门 | B3 | `已完成` |
 | W-E4 | E | Review/Artifact Relation | B3 | `待开发` |
 | W-F1 | F | 技能发布台方案定稿 | 56 / C1 | `已完成` |
 | W-F2 | F | 发布 API | 56 | `已完成` |
@@ -597,8 +597,8 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | 波次 | 名称 | 归属 | 规模 | 前置 | 交付物 | 验收 | 进度 |
 |---|---|---|---|---|---|---|---|
 | **W-E1** | Responsibility Plan | AIP | L | 方案补丁 | 表非空 | 「尚无」消失 | `待开发` |
-| **W-E2** | StageTemplate | AIP | L | 可并行 | 表非空 | 同上 | `待开发` |
-| **W-E3** | ImpactPreview+启动 | AIP | L | E1+E2 | 真 Task Preview | 门可开且 fail-closed | `待开发` |
+| **W-E2** | StageTemplate | AIP | L | 可并行 | 表非空 | 同上 | `已完成` |
+| **W-E3** | ImpactPreview+启动 | AIP | L | E1+E2 | 真 Task Preview | 门可开且 fail-closed | `已完成` |
 | **W-E4** | Review/Relation | AIP | M | E3 | 真问题可建 | 空态仅无产物时 | `待开发` |
 
 ### 7.6 轨道 F · 技能生命周期
