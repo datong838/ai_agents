@@ -500,7 +500,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L9 | L | Evidence Build Job | §10.4 | `已完成` |
 | W-L10 | L | Evidence 披露/Marking | §10.4 | `已完成` |
 | W-L11 | L | ProductionContext 四合同冻结 | §10.4 | `已完成` |
-| W-L12 | L | HandoffDecisionRevision | §10.4 | `待开发` |
+| W-L12 | L | HandoffDecisionRevision | §10.4 | `已完成` |
 | W-L13 | L | Eval 撤销传播/Diff | §10.4 | `待开发` |
 | W-L14 | L | ReviewIssue/新 attempt | §10.4 | `待开发` |
 | W-L15 | L | KnowledgeQuery/Memory 桥 | §10.4 | `待开发` |
@@ -646,7 +646,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L9** | EvidenceBundle Build Job | L | E/J | 服务端 required-facts coverage；禁调用方直填冒充 Bundle | `已完成` |
 | **W-L10** | Evidence 披露/Marking API | L | L9 | 三层 Disclosure 可执行；revoke 传播；Drawer 不再 IMPLEMENTATION_BLOCKED | `已完成` |
 | **W-L11** | ProductionContext 四合同冻结 | L | E1～E4 | 一次 CAS 冻结 Brief/Evidence/Eval/Responsibility；compile 前必持 exact Context | `已完成` |
-| **W-L12** | HandoffDecisionRevision | M | L3 | accepted/rejected/request_more/returned 与 Envelope 分层；consume 终态不可重开 | `待开发` |
+| **W-L12** | HandoffDecisionRevision | M | L3 | accepted/rejected/request_more/returned 与 Envelope 分层；consume 终态不可重开 | `已完成` |
 | **W-L13** | Eval 撤销传播 + Diff | M | Evals | Publication 撤销传到启动门；同版跑数；语义 Diff 可读 | `待开发` |
 | **W-L14** | ReviewIssue / 新 attempt | M | L13 | return→新 attempt 不被跳过；Issue exact 可挂 Lineage | `待开发` |
 | **W-L15** | KnowledgeQuery + Memory 桥 | L | J5 | 生产 Router 真实装配；Candidate 成熟度桥；禁 503 假完成 | `待开发` |
@@ -899,7 +899,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L9**  | EvidenceBundle **Build Job** + 服务端 required-facts coverage                                   | Job 产出 Bundle；coverage 服务端算；禁直填         | `已完成` |
 | **W-L10** | Evidence 不可变/revoke + 三层 Disclosure/Marking 执行 API                                           | Drawer 可消费真实披露决策                        | `已完成` |
 | **W-L11** | **ProductionContextRevision** 四合同一次 CAS                                                      | compile/start 前持同一 Context exact        | `已完成` |
-| **W-L12** | **HandoffDecisionRevision** 与 Envelope 分层                                                    | 领域决定可审计；传输生命周期独立                        | `待开发` |
+| **W-L12** | **HandoffDecisionRevision** 与 Envelope 分层                                                    | 领域决定可审计；传输生命周期独立                        | `已完成` |
 | **W-L13** | EvalContract 跑数 + Publication 撤销传播 + Diff                                                    | 撤销后启动门关闭；Diff 中文可读                      | `待开发` |
 | **W-L14** | ReviewIssue / ReturnDecision / 新 attempt                                                     | return 必产新 attempt；不改历史 Artifact        | `待开发` |
 | **W-L15** | KnowledgeQuery 生产装配 + Candidate 成熟度桥                                                         | 无 deps=None→503 假绿                      | `待开发` |
@@ -1097,7 +1097,7 @@ W-L*（Logic 禁空）与 W-T* 并列，同属「支撑工作台六同事+十能
 | **W-L9** | EvidenceBundle **Build Job** + 服务端 required-facts coverage（禁调用方直填冒充） | 04、W4-01、07 | `已完成` |
 | **W-L10** | Evidence 不可变/revoke + **三层 Disclosure/Marking** 执行 API | 04、W4-02 | `已完成` |
 | **W-L11** | **ProductionContextRevision** 四合同一次 CAS 冻结（不只 Logic 字段） | 07、20、23、W3-04/05 | `已完成` |
-| **W-L12** | **HandoffDecisionRevision**（accepted/rejected/request_more/returned）与 Envelope 分层 | 03、W3-06 | `待开发` |
+| **W-L12** | **HandoffDecisionRevision**（accepted/rejected/request_more/returned）与 Envelope 分层 | 03、W3-06 | `已完成` |
 | **W-L13** | EvalContract 跑数绑定 + Publication 撤销传播到启动门 + 语义 Diff | 23、W4-03 | `待开发` |
 | **W-L14** | ReviewIssue / ReturnDecision / 新 attempt 调度 | 23、W4-04 | `待开发` |
 | **W-L15** | KnowledgeQuery 生产装配 + MemoryCandidate 成熟度桥（禁 503 假完成） | 04、W4-05 | `待开发` |
