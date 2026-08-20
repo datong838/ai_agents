@@ -1,48 +1,70 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "AIP-5 E6A-E6F code and control plane implemented; external knowledge/provider/GoldSet gates remain blocked",
-    "Watchdog active-turn reentry and recovery episode validation fixed in e095b05"
+    "AIP text six-colleague + I01 image + V01 video product pilots sealed; matrix self-test GREEN with runnableCount=6.",
+    "AIP menu G1-G8 repairs + versioned prompt/tools/guardrails overlay + Studio install wizard merged at 5318a8f.",
+    "AIP near-field W-L9～L20 exact authorities sealed on m1/w1-aip@8e51438 (Evidence/ProductionContext/HandoffDecision/Eval revoke/ResearchJob/EffectReview/ToolBinding resolver).",
+    "Illegal AIP-59 delivery ops notes repaired; memory-validate GREEN.",
+    "W2 Catalog logicRevisionRef code-control GREEN at w2-workshop@c827928 (Delivery Receipt workshop-w2-catalog-logic-revision-ref-20260819); browser instance acceptance still pending."
   ],
-  "current_phase": "AIP6_AGENT_SKILL_HANDOFF_REVIEW_FREEZE",
-  "delivery_status": "IMPLEMENTING",
+  "current_phase": "WKS_DEP_0B_W1_AIP_NEARFIELD_L9_L20_CLOSED",
+  "delivery_status": "W1_AIP_L9_L20_SEALED_W2_LOGIC_REVISION_REF_CODE_GREEN",
   "evidence": [
     {
-      "kind": "tests",
-      "ref": "watchdog-13-passed"
+      "kind": "commit",
+      "ref": "8e51438"
     },
     {
-      "kind": "runtime",
-      "ref": "watchdog-turn-running-no-reentry"
+      "kind": "commit",
+      "ref": "c827928"
+    },
+    {
+      "kind": "ref",
+      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w2-catalog-logic-revision-ref-20260819.json"
+    },
+    {
+      "kind": "ref",
+      "ref": "/Users/ddt/work/projects/ai_agent/aos-platform-w1-aip/.evidence/aip/2026-08-20-w-l20-toolbinding-resolver/green.json"
     }
   ],
-  "evidence_cutoff": "2026-08-13T17:50:00+08:00",
+  "evidence_cutoff": "2026-08-20T13:20:00+08:00",
   "hard_boundaries": [
-    "org-org/dev-project is the only real target; dev-org/dev-project is negative canary only",
-    "AIP-5 E7 must not create identity before AIP-6 authority is GREEN",
-    "Watchdog reports recovered only with current episode exit zero and a new assistant final"
+    "Forward Agnes host is only api.agnes-ai.cn.",
+    "Approved domestic text model is agnes-2.5-flash; image model is agnes-image-2.1-flash; video model is agnes-video-v2.0.",
+    "Do not bump timeout or accept fewer than 3/3 Health probes as GREEN. AIP Health does not read .env.",
+    "Real positive tenant is only org-org/dev-project; dev-org/dev-project is negative canary only.",
+    "All sealed text, I01 image, and V01 video pilots are immutable and must never be replayed.",
+    "Never read or persist Secret payload, Provider response body, prompt/answer, customer PII.",
+    "This AIP Cursor session edits only aos-platform-w1-aip; never aos-platform-w2-workshop.",
+    "Every completed AIP wave commits w1-aip, fast-forwards m1, and pushes both remotes without asking.",
+    "Image/Video Provider secretRef must bind matching plugin/provider ids; never reuse text secretRef string.",
+    "Domestic video Health endpoint is /v1/video/generations (singular video).",
+    "Do not treat W2 logicRevisionRef code-control GREEN as browser matrix GREEN or eight-menu navigation GREEN."
   ],
   "incomplete": [
-    "AIP-6 Agent/Skill/Handoff authority and UI",
-    "AIP-5 E7 depends on AIP-6 identity authority",
-    "AIP-7 through AIP-10 and six colleague real scenarios"
+    "This AIP Cursor session must not modify aos-platform-w2-workshop.",
+    "W2 built-in browser acceptance for Catalog logicRevisionRef remains pending (B4).",
+    "Eight-menu dynamic directory /s2/ecommerce/* navigation and W2-09/W2-10 cumulative gates remain Workshop-owned (B5/B7)."
   ],
-  "last_green_gate": "AIP5_E6_CODE_CONTROL_GREEN_EXTERNAL_GATES_BLOCKED",
-  "next_gate": "AIP6_AUTHORITY_IMPLEMENTATION_FREEZE",
+  "last_green_gate": "W1_AIP_L9_L20_AND_MEMORY_VALIDATE_GREEN",
+  "next_gate": "W2_BROWSER_ACCEPT_AND_EIGHT_MENU_GATES",
   "next_steps": [
-    "Freeze AIP-6 additive authority, Store/API/SDK/UI and browser acceptance waves against live code"
+    "Workshop re-runs formal read-only browser acceptance and regenerates Evidence/Receipt (B4).",
+    "Workshop owns eight-menu Catalog→Context→nav filter chain (B5) and W2-01～W2-10 sequential gates (B7).",
+    "AIP session continues only Health TTL / additive catalog locks; does not replay sealed pilots; does not edit w2."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000017",
+  "project_revision": "AOS-000146",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "e095b05",
-    "docs": "1a7aa38"
+    "m1": "8e51438",
+    "w1-aip": "8e51438",
+    "w2-workshop": "c827928"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
     "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
   ],
-  "updated_at": "2026-08-13T17:51:30+08:00"
+  "updated_at": "2026-08-20T13:20:00+08:00"
 }

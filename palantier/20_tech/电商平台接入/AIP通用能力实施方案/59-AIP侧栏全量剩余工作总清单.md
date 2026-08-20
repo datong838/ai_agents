@@ -120,7 +120,7 @@
 | 全量覆盖矩阵 | 17 | **W-DOC-4** | `持续`（每波对账） |
 | W0A 十类 Capability | `../18` + 58 | Binding **W-DONE-58**；八维 **W-D\*** | Binding`已完成` · 八维`待开发` |
 | W0B 公共生产对象 | `../21` 等 | **W-E\*** | `待开发` |
-| w2 `logicRevisionRef` | authority | **W-Z1** | `外部等待` |
+| w2 `logicRevisionRef` | authority | **W-Z1** | `代码已交付·浏览器待补` |
 | 平台写操作 DEFERRED（17§5） | 17 | **W-K-DEF** | `延后`（未授权不解封） |
 
 **过时文案：** `57`/`54` B4 已按 58 订正 Binding 10/10。
@@ -214,7 +214,7 @@
 | 改 w2 / 重放密封 Pilot | **禁止** |
 | 正向租户 | 仅 `org-org/dev-project` |
 | 全量清单 K 轨道 | 保持 `延后`，除非另授子波 |
-| w2 `logicRevisionRef` | `外部等待` |
+| w2 `logicRevisionRef` | `代码已交付·浏览器待补` |
 
 ---
 
@@ -382,7 +382,7 @@
 
 | ID | 项 | 波次 | 进度 |
 |---|---|---|---|
-| P3-1 | w2 `logicRevisionRef` | **W-Z1** | `外部等待` |
+| P3-1 | w2 `logicRevisionRef` | **W-Z1** | `代码已交付·浏览器待补` |
 | P3-2 | 工作台共享技能条 | **W-Z2** | `外部等待` |
 | P3-3 | 全量 ~37 技能 | **W-F4～F6** | `待开发`（分批） |
 | P3-4 | 全量清单 02～11 长程 | **W-K02～K11** | `延后` |
@@ -495,7 +495,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L4 | L | 十 Capability operational+assignee | §8.5 | `已完成` |
 | W-L5 | L | 画布禁生产旁路 | §8.5 | `已完成` |
 | W-L6 | L | Analyst/经营参谋挂载 Logic | §8.5 | `已完成` |
-| W-L7 | L | Catalog logicRevisionRef additive | §8.5 | `待开发` |
+| W-L7 | L | Catalog logicRevisionRef additive | §8.5 | `已完成` |
 | W-L8 | L | 画布↔生产契约只读投影 | §8.5 | `已完成` |
 | W-L9 | L | Evidence Build Job | §10.4 | `已完成` |
 | W-L10 | L | Evidence 披露/Marking | §10.4 | `已完成` |
@@ -542,7 +542,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-J4 | J | Observability 导出 | §2.4 | `已完成` |
 | W-J5 | J | Memory 首条权威 | §2.4 | `已完成` |
 | W-J6 | J | Analyst 真实查询 | §2.1 | `已完成` |
-| W-Z1 | Z | w2 logicRevisionRef | authority | `外部等待` |
+| W-Z1 | Z | w2 logicRevisionRef | authority | `代码已交付·浏览器待补` |
 | W-Z2 | Z | 工作台共享技能条 | 57 / P3-2 | `外部等待` |
 | W-Z3 | Z | 不重放密封 Pilot | §6 | `持续` |
 | W-K02 | K | 全量清单 02 Task/TAOR | §0.2 | `延后` |
@@ -641,7 +641,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L4** | 十 Capability operational+assignee | L | D/C | 八职责可解析或 blocked | `已完成` |
 | **W-L5** | 画布禁生产旁路 | S | H | 无快捷创建生产 Task | `已完成` |
 | **W-L6** | Analyst 挂载 Logic | M | J6 | 无假数 | `已完成` |
-| **W-L7** | logicRevisionRef additive | S | Z1 | 兼容工作台 109 | `待开发` |
+| **W-L7** | logicRevisionRef additive | S | Z1 | 兼容工作台 109 | `已完成` |
 | **W-L8** | 画布↔契约只读投影 | M | E | 空表诚实 | `已完成` |
 | **W-L9** | EvidenceBundle Build Job | L | E/J | 服务端 required-facts coverage；禁调用方直填冒充 Bundle | `已完成` |
 | **W-L10** | Evidence 披露/Marking API | L | L9 | 三层 Disclosure 可执行；revoke 传播；Drawer 不再 IMPLEMENTATION_BLOCKED | `已完成` |
@@ -714,7 +714,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 
 | 波次 | 名称 | 归属 | 说明 | 进度 |
 |---|---|---|---|---|
-| **W-Z1** | logicRevisionRef | W2 | authority next_gate | `外部等待` |
+| **W-Z1** | logicRevisionRef | W2 | authority next_gate | `代码已交付·浏览器待补` |
 | **W-Z2** | 工作台共享技能条 | W2 | 禁止本会话改 w2 | `外部等待` |
 | **W-Z3** | 不重放密封 Pilot | ALL | 扩展靠 F/D/E | `持续` |
 
@@ -894,7 +894,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L4**  | 十 Capability → Stage/Responsibility 映射所需的 **operational Binding + assignee 归属**（防租户全局误点亮）    | 媒体八职责槽能解析 exact Capability；缺则诚实 blocked | `已完成` |
 | **W-L5**  | 画布 UI **禁止**「一键创建/批准生产 Task」旁路；只引导 Draft/Evals/生产契约                                          | 与工作台 `32`/`67` 一致                       | `已完成` |
 | **W-L6**  | Analyst/经营参谋可引用的 Logic/Skill 挂载点（与 J6 协同）                                                    | 无假数；缺权威时 blocked                        | `已完成` |
-| **W-L7**  | Catalog 继续 additive 传输 `logicRevisionRef`（不冒充 Binding/授权）                                    | 与工作台 `109` 兼容；strict parser 不炸          | `待开发` |
+| **W-L7**  | Catalog 继续 additive 传输 `logicRevisionRef`（不冒充 Binding/授权）                                    | 与工作台 `109` 兼容；strict parser 不炸          | `已完成` |
 | **W-L8**  | 与 **W-E\*** 合流：StageTemplate/ResponsibilityPlan 非空后，画布侧展示「可被哪类生产 Profile 引用」只读投影             | 空表时诚实；有表时可点验                            | `已完成` |
 | **W-L9**  | EvidenceBundle **Build Job** + 服务端 required-facts coverage                                   | Job 产出 Bundle；coverage 服务端算；禁直填         | `已完成` |
 | **W-L10** | Evidence 不可变/revoke + 三层 Disclosure/Marking 执行 API                                           | Drawer 可消费真实披露决策                        | `已完成` |
