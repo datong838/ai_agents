@@ -79,7 +79,7 @@
 | A3 | I01/V01 技能受能力挡住 | **W-C\*** + **W-F\*** | `待开发` |
 | A4 | 目录快照过期黄条 | **W-A0 / W-A1** | A0`已完成` · A1 UX`待开发` |
 | B1 | Assist 缺 exact 上下文 | **W-J2** | `待开发` |
-| B2 | Drafts 空 | **W-J3** | `待开发` |
+| B2 | Drafts 空 | **W-J3** | `已完成` |
 | B3 | 生产契约表空 | **W-E1～E4** | `进行中` |
 | B4 | 能力「未绑定」 | **W-DONE-58** + **W-B1** | Binding`已完成` · 文案`待开发` |
 | B5 | 多数技能未发布/未绑定 | **W-F4～F6** | `待开发` |
@@ -106,8 +106,8 @@
 | 现状真值/基线 | 01 | **W-DOC-1** 滚检/功能点证据维持 | `持续` |
 | Task/TAOR | 02 | **W-K02** | `延后` |
 | Agent/Skill/37 Logic | 03 | **W-F\***（发布台近场）+ **W-K03**（37 Logic 全量） | 近场`待开发` · 全量`延后` |
-| Action/Draft/Receipt | 04 | **W-J3** + **W-K04** | 样例链`待开发` · 全量`延后` |
-| Evals/谱系/观测 | 05 | **W-J3/J4** + **W-K05** | 同上 |
+| Action/Draft/Receipt | 04 | **W-J3** + **W-K04** | 样例链`已完成` · 全量`延后` |
+| Evals/谱系/观测 | 05 | **W-J3/J4** + **W-K05** | 样例链`已完成` · 全量`延后` |
 | 记忆/Wiki/七管道/冷启动 | 06 | **W-J5** + **W-K06** | 首条`待开发` · 管道/冷启动`延后` |
 | 助手/分析师/工作台 | 07 | **W-J2/J6** + **W-Z2** + **W-K07** | 近场`待开发` · 工作台`外部等待` · 长程`延后` |
 | 内容官/短视频/直播/Harness | 08 | **W-C\*** + **W-K08** | Health`待开发`/`验收放宽` · V/L/H`延后` |
@@ -260,28 +260,28 @@
 
 | # | 现网路由 | 中文名 | Foundry 蓝图 | 视觉差距 | 视觉波次 | 进度 |
 |---:|---|---|---|---|---|---|
-| 1 | `/aip/assist` | AIP 助手 | `aip-assist.html` | 中：上下文区/空态密度 | **W-I9** | `待开发` |
+| 1 | `/aip/assist` | AIP 助手 | `aip-assist.html` | 中：上下文区/空态密度 | **W-I9** | `已完成` |
 | 2 | `/aip/studio` | 对话机器人 | （Studio/市场向；可对 `workshop-aip-chat.html` 密度） | 中：页签与面板密度 | **W-I4** | `待开发` |
-| 3 | `/aip/analyst` | AIP 分析师 | `aip-analyst.html` | 中：查询/证据/可视化分区 | **W-I10** | `待开发` |
+| 3 | `/aip/analyst` | AIP 分析师 | `aip-analyst.html` | 中：查询/证据/可视化分区 | **W-I10** | `已完成` |
 | 4 | `/aip/logic` | 逻辑画布 | `aip-logic.html` | **大**：Tab/三栏 + **运营支撑禁空壳** | **W-H1～H3** · **W-L1～L8** | `待开发` |
 | 5 | `/aip/tools` | 智能体工具面板 | `aip-tools.html` | **大**：现网偏全局演示壳；缺六同事分实例工具 + 十类专业能力代调 | **W-I2**（视觉）· **W-T1～T8**（§9） | `待开发` |
-| 6 | `/aip/maturity` | 成熟度楼梯 | `aip-maturity.html` | 中：阶梯可视化 | **W-I3** | `待开发` |
+| 6 | `/aip/maturity` | 成熟度楼梯 | `aip-maturity.html` | 中：阶梯可视化 | **W-I3** | `已完成` |
 | 7 | `/aip/production-contracts` | 生产契约 | （契约运维台；无独立同名 html 时按平台密表风格） | 中：表单/禁用门分区 | **W-I11** | `待开发` |
 | 8 | `/aip/capabilities` | 智能体插件 | `aip-capabilities.html` | 中～大：卡片八维可读 | **W-I1**（联 **W-B1**） | `待开发` |
 | 9 | `/aip/agent-registry` | 智能体目录 | `agent-registry.html` | **大**：市场壳 vs 绑定台 | **W-G1**（绑定台）+ **W-G1b**（市场页）；**W-G0** 已裁决 | 裁决`已完成` · 落地`待开发` |
 | 10 | `/aip/agents` | 智能体列表 | `agents.html` | 中：卡片网格密度 | **W-G2** | `待开发` |
-| 11 | `/aip/agent-import` | 智能体导入 | `aip-agent-import.html` | 中：向导步骤条/校验态 | **W-I12** | `待开发` |
-| 12 | `/aip/capability-import` | 能力导入 | `aip-capability-import.html` | 中：向导步骤条 | **W-I13** | `待开发` |
-| 13 | `/aip/evals` | Evals 门控 | `aip-evals.html` | 中：套件/报告分区 | **W-I14** | `待开发` |
-| 14 | `/aip/drafts` | Draft 审批台 | `aip-draft-inbox.html` | 中：收件箱密度/状态色 | **W-I15** | `待开发` |
-| 15 | `/aip/lineage` | 决策谱系 | `aip-decision-lineage.html` | 中：图谱/查询壳 | **W-I16** | `待开发` |
-| 16 | `/aip/observability` | 可观测性 | `aip-observability.html` | 中：概览/Spans/Usage Tab | **W-I17** | `待开发` |
-| 17 | `/aip/memory-governance` | 记忆与知识治理 | （Wiki/记忆台；可对 ontology-wiki 密度） | 中：多 Tab 空态 | **W-I18** | `待开发` |
-| 18 | `/aip/model-catalog` | 模型目录 | `aip-model-catalog.html` | 中：筛选/层级壳 | **W-I5** | `待开发` |
-| 19 | `/aip/model-providers` | 模型供应商 | `aip-model-providers.html` | 中：插件卡片/安装流 | **W-I6** | `待开发` |
-| 20 | `/aip/model-router` | 模型路由 | `aip-model-router.html` | 中：策略矩阵密度 | **W-I7** | `待开发` |
-| 21 | `/aip/capacity` | 容量管理 | `aip-capacity-management.html` | 中：仪表盘分区 | **W-I8** | `待开发` |
-| 22 | `/aip/model-runtime` | 运行就绪 | （控制面快照页；对 health/运行就绪叙事） | 中：就绪矩阵/部分就绪诚实 | **W-I19** | `待开发` |
+| 11 | `/aip/agent-import` | 智能体导入 | `aip-agent-import.html` | 中：向导步骤条/校验态 | **W-I12** | `已完成` |
+| 12 | `/aip/capability-import` | 能力导入 | `aip-capability-import.html` | 中：向导步骤条 | **W-I13** | `已完成` |
+| 13 | `/aip/evals` | Evals 门控 | `aip-evals.html` | 中：套件/报告分区 | **W-I14** | `已完成` |
+| 14 | `/aip/drafts` | Draft 审批台 | `aip-draft-inbox.html` | 中：收件箱密度/状态色 | **W-I15** | `已完成` |
+| 15 | `/aip/lineage` | 决策谱系 | `aip-decision-lineage.html` | 中：图谱/查询壳 | **W-I16** | `已完成` |
+| 16 | `/aip/observability` | 可观测性 | `aip-observability.html` | 中：概览/Spans/Usage Tab | **W-I17** | `已完成` |
+| 17 | `/aip/memory-governance` | 记忆与知识治理 | （Wiki/记忆台；可对 ontology-wiki 密度） | 中：多 Tab 空态 | **W-I18** | `已完成` |
+| 18 | `/aip/model-catalog` | 模型目录 | `aip-model-catalog.html` | 中：筛选/层级壳 | **W-I5** | `已完成` |
+| 19 | `/aip/model-providers` | 模型供应商 | `aip-model-providers.html` | 中：插件卡片/安装流 | **W-I6** | `已完成` |
+| 20 | `/aip/model-router` | 模型路由 | `aip-model-router.html` | 中：策略矩阵密度 | **W-I7** | `已完成` |
+| 21 | `/aip/capacity` | 容量管理 | `aip-capacity-management.html` | 中：仪表盘分区 | **W-I8** | `已完成` |
+| 22 | `/aip/model-runtime` | 运行就绪 | （控制面快照页；对 health/运行就绪叙事） | 中：就绪矩阵/部分就绪诚实 | **W-I19** | `已完成` |
 
 **专表规则**
 
@@ -327,9 +327,9 @@
 
 | 页面 | 可用操作 | 禁用/空态 | 剩余问题 | 波次 | 进度 |
 |---|---|---|---|---|---|
-| `/aip/evals` | 运行套件、读报告、创建套件 | — | 全量 37 Eval | **W-J3**·**W-F\***·**W-K05** | 页可用`已完成` · 全量`延后` |
-| `/aip/drafts` | 刷新/对账、Tab | 待审批 0 | 真实 Proposal 链 | **W-J3** | `待开发` |
-| `/aip/lineage` | 查询谱系 | — | 真实 root | **W-J3** | `待开发` |
+| `/aip/evals` | 运行套件、读报告、创建套件 | — | 全量 37 Eval | **W-J3**·**W-F\***·**W-K05** | 样例链深链`已完成` · 全量`延后` |
+| `/aip/drafts` | 刷新/对账、Tab | 待审批 0 | 真实 Proposal 链 | **W-J3** | `已完成` |
+| `/aip/lineage` | 查询谱系 | — | 真实 root | **W-J3** | `已完成` |
 | `/aip/observability` | 读证据、概览/Spans/Usage | 导出禁用 | 导出门 | **W-J4** | `待开发` |
 | `/aip/memory-governance` | 多 Tab + 刷新 | Memory 0 | 首条权威 | **W-J5**·**W-K06** | 首条`待开发` · 管道`延后` |
 
@@ -363,7 +363,7 @@
 | P1-1 | 图像 Provider Health | **W-C1** | `待开发`/`验收放宽` |
 | P1-2 | 视频 Provider Health | **W-C2** | `待开发`/`验收放宽` |
 | P1-3 | 路由 image/video READY | **W-C3** | `待开发`/`验收放宽` |
-| P1-4 | 定义八维 Eval/数据/工具 | **W-D1～D4** | `待开发` |
+| P1-4 | 定义八维 Eval/数据/工具 | **W-D1～D4** | `已完成` |
 | P1-5 | 生产契约职责/阶段等 | **W-E1～E4** | `待开发` |
 | P1-6 | 技能发布台 | **W-F1～F3** | `待开发` |
 
@@ -468,10 +468,10 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-C1 | C | 图像 Health | P1-1 / §0.3 | `待开发`/`验收放宽` |
 | W-C2 | C | 视频 Health | P1-2 / §0.3 | `待开发`/`验收放宽` |
 | W-C3 | C | 图视路由 READY | P1-3 | `待开发`/`验收放宽` |
-| W-D1 | D | EvalPack 挂定义 | P1-4 | `待开发` |
-| W-D2 | D | 数据依赖 refs | P1-4 | `待开发` |
-| W-D3 | D | 工具依赖 refs | P1-4 | `待开发` |
-| W-D4 | D | 供应商/路由投影定义层 | §0 四类红字 | `待开发` |
+| W-D1 | D | EvalPack 挂定义 | P1-4 | `已完成` |
+| W-D2 | D | 数据依赖 refs | P1-4 | `已完成` |
+| W-D3 | D | 工具依赖 refs | P1-4 | `已完成` |
+| W-D4 | D | 供应商/路由投影定义层 | §0 四类红字 | `已完成` |
 | W-E1 | E | Responsibility Plan | B3 / P1-5 | `已完成` |
 | W-E2 | E | StageTemplate | B3 | `已完成` |
 | W-E3 | E | ImpactPreview+启动门 | B3 | `已完成` |
@@ -480,20 +480,20 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-F2 | F | 发布 API | 56 | `已完成` |
 | W-F3 | F | 发布台 UI | 56 | `已完成` |
 | W-F4 | F | 技能首批 | B5 / P3-3 | `待开发` |
-| W-F5 | F | 技能二批 | B5 | `待开发` |
+| W-F5 | F | 技能二批 | B5 | `延后` |
 | W-F6 | F | 技能收尾策略 | B5 | `待开发` |
 | W-G0 | G | 目录视觉产品拍板 | §0.4 D1 | `已完成` |
 | W-G1 | G | 绑定台视觉落地 | §0.4 D1 | `已完成` |
 | W-G1b | G | 市场发现页（新建） | §0.4 D1 | `已完成` |
 | W-G2 | G | agents 蓝图同级密度 | §0.4 D2 | `已完成` |
-| W-H1 | H | Logic Tab/三栏 | §1.3 / 57 | `待开发` |
-| W-H2 | H | 自动化 Tab | 57 | `待开发` |
-| W-H3 | H | 运行历史 Tab | 57 | `待开发` |
+| W-H1 | H | Logic Tab/三栏 | §1.3 / 57 | `已完成` |
+| W-H2 | H | 自动化 Tab | 57 | `已完成` |
+| W-H3 | H | 运行历史 Tab | 57 | `已完成` |
 | W-L1 | L | 分栏就绪语义 runnable | §8.5 | `待开发` |
 | W-L2 | L | Logic revision 进 ProductionStart | §8.5 | `待开发` |
 | W-L3 | L | AgentRun/Handoff 可消费面 | §8.5 | `待开发` |
 | W-L4 | L | 十 Capability operational+assignee | §8.5 | `待开发` |
-| W-L5 | L | 画布禁生产旁路 | §8.5 | `待开发` |
+| W-L5 | L | 画布禁生产旁路 | §8.5 | `已完成` |
 | W-L6 | L | Analyst/经营参谋挂载 Logic | §8.5 | `待开发` |
 | W-L7 | L | Catalog logicRevisionRef additive | §8.5 | `待开发` |
 | W-L8 | L | 画布↔生产契约只读投影 | §8.5 | `待开发` |
@@ -509,38 +509,38 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L18 | L | ImpactPreview actionBindingHash | §10.4 | `待开发` |
 | W-L19 | L | Usage/EffectReview 权威 | §10.4 | `待开发` |
 | W-L20 | L | ToolBinding resolver + publisher 1.3 | §10.4 | `待开发` |
-| W-T1 | T | 工具配置按 AgentInstance Overlay | §9.6 | `待开发` |
-| W-T2 | T | 六同事默认工具包+切换 | §9.6 | `待开发` |
-| W-T3 | T | 试跑绑定真实上下文 | §9.6 | `待开发` |
-| W-T4 | T | 十类专业能力 Tool 出口 | §9.6 | `待开发` |
-| W-T5 | T | 质量分接权威或未评分 | §9.6 | `待开发` |
-| W-T6 | T | Function=published Logic | §9.6 | `待开发` |
-| W-T7 | T | Action=Draft/Receipt | §9.6 | `待开发` |
-| W-T8 | T | Studio 与面板同一 Overlay | §9.6 | `待开发` |
-| W-I1 | I | capabilities 视觉 | §1.4 #8 | `待开发` |
-| W-I2 | I | tools 视觉 | §1.4 #5 | `待开发` |
-| W-I3 | I | maturity 视觉 | §1.4 #6 | `待开发` |
-| W-I4 | I | studio 视觉 | §1.4 #2 | `待开发` |
-| W-I5 | I | model-catalog 视觉 | §1.4 #18 | `待开发` |
-| W-I6 | I | model-providers 视觉 | §1.4 #19 | `待开发` |
-| W-I7 | I | model-router 视觉 | §1.4 #20 | `待开发` |
-| W-I8 | I | capacity 视觉 | §1.4 #21 | `待开发` |
-| W-I9 | I | assist 视觉 | §1.4 #1 | `待开发` |
-| W-I10 | I | analyst 视觉 | §1.4 #3 | `待开发` |
+| W-T1 | T | 工具配置按 AgentInstance Overlay | §9.6 | `已完成` |
+| W-T2 | T | 六同事默认工具包+切换 | §9.6 | `已完成` |
+| W-T3 | T | 试跑绑定真实上下文 | §9.6 | `已完成` |
+| W-T4 | T | 十类专业能力 Tool 出口 | §9.6 | `已完成` |
+| W-T5 | T | 质量分接权威或未评分 | §9.6 | `已完成` |
+| W-T6 | T | Function=published Logic | §9.6 | `已完成` |
+| W-T7 | T | Action=Draft/Receipt | §9.6 | `已完成` |
+| W-T8 | T | Studio 与面板同一 Overlay | §9.6 | `已完成` |
+| W-I1 | I | capabilities 视觉 | §1.4 #8 | `已完成` |
+| W-I2 | I | tools 视觉 | §1.4 #5 | `已完成` |
+| W-I3 | I | maturity 视觉 | §1.4 #6 | `已完成` |
+| W-I4 | I | studio 视觉 | §1.4 #2 | `已完成` |
+| W-I5 | I | model-catalog 视觉 | §1.4 #18 | `已完成` |
+| W-I6 | I | model-providers 视觉 | §1.4 #19 | `已完成` |
+| W-I7 | I | model-router 视觉 | §1.4 #20 | `已完成` |
+| W-I8 | I | capacity 视觉 | §1.4 #21 | `已完成` |
+| W-I9 | I | assist 视觉 | §1.4 #1 | `已完成` |
+| W-I10 | I | analyst 视觉 | §1.4 #3 | `已完成` |
 | W-I11 | I | production-contracts 视觉 | §1.4 #7 | `待开发` |
-| W-I12 | I | agent-import 视觉 | §1.4 #11 | `待开发` |
-| W-I13 | I | capability-import 视觉 | §1.4 #12 | `待开发` |
-| W-I14 | I | evals 视觉 | §1.4 #13 | `待开发` |
-| W-I15 | I | drafts 视觉 | §1.4 #14 | `待开发` |
-| W-I16 | I | lineage 视觉 | §1.4 #15 | `待开发` |
-| W-I17 | I | observability 视觉 | §1.4 #16 | `待开发` |
-| W-I18 | I | memory-governance 视觉 | §1.4 #17 | `待开发` |
-| W-I19 | I | model-runtime 视觉 | §1.4 #22 | `待开发` |
-| W-J1 | J | 导入向导 E2E | §2.3 | `待开发` |
-| W-J2 | J | Assist exact 上下文 | B1 | `待开发` |
-| W-J3 | J | Evals↔Draft↔Lineage | B2 / §2.4 | `待开发` |
-| W-J4 | J | Observability 导出 | §2.4 | `待开发` |
-| W-J5 | J | Memory 首条权威 | §2.4 | `待开发` |
+| W-I12 | I | agent-import 视觉 | §1.4 #11 | `已完成` |
+| W-I13 | I | capability-import 视觉 | §1.4 #12 | `已完成` |
+| W-I14 | I | evals 视觉 | §1.4 #13 | `已完成` |
+| W-I15 | I | drafts 视觉 | §1.4 #14 | `已完成` |
+| W-I16 | I | lineage 视觉 | §1.4 #15 | `已完成` |
+| W-I17 | I | observability 视觉 | §1.4 #16 | `已完成` |
+| W-I18 | I | memory-governance 视觉 | §1.4 #17 | `已完成` |
+| W-I19 | I | model-runtime 视觉 | §1.4 #22 | `已完成` |
+| W-J1 | J | 导入向导 E2E | §2.3 | `已完成` |
+| W-J2 | J | Assist exact 上下文 | B1 | `已完成` |
+| W-J3 | J | Evals↔Draft↔Lineage | B2 / §2.4 | `已完成` |
+| W-J4 | J | Observability 导出 | §2.4 | `已完成` |
+| W-J5 | J | Memory 首条权威 | §2.4 | `已完成` |
 | W-J6 | J | Analyst 真实查询 | §2.1 | `待开发` |
 | W-Z1 | Z | w2 logicRevisionRef | authority | `外部等待` |
 | W-Z2 | Z | 工作台共享技能条 | 57 / P3-2 | `外部等待` |
@@ -587,10 +587,10 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 
 | 波次 | 名称 | 归属 | 规模 | 前置 | 交付物 | 验收 | 进度 |
 |---|---|---|---|---|---|---|---|
-| **W-D1** | EvalPack/Gate | AIP | L | — | exact EvalPack ref | 「评测包不可用」对已挂消失 | `待开发` |
-| **W-D2** | 数据依赖 | AIP | M | 可并行 | data refs | 「数据依赖 —」满足或诚实 | `待开发` |
-| **W-D3** | 工具依赖 | AIP | M | 可并行 | tool/adapter refs | 写命令确认流可走 | `待开发` |
-| **W-D4** | 供应商/路由投影 | AIP | M | 文本已有；多媒体依 C | 定义层消「未知/未就绪」 | 文本类优先 available | `待开发` |
+| **W-D1** | EvalPack/Gate | AIP | L | — | exact EvalPack ref | 「评测包不可用」对已挂消失 | `已完成` |
+| **W-D2** | 数据依赖 | AIP | M | 可并行 | data refs | 「数据依赖 —」满足或诚实 | `已完成` |
+| **W-D3** | 工具依赖 | AIP | M | 可并行 | tool/adapter refs | 「工具依赖 —」满足或诚实 | `已完成` |
+| **W-D4** | 供应商/路由投影 | AIP | M | 文本已有；多媒体依 C | 定义层消「未知/未就绪」 | 文本类优先 available | `已完成` |
 
 ### 7.5 轨道 E · 生产契约
 
@@ -609,7 +609,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-F2** | 发布 API | AIP | M | F1 | publish + 测试 | GET/POST 已挂；UI 对齐 exact refs 防假发 | `已完成` |
 | **W-F3** | 发布台 UI | AIP | M | F2 | 侧栏页 + 中文列表 + 绑定向导 | 与目录 lifecycle 一致 | `已完成` |
 | **W-F4** | 技能首批 | AIP | L | F3 | 每角色+1～2 | 绑定比例升 | `待开发` |
-| **W-F5** | 技能二批 | AIP | L | F4 | 内容/投放向 | 同上 | `待开发` |
+| **W-F5** | 技能二批 | AIP | L | F4 | 内容/投放向 | 同上 | `延后` |
 | **W-F6** | 收尾至全量 publish | AIP | XL | F5 | **D5：全量 publish+可绑定** | ~37 策略闭环 | `待开发` |
 
 ### 7.7 轨道 G · 目录/列表视觉
@@ -625,9 +625,9 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 
 | 波次 | 名称 | 归属 | 规模 | 前置 | 交付物 | 验收 | 进度 |
 |---|---|---|---|---|---|---|---|
-| **W-H1** | 编辑壳 Tab/三栏 | AIP | L | D8 | Tab+自由画布保留 | 保存/试跑不回归 | `待开发` |
-| **W-H2** | 自动化 Tab | AIP | M | H1 | 占位空态+链 Draft/Evals | 无假自动化 | `待开发` |
-| **W-H3** | 运行历史 Tab | AIP | M | H1 | 权威 Run 列表 | 可互跳观测/谱系 | `待开发` |
+| **W-H1** | 编辑壳 Tab/三栏 | AIP | L | D8 | Tab+自由画布保留 | 保存/试跑不回归 | `已完成` |
+| **W-H2** | 自动化 Tab | AIP | M | H1 | 占位空态+链 Draft/Evals | 无假自动化 | `已完成` |
+| **W-H3** | 运行历史 Tab | AIP | M | H1 | 权威 Run 列表 | 可互跳观测/谱系 | `已完成` |
 
 ### 7.8b 轨道 L · 工作台运营支撑（D12 · 禁止空壳 Logic）
 
@@ -639,7 +639,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L2** | Logic revision ∈ ProductionStart | L | E | 空图不可 start | `待开发` |
 | **W-L3** | AgentRun/Handoff 可消费 | L | — | 最小 issue→consume | `待开发` |
 | **W-L4** | 十 Capability operational+assignee | L | D/C | 八职责可解析或 blocked | `待开发` |
-| **W-L5** | 画布禁生产旁路 | S | H | 无快捷创建生产 Task | `待开发` |
+| **W-L5** | 画布禁生产旁路 | S | H | 无快捷创建生产 Task | `已完成` |
 | **W-L6** | Analyst 挂载 Logic | M | J6 | 无假数 | `待开发` |
 | **W-L7** | logicRevisionRef additive | S | Z1 | 兼容工作台 109 | `待开发` |
 | **W-L8** | 画布↔契约只读投影 | M | E | 空表诚实 | `待开发` |
@@ -664,38 +664,38 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 
 | 波次 | 名称 | 规模 | 联波 | 验收 | 进度 |
 |---|---|---|---|---|---|
-| **W-T1** | Overlay 分实例工具配置 | L | Studio | 六实例可分存 | `待开发` |
-| **W-T2** | 六同事默认工具包 | L | T1 | 切换同事见本集 | `待开发` |
-| **W-T3** | 试跑真实上下文 | M | J2 | 无固定 wo-1001 假绿 | `待开发` |
-| **W-T4** | 十类专业能力代调出口 | L | D/L4/C | 10 卡诚实 | `待开发` |
-| **W-T5** | 质量分权威化 | S | Evals | 无权威则未评分 | `待开发` |
-| **W-T6** | Function=published Logic | M | F/L2 | 未发布不可挂 | `待开发` |
-| **W-T7** | Action=Draft 链 | M | J3 | HITL 真门 | `待开发` |
-| **W-T8** | Studio↔面板单一 Overlay | M | I4 | 无双真源 | `待开发` |
+| **W-T1** | Overlay 分实例工具配置 | L | Studio | 六实例可分存 | `已完成` |
+| **W-T2** | 六同事默认工具包 | L | T1 | 切换同事见本集 | `已完成` |
+| **W-T3** | 试跑真实上下文 | M | J2 | 无固定 wo-1001 假绿 | `已完成` |
+| **W-T4** | 十类专业能力代调出口 | L | D/L4/C | 10 卡诚实 | `已完成` |
+| **W-T5** | 质量分权威化 | S | Evals | 无权威则未评分 | `已完成` |
+| **W-T6** | Function=published Logic | M | F/L2 | 未发布不可挂 | `已完成` |
+| **W-T7** | Action=Draft 链 | M | J3 | HITL 真门 | `已完成` |
+| **W-T8** | Studio↔面板单一 Overlay | M | I4 | 无双真源 | `已完成` |
 
 ### 7.9 轨道 I · 菜单页视觉与风格（对齐 §1.4 专表）
 
 | 波次 | 页面 | 规模 | 差距/债 | 验收 | 进度 |
 |---|---|---|---|---|---|
-| **W-I1** | `/aip/capabilities` | M | 卡片八维；联 B1/D | §1.4 #8 | `待开发` |
-| **W-I2** | `/aip/tools` | M | **仅视觉密度**；功能见 **W-T\*** / §9 | §1.4 #5 | `待开发` |
-| **W-I3** | `/aip/maturity` | S | 阶梯可视化 | §1.4 #6 | `待开发` |
-| **W-I4** | `/aip/studio` | M | 页签/面板密度 | §1.4 #2 | `待开发` |
-| **W-I5** | `/aip/model-catalog` | S | 筛选/层级壳 | §1.4 #18 | `待开发` |
-| **W-I6** | `/aip/model-providers` | M | 插件卡片/安装流 | §1.4 #19 | `待开发` |
-| **W-I7** | `/aip/model-router` | M | 策略矩阵 | §1.4 #20 | `待开发` |
-| **W-I8** | `/aip/capacity` | S | 仪表盘分区 | §1.4 #21 | `待开发` |
-| **W-I9** | `/aip/assist` | S | 空态/上下文密度 | §1.4 #1 | `待开发` |
-| **W-I10** | `/aip/analyst` | M | 查询/证据/可视化分区 | §1.4 #3 | `待开发` |
-| **W-I11** | `/aip/production-contracts` | M | 表单/门禁分区 | §1.4 #7 | `待开发` |
-| **W-I12** | `/aip/agent-import` | S | 向导步骤条 | §1.4 #11 | `待开发` |
-| **W-I13** | `/aip/capability-import` | S | 向导步骤条 | §1.4 #12 | `待开发` |
-| **W-I14** | `/aip/evals` | M | 套件/报告分区 | §1.4 #13 | `待开发` |
-| **W-I15** | `/aip/drafts` | M | 收件箱密度 | §1.4 #14 | `待开发` |
-| **W-I16** | `/aip/lineage` | M | 谱系查询壳 | §1.4 #15 | `待开发` |
-| **W-I17** | `/aip/observability` | M | Tab 密度 | §1.4 #16 | `待开发` |
-| **W-I18** | `/aip/memory-governance` | M | 多 Tab 空态 | §1.4 #17 | `待开发` |
-| **W-I19** | `/aip/model-runtime` | S | 就绪矩阵诚实态 | §1.4 #22 | `待开发` |
+| **W-I1** | `/aip/capabilities` | M | 卡片八维；联 B1/D | §1.4 #8 | `已完成` |
+| **W-I2** | `/aip/tools` | M | **仅视觉密度**；功能见 **W-T\*** / §9 | §1.4 #5 | `已完成` |
+| **W-I3** | `/aip/maturity` | S | 阶梯可视化 | §1.4 #6 | `已完成` |
+| **W-I4** | `/aip/studio` | M | 页签/面板密度 | §1.4 #2 | `已完成` |
+| **W-I5** | `/aip/model-catalog` | S | 筛选/层级壳 | §1.4 #18 | `已完成` |
+| **W-I6** | `/aip/model-providers` | M | 插件卡片/安装流 | §1.4 #19 | `已完成` |
+| **W-I7** | `/aip/model-router` | M | 策略矩阵 | §1.4 #20 | `已完成` |
+| **W-I8** | `/aip/capacity` | S | 仪表盘分区 | §1.4 #21 | `已完成` |
+| **W-I9** | `/aip/assist` | S | 空态/上下文密度 | §1.4 #1 | `已完成` |
+| **W-I10** | `/aip/analyst` | M | 查询/证据/可视化分区 | §1.4 #3 | `已完成` |
+| **W-I11** | `/aip/production-contracts` | M | 表单/门禁分区 | §1.4 #7 | `已完成` |
+| **W-I12** | `/aip/agent-import` | S | 向导步骤条 | §1.4 #11 | `已完成` |
+| **W-I13** | `/aip/capability-import` | S | 向导步骤条 | §1.4 #12 | `已完成` |
+| **W-I14** | `/aip/evals` | M | 套件/报告分区 | §1.4 #13 | `已完成` |
+| **W-I15** | `/aip/drafts` | M | 收件箱密度 | §1.4 #14 | `已完成` |
+| **W-I16** | `/aip/lineage` | M | 谱系查询壳 | §1.4 #15 | `已完成` |
+| **W-I17** | `/aip/observability` | M | Tab 密度 | §1.4 #16 | `已完成` |
+| **W-I18** | `/aip/memory-governance` | M | 多 Tab 空态 | §1.4 #17 | `已完成` |
+| **W-I19** | `/aip/model-runtime` | S | 就绪矩阵诚实态 | §1.4 #22 | `已完成` |
 
 > 另：目录 **W-G0～G1**、列表 **W-G2**、逻辑 **W-H1～H3** 见轨道 G/H，同属视觉主线，已计入 §1.4 #4/#9/#10。
 
@@ -703,11 +703,11 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 
 | 波次 | 名称 | 规模 | 覆盖 §2 | 验收 | 进度 |
 |---|---|---|---|---|---|
-| **W-J1** | 导入向导 E2E | M | import 两页 | 真 Manifest 或诚实失败 | `待开发` |
-| **W-J2** | Assist 上下文 | M | assist | exact 路径可消除缺上下文 | `待开发` |
-| **W-J3** | Evals↔Draft↔Lineage | L | evals/drafts/lineage | 一条真实样例链 | `待开发` |
-| **W-J4** | Observability 导出 | S | observability | 可导出或诚实禁用 | `待开发` |
-| **W-J5** | Memory 首条 | M | memory-governance | >0 或书面空态策略 | `待开发` |
+| **W-J1** | 导入向导 E2E | M | import 两页 | 真 Manifest 或诚实失败 | `已完成` |
+| **W-J2** | Assist 上下文 | M | assist | exact 路径可消除缺上下文 | `已完成` |
+| **W-J3** | Evals↔Draft↔Lineage | L | evals/drafts/lineage | 一条真实样例链 | `已完成` |
+| **W-J4** | Observability 导出 | S | observability | 可导出或诚实禁用 | `已完成` |
+| **W-J5** | Memory 首条 | M | memory-governance | >0 或书面空态策略 | `已完成` |
 | **W-J6** | Analyst 查询 | M | analyst | 无演示假数 | `待开发` |
 
 ### 7.11 轨道 Z · 外部门
@@ -892,7 +892,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L2**  | LogicGraph **revision** 进入 ProductionStart 合同字段；画布发布后可被 prepare/compile/start 复验引用           | 空图/未发布 revision **不能** start；有证据链       | `待开发` |
 | **W-L3**  | AgentRun + HandoffEnvelope Canonical 可消费面补齐/对账（issue/get/consume…）                           | w2 唯一 SDK 可跑通最小 issue→consume；无第二真源     | `待开发` |
 | **W-L4**  | 十 Capability → Stage/Responsibility 映射所需的 **operational Binding + assignee 归属**（防租户全局误点亮）    | 媒体八职责槽能解析 exact Capability；缺则诚实 blocked | `待开发` |
-| **W-L5**  | 画布 UI **禁止**「一键创建/批准生产 Task」旁路；只引导 Draft/Evals/生产契约                                          | 与工作台 `32`/`67` 一致                       | `待开发` |
+| **W-L5**  | 画布 UI **禁止**「一键创建/批准生产 Task」旁路；只引导 Draft/Evals/生产契约                                          | 与工作台 `32`/`67` 一致                       | `已完成` |
 | **W-L6**  | Analyst/经营参谋可引用的 Logic/Skill 挂载点（与 J6 协同）                                                    | 无假数；缺权威时 blocked                        | `待开发` |
 | **W-L7**  | Catalog 继续 additive 传输 `logicRevisionRef`（不冒充 Binding/授权）                                    | 与工作台 `109` 兼容；strict parser 不炸          | `待开发` |
 | **W-L8**  | 与 **W-E\*** 合流：StageTemplate/ResponsibilityPlan 非空后，画布侧展示「可被哪类生产 Profile 引用」只读投影             | 空表时诚实；有表时可点验                            | `待开发` |
@@ -1007,14 +1007,14 @@ W-Z1（w2 logicRevisionRef 外部门）
 
 | 波次 | 内容 | 验收 | 进度 |
 |---|---|---|---|
-| **W-T1** | 工具配置权威改为 **按 AgentInstance Overlay**（CAS/revision）；废止「仅全局 config」当完成态 | 六实例可分别读写工具集 | `待开发` |
-| **W-T2** | 六同事默认工具包写入（§9.3）+ 面板可切换同事 | 每同事打开面板见本实例启用集 | `待开发` |
-| **W-T3** | 试跑绑定真实 Task/AgentRun/对象 exact（无则禁用试跑） | 消灭固定 `wo-1001` 假绿 | `待开发` |
-| **W-T4** | 十类 Capability →「专业能力」Tool 出口（只读投影 + 代调门） | 10/10 有卡；不可用则中文 blocked | `待开发` |
-| **W-T5** | 质量分/结构·文档·测试分接 Eval/用例权威或显示未评分 | 无权威不显示假 82 | `待开发` |
-| **W-T6** | Function 工具只允许 **published** Logic/Function exact | 与 W-F / W-L2 一致 | `待开发` |
-| **W-T7** | Action 工具走 HITL→Draft/Approval/Receipt | 与工作台写门一致 | `待开发` |
-| **W-T8** | Studio「工具箱」与本面板 **同一 Overlay**；深链双向 | 无双真源 | `待开发` |
+| **W-T1** | 工具配置权威改为 **按 AgentInstance Overlay**（CAS/revision）；废止「仅全局 config」当完成态 | 六实例可分别读写工具集 | `已完成` |
+| **W-T2** | 六同事默认工具包写入（§9.3）+ 面板可切换同事 | 每同事打开面板见本实例启用集 | `已完成` |
+| **W-T3** | 试跑绑定真实 Task/AgentRun/对象 exact（无则禁用试跑） | 消灭固定 `wo-1001` 假绿 | `已完成` |
+| **W-T4** | 十类 Capability →「专业能力」Tool 出口（只读投影 + 代调门） | 10/10 有卡；不可用则中文 blocked | `已完成` |
+| **W-T5** | 质量分/结构·文档·测试分接 Eval/用例权威或显示未评分 | 无权威不显示假 82 | `已完成` |
+| **W-T6** | Function 工具只允许 **published** Logic/Function exact | 与 W-F / W-L2 一致 | `已完成` |
+| **W-T7** | Action 工具走 HITL→Draft/Approval/Receipt | 与工作台写门一致 | `已完成` |
+| **W-T8** | Studio「工具箱」与本面板 **同一 Overlay**；深链双向 | 无双真源 | `已完成` |
 
 ### 9.7 与 D12 / 其它轨道关系
 
