@@ -1,39 +1,47 @@
 # 118 · W-L9 EvidenceBundle Build Job + 服务端 coverage
 
-> 状态：`DRAFT` · 2026-08-20  
+> 状态：`GREEN` · 2026-08-20  
 > 清单：`59` §8.5 / §10.4 **W-L9**  
-> 证据：`aos-platform-w1-aip/.evidence/aip/2026-08-20-w-l9-evidence-build-job/`（待封板）  
+> 证据：`aos-platform-w1-aip/.evidence/aip/2026-08-20-w-l9-evidence-build-job/`  
+> 代码：`aos-platform-w1-aip` · 分支 `w1-aip`（合入 `m1`）  
 > 边界：仅 `aos-platform-w1-aip`；不改 w2
 
-## 1. 目标
+## 1. 目标（已兑现）
 
-1. 服务端 **Build Job** 产出 EvidenceBundle revision（禁调用方直填冒充 Bundle）
-2. `required-facts` **coverage 服务端计算**（missing / conflicts / uncertainties）
-3. 客户端只能提交 Job 输入与 exact 引用；coverage/freshness 由权威回填
+1. `POST /evidence-bundles/build`：服务端 Build Job 产出 EvidenceBundle
+2. `requiredFactIds` ∩ Evidence `payload.factIds` → coverage/missing/freshness **服务端计算**
+3. 客户端携带 `coverage`/`missing`/`freshness` → 校验拒绝（extra forbid）
+4. 旧 `POST /evidence-bundles` 同契约（仅输入面，无客户端 coverage）
 
 ## 2. 不做
 
-- 完整三层 Disclosure/Marking 执行 API（W-L10）
-- 伪造 facts / Mock Bundle 种子进权威租户
+- 完整三层 Disclosure/Marking（W-L10）
+- Mock Bundle 种子进权威租户
 
-## 3. 现状（待勘察确认）
+## 3. 算法
 
-- 已有 `CreateEvidenceBundleRequest` / store create 路径；需确认是否允许客户端直填 `coverage`/`missing`
-- 若已有直填：收紧为 Job 产出 + 服务端 coverage；保留只读 GET
+```text
+provided = ∪ evidence.payload.factIds|facts
+missing = requiredFactIds − provided
+coverage = complete | partial | blocked
+freshness = any(freshness_at < cutoffAt) → stale；blocked coverage → blocked
+```
 
-## 4. 最小改动（拟定）
+## 4. 改动面
 
-| 面 | 说明 |
+| 路径 | 说明 |
 |---|---|
-| contracts | `EvidenceBuildJobRequest/Result` 或收紧 Bundle create |
-| store | 服务端算 coverage；Job 幂等 |
-| tests | 直填 coverage 被拒；Job 产出与 required-facts 一致 |
+| `aip_production_contracts.py` | `BuildEvidenceBundleRequest`；Create 去掉客户端 coverage |
+| `aip_production_contract_store.py` | `build_evidence_bundle` + `_compute_evidence_bundle_coverage` |
+| `routers/aip_production_contracts.py` | `/evidence-bundles/build` |
+| `tests/test_w2a_*` | Build / 伪造拒绝 / complete 幂等 |
 
 ## 5. 验收
 
-- 调用方无法用自填 coverage 冒充 complete
-- Job 幂等；缺 facts → coverage=blocked/partial + missing 诚实
+- pytest w2a store+api GREEN
+- 直填 complete → 400/422
+- 缺 fact → partial + missing
 
 ## 6. 风险
 
-旧客户端若依赖直填 coverage 会 fail-closed——符合 W-L9。
+旧客户端直填 coverage 会 fail-closed——符合 W-L9。

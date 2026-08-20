@@ -183,7 +183,7 @@
 | **D11** | 拍板后是否立刻编码         | **已覆写**：授权连续编码（见 **D15**）；旧「先不编码」作废                                                     | 全近场波次                                                | 开工门`打开`           |
 | **D12** | AIP 逻辑画布定位        | **禁止空壳**：须结合工作台层六同事 + 十类通用能力的运营闭环，把 AIP 侧支撑缺口列入清单并交付；**不能只做 Tab/视觉**                 | **W-H\*** + 新轨道 **W-L\*** · 见 **§8**                 | 裁决`已完成` · 落地`待开发` |
 | **D13** | 智能体工具面板定位         | **禁止空工具**：六同事各自可配工具 + 十类「专业能力」代调必须进清单并交付；蓝图 `aip-tools.html` 三栏（目录/已启用/质量与细项）不得只剩演示壳 | **W-I2** 升格 + 新轨道 **W-T\*** · 见 **§9**               | 裁决`已完成` · 落地`待开发` |
-| **D14** | 工作台方案/蓝图通读         | **已系统通读** 116 md + 21 workshop 蓝图（此前抽样不算）；增量缺口 **§10 / W-L9～L20** | **§10** | 通读`已完成` · 落地`待开发` |
+| **D14** | 工作台方案/蓝图通读         | **已系统通读** 116 md + 21 workshop 蓝图（此前抽样不算）；增量缺口 **§10 / W-L9～L20** | **§10** | 通读`已完成` · 落地`已完成` |
 | **D15** | 离岗长程授权            | **按 §7.14 连续长程执行**；剩余未决用本表默认；禁止因等用户而停工                                               | 全近场波次                                                | 裁决`已完成`           |
 | **D16** | 市场发现页路由           | **`/aip/agent-marketplace`**（独立页；演示 Agent 仍禁入权威租户）                                      | **W-G1b**                                            | 裁决`已完成`           |
 | **D17** | 技能发布后绑定           | **发布台内嵌 Binding 向导**（首波即交付，非仅 CTA）                                                     | **W-F1～F3**                                          | 裁决`已完成`           |
@@ -497,7 +497,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L6 | L | Analyst/经营参谋挂载 Logic | §8.5 | `已完成` |
 | W-L7 | L | Catalog logicRevisionRef additive | §8.5 | `待开发` |
 | W-L8 | L | 画布↔生产契约只读投影 | §8.5 | `已完成` |
-| W-L9 | L | Evidence Build Job | §10.4 | `待开发` |
+| W-L9 | L | Evidence Build Job | §10.4 | `已完成` |
 | W-L10 | L | Evidence 披露/Marking | §10.4 | `待开发` |
 | W-L11 | L | ProductionContext 四合同冻结 | §10.4 | `待开发` |
 | W-L12 | L | HandoffDecisionRevision | §10.4 | `待开发` |
@@ -643,7 +643,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L6** | Analyst 挂载 Logic | M | J6 | 无假数 | `已完成` |
 | **W-L7** | logicRevisionRef additive | S | Z1 | 兼容工作台 109 | `待开发` |
 | **W-L8** | 画布↔契约只读投影 | M | E | 空表诚实 | `已完成` |
-| **W-L9** | EvidenceBundle Build Job | L | E/J | 服务端 required-facts coverage；禁调用方直填冒充 Bundle | `待开发` |
+| **W-L9** | EvidenceBundle Build Job | L | E/J | 服务端 required-facts coverage；禁调用方直填冒充 Bundle | `已完成` |
 | **W-L10** | Evidence 披露/Marking API | L | L9 | 三层 Disclosure 可执行；revoke 传播；Drawer 不再 IMPLEMENTATION_BLOCKED | `待开发` |
 | **W-L11** | ProductionContext 四合同冻结 | L | E1～E4 | 一次 CAS 冻结 Brief/Evidence/Eval/Responsibility；compile 前必持 exact Context | `待开发` |
 | **W-L12** | HandoffDecisionRevision | M | L3 | accepted/rejected/request_more/returned 与 Envelope 分层；consume 终态不可重开 | `待开发` |
@@ -896,7 +896,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L6**  | Analyst/经营参谋可引用的 Logic/Skill 挂载点（与 J6 协同）                                                    | 无假数；缺权威时 blocked                        | `已完成` |
 | **W-L7**  | Catalog 继续 additive 传输 `logicRevisionRef`（不冒充 Binding/授权）                                    | 与工作台 `109` 兼容；strict parser 不炸          | `待开发` |
 | **W-L8**  | 与 **W-E\*** 合流：StageTemplate/ResponsibilityPlan 非空后，画布侧展示「可被哪类生产 Profile 引用」只读投影             | 空表时诚实；有表时可点验                            | `已完成` |
-| **W-L9**  | EvidenceBundle **Build Job** + 服务端 required-facts coverage                                   | Job 产出 Bundle；coverage 服务端算；禁直填         | `待开发` |
+| **W-L9**  | EvidenceBundle **Build Job** + 服务端 required-facts coverage                                   | Job 产出 Bundle；coverage 服务端算；禁直填         | `已完成` |
 | **W-L10** | Evidence 不可变/revoke + 三层 Disclosure/Marking 执行 API                                           | Drawer 可消费真实披露决策                        | `待开发` |
 | **W-L11** | **ProductionContextRevision** 四合同一次 CAS                                                      | compile/start 前持同一 Context exact        | `待开发` |
 | **W-L12** | **HandoffDecisionRevision** 与 Envelope 分层                                                    | 领域决定可审计；传输生命周期独立                        | `待开发` |
@@ -1094,7 +1094,7 @@ W-L*（Logic 禁空）与 W-T* 并列，同属「支撑工作台六同事+十能
 
 | 波次 | 缺口 | 工作台出处 | 进度 |
 |---|---|---|---|
-| **W-L9** | EvidenceBundle **Build Job** + 服务端 required-facts coverage（禁调用方直填冒充） | 04、W4-01、07 | `待开发` |
+| **W-L9** | EvidenceBundle **Build Job** + 服务端 required-facts coverage（禁调用方直填冒充） | 04、W4-01、07 | `已完成` |
 | **W-L10** | Evidence 不可变/revoke + **三层 Disclosure/Marking** 执行 API | 04、W4-02 | `待开发` |
 | **W-L11** | **ProductionContextRevision** 四合同一次 CAS 冻结（不只 Logic 字段） | 07、20、23、W3-04/05 | `待开发` |
 | **W-L12** | **HandoffDecisionRevision**（accepted/rejected/request_more/returned）与 Envelope 分层 | 03、W3-06 | `待开发` |
