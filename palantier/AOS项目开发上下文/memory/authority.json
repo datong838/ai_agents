@@ -19,7 +19,9 @@
     "Checklist 59 historical index / D7-D9 / G1b gap / §8 workshop scenarios reconciled; AIP support sealed, workshop browser acceptance remains next_gate.",
     "§8 workshop scenario rows marked AIP支撑已完成 / 工作台验收外部等待; text Health TTL renewed ~05:55Z.",
     "Checklist 59 §9 tool taxonomy / six-colleague packs / ten Capability exits reconciled to W-T* sealed state.",
-    "Checklist 59 D12 and §10.4 L9–L20 note reconciled; AIP near-field docs consistent with sealed waves."
+    "Checklist 59 D12 and §10.4 L9–L20 note reconciled; AIP near-field docs consistent with sealed waves.",
+    "AIP full development checklist master entry is docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/00-AIP全量开发清单总控.md (siblings 01–15; seal 16; coverage matrix 17).",
+    "AIP near-field Loop paused by operator (15s re-arm stopped; 3m Cursor monitor killed); no forge image GREEN."
   ],
   "current_phase": "WKS_DEP_0B_W1_AIP_NEARFIELD_L9_L20_CLOSED",
   "delivery_status": "W1_AIP_NEARFIELD_SEALED_AWAITING_W2_BROWSER",
@@ -77,7 +79,7 @@
       "ref": "5b71a32"
     }
   ],
-  "evidence_cutoff": "2026-08-20T13:43:24+08:00",
+  "evidence_cutoff": "2026-08-20T15:49:00+08:00",
   "hard_boundaries": [
     "Forward Agnes host is only api.agnes-ai.cn.",
     "Approved domestic text model is agnes-2.5-flash; image model is agnes-image-2.1-flash; video model is agnes-video-v2.0.",
@@ -102,7 +104,8 @@
   "next_steps": [
     "Workshop re-runs formal read-only browser acceptance and regenerates Evidence/Receipt (B4).",
     "Workshop owns eight-menu Catalog→Context→nav filter chain (B5) and W2-01～W2-10 sequential gates (B7).",
-    "AIP idle-ready: renew text Health TTL on wake; image remains provider_http_error (no forge); W-F6 waits Logic graphs; do not edit w2."
+    "AIP idle/paused: on resume renew text Health only if TTL <5m; image remains provider_http_error (no forge); W-F6 waits Logic graphs; do not edit w2.",
+    "When asked for 开发清单, point to 全量开发清单/00-AIP全量开发清单总控.md first."
   ],
   "project": "AOS",
   "project_revision": "AOS-000146",
@@ -115,7 +118,10 @@
   "source_files": [
     "docs/多对话共享记忆机制.md",
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
-    "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
+    "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md",
+    "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/00-AIP全量开发清单总控.md",
+    "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
+    "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-20T13:43:24+08:00"
+  "updated_at": "2026-08-20T15:49:00+08:00"
 }

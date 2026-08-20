@@ -1,0 +1,31 @@
+{
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "aip-prime-checklist-path-fact-sync-20260820",
+  "base_revision": "AOS-000146",
+  "completed_revision": "AOS-000146",
+  "result": "PRIME_PROJECTION_CURRENT_CHECKLIST_PATH_FACT_SYNCED",
+  "changed_files": [
+    "docs/palantier/AOS项目开发上下文/memory/authority.json",
+    "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
+    "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md",
+    "docs/palantier/AOS项目开发上下文/memory/projections/aos-project.json",
+    "docs/palantier/AOS项目开发上下文/memory/prime-version-state.json"
+  ],
+  "commits": [
+    "5b71a32"
+  ],
+  "verification": [
+    "memory-validate GREEN",
+    "memory-sync --apply --prime; strong projections CURRENT including aos-aip-full-checklists / aos-current-delivery / aos-milestones",
+    "overall GREEN_WITH_WARNINGS (codex PENDING_ASYNC allowed)",
+    "Authority records checklist master path 全量开发清单/00-AIP全量开发清单总控.md and operator pause of nearfield Loop"
+  ],
+  "risks": [
+    "Docs working tree has many unrelated dirty files; only memory projection paths were staged for this receipt"
+  ],
+  "blockers": [
+    "W2_BROWSER_ACCEPTANCE_PENDING",
+    "W2_EIGHT_MENU_NAV_PENDING"
+  ],
+  "completed_at": "2026-08-20T15:49:30+08:00"
+}
