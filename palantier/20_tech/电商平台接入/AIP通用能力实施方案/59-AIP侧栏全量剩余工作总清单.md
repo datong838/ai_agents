@@ -508,7 +508,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L17 | L | ResearchJob/QueryJob | §10.4 | `已完成` |
 | W-L18 | L | ImpactPreview actionBindingHash | §10.4 | `已完成` |
 | W-L19 | L | Usage/EffectReview 权威 | §10.4 | `已完成` |
-| W-L20 | L | ToolBinding resolver + publisher 1.3 | §10.4 | `待开发` |
+| W-L20 | L | ToolBinding resolver + publisher 1.3 | §10.4 | `已完成` |
 | W-T1 | T | 工具配置按 AgentInstance Overlay | §9.6 | `已完成` |
 | W-T2 | T | 六同事默认工具包+切换 | §9.6 | `已完成` |
 | W-T3 | T | 试跑绑定真实上下文 | §9.6 | `已完成` |
@@ -654,7 +654,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L17** | ResearchJob / QueryJob | L | 达人/价格 | list/SDK/resume/cancel；Async 投影；工具 query 不得冒充 | `已完成` |
 | **W-L18** | ImpactPreview actionBindingHash | M | E3/T7 | 外部 Action 与 Preview 联合哈希一致；缺则 fail-closed | `已完成` |
 | **W-L19** | Usage / EffectReview 权威 | M | L18 | EffectMaturity 可消费；accepted≠completed 分轴 | `已完成` |
-| **W-L20** | ToolBinding resolver + publisher 1.3 | L | T/D | 四 kind assignee 真实解析；Bundle schema 1.3.0；防全局误点亮 | `待开发` |
+| **W-L20** | ToolBinding resolver + publisher 1.3 | L | T/D | 四 kind assignee 真实解析；Bundle schema 1.3.0；防全局误点亮 | `已完成` |
 
 > **§10.4** 为出处；本表为执行粒度。L9→L10、L11 依赖 E 轨、L12 依赖 L3、L13→L14、L15→L16 有序；L17/L18/L19/L20 可与主链穿插，但不得用 UI 壳冒充 GREEN。
 
@@ -907,7 +907,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L17** | ResearchJob/QueryJob list/SDK/resume                                                         | 达人/价格可挂；工具面板不得冒充                        | `已完成` |
 | **W-L18** | ImpactPreview **actionBindingHash**                                                          | 与外部 Action 绑定一致                         | `已完成` |
 | **W-L19** | Usage / EffectReview / EffectMaturity                                                        | 五轴独立；场景 A/D 可消费                         | `已完成` |
-| **W-L20** | 四 kind Assignee resolver + publisher **1.3.0**                                               | ToolBinding 真解析；防租户全局误点亮                | `待开发` |
+| **W-L20** | 四 kind Assignee resolver + publisher **1.3.0**                                               | ToolBinding 真解析；防租户全局误点亮                | `已完成` |
 
 ### 8.6 与现有波次关系
 
@@ -1105,7 +1105,7 @@ W-L*（Logic 禁空）与 W-T* 并列，同属「支撑工作台六同事+十能
 | **W-L17** | ResearchJob/QueryJob list/SDK/resume + Async 投影（工具 query 不得冒充） | 04、W4-07、价格/达人 | `已完成` |
 | **W-L18** | ImpactPreview **actionBindingHash** 与外部 Action 精确绑定 | 03、19、W5 | `已完成` |
 | **W-L19** | Usage / EffectReview / EffectMaturity 可消费权威 | 03、18、W6-09 | `已完成` |
-| **W-L20** | AssigneeResolutionReceipt + 四 kind resolver（Human/Agent/**Tool**/Provider）防全局误点亮；Bundle publisher **1.3.0** | 19、49、59-W7、W6-01 | `待开发` |
+| **W-L20** | AssigneeResolutionReceipt + 四 kind resolver（Human/Agent/**Tool**/Provider）防全局误点亮；Bundle publisher **1.3.0** | 19、49、59-W7、W6-01 | `已完成` |
 
 ### 10.5 明确不进 AIP 清单（属 w2 / L2）
 
