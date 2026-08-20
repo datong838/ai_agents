@@ -505,7 +505,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L14 | L | ReviewIssue/新 attempt | §10.4 | `已完成` |
 | W-L15 | L | KnowledgeQuery/Memory 桥 | §10.4 | `已完成` |
 | W-L16 | L | SavedExploration 分享生命周期 | §10.4 | `已完成` |
-| W-L17 | L | ResearchJob/QueryJob | §10.4 | `待开发` |
+| W-L17 | L | ResearchJob/QueryJob | §10.4 | `已完成` |
 | W-L18 | L | ImpactPreview actionBindingHash | §10.4 | `已完成` |
 | W-L19 | L | Usage/EffectReview 权威 | §10.4 | `待开发` |
 | W-L20 | L | ToolBinding resolver + publisher 1.3 | §10.4 | `待开发` |
@@ -651,7 +651,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L14** | ReviewIssue / 新 attempt | M | L13 | return→新 attempt 不被跳过；Issue exact 可挂 Lineage | `已完成` |
 | **W-L15** | KnowledgeQuery + Memory 桥 | L | J5 | 生产 Router 真实装配；Candidate 成熟度桥；禁 503 假完成 | `已完成` |
 | **W-L16** | SavedExploration 分享生命周期 | M | L15 | share/revoke/expiry；关闭旧内存真源 | `已完成` |
-| **W-L17** | ResearchJob / QueryJob | L | 达人/价格 | list/SDK/resume/cancel；Async 投影；工具 query 不得冒充 | `待开发` |
+| **W-L17** | ResearchJob / QueryJob | L | 达人/价格 | list/SDK/resume/cancel；Async 投影；工具 query 不得冒充 | `已完成` |
 | **W-L18** | ImpactPreview actionBindingHash | M | E3/T7 | 外部 Action 与 Preview 联合哈希一致；缺则 fail-closed | `已完成` |
 | **W-L19** | Usage / EffectReview 权威 | M | L18 | EffectMaturity 可消费；accepted≠completed 分轴 | `待开发` |
 | **W-L20** | ToolBinding resolver + publisher 1.3 | L | T/D | 四 kind assignee 真实解析；Bundle schema 1.3.0；防全局误点亮 | `待开发` |
@@ -904,7 +904,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L14** | ReviewIssue / ReturnDecision / 新 attempt                                                     | return 必产新 attempt；不改历史 Artifact        | `已完成` |
 | **W-L15** | KnowledgeQuery 生产装配 + Candidate 成熟度桥                                                         | 无 deps=None→503 假绿                      | `已完成` |
 | **W-L16** | SavedExploration share/revoke/expiry                                                         | 唯一 Store；旧内存入口关闭                        | `已完成` |
-| **W-L17** | ResearchJob/QueryJob list/SDK/resume                                                         | 达人/价格可挂；工具面板不得冒充                        | `待开发` |
+| **W-L17** | ResearchJob/QueryJob list/SDK/resume                                                         | 达人/价格可挂；工具面板不得冒充                        | `已完成` |
 | **W-L18** | ImpactPreview **actionBindingHash**                                                          | 与外部 Action 绑定一致                         | `已完成` |
 | **W-L19** | Usage / EffectReview / EffectMaturity                                                        | 五轴独立；场景 A/D 可消费                         | `待开发` |
 | **W-L20** | 四 kind Assignee resolver + publisher **1.3.0**                                               | ToolBinding 真解析；防租户全局误点亮                | `待开发` |
@@ -1102,7 +1102,7 @@ W-L*（Logic 禁空）与 W-T* 并列，同属「支撑工作台六同事+十能
 | **W-L14** | ReviewIssue / ReturnDecision / 新 attempt 调度 | 23、W4-04 | `已完成` |
 | **W-L15** | KnowledgeQuery 生产装配 + MemoryCandidate 成熟度桥（禁 503 假完成） | 04、W4-05 | `已完成` |
 | **W-L16** | SavedExploration 分享生命周期 + 关闭旧内存真源 | 04、09、W4-06 | `已完成` |
-| **W-L17** | ResearchJob/QueryJob list/SDK/resume + Async 投影（工具 query 不得冒充） | 04、W4-07、价格/达人 | `待开发` |
+| **W-L17** | ResearchJob/QueryJob list/SDK/resume + Async 投影（工具 query 不得冒充） | 04、W4-07、价格/达人 | `已完成` |
 | **W-L18** | ImpactPreview **actionBindingHash** 与外部 Action 精确绑定 | 03、19、W5 | `已完成` |
 | **W-L19** | Usage / EffectReview / EffectMaturity 可消费权威 | 03、18、W6-09 | `待开发` |
 | **W-L20** | AssigneeResolutionReceipt + 四 kind resolver（Human/Agent/**Tool**/Provider）防全局误点亮；Bundle publisher **1.3.0** | 19、49、59-W7、W6-01 | `待开发` |
