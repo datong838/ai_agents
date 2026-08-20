@@ -17,7 +17,8 @@
     "Checklist 59 reconciled I4–I8/J2/J4/J5 ops rows; text Health TTL renewed to ~05:52Z.",
     "Checklist 59 reconciled W-T1～T8 / W-L1～L8 secondary rows and refreshed §7.16 summary; AIP near-field largely sealed pending W2 browser gate.",
     "Checklist 59 historical index / D7-D9 / G1b gap / §8 workshop scenarios reconciled; AIP support sealed, workshop browser acceptance remains next_gate.",
-    "§8 workshop scenario rows marked AIP支撑已完成 / 工作台验收外部等待; text Health TTL renewed ~05:55Z."
+    "§8 workshop scenario rows marked AIP支撑已完成 / 工作台验收外部等待; text Health TTL renewed ~05:55Z.",
+    "Checklist 59 §9 tool taxonomy / six-colleague packs / ten Capability exits reconciled to W-T* sealed state."
   ],
   "current_phase": "WKS_DEP_0B_W1_AIP_NEARFIELD_L9_L20_CLOSED",
   "delivery_status": "W1_AIP_NEARFIELD_SEALED_AWAITING_W2_BROWSER",
@@ -75,7 +76,7 @@
       "ref": "5b71a32"
     }
   ],
-  "evidence_cutoff": "2026-08-20T13:41:15+08:00",
+  "evidence_cutoff": "2026-08-20T13:42:01+08:00",
   "hard_boundaries": [
     "Forward Agnes host is only api.agnes-ai.cn.",
     "Approved domestic text model is agnes-2.5-flash; image model is agnes-image-2.1-flash; video model is agnes-video-v2.0.",
@@ -115,5 +116,5 @@
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
     "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
   ],
-  "updated_at": "2026-08-20T13:41:15+08:00"
+  "updated_at": "2026-08-20T13:42:01+08:00"
 }

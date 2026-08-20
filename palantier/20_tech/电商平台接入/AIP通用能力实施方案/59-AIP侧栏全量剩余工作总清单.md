@@ -942,14 +942,14 @@ W-Z1（w2 logicRevisionRef 外部门）
 
 | 目录类（中文） | 蓝图语义 | 典型工具 ID（蓝图/现网） | 进度 |
 |---|---|---|---|
-| 写回动作 | 可 HITL 确认后执行 | `action.*`（如 `action.closeHITL`） | `待开发` |
-| 对象查询 | 属性子集查询 | `query.objects` | `待开发` |
-| 函数 | 已发布 AIP Logic | `fn.*` / Logic Function 挂载 | `待开发` |
-| 应用变量 | 更新 App 变量 | 变量工具（蓝图有、现网弱） | `待开发` |
-| 命令 | 命令类工具 | command 类 | `待开发` |
-| 澄清 | 向用户澄清 | clarify 类 | `待开发` |
-| **专业能力** | **平台代调重能力** | **十类 Capability 作为 Tool 出口** | `待开发` |
-| Wiki 字段 | 结构化字段优先 | `wiki.read` | `待开发` |
+| 写回动作 | 可 HITL 确认后执行 | `action.*`（如 `action.closeHITL`） | T7`已完成` |
+| 对象查询 | 属性子集查询 | `query.objects` | T2`已完成` |
+| 函数 | 已发布 AIP Logic | `fn.*` / Logic Function 挂载 | T6`已完成` |
+| 应用变量 | 更新 App 变量 | 变量工具（蓝图有、现网弱） | Overlay`已完成`（弱能力诚实） |
+| 命令 | 命令类工具 | command 类 | Overlay`已完成` |
+| 澄清 | 向用户澄清 | clarify 类 | T2`已完成` |
+| **专业能力** | **平台代调重能力** | **十类 Capability 作为 Tool 出口** | T4`已完成`（无 Binding 时诚实 blocked） |
+| Wiki 字段 | 结构化字段优先 | `wiki.read` | T2`已完成` |
 
 ### 9.2 蓝图「已启用」样板（内容官）vs 缺口
 
@@ -967,12 +967,12 @@ W-Z1（w2 logicRevisionRef 外部门）
 
 | 同事 | 工具面板最低交付 | 与十类 Capability 默认关系（消费侧） | 波次 | 进度 |
 |---|---|---|---|---|
-| 内容官 | Query/Function/Action/Wiki + **专业能力**（文案/脚本/审核/素材等） | `copy.generate`、`script.compose`、`content.review`、`material.collect`、`video.compose`… | **W-T2** | `待开发` |
-| 数据参谋 | Query/Wiki/Function + 复盘类专业能力 | `performance.review`、`strategy.plan` | **W-T2** | `待开发` |
-| 活动策划师 | Query/Action/Function + 策略/复盘 | `strategy.plan`、`performance.review`、`platform.adapt` | **W-T2** | `待开发` |
-| 导购顾问 | Query/Clarify/Action + 文案/适配 | `copy.generate`、`platform.adapt` | **W-T2** | `待开发` |
-| 客服专员 | Clarify/Action/Query + 文案 | `copy.generate`、`content.review`（话术质检） | **W-T2** | `待开发` |
-| 私域管家 | Query/Action/Clarify + 策略/复盘 | `strategy.plan`、`performance.review` | **W-T2** | `待开发` |
+| 内容官 | Query/Function/Action/Wiki + **专业能力**（文案/脚本/审核/素材等） | `copy.generate`、`script.compose`、`content.review`、`material.collect`、`video.compose`… | **W-T2** | `已完成` |
+| 数据参谋 | Query/Wiki/Function + 复盘类专业能力 | `performance.review`、`strategy.plan` | **W-T2** | `已完成` |
+| 活动策划师 | Query/Action/Function + 策略/复盘 | `strategy.plan`、`performance.review`、`platform.adapt` | **W-T2** | `已完成` |
+| 导购顾问 | Query/Clarify/Action + 文案/适配 | `copy.generate`、`platform.adapt` | **W-T2** | `已完成` |
+| 客服专员 | Clarify/Action/Query + 文案 | `copy.generate`、`content.review`（话术质检） | **W-T2** | `已完成` |
+| 私域管家 | Query/Action/Clarify + 策略/复盘 | `strategy.plan`、`performance.review` | **W-T2** | `已完成` |
 
 > 上表是**默认工具包目标**，不是把十类塞进六个 Agent 固定人数；每工具须 exact Binding/Skill/Logic ref，缺则该类工具卡诚实 disabled。
 
@@ -980,16 +980,16 @@ W-Z1（w2 logicRevisionRef 外部门）
 
 | Capability ID | 中文 | 工具面板表现 | 依赖 | 进度 |
 |---|---|---|---|---|
-| `material.collect` | 素材采集 | 专业能力 Tool · 代调 | Binding+数据依赖 | `待开发` |
-| `strategy.plan` | 策略规划 | 同上 | Binding+Eval | `待开发` |
-| `copy.generate` | 文案生成 | 同上 | Binding+路由 | `待开发` |
-| `script.compose` | 脚本撰写 | 同上 | Binding | `待开发` |
-| `speech.synthesize` | 语音合成 | 同上 | Provider/Health（D10） | `待开发`/`验收放宽` |
-| `video.compose` | 视频合成 | 同上 | 同上 | `待开发`/`验收放宽` |
-| `content.review` | 内容审核 | 同上 | Eval+maker-checker | `待开发` |
-| `live.orchestrate` | 直播编排 | 同上 | 高风险门；可先 blocked | `待开发` |
-| `platform.adapt` | 平台适配 | 同上 | Harness/规则；写操作仍走 Action | `待开发` |
-| `performance.review` | 数据复盘 | 同上 | 指标口径+Evidence | `待开发` |
+| `material.collect` | 素材采集 | 专业能力 Tool · 代调 | Binding+数据依赖 | `已完成` |
+| `strategy.plan` | 策略规划 | 同上 | Binding+Eval | `已完成` |
+| `copy.generate` | 文案生成 | 同上 | Binding+路由 | `已完成` |
+| `script.compose` | 脚本撰写 | 同上 | Binding | `已完成` |
+| `speech.synthesize` | 语音合成 | 同上 | Provider/Health（D10） | `验收放宽` |
+| `video.compose` | 视频合成 | 同上 | 同上 | `验收放宽` |
+| `content.review` | 内容审核 | 同上 | Eval+maker-checker | `已完成` |
+| `live.orchestrate` | 直播编排 | 同上 | 高风险门；可先 blocked | `已完成` |
+| `platform.adapt` | 平台适配 | 同上 | Harness/规则；写操作仍走 Action | `已完成` |
+| `performance.review` | 数据复盘 | 同上 | 指标口径+Evidence | `已完成` |
 
 ### 9.5 现网空壳判定（对照代码事实）
 
