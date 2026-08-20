@@ -302,7 +302,7 @@
 |---|---|---|---|---|---|
 | `/aip/assist` | 收起上下文、专注模式；链列表 | 「缺少 exact 运行上下文」 | 需 Task/AgentRun URL | **W-J2** | `待开发` |
 | `/aip/studio` | 安装向导、提示词/工具/护栏、试跑、发布 | — | Overlay 已有；视觉仍差 | **W-I4** | 功能壳`已完成` · 视觉`待开发` |
-| `/aip/analyst` | 收起、专注、真实查询、表/图/地图/Raw | — | 需真实 Ontology | **W-J6** | `待开发` |
+| `/aip/analyst` | 收起、专注、真实查询、表/图/地图/Raw | — | 需真实 Ontology | **W-J6** | `已完成` |
 
 ### 2.2 逻辑编排
 
@@ -541,7 +541,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-J3 | J | Evals↔Draft↔Lineage | B2 / §2.4 | `已完成` |
 | W-J4 | J | Observability 导出 | §2.4 | `已完成` |
 | W-J5 | J | Memory 首条权威 | §2.4 | `已完成` |
-| W-J6 | J | Analyst 真实查询 | §2.1 | `待开发` |
+| W-J6 | J | Analyst 真实查询 | §2.1 | `已完成` |
 | W-Z1 | Z | w2 logicRevisionRef | authority | `外部等待` |
 | W-Z2 | Z | 工作台共享技能条 | 57 / P3-2 | `外部等待` |
 | W-Z3 | Z | 不重放密封 Pilot | §6 | `持续` |
@@ -708,7 +708,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-J3** | Evals↔Draft↔Lineage | L | evals/drafts/lineage | 一条真实样例链 | `已完成` |
 | **W-J4** | Observability 导出 | S | observability | 可导出或诚实禁用 | `已完成` |
 | **W-J5** | Memory 首条 | M | memory-governance | >0 或书面空态策略 | `已完成` |
-| **W-J6** | Analyst 查询 | M | analyst | 无演示假数 | `待开发` |
+| **W-J6** | Analyst 查询 | M | analyst | 无演示假数 | `已完成` |
 
 ### 7.11 轨道 Z · 外部门
 
