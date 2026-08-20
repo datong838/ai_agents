@@ -77,7 +77,7 @@
       "ref": "5b71a32"
     }
   ],
-  "evidence_cutoff": "2026-08-20T13:42:38+08:00",
+  "evidence_cutoff": "2026-08-20T13:43:24+08:00",
   "hard_boundaries": [
     "Forward Agnes host is only api.agnes-ai.cn.",
     "Approved domestic text model is agnes-2.5-flash; image model is agnes-image-2.1-flash; video model is agnes-video-v2.0.",
@@ -102,7 +102,7 @@
   "next_steps": [
     "Workshop re-runs formal read-only browser acceptance and regenerates Evidence/Receipt (B4).",
     "Workshop owns eight-menu Catalog→Context→nav filter chain (B5) and W2-01～W2-10 sequential gates (B7).",
-    "AIP: renew text Health TTL; image remains provider_http_error (no forge); W-F6 waits Logic graphs; do not edit w2."
+    "AIP idle-ready: renew text Health TTL on wake; image remains provider_http_error (no forge); W-F6 waits Logic graphs; do not edit w2."
   ],
   "project": "AOS",
   "project_revision": "AOS-000146",
@@ -117,5 +117,5 @@
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
     "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
   ],
-  "updated_at": "2026-08-20T13:42:38+08:00"
+  "updated_at": "2026-08-20T13:43:24+08:00"
 }
