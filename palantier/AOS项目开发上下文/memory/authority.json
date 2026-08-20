@@ -11,7 +11,8 @@
     "W-F4 skill first-batch readiness sealed: 8 published + 10 bindings; remaining skills honestly blocked by LOGIC_GRAPH_MISSING (scheme 69 GREEN).",
     "W-F6 full-publish strategy locked (scheme 80); progress 外部等待 until Logic graphs enter authority.",
     "W-C2 video Provider Health triple-probe GREEN (observation health-agnes-video-qyh-r2-20260820052836930797); W-C1 image still provider_http_error; W-C3 验收放宽 (scheme 81).",
-    "Checklist 59 reconciled: E1–E4/D6/F1–F3/skill-publish rows aligned to sealed GREEN; text Health TTL renewed; image still provider_http_error."
+    "Checklist 59 reconciled: E1–E4/D6/F1–F3/skill-publish rows aligned to sealed GREEN; text Health TTL renewed; image still provider_http_error.",
+    "Checklist 59 secondary rows for W-B1/W-G1/W-G1b/W-G2 reconciled to 已完成; schemes 61–63 marked GREEN."
   ],
   "current_phase": "WKS_DEP_0B_W1_AIP_NEARFIELD_L9_L20_CLOSED",
   "delivery_status": "W1_AIP_L9_L20_SEALED_W2_LOGIC_REVISION_REF_CODE_GREEN",
@@ -69,7 +70,7 @@
       "ref": "5b71a32"
     }
   ],
-  "evidence_cutoff": "2026-08-20T13:32:53+08:00",
+  "evidence_cutoff": "2026-08-20T13:33:53+08:00",
   "hard_boundaries": [
     "Forward Agnes host is only api.agnes-ai.cn.",
     "Approved domestic text model is agnes-2.5-flash; image model is agnes-image-2.1-flash; video model is agnes-video-v2.0.",
@@ -109,5 +110,5 @@
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
     "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
   ],
-  "updated_at": "2026-08-20T13:32:53+08:00"
+  "updated_at": "2026-08-20T13:33:53+08:00"
 }
