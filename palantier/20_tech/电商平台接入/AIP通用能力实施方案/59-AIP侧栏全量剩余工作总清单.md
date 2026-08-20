@@ -496,7 +496,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L5 | L | 画布禁生产旁路 | §8.5 | `已完成` |
 | W-L6 | L | Analyst/经营参谋挂载 Logic | §8.5 | `已完成` |
 | W-L7 | L | Catalog logicRevisionRef additive | §8.5 | `待开发` |
-| W-L8 | L | 画布↔生产契约只读投影 | §8.5 | `待开发` |
+| W-L8 | L | 画布↔生产契约只读投影 | §8.5 | `已完成` |
 | W-L9 | L | Evidence Build Job | §10.4 | `待开发` |
 | W-L10 | L | Evidence 披露/Marking | §10.4 | `待开发` |
 | W-L11 | L | ProductionContext 四合同冻结 | §10.4 | `待开发` |
