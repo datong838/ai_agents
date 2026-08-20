@@ -845,14 +845,14 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 
 | # | 工作台运营能力（场景） | 缺什么就会断 | AIP 侧缺口登记 | 进度 |
 |---:|---|---|---|---|
-| 1 | 日常总控 · 六同事派发/产能/接管 | runnable Binding / Agent readiness | **W-L1** · 联 **W-F\*** | `待开发` |
-| 2 | 日常总控 · 任务下达与 Stage 投影 | LogicGraph revision + Stage compile 映射 | **W-L2** · 联 **W-E\*** | `待开发` |
-| 3 | 场景 A：洞察→内容/达人/媒体→发布→复盘 | Agent Binding + Handoff + 可运行 Graph | **W-L1** · **W-L3** | `待开发` |
+| 1 | 日常总控 · 六同事派发/产能/接管 | runnable Binding / Agent readiness | **W-L1** · 联 **W-F\*** | AIP支撑`已完成` · 工作台验收`外部等待` |
+| 2 | 日常总控 · 任务下达与 Stage 投影 | LogicGraph revision + Stage compile 映射 | **W-L2** · 联 **W-E\*** | AIP支撑`已完成` · 工作台验收`外部等待` |
+| 3 | 场景 A：洞察→内容/达人/媒体→发布→复盘 | Agent Binding + Handoff + 可运行 Graph | **W-L1** · **W-L3** | AIP支撑`已完成` · 工作台验收`外部等待` |
 | 4 | 场景 E：FULL 短视频八职责生产 | 十 Capability exact + assignee + Stage 签名链 | **W-L4** · 联 **W-D\*** / **W-C\*** | `已完成` |
-| 5 | 场景 F：批量 prepare→显式 start | Capability 漂移门 + start 合同字段含 Logic revision | **W-L2** | `待开发` |
-| 6 | 内容活动 · 排期后生产衔接 | 禁止通用 Logic 绕过 ProductionStart | **W-L5**（门禁诚实） | `待开发` |
+| 5 | 场景 F：批量 prepare→显式 start | Capability 漂移门 + start 合同字段含 Logic revision | **W-L2** | AIP支撑`已完成` · 工作台验收`外部等待` |
+| 6 | 内容活动 · 排期后生产衔接 | 禁止通用 Logic 绕过 ProductionStart | **W-L5**（门禁诚实） | AIP支撑`已完成` · 工作台验收`外部等待` |
 | 7 | Media Studio 全生命周期 | 同上 + Artifact/Eval/Issue | **W-L2** · **W-L4** | `已完成` |
-| 8 | W3 公共生产编排（Handoff/AgentRun） | Canonical HandoffEnvelope + AgentRun API 完整可消费 | **W-L3** | `待开发` |
+| 8 | W3 公共生产编排（Handoff/AgentRun） | Canonical HandoffEnvelope + AgentRun API 完整可消费 | **W-L3** | AIP支撑`已完成` · 工作台验收`外部等待` |
 | 9 | W6 职责解析（达人/价格/客户批次） | Logic→Capability 引用 + operational Binding + assignee | **W-L1** · **W-L4** | `已完成` |
 | 10 | 经营参谋 / Analyst 链 | AIP-8 壳 + TaskGraph materialize 可挂 Logic | **W-L6** · 联 **W-J6** | `已完成` |
 
