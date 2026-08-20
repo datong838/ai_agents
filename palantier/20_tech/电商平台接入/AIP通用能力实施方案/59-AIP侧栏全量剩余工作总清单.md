@@ -492,7 +492,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L1 | L | 分栏就绪语义 runnable | §8.5 | `已完成` |
 | W-L2 | L | Logic revision 进 ProductionStart | §8.5 | `已完成` |
 | W-L3 | L | AgentRun/Handoff 可消费面 | §8.5 | `已完成` |
-| W-L4 | L | 十 Capability operational+assignee | §8.5 | `待开发` |
+| W-L4 | L | 十 Capability operational+assignee | §8.5 | `已完成` |
 | W-L5 | L | 画布禁生产旁路 | §8.5 | `已完成` |
 | W-L6 | L | Analyst/经营参谋挂载 Logic | §8.5 | `已完成` |
 | W-L7 | L | Catalog logicRevisionRef additive | §8.5 | `待开发` |
@@ -638,7 +638,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L1** | 分栏就绪 → runnable | L | F/D | 安装≠可派发 | `已完成` |
 | **W-L2** | Logic revision ∈ ProductionStart | L | E | 空图不可 start | `已完成` |
 | **W-L3** | AgentRun/Handoff 可消费 | L | — | 最小 issue→consume | `已完成` |
-| **W-L4** | 十 Capability operational+assignee | L | D/C | 八职责可解析或 blocked | `待开发` |
+| **W-L4** | 十 Capability operational+assignee | L | D/C | 八职责可解析或 blocked | `已完成` |
 | **W-L5** | 画布禁生产旁路 | S | H | 无快捷创建生产 Task | `已完成` |
 | **W-L6** | Analyst 挂载 Logic | M | J6 | 无假数 | `已完成` |
 | **W-L7** | logicRevisionRef additive | S | Z1 | 兼容工作台 109 | `待开发` |
@@ -847,12 +847,12 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | 1 | 日常总控 · 六同事派发/产能/接管 | runnable Binding / Agent readiness | **W-L1** · 联 **W-F\*** | `待开发` |
 | 2 | 日常总控 · 任务下达与 Stage 投影 | LogicGraph revision + Stage compile 映射 | **W-L2** · 联 **W-E\*** | `待开发` |
 | 3 | 场景 A：洞察→内容/达人/媒体→发布→复盘 | Agent Binding + Handoff + 可运行 Graph | **W-L1** · **W-L3** | `待开发` |
-| 4 | 场景 E：FULL 短视频八职责生产 | 十 Capability exact + assignee + Stage 签名链 | **W-L4** · 联 **W-D\*** / **W-C\*** | `待开发` |
+| 4 | 场景 E：FULL 短视频八职责生产 | 十 Capability exact + assignee + Stage 签名链 | **W-L4** · 联 **W-D\*** / **W-C\*** | `已完成` |
 | 5 | 场景 F：批量 prepare→显式 start | Capability 漂移门 + start 合同字段含 Logic revision | **W-L2** | `待开发` |
 | 6 | 内容活动 · 排期后生产衔接 | 禁止通用 Logic 绕过 ProductionStart | **W-L5**（门禁诚实） | `待开发` |
-| 7 | Media Studio 全生命周期 | 同上 + Artifact/Eval/Issue | **W-L2** · **W-L4** | `待开发` |
+| 7 | Media Studio 全生命周期 | 同上 + Artifact/Eval/Issue | **W-L2** · **W-L4** | `已完成` |
 | 8 | W3 公共生产编排（Handoff/AgentRun） | Canonical HandoffEnvelope + AgentRun API 完整可消费 | **W-L3** | `待开发` |
-| 9 | W6 职责解析（达人/价格/客户批次） | Logic→Capability 引用 + operational Binding + assignee | **W-L1** · **W-L4** | `待开发` |
+| 9 | W6 职责解析（达人/价格/客户批次） | Logic→Capability 引用 + operational Binding + assignee | **W-L1** · **W-L4** | `已完成` |
 | 10 | 经营参谋 / Analyst 链 | AIP-8 壳 + TaskGraph materialize 可挂 Logic | **W-L6** · 联 **W-J6** | `已完成` |
 
 ### 8.3 八 Module × AIP 消费（摘要）
@@ -891,7 +891,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L1**  | 分栏就绪语义落地到目录/列表/画布旁路：published / installed / binding / evaluated / operational / **runnable** | 工作台同事卡不再把「已安装」当「可派发」                    | `已完成` |
 | **W-L2**  | LogicGraph **revision** 进入 ProductionStart 合同字段；画布发布后可被 prepare/compile/start 复验引用           | 空图/未发布 revision **不能** start；有证据链       | `已完成` |
 | **W-L3**  | AgentRun + HandoffEnvelope Canonical 可消费面补齐/对账（issue/get/consume…）                           | w2 唯一 SDK 可跑通最小 issue→consume；无第二真源     | `已完成` |
-| **W-L4**  | 十 Capability → Stage/Responsibility 映射所需的 **operational Binding + assignee 归属**（防租户全局误点亮）    | 媒体八职责槽能解析 exact Capability；缺则诚实 blocked | `待开发` |
+| **W-L4**  | 十 Capability → Stage/Responsibility 映射所需的 **operational Binding + assignee 归属**（防租户全局误点亮）    | 媒体八职责槽能解析 exact Capability；缺则诚实 blocked | `已完成` |
 | **W-L5**  | 画布 UI **禁止**「一键创建/批准生产 Task」旁路；只引导 Draft/Evals/生产契约                                          | 与工作台 `32`/`67` 一致                       | `已完成` |
 | **W-L6**  | Analyst/经营参谋可引用的 Logic/Skill 挂载点（与 J6 协同）                                                    | 无假数；缺权威时 blocked                        | `已完成` |
 | **W-L7**  | Catalog 继续 additive 传输 `logicRevisionRef`（不冒充 Binding/授权）                                    | 与工作台 `109` 兼容；strict parser 不炸          | `待开发` |
