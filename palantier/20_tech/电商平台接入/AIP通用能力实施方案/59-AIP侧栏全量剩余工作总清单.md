@@ -494,7 +494,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-L3 | L | AgentRun/Handoff 可消费面 | §8.5 | `待开发` |
 | W-L4 | L | 十 Capability operational+assignee | §8.5 | `待开发` |
 | W-L5 | L | 画布禁生产旁路 | §8.5 | `已完成` |
-| W-L6 | L | Analyst/经营参谋挂载 Logic | §8.5 | `待开发` |
+| W-L6 | L | Analyst/经营参谋挂载 Logic | §8.5 | `已完成` |
 | W-L7 | L | Catalog logicRevisionRef additive | §8.5 | `待开发` |
 | W-L8 | L | 画布↔生产契约只读投影 | §8.5 | `待开发` |
 | W-L9 | L | Evidence Build Job | §10.4 | `待开发` |
@@ -640,7 +640,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L3** | AgentRun/Handoff 可消费 | L | — | 最小 issue→consume | `待开发` |
 | **W-L4** | 十 Capability operational+assignee | L | D/C | 八职责可解析或 blocked | `待开发` |
 | **W-L5** | 画布禁生产旁路 | S | H | 无快捷创建生产 Task | `已完成` |
-| **W-L6** | Analyst 挂载 Logic | M | J6 | 无假数 | `待开发` |
+| **W-L6** | Analyst 挂载 Logic | M | J6 | 无假数 | `已完成` |
 | **W-L7** | logicRevisionRef additive | S | Z1 | 兼容工作台 109 | `待开发` |
 | **W-L8** | 画布↔契约只读投影 | M | E | 空表诚实 | `待开发` |
 | **W-L9** | EvidenceBundle Build Job | L | E/J | 服务端 required-facts coverage；禁调用方直填冒充 Bundle | `待开发` |
@@ -853,7 +853,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | 7 | Media Studio 全生命周期 | 同上 + Artifact/Eval/Issue | **W-L2** · **W-L4** | `待开发` |
 | 8 | W3 公共生产编排（Handoff/AgentRun） | Canonical HandoffEnvelope + AgentRun API 完整可消费 | **W-L3** | `待开发` |
 | 9 | W6 职责解析（达人/价格/客户批次） | Logic→Capability 引用 + operational Binding + assignee | **W-L1** · **W-L4** | `待开发` |
-| 10 | 经营参谋 / Analyst 链 | AIP-8 壳 + TaskGraph materialize 可挂 Logic | **W-L6** · 联 **W-J6** | `待开发` |
+| 10 | 经营参谋 / Analyst 链 | AIP-8 壳 + TaskGraph materialize 可挂 Logic | **W-L6** · 联 **W-J6** | `已完成` |
 
 ### 8.3 八 Module × AIP 消费（摘要）
 
@@ -893,7 +893,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-L3**  | AgentRun + HandoffEnvelope Canonical 可消费面补齐/对账（issue/get/consume…）                           | w2 唯一 SDK 可跑通最小 issue→consume；无第二真源     | `待开发` |
 | **W-L4**  | 十 Capability → Stage/Responsibility 映射所需的 **operational Binding + assignee 归属**（防租户全局误点亮）    | 媒体八职责槽能解析 exact Capability；缺则诚实 blocked | `待开发` |
 | **W-L5**  | 画布 UI **禁止**「一键创建/批准生产 Task」旁路；只引导 Draft/Evals/生产契约                                          | 与工作台 `32`/`67` 一致                       | `已完成` |
-| **W-L6**  | Analyst/经营参谋可引用的 Logic/Skill 挂载点（与 J6 协同）                                                    | 无假数；缺权威时 blocked                        | `待开发` |
+| **W-L6**  | Analyst/经营参谋可引用的 Logic/Skill 挂载点（与 J6 协同）                                                    | 无假数；缺权威时 blocked                        | `已完成` |
 | **W-L7**  | Catalog 继续 additive 传输 `logicRevisionRef`（不冒充 Binding/授权）                                    | 与工作台 `109` 兼容；strict parser 不炸          | `待开发` |
 | **W-L8**  | 与 **W-E\*** 合流：StageTemplate/ResponsibilityPlan 非空后，画布侧展示「可被哪类生产 Profile 引用」只读投影             | 空表时诚实；有表时可点验                            | `待开发` |
 | **W-L9**  | EvidenceBundle **Build Job** + 服务端 required-facts coverage                                   | Job 产出 Bundle；coverage 服务端算；禁直填         | `待开发` |
