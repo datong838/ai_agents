@@ -266,7 +266,7 @@
 | 4 | `/aip/logic` | 逻辑画布 | `aip-logic.html` | **大**：Tab/三栏 + **运营支撑禁空壳** | **W-H1～H3** · **W-L1～L8** | `待开发` |
 | 5 | `/aip/tools` | 智能体工具面板 | `aip-tools.html` | **大**：现网偏全局演示壳；缺六同事分实例工具 + 十类专业能力代调 | **W-I2**（视觉）· **W-T1～T8**（§9） | `待开发` |
 | 6 | `/aip/maturity` | 成熟度楼梯 | `aip-maturity.html` | 中：阶梯可视化 | **W-I3** | `已完成` |
-| 7 | `/aip/production-contracts` | 生产契约 | （契约运维台；无独立同名 html 时按平台密表风格） | 中：表单/禁用门分区 | **W-I11** | `待开发` |
+| 7 | `/aip/production-contracts` | 生产契约 | （契约运维台；无独立同名 html 时按平台密表风格） | 中：表单/禁用门分区 | **W-I11** | `已完成` |
 | 8 | `/aip/capabilities` | 智能体插件 | `aip-capabilities.html` | 中～大：卡片八维可读 | **W-I1**（联 **W-B1**） | `待开发` |
 | 9 | `/aip/agent-registry` | 智能体目录 | `agent-registry.html` | **大**：市场壳 vs 绑定台 | **W-G1**（绑定台）+ **W-G1b**（市场页）；**W-G0** 已裁决 | 裁决`已完成` · 落地`待开发` |
 | 10 | `/aip/agents` | 智能体列表 | `agents.html` | 中：卡片网格密度 | **W-G2** | `待开发` |
@@ -527,7 +527,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-I8 | I | capacity 视觉 | §1.4 #21 | `已完成` |
 | W-I9 | I | assist 视觉 | §1.4 #1 | `已完成` |
 | W-I10 | I | analyst 视觉 | §1.4 #3 | `已完成` |
-| W-I11 | I | production-contracts 视觉 | §1.4 #7 | `待开发` |
+| W-I11 | I | production-contracts 视觉 | §1.4 #7 | `已完成` |
 | W-I12 | I | agent-import 视觉 | §1.4 #11 | `已完成` |
 | W-I13 | I | capability-import 视觉 | §1.4 #12 | `已完成` |
 | W-I14 | I | evals 视觉 | §1.4 #13 | `已完成` |

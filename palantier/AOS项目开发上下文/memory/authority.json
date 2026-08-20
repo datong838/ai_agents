@@ -5,7 +5,9 @@
     "AIP menu G1-G8 repairs + versioned prompt/tools/guardrails overlay + Studio install wizard merged at 5318a8f.",
     "AIP near-field W-L9～L20 exact authorities sealed on m1/w1-aip@8e51438 (Evidence/ProductionContext/HandoffDecision/Eval revoke/ResearchJob/EffectReview/ToolBinding resolver).",
     "Illegal AIP-59 delivery ops notes repaired; memory-validate GREEN.",
-    "W2 Catalog logicRevisionRef code-control GREEN at w2-workshop@c827928 (Delivery Receipt workshop-w2-catalog-logic-revision-ref-20260819); browser instance acceptance still pending."
+    "W2 Catalog logicRevisionRef code-control GREEN at w2-workshop@c827928 (Delivery Receipt workshop-w2-catalog-logic-revision-ref-20260819); browser instance acceptance still pending.",
+    "W-E4 Review/Artifact Relation bootstrap sealed on m1/w1-aip@d4b2673 (scheme 68 GREEN).",
+    "W-I11 production-contracts visual densify sealed (platform 3b78bd0); checklist 59 rows reconciled to 已完成; scheme 70 GREEN."
   ],
   "current_phase": "WKS_DEP_0B_W1_AIP_NEARFIELD_L9_L20_CLOSED",
   "delivery_status": "W1_AIP_L9_L20_SEALED_W2_LOGIC_REVISION_REF_CODE_GREEN",
@@ -25,9 +27,21 @@
     {
       "kind": "ref",
       "ref": "/Users/ddt/work/projects/ai_agent/aos-platform-w1-aip/.evidence/aip/2026-08-20-w-l20-toolbinding-resolver/green.json"
+    },
+    {
+      "kind": "commit",
+      "ref": "d4b2673"
+    },
+    {
+      "kind": "ref",
+      "ref": "/Users/ddt/work/projects/ai_agent/aos-platform-w1-aip/.evidence/aip/2026-08-20-w-e4-review-relation/green.json"
+    },
+    {
+      "kind": "ref",
+      "ref": "/Users/ddt/work/projects/ai_agent/aos-platform-w1-aip/.evidence/aip/2026-08-20-w-i11-production-contracts-visual/browser-accept.json"
     }
   ],
-  "evidence_cutoff": "2026-08-20T13:20:00+08:00",
+  "evidence_cutoff": "2026-08-20T13:22:11+08:00",
   "hard_boundaries": [
     "Forward Agnes host is only api.agnes-ai.cn.",
     "Approved domestic text model is agnes-2.5-flash; image model is agnes-image-2.1-flash; video model is agnes-video-v2.0.",
@@ -57,8 +71,8 @@
   "project_revision": "AOS-000146",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "m1": "8e51438",
-    "w1-aip": "8e51438",
+    "m1": "d4b2673",
+    "w1-aip": "d4b2673",
     "w2-workshop": "c827928"
   },
   "source_files": [
@@ -66,5 +80,5 @@
     "docs/palantier/AOS项目开发上下文/01-当前项目状态.md",
     "docs/palantier/AOS项目开发上下文/06-当前执行检查点.md"
   ],
-  "updated_at": "2026-08-20T13:20:00+08:00"
+  "updated_at": "2026-08-20T13:22:11+08:00"
 }
