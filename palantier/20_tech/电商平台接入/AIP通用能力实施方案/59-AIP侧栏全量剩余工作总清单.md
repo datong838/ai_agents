@@ -82,7 +82,7 @@
 | B2 | Drafts 空 | **W-J3** | `已完成` |
 | B3 | 生产契约表空 | **W-E1～E4** | `进行中` |
 | B4 | 能力「未绑定」 | **W-DONE-58** + **W-B1** | Binding`已完成` · 文案`待开发` |
-| B5 | 多数技能未发布/未绑定 | **W-F4～F6** | `待开发` |
+| B5 | 多数技能未发布/未绑定 | **W-F4～F6** | F4`已完成` · F5延后 · F6`待开发` |
 | B6 | agents 列表不外呼 | **W-G2**（仅视觉） | 设计`已完成` · 视觉`待开发` |
 | C1 | 无技能发布台 | **W-F1～F3** | `待开发` |
 | C2 | 刷新不重评 | **W-DONE-55** + **W-A0** | 代码`已完成` · 现网`已完成` |
@@ -261,13 +261,13 @@
 | # | 现网路由 | 中文名 | Foundry 蓝图 | 视觉差距 | 视觉波次 | 进度 |
 |---:|---|---|---|---|---|---|
 | 1 | `/aip/assist` | AIP 助手 | `aip-assist.html` | 中：上下文区/空态密度 | **W-I9** | `已完成` |
-| 2 | `/aip/studio` | 对话机器人 | （Studio/市场向；可对 `workshop-aip-chat.html` 密度） | 中：页签与面板密度 | **W-I4** | `待开发` |
+| 2 | `/aip/studio` | 对话机器人 | （Studio/市场向；可对 `workshop-aip-chat.html` 密度） | 中：页签与面板密度 | **W-I4** | `已完成` |
 | 3 | `/aip/analyst` | AIP 分析师 | `aip-analyst.html` | 中：查询/证据/可视化分区 | **W-I10** | `已完成` |
 | 4 | `/aip/logic` | 逻辑画布 | `aip-logic.html` | **大**：Tab/三栏 + **运营支撑禁空壳** | **W-H1～H3** · **W-L1～L8** | `待开发` |
-| 5 | `/aip/tools` | 智能体工具面板 | `aip-tools.html` | **大**：现网偏全局演示壳；缺六同事分实例工具 + 十类专业能力代调 | **W-I2**（视觉）· **W-T1～T8**（§9） | `待开发` |
+| 5 | `/aip/tools` | 智能体工具面板 | `aip-tools.html` | **大**：现网偏全局演示壳；缺六同事分实例工具 + 十类专业能力代调 | **W-I2**（视觉）· **W-T1～T8**（§9） | 视觉`已完成` · T`待开发` |
 | 6 | `/aip/maturity` | 成熟度楼梯 | `aip-maturity.html` | 中：阶梯可视化 | **W-I3** | `已完成` |
 | 7 | `/aip/production-contracts` | 生产契约 | （契约运维台；无独立同名 html 时按平台密表风格） | 中：表单/禁用门分区 | **W-I11** | `已完成` |
-| 8 | `/aip/capabilities` | 智能体插件 | `aip-capabilities.html` | 中～大：卡片八维可读 | **W-I1**（联 **W-B1**） | `待开发` |
+| 8 | `/aip/capabilities` | 智能体插件 | `aip-capabilities.html` | 中～大：卡片八维可读 | **W-I1**（联 **W-B1**） | `已完成` |
 | 9 | `/aip/agent-registry` | 智能体目录 | `agent-registry.html` | **大**：市场壳 vs 绑定台 | **W-G1**（绑定台）+ **W-G1b**（市场页）；**W-G0** 已裁决 | 裁决`已完成` · 落地`待开发` |
 | 10 | `/aip/agents` | 智能体列表 | `agents.html` | 中：卡片网格密度 | **W-G2** | `待开发` |
 | 11 | `/aip/agent-import` | 智能体导入 | `aip-agent-import.html` | 中：向导步骤条/校验态 | **W-I12** | `已完成` |
@@ -479,7 +479,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | W-F1 | F | 技能发布台方案定稿 | 56 / C1 | `已完成` |
 | W-F2 | F | 发布 API | 56 | `已完成` |
 | W-F3 | F | 发布台 UI | 56 | `已完成` |
-| W-F4 | F | 技能首批 | B5 / P3-3 | `待开发` |
+| W-F4 | F | 技能首批 | B5 / P3-3 | `已完成` |
 | W-F5 | F | 技能二批 | B5 | `延后` |
 | W-F6 | F | 技能收尾策略 | B5 | `待开发` |
 | W-G0 | G | 目录视觉产品拍板 | §0.4 D1 | `已完成` |
@@ -608,7 +608,7 @@ W-Z1(w2 logicRevisionRef) · W-Z2(Workshop 共享条) ← 本会话禁止改 w2
 | **W-F1** | 发布台方案定稿 | AIP/PROD | S | §0.4 D3/D4 | `/aip/skill-publish` + 项目管理员可发布 | 写入 56 APPROVED | `已完成` |
 | **W-F2** | 发布 API | AIP | M | F1 | publish + 测试 | GET/POST 已挂；UI 对齐 exact refs 防假发 | `已完成` |
 | **W-F3** | 发布台 UI | AIP | M | F2 | 侧栏页 + 中文列表 + 绑定向导 | 与目录 lifecycle 一致 | `已完成` |
-| **W-F4** | 技能首批 | AIP | L | F3 | 每角色+1～2 | 绑定比例升 | `待开发` |
+| **W-F4** | 技能首批 | AIP | L | F3 | 每角色+1～2 | 绑定比例升 | `已完成` |
 | **W-F5** | 技能二批 | AIP | L | F4 | 内容/投放向 | 同上 | `延后` |
 | **W-F6** | 收尾至全量 publish | AIP | XL | F5 | **D5：全量 publish+可绑定** | ~37 策略闭环 | `待开发` |
 
