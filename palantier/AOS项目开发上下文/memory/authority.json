@@ -1,43 +1,42 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W3-12A1 strict contracts and tenant-safe append-only schema at m1@db44392",
-    "W3-12A2 base AggregationPolicy/OperationCase Store at m1@423468c",
-    "W3-12A3 classification, CaseEvent, membership, SLA and kill append Store at m1@c81053e; cumulative 157/157 GREEN"
+    "W3-12A full code/control authority at m1@db44392,m1@423468c,m1@c81053e",
+    "W2-01B1 tenant-safe OperationCase reader and exact authority slice at m1@21c8a80",
+    "W2-01B1 targeted 15/15 and cumulative relevant 159/159 tests GREEN"
   ],
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "W3_12A_OPERATION_CASE_AUTHORITY_CODE_GREEN_W2_01B_NEXT",
+  "delivery_status": "W2_01B1_OPERATION_CASE_SLICE_GREEN_TRANSACTION_SLICES_NEXT",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/w3-12a3-operation-decision-append-code-20260824.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/w2-01b-operation-case-slice-code-20260824.json"
     },
     {
       "kind": "commit",
-      "ref": "m1@c81053e"
+      "ref": "m1@21c8a80"
     }
   ],
-  "evidence_cutoff": "2026-08-24T06:19:02+08:00",
+  "evidence_cutoff": "2026-08-24T06:23:45+08:00",
   "hard_boundaries": [
-    "No real migration execution, business data write, provider effect or release without its explicit gate",
-    "W3-12A code/control authority GREEN is not operational runtime or browser GREEN"
+    "No real migration execution, business data write, provider effect or release without explicit gate",
+    "OperationCase slice GREEN is not full seven-slice or browser GREEN"
   ],
   "incomplete": [
-    "W2-01B unified seven-slice operations view and W3-12B commands/browser",
-    "Real w3_012 database migration was not performed"
+    "Orders, orderLines, inventory, shipments and payments read composition",
+    "Canonical aftersales original source and W3-12B commands/browser"
   ],
-  "last_green_gate": "W3_12A_OPERATION_CASE_AUTHORITY_CODE_GREEN",
-  "next_gate": "W2_01B_UNIFIED_OPERATIONS_VIEW_CODE",
+  "last_green_gate": "W2_01B1_OPERATION_CASE_SLICE_CODE_GREEN",
+  "next_gate": "W2_01B2_TRANSACTION_INVENTORY_SLICES_CODE",
   "next_steps": [
-    "Consume exact W3-12A authority contracts and Store from W2-01B operationCases slice",
-    "Complete seven-slice strict view while keeping unavailable real aftersales source structurally blocked",
-    "Then implement W3-12B command/API/SDK/UI/browser closure"
+    "Implement bounded tenant-safe ecom_object readers for Order, OrderLine, Shipment and Payment and compose existing Inventory reader",
+    "Preserve join/count ledger and keep aftersales structurally blocked until canonical originals exist"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000163",
+  "project_revision": "AOS-000164",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "c81053e"
+    "aos-platform": "21c8a80"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -47,5 +46,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T06:19:23+08:00"
+  "updated_at": "2026-08-24T06:24:06+08:00"
 }
