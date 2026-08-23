@@ -3,46 +3,42 @@
   "completed": [
     "W2-01A strict operations contract and GET-only backend shell at m1@5b0e715",
     "D0 ProductSku inventory semantic revision and tenant-bound Inventory/AfterSalesEvent authority descriptors at m1@5282b7b",
-    "D0 targeted 9/9 and cumulative Data/Workshop 139/139 tests GREEN; checklist remains 22/96"
+    "D0 tenant-safe bounded ProductSku inventory reader code/control at m1@286ead8; targeted 7/7 and cumulative 146/146 tests GREEN"
   ],
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "D0_SEMANTIC_AUTHORITY_GREEN_REAL_READERS_NEXT",
+  "delivery_status": "D0_INVENTORY_READER_CODE_GREEN_AFTERSALES_CONTRACT_ONLY_W3_12A_NEXT",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/d0-inventory-aftersales-authority-code-20260824.json"
-    },
-    {
-      "kind": "receipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/d0-workshop-checklist-reconcile-20260824.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/d0-inventory-reader-code-20260824.json"
     },
     {
       "kind": "commit",
-      "ref": "m1@5282b7b"
+      "ref": "m1@286ead8"
     }
   ],
-  "evidence_cutoff": "2026-08-24T04:36:06+08:00",
+  "evidence_cutoff": "2026-08-24T04:42:27+08:00",
   "hard_boundaries": [
-    "No migration, real business-data write, Pipeline replay, provider side effect or release in D0 reader work without its explicit gate",
-    "Semantic authority GREEN does not imply business reader or operational GREEN"
+    "No real business-data write, Pipeline replay, provider side effect, migration or release without the corresponding explicit gate",
+    "Inventory reader code/control GREEN is not real-data or operational GREEN; AfterSalesEvent contract-only is not a reader"
   ],
   "incomplete": [
-    "D0 tenant-safe Inventory and aftersales business readers with current SourceReadiness",
-    "W3-12A OperationCase authority",
-    "W2-01B seven-slice real composition and W3-12B command/browser closure"
+    "Real org-org/dev-project inventory data probe and current SourceReadiness evidence were not run in this code-only subwave",
+    "AfterSalesEvent remains contract-only until a canonical original event source exists; no payload may be invented",
+    "W3-12A OperationCase authority and W2-01B seven-slice real composition remain pending"
   ],
-  "last_green_gate": "DATA_D0_INVENTORY_AFTERSALES_SEMANTIC_AUTHORITY_GREEN",
-  "next_gate": "D0_TENANT_SAFE_REAL_READERS",
+  "last_green_gate": "DATA_D0_TENANT_SAFE_INVENTORY_READER_CODE_GREEN",
+  "next_gate": "W3_12A_OPERATION_CASE_AUTHORITY_CODE",
   "next_steps": [
-    "Implement tenant-safe read ports/adapters for existing ProductSku originals without Pipeline replay or business writes",
-    "Keep aftersales structurally blocked until an approved original event source is readable; do not invent payload",
-    "Then implement W3-12A and return to W2-01B"
+    "Design and implement W3-12A OperationCase authority without depending on W2-01B runtime",
+    "Keep the inventory reader internal and read-only until an explicit real-data probe gate is opened",
+    "Return to W2-01B only after exact W3-12A authority Receipt exists"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000159",
+  "project_revision": "AOS-000160",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "5282b7b"
+    "aos-platform": "286ead8"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -52,5 +48,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T04:36:29+08:00"
+  "updated_at": "2026-08-24T04:43:48+08:00"
 }
