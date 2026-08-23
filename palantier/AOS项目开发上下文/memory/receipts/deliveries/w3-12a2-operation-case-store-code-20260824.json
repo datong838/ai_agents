@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000161",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_operation_case_store.py",
+    "services/aos-api/tests/test_ecommerce_operation_case_store.py"
+  ],
+  "commits": [
+    "423468c"
+  ],
+  "completed_at": "2026-08-24T06:15:42+08:00",
+  "completed_revision": "AOS-000161",
+  "result": "W3_12A2_OPERATION_CASE_STORE_CODE_GREEN",
+  "risks": [
+    "Internal Store code/control GREEN only; no real migration or business write; classification/event/membership/SLA/kill append methods remain next subwave"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w3-12a2-operation-case-store-code-20260824",
+  "verification": [
+    "RED ModuleNotFoundError; targeted 4/4 passed; cumulative relevant 155/155 passed with 7 existing warnings; compileall GREEN; Alembic single head w3_012; git diff check GREEN"
+  ]
+}
