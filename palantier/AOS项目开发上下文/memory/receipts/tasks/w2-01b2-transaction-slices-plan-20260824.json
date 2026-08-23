@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000164",
+  "created_at": "2026-08-24T06:24:32+08:00",
+  "excluded_scope": [
+    "real business data; mutation API; external side effects; release"
+  ],
+  "expected_outputs": [
+    "W2-01B2 generic transaction exact-ref reader, Inventory composition, count ledger and test plan"
+  ],
+  "lease_expires_at": "2026-08-24T10:00:00+08:00",
+  "owner": "prime-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-01b2-transaction-slices-plan-20260824"
+}

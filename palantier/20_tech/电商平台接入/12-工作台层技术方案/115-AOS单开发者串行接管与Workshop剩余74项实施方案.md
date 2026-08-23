@@ -134,6 +134,14 @@ W3-12A exact code/control Receipt 到位后，W2-01B 首提交只关闭 Operatio
 
 文件范围：`ecommerce_operation_case_store.py`、`ecommerce_workshop_operations.py`、`ecommerce_workshop_operations_contracts.py` 及三者现有测试。完成 B1 后继续 B2 订单/订单行/库存/履约/支付只读 reader 组合；售后原始事件在 canonical source 缺失时保持 blocked，不制造事件。
 
+#### 3.3.4 W2-01B2 transaction 与 Inventory slices
+
+新增 `ecommerce_operations_object_reader.py` 和测试，从同租户 `ecom_object` 只读取 Order、OrderLine、Shipment、Payment 的 `external_id/object_type/source_updated_at/payload_hash`，固定 `REPEATABLE READ READ ONLY`、cutoff、确定性排序和每类上限；绝不读取或返回 properties、地址、支付、客户、Provider payload。Inventory 复用已 GREEN 的 `EcommerceInventoryReader`，不得另建库存真源。
+
+`ecommerce_workshop_operations.py` 通过构造器注入两个 reader，将 orders/orderLines/inventory/shipments/payments 转换为 exact authority refs 与 count ledger；reader 成功且为空是合法 `ready`，reader 错误是结构化 `blocked`。OrderLine join 守恒在后续组合 reader 中显式记录 unmatched/conflicted，当前 exact-ref 子波不得用 `0` 假装已校验 join。afterSalesEvents 继续 blocked，OperationCases 保持 B1 行为。
+
+文件范围：新 reader 与测试、`ecommerce_workshop_operations.py`、`ecommerce_workshop_operations_contracts.py` 及其测试。只做 fake-connection 与 API contract 验证，不探测真实业务库、不新增 mutation、页面或外部副作用。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
