@@ -1,48 +1,48 @@
 {
   "completed": [
-    "S0 sole-developer takeover plan and acyclic DAG sealed",
-    "W2-01A strict seven-slice Operations DTO and GET-only shell committed at m1@5b0e715",
-    "W2-01A targeted 7/7 and cumulative Workshop API 22/22 tests GREEN"
+    "W2-01A strict operations contract and GET-only backend shell at m1@5b0e715",
+    "D0 ProductSku inventory semantic revision and tenant-bound Inventory/AfterSalesEvent authority descriptors at m1@5282b7b",
+    "D0 targeted 9/9 and cumulative Data/Workshop 139/139 tests GREEN; checklist remains 22/96"
   ],
-  "content_hash": "sha256:a48b8a86b465fa94f62a7f321b6061603bcedeb97f1d906fa5cb0e9b0c3ff356",
+  "content_hash": "sha256:304b3ebcbc23e7ce762c0fba835ad710e766a58e29566b5257b277693d0284b2",
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "W2_01A_STRICT_OPERATIONS_SHELL_GREEN_D0_READERS_NEXT",
+  "delivery_status": "D0_SEMANTIC_AUTHORITY_GREEN_REAL_READERS_NEXT",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/w2-01a-strict-contract-api-shell-20260824.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/d0-inventory-aftersales-authority-code-20260824.json"
     },
     {
       "kind": "receipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/w2-01a-openapi-contract-update-20260824.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/d0-workshop-checklist-reconcile-20260824.json"
     },
     {
       "kind": "commit",
-      "ref": "m1@5b0e715"
+      "ref": "m1@5282b7b"
     }
   ],
-  "generated_at": "2026-08-24T04:27:14+08:00",
+  "generated_at": "2026-08-24T04:36:29+08:00",
   "hard_boundaries": [
-    "No real business-data mutation, provider side effect, migration, release, secret or PII without its explicit gate",
-    "Blocked slices must remain structurally blocked until exact authority Receipt is present"
+    "No migration, real business-data write, Pipeline replay, provider side effect or release in D0 reader work without its explicit gate",
+    "Semantic authority GREEN does not imply business reader or operational GREEN"
   ],
   "incomplete": [
-    "D0 exact Inventory semantic revision and aftersales Event/Object authority readers",
+    "D0 tenant-safe Inventory and aftersales business readers with current SourceReadiness",
     "W3-12A OperationCase authority",
-    "W2-01B seven-slice real read-model composition and browser acceptance"
+    "W2-01B seven-slice real composition and W3-12B command/browser closure"
   ],
-  "last_green_gate": "W2_01A_STRICT_CONTRACT_GET_ONLY_API_SHELL_GREEN",
-  "next_gate": "D0_EXACT_INVENTORY_AFTERSALE_AUTHORITY_READERS",
+  "last_green_gate": "DATA_D0_INVENTORY_AFTERSALES_SEMANTIC_AUTHORITY_GREEN",
+  "next_gate": "D0_TENANT_SAFE_REAL_READERS",
   "next_steps": [
-    "Implement D0 exact Inventory and aftersales read authorities on m1 with positive org-org/dev-project and negative dev-org/dev-project isolation evidence",
-    "Bind D0 readers into W2-01A without synthetic empty data",
-    "Continue W3-12A then W2-01B in fixed serial DAG"
+    "Implement tenant-safe read ports/adapters for existing ProductSku originals without Pipeline replay or business writes",
+    "Keep aftersales structurally blocked until an approved original event source is readable; do not invent payload",
+    "Then implement W3-12A and return to W2-01B"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000158",
+  "project_revision": "AOS-000159",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "5b0e715"
+    "aos-platform": "5282b7b"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
