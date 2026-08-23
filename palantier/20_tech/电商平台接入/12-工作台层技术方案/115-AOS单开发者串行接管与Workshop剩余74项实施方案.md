@@ -110,6 +110,19 @@ W3-12A 独立登记 migration Lease，实现 append-only Case/Decision/Policy au
 
 迁移 Lease 仅覆盖上述 migration 文件与测试，不授权执行 upgrade、写入真实租户或发布。
 
+#### 3.3.2 W3-12A2 authority Store
+
+A2 新增 `ecommerce_operation_case_store.py` 与 `test_ecommerce_operation_case_store.py`，首个安全闭环只开放内部 Python Store，不注册 router。Store 固定使用服务端 `TenantScope`，所有 publish/create/append 请求先计算 canonical request hash，再按 `(org_id, project_id, operation, idempotency_key)` 查 Receipt：同 key 同 payload 返回 exact result ref，同 key 异 payload失败关闭。
+
+第一提交实现 AggregationPolicy publish/get 与 OperationCase create/get：head 行 `FOR UPDATE`，`expectedVersion=0` 仅允许首次创建，后续 revision 必须严格递增；Case 成员只接收同租户 exact originals，去重后校验 `attached + unmatched + conflicted = original total`，不保存 original payload。第二提交追加 classification、CaseEvent、membership、SLA 与 kill Decision；任何旧/乱序/重复 original 不得重复成员或 CaseEvent sequence，拆并必须通过合同层的 predecessor/successor 和多重集合守恒。
+
+测试使用 fake tenant connection，不连接真实数据库，覆盖：正向 `org-org/dev-project`、负向 `dev-org/dev-project` 参数独立；expectedVersion 冲突；同 key replay；同 key 异 payload冲突；跨租户 original 拒绝；重复 member 拒绝；Receipt 不含 PII、Secret、支付、地址或 Provider payload。文件范围固定为：
+
+- `services/aos-api/aos_api/ecommerce_operation_case_store.py`
+- `services/aos-api/tests/test_ecommerce_operation_case_store.py`
+
+A2 不执行 migration、不新增 API/页面、不写真实业务数据；Store 与 A1 累计 GREEN 后才允许签发 W3-12A exact authority Receipt。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000161",
+  "created_at": "2026-08-24T04:53:01+08:00",
+  "excluded_scope": [
+    "real migration execution; real business data; external API/SDK/Web; external side effects; release"
+  ],
+  "expected_outputs": [
+    "W3-12A2 authority Store file plan, invariants, tests and no-effect boundaries"
+  ],
+  "lease_expires_at": "2026-08-24T08:00:00+08:00",
+  "owner": "prime-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12a2-operation-case-store-plan-20260824"
+}
