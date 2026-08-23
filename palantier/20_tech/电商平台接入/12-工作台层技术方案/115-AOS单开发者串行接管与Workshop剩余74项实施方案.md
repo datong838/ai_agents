@@ -123,6 +123,17 @@ A2 新增 `ecommerce_operation_case_store.py` 与 `test_ecommerce_operation_case
 
 A2 不执行 migration、不新增 API/页面、不写真实业务数据；Store 与 A1 累计 GREEN 后才允许签发 W3-12A exact authority Receipt。
 
+#### 3.3.3 W2-01B1 OperationCase slice 消费
+
+W3-12A exact code/control Receipt 到位后，W2-01B 首提交只关闭 OperationCase authority 缺口：
+
+- 在 `ecommerce_operation_case_store.py` 增加 tenant-bound、`REPEATABLE READ READ ONLY`、bounded current-head reader，返回 strict `OperationCaseRevision` exact refs；不执行 migration、不创建 Case；
+- `ecommerce_workshop_operations.py` 通过依赖注入消费该 reader；有 canonical Case 时 OperationCase slice 为 `ready`，无 Case 时仍是合法空 `ready`，但 reader/表不可用、hash 漂移或 scope 错误必须结构化 `blocked`；
+- `ecommerce_workshop_operations_contracts.py` 放宽 W2-01A 的全零 shell 限制，使 page/count 由七切片 count ledger 推导，禁止客户端 synthetic cursor；其余 orders/orderLines/inventory/shipments/payments/aftersaleEvents 在各自 reader 接入前继续诚实 blocked；
+- 测试覆盖正向 tenant、负向 canary、空 authority、Case exact ref/count、reader failure、scope 注入拒绝和七切片顺序。页面数据仍未接入，因此本提交不做浏览器正向完成声明。
+
+文件范围：`ecommerce_operation_case_store.py`、`ecommerce_workshop_operations.py`、`ecommerce_workshop_operations_contracts.py` 及三者现有测试。完成 B1 后继续 B2 订单/订单行/库存/履约/支付只读 reader 组合；售后原始事件在 canonical source 缺失时保持 blocked，不制造事件。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
