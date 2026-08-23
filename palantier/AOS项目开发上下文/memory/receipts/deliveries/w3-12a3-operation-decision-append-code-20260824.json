@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000162",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_operation_case_store.py",
+    "services/aos-api/tests/test_ecommerce_operation_case_store.py"
+  ],
+  "commits": [
+    "c81053e"
+  ],
+  "completed_at": "2026-08-24T06:19:02+08:00",
+  "completed_revision": "AOS-000162",
+  "result": "W3_12A_OPERATION_CASE_AUTHORITY_CODE_GREEN",
+  "risks": [
+    "Full W3-12A code/control authority is GREEN; real migration and business writes were not performed; API/SDK/Web commands remain W3-12B"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w3-12a3-operation-decision-append-code-20260824",
+  "verification": [
+    "Targeted contracts/store/migration 11/11 passed; cumulative relevant 157/157 passed with 7 existing warnings; compileall GREEN; Alembic single head w3_012; git diff check GREEN"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "base_revision": "AOS-000162",
+  "created_at": "2026-08-24T06:16:27+08:00",
+  "excluded_scope": [
+    "real migration execution; real business data; API/SDK/Web; external side effects; release"
+  ],
+  "expected_outputs": [
+    "Append-only classification, CaseEvent, membership, SLA and kill authority Store methods with idempotency and conservation tests"
+  ],
+  "lease_expires_at": "2026-08-24T12:00:00+08:00",
+  "owner": "prime-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_operation_case_store.py",
+    "services/aos-api/tests/test_ecommerce_operation_case_store.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12a3-operation-decision-append-code-20260824"
+}
