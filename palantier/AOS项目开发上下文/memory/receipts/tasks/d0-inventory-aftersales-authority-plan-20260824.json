@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000158",
+  "created_at": "2026-08-24T04:29:08+08:00",
+  "excluded_scope": [
+    "real-business-data",
+    "provider-side-effects",
+    "migrations",
+    "release"
+  ],
+  "expected_outputs": [
+    "D0-file-level-plan-and-test-gates"
+  ],
+  "lease_expires_at": "2026-08-24T11:30:00+08:00",
+  "owner": "codex-aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "d0-inventory-aftersales-authority-plan-20260824"
+}

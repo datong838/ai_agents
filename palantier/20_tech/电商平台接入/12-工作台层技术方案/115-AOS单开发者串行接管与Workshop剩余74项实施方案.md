@@ -47,6 +47,18 @@ D0 Data exact authority
 
 冻结 ProductSku/Inventory 语义 revision、售后 Event/Object authority、exact ref/hash、正负租户证据；不复制业务 payload。若 P01 或其他 SourceReadiness 运行失败，先诊断并修复系统代码/配置，在无真实运行授权时不得重放 Pipeline，而由 W2-01A 对应 slice 诚实 blocked。
 
+#### 3.1.1 D0-A 文件级实施清单（2026-08-24）
+
+本子波不新增数据库对象，不执行 Pipeline，不读取真实业务 payload，只闭合可由代码权威证明的语义合同：
+
+- `ecom_core_models.py`：把 `stock`、`stockAlarm` 冻结为 ProductSku 可选规范属性，库存数量继续属于 ProductSku original，不创建第二 Inventory 真源；
+- `ec_normalizer.py`：把源 `stock` / `goods_stock_alarm` 映射到 ProductSku properties，现有 `stock_health` 派生逻辑保持不变；
+- 新增 `ecommerce_data_authority_contracts.py` 与 `ecommerce_data_authority.py`：定义 tenant-bound exact authority descriptor、semantic revision、canonical content hash，以及 Inventory/AfterSalesEvent 两份只读合同；AfterSalesEvent 此时只冻结事件引用字段，不落库、不复制退款 payload；
+- 新增对应 contract/service tests，并扩充 `test_ec_normalizer.py`、`test_ecom_core_models.py`；正向 tenant 为 `org-org/dev-project`，负向 canary 为 `dev-org/dev-project`，二者 descriptor 必须 tenant-bound 且 hash 相同、ref 不可跨租户复用；
+- 最后把 D0 descriptor 注入 `ecommerce_workshop_operations.py`，仅当 exact semantic revision/hash/Receipt 全部匹配时把 Inventory 与 aftersaleEvents 切片从 `blocked` 提升为 `ready`。本 D0-A 只产生合同 Receipt，因此在实际业务 SourceReadiness 未具备时不声称存在业务行或运行成功。
+
+测试顺序固定为：失败合同测试 → D0 专项 → ProductSku normalizer/core model 邻接回归 → W2-01A operations 回归 → Workshop 累计回归。禁止项仍为 migration、真实数据读写、Provider、Pipeline replay 和发布。
+
 ### 3.2 W2-01A 首批文件级清单
 
 新增：
