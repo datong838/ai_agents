@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000160",
+  "created_at": "2026-08-24T04:46:25+08:00",
+  "excluded_scope": [
+    "migration execution; real business data; API/Store/SDK/Web; external side effects; release"
+  ],
+  "expected_outputs": [
+    "Strict W3-12A1 contracts, single-head append-only tenant-safe migration definition, fail-closed downgrade guard and tests"
+  ],
+  "lease_expires_at": "2026-08-24T10:00:00+08:00",
+  "owner": "prime-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_operation_case_contracts.py",
+    "services/aos-api/alembic/versions/w3_012_operation_case_authority.py",
+    "services/aos-api/tests/test_ecommerce_operation_case_contracts.py",
+    "services/aos-api/tests/test_w3_012_operation_case_migration.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12a1-operation-case-schema-code-20260824"
+}

@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000160",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_operation_case_contracts.py",
+    "services/aos-api/alembic/versions/w3_012_operation_case_authority.py",
+    "services/aos-api/tests/test_ecommerce_operation_case_contracts.py",
+    "services/aos-api/tests/test_w3_012_operation_case_migration.py"
+  ],
+  "commits": [
+    "db44392"
+  ],
+  "completed_at": "2026-08-24T04:51:57+08:00",
+  "completed_revision": "AOS-000160",
+  "result": "W3_12A1_OPERATION_CASE_AUTHORITY_SCHEMA_CODE_GREEN",
+  "risks": [
+    "Schema/code control is GREEN; migration was not run against real AOS/business databases; Store/API/SDK/Web remain pending in W3-12A2/B"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w3-12a1-operation-case-schema-code-20260824",
+  "verification": [
+    "RED ModuleNotFoundError; targeted 5/5 passed; cumulative relevant 151/151 passed with 7 existing warnings; compileall GREEN; Alembic single head w3_012; migration chain test upgraded test DB to w3_012",
+    "Existing tests/test_migrations.py managed failure logging assertion remains independently reproducible: expected RuntimeError log but caplog is empty; no W3-12A code path involved"
+  ]
+}
