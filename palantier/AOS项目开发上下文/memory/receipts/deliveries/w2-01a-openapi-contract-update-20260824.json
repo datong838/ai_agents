@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000157",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_ecommerce_workshop_api.py"
+  ],
+  "commits": [
+    "5b0e715"
+  ],
+  "completed_at": "2026-08-24T04:25:59+08:00",
+  "completed_revision": "AOS-000157",
+  "result": "W2_01A_OPENAPI_GET_SURFACE_FREEZE_GREEN",
+  "risks": [
+    "GET-only surface preserved; no write operation added"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-01a-openapi-contract-update-20260824",
+  "verification": [
+    "Initial adjacent regression 21 passed 1 expected failure; updated OpenAPI freeze; cumulative 22 passed"
+  ]
+}

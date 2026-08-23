@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000157",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_operations_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_operations.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_contracts.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py"
+  ],
+  "commits": [
+    "5b0e715"
+  ],
+  "completed_at": "2026-08-24T04:25:58+08:00",
+  "completed_revision": "AOS-000157",
+  "result": "W2_01A_STRICT_OPERATIONS_CONTRACT_AND_GET_SHELL_GREEN",
+  "risks": [
+    "Operations slices intentionally remain structurally blocked until exact authorities/readers are delivered; no business rows or synthetic cursor claimed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-01a-strict-contract-api-shell-20260824",
+  "verification": [
+    "RED ModuleNotFoundError; GREEN 7 passed; cumulative Workshop API 22 passed; compileall GREEN"
+  ]
+}

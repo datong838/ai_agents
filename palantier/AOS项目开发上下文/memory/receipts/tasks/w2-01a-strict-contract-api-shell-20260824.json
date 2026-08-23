@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000157",
+  "created_at": "2026-08-24T04:21:18+08:00",
+  "excluded_scope": [
+    ".DS_Store",
+    ".evidence/aip/2026-08-23-r32-browser-final",
+    "plugins/ops",
+    "real-business-data",
+    "provider-side-effects",
+    "migrations",
+    "release"
+  ],
+  "expected_outputs": [
+    "W2-01A-strict-contract-and-GET-only-operations-shell"
+  ],
+  "lease_expires_at": "2026-08-24T10:30:00+08:00",
+  "owner": "codex-aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_operations_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_operations.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_contracts.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-01a-strict-contract-api-shell-20260824"
+}
