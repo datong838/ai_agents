@@ -1,44 +1,42 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "D0 tenant-safe bounded ProductSku inventory reader code/control at m1@286ead8; targeted 7/7 and cumulative 146/146 tests GREEN",
-    "W3-12A1 strict OperationCase authority contracts and append-only tenant-safe migration definition at m1@db44392",
-    "W3-12A1 targeted 5/5 and cumulative relevant 151/151 tests GREEN; Alembic single head w3_012"
+    "W3-12A1 strict contracts and tenant-safe append-only schema at m1@db44392",
+    "W3-12A2 AggregationPolicy publish and OperationCase create internal Store at m1@423468c",
+    "W3-12A2 targeted 4/4 and cumulative relevant 155/155 tests GREEN"
   ],
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "W3_12A1_SCHEMA_CODE_GREEN_STORE_NEXT",
+  "delivery_status": "W3_12A2_BASE_STORE_GREEN_DECISION_APPEND_NEXT",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/w3-12a1-operation-case-schema-code-20260824.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/w3-12a2-operation-case-store-code-20260824.json"
     },
     {
       "kind": "commit",
-      "ref": "m1@db44392"
+      "ref": "m1@423468c"
     }
   ],
-  "evidence_cutoff": "2026-08-24T04:51:57+08:00",
+  "evidence_cutoff": "2026-08-24T06:15:42+08:00",
   "hard_boundaries": [
-    "Do not run w3_012 against real databases, write business data, add external effects or release without the explicit gate",
-    "W3-12A1 schema GREEN is not Store, API, operational or browser GREEN"
+    "No real migration execution, business data write, external side effect or release without its explicit gate",
+    "Base Store GREEN is not full W3-12A authority or operational GREEN"
   ],
   "incomplete": [
-    "W3-12A2 Store expectedVersion/idempotency/replay and reversible aggregation implementation",
-    "Real database migration execution was not authorized or performed; W2-01B and W3-12B remain pending",
-    "Existing managed migration failure logging assertion remains independently RED because caplog is empty"
+    "Classification, CaseEvent, membership, SLA and kill append Store methods",
+    "W3-12A exact authority Receipt, W2-01B and W3-12B remain pending"
   ],
-  "last_green_gate": "W3_12A1_OPERATION_CASE_AUTHORITY_SCHEMA_CODE_GREEN",
-  "next_gate": "W3_12A2_OPERATION_CASE_AUTHORITY_STORE_CODE",
+  "last_green_gate": "W3_12A2_OPERATION_CASE_STORE_CODE_GREEN",
+  "next_gate": "W3_12A3_OPERATION_DECISION_APPEND_STORE",
   "next_steps": [
-    "Implement W3-12A2 authority Store against the frozen contracts and schema with no external API or real-data write",
-    "Validate replay idempotency, payload drift conflict, tenant isolation, late/duplicate originals and membership count conservation",
-    "Form W3_12A_OPERATION_CASE_AUTHORITY_GREEN Receipt only after A1 and A2 combine GREEN"
+    "Append classification, CaseEvent, membership, SLA and kill decisions with expectedVersion/idempotency",
+    "Then seal the combined W3-12A exact authority Receipt and consume it from W2-01B"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000161",
+  "project_revision": "AOS-000162",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "db44392"
+    "aos-platform": "423468c"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -48,5 +46,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T04:52:20+08:00"
+  "updated_at": "2026-08-24T06:16:02+08:00"
 }
