@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000163",
+  "created_at": "2026-08-24T06:20:51+08:00",
+  "excluded_scope": [
+    "real migration execution; real business data; mutation API; external side effects; release"
+  ],
+  "expected_outputs": [
+    "Tenant-safe OperationCase reader and W2-01B operationCases slice exact authority composition with tests"
+  ],
+  "lease_expires_at": "2026-08-24T12:00:00+08:00",
+  "owner": "prime-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_operation_case_store.py",
+    "services/aos-api/aos_api/ecommerce_workshop_operations.py",
+    "services/aos-api/aos_api/ecommerce_workshop_operations_contracts.py",
+    "services/aos-api/tests/test_ecommerce_operation_case_store.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_contracts.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-01b-operation-case-slice-code-20260824"
+}

@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000163",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_operation_case_store.py",
+    "services/aos-api/aos_api/ecommerce_workshop_operations.py",
+    "services/aos-api/aos_api/ecommerce_workshop_operations_contracts.py",
+    "services/aos-api/tests/test_ecommerce_operation_case_store.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_contracts.py"
+  ],
+  "commits": [
+    "21c8a80"
+  ],
+  "completed_at": "2026-08-24T06:23:45+08:00",
+  "completed_revision": "AOS-000163",
+  "result": "W2_01B1_OPERATION_CASE_SLICE_CODE_GREEN",
+  "risks": [
+    "OperationCase slice code/control GREEN; other five transaction/inventory slices and canonical aftersales source remain incomplete; no real data probe or browser claim"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-01b-operation-case-slice-code-20260824",
+  "verification": [
+    "Targeted 15/15 passed; cumulative relevant 159/159 passed with 7 existing warnings; compileall GREEN; Alembic single head w3_012; git diff check GREEN"
+  ]
+}
