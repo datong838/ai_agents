@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000160",
+  "created_at": "2026-08-24T04:45:53+08:00",
+  "excluded_scope": [
+    "authority.json,01/06,Prime core projection except later m1 CAS; real migration execution; real business data; external side effects; release"
+  ],
+  "expected_outputs": [
+    "W3-12A1 file-level contract and migration schema plan with tests, rollback and no-effect boundaries"
+  ],
+  "lease_expires_at": "2026-08-24T08:00:00+08:00",
+  "owner": "prime-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12a1-operation-case-plan-20260824"
+}

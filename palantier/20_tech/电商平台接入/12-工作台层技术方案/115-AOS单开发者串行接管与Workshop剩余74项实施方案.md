@@ -91,6 +91,25 @@ D0 Data exact authority
 
 W3-12A 独立登记 migration Lease，实现 append-only Case/Decision/Policy authority、RLS/FORCE RLS、expectedVersion、幂等和可逆聚合；W3-12B 最后接命令、Approval/ExecutionLease/Receipt、strict SDK/UI、三视口和双租户浏览器验收。
 
+#### 3.3.1 W3-12A1 authority contract 与 migration schema
+
+以 `AOS-000160`、`aip13_001` 单一 Alembic head 和 100 号 ADR 为输入，先闭合代码控制面，不运行真实 migration：
+
+- 新增 `ecommerce_operation_case_contracts.py`，冻结 tenant-bound exact original ref、OperationCase/CaseEvent、ClassificationDecision、AggregationPolicy、MembershipDecision、SLA Policy/Clock、AutomationKill Decision 与幂等 Receipt 的严格模型；所有 hash 为 64 位小写 SHA-256，时间必须带时区，禁止订单、支付、地址、客户或 Provider payload；
+- 新增 `w3_012_operation_case_authority.py`，唯一 `down_revision=aip13_001`。head 仅保存 current revision/version；事件、分类、策略、成员、SLA、kill 与 Receipt 全部 append-only，并为每张 tenant 表启用 RLS/FORCE RLS；运行角色不得 UPDATE/DELETE/TRUNCATE append-only 表；
+- downgrade 在任一 authority 表非空时失败关闭，只允许空表回滚；不得以 drop canonical history 的方式伪造可逆；
+- 新增 contract 与 migration 静态/捕获 SQL 测试，覆盖 aware time、exact ref、成员多重集合守恒、拆并 predecessor/successor、SLA pause/resume、kill 三检查点语义、跨租户 hash 绑定、single head、RLS/FORCE RLS、append-only 与非空 downgrade guard；
+- 本子波不新增 API、Store、SDK、页面，不执行 migration、不写真实数据。A1 GREEN 后进入 A2 Store：expectedVersion、同 key 同 payload replay、同 key 异 payload冲突、乱序/重复 original 去重与 projection rebuild；A1/A2 合并验证后才形成 `W3_12A_OPERATION_CASE_AUTHORITY_GREEN` Receipt。
+
+文件范围固定为：
+
+- `services/aos-api/aos_api/ecommerce_operation_case_contracts.py`
+- `services/aos-api/alembic/versions/w3_012_operation_case_authority.py`
+- `services/aos-api/tests/test_ecommerce_operation_case_contracts.py`
+- `services/aos-api/tests/test_w3_012_operation_case_migration.py`
+
+迁移 Lease 仅覆盖上述 migration 文件与测试，不授权执行 upgrade、写入真实租户或发布。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
