@@ -61,6 +61,12 @@ D0 Data exact authority
 
 测试顺序固定为：失败合同测试 → D0 专项 → ProductSku normalizer/core model 邻接回归 → W2-01A operations 回归 → Workshop 累计回归。禁止项仍为 migration、真实数据读写、Provider、Pipeline replay 和发布。
 
+#### 3.1.2 D0-B tenant-safe Inventory reader（下一子波）
+
+新增 `ecommerce_inventory_reader_contracts.py`、`ecommerce_inventory_reader.py` 与 `test_ecommerce_inventory_reader.py`。Reader 仅从 `ecom_object` 的同租户 `ProductSku` originals 读取 `stock`、`stockAlarm`、`stock_health`、`source_updated_at`、`payload_hash`，固定 `REPEATABLE READ READ ONLY`、`aos_runtime` 与 transaction-local tenant GUC；不读取 raw source 表，不调用 Pipeline，不把临时 raw 行或通用 Ontology API 当 authority。
+
+首批只交付内部 bounded reader 与 exact row ref，不新增外部 API、不把数据嵌入 W2 壳。测试必须覆盖：正向/负向租户参数、只读 SQL、截止时间、确定性排序、边界上限、缺失库存语义失败关闭、naive cutoff 拒绝、无写语句。AfterSalesEvent 因当前仅 contract-only，不得仿照 Inventory 读取或制造事件；继续结构化 blocked，随后直接进入 W3-12A code authority。
+
 ### 3.2 W2-01A 首批文件级清单
 
 新增：

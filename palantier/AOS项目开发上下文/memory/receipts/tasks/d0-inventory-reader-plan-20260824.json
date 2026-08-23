@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000159",
+  "created_at": "2026-08-24T04:37:55+08:00",
+  "excluded_scope": [
+    "real-business-data",
+    "provider-side-effects",
+    "migrations",
+    "release"
+  ],
+  "expected_outputs": [
+    "D0-tenant-safe-inventory-reader-file-plan"
+  ],
+  "lease_expires_at": "2026-08-24T12:30:00+08:00",
+  "owner": "codex-aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "d0-inventory-reader-plan-20260824"
+}
