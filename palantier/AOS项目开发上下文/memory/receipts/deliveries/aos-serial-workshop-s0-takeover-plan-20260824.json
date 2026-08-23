@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000156",
+  "blockers": [],
+  "changed_files": [
+    "docs/.../82-W2-01-统一运营订单库存履约售后事件只读模型预检ADR.md@sha256:pre=2df1871d65b4ea5d373029066798ca7e49886d16eb3982e76d7fa75473fc660a",
+    "docs/.../100-W3-12统一运营Case分类可逆聚合SLA与Kill预检ADR.md@sha256:pre=81e9a07a6f6905d7b2a695262f6edd85feb1c05ba75e344d146a4449a7a627ce",
+    "docs/.../115-AOS单开发者串行接管与Workshop剩余74项实施方案.md",
+    "docs/.../D-waves/00-工作台长任务开发计划总清单.md@sha256:pre=430a1eb466e8ee26fa4b4e8b8144ef4e26844b54f568cee51190e652694da389"
+  ],
+  "commits": [
+    "docs/m1@2787548"
+  ],
+  "completed_at": "2026-08-24T04:17:46+08:00",
+  "completed_revision": "AOS-000156",
+  "result": "AOS_SOLE_DEVELOPER_SERIAL_TAKEOVER_PLAN_GREEN_S1_AUTHORIZED",
+  "risks": [
+    "External facts cannot be manufactured; missing slices stay blocked while internal code work continues"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "aos-serial-workshop-s0-takeover-plan-20260824",
+  "verification": [
+    "memory validate GREEN; 96 unique main tasks; completed=22; remaining=74",
+    "ADR82/ADR100 fixed DAG D0->W2-01A->W3-12A->W2-01B->W3-12B",
+    "docs staged diff check GREEN; unrelated dirty files excluded"
+  ]
+}
