@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000158",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecom_core_models.py",
+    "services/aos-api/aos_api/ec_normalizer.py",
+    "services/aos-api/aos_api/ecommerce_data_authority_contracts.py",
+    "services/aos-api/aos_api/ecommerce_data_authority.py",
+    "services/aos-api/aos_api/ecommerce_workshop_operations.py",
+    "services/aos-api/tests/test_ecom_core_models.py",
+    "services/aos-api/tests/test_ec_normalizer.py",
+    "services/aos-api/tests/test_ecommerce_data_authority.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py"
+  ],
+  "commits": [
+    "5282b7b"
+  ],
+  "completed_at": "2026-08-24T04:34:24+08:00",
+  "completed_revision": "AOS-000158",
+  "result": "DATA_D0_INVENTORY_AFTERSALES_SEMANTIC_AUTHORITY_GREEN_READERS_PENDING",
+  "risks": [
+    "Semantic authorities are exact and tenant-bound, but business readers remain unwired; Inventory and aftersaleEvents stay structurally blocked"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "d0-inventory-aftersales-authority-code-20260824",
+  "verification": [
+    "RED ModuleNotFoundError; targeted 9 passed; Data plus Workshop cumulative 139 passed; compileall GREEN"
+  ]
+}

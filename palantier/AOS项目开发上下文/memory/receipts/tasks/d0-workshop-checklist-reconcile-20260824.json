@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000158",
+  "created_at": "2026-08-24T04:34:56+08:00",
+  "excluded_scope": [
+    "authority.json",
+    "01-当前项目状态.md",
+    "06-当前执行检查点.md"
+  ],
+  "expected_outputs": [
+    "D0-and-W2-01A-progress-fact-reconciliation"
+  ],
+  "lease_expires_at": "2026-08-24T11:30:00+08:00",
+  "owner": "codex-aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "d0-workshop-checklist-reconcile-20260824"
+}

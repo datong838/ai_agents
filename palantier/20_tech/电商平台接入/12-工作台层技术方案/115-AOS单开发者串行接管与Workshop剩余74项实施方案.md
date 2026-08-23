@@ -4,7 +4,7 @@
 > 开工基线：`AOS-000156 / aos-platform/m1@54031a8`
 > 用户授权：当前执行者成为整个 AOS 唯一开发者，在 `m1` 串行维护 Data、Ontology/Domain、AIP、Workshop 与运行交付层
 > 当前事实：96 个主 Task 已完成 22 个，剩余 74 个；下一主 Task 为 W2-01
-> 执行状态：`APPROVED_FOR_SERIAL_IMPLEMENTATION / S0_IN_PROGRESS`
+> 执行状态：`APPROVED_FOR_SERIAL_IMPLEMENTATION / S1_IN_PROGRESS / AOS-000158`
 
 ## 1. 目标与不变量
 
@@ -55,7 +55,9 @@ D0 Data exact authority
 - `ec_normalizer.py`：把源 `stock` / `goods_stock_alarm` 映射到 ProductSku properties，现有 `stock_health` 派生逻辑保持不变；
 - 新增 `ecommerce_data_authority_contracts.py` 与 `ecommerce_data_authority.py`：定义 tenant-bound exact authority descriptor、semantic revision、canonical content hash，以及 Inventory/AfterSalesEvent 两份只读合同；AfterSalesEvent 此时只冻结事件引用字段，不落库、不复制退款 payload；
 - 新增对应 contract/service tests，并扩充 `test_ec_normalizer.py`、`test_ecom_core_models.py`；正向 tenant 为 `org-org/dev-project`，负向 canary 为 `dev-org/dev-project`，二者 descriptor 必须 tenant-bound 且 hash 相同、ref 不可跨租户复用；
-- 最后把 D0 descriptor 注入 `ecommerce_workshop_operations.py`，仅当 exact semantic revision/hash/Receipt 全部匹配时把 Inventory 与 aftersaleEvents 切片从 `blocked` 提升为 `ready`。本 D0-A 只产生合同 Receipt，因此在实际业务 SourceReadiness 未具备时不声称存在业务行或运行成功。
+- 最后把 D0 descriptor 注入 `ecommerce_workshop_operations.py`：exact semantic revision/hash/Receipt 匹配后关闭“authority 不存在”缺口，但在真实 reader 与 SourceReadiness 未闭合前，Inventory 与 aftersaleEvents 切片继续以 `*_READER_NOT_WIRED` 结构化 `blocked`；不得仅凭合同存在就提升业务切片为 `ready`。
+
+当前事实：W2-01A backend strict DTO/GET 壳已在 `m1@5b0e715` GREEN；D0-A semantic authority 已在 `m1@5282b7b` GREEN，累计 Data/Workshop `139 passed`。W2-01 主 Task 尚未完成，后续顺序为 D0 real readers → W3-12A → W2-01B → W3-12B。
 
 测试顺序固定为：失败合同测试 → D0 专项 → ProductSku normalizer/core model 邻接回归 → W2-01A operations 回归 → Workshop 累计回归。禁止项仍为 migration、真实数据读写、Provider、Pipeline replay 和发布。
 
