@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000191",
+  "created_at": "2026-08-24T16:41:59+08:00",
+  "excluded_scope": [
+    "plugins/ops"
+  ],
+  "expected_outputs": [
+    "Strict creator-growth Web parser client and formal five-stage readonly page",
+    "Built-in browser blocked empty nonempty and 1280 1440 1920 visual matrix"
+  ],
+  "lease_expires_at": "2026-08-25T06:00:00+08:00",
+  "owner": "aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/creatorGrowthClient.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/components/workshop/CreatorGrowthPage.tsx",
+    "apps/web/src/components/workshop/CreatorGrowthPage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/index.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "apps/web/src/interactionHonestyManifest.ts",
+    "apps/web/src/interactionHonestyManifest.test.ts",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-04f-creator-growth-strict-web-visual-20260824"
+}

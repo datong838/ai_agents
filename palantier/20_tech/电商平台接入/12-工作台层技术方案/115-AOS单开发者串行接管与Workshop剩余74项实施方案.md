@@ -431,6 +431,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-04E 闭合检查点：代码已以 `m1@6dd6611` 安全提交。五个业务 slice 在同一 cutoff 通过 bounded repeatable-read reader 独立组合；可信空集合返回 ready/empty，读失败仅阻断对应 slice；所有非空项包含 exact identity/hash/Receipt，candidate PII 仍为 opaque ref，页计数与 authority refs 守恒。专项/邻接 `34 passed`、diff check GREEN；未从局部 GREEN 推断运营 GREEN。下一子波自动进入 W2-04F。
 
+2026-08-24 W2-04F 文件级清单与闭合检查点：在 `apps/web/src/api/ecommerceWorkshop/{contracts,parser,client}.ts` 增加 creator-growth 严格 Web 合同、失败关闭解析与租户绑定客户端；新增 `creatorGrowthClient.test.ts`、`CreatorGrowthPage.tsx` 与 `CreatorGrowthPage.test.tsx`，并仅在 `EcommerceWorkshopHost.tsx`、workshop export 和 `45-ecommerce-workshop.css` 中完成最小挂载。正式页面保持“工作流阶段 × 业务阶段”双轴与五个业务切片，显示 exact hash、Receipt、受控 PII ref 与独立 blocker；没有导入、新建批次、邀约、签署、寄样、佣金或关系 mutation。专项 `3 passed`、累计回归 `209 files / 2027 tests passed`、TypeScript noEmit 与 diff check GREEN；内置浏览器对 blocked/empty/nonempty 三态，以及 390/768/1024/1280/1440/1920 六档宽度完成验收，切片恒为 5、写入口恒为 0、页面无横向溢出。代码实现与 W2-04A～E canonical reader、可信空和失败关闭边界一致；本子波不启用真实副作用、不应用数据库迁移，也不把 degraded 页面推断为运营 GREEN。下一子波自动进入 W2-05。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
