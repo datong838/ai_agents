@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000180",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_content_campaign_authority_contracts.py",
+    "services/aos-api/alembic/versions/w3_011_content_campaign_authority.py",
+    "services/aos-api/tests/test_ecommerce_content_campaign_authority_contracts.py",
+    "services/aos-api/tests/test_w3_011_content_campaign_authority_migration.py"
+  ],
+  "commits": [
+    "aos-platform/m1@fb2ffdf"
+  ],
+  "completed_at": "2026-08-24T15:23:06+08:00",
+  "completed_revision": "AOS-000180",
+  "result": "W2-03B canonical CampaignRevision, CalendarEntry/DecisionRevision and MasterContentIntent contract plus single-head append-only tenant-safe migration code-control foundation sealed; migration was not applied.",
+  "risks": [
+    "Migration exists only in code control and was not applied to a real database.",
+    "Store/readers, ContentVariant Artifact projection, strict Web and formal content-campaign visual acceptance remain incomplete."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-03b-content-campaign-authority-foundation-20260824",
+  "verification": [
+    "Authority contract/migration focused: 7 passed",
+    "Workshop plus content-campaign cumulative: 82 passed",
+    "Alembic heads: w3_011 only; OpenAPI deterministic remains 4325 operations",
+    "Built-in browser cumulative regression 1280/1440/1920: no horizontal overflow, one H1, zero enabled forbidden side-effect buttons, current reload console errors 0"
+  ]
+}

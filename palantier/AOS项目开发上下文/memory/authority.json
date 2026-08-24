@@ -1,39 +1,40 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W2-03A tenant-bound GET-only content-campaign strict contract/API shell"
+    "W2-03B canonical content-campaign authority contracts and tenant-safe append-only migration code-control foundation"
   ],
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S2",
-  "delivery_status": "W2_03A_CONTENT_CAMPAIGN_READONLY_CONTRACT_SHELL_GREEN_AUTHORITIES_BLOCKED",
+  "delivery_status": "W2_03B_CONTENT_CAMPAIGN_AUTHORITY_CODE_CONTROL_GREEN_MIGRATION_NOT_APPLIED",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "w2-03a-content-campaign-readonly-contract-shell-20260824"
+      "ref": "w2-03b-content-campaign-authority-foundation-20260824"
     },
     {
       "kind": "verification",
-      "ref": "backend 75 passed; OpenAPI 4325 deterministic; built-in browser 1280/1440/1920 cumulative regression GREEN"
+      "ref": "authority 7 passed; cumulative 82 passed; single Alembic head w3_011; OpenAPI 4325 deterministic; browser cumulative GREEN"
     }
   ],
-  "evidence_cutoff": "2026-08-24T15:15:12+08:00",
+  "evidence_cutoff": "2026-08-24T15:24:00+08:00",
   "hard_boundaries": [
-    "No real DB business mutation, migration apply, TaskRun start, Action execution, campaign schedule/publish, provider call, refund, replay, release, or UI enablement without exact authority"
+    "No real DB business mutation, migration apply, campaign schedule/publish, Action execution, provider call, refund, replay, release, or UI enablement without exact authority"
   ],
   "incomplete": [
-    "W2-03 CampaignRevision/CalendarEntry/MasterContentIntent authority, ContentVariant Artifact projection, strict Web and formal visual acceptance",
+    "W2-03 Store/readers, ContentVariant Artifact projection, strict Web and formal visual acceptance",
+    "w3_011 migration not applied to a real database",
     "W2-02 main real non-empty Step/Checkpoint and complete target-state EvidencePack evidence",
     "W2-01 aftersale originals/timeline; W3-12 main closure; real runtime invocation"
   ],
-  "last_green_gate": "W2_03A_CONTENT_CAMPAIGN_READONLY_CONTRACT_SHELL_GREEN",
-  "next_gate": "W2_03B_CONTENT_CAMPAIGN_AUTHORITY_FOUNDATION",
+  "last_green_gate": "W2_03B_CONTENT_CAMPAIGN_AUTHORITY_CODE_CONTROL_GREEN",
+  "next_gate": "W2_03C_CONTENT_CAMPAIGN_STORE_READERS",
   "next_steps": [
-    "Start W2-03B canonical authority contract and migration code-control foundation without applying migration or writing real business data"
+    "Start W2-03C tenant-bound Store and read-only readers using fake connection tests; do not apply migration or write real business data"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000180",
+  "project_revision": "AOS-000181",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "b35f410"
+    "aos-platform": "fb2ffdf"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -43,5 +44,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T15:15:28+08:00"
+  "updated_at": "2026-08-24T15:23:06+08:00"
 }

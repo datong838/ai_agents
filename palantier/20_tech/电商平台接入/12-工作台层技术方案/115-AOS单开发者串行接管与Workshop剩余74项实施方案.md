@@ -333,6 +333,20 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@b35f410` 安全提交。唯一 GET-only 表面已按 Principal tenant 与 `ecommerce.content-campaign` 安装门关闭 scope 注入；plan/calendar/content 三切片在 authority reader/Receipt 未实现时均返回结构化 blocked、空 items 与 `eligible=0`，未把无可评估 authority 冒充业务零值或 GREEN。专项合同/API `17 passed`，Workshop 后端累计 `75 passed`，OpenAPI `4325` operations 确定性导出/检查与 diff check GREEN；内置浏览器累计回归在 1280/1440/1920 三档均零横向溢出、唯一 H1、零可执行禁止类副作用按钮，本次重载新增 console error 为 0。本子波不新增/执行 migration，没有任何 Campaign/Calendar/Intent/Artifact 写入、排期、发布或 Provider 调用。Delivery Receipt 为 `w2-03a-content-campaign-readonly-contract-shell-20260824`；W2-03 主项继续未勾选，96 项主计数保持 `22/96`，下一子波立即进入 W2-03B canonical authority foundation。
 
+### 3.11 S2 / W2-03B Campaign/Calendar/Intent authority 代码控制基座
+
+为不再把缺少跨层 authority 作为等待他人的阻塞，本子波由唯一开发者补齐 W3-11 中 W2-03 必需的代码控制面，但严格分离“迁移文件 GREEN”与“已对真实库执行”。本波只建立三类 append-only authority 合同、head/revision schema 与幂等 Receipt schema，不注册写 API、不执行 Alembic upgrade。
+
+文件级范围：
+
+- 新增 `services/aos-api/aos_api/ecommerce_content_campaign_authority_contracts.py`：定义 `CampaignRevision`、`CalendarEntryRevision`、`CalendarDecisionRevision`、`MasterContentIntentRevision`、exact authority ref 和 `ContentCampaignAuthorityReceipt`。所有 revision/hash/time 严格校验；修订要求 prior exact ref；Calendar 必须保存 IANA timezone、aware resolved instants、DST resolution、exact Campaign/Artifact refs；排期不表示发布；Intent 不保存 prompt/body/token，master/channel 产物只引用 canonical Artifact revision；
+- 新增 `services/aos-api/alembic/versions/w3_011_content_campaign_authority.py`，唯一 `down_revision=d0_after_001`。Campaign/Calendar/Intent 各有 tenant-bound mutable head 与 append-only revision，Calendar Decision 和 Receipt 也是 append-only；全表 RLS/FORCE RLS，runtime 对 history 只有 SELECT/INSERT，禁止 UPDATE/DELETE/TRUNCATE；非空 canonical history 时 downgrade 失败关闭；
+- 新增 `services/aos-api/tests/test_ecommerce_content_campaign_authority_contracts.py` 和 `test_w3_011_content_campaign_authority_migration.py`，覆盖 strict extra、aware time、revision/prior、exact type/hash、时间窗口、DST、渠道唯一、排期/发布分离、Intent 最小披露、single head、RLS/FORCE RLS、append-only grant/trigger 与非空 downgrade guard。
+
+禁止项：不执行 migration，不写 `org-org/dev-project` 或任何真实库，不新建 ContentVariant body/head/table，不复制 TaskBrief/Artifact/ArtifactRelation/Action/Approval/Lease/Receipt authority，不提供 create/revise/reschedule/cancel/publish HTTP，不调用 Provider。B 合同/迁移代码 GREEN 后自动进入 W2-03C tenant-bound Store/reader，先用 fake connection 验证 CAS/幂等/跨租户/读事务，再接入 W2 GET 视图。
+
+2026-08-24 闭合检查点：代码已以 `m1@fb2ffdf` 安全提交。三类 canonical revision、Calendar successor decision、exact ref 与 authority Receipt 合同均严格校验 tenant/time/hash/revision/prior/type，Calendar 保存 IANA timezone 与 resolved window，Intent 只引用 Brief/Artifact exact revision 且 strict extra 拒绝 raw body/prompt。`w3_011` 唯一继承 `d0_after_001`，Alembic 实测仍为单 head；8 张表全部 RLS/FORCE RLS，5 张 history/decision/Receipt 表仅 SELECT/INSERT 并有 UPDATE/DELETE/TRUNCATE guard，非空 downgrade 失败关闭。专项 `7 passed`，Workshop+内容活动累计 `82 passed`，OpenAPI deterministic 保持 `4325` operations；内置浏览器累计回归 1280/1440/1920 零横向溢出、唯一 H1、零可执行禁止类副作用按钮、新增 console error 0。本波没有执行 migration、没有真实数据写入、写 API 或发布副作用。Delivery Receipt 为 `w2-03b-content-campaign-authority-foundation-20260824`；W2-03 主项仍未勾选，下一子波立即进入 W2-03C tenant-bound Store/reader。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
