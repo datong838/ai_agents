@@ -429,6 +429,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-04D 闭合检查点：代码已以 `m1@97f5dc6` 安全提交。Contract、TermDiff、Delivery 与 Relationship 分别保留 exact immutable authority；TermDiff 必须连接同一合同的相邻 revision，Delivery 只引用 exact Contract，Relationship 只引用 exact Delivery 并保留同 collaboration lineage。SIGNED、履约结果和 PRELIMINARY 成熟度互不反推，合同正文仅返回受控 ref。专项/邻接 `33 passed`、compileall 与 diff check GREEN；无签署、寄样、佣金、关系 mutation 或真实数据库改动。下一子波自动进入 W2-04E。
 
+2026-08-24 W2-04E 闭合检查点：代码已以 `m1@6dd6611` 安全提交。五个业务 slice 在同一 cutoff 通过 bounded repeatable-read reader 独立组合；可信空集合返回 ready/empty，读失败仅阻断对应 slice；所有非空项包含 exact identity/hash/Receipt，candidate PII 仍为 opaque ref，页计数与 authority refs 守恒。专项/邻接 `34 passed`、diff check GREEN；未从局部 GREEN 推断运营 GREEN。下一子波自动进入 W2-04F。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

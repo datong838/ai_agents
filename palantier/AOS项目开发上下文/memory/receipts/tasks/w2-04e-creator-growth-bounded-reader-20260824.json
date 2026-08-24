@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000190",
+  "created_at": "2026-08-24T16:38:50+08:00",
+  "excluded_scope": [
+    "plugins/ops"
+  ],
+  "expected_outputs": [
+    "Same-cutoff bounded five-slice creator-growth reader",
+    "Per-slice fail-closed composition and trusted empty semantics"
+  ],
+  "lease_expires_at": "2026-08-25T06:00:00+08:00",
+  "owner": "aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_creator_growth.py",
+    "services/aos-api/aos_api/ecommerce_workshop_creator_growth_store.py",
+    "services/aos-api/tests/test_ecommerce_workshop_creator_growth.py",
+    "services/aos-api/tests/test_ecommerce_workshop_creator_growth_store.py",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-04e-creator-growth-bounded-reader-20260824"
+}
