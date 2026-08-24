@@ -433,6 +433,20 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-04F 文件级清单与闭合检查点：在 `apps/web/src/api/ecommerceWorkshop/{contracts,parser,client}.ts` 增加 creator-growth 严格 Web 合同、失败关闭解析与租户绑定客户端；新增 `creatorGrowthClient.test.ts`、`CreatorGrowthPage.tsx` 与 `CreatorGrowthPage.test.tsx`，并仅在 `EcommerceWorkshopHost.tsx`、workshop export 和 `45-ecommerce-workshop.css` 中完成最小挂载。正式页面保持“工作流阶段 × 业务阶段”双轴与五个业务切片，显示 exact hash、Receipt、受控 PII ref 与独立 blocker；没有导入、新建批次、邀约、签署、寄样、佣金或关系 mutation。专项 `3 passed`、累计回归 `209 files / 2027 tests passed`、TypeScript noEmit 与 diff check GREEN；内置浏览器对 blocked/empty/nonempty 三态，以及 390/768/1024/1280/1440/1920 六档宽度完成验收，切片恒为 5、写入口恒为 0、页面无横向溢出。代码实现与 W2-04A～E canonical reader、可信空和失败关闭边界一致；本子波不启用真实副作用、不应用数据库迁移，也不把 degraded 页面推断为运营 GREEN。下一子波自动进入 W2-05。
 
+### 3.17 S2 / W2-05 媒体生产三切片只读基座
+
+本波复习 `86` ADR、媒体技术方案 `14` 与正式视觉稿 `workshop-media-studio.html`。W2 只提供同一 cutoff 的 `context/execution/delivery` 三切片可重建读模型；六类 readiness 独立表达，`target-state` 永远不计入 achieved。它不创建媒体 Job、Artifact、Provider、Usage、Settlement、Action 或 Effect 真源，不读取媒体正文，也不复用 `file://`、Mock S3 或可删除 `MediaReference` 作为生产证据。
+
+串行文件级清单：
+
+- `W2-05A`：新增 `ecommerce_workshop_media_studio_contracts.py`、`ecommerce_workshop_media_studio.py` 及 API 测试；冻结三个 canonical slice、六类 readiness、exact ref、target-state 缺口、family/attempt/usage 数量守恒、同 cutoff、稳定分页与 GET-only 路由。缺失 canonical authority 时逐轴 blocked，不伪造 target achieved；同步 OpenAPI 与 operation inventory。
+- `W2-05B`：新增 tenant-bound bounded reader，只读取 canonical TaskRun/Stage attempt、Artifact relation、Usage/Settlement 与 Action/Effect authority；读不到的轴独立失败关闭，可信空只在 reader 可用时成立。该子波只用 fake connection 验证 repeatable-read、租户漂移、唯一性、币种分桶、unknown/reconcile 和 family/attempt 守恒，不连接或写真实库，不 apply migration。
+- `W2-05C`：在唯一 strict Web SDK 增加 media-studio parser/client，新增正式三 Tab 只读页面并挂载 `ecommerce.media-studio`；页面保留生命周期、context/execution/delivery 层次和 blocker/evidence，但移除 prepare/freeze/compile/approve/start/claim/pause/resume/cancel/publish/settle/reconcile。完成 blocked/empty/nonempty、390/768/1024/1280/1440/1920 浏览器矩阵、专项/累计回归与方案一致性复审。
+
+本波禁止把通用 production contract、ModelRoute 目录、Provider accepted、HTTP 2xx、TaskRun succeeded、静态视觉稿或 target-state 当作媒体交付/发布证明。页面和 API 必须明确 `degraded/read-only`，不同币种不自动合计，unknown 必须进入 reconcile；真实 Provider、发布、预算扣减、迁移和业务数据变更均留在后续独立治理门。
+
+2026-08-24 W2-05A 闭合检查点：代码已以 `m1@46a1193` 安全提交。新增 strict `media-studio-view/v1`，固定 `context/execution/delivery` canonical order、module/capability/assignee/provider/budget/publication 六轴与同 cutoff；每个 target axis 必须同时给出 target contract、gap 和 blocker，且禁止 exact ref，因此 target 不可能计入 ready/achieved。分母 ledger 强制 ready/target/blocked/unknown/conflict/not-applicable 不相交守恒，page 只计 exact refs。GET-only 路由通过 active installation 与 principal tenant 裁决，拒绝 query scope 注入和 POST。专项/API/OpenAPI `27 passed`、Workshop 累计 `87 passed`、compileall 与 diff check GREEN；未新增 Job/Artifact/Provider/Usage 真源，未连接真实库或触发媒体/发布副作用。下一子波自动进入 W2-05B bounded reader。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
