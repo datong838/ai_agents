@@ -487,6 +487,18 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-07C 闭合检查点：代码已以 `m1@fc577bc` 安全提交。Web 新增唯一 strict Price Governance schema/parser/client 和正式三 Tab 只读页面，对 canonical view/axis 顺序、tenant、共享 revision/cutoff、quote basis、immutable originals、可比条件、unknown 非零值、ledger/page 守恒与 repricing disabled 全部失败关闭。页面保留价格研究、同款证据、策略/Case、调度/reconcile 层次，只显示 Observation、exact refs 与 blocker，不提供采集、决定、策略编辑、通知、建议交接或调价命令。专项 `5 passed`、TypeScript noEmit、Web 累计 `215 files / 2040 tests` GREEN；内置浏览器完成 blocked/empty/nonempty、方向键与 `390/768/1024/1280/1440/1920` 六档矩阵，三 Tab、六轴、单 H1、零写按钮、零横向溢出。未触发 Provider、ResearchJob、通知、调价、迁移或真实业务数据副作用。下一任务自动进入 W2-08 客户批次只读基座。
 
+### 3.20 S2 / W2-08 客户关系四视图只读基座
+
+本波按 17 号技术方案、89 号 ADR、产品方案 `09` 与正式视觉稿 `workshop-customer.html` 实现唯一 `GET /v1/ecommerce-workshop/views/customer`。W2-08 只投影 `customer/segment/journey/dialogue` 四 view，不提前实现 W6-07/W6-08 的 Segment 创建、Journey transition、Batch prepare/freeze/start、ProtectedContact resolve 或真实触达。
+
+- `W2-08A`：新增 strict Python DTO、GET-only service/route 与 OpenAPI。四 view 共享 tenant/revision/cutoff；六轴固定为 CustomerLite、Consent/Preference、Segment、Journey、Dialogue 与 Batch outreach readiness。CustomerLite 只返回 purpose-scoped 最小属性和服务端 disclosure decision，不允许 mobile、OpenID、nickname、avatar、address、email、realName、protected contact 或 provider key 进入 DTO。Consent withdrawn/expired/conflict/unknown 不能转 eligible；Segment ledger 固定 `input = eligible + excluded + unknown + deduplicated`；小群体只给聚合；Dialogue 只返回决策摘要、证据链、关键假设、不确定性和 originals refs。
+- `W2-08B`：新增 bounded canonical reader protocol，每 view 最多 100 项，只消费 exact CustomerLite/Consent/Preference/Segment/Journey/Dialogue/Batch refs；验证 tenant/cutoff/revision、purpose/marking/retention、k-anonymity、original reachability、唯一性与跨 view revision。可信空只在 reader 可达时成立；单 view drift 独立失败关闭，跨 view trusted revision 冲突整体失败关闭。不新增 Store、migration 或第二客户 identity。
+- `W2-08C`：在唯一 Web strict SDK 增加 customer parser/client，新增正式四 Tab 只读页面并挂载 `ecommerce.customer`。保留客户生命周期、分群、旅程、Dialogue/Batch readiness 层次，移除视觉稿中的导入客户、新建触达、分群构建、旅程编辑、prepare/freeze/start/send 等写控件。完成 blocked/empty/nonempty、键盘和六档响应式浏览器矩阵。
+
+硬边界：TenantScope 只来自 verified Principal；ProtectedContact 和所有直接/间接 PII 不进入 payload、URL、日志或页面；页面隐藏不授予资格；unknown 不转 eligible，prepare/freeze 不转 sent，Task 完成不转 outreach success；不连接或写真实数据库，不 apply migration，不调用渠道 Provider，不修改真实客户数据。
+
+2026-08-24 W2-08A 闭合检查点：代码已以 `m1@696cb60` 安全提交。新增 strict `customer-view/v1`、`customer/segment/journey/dialogue` 四 canonical view、CustomerLite/Consent/Segment/Journey/Dialogue/outreach-batch 六独立轴、purpose-scoped disclosure、Consent/retention、k-anonymity、original refs 与 `input = eligible + excluded + unknown + deduplicated` 守恒；DTO 不含 mobile、OpenID、nickname、avatar、address、email、realName、ProtectedContact 或 provider key。GET-only 路由由 active `ecommerce.customer` installation 与 Principal tenant 裁决，拒绝 query scope 注入。专项/API/OpenAPI `22 passed`、Workshop 累计 `109 passed`、确定性 OpenAPI、compileall 与 diff check GREEN；未新增 Store、migration、客户 authority、Provider 或触达副作用。下一子波自动进入 W2-08B bounded reader。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

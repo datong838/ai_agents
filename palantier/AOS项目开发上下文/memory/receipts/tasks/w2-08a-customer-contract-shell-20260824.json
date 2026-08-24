@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000202",
+  "created_at": "2026-08-24T18:22:23+08:00",
+  "excluded_scope": [
+    "migration, customer/consent/segment/journey/dialogue/batch authority writes, protected-contact resolution, provider/send, real customer data"
+  ],
+  "expected_outputs": [
+    "Strict GET-only customer view contract/API shell with PII-exclusion and fail-closed tests"
+  ],
+  "lease_expires_at": "2026-08-25T06:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_customer_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_customer.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_customer.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/operation-inventory.json"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-08a-customer-contract-shell-20260824"
+}
