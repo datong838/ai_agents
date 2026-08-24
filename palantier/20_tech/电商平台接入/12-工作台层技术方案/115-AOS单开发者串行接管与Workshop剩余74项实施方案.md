@@ -300,6 +300,23 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@221b429` 安全提交；后端累计 `40 passed`，Web 专项 `38 passed`、累计 `205 files / 2017 tests`，production build `319 modules`、OpenAPI 确定性导出/检查与 diff check 均通过。实现只消费既有 append-only `AssigneeResolutionReceipt`，按 tenant + exact subject + kind/resource/version 约束槽位，冲突观测与漂移失败关闭；响应不返回 actor/resolvedRef，也没有 resolver POST、改派、接管、执行或发布命令。内置浏览器在 1280/1440/1920 三档确认“观测时已解析／观测时阻断／无 expiry 不代表当前 ready”与 blocker reason，三档零横向溢出、当前重载后 console error 为 0；正式视觉稿已复审任务流主轴、职责和复盘分区，没有复制 GMV、在线人数或样例任务。Delivery Receipt 为 `w2-02e-assignee-operational-readiness-read-model-20260824`；authority 与 Prime 已推进到 `AOS-000178`，强一致投影 CURRENT，memory validate/gate GREEN。96 项主计数仍为 `22/96`；下一子波立即进入 `W2-02F SourceReadiness business-context read model`。
 
+### 3.9 S2 / W2-02F SourceReadiness 业务上下文共享快照
+
+复核 `28` 号 W2 readiness 方案、`83/105` 号 W2-02 ADR、`114` 号 blocked-state UI ADR 与当前代码后确认：canonical `SourceReadinessEnvelope` owner、Principal-scoped Workshop facade、strict Web parser/client 和 Shell 面板均已存在。本子波不新增第二 API、不复制 P01～P12 计算，也不把 SourceReadiness 嵌入 Task 数据库事务；Task cutoff 与 SourceReadiness cutoff 是两个独立快照，必须分别展示。当前 envelope 若为 blocked 或 `receiptRef=null`，只能作为失败关闭的业务上下文，不能升级为 operational GREEN。
+
+文件级施工范围：
+
+- `apps/web/src/components/workshop/SourceReadinessContext.tsx`：新增 Shell 内共享的易失只读 Provider，唯一发起 canonical `getSourceReadiness()`，绑定当前 tenant，保留 loading/forbidden/failed/ready 与显式 reload；不缓存到 localStorage，不持久第二 authority；
+- `apps/web/src/components/workshop/SourceReadinessPanel.tsx`、`EcommerceWorkshopShell.tsx` 与 `index.ts`：把现有面板改为消费共享快照，并由 Shell 包裹 Module 主内容，确保面板与 Task Cockpit 使用同一次响应；保留现有 `client` 测试注入兼容层；
+- `apps/web/src/components/workshop/TaskCockpitPage.tsx`：新增“业务上下文 · 独立 SourceReadiness 快照”只读摘要，展示 envelope status、checkedAt、cutoffAt、P01～P12 状态计数、唯一 blocker 集、Receipt 是否存在；明确 source cutoff 不与 Task cutoff 混算、blocked/unknown 不当作 empty、无 Receipt 不声明 EvidencePack；
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py`：把旧的 `TASK_COCKPIT_BUSINESS_CONTEXT_BLOCKED` 静态 reader 缺口改为 `TASK_COCKPIT_BUSINESS_CONTEXT_INDEPENDENT_SNAPSHOT` warning，说明业务上下文由 Shell 单一 canonical snapshot 消费；不读取第二份数据、不重算状态；
+- `SourceReadinessPanel.test.tsx`、`EcommerceWorkshopHost.test.tsx`、`TaskCockpitPage.test.tsx` 与后端 cockpit 测试：覆盖单次 GET、同响应双消费、tenant drift、blocked/ready/failed、Receipt 缺失、independent cutoff、旧 blocker 消失、无数据伪零和零命令；
+- `apps/web/src/styles/45-ecommerce-workshop.css`：只补共享快照摘要的最小响应式样式；完成专项/累计、build、正式视觉稿逐区复审和 1280/1440/1920 内置浏览器验收。
+
+禁止项：不修改 canonical SourceReadiness status precedence，不直连 Pipeline/niushop，不读取 P08/P10 原始属性，不执行 Pipeline/retry，不生成 Receipt，不把 Shell 的重复视图变成第二 authority，不把 SourceReadiness checkedAt 当 Task evaluatedAt，也不因 12 个 item 都存在而宣称 12/12 READY。W2-02F 只关闭 W2-02 的业务上下文消费轴；W2-02 主项是否可勾选仍须按 §5.2 对全部已交付子轴、真实非空详情和完整 EvidencePack 做累计复审。
+
+2026-08-24 闭合检查点：代码已以 `m1@62c9090` 安全提交。Shell 现在只读取一次 tenant-bound canonical `SourceReadinessEnvelope`，数据源面板和 Task Cockpit 消费同一易失响应；Task evaluatedAt/taskCutoff 与 Source checkedAt/cutoffAt 分别展示，blocked、0/12 与 `receiptRef=null` 均保持失败关闭。后端 Workshop 累计 `79 passed`，Web 累计 `205 files / 2017 tests`，production build `320 modules`，OpenAPI deterministic 与合同 `13 passed`；内置浏览器 1280/1440/1920 三档零横向溢出、唯一 H1、旧 blocker 消失、新 independent-snapshot warning/无 exact EvidencePack Receipt 可见、零禁止任务命令，本次页面加载后 console error 为 0。正式视觉稿复审确认新增摘要位于权威指标与只读命令边界之间，没有复制经营数字、在线角色或示例数据。Delivery Receipt 为 `w2-02f-source-readiness-business-context-read-model-20260824`。W2-02 的代码轴已累计闭合，但真实非空 Step/Checkpoint 与目标态完整 EvidencePack 尚无授权证据，因此 96 项主计数诚实保持 `22/96`；不阻塞串行开发，下一子波立即进入 `W2-03`。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000178",
+  "created_at": "2026-08-24T14:41:02+08:00",
+  "excluded_scope": [
+    "real business-data mutation; migration apply; SourceReadiness pipeline replay; TaskRun/Action/provider/refund/release; authority GREEN fabrication; user dirty/untracked scope"
+  ],
+  "expected_outputs": [
+    "tenant-scoped W2-02F exact SourceReadiness snapshot in Task Cockpit, strict parser/UI, tests, built-in browser evidence, Delivery Receipt, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-25T01:00:00+08:00",
+  "owner": "aos-sole-developer-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "aos-platform/m1 Workshop task-cockpit SourceReadiness business-context read-only composition; docs plan/checklist evidence and receipts"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-02f-source-readiness-business-context-read-model-20260824"
+}

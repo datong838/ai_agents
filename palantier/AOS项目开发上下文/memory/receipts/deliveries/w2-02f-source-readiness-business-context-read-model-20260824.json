@@ -1,0 +1,37 @@
+{
+  "base_revision": "AOS-000178",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopShell.tsx",
+    "apps/web/src/components/workshop/SourceReadinessContext.tsx",
+    "apps/web/src/components/workshop/SourceReadinessPanel.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/index.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/tests/test_ecommerce_workshop_task_cockpit.py"
+  ],
+  "commits": [
+    "aos-platform/m1@62c9090"
+  ],
+  "completed_at": "2026-08-24T15:00:09+08:00",
+  "completed_revision": "AOS-000178",
+  "result": "W2-02F SourceReadiness business-context shared read model sealed: one tenant-bound Shell snapshot, independent Task/source cutoffs, blocked and receipt-less states remain fail-closed.",
+  "risks": [
+    "Current SourceReadiness remains blocked and receiptRef is null; this delivery does not establish operational GREEN or a real EvidencePack.",
+    "Real tenant has no independently verified non-empty Step/Checkpoint target-state EvidencePack; W2-02 main checklist remains open."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-02f-source-readiness-business-context-read-model-20260824",
+  "verification": [
+    "Workshop backend cumulative: 79 passed",
+    "Web cumulative: 205 files / 2017 tests passed",
+    "Web production build: 320 modules",
+    "OpenAPI deterministic and contract: 13 passed",
+    "Built-in browser 1280/1440/1920: no horizontal overflow, one H1, independent snapshot and no Receipt boundary visible, no forbidden task commands, current page-load console errors 0"
+  ]
+}
