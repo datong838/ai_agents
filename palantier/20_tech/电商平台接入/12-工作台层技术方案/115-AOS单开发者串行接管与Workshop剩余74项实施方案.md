@@ -503,6 +503,18 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-08C 闭合检查点：代码已以 `m1@99e4cd5` 安全提交。Web 严格消费 `customer-view/v1`，四 canonical view、六 readiness 轴、purpose-scoped disclosure、Consent/retention、k-anonymity、original refs 与 ledger 均 exact-key 解析；任何额外 PII 字段、伪 ready、未知同意计入 eligible 或数量不守恒均失败关闭。页面只显示稳定 revision ref，不提供客户导入、分群/旅程编辑、批次准备/冻结/发送或 ProtectedContact 解析入口。专项 `5 passed`、TypeScript GREEN、Web 累计 `217 files / 2045 tests`；内置浏览器 blocked/trusted-empty/nonempty、四 Tab、六轴、键盘导航与 390/768/1024/1280/1440/1920 六档宽度 GREEN。下一子波自动进入 W2-09。
 
+### 3.21 S2 / W2-09 八 Module Shared Context、Timeline 与 Navigation 集成
+
+历史 90 号 ADR 的 `HARD_GATE_BLOCKED` 来自当时 W2-01～W2-08 均无 runtime 实现；当前同一 `m1` release 已完成八个领域 GET-only strict contract、bounded reader 与正式 Web read page，因此只解除“无上游可集成”这一实现门，不推导任何 operational side-effect、真实 Provider、迁移或发布权限。W2-09 仍不是第九个领域 Store，也不复制八页 payload。
+
+- `W2-09A`：新增 strict `shared-context/v1` Python DTO、GET-only service/route 与 OpenAPI。合同包含 server-issued opaque context token、active source module/view/route、primary/related exact refs、purpose/disclosure、同一 cutoff/readiness/blockers/lineage、canonical timeline events 与 server-resolved navigation targets；URL/path 禁止 org/project、任意 return URL、PII、provider id、Evidence 正文、media payload 或 Secret。
+- `W2-09B`：新增 tenant-bound bounded assembler。只消费 canonical context authority 和 active installation projection，校验 token tenant binding/expiry、permission/purpose/marking/disclosure/readiness、exact subject revision、event identity/sequence/order/cursor/original refs、navigation target 安装与 route；跨租户重放、过期、权限或安装漂移全部失败关闭且不泄露资源存在性。
+- `W2-09C`：在唯一 Web SDK 与八 Module 共用 Shell 增加 strict parser/client、Object/Task ref rail、canonical RunTimelineBar 与服务端 navigation target；只在 URL 保存 opaque context token 与 target id，刷新/前进后退恢复同一 exact revision/view/cutoff、非敏感 filter summary、focus/scroll anchor。完成 blocked/expired/nonempty、键盘、唯一 H1/nav/main/aria-current 与多宽度浏览器验收。
+
+硬边界：merged timeline 只是可丢弃重建投影，不成为 Task/Handoff/Action/Evidence/Receipt/Usage/Effect 真源；accepted 不等于 completed、applied 不等于 settled、completed 不等于 effect-mature；unknown/late/duplicate/out-of-order/reconciled/stale 必须保留。禁止新 Store/migration、真实业务数据写入、任意外部副作用和前端目标猜测。
+
+2026-08-24 W2-09A 闭合检查点：代码已以 `m1@de9327a` 安全提交。新增 strict `shared-context/v1`、opaque token path、non-disclosing blocked/expired/forbidden/unknown 语义、exact shared refs、七类 canonical timeline event、稳定排序/唯一 identity/originals 与 unknown→reconciled 历史保留，以及七态 server-resolved navigation target。默认 GET shell 在未接 canonical assembler 时只返回泛化 blocked，不泄露 module/subject/timeline/target。专项/API/OpenAPI `22 passed`、Workshop 累计 `115 passed`、确定性 OpenAPI、compileall 与 diff check GREEN；当前 OpenAPI 为 2563 paths / 2095 schemas / 4331 operations。未新增 Store、migration、写路由、业务 payload copy 或外部副作用。下一子波自动进入 W2-09B tenant-bound bounded assembler。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

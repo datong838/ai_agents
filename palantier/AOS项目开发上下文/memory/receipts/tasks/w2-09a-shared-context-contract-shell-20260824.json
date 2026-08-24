@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000205",
+  "created_at": "2026-08-24T18:46:41+08:00",
+  "excluded_scope": [
+    "database migrations, stores, real business data, external providers, write routes, authority outside serialized CAS"
+  ],
+  "expected_outputs": [
+    "strict shared-context/v1 GET-only contract, service shell, route, OpenAPI, focused and cumulative tests"
+  ],
+  "lease_expires_at": "2026-08-25T06:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_shared_context_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_shared_context.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_shared_context.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "services/aos-api/openapi.json",
+    "apps/openapi/openapi.json",
+    "generated/openapi/aos.json"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-09a-shared-context-contract-shell-20260824"
+}

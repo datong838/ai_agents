@@ -1,33 +1,33 @@
 {
   "completed": [
-    "W2-08C strict privacy-minimized customer Web and built-in-browser acceptance"
+    "W2-09A strict shared context timeline navigation GET-only contract shell"
   ],
-  "content_hash": "sha256:2729a5f51b1aff033128406a6df175fc257ad0c81ece204bdc552fa65bde5bd4",
-  "current_phase": "S2 / W2-08C customer strict Web visual complete",
-  "delivery_status": "W2_08C_CUSTOMER_STRICT_WEB_VISUAL_GREEN_OPERATIONAL_NOT_INFERRED",
+  "content_hash": "sha256:5aa8f2f2213ff78b01014e4862aad33af84511e8f42d092e8e1473775015122e",
+  "current_phase": "S2 / W2-09A shared context contract shell complete",
+  "delivery_status": "W2_09A_SHARED_CONTEXT_CONTRACT_SHELL_GREEN_OPERATIONAL_NOT_INFERRED",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "memory/receipts/deliveries/w2-08c-customer-strict-web-visual-20260824.json"
+      "ref": "memory/receipts/deliveries/w2-09a-shared-context-contract-shell-20260824.json"
     }
   ],
-  "generated_at": "2026-08-24T18:44:40+08:00",
+  "generated_at": "2026-08-24T18:52:50+08:00",
   "hard_boundaries": [
-    "Customer Web remains PII-free and read-only; no ProtectedContact resolution, customer/Segment/Journey/Batch mutation, Provider/send, migration, release, or real-data side effect."
+    "Shared context remains reconstructable GET-only projection; no store, migration, business payload copy, target guessing, write route, external side effect, or operational GREEN inference."
   ],
   "incomplete": [
-    "W2-09 through W2-10 remain in S2"
+    "W2-09B through W2-10 remain in S2"
   ],
-  "last_green_gate": "W2_08C_CUSTOMER_STRICT_WEB_VISUAL_GREEN",
-  "next_gate": "W2_09",
+  "last_green_gate": "W2_09A_SHARED_CONTEXT_CONTRACT_SHELL_GREEN",
+  "next_gate": "W2_09B_SHARED_CONTEXT_BOUNDED_ASSEMBLER",
   "next_steps": [
-    "Implement W2-09 according to ADR-90 with strict read-only and tenant-safe boundaries."
+    "Implement W2-09B tenant-bound bounded canonical context assembler."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000205",
+  "project_revision": "AOS-000206",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "workshop": "99e4cd5"
+    "workshop": "de9327a"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
