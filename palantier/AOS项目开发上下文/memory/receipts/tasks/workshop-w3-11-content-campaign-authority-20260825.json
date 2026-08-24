@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000222",
+  "created_at": "2026-08-25T02:33:50+08:00",
+  "excluded_scope": [
+    "live migration;release;Provider;AgentRun;Action;Approval;Handoff;takeover;real business data mutation;external publish;offline queue flush"
+  ],
+  "expected_outputs": [
+    "W3-11 current implementation audit, plan remediation, tenant-safe canonical content campaign authority sealing, strict read SDK and honest atomic Skill to Logic to coworker to Workshop contribution presentation, tests, browser evidence, Delivery Receipt"
+  ],
+  "lease_expires_at": "2026-08-25T12:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_content_campaign_authority_contracts.py;services/aos-api/aos_api/ecommerce_content_campaign_authority_store.py;services/aos-api/aos_api/ecommerce_workshop_content_campaign_contracts.py;services/aos-api/aos_api/ecommerce_workshop_content_campaign.py;services/aos-api/aos_api/routers/ecommerce_workshop.py;services/aos-api/tests/test_ecommerce_content_campaign_authority_contracts.py;services/aos-api/tests/test_ecommerce_content_campaign_authority_store.py;services/aos-api/tests/test_ecommerce_workshop_content_campaign.py;services/aos-api/tests/test_ecommerce_workshop_api.py;apps/web/src/components/workshop/ContentCampaignPage.tsx;apps/web/src/components/workshop/ContentCampaignPage.test.tsx;apps/web/src/api/ecommerceWorkshop;packages/contracts/openapi/v1.generated.json;packages/contracts/openapi/v1.inventory.json;.evidence/workshop/2026-08-25-w3-11-*;palantier/20_tech/电商平台接入/12-工作台层技术方案/99-W3-11内容活动CampaignCalendarIntentArtifact排期预检ADR.md;palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-11-content-campaign-authority-20260825"
+}
