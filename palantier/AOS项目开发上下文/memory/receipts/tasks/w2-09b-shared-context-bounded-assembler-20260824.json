@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000206",
+  "created_at": "2026-08-24T18:53:42+08:00",
+  "excluded_scope": [
+    "database migrations, stores, real business data, external providers, writes, authority outside serialized CAS"
+  ],
+  "expected_outputs": [
+    "tenant-bound bounded shared context assembler with replay expiry route permission purpose marking timeline and exact-subject guards"
+  ],
+  "lease_expires_at": "2026-08-25T06:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_shared_context_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_shared_context_reader.py",
+    "services/aos-api/aos_api/ecommerce_workshop_shared_context.py",
+    "services/aos-api/tests/test_ecommerce_workshop_shared_context.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-09b-shared-context-bounded-assembler-20260824"
+}

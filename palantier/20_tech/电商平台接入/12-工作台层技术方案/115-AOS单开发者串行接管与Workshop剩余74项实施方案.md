@@ -515,6 +515,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-09A 闭合检查点：代码已以 `m1@de9327a` 安全提交。新增 strict `shared-context/v1`、opaque token path、non-disclosing blocked/expired/forbidden/unknown 语义、exact shared refs、七类 canonical timeline event、稳定排序/唯一 identity/originals 与 unknown→reconciled 历史保留，以及七态 server-resolved navigation target。默认 GET shell 在未接 canonical assembler 时只返回泛化 blocked，不泄露 module/subject/timeline/target。专项/API/OpenAPI `22 passed`、Workshop 累计 `115 passed`、确定性 OpenAPI、compileall 与 diff check GREEN；当前 OpenAPI 为 2563 paths / 2095 schemas / 4331 operations。未新增 Store、migration、写路由、业务 payload copy 或外部副作用。下一子波自动进入 W2-09B tenant-bound bounded assembler。
 
+2026-08-24 W2-09B 闭合检查点：代码已以 `m1@d285996` 安全提交。新增 tenant-bound bounded canonical reader 与 assembler；ready context 必须携带 exact permission decision、disclosure policy 和唯一 bounded markings，并同时通过 tenant/token/cutoff/expiry、active source/target route、exact primary subject 和 timeline ref reachability 校验。跨租户重放返回 non-disclosing forbidden，过期返回 non-disclosing expired，其余 authority/route/ref drift 返回 non-disclosing blocked；三者均不返回 module、subject、timeline 或 navigation target。专项 `9 passed`、Workshop API 累计 `120 passed`、compileall 与 diff check GREEN；未新增 Store、migration、业务 payload copy、真实数据写入或外部副作用。下一子波自动进入 W2-09C strict Web shared rail/timeline/navigation。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
