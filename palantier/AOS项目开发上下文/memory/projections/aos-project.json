@@ -1,43 +1,43 @@
 {
   "completed": [
-    "W3-11 Campaign Calendar Intent ContentVariant authority and honest contribution lineage code browser acceptance",
-    "W3-11 backend focused 36 Web focused 17 backend cumulative 181 Web 221 files 2084 tests OpenAPI deterministic TypeScript build and three-viewport browser GREEN"
+    "W3-12 OperationCase classification reversible membership SLA kill authority and command observation code browser acceptance",
+    "W3-12 backend focused 65 cumulative 218 Web 221 files 2084 tests OpenAPI deterministic TypeScript build and three-viewport browser GREEN"
   ],
-  "content_hash": "sha256:66f36799c3ac7bf172283d60068b6d0eaf6d6f8e5e8ef587e66c550e62f5211e",
+  "content_hash": "sha256:00224d9cc3c06bfb4673f58793cde96dff15b71fa08cf778536e671a73546082",
   "current_phase": "S3 Workshop domain authority serial implementation",
-  "delivery_status": "S3_W3_11_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "delivery_status": "S3_W3_12_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
       "kind": "evidence",
-      "ref": ".evidence/workshop/2026-08-25-w3-11-content-campaign-authority.json"
+      "ref": ".evidence/workshop/2026-08-25-w3-12-unified-operations-authority.json"
     },
     {
       "kind": "receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w3-11-content-campaign-authority-20260825.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w3-12-unified-operations-authority-20260825.json"
     }
   ],
-  "generated_at": "2026-08-25T02:47:02+08:00",
+  "generated_at": "2026-08-25T02:55:55+08:00",
   "hard_boundaries": [
-    "No live migration release Provider AgentRun Action Approval Handoff takeover real business mutation or offline queue flush was executed",
-    "Domain authority is not an atomic Skill and absent exact AgentRun SkillBinding LogicRevision remains unknown"
+    "No live migration release Provider AgentRun Action Approval Handoff takeover business mutation refund kill or offline queue flush was executed",
+    "Operation domain authority is not an atomic Skill and absent exact AgentRun SkillBinding LogicRevision remains unknown"
   ],
   "incomplete": [
-    "W3-12 through W3-14 and S4 W4-01 through W4-08 remain serially pending",
-    "release live migration Provider AgentRun Action Approval Handoff takeover and real business mutation remain gated"
+    "W3-13 W3-14 and S4 W4-01 through W4-08 remain serially pending",
+    "release live migration Provider AgentRun Action Approval Handoff takeover refund kill and real business mutation remain gated"
   ],
-  "last_green_gate": "W3_11_CONTENT_CAMPAIGN_CODE_BROWSER_GREEN_NO_RELEASE",
-  "next_gate": "W3_12_UNIFIED_OPERATIONS_AUTHORITY_CLOSURE",
+  "last_green_gate": "W3_12_UNIFIED_OPERATIONS_CODE_BROWSER_GREEN_NO_RELEASE",
+  "next_gate": "W3_13_ANALYST_AUTHORITY_CLOSURE",
   "next_steps": [
-    "Start W3-12 closure audit immediately and repair only current factual gaps under sole-developer serial authority",
-    "Continue W3-13 and W3-14 then automatically enter S4 without ordinary wave-boundary pause"
+    "Start W3-13 analyst authority closure immediately and preserve atomic Skill Logic coworker Workshop contribution semantics",
+    "Continue W3-14 then automatically enter S4 without ordinary wave-boundary pause"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000223",
+  "project_revision": "AOS-000224",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "b501febbd14f87e8a09145a95affa7c30607a24a",
-    "docs": "5beeba2",
-    "evidence": "9a4172d"
+    "code": "86785e29566a6d8b157afcab6ca3aef2c87dc60c",
+    "docs": "0f1cd4a",
+    "evidence": "45f5a33"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
