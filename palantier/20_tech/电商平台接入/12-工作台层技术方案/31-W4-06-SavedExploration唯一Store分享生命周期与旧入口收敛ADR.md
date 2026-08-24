@@ -115,11 +115,12 @@ SavedExplorationShareGrant
 
 | 顺序 | 文件 | 最小改动 |
 |---|---|---|
-| 1 | `apps/web/src/api/ontologyExplorationAssets.ts` | 增加 strict `ShareGrantView` parser、resolve API 与 exact asset 回读；拒绝多字段、非 active、租户/引用/哈希矛盾。 |
-| 2 | `apps/web/src/api/ontologyExplorationAssets.test.ts` | 补充 active 正向与 malformed/status/hash/revision 失败关闭。 |
-| 3 | `apps/web/src/pages/s2/workshop.tsx` | 仅消费 URL opaque `shareRef`，成功后用 exact asset 恢复工作台；不把 URL/localStorage 当 authority，不自动创建/撤销 grant。 |
-| 4 | `apps/web/src/pages/s2/workshop.test.ts` | 补充 shareRef 保留、清理和交互语义回归。 |
-| 5 | `.evidence/workshop/2026-08-25-w4-06-saved-exploration-lifecycle.json` | 记录专项/累计/浏览器/一致性证据，不包含 opaque ref 实值。 |
+| 1 | `apps/web/src/api/client.ts` | 增加不读写离线快照的 authoritative GET；撤销/到期 grant 不得被旧缓存复活。 |
+| 2 | `apps/web/src/api/ontologyExplorationAssets.ts` | 增加 strict `ShareGrantView` parser、resolve API 与 exact asset 回读；拒绝多字段、非 active、租户/引用/哈希矛盾。 |
+| 3 | `apps/web/src/api/ontologyExplorationAssets.test.ts` | 补充 active 正向与 malformed/status/hash/revision 失败关闭。 |
+| 4 | `apps/web/src/pages/s2/workshop.tsx` | 仅消费 URL opaque `shareRef`，成功后用 exact asset 恢复工作台；不把 URL/localStorage 当 authority，不自动创建/撤销 grant。 |
+| 5 | `apps/web/src/pages/s2/workshop.test.ts` | 补充 shareRef 保留、清理和交互语义回归。 |
+| 6 | `.evidence/workshop/2026-08-25-w4-06-saved-exploration-lifecycle.json` | 记录专项/累计/浏览器/一致性证据，不包含 opaque ref 实值。 |
 
 ### 8.3 安全与产品裁决
 
