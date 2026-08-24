@@ -485,6 +485,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-07B 闭合检查点：代码已以 `m1@8a4b912` 安全提交。新增 bounded canonical reader，固定 tenant/cutoff/revision、三 canonical view、每 view 最多 100 个唯一 Observation/authority refs、immutable original reachability 与 input/dedup ledger 守恒；可信空只在 reader 可达且六轴合法时成立，单 view 观测 drift 独立失败关闭，跨 view trusted revision 冲突则三 view 全部阻断。专项 `6 passed`、Workshop 累计 `105 passed`、compileall 与 diff check GREEN；未新增 Price Store、migration、ResearchJob、Provider、通知或调价副作用。下一子波自动进入 W2-07C strict Web 与正式视觉验收。
 
+2026-08-24 W2-07C 闭合检查点：代码已以 `m1@fc577bc` 安全提交。Web 新增唯一 strict Price Governance schema/parser/client 和正式三 Tab 只读页面，对 canonical view/axis 顺序、tenant、共享 revision/cutoff、quote basis、immutable originals、可比条件、unknown 非零值、ledger/page 守恒与 repricing disabled 全部失败关闭。页面保留价格研究、同款证据、策略/Case、调度/reconcile 层次，只显示 Observation、exact refs 与 blocker，不提供采集、决定、策略编辑、通知、建议交接或调价命令。专项 `5 passed`、TypeScript noEmit、Web 累计 `215 files / 2040 tests` GREEN；内置浏览器完成 blocked/empty/nonempty、方向键与 `390/768/1024/1280/1440/1920` 六档矩阵，三 Tab、六轴、单 H1、零写按钮、零横向溢出。未触发 Provider、ResearchJob、通知、调价、迁移或真实业务数据副作用。下一任务自动进入 W2-08 客户批次只读基座。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000201",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/priceGovernanceClient.test.ts",
+    "apps/web/src/components/workshop/PriceGovernancePage.tsx",
+    "apps/web/src/components/workshop/PriceGovernancePage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/index.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "fc577bc"
+  ],
+  "completed_at": "2026-08-24T18:20:53+08:00",
+  "completed_revision": "AOS-000201",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "Read-only GET UI only; repricing remains disabled; no provider, migration, notification, price write, or real business-data mutation."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-07c-price-governance-strict-web-visual-20260824",
+  "verification": [
+    "focused Web tests 5 passed",
+    "TypeScript noEmit GREEN",
+    "Web cumulative 215 files / 2040 tests passed",
+    "built-in browser blocked/empty/nonempty, keyboard, 390/768/1024/1280/1440/1920: 3 tabs, 6 axes, 1 H1, 0 write buttons, 0 horizontal overflow"
+  ]
+}

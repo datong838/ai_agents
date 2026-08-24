@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000201",
+  "created_at": "2026-08-24T18:09:16+08:00",
+  "excluded_scope": [
+    "backend writes, migration, Price authority creation, Provider/ResearchJob, notifications, advice handoff, repricing, real business data"
+  ],
+  "expected_outputs": [
+    "Strict GET-only Price Governance Web SDK, formal read-only page, focused/cumulative tests and built-in browser matrix"
+  ],
+  "lease_expires_at": "2026-08-25T06:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/priceGovernanceClient.test.ts",
+    "apps/web/src/components/workshop/PriceGovernancePage.tsx",
+    "apps/web/src/components/workshop/PriceGovernancePage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx",
+    "apps/web/src/components/workshop/index.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-07c-price-governance-strict-web-visual-20260824"
+}
