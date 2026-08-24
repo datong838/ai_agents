@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000220",
+  "blockers": [
+    "release, runtime action, provider side effect, migration, and business write remain outside W3-09"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/production",
+    "apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    ".evidence/workshop/2026-08-25-w3-09-common-production-ui.json"
+  ],
+  "commits": [
+    "c44579058bff3dcde2e91f759e0d272ddcd7c286"
+  ],
+  "completed_at": "2026-08-25T01:46:52+08:00",
+  "completed_revision": "AOS-000220",
+  "result": "CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "built-in browser viewport control unavailable; 1440/1920 matrix remains for later cumulative gate",
+    "live AIP API unavailable in browser session; fail-closed state verified, live ready state not claimed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-09-common-production-ui-20260825",
+  "verification": [
+    "focused web 24 passed",
+    "cumulative web 221 files 2084 tests passed",
+    "typescript and vite production build green",
+    "built-in browser 1280x720 fail-close no overflow no command click",
+    "shared component package forbidden dependency scan green"
+  ]
+}

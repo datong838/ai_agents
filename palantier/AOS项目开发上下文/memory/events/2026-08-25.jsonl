@@ -9,3 +9,5 @@
 {"base_revision":"AOS-000219","occurred_at":"2026-08-25T01:04:46+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-08-dispatch-priority-approval-navigation-20260825","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-25T01:32:52+08:00","result":"CODE_CONTROL_BROWSER_GREEN_NO_RELEASE_NO_MIGRATION_APPLIED_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w3-08-dispatch-priority-approval-navigation-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T01:33:17+08:00","project_revision":"AOS-000220","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000220","occurred_at":"2026-08-25T01:34:57+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-09-common-production-ui-20260825","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-25T01:46:52+08:00","result":"CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w3-09-common-production-ui-20260825","type":"TASK_COMPLETED"}

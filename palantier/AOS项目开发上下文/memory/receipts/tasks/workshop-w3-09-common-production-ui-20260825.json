@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000220",
+  "created_at": "2026-08-25T01:34:57+08:00",
+  "excluded_scope": [
+    "live migration release Provider AgentRun Action Approval Handoff takeover or real business mutation"
+  ],
+  "expected_outputs": [
+    "single common production UI package with strict props typed intents nine-state accessibility tests and read-only ProductionContractsPage consumption"
+  ],
+  "lease_expires_at": "2026-08-25T09:35:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/production",
+    "apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    "apps/web/src/pages/s2/ProductionContractsPage.test.tsx",
+    ".evidence/workshop/2026-08-25-w3-09-*",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/97-W3-09公共生产UI组件边界与无障碍预检ADR.md",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-09-common-production-ui-20260825"
+}
