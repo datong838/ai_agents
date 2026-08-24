@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000221",
+  "blockers": [],
+  "changed_files": [
+    "scripts/workshop/w3_10_common_orchestration_gate.py",
+    "scripts/workshop/tests/test_w3_10_common_orchestration_gate.py",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    ".evidence/workshop/2026-08-25-w3-10-common-orchestration-manifest.json",
+    ".evidence/workshop/2026-08-25-w3-10-common-orchestration-decision.json",
+    ".evidence/workshop/2026-08-25-w3-10-common-orchestration-cumulative.json",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/98-W3-10公共编排五层累计门预检ADR.md",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "e3089af5a5eb65d22c0a8c389fa470d0d73bdcd5",
+    "da5c42109685b6c2143bee26b2f85d204bb32c23",
+    "14a427c38b85e7f02b4355e27598f9cc76a98aa9"
+  ],
+  "completed_at": "2026-08-25T02:28:54+08:00",
+  "completed_revision": "AOS-000221",
+  "result": "S3_W3_10_CUMULATIVE_CODE_BROWSER_GREEN_NEXT_WAVE_ALLOWED_NO_RELEASE",
+  "risks": [
+    "NO_RELEASE; no live migration, Provider, AgentRun, Action, Approval, Handoff, takeover, business mutation, or offline queue flush; current authority read-only data preserves unknown and blocked states"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-10-common-orchestration-cumulative-20260825",
+  "verification": [
+    "W3 gate 35 passed; backend cumulative 105 passed plus 2 subtests; OpenAPI 13 passed and exporter check PASS; web 221 files / 2084 tests and production build GREEN; built-in browser 1280/1440/1920, 49 API responses all 200, console errors 0, command invocations 0"
+  ]
+}
