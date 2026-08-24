@@ -423,6 +423,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 闭合检查点：W2-04A 已以 `m1@a8627e8` 安全提交。`creator-growth-view/v1` 固定五个业务阶段切片与五个工作流阶段正交表达，exact authority ref、唯一性、同 cutoff、数量守恒、分页和 blocked/ready 语义全部失败关闭；GET-only 路由受安装态与双租户约束，五切片在 canonical authority 不存在时只返回独立 blocker，不制造达人事实或写入口。专项 creator-growth/API `26 passed`、Workshop 累计（排除受保护未跟踪 `plugins/ops/` 资产范围）`78 passed`，OpenAPI 契约与确定性导出、compileall、diff check GREEN。未 apply migration、未写真实数据库、未触发发现/邀约/合同/履约/关系副作用。Delivery Receipt 为 `w2-04a-creator-growth-contract-shell-20260824`；下一子波自动进入 W2-04B。
 
+2026-08-24 W2-04B 闭合检查点：代码已以 `m1@3fa8b4c` 安全提交。候选身份、Profile Evidence、Match Observation 与 Match Decision 使用独立 immutable authority；Observation 只表达可复核评分证据，Decision 只引用 exact Observation，`accepted` 不产生合同状态。PII 只保留唯一 opaque ref；Store 以双租户、exact Receipt、append-only INSERT、repeatable-read bounded reader 和 tenant drift fail-closed 固定边界。专项/邻接 `30 passed`、compileall 与 diff check GREEN；未创建或 apply migration，未发现、邀约或修改真实达人数据。下一子波自动进入 W2-04C。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
