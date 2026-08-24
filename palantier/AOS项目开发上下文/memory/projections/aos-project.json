@@ -1,40 +1,40 @@
 {
   "completed": [
-    "W2-03B canonical content-campaign authority contracts and tenant-safe append-only migration code-control foundation"
+    "W2-03C tenant-bound authority Store and bounded read-only readers with fake-connection CAS/idempotency/isolation evidence"
   ],
-  "content_hash": "sha256:37bc4cb0caa93bbbd6ec3c1b9136ec47bdb5e5774e30ea5fb3bdef8d30456888",
+  "content_hash": "sha256:4c8109c3833797d6cae99dd934832ce62a27e95ff90c159e5de36c92f12e42de",
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S2",
-  "delivery_status": "W2_03B_CONTENT_CAMPAIGN_AUTHORITY_CODE_CONTROL_GREEN_MIGRATION_NOT_APPLIED",
+  "delivery_status": "W2_03C_CONTENT_CAMPAIGN_STORE_READERS_CODE_CONTROL_GREEN_REAL_DB_NOT_TOUCHED",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "w2-03b-content-campaign-authority-foundation-20260824"
+      "ref": "w2-03c-content-campaign-store-readers-20260824"
     },
     {
       "kind": "verification",
-      "ref": "authority 7 passed; cumulative 82 passed; single Alembic head w3_011; OpenAPI 4325 deterministic; browser cumulative GREEN"
+      "ref": "store authority 16 passed; cumulative 91 passed; browser cumulative GREEN; fake connections only"
     }
   ],
-  "generated_at": "2026-08-24T15:23:06+08:00",
+  "generated_at": "2026-08-24T15:29:07+08:00",
   "hard_boundaries": [
     "No real DB business mutation, migration apply, campaign schedule/publish, Action execution, provider call, refund, replay, release, or UI enablement without exact authority"
   ],
   "incomplete": [
-    "W2-03 Store/readers, ContentVariant Artifact projection, strict Web and formal visual acceptance",
-    "w3_011 migration not applied to a real database",
+    "W2-03 GET view composition, ContentVariant Artifact projection, strict Web and formal visual acceptance",
+    "w3_011 migration not applied and real database not touched",
     "W2-02 main real non-empty Step/Checkpoint and complete target-state EvidencePack evidence",
     "W2-01 aftersale originals/timeline; W3-12 main closure; real runtime invocation"
   ],
-  "last_green_gate": "W2_03B_CONTENT_CAMPAIGN_AUTHORITY_CODE_CONTROL_GREEN",
-  "next_gate": "W2_03C_CONTENT_CAMPAIGN_STORE_READERS",
+  "last_green_gate": "W2_03C_CONTENT_CAMPAIGN_STORE_READERS_CODE_CONTROL_GREEN",
+  "next_gate": "W2_03D_CONTENT_CAMPAIGN_VIEW_COMPOSITION",
   "next_steps": [
-    "Start W2-03C tenant-bound Store and read-only readers using fake connection tests; do not apply migration or write real business data"
+    "Start W2-03D reader composition in GET-only view; empty canonical authority may be ready empty but reader failure remains explicitly blocked"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000181",
+  "project_revision": "AOS-000182",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "fb2ffdf"
+    "aos-platform": "47976bf"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

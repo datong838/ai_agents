@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000181",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_content_campaign_authority_store.py",
+    "services/aos-api/tests/test_ecommerce_content_campaign_authority_store.py"
+  ],
+  "commits": [
+    "aos-platform/m1@47976bf"
+  ],
+  "completed_at": "2026-08-24T15:29:07+08:00",
+  "completed_revision": "AOS-000181",
+  "result": "W2-03C tenant-bound content-campaign authority Store and bounded read-only readers sealed with fake-connection CAS, idempotency and isolation evidence; no migration or real database access occurred.",
+  "risks": [
+    "Store write methods are internal only and not authorized for real database use; w3_011 remains unapplied.",
+    "GET view composition, ContentVariant Artifact projection, strict Web and formal visual acceptance remain incomplete."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-03c-content-campaign-store-readers-20260824",
+  "verification": [
+    "Store/authority focused cumulative: 16 passed",
+    "Workshop plus content-campaign cumulative: 91 passed",
+    "Built-in browser cumulative regression 1280/1440/1920: no horizontal overflow, one H1, zero enabled forbidden side-effect buttons, current page console errors 0"
+  ]
+}

@@ -347,6 +347,20 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@fb2ffdf` 安全提交。三类 canonical revision、Calendar successor decision、exact ref 与 authority Receipt 合同均严格校验 tenant/time/hash/revision/prior/type，Calendar 保存 IANA timezone 与 resolved window，Intent 只引用 Brief/Artifact exact revision 且 strict extra 拒绝 raw body/prompt。`w3_011` 唯一继承 `d0_after_001`，Alembic 实测仍为单 head；8 张表全部 RLS/FORCE RLS，5 张 history/decision/Receipt 表仅 SELECT/INSERT 并有 UPDATE/DELETE/TRUNCATE guard，非空 downgrade 失败关闭。专项 `7 passed`，Workshop+内容活动累计 `82 passed`，OpenAPI deterministic 保持 `4325` operations；内置浏览器累计回归 1280/1440/1920 零横向溢出、唯一 H1、零可执行禁止类副作用按钮、新增 console error 0。本波没有执行 migration、没有真实数据写入、写 API 或发布副作用。Delivery Receipt 为 `w2-03b-content-campaign-authority-foundation-20260824`；W2-03 主项仍未勾选，下一子波立即进入 W2-03C tenant-bound Store/reader。
 
+### 3.12 S2 / W2-03C tenant-bound Store 与 bounded reader
+
+本子波在 B 合同/schema 上新增单一内部 Store，不注册公开写 router。写路径仅供后续治理命令复用，必须先校验 `TenantScope == item.tenant`、actor、expectedVersion、revision 单步递增与 Idempotency-Key；同 key 同 request hash 返回原 exact result ref，同 key 异 hash 冲突。任何失败均不自动重试。
+
+文件级范围：
+
+- 新增 `services/aos-api/aos_api/ecommerce_content_campaign_authority_store.py`，实现 campaign/calendar/intent head `FOR UPDATE` + append revision + immutable Receipt 原子提交，Calendar decision 只 append；所有 SQL 用参数传租户，不把 tenant/actor 信任交给 body；
+- 同一 Store 提供 `list_campaigns/list_calendar_entries/list_intents`，每次开启 `REPEATABLE READ READ ONLY`，固定 tenant/cutoff/确定性排序/limit<=100，仅返回当前 exact revision 严格合同；连接、payload、scope 或 contract drift 均统一失败关闭；
+- 新增 `services/aos-api/tests/test_ecommerce_content_campaign_authority_store.py`，仅用 fake connection 覆盖首次创建、修订 CAS、同键 replay/异 payload 冲突、跨租户与 actor 拒绝、Calendar decision append-only、三类 bounded read-only 回读、row tenant drift 失败关闭。
+
+禁止项：不连接真实库，不执行 `w3_011` migration，不注册 create/revise/schedule/cancel/publish API，不创建 Artifact/Action/Approval/Lease，不保存正文、prompt、token、PII 或 Provider 数据。C GREEN 后自动进入 W2-03D，将只读 reader 依赖注入 GET view，reader 不可用仍结构化 blocked，空但可用的 canonical authority 才能是 ready empty。
+
+2026-08-24 闭合检查点：代码已以 `m1@47976bf` 安全提交。三类 publish 内部 Store 均在连接前校验 item tenant/actor，连接内先查 immutable Receipt、再 `FOR UPDATE` head 并校验 expectedVersion/单步 revision，成功时同一事务 append revision + Receipt + commit；同 key 同 hash 返回原 exact ref，异 hash 冲突。Calendar decision 只 append。三类 reader 均使用 `REPEATABLE READ READ ONLY`、tenant/cutoff/稳定排序/limit<=100，row 或 payload tenant drift 失败关闭。专项累计 `16 passed`，Workshop+内容活动累计 `91 passed`，diff check GREEN；内置浏览器累计回归 1280/1440/1920 零横向溢出、唯一 H1、零可执行禁止类副作用按钮、页面新增 console error 0。测试只用 fake connection，未执行 migration、未连接真实数据库、未注册写 API。Delivery Receipt 为 `w2-03c-content-campaign-store-readers-20260824`；W2-03 主项仍未勾选，下一子波立即进入 W2-03D GET view reader composition。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
