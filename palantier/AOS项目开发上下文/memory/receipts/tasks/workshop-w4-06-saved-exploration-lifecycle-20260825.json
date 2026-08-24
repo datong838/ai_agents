@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000231",
+  "created_at": "2026-08-25T05:46:11+08:00",
+  "excluded_scope": [
+    "authority.json,01/06,Prime before delivery CAS; live migration; release; production share mutation; unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "W4-06 unique PostgreSQL Store and strict share-ref Workshop consumption closed with tests,browser,evidence,receipt"
+  ],
+  "lease_expires_at": "2026-08-26T12:00:00+00:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs:31-W4-06 ADR,D-waves checklist; code:ontologyExplorationAssets SDK+tests,workshop page+tests,evidence; no migration or live data operation"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w4-06-saved-exploration-lifecycle-20260825"
+}

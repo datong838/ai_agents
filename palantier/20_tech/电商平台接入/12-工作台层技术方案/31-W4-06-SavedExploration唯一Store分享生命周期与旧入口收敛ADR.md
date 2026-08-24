@@ -2,7 +2,7 @@
 
 > 日期：2026-08-14  
 > 核查基线：`w2-workshop@3e94339`，项目 authority `AOS-000023`  
-> 状态：`AOS-000231_REVIEWED / IMPLEMENTATION_AUTHORIZED / CONSUMER_CLOSURE_IN_PROGRESS`  
+> 状态：`AOS-000231_REVIEWED / W4_06_CODE_BROWSER_GREEN / DELIVERY_CLOSURE_IN_PROGRESS`
 > 边界：只读审查与实施包冻结；未修改源代码、迁移、数据库、真实租户或视觉稿
 
 ## 1. 结论
@@ -118,7 +118,7 @@ SavedExplorationShareGrant
 | 1 | `services/aos-api/aos_api/ontology_exploration_share.py` | 在原有 grant authority 上增加 purpose/markings 复验与 exact shared asset 组合读；不绕过 tenant/RLS。 |
 | 2 | `services/aos-api/aos_api/routers/oe_enhancements.py` | 增加服务端验证后的 shareRef → exact exploration 只读端点，并传入 Principal markings。 |
 | 3 | `services/aos-api/tests/aip/test_w_l16_saved_exploration_share.py` | 补充私有资产组合读、markings/purpose/hash/revoke/expiry 失败关闭。 |
-| 3a | `packages/contracts/openapi/v1.yaml` 与 `v1.inventory.json` | 按确定性导出器同步新的只读路由合同，不手工编辑生成物。 |
+| 3a | `packages/contracts/openapi/v1.generated.json` 与 `v1.inventory.json` | 按确定性导出器同步新的只读路由合同，不手工编辑生成物。 |
 | 3b | `scripts/export_openapi.py` | 将新增的唯一 GET 纳入 route/operation 总数守卫；duplicate allowlist 不变。 |
 | 3c | `services/aos-api/tests/test_openapi_contract.py` | 同步新增 1 path/1 response schema 的结构总数断言，其余冻结形状不变。 |
 | 4 | `apps/web/src/api/client.ts` | 增加不读写离线快照的 authoritative GET；撤销/到期 grant 不得被旧缓存复活。 |
@@ -134,3 +134,15 @@ SavedExplorationShareGrant
 - 本波不修改迁移，不执行真实 grant 创建/撤销，不发布；浏览器验收使用本地固定 fixture，不作为运营就绪证据。
 - `viewRef` 继续用于当前 Principal 可直接读取的已保存视图；`shareRef` 只是服务端验证的 opaque capability ref，两者不互换、不在客户端扩权。
 - 组合读只允许 `purpose=exploration_read`，要求 grant markings 是 Principal markings 的子集，且返回资产必须与 grant 的 assetId/revision/hash 完全相同；任一不符均不降级到普通 GET 或缓存。
+
+### 8.4 实施与验收结论
+
+- 代码提交：`m1@515d20b`；证据提交：`m1@1131c1d`。
+- Backend 在既有 PostgreSQL share grant authority 上补齐 `exploration_read` purpose、Principal markings 与 exact revision/hash 复验，并新增服务端组合 GET；撤销、到期、归档、hash drift 或 marking 不满足均失败关闭。
+- Web 权限读使用 authoritative GET，离线或网络失败时不读取/写入 snapshot；strict parser 同时核验租户、status、purpose、expiry、opaque ref、asset/revision/hash/owner，页面只消费白名单 opaque `shareRef`。
+- Backend 专项与累计 `32 passed`；Web 专项 `17 passed`、全量 `221 files / 2096 tests passed`，TypeScript、production build、compileall、`git diff --check` GREEN。
+- OpenAPI 确定性导出 GREEN，合同 `13 passed`，当前结构为 `2583 paths / 2163 schemas`。
+- 内置浏览器正向 fixture 验证私有 exploration exact 恢复与刷新保持；漂移 fixture 显式失败关闭且不泄露 query。fixture 只作 UI 验收传输，不是生产运营就绪证据。
+- 本波未执行真实 grant 创建/撤销、live migration、Provider、Action、发布或业务写入。
+
+结论：`W4_06_SAVED_EXPLORATION_LIFECYCLE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT`。旧内存兼容入口继续显式失败关闭且生产引用为 0，不为形式删除破坏 import 兼容；live migration 与生产授权操作仍保留独立门。证据：`.evidence/workshop/2026-08-25-w4-06-saved-exploration-lifecycle.json`。
