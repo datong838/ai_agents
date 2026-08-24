@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000188",
+  "blockers": [
+    "Contract, delivery and relationship authorities remain to be implemented"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_creator_growth_authorities.py",
+    "services/aos-api/aos_api/ecommerce_workshop_creator_growth_store.py",
+    "services/aos-api/tests/test_ecommerce_workshop_creator_growth_authorities.py",
+    "services/aos-api/tests/test_ecommerce_workshop_creator_growth_store.py"
+  ],
+  "commits": [
+    "527eae7"
+  ],
+  "completed_at": "2026-08-24T16:35:46+08:00",
+  "completed_revision": "AOS-000188",
+  "result": "W2_04C_OUTREACH_BATCH_LEDGER_AUTHORITY_CODE_CONTROL_GREEN",
+  "risks": [
+    "Authority tables are code-control only; migration not applied and no outreach invoked"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-04c-outreach-batch-ledger-authority-20260824",
+  "verification": [
+    "Creator growth authority and adjacent tests 32 passed",
+    "compileall and git diff check GREEN"
+  ]
+}

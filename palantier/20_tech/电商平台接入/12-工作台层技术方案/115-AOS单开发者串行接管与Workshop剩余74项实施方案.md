@@ -425,6 +425,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-04B 闭合检查点：代码已以 `m1@3fa8b4c` 安全提交。候选身份、Profile Evidence、Match Observation 与 Match Decision 使用独立 immutable authority；Observation 只表达可复核评分证据，Decision 只引用 exact Observation，`accepted` 不产生合同状态。PII 只保留唯一 opaque ref；Store 以双租户、exact Receipt、append-only INSERT、repeatable-read bounded reader 和 tenant drift fail-closed 固定边界。专项/邻接 `30 passed`、compileall 与 diff check GREEN；未创建或 apply migration，未发现、邀约或修改真实达人数据。下一子波自动进入 W2-04C。
 
+2026-08-24 W2-04C 闭合检查点：代码已以 `m1@527eae7` 安全提交。OutreachItem 只接受 exact Candidate/MatchDecision ref；OutreachBatch 的 prepared/frozen 仅冻结清单，不代表已发送；StartLedger 将 accepted/applied/failed/unknown/skipped 分开并强制输入守恒，unknown 不得折算成功。Store 仍仅 append immutable authority row，无 UPDATE、Provider 或邀约调用。专项/邻接 `32 passed`、compileall 与 diff check GREEN；无 migration apply 或真实数据改动。下一子波自动进入 W2-04D。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
