@@ -48,3 +48,12 @@
 {"occurred_at":"2026-08-25T05:42:07+08:00","result":"W4_05_GOVERNED_MEMORY_ASSEMBLY_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w4-05-knowledge-memory-governance-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T05:43:00+08:00","project_revision":"AOS-000230","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"occurred_at":"2026-08-25T05:44:07+08:00","project_revision":"AOS-000231","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000231","occurred_at":"2026-08-25T05:46:11+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w4-06-saved-exploration-lifecycle-20260825","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-25T06:09:03+08:00","result":"W4_06_SAVED_EXPLORATION_LIFECYCLE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w4-06-saved-exploration-lifecycle-20260825","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-25T06:11:14+08:00","project_revision":"AOS-000232","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000232","occurred_at":"2026-08-25T06:15:58+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w4-07-query-research-job-lifecycle-20260825","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-25T06:39:11+08:00","result":"W4_07_ASYNC_JOB_PROJECTION_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w4-07-query-research-job-lifecycle-20260825","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-25T06:39:58+08:00","project_revision":"AOS-000233","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000233","occurred_at":"2026-08-25T06:46:33+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w4-08-cross-capability-cumulative-gate-20260825","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-25T07:02:00+08:00","result":"W4_08_CROSS_CAPABILITY_CUMULATIVE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w4-08-cross-capability-cumulative-gate-20260825","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-25T07:02:26+08:00","project_revision":"AOS-000234","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

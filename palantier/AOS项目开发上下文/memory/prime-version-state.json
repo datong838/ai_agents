@@ -1,24 +1,24 @@
 {
   "entries": {
     "aos-aip-full-checklists": {
-      "authority_content_hash": "sha256:3598639e99a236e973c30f6e5db49610e3fe8a59e548ad9a5c42ae4e66d3d904",
-      "entry_content_hash": "sha256:7710acba869de6790cf4fa6722b6d7ff7f081587628495bd46419fbc62d023f2",
-      "project_revision": "AOS-000231",
-      "version": 249
+      "authority_content_hash": "sha256:da4c1f3649132b55c4e06a0096dddf83b0684b9b64acebb273eec8d8dd63d237",
+      "entry_content_hash": "sha256:974c773f2ca879e3aae0684979f6c72b5a74da29ef4e0a652459894c089356b9",
+      "project_revision": "AOS-000234",
+      "version": 252
     },
     "aos-current-delivery": {
-      "authority_content_hash": "sha256:3598639e99a236e973c30f6e5db49610e3fe8a59e548ad9a5c42ae4e66d3d904",
-      "entry_content_hash": "sha256:688bfe94dcb037210b34370123242db980ac137617801a04c181474b52da3bbb",
-      "project_revision": "AOS-000231",
-      "version": 255
+      "authority_content_hash": "sha256:da4c1f3649132b55c4e06a0096dddf83b0684b9b64acebb273eec8d8dd63d237",
+      "entry_content_hash": "sha256:2663ad9419b956474f6168754ff37406c434fff3c8e60e84a61b588a13e5f75f",
+      "project_revision": "AOS-000234",
+      "version": 258
     },
     "aos-milestones": {
-      "authority_content_hash": "sha256:3598639e99a236e973c30f6e5db49610e3fe8a59e548ad9a5c42ae4e66d3d904",
-      "entry_content_hash": "sha256:98270a1b7ab231a16282304efe73ae923c9f44d9b8871820d0b6cbb0a1d8c0d5",
-      "project_revision": "AOS-000231",
-      "version": 253
+      "authority_content_hash": "sha256:da4c1f3649132b55c4e06a0096dddf83b0684b9b64acebb273eec8d8dd63d237",
+      "entry_content_hash": "sha256:3c403156388e0d3ddec742a20116dc3321e8e34670990c3f8b7e444df05f4cfb",
+      "project_revision": "AOS-000234",
+      "version": 256
     }
   },
   "schema": "aos-memory-prime-version-state/v1",
-  "updated_at": "2026-08-25T05:44:07+08:00"
+  "updated_at": "2026-08-25T07:02:35+08:00"
 }

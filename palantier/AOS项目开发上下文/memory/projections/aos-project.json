@@ -1,36 +1,39 @@
 {
   "completed": [
-    "W4-07 three-authority AsyncJobProjection, authoritative strict Web SDK and Workshop Job Drawer"
+    "W4-01 through W4-08; S4 Evidence/Eval/Wiki/Query/SavedExploration development exit gate"
   ],
-  "content_hash": "sha256:89f1b40aa522a2d5932aa353dcc504e07cc358d3e439c478d798f47291b68500",
-  "current_phase": "S4_W4_07_COMPLETE_W4_08_CUMULATIVE_GATE_NEXT",
-  "delivery_status": "W4_07_ASYNC_JOB_PROJECTION_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "content_hash": "sha256:da4c1f3649132b55c4e06a0096dddf83b0684b9b64acebb273eec8d8dd63d237",
+  "current_phase": "S5_W5_00_ACTION_RISK_MATRIX_REALTIME_REVIEW_NEXT",
+  "delivery_status": "W4_08_CROSS_CAPABILITY_CUMULATIVE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
-      "kind": "workshop",
-      "ref": ".evidence/workshop/2026-08-25-w4-07-query-research-job-lifecycle.json"
+      "kind": "code",
+      "ref": ".evidence/workshop/2026-08-25-w4-08-cross-capability-cumulative-gate.json"
+    },
+    {
+      "kind": "delivery",
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w4-08-cross-capability-cumulative-gate-20260825.json"
     }
   ],
-  "generated_at": "2026-08-25T06:39:58+08:00",
+  "generated_at": "2026-08-25T07:02:26+08:00",
   "hard_boundaries": [
-    "no live migration, Provider submit/cancel/retry/reconcile, real business mutation or release"
+    "Single-developer serial loop does not waive tenant, approval, budget, adapter, migration, canary, release or external-side-effect gates"
   ],
   "incomplete": [
-    "W4-08 cross-capability cumulative browser/security gate; live migration; real Provider commands; release"
+    "W5-00 through W8-12; production release; live migration; Provider/Action/AgentRun/external effect authorization"
   ],
-  "last_green_gate": "W4_07_CODE_BROWSER_GREEN",
-  "next_gate": "W4_08_CROSS_CAPABILITY_CUMULATIVE_GATE",
+  "last_green_gate": "W4_08_CODE_BROWSER_GREEN",
+  "next_gate": "W5_00_ACTION_RISK_MATRIX_REALTIME_REVIEW",
   "next_steps": [
-    "Start W4-08 cumulative gate serially after fresh memory gate check"
+    "Re-read W5-00 upper plans and current Action/Adapter authorities, update stale matrix, then begin first safe implementation slice"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000233",
+  "project_revision": "AOS-000234",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos": "fe0a8da0642ba1a57373099d09e093e087f954c0",
-    "docs": "761c019",
-    "evidence": "a283b90",
-    "receipt": "9f27864"
+    "code": "3462edebaeb193e5a3a7f14f35d3f73ccecf6edf",
+    "docs": "721d8c3",
+    "evidence": "90c0365"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000233",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_domain_router_manifest.py",
+    ".evidence/workshop/2026-08-25-w4-08-cross-capability-cumulative-gate.json",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/39-W4-08跨能力浏览器与安全累计门预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "3462edebaeb193e5a3a7f14f35d3f73ccecf6edf",
+    "90c0365",
+    "docs:01eece9",
+    "docs:721d8c3"
+  ],
+  "completed_at": "2026-08-25T07:02:00+08:00",
+  "completed_revision": "AOS-000233",
+  "result": "W4_08_CROSS_CAPABILITY_CUMULATIVE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "NO_RELEASE; NO_EXTERNAL_EFFECT; fixture is UI-only evidence; no live migration, Provider, Action, AgentRun or business mutation"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w4-08-cross-capability-cumulative-gate-20260825",
+  "verification": [
+    "backend 53 passed; OpenAPI/router 21 passed plus 2 subtests; web focused 98 and full 2102 passed; build/compileall/Alembic/diff GREEN; built-in browser active/refresh/drift/fail-closed GREEN"
+  ]
+}
