@@ -1,9 +1,5 @@
 {
   "base_revision": "AOS-000213",
-  "commits": [
-    "6caff2d"
-  ],
-  "completed_at": "2026-08-24T23:04:23+08:00",
   "created_at": "2026-08-24T22:39:13+08:00",
   "excluded_scope": [
     "live-database-migration-apply",
@@ -43,6 +39,6 @@
     "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/33-W4-01-EvidenceBuildJob八领域RequiredFacts与Evidence治理预检ADR.md",
     "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
   ],
-  "status": "COMPLETED",
+  "status": "ACTIVE",
   "task_id": "workshop-w4-01-early-evidence-build-20260824"
 }

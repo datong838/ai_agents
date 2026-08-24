@@ -1,35 +1,35 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W3-03 server-side idempotent prepare aggregate, tenant RLS intent and immutable result migration code, exact installed profile loading, focused/cumulative/browser evidence"
+    "W4-01 base Evidence append-only/exact revoke, canonical preparation plus installed ProductionProfile to EvidenceBundle bridge, restored Disclosure route manifest, focused/cumulative/browser evidence"
   ],
-  "current_phase": "S3 public production contracts in progress; W3-01 through W3-03 complete; entering W3-04",
-  "delivery_status": "S3_W3_03_PREPARE_AGGREGATE_CODE_GREEN_S3_IN_PROGRESS_NO_RELEASE_MIGRATION_NOT_APPLIED",
+  "current_phase": "S3 public production contracts in progress; W3-01 through W3-03 and W4-01 early bridge complete; entering W3-04",
+  "delivery_status": "S3_W4_01_EARLY_EVIDENCE_BRIDGE_CODE_GREEN_S3_IN_PROGRESS_NO_RELEASE_MIGRATION_NOT_APPLIED",
   "evidence": [
     {
       "kind": "workshop-delivery",
-      "ref": ".evidence/workshop/2026-08-24-w3-03-prepare-aggregate.json"
+      "ref": ".evidence/workshop/2026-08-24-w4-01-early-evidence-build.json"
     }
   ],
-  "evidence_cutoff": "2026-08-24T22:36:04+08:00",
+  "evidence_cutoff": "2026-08-24T23:07:55+08:00",
   "hard_boundaries": [
     "NO_RELEASE; no unreviewed business write, live migration, provider call, installation mutation, execution object, or external side effect",
-    "W3-03 is code/control GREEN only; operational use requires migration apply and published installed exact profiles under separate gates"
+    "W4-01 is code/control GREEN only; operational use requires migration apply and published installed exact profiles under separate gates"
   ],
   "incomplete": [
-    "W3-04 and remaining W3 public production contracts; W3-03 migration is not live-applied and profile candidates are not released or installed"
+    "W3-04 and remaining W3 public production contracts; W4-01 migration is not live-applied and profile candidates are not released or installed"
   ],
-  "last_green_gate": "W3_03_IDEMPOTENT_PREPARE_AGGREGATE_CODE_GREEN_NO_RELEASE",
+  "last_green_gate": "W4_01_EARLY_EVIDENCE_BRIDGE_CODE_GREEN_NO_RELEASE",
   "next_gate": "W3_04_FOUR_REF_PRODUCTION_CONTEXT_FREEZE",
   "next_steps": [
-    "Review W3-04 ADR and implement the first safe four-ref ProductionContext freeze slice without live migration or execution effects"
+    "Review current W-L11 ProductionContext authority and implement the minimal Workshop W3-04 exact four-ref freeze adapter without execution effects"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000213",
+  "project_revision": "AOS-000214",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "a9f72e1",
-    "docs": "4e14fea"
+    "aos-platform": "6caff2d",
+    "docs": "21ec9dc"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -39,5 +39,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T22:37:14+08:00"
+  "updated_at": "2026-08-24T23:08:16+08:00"
 }
