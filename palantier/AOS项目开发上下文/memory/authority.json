@@ -1,36 +1,36 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W4-03 exact EvalContract driven Run and Report lineage plus server Diff Workshop consumption completed without release or external effect",
-    "backend cumulative 64, Web 2091, OpenAPI 13, build/compile/single migration head and built-in-browser three-viewport acceptance GREEN"
+    "W4-04 ReviewRule authority event payload exact resolution refs server DAG invalidate/reuse roles and Workshop read model completed without release or external effect",
+    "backend cumulative 61 Web 2091 Desktop 40 OpenAPI 13 build compile single migration head and built-in-browser canonical host acceptance GREEN"
   ],
   "current_phase": "S4 Evidence Eval Wiki Query serial implementation",
-  "delivery_status": "W4_03_EVAL_CONTRACT_LINEAGE_DIFF_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "delivery_status": "W4_04_REVIEW_RETURN_LINEAGE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
-      "kind": "workshop_w4_03",
-      "ref": ".evidence/workshop/2026-08-25-w4-03-eval-contract-lineage.json"
+      "kind": "workshop_w4_04",
+      "ref": ".evidence/workshop/2026-08-25-w4-04-review-return-lineage.json"
     }
   ],
-  "evidence_cutoff": "2026-08-25T04:52:58+08:00",
+  "evidence_cutoff": "2026-08-25T05:26:07+08:00",
   "hard_boundaries": [
-    "NO_RELEASE; no live migration, Provider, EvalRun, AgentRun, Task creation, Action, Approval, Handoff, business mutation, offline queue flush or external effect"
+    "NO_RELEASE; no live migration Provider EvalRun AgentRun Action Approval Handoff business mutation offline queue flush or external effect"
   ],
   "incomplete": [
-    "W4-04 through W4-08 remain; no release, live migration, EvalRun, Provider, Action, Approval or business external effect claimed"
+    "W4-05 through W4-08 remain; no release live migration Provider EvalRun AgentRun Action Approval Handoff business mutation or external effect claimed"
   ],
-  "last_green_gate": "W4_03_EVAL_CONTRACT_LINEAGE_DIFF_CODE_BROWSER_GREEN_NO_RELEASE",
-  "next_gate": "W4_04_REVIEW_RETURN_ATTEMPT_ARTIFACT_LINEAGE",
+  "last_green_gate": "W4_04_REVIEW_RETURN_LINEAGE_CODE_BROWSER_GREEN_NO_RELEASE",
+  "next_gate": "W4_05_KNOWLEDGE_QUERY_MEMORY_GOVERNANCE",
   "next_steps": [
-    "Start W4-04 immediately and continue serially through W4-08 without pausing at ordinary task boundaries"
+    "Start W4-05 immediately and continue serially through W4-08 without pausing at ordinary task boundaries"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000228",
+  "project_revision": "AOS-000229",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "b6678dd0bc3824e34ae2c9878f56d3126e58e267",
-    "docs": "1a2ac04",
-    "evidence": "f7ba330"
+    "code": "6f62541",
+    "docs": "4e6ac0e",
+    "evidence": "a1a7c7f"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -40,5 +40,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-25T04:53:31+08:00"
+  "updated_at": "2026-08-25T05:27:00+08:00"
 }
