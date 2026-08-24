@@ -1,0 +1,51 @@
+{
+  "base_revision": "AOS-000209",
+  "blockers": [
+    "S3 intentionally paused at user checkpoint; no S2.5 code blocker remains"
+  ],
+  "changed_files": [
+    "bundles/solutions/ecommerce-growth/content/logic/ecommerce-37-skill-compatibility-map.json",
+    "services/aos-api/aos_api/aip_solution_pack_publisher.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/aip/test_aip6_ecommerce_solution_pack.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/test_ecommerce_workshop_task_cockpit.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    ".evidence/workshop/2026-08-24-s2-5-skill-compatibility-refactor.json",
+    ".evidence/workshop/2026-08-24-s2-5-w2-cumulative-gate-decision.json",
+    "docs:palantier/20_tech/电商平台接入/AIP通用能力实施方案/163-AIP通用原子Skill分层与六数字同事组合方案.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/164-工作台层Skill消费与六数字同事产品落位方案.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/165-S2.5原子Skill兼容重构实施ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "89d075b8a7b5e27d61b4ed4336276b0a0bc17e31",
+    "2db8cb1"
+  ],
+  "completed_at": "2026-08-24T20:45:28+08:00",
+  "completed_revision": "AOS-000209",
+  "result": "S2.5 code/browser GREEN; S2 cumulative release decision RED/NO_RELEASE",
+  "risks": [
+    "S2 operational release remains RED/NO_RELEASE because source data, runtime, shared-context and browser-positive evidence are not GREEN"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-s2-5-skill-compatibility-refactor-20260824",
+  "verification": [
+    "focused backend 43 passed; Workshop API 123 passed; W2 evaluator 16 passed",
+    "focused Web 41 passed; Workshop Web 54 passed; full Web 218 files and 2052 tests passed",
+    "TypeScript, production build, compileall, OpenAPI deterministic check, diff check passed",
+    "built-in browser 1280/1440/1920 no overflow, no command button, no new console error; independent failure preserves existing details"
+  ]
+}

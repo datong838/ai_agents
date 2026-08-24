@@ -1,0 +1,42 @@
+{
+  "base_revision": "AOS-000209",
+  "created_at": "2026-08-24T20:09:49+08:00",
+  "excluded_scope": [
+    "historical Task/Run/Binding mutation, real database migration, external Action, Provider call, customer data write, protected untracked files"
+  ],
+  "expected_outputs": [
+    "S2.5 reviewed implementation ADR and 37-item compatibility map",
+    "additive read-only SkillContributionView Task Cockpit pilot with strict fail-closed semantics",
+    "focused and cumulative regression plus browser acceptance and refreshed S2 decision"
+  ],
+  "lease_expires_at": "2026-08-27T00:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/163-AIP通用原子Skill分层与六数字同事组合方案.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/164-工作台层Skill消费与六数字同事产品落位方案.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/165-S2.5原子Skill兼容重构实施ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md",
+    "bundles/solutions/ecommerce-growth/content/logic/ecommerce-37-skill-compatibility-map.json",
+    "services/aos-api/aos_api/aip_solution_pack_publisher.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/aip/test_aip6_ecommerce_solution_pack.py",
+    "services/aos-api/tests/test_ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/index.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/components/workshop/workshop.css",
+    "openapi/aos-api.openapi.json",
+    ".evidence/workshop/2026-08-24-s2-5-skill-compatibility-*"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-s2-5-skill-compatibility-refactor-20260824"
+}

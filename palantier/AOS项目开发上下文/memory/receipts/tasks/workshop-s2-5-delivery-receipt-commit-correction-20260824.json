@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000209",
+  "created_at": "2026-08-24T20:46:16+08:00",
+  "excluded_scope": [
+    "no source code change; no authority history rewrite; no business data; no provider or external action"
+  ],
+  "expected_outputs": [
+    "correction Delivery Receipt with exact code and docs commit SHAs"
+  ],
+  "lease_expires_at": "2026-08-27T23:59:59+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "append-only correction of S2.5 delivery receipt commit references using verified git rev-parse values"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-s2-5-delivery-receipt-commit-correction-20260824"
+}

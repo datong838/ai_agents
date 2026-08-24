@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000209",
+  "blockers": [],
+  "changed_files": [
+    "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-s2-5-skill-compatibility-refactor-20260824.json"
+  ],
+  "commits": [
+    "89d075bdec4b738287829e27ab6982d6048121a9",
+    "2db8cb144c24e2adc13ac3d84062befccd3cf0c6"
+  ],
+  "completed_at": "2026-08-24T20:46:27+08:00",
+  "completed_revision": "AOS-000209",
+  "result": "Append-only correction: authoritative S2.5 code commit is 89d075bdec4b738287829e27ab6982d6048121a9 and docs commit is 2db8cb144c24e2adc13ac3d84062befccd3cf0c6",
+  "risks": [
+    "original immutable S2.5 receipt contains a non-authoritative mistyped long commit reference; consumers must use this correction receipt"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-s2-5-delivery-receipt-commit-correction-20260824",
+  "verification": [
+    "git rev-parse HEAD in aos-platform equals 89d075bdec4b738287829e27ab6982d6048121a9",
+    "git rev-parse HEAD in docs equals 2db8cb144c24e2adc13ac3d84062befccd3cf0c6"
+  ]
+}
