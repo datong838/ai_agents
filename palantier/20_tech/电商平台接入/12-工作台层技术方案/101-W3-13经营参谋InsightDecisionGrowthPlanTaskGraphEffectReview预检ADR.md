@@ -1,9 +1,9 @@
 # W3-13 经营参谋 Insight / Decision / GrowthPlan / TaskGraph / EffectReview 预检 ADR
 
 > 日期：2026-08-15  
-> 状态：`PLAN_REMEDIATED_GREEN / RUNTIME_NOT_STARTED / HARD_GATE_BLOCKED / NO_EXTERNAL_EFFECT`  
-> 基线：`AOS-000040`、`w2-workshop@24e3e92ebf971652d167b4481c87b466acfef677`  
-> 证据：`.evidence/workshop/2026-08-15-w3-13-analyst-authority-preflight.json`
+> 状态：`CODE_BROWSER_GREEN / NO_RELEASE / NO_EXTERNAL_EFFECT`
+> 实施基线：`AOS-000224`、`m1@7138b83`
+> 证据：`.evidence/workshop/2026-08-25-w3-13-analyst-authority.json`
 
 ## 1. 决策与 AIP-8 边界
 
@@ -69,3 +69,14 @@ W3-13 沿用“原子 Skill → Logic 编排 → 数字同事绑定 → 工作�
 ### 7.4 验收与回退边界
 
 专项测试先证明失败关闭，再跑 S3 后端累计、Web 全量、TypeScript、build、OpenAPI 与 Alembic 单 head；页面用内置浏览器在 `org-org/dev-project` 三视口验收并检查控制台。任何失败只回退本波 additive 代码/未应用迁移，不修改真实业务数据，不冲洗离线队列，不自动创建 Task 或晋升 MemoryCandidate。
+
+## 8. 2026-08-25 实施结论
+
+- 已建立四类 Insight、有限披露 DecisionSummary、GrowthPlan CAS、TaskGraph 数量守恒与 EffectReview maturity/correction 严格合同；pending/unknown 保持未知，不伪装为 0。
+- Store 已落实租户/actor 隔离、append-only revision、expectedVersion CAS、幂等 Receipt 与 exact readback；`w3_018` 只新增 authority 表、RLS 与 append-only guard，本波未对真实环境执行迁移。
+- materializer 只接受 approved/current exact GrowthPlanRevision，并要求 canonical Task adapter 完整、原子返回；仓内不存在满足该合同的安全 adapter，因此未安装替代实现、未创建真实 Task，相关路径继续失败关闭。
+- Analyst 工作台新增 ContributionLineage；缺少 exact SkillBinding/LogicRevision/AgentRun 时，原子 Skill、Logic、数字同事保持 `unknown`，不从页面角色反推绑定。
+- 验证通过：后端专项 `15 passed`、S3 后端累计 `282 passed`、Web 全量 `221 files / 2084 tests`、TypeScript、production build、compileall、OpenAPI deterministic/contract `13/13`、Alembic 单 head 与 diff-check。当前环境未安装 Ruff，因此该轴记录为 `NOT_RUN_TOOL_UNAVAILABLE`，没有冒充 GREEN。
+- 内置浏览器在 `org-org/dev-project` 的 1280×720、1440×900、1920×1080 三档完成 Analyst 七视图、质量页、贡献链与 unknown 语义验收，控制台 error 为 0；观察到既有待同步离线写入 `1`，本波没有冲洗或触发它，业务写仍为 0。
+
+结论：W3-13 达到 `CODE_BROWSER_GREEN / NO_RELEASE / NO_EXTERNAL_EFFECT`，只开放 W3-14 三领域 authority 与公共编排最终累计门。

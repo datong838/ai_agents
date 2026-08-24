@@ -23,3 +23,16 @@
 {"base_revision":"AOS-000016","occurred_at":"2026-08-13T17:14:38+08:00","schema":"aos-memory-event/v1","task_id":"workshop-aip-support-audit-20260813","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-13T17:36:21+08:00","result":"REVIEWED_WITH_BLOCKERS：AIP架构方向可支撑，但现行方案、开发清单与运行态尚未全面支撑工作台v3目标态","schema":"aos-memory-event/v1","task_id":"workshop-aip-support-audit-20260813","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-13T17:51:30+08:00","project_revision":"AOS-000017","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000017","occurred_at":"2026-08-13T17:57:28+08:00","schema":"aos-memory-event/v1","task_id":"aip-capability-coordinator-audit-refinement-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T18:04:00+08:00","result":"审查报告增量修订完成：10类能力方案语义覆盖10/10；文案不再误判缺失；Coordinator归属内容官生产责任；素材采集为受治理组合能力；catalog与运行态门仍保留","schema":"aos-memory-event/v1","task_id":"aip-capability-coordinator-audit-refinement-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000017","occurred_at":"2026-08-13T18:07:53+08:00","schema":"aos-memory-event/v1","task_id":"workshop-shared-memory-correction-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T18:13:56+08:00","project_revision":"AOS-000018","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-13T18:17:44+08:00","result":"DELIVERED_WORKSHOP_SPEED_READ_AND_CORRECTED_SHARED_MEMORY","schema":"aos-memory-event/v1","task_id":"workshop-shared-memory-correction-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000018","occurred_at":"2026-08-13T18:44:56+08:00","schema":"aos-memory-event/v1","task_id":"workshop-technical-formal-review-freeze-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T19:20:57+08:00","project_revision":"AOS-000019","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-13T19:24:20+08:00","result":"FORMALLY_REVIEWED_AND_FROZEN_TECHNICAL_BASELINE_V3_NOT_IMPLEMENTATION_AUTHORIZED","schema":"aos-memory-event/v1","task_id":"workshop-technical-formal-review-freeze-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000019","occurred_at":"2026-08-13T19:25:03+08:00","schema":"aos-memory-event/v1","task_id":"workshop-speed-read-tech-freeze-sync-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T19:26:05+08:00","result":"SYNCED_SPEED_READ_PRODUCT_PENDING_TECHNICAL_FROZEN","schema":"aos-memory-event/v1","task_id":"workshop-speed-read-tech-freeze-sync-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000019","occurred_at":"2026-08-13T19:38:53+08:00","schema":"aos-memory-event/v1","task_id":"workshop-long-task-plan-ledger-20260813","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-13T19:43:49+08:00","result":"COMPLETE","schema":"aos-memory-event/v1","task_id":"workshop-long-task-plan-ledger-20260813","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000019","occurred_at":"2026-08-13T23:42:01+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w0-implementation-preparation-20260813","type":"TASK_STARTED"}

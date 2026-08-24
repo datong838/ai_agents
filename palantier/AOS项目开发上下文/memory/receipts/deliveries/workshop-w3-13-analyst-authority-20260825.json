@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000224",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_analyst_authority_contracts.py",
+    "services/aos-api/aos_api/ecommerce_analyst_authority_store.py",
+    "services/aos-api/aos_api/ecommerce_analyst_materializer.py",
+    "services/aos-api/alembic/versions/w3_018_ecommerce_analyst_authority.py",
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    ".evidence/workshop/2026-08-25-w3-13-analyst-authority.json"
+  ],
+  "commits": [
+    "7138b83",
+    "80002eb"
+  ],
+  "completed_at": "2026-08-25T03:16:38+08:00",
+  "completed_revision": "AOS-000224",
+  "result": "S3_W3_13_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "NO_RELEASE; no live migration canonical Task creation Provider Action Approval Handoff takeover business mutation or MemoryCandidate promotion",
+    "Runtime materialization remains fail-closed until an atomic canonical Task adapter is wired; Ruff unavailable in project environment"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-13-analyst-authority-20260825",
+  "verification": [
+    "backend focused 15 passed; cumulative 282 passed; Web 221 files 2084 tests; OpenAPI deterministic plus 13 contract tests; TypeScript build compileall and single Alembic head w3_018 GREEN",
+    "built-in browser org-org/dev-project 1280 1440 1920 no overflow; seven views ContributionLineage quality interaction console errors 0 writes invoked 0 offline queue not flushed"
+  ]
+}
