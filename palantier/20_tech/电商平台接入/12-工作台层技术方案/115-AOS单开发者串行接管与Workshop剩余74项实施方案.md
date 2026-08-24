@@ -142,6 +142,19 @@ W3-12A exact code/control Receipt 到位后，W2-01B 首提交只关闭 Operatio
 
 文件范围：新 reader 与测试、`ecommerce_workshop_operations.py`、`ecommerce_workshop_operations_contracts.py` 及其测试。只做 fake-connection 与 API contract 验证，不探测真实业务库、不新增 mutation、页面或外部副作用。
 
+#### 3.3.5 W3-12B1 command readiness 与视觉动作抽屉
+
+W2-01B 七切片 strict Web 已 GREEN 后，W3-12B 先交付一个不产生业务写入的 command-readiness 子波，避免把视觉稿中的“批准退款”“一键采纳”等示例按钮直接变成无门槛副作用：
+
+- `ecommerce_operation_command_contracts.py`：新增 strict command descriptor、风险级别、可用状态与 blocker 模型；固定 `classify`、`createCase`、`changeMembership`、`manageSla`、`automationKill`、`refund` 六项 canonical command。未具备 exact Proposal/Approval/ExecutionLease/Receipt 链的命令必须 `blocked`，不得用前端角色或按钮状态推断授权；
+- `ecommerce_operation_commands.py`：只读解析 Principal tenant、模块安装、W3-12A authority code/control 与命令依赖，返回确定性 command-readiness；本子波不得调用 Store mutation、不得创建 Policy/Case/Decision、不得调用 Adapter 或 Provider；
+- `routers/ecommerce_workshop.py`：新增 GET-only `/v1/ecommerce-workshop/commands/operations/readiness`，拒绝 query/body scope 注入并保持安装可见性门；
+- `apps/web/src/api/ecommerceWorkshop/{contracts,parser,client,index}.ts`：加入唯一 strict SDK，拒绝 extra/missing、错误 command 顺序、未知 blocker、租户漂移和 false-ready；
+- `apps/web/src/components/workshop/OperationsPage.tsx` 与现有样式/测试：对照正式视觉稿右栏增加“AI/动作建议”抽屉，但只显示服务端 readiness、exact blocker 与后续门，所有命令默认禁用；不得复制视觉稿中的客户姓名、订单号、金额、退款建议、GMV 或“客服自动处理已开启”等示例事实；
+- 浏览器至少覆盖 1280/1440/1920、七切片选择、右栏抽屉、键盘 focus、0 可执行副作用控件、0 水平溢出、0 console error。fixture 仅证明视觉/交互，真实 API 不可用时继续标记 operational unavailable。
+
+本子波退出后进入 W3-12B2：在独立命令方案中接入内部 authority mutation 与 canonical Proposal→Approval→ExecutionLease→Receipt；先写失败测试，再按 classify/create Case、membership/SLA、kill、外部 Action 分段实现。任何真实调用、真实数据库写入、migration apply、退款/改址/催发货/通知仍须独立运行门，不能由 B1 的 readiness/UI GREEN 代替。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
