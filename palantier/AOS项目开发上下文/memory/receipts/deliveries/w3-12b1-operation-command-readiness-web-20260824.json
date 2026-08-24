@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000167",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_operation_command_contracts.py",
+    "services/aos-api/aos_api/ecommerce_operation_commands.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_operation_commands.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/components/workshop/OperationsPage.tsx",
+    "apps/web/src/components/workshop/OperationsPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "a4b3479481f46db8bfdbc6d2744bc0a82e15f0b8"
+  ],
+  "completed_at": "2026-08-24T09:22:13+08:00",
+  "completed_revision": "AOS-000167",
+  "result": "W3_12B1_COMMAND_READINESS_CODE_AND_VISUAL_FIXTURE_GREEN_REAL_RUNTIME_UNAVAILABLE",
+  "risks": [
+    "Browser used local read-only fixture; no real runtime, operational GREEN, external action, migration or release claim"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w3-12b1-operation-command-readiness-web-20260824",
+  "verification": [
+    "Backend cumulative 27 passed; Web cumulative 205 files / 2012 tests; TypeScript and Vite build GREEN; built-in browser 1280/1440/1920 seven slices, six disabled commands, interaction and no-overflow GREEN"
+  ]
+}

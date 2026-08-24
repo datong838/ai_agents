@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000167",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx"
+  ],
+  "commits": [
+    "a4b3479481f46db8bfdbc6d2744bc0a82e15f0b8"
+  ],
+  "completed_at": "2026-08-24T09:22:13+08:00",
+  "completed_revision": "AOS-000167",
+  "result": "W3_12B1_HOST_FIXTURE_GREEN",
+  "risks": [
+    "Fixture-only test update; production host behavior unchanged"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w3-12b1-operation-host-adjacent-test-20260824",
+  "verification": [
+    "Web cumulative 205 files / 2012 tests GREEN"
+  ]
+}

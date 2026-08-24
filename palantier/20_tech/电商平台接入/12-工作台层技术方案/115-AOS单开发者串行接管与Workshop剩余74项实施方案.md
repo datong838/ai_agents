@@ -155,6 +155,23 @@ W2-01B 七切片 strict Web 已 GREEN 后，W3-12B 先交付一个不产生业�
 
 本子波退出后进入 W3-12B2：在独立命令方案中接入内部 authority mutation 与 canonical Proposal→Approval→ExecutionLease→Receipt；先写失败测试，再按 classify/create Case、membership/SLA、kill、外部 Action 分段实现。任何真实调用、真实数据库写入、migration apply、退款/改址/催发货/通知仍须独立运行门，不能由 B1 的 readiness/UI GREEN 代替。
 
+W3-12B1 已由 `m1@a4b3479` 完成：后端专项与累计 `27 passed`，Web 累计 `205 files / 2012 tests`，TypeScript、production build、diff check GREEN；内置浏览器在 1280/1440/1920 三档验证七切片、六命令全部失败关闭、键盘可达与零水平溢出。该浏览器证据来自受控只读 fixture，只证明页面视觉/交互，不证明真实运行时或任何副作用可执行。Delivery Receipt 已推进至 `AOS-000168` 并同步三份 Prime 强一致投影；96 项主 Task 计数仍保持 `22/96`。
+
+#### 3.3.6 W3-12B2a 内部 classify/createCase 命令执行门
+
+B2 先拆出不依赖外部 Provider 的 `classify` 与 `createCase` 两项内部 authority 命令。即使当前为唯一开发者，也不得把“内部写入”降级为无治理写入；本子波固定采用服务端 Principal tenant、exact Proposal/Approval/ExecutionLease、`Idempotency-Key`、expected authority revision 与 Operation authority Receipt 的双重校验。
+
+文件级施工范围：
+
+- 新增 `services/aos-api/aos_api/ecommerce_operation_command_execution_contracts.py`：定义 strict 命令请求、治理链引用、classify/createCase payload、成功 Receipt envelope 与稳定错误；请求模型禁止 `orgId/projectId/actorId`，仅接受 exact resource/version/hash/ref；
+- 新增 `services/aos-api/aos_api/ecommerce_operation_command_service.py`：先调用只读 canonical governance verifier，核对同租户 Proposal 已 approved、审批 quorum 有效、Lease active/未过期且 owner 为当前 Principal、proposal hash/action type/object ref 与请求完全一致；校验通过后才调用现有 `OperationAuthorityStore.append_classification` 或 `create_case`，返回 exact `OperationAuthorityReceipt`；
+- 修改 `services/aos-api/aos_api/routers/ecommerce_workshop.py`：增加两条显式 POST command endpoint，强制 `Idempotency-Key`，tenant 只取 Principal，并将版本/幂等/治理链/依赖错误映射为稳定 HTTP 错误；GET readiness 继续诚实反映“handler 已绑定但每次执行仍需 exact chain”，不得把存在 endpoint 表述为任意请求 ready；
+- 修改 `services/aos-api/aos_api/ecommerce_operation_commands.py` 与 contracts：只把 handler 绑定事实从 blocker 中移除，命令执行资格仍按请求级 Proposal/Approval/Lease 动态裁决；页面在没有 exact chain 前保持禁用；
+- 新增 `services/aos-api/tests/test_ecommerce_operation_command_service.py`，扩展 `test_ecommerce_workshop_operations_api.py` 与 readiness 测试：覆盖正向 fake authority、跨租户、body scope 注入、maker/owner 漂移、过期或已消费 Lease、proposal/action/payload/hash 漂移、expectedVersion 冲突、幂等重放与幂等冲突；
+- 本子波不改 Web 为可执行态，不执行真实数据库写入，不创建真实 Proposal/Approval/Lease，不应用 migration，不调用外部 Action。页面浏览器回归仍需证明六按钮失败关闭、视觉稿信息层级未回退、零示例业务事实与零 console error。
+
+B2a 完成后自动进入 B2b membership/SLA；复用同一治理 verifier 与 command envelope，不另造 Proposal、Approval、Lease 或 Receipt authority。B3 再处理 automation kill 的 Proposal/Lease/executor checkpoint 专项预检；refund 等外部动作延后到 W5 canonical Action/Adapter 波次，当前保持 blocked。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

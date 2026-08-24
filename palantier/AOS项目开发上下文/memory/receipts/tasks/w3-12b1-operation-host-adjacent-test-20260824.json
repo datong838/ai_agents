@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000167",
+  "created_at": "2026-08-24T09:08:01+08:00",
+  "excluded_scope": [
+    "production host logic, real data, mutation, provider, release"
+  ],
+  "expected_outputs": [
+    "Update host integration fixture for canonical operation command readiness"
+  ],
+  "lease_expires_at": "2026-08-24T17:08:00+08:00",
+  "owner": "codex-m1-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12b1-operation-host-adjacent-test-20260824"
+}
