@@ -1,37 +1,37 @@
 {
   "completed": [
-    "W3-13 analyst authority strict contracts, tenant/CAS store, fail-closed canonical Task materializer boundary and ContributionLineage implemented",
-    "W3-13 backend focused 15 and cumulative 282, Web 221 files/2084 tests, TypeScript/build/OpenAPI/Alembic/browser three-viewports GREEN"
+    "S3 W3-10 through W3-14 code/browser implementation and fail-closed cumulative acceptance completed on one current release identity",
+    "W3-14 gate focused 9, backend cumulative 133, Web 2084, OpenAPI 13, build, single migration head and four-route three-viewport browser matrix GREEN"
   ],
-  "content_hash": "sha256:8b7018acf8bd43ac05745feb4279a33f9875549d7c1017c4ec9077444d86c832",
-  "current_phase": "S3 Workshop domain authority serial implementation",
-  "delivery_status": "S3_W3_13_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "content_hash": "sha256:e2539c1bd390dd3c7f56e6b28ab32ce69df41ea097d04ce24893839de2832060",
+  "current_phase": "S4 Evidence Eval Wiki Query serial implementation",
+  "delivery_status": "S3_W3_14_CUMULATIVE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
-      "kind": "workshop_w3_13",
-      "ref": ".evidence/workshop/2026-08-25-w3-13-analyst-authority.json"
+      "kind": "workshop_w3_14",
+      "ref": ".evidence/workshop/2026-08-25-w3-14-three-domain-cumulative.json"
     }
   ],
-  "generated_at": "2026-08-25T03:22:00+08:00",
+  "generated_at": "2026-08-25T03:38:23+08:00",
   "hard_boundaries": [
-    "NO_RELEASE; no live migration, Provider, AgentRun, canonical Task creation, Action, Approval, Handoff, takeover, business mutation, offline queue flush, or MemoryCandidate promotion"
+    "NO_RELEASE; no live migration, Provider, AgentRun, Task creation, Action, Approval, Handoff, takeover, business mutation, offline queue flush, knowledge promotion, or external effect"
   ],
   "incomplete": [
-    "W3-14 same-release three-domain authority and public orchestration cumulative gate remains",
+    "Operational SourceReadiness and positive Campaign OperationCase Analyst reader paths remain blocked or unknown; no release or live migration claimed",
     "S4 W4-02 through W4-08 remain; W4-01 early bridge is already code-control green"
   ],
-  "last_green_gate": "W3_13_ANALYST_AUTHORITY_CODE_BROWSER_GREEN_NO_RELEASE",
-  "next_gate": "W3_14_THREE_DOMAIN_CUMULATIVE_GATE",
+  "last_green_gate": "W3_14_CUMULATIVE_CODE_BROWSER_GREEN_NO_RELEASE",
+  "next_gate": "W4_02_EVIDENCE_CITATION_THREE_LAYER_DISCLOSURE",
   "next_steps": [
-    "Start W3-14 immediately; after S3 acceptance closes, automatically continue S4 W4-02 without pausing"
+    "Start S4 W4-02 immediately and continue serially through W4-08 without pausing at ordinary wave boundaries"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000225",
+  "project_revision": "AOS-000226",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "7138b83",
-    "docs": "a113f01",
-    "evidence": "80002eb"
+    "code": "99716c56e9d3741cb2a4d12f267113b9792a4eb2",
+    "docs": "ddc6c98",
+    "evidence": "dd54a0e"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
