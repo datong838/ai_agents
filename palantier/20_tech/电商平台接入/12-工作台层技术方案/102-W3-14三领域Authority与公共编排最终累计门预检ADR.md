@@ -59,6 +59,7 @@ EvidencePack 必须同时固定 Git commit、应用 release、schema/migration �
 
 ### 7.2 本波最小文件清单
 
+- `services/aos-api/aos_api/ecommerce_w3_cumulative_gate.py`：七轴累计门执行器；强制同一 release identity、W3-10～W3-13 四张 exact Receipt、`org-org/dev-project` 正向与 `dev-org/dev-project` 隔离角色、非空 evidence refs，并把未发布状态明确归类为 code/browser GREEN 而非 runtime GREEN。
 - `services/aos-api/tests/test_w3_three_domain_cumulative_gate.py`：以当前源码为输入，校验公共编排、Campaign、OperationCase、Analyst authority 的唯一所有权、strict contract、RLS/CAS/append-only、exact refs、unknown/partial/replay/correction 边界，并拒绝第二真源。
 - `.evidence/workshop/2026-08-25-w3-14-three-domain-cumulative.json`：固定 Git HEAD、schema/OpenAPI/Web build/migration head/hash、四项 Delivery Receipt、七轴同版结果、租户正负向、恢复重放与浏览器证据。
 - 本 ADR 与 `D-waves/00-工作台长任务开发计划总清单.md`：记录实施结论和下一波路由。
