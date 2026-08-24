@@ -90,3 +90,11 @@ kill 在 Proposal 创建、Lease 获取和 executor 调用前分别复验 exact 
 ### 8.4 不变边界
 
 本波不 live apply migration，不对真实业务表执行 classify/create/membership/SLA/kill，不执行退款，不调用 Provider，不启动 AgentRun，不决定 Approval，不发 Handoff，不发布，不冲刷离线队列。代码/浏览器 GREEN 不等于 operational 或 release GREEN。
+
+## 9. 2026-08-25 实施与验收结论
+
+本次复核确认 R37 五段实现链已落在当前 `m1`，没有建立第二 OperationCase authority，也没有复制 L0/O1 originals。唯一代码改动是在统一运营证据区复用公共 `ContributionLineage`：领域 authority 只作为 Logic 的业务事实输入；没有 exact AgentRun、SkillBinding 或 LogicRevision 时原子 Skill、Logic 编排和数字同事保持 `unknown`。
+
+专项后端 `65 passed`，扩大后的 Workshop/Operation/相邻领域累计后端 `218 passed`，Web 全量 `221 files / 2084 tests`；OpenAPI 确定性导出、TypeScript 与 production build 均 GREEN。内置浏览器连接当前 `m1` API，在 `org-org/dev-project` 的 1280×720、1440×900、1920×1080 三档无横向溢出；七切片、数量守恒、三类 runtime blocker、六个 disabled command、request observation 与专业贡献路径可见，OperationCase 切片焦点轮廓可见。没有执行 classify/create/membership/SLA/kill/refund，也没有冲刷离线队列。
+
+结论：`W3_12_CODE_BROWSER_GREEN / NO_RELEASE / NO_EXTERNAL_EFFECT`。该结论只允许进入 W3-13 闭合审查，不代表生产发布或真实运营动作 GREEN。
