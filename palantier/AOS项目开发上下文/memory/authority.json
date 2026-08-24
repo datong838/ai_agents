@@ -1,37 +1,37 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W2-01B2 bounded tenant-safe Order, OrderLine, Shipment and Payment exact-ref readers at m1@cf3f949",
-    "W2-01B2 Inventory composition and five independent ready slices with count reconciliation",
-    "W2-01B2 targeted 13/13 and cumulative relevant 67/67 tests GREEN"
+    "Canonical tenant-safe append-only aftersales event schema at m1@0d6ec53",
+    "Bounded read-only aftersales reader and D0 semantic revision 2 descriptor",
+    "Targeted 21/21 and cumulative relevant 45/45 tests GREEN; single Alembic head"
   ],
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "W2_01B2_TRANSACTION_INVENTORY_SLICES_GREEN_AFTERSALES_READER_NEXT",
+  "delivery_status": "D0_AFTERSALES_CANONICAL_READER_CODE_GREEN_W2_01B_FULL_VIEW_NEXT",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "w2-01b2-transaction-slices-code-20260824"
+      "ref": "d0-aftersale-canonical-reader-code-20260824"
     }
   ],
-  "evidence_cutoff": "2026-08-24T08:17:56+08:00",
+  "evidence_cutoff": "2026-08-24T08:28:15+08:00",
   "hard_boundaries": [
     "No real business data mutation, provider side effect, migration apply or release without its explicit gate"
   ],
   "incomplete": [
-    "Canonical aftersales original persistence/read contract and W2-01B aftersales slice",
-    "W3-12B commands, strict Web SDK/page and browser EvidencePack"
+    "W2-01B strict SDK/page/browser and full seven-slice EvidencePack",
+    "W3-12B command/runtime interaction and browser acceptance"
   ],
-  "last_green_gate": "W2_01B2_TRANSACTION_INVENTORY_SLICES_CODE_GREEN",
-  "next_gate": "D0_AFTERSALES_CANONICAL_READER_CODE",
+  "last_green_gate": "D0_AFTERSALES_CANONICAL_READER_CODE_GREEN",
+  "next_gate": "W2_01B_UNIFIED_OPERATIONS_VIEW_CODE",
   "next_steps": [
-    "Review approved aftersales Event/Object contract and implement a tenant-safe canonical original reader without inferring refunds from transaction fields",
-    "Compose aftersales slice, then close W2-01B and enter W3-12B"
+    "Close W2-01B API to strict SDK to page composition using seven exact authority slices",
+    "Run positive org-org/dev-project and negative dev-org/dev-project browser matrix without real data mutation"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000165",
+  "project_revision": "AOS-000166",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform/m1": "cf3f949"
+    "aos-platform/m1": "0d6ec53"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -41,5 +41,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T08:18:41+08:00"
+  "updated_at": "2026-08-24T08:28:38+08:00"
 }

@@ -44,3 +44,6 @@
 {"base_revision":"AOS-000164","occurred_at":"2026-08-24T06:25:25+08:00","schema":"aos-memory-event/v1","task_id":"w2-01b2-transaction-slices-code-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T08:17:56+08:00","result":"W2_01B2_TRANSACTION_INVENTORY_SLICES_CODE_GREEN","schema":"aos-memory-event/v1","task_id":"w2-01b2-transaction-slices-code-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T08:18:41+08:00","project_revision":"AOS-000165","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000165","occurred_at":"2026-08-24T08:23:23+08:00","schema":"aos-memory-event/v1","task_id":"d0-aftersale-canonical-reader-code-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T08:28:15+08:00","result":"D0_AFTERSALES_CANONICAL_READER_CODE_GREEN","schema":"aos-memory-event/v1","task_id":"d0-aftersale-canonical-reader-code-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T08:28:38+08:00","project_revision":"AOS-000166","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000165",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/d0_after_001_aftersale_event_authority.py",
+    "services/aos-api/aos_api/ecommerce_aftersale_event_reader.py",
+    "services/aos-api/aos_api/ecommerce_data_authority.py",
+    "services/aos-api/aos_api/ecommerce_workshop_operations.py",
+    "services/aos-api/tests/test_d0_after_001_aftersale_event_migration.py",
+    "services/aos-api/tests/test_ecommerce_aftersale_event_reader.py",
+    "services/aos-api/tests/test_ecommerce_data_authority.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_contracts.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py"
+  ],
+  "commits": [
+    "0d6ec53"
+  ],
+  "completed_at": "2026-08-24T08:28:15+08:00",
+  "completed_revision": "AOS-000165",
+  "result": "D0_AFTERSALES_CANONICAL_READER_CODE_GREEN",
+  "risks": [
+    "Code/control GREEN only; migration not applied and no real aftersales data or browser claim"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "d0-aftersale-canonical-reader-code-20260824",
+  "verification": [
+    "RED import failure; targeted 21/21 passed; cumulative relevant 45/45 passed with 7 existing warnings; Alembic single head d0_after_001; compileall and git diff check GREEN"
+  ]
+}
