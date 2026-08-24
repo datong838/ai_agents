@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000217",
+  "created_at": "2026-08-25T00:09:41+08:00",
+  "excluded_scope": [
+    "live migration release Provider AgentRun Action Approval and real business mutation"
+  ],
+  "expected_outputs": [
+    "ModuleHandoffCompiler plus strict Handoff issue consume decision command path and honest Workshop timeline with tests browser evidence and no external side effects"
+  ],
+  "lease_expires_at": "2026-08-25T08:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_handoff_*",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_handoff.py",
+    "apps/web/src/api/ecommerceWorkshop",
+    "apps/web/src/components/workshop/TaskCockpitPage*",
+    "apps/web/src/api/aipAgentControl",
+    ".evidence/workshop/2026-08-25-w3-06-*",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/94-W3-06-HandoffEnvelope传输与领域Decision分层预检ADR.md",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-06-module-handoff-command-20260825"
+}

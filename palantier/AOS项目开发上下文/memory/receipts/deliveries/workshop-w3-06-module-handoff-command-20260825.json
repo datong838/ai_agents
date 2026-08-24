@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000217",
+  "blockers": [
+    "live active and operational readiness remains runtime-gated and fail-closed"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_handoff_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_handoff_service.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_handoff.py",
+    "apps/web/src/api/aipAgentControl",
+    "apps/web/src/api/ecommerceWorkshop",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    ".evidence/workshop/2026-08-25-w3-06-module-handoff-command.json"
+  ],
+  "commits": [
+    "02899ba",
+    "4291755"
+  ],
+  "completed_at": "2026-08-25T00:36:43+08:00",
+  "completed_revision": "AOS-000217",
+  "result": "CODE_CONTROL_BROWSER_GREEN_NO_RELEASE_NO_MIGRATION_APPLIED_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "local aos-api unavailable during browser acceptance; no runtime operational or release claim"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-06-module-handoff-command-20260825",
+  "verification": [
+    "backend 43 passed; frontend focused 49 passed; Web cumulative 220 files 2066 tests; production build and Python compile GREEN; built-in browser 1280px fail-closed no command click"
+  ]
+}

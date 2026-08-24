@@ -1,43 +1,43 @@
 {
   "completed": [
-    "W3-05 ProductionContext exact ref pinned through compile Plan Preview StartDecision and strict SDK/UI",
-    "explicit production start role gate and exact context drift fail-close tests",
-    "Web cumulative 2060 tests plus production build and built-in browser failure-closed acceptance"
+    "W3-06 single ModuleHandoffCompiler zero-side-effect compile and canonical Handoff issue consume Decision command chain",
+    "Task Cockpit transport versus domain Decision honest states with strict SDK and browser fail-close acceptance",
+    "backend 43 tests Web 2066 tests production build Python compile and diff check GREEN"
   ],
-  "content_hash": "sha256:864ab091ce26dba789dbbf4d37a8ae014787971c61a261c027b175e0f77eb511",
+  "content_hash": "sha256:358c4f60457c1f53c99908b99960a38301a06dfb0782dc2dd778b0479757e85a",
   "current_phase": "S3 Workshop public production contracts serial implementation",
-  "delivery_status": "S3_W3_05_EXACT_CHAIN_STRICT_SDK_UI_CODE_GREEN_NO_RELEASE_MIGRATION_NOT_APPLIED",
+  "delivery_status": "S3_W3_06_MODULE_HANDOFF_COMMAND_CODE_BROWSER_GREEN_NO_RELEASE",
   "evidence": [
     {
       "kind": "code",
-      "ref": ".evidence/workshop/2026-08-24-w3-05-strict-sdk-ui-context.json"
+      "ref": ".evidence/workshop/2026-08-25-w3-06-module-handoff-command.json"
     },
     {
       "kind": "receipt",
-      "ref": "workshop-w3-05-strict-sdk-ui-context-20260824"
+      "ref": "workshop-w3-06-module-handoff-command-20260825"
     }
   ],
-  "generated_at": "2026-08-25T00:07:32+08:00",
+  "generated_at": "2026-08-25T00:36:56+08:00",
   "hard_boundaries": [
-    "No live migration release Provider Run Action Approval or business mutation",
-    "Historical nullable context provenance remains read compatible but cannot authorize start"
+    "No live migration release Provider AgentRun Action Approval Handoff issue consume Decision or real business mutation was executed",
+    "Runtime active operational readiness remains current-fact gated and code GREEN is not release GREEN"
   ],
   "incomplete": [
-    "W3-06 canonical Handoff transport and independent HandoffDecision authority",
-    "live migration runtime start and release remain gated"
+    "W3-07 structural coverage operational readiness pre-run reassign and runtime takeover layering",
+    "live migration runtime start external effects and release remain gated"
   ],
-  "last_green_gate": "W3_05_EXACT_CONTEXT_CHAIN_CODE_GREEN_NO_RELEASE",
-  "next_gate": "W3_06_HANDOFF_TRANSPORT_DECISION_AUTHORITY",
+  "last_green_gate": "W3_06_MODULE_HANDOFF_COMMAND_CODE_BROWSER_GREEN_NO_RELEASE",
+  "next_gate": "W3_07_RESPONSIBILITY_READINESS_REASSIGN_TAKEOVER",
   "next_steps": [
-    "Re-review W3-06 ADR against current m1 code and replace obsolete external-owner blockers with serial implementation tasks",
-    "Implement smallest canonical Handoff transport and decision authority slice with zero external side effects"
+    "Re-review W3-07 ADR against current m1 authority and implement the smallest serial gap without waiting for another developer",
+    "Preserve atomic Skill Logic coworker binding Workshop contribution lineage and fail closed at all runtime side-effect gates"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000217",
+  "project_revision": "AOS-000218",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "461f2dc",
-    "docs": "f5f167b"
+    "code": "02899ba",
+    "docs": "4291755"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
