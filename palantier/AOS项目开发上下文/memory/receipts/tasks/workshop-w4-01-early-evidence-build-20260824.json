@@ -1,0 +1,48 @@
+{
+  "base_revision": "AOS-000213",
+  "commits": [
+    "6caff2d"
+  ],
+  "completed_at": "2026-08-24T23:04:23+08:00",
+  "created_at": "2026-08-24T22:39:13+08:00",
+  "excluded_scope": [
+    "live-database-migration-apply",
+    "real-tenant-business-data",
+    "bundle-publish-sign-install",
+    "provider-run-action-handoff-approval-lease"
+  ],
+  "expected_outputs": [
+    "Evidence append-only and revoke migration code with tenant RLS",
+    "server-owned W3-03 EvidenceBuildRequest to canonical Bundle bridge",
+    "focused cumulative browser evidence and no-release receipt"
+  ],
+  "lease_expires_at": "2026-08-25T22:50:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/alembic/versions/w4_001_evidence_governance_build.py",
+    "services/aos-api/aos_api/aip_production_contracts.py",
+    "services/aos-api/aos_api/aip_production_contract_store.py",
+    "services/aos-api/aos_api/routers/aip_production_contracts.py",
+    "services/aos-api/aos_api/routers/aip_evidence_disclosure.py",
+    "services/aos-api/aos_api/routers/domain_manifest.json",
+    "services/aos-api/aos_api/routers/domain_aggregates.py",
+    "services/aos-api/aos_api/ecommerce_workshop_prepare_store.py",
+    "services/aos-api/aos_api/ecommerce_workshop_evidence_build_service.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_w4_001_evidence_governance_build_migration.py",
+    "services/aos-api/tests/test_ecommerce_workshop_evidence_build.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/test_w2a_production_contract_store.py",
+    "services/aos-api/tests/test_w_l10_evidence_revoke_disclosure.py",
+    "services/aos-api/tests/test_domain_router_manifest.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    "scripts/export_openapi.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/33-W4-01-EvidenceBuildJob八领域RequiredFacts与Evidence治理预检ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "COMPLETED",
+  "task_id": "workshop-w4-01-early-evidence-build-20260824"
+}

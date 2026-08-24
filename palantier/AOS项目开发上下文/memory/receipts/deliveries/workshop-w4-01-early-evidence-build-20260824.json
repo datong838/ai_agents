@@ -1,0 +1,38 @@
+{
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w4-01-early-evidence-build-20260824",
+  "base_revision": "AOS-000213",
+  "completed_revision": "AOS-000213",
+  "completed_at": "2026-08-24T23:04:23+08:00",
+  "result": "COMPLETED_CODE_CONTROL_GREEN_NO_RELEASE_MIGRATION_NOT_LIVE_APPLIED",
+  "commits": [
+    "6caff2d"
+  ],
+  "changed_files": [
+    "services/aos-api/alembic/versions/w4_001_evidence_governance_build.py",
+    "services/aos-api/aos_api/aip_production_contracts.py",
+    "services/aos-api/aos_api/aip_production_contract_store.py",
+    "services/aos-api/aos_api/ecommerce_workshop_prepare_store.py",
+    "services/aos-api/aos_api/ecommerce_workshop_evidence_build_service.py",
+    "services/aos-api/aos_api/routers/aip_production_contracts.py",
+    "services/aos-api/aos_api/routers/domain_manifest.json",
+    "services/aos-api/aos_api/routers/domain_aggregates.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    ".evidence/workshop/2026-08-24-w4-01-early-evidence-build.json"
+  ],
+  "verification": [
+    "focused Evidence migration, bridge and revoke: 8 passed",
+    "Workshop W3/W4/AIP adjacent cumulative: 169 passed and 2 subtests",
+    "OpenAPI 2569 paths, 2120 schemas, 4337 operations; router manifest deterministic",
+    "Alembic unique head w4_001; compileall and diff check GREEN",
+    "built-in browser /workshop: 1280 no overflow, H1=1, active installation=0, enabled Evidence/Bundle publish actions=0, failure state explicit"
+  ],
+  "risks": [
+    "NO_RELEASE; migration code was not live applied",
+    "ProductionProfile candidates and EvidenceBundle were not published, signed or installed",
+    "default runtime remains fail closed until exact installation and migration gates are satisfied"
+  ],
+  "blockers": []
+}
