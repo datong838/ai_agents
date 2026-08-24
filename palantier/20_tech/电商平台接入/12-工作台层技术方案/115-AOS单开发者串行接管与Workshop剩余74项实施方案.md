@@ -190,6 +190,23 @@ B2b 复用 B2a 唯一的 canonical governance verifier 与 Action execution/Rece
 
 B2b 退出后自动进入 B3 automation kill 专项预检与执行门。真实 automation kill、外部 refund、真实数据库写入、migration apply 或 Provider 调用均不属于本波。
 
+W3-12B2b 已由 `m1@b6cdf25` 完成代码控制闭环：`changeMembership/manageSla` 复用 B2a 的唯一 canonical verifier、Principal tenant、exact Proposal/Approval/ExecutionLease、expectedVersion、`Idempotency-Key` 与 Action/Operation 双 Receipt，canonical adapter fake path 已验证 membership/SLA authority Store 路由。累计后端 `65 passed`，Web `205 files / 2012 tests` 与 production build、OpenAPI deterministic、compile/diff check GREEN；内置浏览器 1280/1440/1920 均保持七切片、六命令禁用、零水平溢出和零示例业务事实。fixture 的 aos-api unavailable warning 是受控降级证据，不是运行时可执行证明。96 项主 Task 计数仍为 `22/96`。
+
+#### 3.3.8 W3-12B3 automation kill 高风险命令门
+
+B3 只处理内部 `automationKill` authority decision，不处理退款或 Provider 动作。该命令风险高于 B2a/B2b，除复用 canonical Proposal/Approval/ExecutionLease/Receipt 外，还必须保持既有 `AutomationKillDecisionRevision` 的 proposal、lease、executor 三 checkpoint 齐全且唯一，并将 exact `scopeHash` 固化在 Proposal payload、Lease proposalHash、Action Receipt 与 Operation authority Receipt 的证据链中。
+
+文件级施工范围：
+
+- 扩展 `ecommerce_operation_command_execution_contracts.py`：新增 strict `KillOperationAutomationCommandRequest`，要求 revision 精确推进 expectedVersion 一次；依赖既有 contract 验证三个 checkpoint 齐全、唯一，禁止 body scope/actor 注入；
+- 扩展 `ecommerce_operation_command_service.py`：在唯一 `_InternalOperationAdapter` 增加 `append_kill` 路由，使用独立 Action Type `ecommerce.operation.automation-kill`；tenant/actor、proposal payload/hash/version、审批 refs、Lease owner/status/expiry/hash、幂等键和双 Receipt 任一漂移均失败关闭；unknown 不自动重试；
+- 扩展 `routers/ecommerce_workshop.py`：只增加显式 `/commands/operations/automation-kill` POST，不增加任意 command dispatch；继续复用安装门、Principal、`Idempotency-Key` 和稳定 409/503；
+- 更新 readiness：仅把 automationKill 的静态 handler blocker 改为请求级 exact chain blocker，状态仍是 `blocked`；refund 保持 `EXTERNAL_ACTION_GATE_NOT_BOUND`；
+- 扩展 service/API/readiness/OpenAPI 测试，覆盖缺 checkpoint、重复 checkpoint、版本漂移、tenant/actor/payload/hash/approval/Lease 漂移、同键重放与异键冲突、canonical adapter/Operation Receipt；确定性重生 OpenAPI；
+- Web 不接收高风险治理凭据、不放开 automationKill 按钮；内置浏览器三档继续对照正式视觉稿验证动作抽屉信息层级、六命令全禁用、零示例业务事实、零水平溢出。真实 kill、数据库写入、migration apply、退款与 Provider 调用全部禁止。
+
+B3 退出后自动进入 W3-12B4 command observability/unknown reconcile 读模型与前端证据呈现；外部 refund 继续留在 W5 canonical Action/Adapter 波次。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

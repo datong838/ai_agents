@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000169",
+  "created_at": "2026-08-24T10:04:19+08:00",
+  "excluded_scope": [
+    "real database mutations; migration apply; automation kill; refund/provider actions; release; UI enablement without exact request governance"
+  ],
+  "expected_outputs": [
+    "changeMembership/manageSla typed internal command gate with canonical Proposal/Approval/ExecutionLease/Action Receipt and Operation authority Receipt; tests, browser regression, receipt, commit, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-24T16:00:00+08:00",
+  "owner": "aos-sole-developer-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api operation command contracts/service/router/readiness/tests; deterministic OpenAPI artifacts; Workshop plan/checklist; delivery receipts and Prime projection"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12b2b-membership-sla-command-gate-20260824"
+}

@@ -1,41 +1,37 @@
 {
   "completed": [
-    "W3-12B2a classify/createCase strict internal command execution gate"
+    "W3-12B2b membership/SLA strict internal command execution gate"
   ],
-  "content_hash": "sha256:389073e1d5be7f579986dcc5f32887dee116ae9b21248cf82517c327001657d8",
+  "content_hash": "sha256:0b676d964f4202c4e04b6a0064c5d3063ca9ea6c6c766e66eca4648246dd4fb6",
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "W3_12B2A_INTERNAL_COMMAND_CODE_CONTROL_GREEN_REAL_EXECUTION_NOT_INVOKED",
+  "delivery_status": "W3_12B2B_MEMBERSHIP_SLA_CODE_CONTROL_GREEN_REAL_EXECUTION_NOT_INVOKED",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "w3-12b2a-internal-command-gate-20260824"
-    },
-    {
-      "kind": "delivery_receipt",
-      "ref": "w3-12b2a-openapi-freeze-20260824"
+      "ref": "w3-12b2b-membership-sla-command-gate-20260824"
     },
     {
       "kind": "verification",
-      "ref": "56 cumulative backend tests; OpenAPI deterministic; Web 2012 tests/build; built-in browser 1280/1440/1920 fail-closed visual regression"
+      "ref": "65 cumulative backend tests; Web 2012 tests/build; OpenAPI deterministic; built-in browser 1280/1440/1920 fail-closed visual regression"
     }
   ],
-  "generated_at": "2026-08-24T10:02:07+08:00",
+  "generated_at": "2026-08-24T10:19:33+08:00",
   "hard_boundaries": [
-    "No real DB command invocation, migration apply, provider call, refund, release, or UI enablement without exact per-request runtime authority"
+    "No real DB command invocation, migration apply, automation kill, provider call, refund, release, or UI enablement without exact per-request runtime authority"
   ],
   "incomplete": [
-    "W3-12B2b membership/SLA; W3-12B3 automation kill; external refund/action waves; real runtime invocation"
+    "W3-12B3 automation kill; W3-12B4 observability/unknown reconcile; external refund/action waves; real runtime invocation"
   ],
-  "last_green_gate": "W3_12B2A_INTERNAL_COMMAND_CODE_CONTROL_GREEN",
-  "next_gate": "W3_12B2B_MEMBERSHIP_SLA_INTERNAL_COMMANDS",
+  "last_green_gate": "W3_12B2B_MEMBERSHIP_SLA_CODE_CONTROL_GREEN",
+  "next_gate": "W3_12B3_AUTOMATION_KILL_INTERNAL_COMMAND",
   "next_steps": [
-    "Continue W3-12B2b membership and SLA internal command gate on m1"
+    "Continue W3-12B3 automation kill high-risk internal command gate on m1"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000169",
+  "project_revision": "AOS-000170",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "45f938f"
+    "aos-platform": "b6cdf25"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
