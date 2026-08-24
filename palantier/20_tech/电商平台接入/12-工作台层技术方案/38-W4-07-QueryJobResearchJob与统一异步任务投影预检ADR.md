@@ -1,6 +1,6 @@
 # W4-07 QueryJob、ResearchJob 与统一异步任务投影预检 ADR
 
-> 状态：`AOS-000232_REVIEWED / IMPLEMENTATION_AUTHORIZED / CONSUMER_CLOSURE_IN_PROGRESS`
+> 状态：`IMPLEMENTED / CODE_BROWSER_GREEN / NO_RELEASE / NO_EXTERNAL_EFFECT`
 >
 > 事实截面：AOS authority `AOS-000024`；证据 `.evidence/workshop/2026-08-14-w4-07-query-research-job-preflight.json`。
 
@@ -116,3 +116,25 @@ Projection 只汇聚 refs 和派生显示状态，不承接 command、不回写�
 - Web 覆盖 loading/empty/partial/paused/cancelled/unknown/failed/succeeded、刷新、严格漂移拒绝和键盘操作；涉及页面必须用内置浏览器对照既有 Workshop Analyst 视觉语言。
 - 本波不 live apply migration、不注册/调用真实 Provider、不提交/取消/重试真实 Job、不发布、不写真实业务数据。
 - 若真实 Provider runtime 未装配，代码与页面以 blocker/unsupported/unknown 关闭，不把外部缺口变成停工理由，也不伪造 operational GREEN。
+
+## 9. W4-07 实施与验收闭环（2026-08-25）
+
+### 9.1 已落地事实
+
+- `m1@fe0a8da0642ba1a57373099d09e093e087f954c0` 将 ResearchJob、QueryJob、KnowledgePipelineRun 三个既有 authority 汇聚为单一只读投影；没有创建第四 Store，也没有新增统一 command endpoint。
+- ResearchJob 从已有 submission/event/artifact/delivery/command receipts 派生 `partialRefs`、`receiptRefs` 与 `updatedAt`；无可信 Provider checkpoint 时继续 `checkpointRef=null / resumability=unsupported`。
+- KnowledgePipeline 只挂接属于当前 `pipelineRunId` 的 checkpoint，避免把同 schedule 后续 run 的最新 checkpoint 错配给旧 run；命令权限保持全 false，并显式披露源 authority 所有权。
+- Query result revision 只作为输出 ref，不冒充 Receipt；没有 exact Task revision 时 `taskRef=null`，不从裸 ID 制造 exact ref。
+- Web strict SDK 使用 authoritative GET，拒绝额外字段、未知 authority、非法状态、数量漂移与跨租户响应；经营参谋抽屉只读展示，不 submit/cancel/retry/reconcile。
+
+### 9.2 测试与浏览器证据
+
+- Backend 联合专项与累计 `24 passed`，最终 W-L17 复跑 `5 passed`；覆盖三 authority、partial/checkpoint/receipt、角色权限和 unknown/reconcile。
+- Web 专项 `9 passed`；累计 `223 files / 2102 tests passed`；TypeScript noEmit、生产构建、compileall、diff check 均 GREEN。
+- OpenAPI 确定性导出/回检 GREEN：`2583 paths / 2165 schemas`。
+- 内置浏览器在 `/workshop/analyst` 验收：正向显示 running→partial、1 Receipt、1 部分产物、owner 与源 authority；三个统一视图命令均未提交。注入额外 authority 字段后 strict parser 拒绝并显示“读取失败关闭”，没有自动重试、任务创建或 Provider 调用。
+- 证据：`.evidence/workshop/2026-08-25-w4-07-query-research-job-lifecycle.json`。
+
+### 9.3 关闭结论
+
+W4-07 达到 `CODE_BROWSER_GREEN / NO_RELEASE / NO_EXTERNAL_EFFECT`。它关闭的是统一观察与失败关闭消费面，不宣称真实 Research Provider adapter、resume、生产迁移或发布已经就绪；这些独立边界继续保留。下一串行门为 W4-08 跨能力累计验收。
