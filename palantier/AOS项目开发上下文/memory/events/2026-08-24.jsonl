@@ -76,3 +76,9 @@
 {"base_revision":"AOS-000174","occurred_at":"2026-08-24T12:39:46+08:00","schema":"aos-memory-event/v1","task_id":"w2-02b-responsibility-handoff-read-model-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T13:03:23+08:00","result":"W2_02B_RESPONSIBILITY_HANDOFF_CODE_AND_VISUAL_GREEN","schema":"aos-memory-event/v1","task_id":"w2-02b-responsibility-handoff-read-model-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T13:04:03+08:00","project_revision":"AOS-000175","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000175","occurred_at":"2026-08-24T13:05:48+08:00","schema":"aos-memory-event/v1","task_id":"w2-02c-approval-review-issue-read-model-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T13:37:38+08:00","result":"W2_02C_APPROVAL_REVIEW_ISSUE_CODE_AND_VISUAL_GREEN","schema":"aos-memory-event/v1","task_id":"w2-02c-approval-review-issue-read-model-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T13:38:09+08:00","project_revision":"AOS-000176","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000176","occurred_at":"2026-08-24T13:42:14+08:00","schema":"aos-memory-event/v1","task_id":"w2-02d-action-receipt-unknown-reconcile-read-model-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T14:06:35+08:00","result":"W2_02D_ACTION_RECEIPT_RECONCILE_CODE_AND_VISUAL_GREEN","schema":"aos-memory-event/v1","task_id":"w2-02d-action-receipt-unknown-reconcile-read-model-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T14:07:41+08:00","project_revision":"AOS-000177","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

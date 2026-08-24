@@ -265,6 +265,23 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@68ccb10` 安全提交；后端专项 `21 passed`、累计与 OpenAPI `39 passed`，Web 专项 `37 passed`、累计 `205 files / 2016 tests`、typecheck 与 production build `319 modules`，OpenAPI 确定性导出与检查通过。内置浏览器在 1280/1440/1920 三档确认 exact Plan approval、Action approval timeline/navigation readiness、ReviewIssue 证据与返工 lineage，无横向溢出；审批区按钮和链接均为 0，旧的 Approval/ReviewIssue blocker 已消失，新的 assignee operational-readiness blocker 正确保留，且本次没有新增 console error。正式视觉稿已逐区对照“顶部指标—三路任务流—右侧复核—底部共享能力”层次，没有复制经营样例、在线角色或命令入口。Delivery Receipt 为 `w2-02c-approval-review-issue-read-model-20260824`；authority 与 Prime 已推进到 `AOS-000176` 且强一致投影 CURRENT。下一子波为 `W2-02D Task-scoped Action receipt/unknown/reconcile read model`，主清单仍保持 `22/96`，不提前勾选 W2-02。
 
+### 3.7 S2 / W2-02D Action Receipt／unknown／reconcile 精确只读切片
+
+本子波只组合既有 `aip_action_proposal`、`aip_action_execution_lease` 与 append-only `aip_action_receipt` authority，不执行 Action，不调用 Provider，不发起 reconcile 或 compensation。Cockpit 以当前 Run 的 exact `task_id + run_id` 双引用筛选 Proposal；存在同 Run、不同 Task 的 Proposal 时视为 authority drift 并失败关闭，不按时间、ActionType 或“最新”猜归属。
+
+文件级施工范围：
+
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py`：新增安全的 Proposal/Lease/Receipt chain 与 run envelope；保留 `accepted/applied/failed/unknown/reconciled`，区分 initial 与 reconcile Receipt，并对 Proposal、Lease、attempt、supersedes、request fingerprint、数量和 unresolved unknown 守恒；
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py`：在单一 `REPEATABLE READ READ ONLY` tenant 事务内读取 Run→Task、同 Task+Run Proposal、同 Proposal Lease 与 Receipt；`unknown` 只有在没有 exact superseding reconcile Receipt 时才是 `reconcile_required`，reconcile Receipt 必须指向同 Proposal、同 Lease、同 fingerprint 的 initial unknown；
+- `services/aos-api/aos_api/routers/ecommerce_workshop.py` 与 OpenAPI：新增唯一 GET `/views/task-cockpit/runs/{run_id}/action-receipts`，只取 Principal tenant、拒绝 query/body scope 注入、复用 Module 安装门；
+- `apps/web/src/api/ecommerceWorkshop/*`：增加 strict contract/parser/client；extra/missing、未知枚举、Task/Run/Proposal/Lease/Receipt 错链、错误 supersedes、数量漂移均失败关闭；
+- `apps/web/src/components/workshop/TaskCockpitPage.tsx` 与既有样式：在 Run 明细中展示 Proposal 状态、attempt、最小 Receipt timeline、unknown 待对账与已对账结果；provider request id 仅投影为 `present/missing`，不返回真实 ID、payload 或证据正文；本波没有 execute/reconcile/retry/compensate 按钮；
+- 后端、API、Web 测试覆盖无 Action、无 Lease/Receipt、accepted/applied/failed、unresolved unknown、resolved unknown、跨 Task/Run/tenant、supersedes/fingerprint/attempt drift、404/409/503、整块失败关闭，并执行累计回归、OpenAPI 确定性检查、build 与 1280/1440/1920 浏览器验收。
+
+禁止项：不新增 migration，不修改真实业务数据，不读取或展示 Action payload、provider request id、PII/Secret，不把 accepted/approved/Task succeeded 当成 applied，不把 unknown 当 failed，不自动重试外部副作用，不发起 reconcile 或 compensation。对账只由新的 immutable Receipt 证明；补偿仍是新的受控 Proposal。W2-02D 闭合后再依据 W2-02 主项的剩余 assignee/business-context 边界更新清单，不能为追求计数提前去除真实 blocker。
+
+2026-08-24 闭合检查点：代码已以 `m1@c2cd471` 安全提交；后端累计 `42 passed`，Web 专项 parser/client/page `34 passed`、Host `3 passed`、累计 `205 files / 2016 tests`，typecheck、production build `319 modules`、OpenAPI 确定性导出与检查、diff check 均通过；锁定环境未提供 Ruff，因此未虚构 Ruff 结论。内置浏览器在 1280/1440/1920 三档确认 Action Proposal/Lease/Receipt 精确链、unknown 待对账语义与 provider ref 封存态，无 execute/reconcile/retry/compensate 命令、无横向溢出；正式视觉稿已逐区对照任务流主层与证据辅层，没有复制经营样例、在线角色或命令入口。Delivery Receipt 为 `w2-02d-action-receipt-unknown-reconcile-read-model-20260824`；authority 与 Prime 已推进到 `AOS-000177` 且强一致投影 CURRENT。96 项主计数仍为 `22/96`，W2-02D 是真实子波进度但不提前勾选 W2-02；下一子波立即进入 `W2-02E Assignee operational-readiness read model`。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
