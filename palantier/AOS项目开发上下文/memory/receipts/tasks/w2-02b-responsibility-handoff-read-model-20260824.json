@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000174",
+  "created_at": "2026-08-24T12:39:46+08:00",
+  "excluded_scope": [
+    "migrations",
+    "real-business-data",
+    "task-run-start",
+    "action-execution",
+    "provider-refund-release"
+  ],
+  "expected_outputs": [
+    "Canonical run-scoped Responsibility and Handoff read model, strict API/Web/UI, tests, browser acceptance, receipt, commit, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-24T20:00:00+08:00",
+  "owner": "aos-sole-developer-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests",
+    "apps/web/src/api/ecommerceWorkshop",
+    "apps/web/src/components/workshop",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "packages/contracts/openapi",
+    "scripts/export_openapi.py",
+    "docs/palantier/20_tech/ecommerce-workshop/W2-02B",
+    "docs/palantier/AOS-project-context/memory/receipts"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-02b-responsibility-handoff-read-model-20260824"
+}

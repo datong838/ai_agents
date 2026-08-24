@@ -1,0 +1,45 @@
+{
+  "base_revision": "AOS-000174",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    "scripts/export_openapi.py"
+  ],
+  "commits": [
+    "f1f38db"
+  ],
+  "completed_at": "2026-08-24T13:03:23+08:00",
+  "completed_revision": "AOS-000174",
+  "result": "W2_02B_RESPONSIBILITY_HANDOFF_CODE_AND_VISUAL_GREEN",
+  "risks": [
+    "Visual fixture proves presentation only; no real runtime, business write, migration, provider, refund or release was invoked",
+    "W2-02 main item remains incomplete until Approval/ReviewIssue/Action reconcile closes",
+    "ResponsibilityPlan ready_at_compile and Handoff consumed do not prove assignee operational readiness or business acceptance"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-02b-responsibility-handoff-read-model-20260824",
+  "verification": [
+    "backend focused 18 passed",
+    "backend cumulative and OpenAPI 31 passed",
+    "Web cumulative 205 files and 2016 tests passed",
+    "Web production build 319 modules passed",
+    "deterministic OpenAPI export and check passed",
+    "built-in browser exact Responsibility slots and Handoff decisions visible at 1280/1440/1920 with no horizontal overflow or command controls; current reload added zero console errors",
+    "formal visual mock hierarchy compared; fabricated metrics, online agents, samples and command button remain excluded"
+  ]
+}

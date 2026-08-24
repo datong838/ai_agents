@@ -233,6 +233,21 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@f47fb71` 安全提交；后端专项 `15 passed`、累计组合 `28 passed`，Web 累计 `205 files / 2016 tests`、production build `319 modules`，OpenAPI 确定性导出与检查通过。内置浏览器 1280/1440/1920 三档均显示 exact Plan/StageTemplate/ResponsibilityPlan ref、Stage 适用性、依赖与槽位，无水平溢出或禁止命令，console error 为 0。Delivery Receipt 为 `w2-02a-exact-stage-compilation-read-model-20260824`，authority/Prime 已经 `AOS-000174` 精确回读。`ruff` 可执行文件在环境中不可用，未虚构 lint GREEN；语法与行为由上述专项及累计测试覆盖。
 
+### 3.5 S2 / W2-02B Responsibility/Handoff 精确只读切片
+
+本子波消费 W2-02A 已校验的 `ResponsibilityPlanRevision` exact ref，并按同一 TaskRun 读取 canonical Handoff envelope/decision；不新建第二套职责、交接或 owner authority：
+
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py`：新增职责槽位、结构 assignee、Handoff envelope 摘要、decision timeline 和 run-scoped envelope；将 ResponsibilityPlan contract readiness 与 assignee operational readiness 分开，未有 `AssigneeResolutionReceipt` 时固定为 `unverified`；
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py`：在单一 `REPEATABLE READ READ ONLY` 事务内重新校验 run→Plan→Responsibility exact 链，再用 tenant + run id 读取 Handoff envelope 及按 revision 排序的 decision；仅返回最小摘要，不泄露 bearer/token/context payload/object/artifact/evidence 内容；
+- `services/aos-api/aos_api/routers/ecommerce_workshop.py` 与 OpenAPI：新增唯一 GET `/views/task-cockpit/runs/{run_id}/responsibility-handoffs`，复用安装可见性与 principal tenant，不接受 body/query 注入；
+- `apps/web/src/api/ecommerceWorkshop/*`：增加 strict contract/parser/client，extra/missing/type/hash/timeline 漂移全部失败关闭；
+- `apps/web/src/components/workshop/TaskCockpitPage.tsx` 与 `apps/web/src/styles/45-ecommerce-workshop.css`：在正式视觉稿的“执行组/策划组”边界内展示职责槽位、结构 assignee 与交接决定链；明示“运行就绪未验证”，不复制六个在线数字同事或经营样例，不新增消费/决策命令；
+- 测试覆盖 exact hash/lifecycle/tenant/run 归属、slot 唯一与 required-slot 覆盖、Handoff/decision 数量守恒与顺序、最小披露、空 Handoff、跨租户/404/409/503、Web 整块失败关闭、键盘与 1280/1440/1920 零溢出。
+
+本子波不把 ResponsibilityPlan 的 `ready` 冒充为 selected assignee operational readiness，也不把 Handoff `consumed` 冒充为业务 `accepted`或 owner 已变更。Approval/ReviewIssue/Action reconcile 仍属 W2-02 后续子波。
+
+2026-08-24 闭合检查点：代码已以 `m1@f1f38db` 安全提交；后端专项 `18 passed`、累计与 OpenAPI `31 passed`，Web 累计 `205 files / 2016 tests`、production build `319 modules`，OpenAPI 确定性导出与检查通过。内置浏览器在 1280/1440/1920 三档确认 exact ResponsibilityPlan、职责槽位、结构 assignee、Handoff 与 decision timeline，无横向溢出或命令入口；刷新前后 error log 均为 4 条历史热更新错误，本次新增为 0。正式视觉稿已逐区对照“指标—指令区—执行组—任务流—策划组—复盘”层次，经营样例、在线角色与“下达”按钮未复制。Delivery Receipt 为 `w2-02b-responsibility-handoff-read-model-20260824`；下一子波为 `W2-02C Approval/ReviewIssue exact read model`，主清单仍不提前勾选 W2-02。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
