@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000183",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_content_campaign_authority_store.py",
+    "services/aos-api/aos_api/ecommerce_workshop_content_campaign.py",
+    "services/aos-api/aos_api/ecommerce_workshop_content_campaign_contracts.py",
+    "services/aos-api/tests/test_ecommerce_content_campaign_authority_store.py",
+    "services/aos-api/tests/test_ecommerce_workshop_content_campaign.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json"
+  ],
+  "commits": [
+    "aos-platform/m1@d18d21c"
+  ],
+  "completed_at": "2026-08-24T15:49:20+08:00",
+  "completed_revision": "AOS-000183",
+  "result": "W2-03E read-only ContentVariant projection from canonical ArtifactRelation, exact Artifact hashes, relation Receipt and unique MasterContentIntent linkage sealed; no second body authority created.",
+  "risks": [
+    "canonical aip_artifact remains historically mutable; reader fails closed on any relation hash drift",
+    "strict Web SDK, formal page implementation and final W2-03 browser state matrix remain for W2-03F"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-03e-content-variant-artifact-projection-20260824",
+  "verification": [
+    "focused 29 passed; Workshop cumulative 101 passed",
+    "compileall, OpenAPI deterministic and git diff check GREEN",
+    "built-in browser 1280/1440/1920: no horizontal overflow, one H1, zero enabled production/schedule/publish side-effect buttons"
+  ]
+}

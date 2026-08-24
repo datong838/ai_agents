@@ -376,6 +376,21 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 闭合检查点：代码已以 `m1@2b7f3dc` 安全提交。四类 revision/decision row 与同事务 authority Receipt 使用同一 `receipt_id` 并在 tenant 内唯一；reader 只返回 typed revision + exact Receipt observation。GET view 对 plan/calendar/content 三切片独立读取：可信空 authority 为 `ready + eligible=0`，非空数据逐项返回 exact resource/revision/hash/Receipt，单 reader 失败只阻塞对应切片。专项 `17 passed`，Workshop 累计 `92 passed`，OpenAPI deterministic 与 diff check GREEN；内置浏览器累计回归 1280/1440/1920 零横向溢出、唯一 H1、本页零可执行禁止类副作用按钮。迁移未执行、真实数据库未连接、未注册写 API，也未创建 ContentVariant 或触发任何排期/发布/Provider 副作用。Delivery Receipt 为 `w2-03d-content-campaign-view-composition-20260824`；下一子波自动进入 W2-03E ArtifactRelation-based ContentVariant projection。
 
+### 3.14 S2 / W2-03E ArtifactRelation-based ContentVariant projection
+
+上位方案已冻结 ContentVariant 为可重建读模型而非正文 authority，关系方向固定为 Variant → Master。E 复用 canonical `aip_artifact`、`aip_artifact_relation` 与 `aip_production_contract_receipt`：只读查询 `variant_of` relation，在同 tenant/cutoff 下校验 relation 两端 exact hash 与当前 Artifact authority 一致，并要求精确的 `artifact_relation.create` Receipt；再与同 cutoff MasterContentIntent 的 `masterArtifactRef` 精确匹配。任何 missing Receipt、孤儿、hash drift、重复 relation/Receipt 或跨租户事实均失败关闭，不通过 createdAt 猜测 current。
+
+文件级范围：
+
+- 扩展 `ecommerce_workshop_content_campaign_contracts.py`，新增 strict `ContentVariantProjection`，明确 intent exact ref、master/variant Artifact exact ref、relation ID/Receipt 与唯一 canonical 名称；不承载正文、prompt、provider ID 或客户数据；
+- 扩展 `ecommerce_content_campaign_authority_store.py`，新增 bounded `list_content_variants` reader，使用 `REPEATABLE READ READ ONLY`、tenant/cutoff、稳定排序和 limit，联结 canonical relation、Artifact 与 production Receipt 并验证 hash/唯一性；
+- 扩展 `ecommerce_workshop_content_campaign.py`，content slice 在 Intent authority 成功后组合 Variant projection；无 relation 是可信空 Variant 集，relation/Receipt/Artifact drift 则只阻塞 content slice；
+- 扩展 Store/view/API 测试，覆盖 Variant → Master、exact hash/Receipt、intent 联结、orphan/drift/duplicate/tenant failure、数量守恒与 GET-only。
+
+禁止项：不新增 ContentVariant head/revision/body/table/Store/API namespace，不创建 Artifact/Relation/Receipt，不修改 canonical Artifact 数据，不执行 migration，不连接真实库，不排期、生产或发布。E GREEN 后自动进入 W2-03F strict Web SDK 与正式视觉稿页面实现/三视口验收。
+
+2026-08-24 闭合检查点：代码已以 `m1@d18d21c` 安全提交。新增的 bounded reader 只读 `variant_of` relation，并联结两端 canonical Artifact 当前 hash 与精确 `artifact_relation.create` Receipt；跨租户、孤儿、Receipt 缺失/重复、relation 类型或 hash drift 均失败关闭。content slice 仅在 exact MasterContentIntent 的 `masterArtifactRef` 与 relation Master 完全一致且唯一时投影 `ContentVariant`，同时返回 Intent revision Receipt、Master/Variant exact hash 和 relation Receipt。专项 `29 passed`、Workshop 累计 `101 passed`、compileall、OpenAPI deterministic 与 diff check GREEN；内置浏览器 1280/1440/1920 零横向溢出、唯一 H1、本页零可执行生产/排期/发布等副作用按钮。没有新增 ContentVariant 真源、迁移或写 API，也未连接真实数据库。Delivery Receipt 为 `w2-03e-content-variant-artifact-projection-20260824`；下一子波自动进入 W2-03F strict Web SDK 与正式页面。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
