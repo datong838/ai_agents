@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000226",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_production_contract_store.py",
+    "services/aos-api/aos_api/aip_production_contracts.py",
+    "services/aos-api/aos_api/routers/aip_evidence_disclosure.py",
+    "apps/web/src/api/aipEvidence/contracts.ts",
+    "apps/web/src/api/aipEvidence/client.ts",
+    "apps/web/src/components/workshop/production/EvidenceBundleDrawer.tsx",
+    "apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    ".evidence/workshop/2026-08-25-w4-02-evidence-citation-disclosure.json"
+  ],
+  "commits": [
+    "f37102333e6eed0874a429b3e9083f1153880b09",
+    "f925004",
+    "d98fc22"
+  ],
+  "completed_at": "2026-08-25T04:18:27+08:00",
+  "completed_revision": "AOS-000226",
+  "result": "W4_02_EVIDENCE_DISCLOSURE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "NO_RELEASE; no live migration Provider AgentRun Action Approval download export business mutation or queue flush",
+    "real authority contained zero Bundle rows, so browser Drawer interaction was not fabricated and is covered by strict SDK/component/page tests"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w4-02-evidence-citation-disclosure-20260825",
+  "verification": [
+    "backend focused 5; backend cumulative 27; Web targeted 37 and cumulative 221 files 2088 tests; TypeScript build compileall OpenAPI deterministic diff GREEN",
+    "built-in browser org-org/dev-project production contracts three viewports no overflow visible focus console errors 0; zero Bundle honest empty state; no fabricated data or disclosure write"
+  ]
+}
