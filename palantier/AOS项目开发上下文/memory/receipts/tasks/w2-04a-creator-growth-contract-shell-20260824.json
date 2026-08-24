@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000185",
+  "created_at": "2026-08-24T16:15:11+08:00",
+  "excluded_scope": [
+    "migration apply; real database/business writes; creator discovery/outreach/contract/delivery/relationship mutations; provider calls; protected dirty or untracked scope"
+  ],
+  "expected_outputs": [
+    "double-axis readonly schema, fail-closed canonical slices, OpenAPI inventory, focused and cumulative tests, Delivery Receipt, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-25T06:00:00+08:00",
+  "owner": "aos-sole-developer-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "aos-platform/m1 creator-growth canonical readonly contract, endpoint shell, strict tests; docs plan/Receipt/CAS/Prime"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-04a-creator-growth-contract-shell-20260824"
+}

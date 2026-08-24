@@ -1,0 +1,35 @@
+{
+  "base_revision": "AOS-000185",
+  "blockers": [
+    "Canonical creator candidate, outreach, contract, delivery and relationship authorities remain unavailable; shell fails closed"
+  ],
+  "changed_files": [
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    "scripts/export_openapi.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/aos_api/ecommerce_workshop_creator_growth.py",
+    "services/aos-api/aos_api/ecommerce_workshop_creator_growth_contracts.py",
+    "services/aos-api/tests/test_ecommerce_workshop_creator_growth.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/test_openapi_contract.py"
+  ],
+  "commits": [
+    "a8627e8"
+  ],
+  "completed_at": "2026-08-24T16:28:11+08:00",
+  "completed_revision": "AOS-000185",
+  "result": "W2_04A_CREATOR_GROWTH_CANONICAL_READ_MODEL_CODE_CONTROL_GREEN",
+  "risks": [
+    "Full asset-bundle cumulative test scans protected untracked plugins/ops and fails independently of W2-04A; user scope preserved"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-04a-creator-growth-contract-shell-20260824",
+  "verification": [
+    "Focused creator-growth and API tests 26 passed",
+    "Workshop cumulative excluding protected untracked plugin bundle scope 78 passed",
+    "OpenAPI deterministic export check and contract tests GREEN",
+    "compileall and git diff check GREEN"
+  ]
+}

@@ -406,6 +406,23 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 闭合检查点：代码已以 `m1@2a72391` 安全提交。strict Web SDK 对三切片 canonical order、同 cutoff、租户、exact hash/Receipt、ContentVariant `variant_of` lineage、identity 唯一性、数量守恒和 blocked/ready 语义失败关闭；正式页面保留视觉稿三栏层级、主视图、数量概览和证据边界，但没有保存、审批、排期、发布或自动拆任务入口。专项 parser/client/page/host GREEN，Web 累计 `207 files / 2024 tests`、TypeScript noEmit 与 diff check GREEN；内置浏览器 blocked/empty/nonempty 及 1280/1440/1920 状态矩阵零横向溢出、唯一 H1、ContentVariant 归因可见且越权按钮为零。SourceReadiness 仍诚实显示 visual-fixture blocked，未推断运营 GREEN；未 apply migration、未写真实数据库、未调用 Provider/邀约/排期/发布副作用。Delivery Receipt 为 `w2-03f-content-campaign-strict-web-visual-20260824`；下一子波自动进入 W2-04A。
 
+### 3.16 S2 / W2-04 达人增长只读模型施工拆分
+
+本波复习 `85` ADR、产品 `07`、逐区域规格 `228` 与正式视觉稿 `workshop-creator-outreach.html`。保持 `workflowPhase=discovery/evidence/matching/batch_prepare/start` 与 `businessStage=candidate/outreach/contract/delivery/relationship` 两条正交轴；Observation 不等于 Decision，平台接受不等于合同签署，PRELIMINARY 不晋升关系，PII 仅返回受控 ref，不复制联系方式、合同正文、账号 secret 或寄样地址。
+
+串行子波：
+
+- `W2-04A`：冻结 `creator-growth-view/v1`、五个 business slice、双阶段轴、exact ref、blocker、数量守恒、GET-only 路由和 OpenAPI；所有 slice 初始失败关闭，不新增领域真源；
+- `W2-04B`：新增候选/身份/Match Observation/Decision canonical authority 与 append-only Store，不做 discovery、合并、排除或批次准备；
+- `W2-04C`：新增 OutreachBatch/Item prepare authority、input 与 start ledger；prepare/freeze 零副作用，accepted/applied/failed/unknown/skipped 分离；
+- `W2-04D`：新增 Contract/TermDiff、Delivery、Relationship exact authority 与同合作 lineage；SIGNED、履约结果和关系成熟度互不反推；
+- `W2-04E`：组合五 slice bounded reader，统一 cutoff、唯一 identity、分页与双租户失败关闭；
+- `W2-04F`：strict Web SDK、正式五 Tab 只读页面、blocked/empty/nonempty 与 1280/1440/1920 浏览器矩阵；移除视觉稿中的导入、新建批次、写邀约、批准、发送、签署、寄样、佣金和关系 mutation 控件。
+
+`W2-04A` 文件级范围：新增 `ecommerce_workshop_creator_growth_contracts.py` 与 `ecommerce_workshop_creator_growth.py`，挂载只读路由；更新 OpenAPI/operation inventory；新增契约、GET-only、租户、双轴、五 slice、同 cutoff、blocker/ledger 和 cursor 失败关闭测试。禁止 migration、真实数据库写入、Provider 调用及任何达人发现/邀约/合同/履约/关系副作用。
+
+2026-08-24 闭合检查点：W2-04A 已以 `m1@a8627e8` 安全提交。`creator-growth-view/v1` 固定五个业务阶段切片与五个工作流阶段正交表达，exact authority ref、唯一性、同 cutoff、数量守恒、分页和 blocked/ready 语义全部失败关闭；GET-only 路由受安装态与双租户约束，五切片在 canonical authority 不存在时只返回独立 blocker，不制造达人事实或写入口。专项 creator-growth/API `26 passed`、Workshop 累计（排除受保护未跟踪 `plugins/ops/` 资产范围）`78 passed`，OpenAPI 契约与确定性导出、compileall、diff check GREEN。未 apply migration、未写真实数据库、未触发发现/邀约/合同/履约/关系副作用。Delivery Receipt 为 `w2-04a-creator-growth-contract-shell-20260824`；下一子波自动进入 W2-04B。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
