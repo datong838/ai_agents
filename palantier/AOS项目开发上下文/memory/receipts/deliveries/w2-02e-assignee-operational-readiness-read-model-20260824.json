@@ -1,0 +1,39 @@
+{
+  "base_revision": "AOS-000177",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/tests/test_ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json"
+  ],
+  "commits": [
+    "aos-platform/m1@221b429"
+  ],
+  "completed_at": "2026-08-24T14:37:18+08:00",
+  "completed_revision": "AOS-000177",
+  "result": "W2-02E assignee Resolution Receipt observation read model sealed: exact tenant+subject+kind+resource+version matching, observation-only readiness, strict backend/frontend parser, no write commands.",
+  "risks": [
+    "Resolution Receipt has no expiry or health/capacity fields; UI deliberately reports only observation-time state and never current ready.",
+    "Local browser fixture is visual evidence only and does not establish real runtime or side-effect authority."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-02e-assignee-operational-readiness-read-model-20260824",
+  "verification": [
+    "backend cumulative: 40 passed",
+    "web focused: 38 passed",
+    "web cumulative: 205 files / 2017 tests passed",
+    "web production build passed",
+    "OpenAPI deterministic export check passed",
+    "built-in browser 1280/1440/1920 no horizontal overflow; observation labels and expiry boundary visible; no forbidden command buttons; current console errors 0"
+  ]
+}

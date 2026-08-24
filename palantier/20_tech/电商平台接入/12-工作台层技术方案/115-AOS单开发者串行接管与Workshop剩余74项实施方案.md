@@ -282,6 +282,24 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@c2cd471` 安全提交；后端累计 `42 passed`，Web 专项 parser/client/page `34 passed`、Host `3 passed`、累计 `205 files / 2016 tests`，typecheck、production build `319 modules`、OpenAPI 确定性导出与检查、diff check 均通过；锁定环境未提供 Ruff，因此未虚构 Ruff 结论。内置浏览器在 1280/1440/1920 三档确认 Action Proposal/Lease/Receipt 精确链、unknown 待对账语义与 provider ref 封存态，无 execute/reconcile/retry/compensate 命令、无横向溢出；正式视觉稿已逐区对照任务流主层与证据辅层，没有复制经营样例、在线角色或命令入口。Delivery Receipt 为 `w2-02d-action-receipt-unknown-reconcile-read-model-20260824`；authority 与 Prime 已推进到 `AOS-000177` 且强一致投影 CURRENT。96 项主计数仍为 `22/96`，W2-02D 是真实子波进度但不提前勾选 W2-02；下一子波立即进入 `W2-02E Assignee operational-readiness read model`。
 
+### 3.8 S2 / W2-02E Assignee Resolution 观测就绪只读切片
+
+本子波消费 W-L20 已有 append-only `AssigneeResolutionReceipt`，不重新执行 resolver、不创建 Receipt、不推断租户全局 Binding。为避免同一 assignee 在别的任务或职责槽上的 Receipt 误点亮当前 Run，唯一 subject identity 冻结为 `responsibility-plan:{planId}@{revision}/slot:{slotId}`；读取时还必须同时匹配 tenant、kind、resourceId 与 version。缺 Receipt、subject 不匹配、assignee 漂移或同一观测时刻出现冲突状态均失败关闭。
+
+当前 W-L20 Receipt 只有 `createdAt`，没有目标 ADR 要求的 `observedAt/expiry/policy/health/capacity` 全快照，因此页面只能诚实展示 `resolved_at_observation / blocked_at_observation / unverified`，不得将历史 `resolved` 表述为“当前可执行”或 `ready`。本波关闭的是 exact reader 与可审计呈现，不修改 migration，也不扩大运行授权。
+
+文件级施工范围：
+
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py`：为结构 assignee 增加只读观测状态与最小 Receipt summary；Receipt 仅返回 receipt/subject/status/blocker/contentHash/createdAt，不返回 actor、resolvedRef、Binding/Provider 内部标识或 payload；
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py`：在既有 Responsibility/Handoff 的单一 `REPEATABLE READ READ ONLY` tenant 事务中，按所有 exact slot subject 一次读取 append-only Receipt；校验 subject、kind/resource/version、状态与 blocker 守恒，按 `createdAt + receiptId` 返回确定性时间线；同一最大 createdAt 的冲突状态报 409，不按任意行选“最新”；
+- `apps/web/src/api/ecommerceWorkshop/{contracts,parser}.ts`：严格解析三种观测状态与 Receipt timeline，拒绝 extra/missing、subject/assignee 错链、状态映射、时间线/数量漂移；
+- `apps/web/src/components/workshop/TaskCockpitPage.tsx` 与既有样式：职责槽展示“观测时已解析／观测时阻断／未验证”、Receipt 时间与 reasonCodes，并固定提示“无 expiry，不代表当前 ready”；无 resolve/reassign/takeover/refresh-authority 命令；
+- 后端、API、Web 测试覆盖无 Receipt、resolved/blocked、历史状态演进、同刻冲突、跨 subject/kind/resource/version/tenant、actor/resolvedRef 不泄露、403/404/409/503 与整块失败关闭；完成累计回归、OpenAPI deterministic、build、正式视觉稿逐区复审和 1280/1440/1920 浏览器验收。
+
+禁止项：不新增或执行 migration，不修改真实业务数据，不调用 POST resolver，不把 Responsibility coverage、Handoff consumed 或历史 resolved Receipt 冒充当前 runnable，不显示 actor/resolvedRef/Binding/Provider 私有信息，不启用改派或接管。W2-02E 闭合后自动进入 W2-02F business-context enrichment；若真实 SourceReadiness 仍不足，则先实现诚实 SourceReadiness/unknown 读模型所需的系统缺口，不等待其他开发者。
+
+2026-08-24 闭合检查点：代码已以 `m1@221b429` 安全提交；后端累计 `40 passed`，Web 专项 `38 passed`、累计 `205 files / 2017 tests`，production build `319 modules`、OpenAPI 确定性导出/检查与 diff check 均通过。实现只消费既有 append-only `AssigneeResolutionReceipt`，按 tenant + exact subject + kind/resource/version 约束槽位，冲突观测与漂移失败关闭；响应不返回 actor/resolvedRef，也没有 resolver POST、改派、接管、执行或发布命令。内置浏览器在 1280/1440/1920 三档确认“观测时已解析／观测时阻断／无 expiry 不代表当前 ready”与 blocker reason，三档零横向溢出、当前重载后 console error 为 0；正式视觉稿已复审任务流主轴、职责和复盘分区，没有复制 GMV、在线人数或样例任务。Delivery Receipt 为 `w2-02e-assignee-operational-readiness-read-model-20260824`；authority 与 Prime 已推进到 `AOS-000178`，强一致投影 CURRENT，memory validate/gate GREEN。96 项主计数仍为 `22/96`；下一子波立即进入 `W2-02F SourceReadiness business-context read model`。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000177",
+  "created_at": "2026-08-24T14:11:12+08:00",
+  "excluded_scope": [
+    "real business data mutation, migration, assignment resolution command, external side effects, release enablement, secrets/PII, unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "strict run-scoped backend API and Web read-only projection with tests, three-viewport browser evidence, Delivery Receipt, safe commits, AOS authority CAS and Prime exact readback"
+  ],
+  "lease_expires_at": "2026-08-25T01:00:00+08:00",
+  "owner": "aos-sole-developer-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "aos-platform/m1 Workshop W2-02E canonical AssigneeResolutionReceipt operational-readiness read model; docs plan/checklist/Receipt/authority CAS/Prime sync"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-02e-assignee-operational-readiness-read-model-20260824"
+}
