@@ -3,7 +3,7 @@
   "completed": [
     "W4-05 production assembly truth and exact Skill-Logic-coworker-Workshop contribution deep link"
   ],
-  "current_phase": "S4_W4_05_COMPLETE_W4_06_NEXT",
+  "current_phase": "S4_W4_05_COMPLETE_W4_06_SAVED_EXPLORATION_NEXT",
   "delivery_status": "W4_05_GOVERNED_MEMORY_ASSEMBLY_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
@@ -16,15 +16,15 @@
     "No release, live migration, pipeline command, Candidate governance command, external side effect, or real business mutation"
   ],
   "incomplete": [
-    "KnowledgePackage installation authority; GoldSet registry authority; real positive Candidate/Memory/Citation evidence; release"
+    "KnowledgePackage installation authority; GoldSet registry authority; real positive Candidate/Memory/Citation evidence; W4-06 SavedExploration lifecycle; release"
   ],
   "last_green_gate": "W4_05_CODE_BROWSER_GREEN",
-  "next_gate": "W4_06_WIKI_GOVERNED_CONSUMPTION",
+  "next_gate": "W4_06_SAVED_EXPLORATION_LIFECYCLE",
   "next_steps": [
-    "Start W4-06 Wiki governed consumption serially after fresh gate check"
+    "Start W4-06 SavedExploration PostgreSQL authority and sharing lifecycle serially after fresh gate check"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000230",
+  "project_revision": "AOS-000231",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
     "code": "70b9a19b143588e6d8915b06106e4ee70464ec81",
@@ -38,5 +38,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-25T05:43:00+08:00"
+  "updated_at": "2026-08-25T05:44:07+08:00"
 }

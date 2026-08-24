@@ -2,8 +2,8 @@
   "completed": [
     "W4-05 production assembly truth and exact Skill-Logic-coworker-Workshop contribution deep link"
   ],
-  "content_hash": "sha256:35619f9c761fbb4fb4a7e8dce24581d7dce913026ad376e6f5df6d8f3e1dbcf3",
-  "current_phase": "S4_W4_05_COMPLETE_W4_06_NEXT",
+  "content_hash": "sha256:3598639e99a236e973c30f6e5db49610e3fe8a59e548ad9a5c42ae4e66d3d904",
+  "current_phase": "S4_W4_05_COMPLETE_W4_06_SAVED_EXPLORATION_NEXT",
   "delivery_status": "W4_05_GOVERNED_MEMORY_ASSEMBLY_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
@@ -11,20 +11,20 @@
       "ref": ".evidence/workshop/2026-08-25-w4-05-knowledge-memory-governance.json"
     }
   ],
-  "generated_at": "2026-08-25T05:43:00+08:00",
+  "generated_at": "2026-08-25T05:44:07+08:00",
   "hard_boundaries": [
     "No release, live migration, pipeline command, Candidate governance command, external side effect, or real business mutation"
   ],
   "incomplete": [
-    "KnowledgePackage installation authority; GoldSet registry authority; real positive Candidate/Memory/Citation evidence; release"
+    "KnowledgePackage installation authority; GoldSet registry authority; real positive Candidate/Memory/Citation evidence; W4-06 SavedExploration lifecycle; release"
   ],
   "last_green_gate": "W4_05_CODE_BROWSER_GREEN",
-  "next_gate": "W4_06_WIKI_GOVERNED_CONSUMPTION",
+  "next_gate": "W4_06_SAVED_EXPLORATION_LIFECYCLE",
   "next_steps": [
-    "Start W4-06 Wiki governed consumption serially after fresh gate check"
+    "Start W4-06 SavedExploration PostgreSQL authority and sharing lifecycle serially after fresh gate check"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000230",
+  "project_revision": "AOS-000231",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
     "code": "70b9a19b143588e6d8915b06106e4ee70464ec81",

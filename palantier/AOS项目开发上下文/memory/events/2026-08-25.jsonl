@@ -47,3 +47,4 @@
 {"base_revision":"AOS-000229","occurred_at":"2026-08-25T05:29:47+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w4-05-knowledge-memory-governance-20260825","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-25T05:42:07+08:00","result":"W4_05_GOVERNED_MEMORY_ASSEMBLY_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w4-05-knowledge-memory-governance-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T05:43:00+08:00","project_revision":"AOS-000230","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-25T05:44:07+08:00","project_revision":"AOS-000231","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
