@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000235",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_action_adapters.py",
+    "services/aos-api/aos_api/aip_adapter_contracts.py",
+    "services/aos-api/aos_api/aip_adapter_conformance.py",
+    "services/aos-api/tests/aip/test_w5_01_adapter_capability_contracts.py",
+    ".evidence/workshop/2026-08-25-w5-01-adapter-capability-contract-suite.json",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/41-W5-01-AdapterCapabilityContractSuite预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "6185444",
+    "docs:50b0460"
+  ],
+  "completed_at": "2026-08-25T07:42:17+08:00",
+  "completed_revision": "AOS-000235",
+  "result": "W5_01_ADAPTER_CAPABILITY_CONTRACT_SUITE_CODE_CONTROL_GREEN_NO_PRODUCTION_PUBLICATION_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "in-memory conformant registry is not production publication authority; real account resolver, persistent joint binding, Action budget, Provider, canary and release remain unavailable"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w5-01-adapter-capability-contract-suite-20260825",
+  "verification": [
+    "W5-01 focused 19 passed; Action cumulative 84 passed; compileall, JSON and diff checks GREEN; browser N/A because no page or HTTP route was added"
+  ]
+}
