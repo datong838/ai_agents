@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000199",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_price_governance_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_price_governance.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_price_governance.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json"
+  ],
+  "commits": [
+    "8ef926b"
+  ],
+  "completed_at": "2026-08-24T18:01:55+08:00",
+  "completed_revision": "AOS-000199",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "GET-only blocked shell; repricing disabled; no price authority, provider, research job, migration, or real-data write"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-07a-price-governance-contract-shell-20260824",
+  "verification": [
+    "focused contract API OpenAPI 22 passed",
+    "Workshop cumulative 103 passed",
+    "deterministic OpenAPI export check GREEN",
+    "compileall and diff check GREEN"
+  ]
+}

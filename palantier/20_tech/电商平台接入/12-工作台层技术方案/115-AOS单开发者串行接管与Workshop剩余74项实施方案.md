@@ -471,6 +471,18 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-06B1 闭合检查点：代码已以 `m1@f8a4587` 安全提交。新增跨 view trusted observation revision 集合守卫；当七 view 出现两个及以上 resource revision 时，全部视图以 `ANALYST_SHARED_RESOURCE_REVISION_CONFLICT` 失败关闭，清空 mixed metrics/refs，并禁止把不同 revision 静默改写成最大值。正常同 revision 与单 view tenant drift 语义保持不变。专项 `7 passed`、Workshop 累计 `99 passed`、compileall 与 diff check GREEN；未执行真实 query、迁移或数据写入。下一任务自动进入 W2-07 价格治理工作台。
 
+### 3.19 S2 / W2-07 价格治理三视图只读基座
+
+本波按 16 号技术方案与 88 号 ADR 实现 `GET /v1/ecommerce-workshop/views/price-governance`，只投影 `governance/competitor/schedule`。历史“runtime blocked”不再用于停工：由唯一开发者先补 strict 合同、bounded reader 与正式只读页面；真实 Price authority 未出现时必须诚实 blocked，不能制造正向报价、同款决定、Policy、Case 或 operational GREEN。
+
+- `W2-07A`：在 `services/aos-api/aos_api/ecommerce_workshop_price_governance_contracts.py`、`ecommerce_workshop_price_governance.py`、Workshop router 与对应测试中建立 GET-only strict shell。三 view 共享 tenant/revision/cutoff；报价固定 basis、SKU/组合、quantity/unit、currency、tax、shipping、promotion、effective window、observedAt、freshness、license 与 immutable/merged original refs；六 readiness 轴和 repricing disabled 独立失败关闭。
+- `W2-07B`：新增 bounded canonical reader protocol，只消费现有 exact Price authority；每 view 限 100 项，校验 tenant/cutoff/revision、original reachability、唯一性、可比口径、ledger 守恒与跨 view revision。reader 不可达或 authority 缺失时返回 blocked，不建 Store、migration、ResearchJob 或 Price 真源。
+- `W2-07C`：在 Web strict contracts/parser/client 与 `PriceGovernancePage` 中实现正式三 Tab 页面，对照 `workshop-price-governance.html` 保留价格研究、同款证据、策略/Case、调度/reconcile 层次；不接受任意 URL，不提供 collect/normalize/decide/edit-policy/prepare/freeze/start/notify/advise/handoff/reprice。完成 blocked/empty/nonempty、键盘、三视口与六档响应式浏览器验收。
+
+硬边界：Observation 与 Match Decision 分离；PRELIMINARY、不许可、不新鲜、original 不可达或不可比均不计异常；任何展示价格必须有至少一个 immutable original；unknown 不填 0；collection/match/policy-case/notification/advice-handoff/repricing 六轴互不代偿；repricing 恒为 `disabled/R4-specialized-gate-required`。禁止 migration、真实 Provider/ResearchJob、通知、调价和业务数据写入。
+
+2026-08-24 W2-07A 闭合检查点：代码已以 `m1@8ef926b` 安全提交。新增 strict `price-governance-view/v1`、三 canonical view、完整 quote basis/originals 合同、六 readiness 轴、数量守恒与 GET-only tenant/installation 路由；unknown 报价禁止携带 0 或其他值，可比报价必须 fresh/licensed/confirmed 且 original 可达，repricing 在 W2 合同层恒为 disabled。同步补齐累计欠缺的 Media/Analyst/Price 三条只读路由确定性 OpenAPI 基线。专项/API/OpenAPI `22 passed`、Workshop 累计 `103 passed`、OpenAPI export check、compileall 与 diff check GREEN；未新增 Store、migration、Provider、ResearchJob 或数据写入。下一子波自动进入 W2-07B bounded reader。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
