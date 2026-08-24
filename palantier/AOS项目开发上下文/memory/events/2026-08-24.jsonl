@@ -197,3 +197,8 @@
 {"occurred_at":"2026-08-24T22:06:40+08:00","result":"GREEN_COMPATIBILITY_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w3-02-bundle-version-adjacency-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T22:06:40+08:00","result":"GREEN_AUTHORING_CANDIDATE_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w3-02-versioned-candidate-authoring-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T22:07:00+08:00","project_revision":"AOS-000212","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000212","occurred_at":"2026-08-24T22:08:52+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-03-prepare-aggregate-contracts-20260824","type":"TASK_STARTED"}
+{"base_revision":"AOS-000212","occurred_at":"2026-08-24T22:10:41+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-03-preparation-authority-migration-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T22:36:04+08:00","result":"COMPLETED_CODE_CONTROL_GREEN_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w3-03-prepare-aggregate-contracts-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T22:36:04+08:00","result":"COMPLETED_MIGRATION_CODE_GREEN_NOT_APPLIED","schema":"aos-memory-event/v1","task_id":"workshop-w3-03-preparation-authority-migration-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T22:37:14+08:00","project_revision":"AOS-000213","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

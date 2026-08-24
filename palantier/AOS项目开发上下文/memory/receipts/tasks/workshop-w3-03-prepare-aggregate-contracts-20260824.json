@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000212",
+  "created_at": "2026-08-24T22:08:52+08:00",
+  "excluded_scope": [
+    "database migrations; real tenant data; provider/action/handoff/execution; release/install; unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "W3-03 server-side prepare plan with draft Brief intent, EvidenceBuildRequest, ResponsibilityRecommendation and PreparationReceipt; strict tenant/idempotency/exact-ref/zero-side-effect tests"
+  ],
+  "lease_expires_at": "2026-08-25T22:15:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_prepare_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_prepare_service.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_prepare.py",
+    "docs W3-03 ADR/checklist and Workshop evidence"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-03-prepare-aggregate-contracts-20260824"
+}

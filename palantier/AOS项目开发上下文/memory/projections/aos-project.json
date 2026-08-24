@@ -1,44 +1,35 @@
 {
   "completed": [
-    "W2-02 through W2-10 read-only development remains complete without regression",
-    "S2.5 Skill compatibility and Task Cockpit contribution projection remain complete",
-    "W3-01 canonical AgentRun Handoff Decision read SDK and stateless professional binding projection complete",
-    "W3-02 tenant-installed exact production-profile resolver and eight immutable profile candidates complete at code-control with no release"
+    "W3-03 server-side idempotent prepare aggregate, tenant RLS intent and immutable result migration code, exact installed profile loading, focused/cumulative/browser evidence"
   ],
-  "content_hash": "sha256:92bcdad07996c55ad95d365dded97d3e9efa74bad7ccd7367baa9c8f262fb070",
-  "current_phase": "S3 public production contracts in progress; W3-01 and W3-02 complete; entering W3-03",
-  "delivery_status": "S3_W3_02_EXACT_PROFILE_CANDIDATES_CODE_GREEN_S3_IN_PROGRESS_NO_RELEASE",
+  "content_hash": "sha256:4c2364cd1bbd3661050183b8026417f4b9862d8163c33196fb9f7dea2b3d336f",
+  "current_phase": "S3 public production contracts in progress; W3-01 through W3-03 complete; entering W3-04",
+  "delivery_status": "S3_W3_03_PREPARE_AGGREGATE_CODE_GREEN_S3_IN_PROGRESS_NO_RELEASE_MIGRATION_NOT_APPLIED",
   "evidence": [
     {
-      "kind": "delivery-receipt",
-      "ref": "memory/receipts/deliveries/workshop-w3-02-production-profiles-exact-resolver-20260824.json"
-    },
-    {
-      "kind": "implementation-evidence",
-      "ref": ".evidence/workshop/2026-08-24-w3-02-production-profiles-exact-resolver.json"
+      "kind": "workshop-delivery",
+      "ref": ".evidence/workshop/2026-08-24-w3-03-prepare-aggregate.json"
     }
   ],
-  "generated_at": "2026-08-24T22:07:00+08:00",
+  "generated_at": "2026-08-24T22:37:14+08:00",
   "hard_boundaries": [
-    "NO_RELEASE; no unreviewed business write, migration, provider call, installation mutation, or external side effect",
-    "W3-02 candidates require separate publish/sign/install evidence before operational use"
+    "NO_RELEASE; no unreviewed business write, live migration, provider call, installation mutation, execution object, or external side effect",
+    "W3-03 is code/control GREEN only; operational use requires migration apply and published installed exact profiles under separate gates"
   ],
   "incomplete": [
-    "S3 W3-03 through W3-14 remain incomplete",
-    "W3-02 candidate bundles are not published, signed or installed; operational release remains closed",
-    "S2 operational release remains RED because source data runtime shared-context history and browser-positive evidence are not GREEN"
+    "W3-04 and remaining W3 public production contracts; W3-03 migration is not live-applied and profile candidates are not released or installed"
   ],
-  "last_green_gate": "W3_02_INSTALLED_EXACT_RESOLVER_AND_8_PROFILE_CANDIDATES_CODE_GREEN_NO_RELEASE",
-  "next_gate": "W3_03_PREPARE_AGGREGATE",
+  "last_green_gate": "W3_03_IDEMPOTENT_PREPARE_AGGREGATE_CODE_GREEN_NO_RELEASE",
+  "next_gate": "W3_04_FOUR_REF_PRODUCTION_CONTEXT_FREEZE",
   "next_steps": [
-    "Review W3-03 prepare aggregate ADR against current stores and implement the first safe no-execution slice"
+    "Review W3-04 ADR and implement the first safe four-ref ProductionContext freeze slice without live migration or execution effects"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000212",
+  "project_revision": "AOS-000213",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "878806f6202da40bbb04d4a30d19d59e16122447",
-    "docs": "701da225ff1e7aa9885145971570de9b39741fac"
+    "aos-platform": "a9f72e1",
+    "docs": "4e14fea"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

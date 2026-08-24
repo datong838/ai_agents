@@ -1,0 +1,20 @@
+{
+  "base_revision": "AOS-000212",
+  "created_at": "2026-08-24T22:10:41+08:00",
+  "excluded_scope": [
+    "applying migration to any live database; real tenant data; unrelated migration heads/files"
+  ],
+  "expected_outputs": [
+    "additive tenant-RLS preparation intent/result authority migration and store contract; migration code/test only, no live apply"
+  ],
+  "lease_expires_at": "2026-08-25T22:15:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/alembic/versions/w3_013_workshop_preparation.py",
+    "services/aos-api/aos_api/ecommerce_workshop_prepare_store.py",
+    "services/aos-api/tests/test_w3_013_workshop_preparation_migration.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-03-preparation-authority-migration-20260824"
+}
