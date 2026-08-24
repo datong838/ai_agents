@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000216",
+  "created_at": "2026-08-24T23:56:36+08:00",
+  "excluded_scope": [
+    ".DS_Store",
+    ".evidence/aip/2026-08-23-r32-browser-final",
+    "plugins"
+  ],
+  "expected_outputs": [
+    "strict SDK preserves ProductionContext exact provenance",
+    "compile selects matching frozen ready context and start fails closed on preview mismatch",
+    "focused cumulative browser evidence and W3-05 closeout Receipt"
+  ],
+  "lease_expires_at": "2026-08-24T17:56:22+00:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/api/aipProductionContracts",
+    "apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    "apps/web/src/pages/s2/ProductionContractsPage.test.tsx",
+    ".evidence/workshop/2026-08-24-w3-05-strict-sdk-ui-context.json",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/32-W3-05-AIP生产启动组合门消费与权限接缝ADR.md",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-05-strict-sdk-ui-context-20260824"
+}
