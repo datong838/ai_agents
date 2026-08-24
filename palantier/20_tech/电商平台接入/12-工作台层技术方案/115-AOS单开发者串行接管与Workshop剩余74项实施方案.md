@@ -391,6 +391,21 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 闭合检查点：代码已以 `m1@d18d21c` 安全提交。新增的 bounded reader 只读 `variant_of` relation，并联结两端 canonical Artifact 当前 hash 与精确 `artifact_relation.create` Receipt；跨租户、孤儿、Receipt 缺失/重复、relation 类型或 hash drift 均失败关闭。content slice 仅在 exact MasterContentIntent 的 `masterArtifactRef` 与 relation Master 完全一致且唯一时投影 `ContentVariant`，同时返回 Intent revision Receipt、Master/Variant exact hash 和 relation Receipt。专项 `29 passed`、Workshop 累计 `101 passed`、compileall、OpenAPI deterministic 与 diff check GREEN；内置浏览器 1280/1440/1920 零横向溢出、唯一 H1、本页零可执行生产/排期/发布等副作用按钮。没有新增 ContentVariant 真源、迁移或写 API，也未连接真实数据库。Delivery Receipt 为 `w2-03e-content-variant-artifact-projection-20260824`；下一子波自动进入 W2-03F strict Web SDK 与正式页面。
 
+### 3.15 S2 / W2-03F strict Web 与正式视觉验收
+
+本子波复习 `84`、`99` ADR、3.10～3.14 与正式视觉稿 `foundry/html/workshop-content-campaign.html`。页面继承三栏信息层级、主视图分区和数量概览，但不继承示例业务事实、保存、批准、发布、自动拆任务或排期写入。
+
+文件级范围：
+
+- `apps/web/src/api/ecommerceWorkshop/contracts.ts`：增加 plan/calendar/content 三切片、exact authority、ContentVariant lineage、blocker、ledger 与 page 类型；
+- `apps/web/src/api/ecommerceWorkshop/parser.ts`、`client.ts`：增加 exact-key、canonical-order、同 cutoff、tenant、hash、Receipt、variant lineage、数量守恒及 blocked/ready 语义的失败关闭解析；只暴露 GET `/v1/ecommerce-workshop/views/content-campaign`；
+- 新增 `ContentCampaignPage.tsx/.test.tsx` 并修改 `EcommerceWorkshopHost.tsx/.test.tsx`：挂载正式只读页面，覆盖 blocked、可信 empty、非空 exact authority/ContentVariant、tenant drift 与错误状态；
+- `apps/web/src/styles/45-ecommerce-workshop.css`：按正式稿实现自适应三栏，1280/1440/1920 不横向溢出，保留单一 H1、键盘焦点与长 hash 换行。
+
+验收包含 strict parser/client/component/host 专项、Workshop Web 累计回归、TypeScript build、内置浏览器三宽度与 blocked/empty/nonempty 状态矩阵、方案/代码一致性复审、Delivery Receipt、authority CAS 与 Prime 强一致回读。禁止 apply migration、写真实数据库、调用 Provider/排期/发布副作用或增加任何可用写控件。
+
+2026-08-24 闭合检查点：代码已以 `m1@2a72391` 安全提交。strict Web SDK 对三切片 canonical order、同 cutoff、租户、exact hash/Receipt、ContentVariant `variant_of` lineage、identity 唯一性、数量守恒和 blocked/ready 语义失败关闭；正式页面保留视觉稿三栏层级、主视图、数量概览和证据边界，但没有保存、审批、排期、发布或自动拆任务入口。专项 parser/client/page/host GREEN，Web 累计 `207 files / 2024 tests`、TypeScript noEmit 与 diff check GREEN；内置浏览器 blocked/empty/nonempty 及 1280/1440/1920 状态矩阵零横向溢出、唯一 H1、ContentVariant 归因可见且越权按钮为零。SourceReadiness 仍诚实显示 visual-fixture blocked，未推断运营 GREEN；未 apply migration、未写真实数据库、未调用 Provider/邀约/排期/发布副作用。Delivery Receipt 为 `w2-03f-content-campaign-strict-web-visual-20260824`；下一子波自动进入 W2-04A。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

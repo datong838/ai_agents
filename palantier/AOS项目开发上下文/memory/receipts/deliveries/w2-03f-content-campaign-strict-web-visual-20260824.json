@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000184",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/contentCampaignClient.test.ts",
+    "apps/web/src/components/workshop/ContentCampaignPage.tsx",
+    "apps/web/src/components/workshop/ContentCampaignPage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx",
+    "apps/web/src/components/workshop/index.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "aos-platform/m1@2a72391"
+  ],
+  "completed_at": "2026-08-24T16:13:07+08:00",
+  "completed_revision": "AOS-000184",
+  "result": "W2-03F strict Web SDK and formal content-campaign readonly page sealed with canonical three-slice parsing, ContentVariant exact lineage, trusted blocked/empty/nonempty states and no write controls.",
+  "risks": [
+    "visual fixture proves UI semantics only; SourceReadiness remains honestly blocked and no real operational GREEN is inferred",
+    "w3_011 migration remains unapplied and real database was not touched"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-03f-content-campaign-strict-web-visual-20260824",
+  "verification": [
+    "focused parser/client/page/host GREEN; Web cumulative 207 files and 2024 tests GREEN; TypeScript noEmit and diff check GREEN",
+    "built-in browser 1280/1440/1920 no horizontal overflow, one H1, ContentVariant lineage visible, blocked/empty/nonempty states and zero enabled approval/schedule/publish controls"
+  ]
+}
