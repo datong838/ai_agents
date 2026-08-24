@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000232",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_research_job_store.py",
+    "services/aos-api/aos_api/aip_async_job_projection.py",
+    "services/aos-api/aos_api/routers/aip_async_jobs.py",
+    "apps/web/src/api/aipAsyncJobs.ts",
+    "apps/web/src/components/workshop/AsyncJobDrawer.tsx",
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w4-07-query-research-job-lifecycle.json"
+  ],
+  "commits": [
+    "fe0a8da0642ba1a57373099d09e093e087f954c0",
+    "6c1675f",
+    "a283b90",
+    "761c019"
+  ],
+  "completed_at": "2026-08-25T06:39:11+08:00",
+  "completed_revision": "AOS-000232",
+  "result": "W4_07_ASYNC_JOB_PROJECTION_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "real Provider adapter/resume, live migration, real commands and release remain independently gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w4-07-query-research-job-lifecycle-20260825",
+  "verification": [
+    "backend 24 passed plus final 5; web 9 targeted and 223 files/2102 cumulative; tsc/build/openapi/compileall/diff GREEN; built-in browser positive partial and strict drift fail-closed"
+  ]
+}

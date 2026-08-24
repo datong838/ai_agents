@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000232",
+  "created_at": "2026-08-25T06:15:58+08:00",
+  "excluded_scope": [
+    "live migration apply, real Provider registration/dispatch/cancel/retry, release, real business mutation"
+  ],
+  "expected_outputs": [
+    "three-authority read-only AsyncJobProjection and strict Workshop Job Drawer",
+    "tests, built-in browser evidence, Delivery Receipt, authority CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-26T14:00:00+08:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_research_job_store.py",
+    "services/aos-api/aos_api/aip_async_job_projection.py",
+    "services/aos-api/aos_api/routers/aip_async_jobs.py",
+    "services/aos-api/tests/aip/test_w_l17_async_jobs.py",
+    "apps/web/src/api/aipAsyncJobs.ts",
+    "apps/web/src/api/aipAsyncJobs.test.ts",
+    "apps/web/src/components/workshop/AsyncJobDrawer.tsx",
+    "apps/web/src/components/workshop/AsyncJobDrawer.test.tsx",
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    "services/aos-api/tests/test_openapi_contract.py",
+    ".evidence/workshop/2026-08-25-w4-07-query-research-job-lifecycle.json"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w4-07-query-research-job-lifecycle-20260825"
+}
