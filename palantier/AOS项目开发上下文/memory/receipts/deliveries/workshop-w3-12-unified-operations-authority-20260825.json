@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000223",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/OperationsPage.tsx",
+    "apps/web/src/components/workshop/OperationsPage.test.tsx",
+    ".evidence/workshop/2026-08-25-w3-12-unified-operations-authority.json",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/100-W3-12统一运营Case分类可逆聚合SLA与Kill预检ADR.md",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "701433bb9a77596a23aec32255c684d6f88e6d27",
+    "86785e29566a6d8b157afcab6ca3aef2c87dc60c",
+    "45f5a33",
+    "37a2556"
+  ],
+  "completed_at": "2026-08-25T02:55:26+08:00",
+  "completed_revision": "AOS-000223",
+  "result": "S3_W3_12_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "NO_RELEASE; no live migration Provider AgentRun Action Approval Handoff takeover business mutation refund kill or offline queue flush",
+    "Runtime atomic Skill Logic coworker refs remain unknown without exact AgentRun SkillBinding LogicRevision"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-12-unified-operations-authority-20260825",
+  "verification": [
+    "backend focused 65 passed; cumulative 218 passed; Web 221 files 2084 tests; OpenAPI deterministic; TypeScript and production build GREEN",
+    "built-in browser org-org/dev-project 1280 1440 1920 no overflow; seven slices count conservation disabled commands request observation honest contribution lineage visible; commands invoked 0"
+  ]
+}
