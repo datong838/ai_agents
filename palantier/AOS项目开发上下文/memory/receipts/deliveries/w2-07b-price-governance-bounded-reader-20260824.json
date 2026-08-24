@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000200",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_price_governance.py",
+    "services/aos-api/aos_api/ecommerce_workshop_price_governance_reader.py",
+    "services/aos-api/tests/test_ecommerce_workshop_price_governance.py"
+  ],
+  "commits": [
+    "8a4b912"
+  ],
+  "completed_at": "2026-08-24T18:07:12+08:00",
+  "completed_revision": "AOS-000200",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "Read-only bounded reader only; no provider call, migration, repricing command, or real business-data mutation."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-07b-price-governance-bounded-reader-20260824",
+  "verification": [
+    "focused price governance tests 6 passed",
+    "Workshop API cumulative 105 passed",
+    "compileall and staged diff checks GREEN"
+  ]
+}

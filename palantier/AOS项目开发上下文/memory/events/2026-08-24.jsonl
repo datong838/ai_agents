@@ -149,3 +149,6 @@
 {"base_revision":"AOS-000199","occurred_at":"2026-08-24T17:55:21+08:00","schema":"aos-memory-event/v1","task_id":"w2-07a-price-governance-contract-shell-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T18:01:55+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"w2-07a-price-governance-contract-shell-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T18:02:20+08:00","project_revision":"AOS-000200","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000200","occurred_at":"2026-08-24T18:02:49+08:00","schema":"aos-memory-event/v1","task_id":"w2-07b-price-governance-bounded-reader-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T18:07:12+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"w2-07b-price-governance-bounded-reader-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T18:08:23+08:00","project_revision":"AOS-000201","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

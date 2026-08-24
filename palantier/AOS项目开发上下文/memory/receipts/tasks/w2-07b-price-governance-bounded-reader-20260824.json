@@ -1,0 +1,20 @@
+{
+  "base_revision": "AOS-000200",
+  "created_at": "2026-08-24T18:02:49+08:00",
+  "excluded_scope": [
+    "real-business-data"
+  ],
+  "expected_outputs": [
+    "Bounded canonical price reader with tenant cutoff revision originals uniqueness ledger and cross-view fail-closed guards"
+  ],
+  "lease_expires_at": "2026-08-25T06:00:00+08:00",
+  "owner": "aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_price_governance_reader.py",
+    "services/aos-api/aos_api/ecommerce_workshop_price_governance.py",
+    "services/aos-api/tests/test_ecommerce_workshop_price_governance.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-07b-price-governance-bounded-reader-20260824"
+}

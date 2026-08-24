@@ -483,6 +483,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-07A 闭合检查点：代码已以 `m1@8ef926b` 安全提交。新增 strict `price-governance-view/v1`、三 canonical view、完整 quote basis/originals 合同、六 readiness 轴、数量守恒与 GET-only tenant/installation 路由；unknown 报价禁止携带 0 或其他值，可比报价必须 fresh/licensed/confirmed 且 original 可达，repricing 在 W2 合同层恒为 disabled。同步补齐累计欠缺的 Media/Analyst/Price 三条只读路由确定性 OpenAPI 基线。专项/API/OpenAPI `22 passed`、Workshop 累计 `103 passed`、OpenAPI export check、compileall 与 diff check GREEN；未新增 Store、migration、Provider、ResearchJob 或数据写入。下一子波自动进入 W2-07B bounded reader。
 
+2026-08-24 W2-07B 闭合检查点：代码已以 `m1@8a4b912` 安全提交。新增 bounded canonical reader，固定 tenant/cutoff/revision、三 canonical view、每 view 最多 100 个唯一 Observation/authority refs、immutable original reachability 与 input/dedup ledger 守恒；可信空只在 reader 可达且六轴合法时成立，单 view 观测 drift 独立失败关闭，跨 view trusted revision 冲突则三 view 全部阻断。专项 `6 passed`、Workshop 累计 `105 passed`、compileall 与 diff check GREEN；未新增 Price Store、migration、ResearchJob、Provider、通知或调价副作用。下一子波自动进入 W2-07C strict Web 与正式视觉验收。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

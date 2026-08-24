@@ -1,34 +1,33 @@
 {
   "completed": [
-    "W2-07A strict price-governance contract and GET-only API shell"
+    "W2-07B bounded price-governance reader"
   ],
-  "content_hash": "sha256:dd916514a320edb18d8cb6cc2b80d3b101d1466bfe35ab0d3baa64d99f2a580a",
-  "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S2",
-  "delivery_status": "W2_07A_PRICE_GOVERNANCE_CONTRACT_SHELL_GREEN_OPERATIONAL_NOT_INFERRED",
+  "content_hash": "sha256:b3bb801d161ae7f96bdce1a51c3a102baf1ddc6dae670edc60985f4b2c3a6796",
+  "current_phase": "S2 / W2-07B price governance bounded reader complete",
+  "delivery_status": "W2_07B_PRICE_GOVERNANCE_BOUNDED_READER_GREEN_OPERATIONAL_NOT_INFERRED",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "memory/receipts/deliveries/w2-07a-price-governance-contract-shell-20260824.json"
+      "ref": "memory/receipts/deliveries/w2-07b-price-governance-bounded-reader-20260824.json"
     }
   ],
-  "generated_at": "2026-08-24T18:02:20+08:00",
+  "generated_at": "2026-08-24T18:08:23+08:00",
   "hard_boundaries": [
-    "Unknown price never becomes zero and every comparable price requires fresh licensed confirmed original evidence",
-    "Repricing remains disabled and no provider, ResearchJob, notification, migration, or business-data write is enabled"
+    "Read-only projection only; no migration, Price authority creation, Provider/ResearchJob, notification, advice handoff, repricing, or real business-data mutation."
   ],
   "incomplete": [
-    "W2-07B through W2-10 remain in S2"
+    "W2-07C through W2-10 remain in S2"
   ],
-  "last_green_gate": "W2_07A_PRICE_GOVERNANCE_CONTRACT_SHELL_GREEN",
-  "next_gate": "W2_07B_PRICE_GOVERNANCE_BOUNDED_READER",
+  "last_green_gate": "W2_07B_PRICE_GOVERNANCE_BOUNDED_READER_GREEN",
+  "next_gate": "W2_07C_PRICE_GOVERNANCE_STRICT_WEB_VISUAL",
   "next_steps": [
-    "Implement W2-07B bounded canonical price reader"
+    "Implement W2-07C strict Web price-governance page and built-in-browser acceptance."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000200",
+  "project_revision": "AOS-000201",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "workshop": "8ef926b"
+    "workshop": "8a4b912"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
