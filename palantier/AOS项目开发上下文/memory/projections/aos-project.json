@@ -1,39 +1,39 @@
 {
   "completed": [
-    "W4-01 through W4-08; S4 Evidence/Eval/Wiki/Query/SavedExploration development exit gate"
+    "W5-00 matrix contract frozen with exact joint key, risk floor, default-disabled families and stable blockers"
   ],
-  "content_hash": "sha256:da4c1f3649132b55c4e06a0096dddf83b0684b9b64acebb273eec8d8dd63d237",
-  "current_phase": "S5_W5_00_ACTION_RISK_MATRIX_REALTIME_REVIEW_NEXT",
-  "delivery_status": "W4_08_CROSS_CAPABILITY_CUMULATIVE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "content_hash": "sha256:aa144f1bf569f5c491fe5c8a4d5a64a0b52f4db4f451be5c049806d25a24d375",
+  "current_phase": "S5_W5_01_ADAPTER_CAPABILITY_CONTRACT_SUITE_ACTIVE",
+  "delivery_status": "W5_00_MATRIX_CONTRACT_FROZEN_GREEN_ALL_EXTERNAL_ROWS_BLOCKED_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
       "kind": "code",
-      "ref": ".evidence/workshop/2026-08-25-w4-08-cross-capability-cumulative-gate.json"
+      "ref": ".evidence/workshop/2026-08-25-w5-00-action-risk-matrix-freeze.json"
     },
     {
       "kind": "delivery",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w4-08-cross-capability-cumulative-gate-20260825.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w5-00-action-risk-matrix-freeze-20260825.json"
     }
   ],
-  "generated_at": "2026-08-25T07:02:26+08:00",
+  "generated_at": "2026-08-25T07:12:47+08:00",
   "hard_boundaries": [
-    "Single-developer serial loop does not waive tenant, approval, budget, adapter, migration, canary, release or external-side-effect gates"
+    "NO_RELEASE; NO_EXTERNAL_EFFECT; no provider invocation, real account resolution, Action execution, live migration or tenant business mutation"
   ],
   "incomplete": [
-    "W5-00 through W8-12; production release; live migration; Provider/Action/AgentRun/external effect authorization"
+    "all external Action rows remain blocked; Adapter revision authority, exact account binding, Action budget, joint binding, canary and release remain incomplete"
   ],
-  "last_green_gate": "W4_08_CODE_BROWSER_GREEN",
-  "next_gate": "W5_00_ACTION_RISK_MATRIX_REALTIME_REVIEW",
+  "last_green_gate": "W5_00_MATRIX_CONTRACT_GREEN",
+  "next_gate": "W5_01_ADAPTER_CAPABILITY_CONTRACT_SUITE",
   "next_steps": [
-    "Re-read W5-00 upper plans and current Action/Adapter authorities, update stale matrix, then begin first safe implementation slice"
+    "Implement W5-01 pure Adapter capability contracts and zero-side-effect conformance suite, preserving legacy adapter tests"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000234",
+  "project_revision": "AOS-000235",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "3462edebaeb193e5a3a7f14f35d3f73ccecf6edf",
-    "docs": "721d8c3",
-    "evidence": "90c0365"
+    "code": "90c0365",
+    "docs": "972283a",
+    "evidence": "c785f15"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
