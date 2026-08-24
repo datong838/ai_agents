@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000228",
+  "created_at": "2026-08-25T04:54:25+08:00",
+  "excluded_scope": [
+    "live migration release Provider invocation real EvalRun AgentRun Action Approval Handoff business mutation offline queue flush or fabricated tenant facts"
+  ],
+  "expected_outputs": [
+    "W4-04 reviewed ADR code tests browser Evidence Delivery Receipt authority CAS Prime readback then automatic W4-05 start"
+  ],
+  "lease_expires_at": "2026-08-26T12:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "W4-04 canonical ReviewIssue ReturnDecision new attempt Artifact lineage and downstream invalidation with strict Workshop read model tests and browser acceptance"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w4-04-review-return-attempt-lineage-20260825"
+}
