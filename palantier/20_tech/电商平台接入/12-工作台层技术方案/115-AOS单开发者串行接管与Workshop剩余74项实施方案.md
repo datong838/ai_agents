@@ -207,6 +207,14 @@ B3 只处理内部 `automationKill` authority decision，不处理退款或 Prov
 
 B3 退出后自动进入 W3-12B4 command observability/unknown reconcile 读模型与前端证据呈现；外部 refund 继续留在 W5 canonical Action/Adapter 波次。
 
+W3-12B3 已由 `m1@b71fb65` 完成代码控制闭环：automationKill 使用独立 typed request、三个 checkpoint 强校验、exact scopeHash、Principal tenant/actor、canonical Proposal/Approval/ExecutionLease、expectedVersion、幂等键和 Action/Operation 双 Receipt；canonical fake adapter 已验证 `append_kill` 路由。累计后端 `71 passed`，Web `205 files / 2012 tests`、production build、OpenAPI deterministic、diff check GREEN；内置浏览器三档保持七切片、六命令全禁用、零水平溢出和零示例事实。未执行真实 kill、数据库写入或外部动作，refund 仍失败关闭。96 项主 Task 计数保持 `22/96`。
+
+#### 3.3.9 W3-12B4 command observability 与 unknown 只读对账
+
+B4 不新增副作用命令，先把既有 canonical Action Receipt 与 Operation authority Receipt 的只读状态组合为请求级证据视图：明确 `applied/failed/unknown`、proposal/lease/receipt refs、幂等键 hash 和下一步；unknown 只能读后对账，不自动重放。
+
+文件级范围：新增 strict command execution observation contract/store/service 与 GET endpoint；只按 Principal tenant 和 exact proposal/lease ref 查询，拒绝 scope 注入；Web 动作抽屉只展示服务端证据摘要、归因路径、关键假设和不确定性，不展示或收集 secret/PII，不提供 replay 按钮；补齐 service/API/parser/component 测试、OpenAPI、三档视觉与键盘验收。B4 完成后再评估 W3-12 主项闭合条件，refund 仍进入 W5。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

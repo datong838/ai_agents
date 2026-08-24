@@ -1,37 +1,37 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W3-12B2b membership/SLA strict internal command execution gate"
+    "W3-12B3 automation kill high-risk internal command gate"
   ],
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "W3_12B2B_MEMBERSHIP_SLA_CODE_CONTROL_GREEN_REAL_EXECUTION_NOT_INVOKED",
+  "delivery_status": "W3_12B3_AUTOMATION_KILL_CODE_CONTROL_GREEN_REAL_KILL_NOT_INVOKED",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "w3-12b2b-membership-sla-command-gate-20260824"
+      "ref": "w3-12b3-automation-kill-command-gate-20260824"
     },
     {
       "kind": "verification",
-      "ref": "65 cumulative backend tests; Web 2012 tests/build; OpenAPI deterministic; built-in browser 1280/1440/1920 fail-closed visual regression"
+      "ref": "71 cumulative backend tests; Web 2012 tests/build; OpenAPI deterministic; built-in browser 1280/1440/1920 fail-closed visual regression"
     }
   ],
-  "evidence_cutoff": "2026-08-24T10:18:41+08:00",
+  "evidence_cutoff": "2026-08-24T10:27:57+08:00",
   "hard_boundaries": [
-    "No real DB command invocation, migration apply, automation kill, provider call, refund, release, or UI enablement without exact per-request runtime authority"
+    "No real DB command invocation, migration apply, automation kill, provider call, refund, replay, release, or UI enablement without exact runtime authority"
   ],
   "incomplete": [
-    "W3-12B3 automation kill; W3-12B4 observability/unknown reconcile; external refund/action waves; real runtime invocation"
+    "W3-12B4 command observability/unknown reconcile; external refund/action waves; real runtime invocation"
   ],
-  "last_green_gate": "W3_12B2B_MEMBERSHIP_SLA_CODE_CONTROL_GREEN",
-  "next_gate": "W3_12B3_AUTOMATION_KILL_INTERNAL_COMMAND",
+  "last_green_gate": "W3_12B3_AUTOMATION_KILL_CODE_CONTROL_GREEN",
+  "next_gate": "W3_12B4_COMMAND_OBSERVABILITY_UNKNOWN_READ_MODEL",
   "next_steps": [
-    "Continue W3-12B3 automation kill high-risk internal command gate on m1"
+    "Continue W3-12B4 command observability and unknown read-only reconciliation on m1"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000170",
+  "project_revision": "AOS-000171",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "b6cdf25"
+    "aos-platform": "b71fb65"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -41,5 +41,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T10:19:33+08:00"
+  "updated_at": "2026-08-24T10:28:33+08:00"
 }

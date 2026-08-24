@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000170",
+  "created_at": "2026-08-24T10:20:05+08:00",
+  "excluded_scope": [
+    "real automation kill; real database mutation; migration apply; refund/provider actions; release; UI enablement without exact request governance"
+  ],
+  "expected_outputs": [
+    "automationKill high-risk typed internal command gate preserving proposal/lease/executor checkpoints, exact scopeHash, canonical governance, Action Receipt and Operation authority Receipt; tests, browser regression, receipt, commit, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-24T16:00:00+08:00",
+  "owner": "aos-sole-developer-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api automation kill command contracts/service/router/readiness/tests; deterministic OpenAPI; Workshop plan/checklist; delivery receipt and Prime projection"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12b3-automation-kill-command-gate-20260824"
+}

@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000170",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_operation_command_execution_contracts.py",
+    "services/aos-api/aos_api/ecommerce_operation_command_service.py",
+    "services/aos-api/aos_api/ecommerce_operation_commands.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_operation_command_service.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    "scripts/export_openapi.py"
+  ],
+  "commits": [
+    "b71fb65"
+  ],
+  "completed_at": "2026-08-24T10:27:57+08:00",
+  "completed_revision": "AOS-000170",
+  "result": "W3_12B3_AUTOMATION_KILL_CODE_CONTROL_GREEN_REAL_KILL_NOT_INVOKED",
+  "risks": [
+    "No real automation kill or database mutation invoked; UI remains fail-closed; refund remains external-action blocked"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w3-12b3-automation-kill-command-gate-20260824",
+  "verification": [
+    "71 cumulative backend tests passed; Web 205 files/2012 tests and production build passed; OpenAPI deterministic; built-in browser 1280/1440/1920 preserved 7 slices, 6/6 disabled commands, no horizontal overflow, no example business facts"
+  ]
+}
