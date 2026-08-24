@@ -116,3 +116,6 @@
 {"base_revision":"AOS-000188","occurred_at":"2026-08-24T16:33:53+08:00","schema":"aos-memory-event/v1","task_id":"w2-04c-outreach-batch-ledger-authority-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T16:35:46+08:00","result":"W2_04C_OUTREACH_BATCH_LEDGER_AUTHORITY_CODE_CONTROL_GREEN","schema":"aos-memory-event/v1","task_id":"w2-04c-outreach-batch-ledger-authority-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T16:35:46+08:00","project_revision":"AOS-000189","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000189","occurred_at":"2026-08-24T16:36:23+08:00","schema":"aos-memory-event/v1","task_id":"w2-04d-contract-delivery-relationship-authority-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T16:38:11+08:00","result":"W2_04D_CONTRACT_DELIVERY_RELATIONSHIP_AUTHORITY_CODE_CONTROL_GREEN","schema":"aos-memory-event/v1","task_id":"w2-04d-contract-delivery-relationship-authority-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T16:38:11+08:00","project_revision":"AOS-000190","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

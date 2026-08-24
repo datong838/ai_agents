@@ -427,6 +427,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-04C 闭合检查点：代码已以 `m1@527eae7` 安全提交。OutreachItem 只接受 exact Candidate/MatchDecision ref；OutreachBatch 的 prepared/frozen 仅冻结清单，不代表已发送；StartLedger 将 accepted/applied/failed/unknown/skipped 分开并强制输入守恒，unknown 不得折算成功。Store 仍仅 append immutable authority row，无 UPDATE、Provider 或邀约调用。专项/邻接 `32 passed`、compileall 与 diff check GREEN；无 migration apply 或真实数据改动。下一子波自动进入 W2-04D。
 
+2026-08-24 W2-04D 闭合检查点：代码已以 `m1@97f5dc6` 安全提交。Contract、TermDiff、Delivery 与 Relationship 分别保留 exact immutable authority；TermDiff 必须连接同一合同的相邻 revision，Delivery 只引用 exact Contract，Relationship 只引用 exact Delivery 并保留同 collaboration lineage。SIGNED、履约结果和 PRELIMINARY 成熟度互不反推，合同正文仅返回受控 ref。专项/邻接 `33 passed`、compileall 与 diff check GREEN；无签署、寄样、佣金、关系 mutation 或真实数据库改动。下一子波自动进入 W2-04E。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

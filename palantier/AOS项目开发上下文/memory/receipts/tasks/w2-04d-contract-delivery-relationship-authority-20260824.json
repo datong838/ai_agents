@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000189",
+  "created_at": "2026-08-24T16:36:23+08:00",
+  "excluded_scope": [
+    "plugins/ops"
+  ],
+  "expected_outputs": [
+    "Contract, TermDiff, Delivery and Relationship exact immutable authorities",
+    "Same-collaboration lineage without lifecycle inference"
+  ],
+  "lease_expires_at": "2026-08-25T06:00:00+08:00",
+  "owner": "aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_creator_growth_authorities.py",
+    "services/aos-api/aos_api/ecommerce_workshop_creator_growth_store.py",
+    "services/aos-api/tests/test_ecommerce_workshop_creator_growth_authorities.py",
+    "services/aos-api/tests/test_ecommerce_workshop_creator_growth_store.py",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-04d-contract-delivery-relationship-authority-20260824"
+}
