@@ -1,9 +1,9 @@
 # W3-14 三领域 Authority 与公共编排最终累计门预检 ADR
 
-> 日期：2026-08-15  
-> 状态：`PLAN_REMEDIATED_GREEN / RUNTIME_NOT_STARTED / CUMULATIVE_GATE_RED / NO_EXTERNAL_EFFECT`  
-> 基线：`AOS-000040`、`w2-workshop@20c4b9209fbab33216c25a874312fa7783292853`  
-> 证据：`.evidence/workshop/2026-08-15-w3-14-three-domain-cumulative-preflight.json`
+> 日期：2026-08-15
+> 状态：`CUMULATIVE_CODE_BROWSER_GREEN / NO_RELEASE / NO_EXTERNAL_EFFECT`
+> 实施基线：`AOS-000225`、`m1@99716c5`
+> 证据：`.evidence/workshop/2026-08-25-w3-14-three-domain-cumulative.json`
 
 ## 1. 决策
 
@@ -70,3 +70,13 @@ EvidencePack 必须同时固定 Git commit、应用 release、schema/migration �
 先增加累计门测试并确认它能捕获缺模块、第二真源、迁移 head 漂移和跨租户泄漏，再运行 W3 后端全量、Web 全量、TypeScript、production build、OpenAPI deterministic/contract、compileall、Alembic 单 head。最后用内置浏览器在 `org-org/dev-project` 依次复验内容、运营、经营参谋与公共编排贡献视图的 1280/1440/1920 视口、刷新恢复、键盘焦点、console/network；负租户只通过自动化隔离测试验证，不把 `dev-org/dev-project` 当正向业务租户。
 
 任一轴失败则 W3-14 保持 RED，且不得通过发布、迁移、冲洗离线队列、真实 Task/Action/Handoff 或业务写来“补证据”。
+
+## 8. 2026-08-25 实施结论
+
+- 新增 W3 同版累计门执行器，固定七轴、四张 exact Delivery Receipt、单 release identity、四个互不重叠 authority owner 与正负租户角色；缺轴、跨版本、UNKNOWN、缺 Receipt、第二真源、外部副作用、partial release 和无授权 runtime 声明全部失败关闭。
+- 当前 EvidencePack 固定代码 `99716c56e9d3741cb2a4d12f267113b9792a4eb2`，并记录 schema/OpenAPI/SDK/Web build/Bundle/route hashes 与 migration head `w3_018`；W3-10～W3-13 的实现 commit 均已验证为该 HEAD 的祖先，未把历史测试数字当作当前同版结果。
+- 验证通过：累计门专项 `9 passed`、W3 当前 HEAD 后端累计 `133 passed`、Web 全量 `775 suites / 2084 tests`、TypeScript、Vite build、compileall、OpenAPI deterministic/contract `13 passed`、Alembic 单 head 与 diff-check。
+- 内置浏览器在内容与活动、日常总控、统一运营、经营参谋四页面完成 1280×720、1440×900、1920×1080 同标签复验；body/main 无横向溢出，刷新后标题恢复，菜单焦点轮廓可见，console error 为 0。既有待同步写入 `1` 未冲洗，浏览器写操作为 0。
+- 当前页面仍报告 SourceReadiness failed/stale，Campaign、OperationCase、Analyst 正向 authority reader 仍 blocked/unknown；这是当前运行事实。因此本波只闭合 S3 的实现与失败关闭累计门，不宣称 production runtime、release、live migration 或业务运行 GREEN。
+
+结论：W3-14 达到 `CUMULATIVE_CODE_BROWSER_GREEN / NO_RELEASE / NO_EXTERNAL_EFFECT`，S3 开发验收完成；允许自动进入 S4 W4-02，所有 operational/release 门继续独立失败关闭。

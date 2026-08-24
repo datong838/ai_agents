@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000225",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_w3_cumulative_gate.py",
+    "services/aos-api/tests/test_w3_three_domain_cumulative_gate.py",
+    ".evidence/workshop/2026-08-25-w3-14-three-domain-cumulative.json"
+  ],
+  "commits": [
+    "99716c56e9d3741cb2a4d12f267113b9792a4eb2",
+    "dd54a0e"
+  ],
+  "completed_at": "2026-08-25T03:37:44+08:00",
+  "completed_revision": "AOS-000225",
+  "result": "S3_W3_14_CUMULATIVE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "NO_RELEASE; current SourceReadiness and positive Campaign OperationCase Analyst readers remain blocked or unknown and are not represented as operational GREEN",
+    "Ruff unavailable; no live migration Provider AgentRun Task Action Approval Handoff takeover business mutation or queue flush"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-14-three-domain-cumulative-gate-20260825",
+  "verification": [
+    "gate focused 9 passed; W3 current-HEAD cumulative 133 passed; Web 775 suites 2084 tests; TypeScript build compileall OpenAPI deterministic plus 13 contract tests and Alembic single head w3_018 GREEN",
+    "built-in browser four W3 routes at 1280 1440 1920 no body/main overflow; reload recovery; visible keyboard focus; console errors 0; writes invoked 0; offline queue not flushed"
+  ]
+}
