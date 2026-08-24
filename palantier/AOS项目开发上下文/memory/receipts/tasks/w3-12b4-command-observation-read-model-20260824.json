@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000171",
+  "created_at": "2026-08-24T10:29:00+08:00",
+  "excluded_scope": [
+    "command replay; real database mutation; migration apply; automation kill; refund/provider actions; release"
+  ],
+  "expected_outputs": [
+    "Principal-scoped exact proposal/lease command observation with applied/failed/unknown evidence and no replay; strict Web evidence presentation; tests, browser acceptance, receipt, commit, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-24T18:00:00+08:00",
+  "owner": "aos-sole-developer-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api command observation contracts/service/router/tests; apps/web strict SDK and Operations evidence drawer; OpenAPI; Workshop plan/checklist; receipts and Prime projection"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12b4-command-observation-read-model-20260824"
+}

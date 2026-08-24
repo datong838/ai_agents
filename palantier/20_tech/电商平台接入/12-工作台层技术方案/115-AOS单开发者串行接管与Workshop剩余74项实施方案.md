@@ -215,6 +215,8 @@ B4 不新增副作用命令，先把既有 canonical Action Receipt 与 Operatio
 
 文件级范围：新增 strict command execution observation contract/store/service 与 GET endpoint；只按 Principal tenant 和 exact proposal/lease ref 查询，拒绝 scope 注入；Web 动作抽屉只展示服务端证据摘要、归因路径、关键假设和不确定性，不展示或收集 secret/PII，不提供 replay 按钮；补齐 service/API/parser/component 测试、OpenAPI、三档视觉与键盘验收。B4 完成后再评估 W3-12 主项闭合条件，refund 仍进入 W5。
 
+2026-08-24 闭合检查点：后端只读 observation 已在 `m1@7d0d63f`，Web strict SDK 与证据抽屉已在 `m1@2b9a8a8` 形成安全提交。Web 累计 `205 files / 2016 tests`、production build `319 modules`；后端本波精确组合 `35 passed`，OpenAPI deterministic export GREEN。内置浏览器已完成 1280/1440/1920 三档复核：七个权威切片完整、六个动作全部禁用、请求级 Proposal/Lease 表单可交互、失败返回 `INVALID_ERROR_RESPONSE` 并明确不重放或补偿、三档均无水平溢出，且未出现客户、批准退款或自动处理等示例事实。浏览器 fixture 只证明视觉与失败关闭；`applied/failed/unknown` 的语义由 strict parser/component/API 测试证明，不提升为真实执行事实。B4 可进入 Receipt/CAS/Prime 闭环，refund 仍留在 W5。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

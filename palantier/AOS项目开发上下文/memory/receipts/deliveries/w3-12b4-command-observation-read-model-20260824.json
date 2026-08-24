@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000171",
+  "blockers": [
+    "W3-12 main closure remains pending independent checklist review; refund remains W5 fail-closed"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_operation_command_observation.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_operation_command_observation_service.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/components/workshop/OperationsPage.tsx",
+    "apps/web/src/styles/workshop.css",
+    "apps/web/src/components/workshop/OperationsPage.test.tsx"
+  ],
+  "commits": [
+    "7d0d63f",
+    "2b9a8a8"
+  ],
+  "completed_at": "2026-08-24T12:10:32+08:00",
+  "completed_revision": "AOS-000171",
+  "result": "W3_12B4_COMMAND_OBSERVATION_CODE_AND_VISUAL_GREEN_NO_REPLAY",
+  "risks": [
+    "Visual fixture proves presentation and fail-closed behavior only; no real execution, replay, refund, provider, migration, release, or business-data mutation"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w3-12b4-command-observation-read-model-20260824",
+  "verification": [
+    "Web 205 files/2016 tests; backend 35 passed; OpenAPI deterministic; build 319 modules; built-in browser 1280/1440/1920 no overflow, 7 slices, 6 commands disabled, evidence failure closed"
+  ]
+}
