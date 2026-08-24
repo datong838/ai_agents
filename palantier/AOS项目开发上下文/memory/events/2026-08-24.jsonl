@@ -205,3 +205,6 @@
 {"base_revision":"AOS-000213","occurred_at":"2026-08-24T22:39:13+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w4-01-early-evidence-build-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T23:07:55+08:00","result":"COMPLETED_CODE_CONTROL_GREEN_NO_RELEASE_MIGRATION_NOT_LIVE_APPLIED","schema":"aos-memory-event/v1","task_id":"workshop-w4-01-early-evidence-build-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T23:08:16+08:00","project_revision":"AOS-000214","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000214","occurred_at":"2026-08-24T23:12:37+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-04-production-context-freeze-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T23:31:39+08:00","result":"COMPLETED_CODE_CONTROL_GREEN_NO_RELEASE_MIGRATION_NOT_APPLIED","schema":"aos-memory-event/v1","task_id":"workshop-w3-04-production-context-freeze-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T23:32:00+08:00","project_revision":"AOS-000215","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
