@@ -501,6 +501,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-08B 闭合检查点：代码已以 `m1@f24cddc` 安全提交。新增 tenant-bound bounded canonical reader，每个 view 固定同 cutoff/revision、六 canonical 轴、最多 100 个唯一 Customer projection/authority refs、input/dedup ledger 与 original reachability；可信空仅在 reader 可达且六轴合法时成立，单 view tenant/cutoff/bound drift 独立失败关闭，跨 view trusted revision 冲突则四 view 整体失败关闭。专项 `6 passed`、Workshop 累计 `111 passed`、compileall 与 diff check GREEN；未新增客户 Store、migration、ProtectedContact、Provider 或触达副作用。下一子波自动进入 W2-08C strict Web 与正式视觉验收。
 
+2026-08-24 W2-08C 闭合检查点：代码已以 `m1@99e4cd5` 安全提交。Web 严格消费 `customer-view/v1`，四 canonical view、六 readiness 轴、purpose-scoped disclosure、Consent/retention、k-anonymity、original refs 与 ledger 均 exact-key 解析；任何额外 PII 字段、伪 ready、未知同意计入 eligible 或数量不守恒均失败关闭。页面只显示稳定 revision ref，不提供客户导入、分群/旅程编辑、批次准备/冻结/发送或 ProtectedContact 解析入口。专项 `5 passed`、TypeScript GREEN、Web 累计 `217 files / 2045 tests`；内置浏览器 blocked/trusted-empty/nonempty、四 Tab、六轴、键盘导航与 390/768/1024/1280/1440/1920 六档宽度 GREEN。下一子波自动进入 W2-09。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

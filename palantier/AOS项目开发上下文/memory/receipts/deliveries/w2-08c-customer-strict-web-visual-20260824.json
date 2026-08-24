@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000204",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/customerClient.test.ts",
+    "apps/web/src/components/workshop/CustomerPage.tsx",
+    "apps/web/src/components/workshop/CustomerPage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/index.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "99e4cd5"
+  ],
+  "completed_at": "2026-08-24T18:44:17+08:00",
+  "completed_revision": "AOS-000204",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "Read-only Web only; no PII, customer mutation, Segment/Journey/Batch write, ProtectedContact resolution, Provider/send, migration, release, or real-data side effect."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-08c-customer-strict-web-visual-20260824",
+  "verification": [
+    "Focused Web 5 passed; TypeScript GREEN; cumulative Web 217 files/2045 tests GREEN; built-in browser blocked/empty/nonempty, 4 tabs, 6 axes, keyboard, 390/768/1024/1280/1440/1920 GREEN"
+  ]
+}
