@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000194",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/components/workshop/MediaStudioPage.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "da475ae"
+  ],
+  "completed_at": "2026-08-24T17:20:16+08:00",
+  "completed_revision": "AOS-000194",
+  "result": "W2-05C strict Web media studio and formal visual acceptance GREEN",
+  "risks": [
+    "Read-only UI only; no provider, publication, settlement, reconciliation, migration, or real business-data mutation"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-05c-media-studio-strict-web-visual-20260824",
+  "verification": [
+    "TypeScript noEmit GREEN; focused 3/3; Web cumulative 211 files 2030 tests GREEN; built-in browser blocked/empty/nonempty and 390/768/1024/1280/1440/1920 no overflow, 3 tabs, 6 axes, zero media write controls"
+  ]
+}

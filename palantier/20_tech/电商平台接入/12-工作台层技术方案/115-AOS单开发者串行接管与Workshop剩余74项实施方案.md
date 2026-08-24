@@ -449,6 +449,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-05B 闭合检查点：代码已以 `m1@08ec27e` 安全提交。新增 bounded canonical-reader composition boundary，仅接受 tenant、同一 exact cutoff、limit=100、canonical 六轴与最多 100 个唯一 exact refs；不新增媒体聚合表。三个 slice 独立调用 reader，单 slice tenant/cutoff/type/duplicate drift 只使本 slice 回到 target-blocked，不污染其他 slice；reader 可用且六轴均 ready/not-applicable 时才允许可信 ready/empty。ledger 现在严格等于六轴 ready/target/blocked/unknown/conflict/not-applicable 分区，authority page 独立统计 exact refs，unknown/conflict 不计 ready。专项/邻接 `25 passed`、Workshop 累计 `90 passed`、compileall 与 diff check GREEN；未连接或写真实数据库、未触发 Provider/发布/结算。下一子波自动进入 W2-05C strict Web 与正式视觉验收。
 
+2026-08-24 W2-05C 闭合检查点：代码已以 `m1@da475ae` 安全提交。Web 端新增唯一 strict media-studio schema/parser/client 和正式三 Tab 只读页面，固定 `context/execution/delivery` 与 module/capability/assignee/provider/budget/publication 六轴；parser 对额外字段、轴顺序、tenant/cutoff、target/ready/blocked 伪状态、ledger 与 page 守恒全部失败关闭。页面只展示 lifecycle、exact authority、gap 与 blocker，写入口计数恒为零，不提供生成、批准、开始、取消、发布、结算或对账命令。TypeScript noEmit、专项 `3/3`、Web 累计 `211 files / 2030 tests` GREEN；内置浏览器完成 blocked/empty/nonempty 三态及 `390/768/1024/1280/1440/1920` 六档矩阵，三 Tab、六轴、单 H1、零写按钮、零横向溢出。未触发 Provider、发布、结算、迁移或真实业务数据副作用。下一任务自动进入 W2-06 分析师只读基座。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
