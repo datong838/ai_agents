@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000225",
+  "created_at": "2026-08-25T03:23:00+08:00",
+  "excluded_scope": [
+    "live migration release Provider AgentRun Action Approval Handoff takeover business mutation offline queue flush real tenant write"
+  ],
+  "expected_outputs": [
+    "W3-14 same-HEAD cumulative EvidencePack, focused and cumulative tests, three-viewport browser evidence, Delivery Receipt, authority CAS and Prime readback; then automatic W4-02 start"
+  ],
+  "lease_expires_at": "2026-08-26T12:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "W3-14 same-release Contract Store API-SDK Web Browser Security-Tenant Recovery-Replay cumulative evidence; docs/evidence/tests only unless a verified gap requires minimal code"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-14-three-domain-cumulative-gate-20260825"
+}
