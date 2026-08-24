@@ -1,6 +1,6 @@
 # W4-03 EvalContract 同版运行、Diff 与撤销传播预检 ADR
 
-> 状态：`REVIEWED / IMPLEMENTATION_IN_PROGRESS`
+> 状态：`IMPLEMENTED / CODE_BROWSER_GREEN / NO_RELEASE / MIGRATION_NOT_LIVE_APPLIED`
 >
 > 事实截面：AOS authority `AOS-000024`；AIP W2-D2 固定提交 `0391f6846beda58235dc60e16100f2a81f74ebcd`；工作台证据 `.evidence/workshop/2026-08-14-w4-03-eval-binding-preflight.json`。
 
@@ -121,6 +121,7 @@ Diff/hash 由服务端产生，浏览器只展示。任何标准变化都创建�
 | strict SDK | `apps/web/src/api/aipProductionContracts/{contracts,parser,index}.ts` | 增加服务端 Diff DTO、严格解析与 getDiff 方法 |
 | Workshop | `apps/web/src/pages/s2/ProductionContractsPage.tsx` | 只展示权威 Diff；无两版时诚实空态，不在浏览器计算 authority |
 | Web tests | 对应 parser/index/page tests | 覆盖解析、请求参数、差异与空态、可访问性 |
+| generated contract | `packages/contracts/openapi/v1.generated.json`、`packages/contracts/openapi/v1.inventory.json`、`services/aos-api/tests/test_openapi_contract.py` | exact EvalContract ref 引入一个新 schema 后确定性重生成，并把结构计数门同步到 2156；不改变路由数量 |
 
 ### 7.3 163/164 分层约束
 
@@ -132,3 +133,13 @@ EvalContract、Publication、ReleaseGate 和 EvalRunner 都属于控制平面，
 - migration 只做静态/临时 schema 测试，不在真实环境 apply。
 - 历史无 `evalContractRef` 的 Run/Report 保持可读；新 contract-driven run 必须保存 exact ref，直接 suite-run 仍保留为兼容入口但不能冒充合同驱动运行。
 - 专项测试后执行 AIP Eval/Production 合同累计回归、Web 全量测试与构建；页面用内置浏览器在 1280/1440/1920 三视口验收。
+
+## 8. 实施与验收结果（2026-08-25）
+
+- `m1@b6678dd0bc3824e34ae2c9878f56d3126e58e267` 已让新 EvalRun/EvalReport 保存 exact `EvalContractRevision`，并提供服务端 `run_by_contract`：先重读 frozen、ready、无 blocker 的合同，再核验合同绑定 suite 的 id/revision/hash；相同幂等键不会产生第二条 EvalRun。
+- 历史 direct-suite 路径继续可读且不伪造合同血缘；`w4_002` 仅增加 nullable JSONB 与 exact-ref 约束，真实数据库没有执行 migration apply，存在已绑定记录时 downgrade 明确失败关闭。
+- Web strict SDK 与生产契约页消费已有服务端语义 Diff；真实租户 `org-org/dev-project` 读到 8 个 frozen/ready 合同，并显示修订 1→2 的服务端 lifecycle 变更。浏览器不重算 authority，也没有新增运行、冻结、发布或业务写入入口。
+- 后端专项 `10 passed`，累计 `64 passed`；Web 专项 `3 files / 30 tests`，全量 `221 files / 2091 tests`，TypeScript、production build、compileall、单 Alembic head 均通过。OpenAPI 确定性门为 `2580 paths / 2156 schemas / 13 passed`。
+- 内置浏览器 1280/1440/1920 三视口均无横向溢出，合同创建保持 disabled，console error 为 0。证据：`.evidence/workshop/2026-08-25-w4-03-eval-contract-lineage.json`。
+
+结论：W4-03 在代码/控制面与只读页面范围内闭合；不宣称 migration、真实 EvalRun、业务运行或 release 已执行。下一串行任务为 W4-04。
