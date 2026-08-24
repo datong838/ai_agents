@@ -75,3 +75,26 @@ provider 未齐时继续返回 503；部分 provider 就绪时由 KnowledgeReadi
 - 禁止在八 Module 各复制一套 Candidate/Memory 审批状态机。
 
 这些禁止项保护的是治理真实性；不会减少用户可见性，反而要求每个不可用状态和具体依赖都透明展示。
+
+## 7. 2026-08-25 实施与验收闭环
+
+### 7.1 实施事实
+
+- 代码提交：`m1@70b9a19`；证据提交：`m1@7b3fb57`。
+- Backend 将 `providerConfigured` 改为“factory 已装配 且租户 fulltext SearchCapability 为 ready 且具有 exact provider/revision”的合取；仅服务对象存在不再冒充 provider ready。
+- Web 严格 SDK 拒绝 `providerConfigured=true` 但 fulltext 非 ready 的矛盾响应。
+- 治理页消费 `subjectType/subjectId/taskId/skillId/logicId/coworkerId/moduleId` 受限 exact 深链，展示“原子 Skill → Logic 编排 → 数字同事 → 工作台模块”贡献上下文；不新增 Candidate 提交或快速晋升入口。
+
+### 7.2 验收事实
+
+- Backend 专项 `21 passed`，Memory 领域累计 `73 passed`。
+- Web 专项 `23 passed`，全量 `221 files / 2093 tests passed`，TypeScript 与 production build GREEN。
+- OpenAPI 确定性校验通过，合同 `13 passed`；compileall 与 `git diff --check` GREEN。
+- 内置浏览器在 `/aip/memory-governance?view=query...` 确认 Subject/Task/Skill 预填、完整贡献链及刷新保留；矛盾 readiness fixture 被 strict SDK 拒绝。该 fixture 只是 UI 验收传输，不是生产运行就绪证据。
+- 全程未发起 KnowledgeQuery POST、pipeline command、Candidate governance command，未做迁移、发布或真实业务写入。
+
+### 7.3 结论与剩余边界
+
+W4-05 结论为 `W4_05_GOVERNED_MEMORY_ASSEMBLY_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT`。KnowledgePackage installation authority、GoldSet registry authority 和真实租户正向 Candidate/Memory/Citation 样本仍以 readiness 事实为准；缺失时保持 blocked/empty，不影响 W4-06 继续做可开发的 Wiki 消费闭环，也不构成运营或发布 GREEN。
+
+证据：`.evidence/workshop/2026-08-25-w4-05-knowledge-memory-governance.json`。
