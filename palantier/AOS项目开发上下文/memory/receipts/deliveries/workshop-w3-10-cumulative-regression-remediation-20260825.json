@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000221",
+  "blockers": [],
+  "changed_files": [
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.inventory.json",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/aip/test_w2d_store.py"
+  ],
+  "commits": [
+    "e3089af5a5eb65d22c0a8c389fa470d0d73bdcd5"
+  ],
+  "completed_at": "2026-08-25T02:12:04+08:00",
+  "completed_revision": "AOS-000221",
+  "result": "GREEN: cumulative fixture and OpenAPI drift repaired without runtime behavior weakening",
+  "risks": [
+    "No production data, live migration, release, or side effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-10-cumulative-regression-remediation-20260825",
+  "verification": [
+    "W3 cumulative backend 105 passed plus 2 subtests; deterministic OpenAPI check PASS"
+  ]
+}

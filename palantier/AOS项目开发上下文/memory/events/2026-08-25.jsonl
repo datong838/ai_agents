@@ -12,3 +12,12 @@
 {"base_revision":"AOS-000220","occurred_at":"2026-08-25T01:34:57+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-09-common-production-ui-20260825","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-25T01:46:52+08:00","result":"CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w3-09-common-production-ui-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T01:49:17+08:00","project_revision":"AOS-000221","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000221","occurred_at":"2026-08-25T01:50:40+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-common-orchestration-cumulative-20260825","type":"TASK_STARTED"}
+{"base_revision":"AOS-000221","occurred_at":"2026-08-25T01:59:54+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-cumulative-regression-remediation-20260825","type":"TASK_STARTED"}
+{"base_revision":"AOS-000221","occurred_at":"2026-08-25T02:01:37+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-order-independent-api-test-20260825","type":"TASK_STARTED"}
+{"base_revision":"AOS-000221","occurred_at":"2026-08-25T02:03:11+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-openapi-generated-artifact-20260825","type":"TASK_STARTED"}
+{"base_revision":"AOS-000221","occurred_at":"2026-08-25T02:04:39+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-openapi-structural-count-20260825","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-25T02:12:04+08:00","result":"GREEN: cumulative fixture and OpenAPI drift repaired without runtime behavior weakening","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-cumulative-regression-remediation-20260825","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-25T02:12:04+08:00","result":"GREEN: failure-closed responsibility create assertion is order independent and proves no write","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-order-independent-api-test-20260825","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-25T02:12:04+08:00","result":"GREEN: deterministic current OpenAPI artifact generated","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-openapi-generated-artifact-20260825","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-25T02:12:05+08:00","result":"GREEN: exact OpenAPI path and schema counts aligned to deterministic artifact","schema":"aos-memory-event/v1","task_id":"workshop-w3-10-openapi-structural-count-20260825","type":"TASK_COMPLETED"}

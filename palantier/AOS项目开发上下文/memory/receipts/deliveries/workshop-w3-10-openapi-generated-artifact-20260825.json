@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000221",
+  "blockers": [],
+  "changed_files": [
+    "packages/contracts/openapi/v1.generated.json"
+  ],
+  "commits": [
+    "e3089af5a5eb65d22c0a8c389fa470d0d73bdcd5"
+  ],
+  "completed_at": "2026-08-25T02:12:04+08:00",
+  "completed_revision": "AOS-000221",
+  "result": "GREEN: deterministic current OpenAPI artifact generated",
+  "risks": [
+    "Generated contract artifact only; no release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-10-openapi-generated-artifact-20260825",
+  "verification": [
+    "scripts/export_openapi.py --check PASS"
+  ]
+}

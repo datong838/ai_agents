@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000221",
+  "created_at": "2026-08-25T02:04:39+08:00",
+  "excluded_scope": [
+    "contract weakening or ignored OpenAPI drift"
+  ],
+  "expected_outputs": [
+    "updated exact structural path count for deterministic W3 OpenAPI artifact"
+  ],
+  "lease_expires_at": "2026-08-25T10:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/tests/test_openapi_contract.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-10-openapi-structural-count-20260825"
+}

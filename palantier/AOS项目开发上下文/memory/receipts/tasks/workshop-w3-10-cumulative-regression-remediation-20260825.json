@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000221",
+  "created_at": "2026-08-25T01:59:54+08:00",
+  "excluded_scope": [
+    "production data live migration release external effect or weaker parser behavior"
+  ],
+  "expected_outputs": [
+    "minimal cumulative regression remediation with deterministic OpenAPI and strict valid frozen-contract seeds"
+  ],
+  "lease_expires_at": "2026-08-25T10:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.yaml",
+    "packages/contracts/openapi/v1.inventory.json",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/aip/test_w2d_store.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-10-cumulative-regression-remediation-20260825"
+}

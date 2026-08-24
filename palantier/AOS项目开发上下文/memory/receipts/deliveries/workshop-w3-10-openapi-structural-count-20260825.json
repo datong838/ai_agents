@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000221",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_openapi_contract.py"
+  ],
+  "commits": [
+    "e3089af5a5eb65d22c0a8c389fa470d0d73bdcd5"
+  ],
+  "completed_at": "2026-08-25T02:12:05+08:00",
+  "completed_revision": "AOS-000221",
+  "result": "GREEN: exact OpenAPI path and schema counts aligned to deterministic artifact",
+  "risks": [
+    "Exact counts increased; no contract weakening"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-10-openapi-structural-count-20260825",
+  "verification": [
+    "test_openapi_contract.py 13 passed"
+  ]
+}
