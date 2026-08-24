@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000218",
+  "blockers": [
+    "live migration apply runtime operational readiness and release remain gated"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_responsibility_assignment.py",
+    "services/aos-api/aos_api/aip_responsibility_assignment_store.py",
+    "services/aos-api/alembic/versions/w3_016_responsibility_assignment.py",
+    "services/aos-api/aos_api/routers/aip_responsibility_assignment.py",
+    "apps/web/src/api/ecommerceWorkshop",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    ".evidence/workshop/2026-08-25-w3-07-responsibility-assignment.json"
+  ],
+  "commits": [
+    "2871891"
+  ],
+  "completed_at": "2026-08-25T01:02:51+08:00",
+  "completed_revision": "AOS-000218",
+  "result": "CODE_CONTROL_BROWSER_GREEN_NO_RELEASE_NO_MIGRATION_APPLIED_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "migration not applied and browser API unavailable; code/browser fail-close GREEN is not runtime operational or release GREEN"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-07-responsibility-readiness-reassign-takeover-20260825",
+  "verification": [
+    "backend focused 11 and cumulative 54 passed; Web focused 47 and cumulative 220 files 2068 tests; build compile OpenAPI migration graph interval SQL and built-in browser fail-close GREEN"
+  ]
+}
