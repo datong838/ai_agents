@@ -115,15 +115,19 @@ SavedExplorationShareGrant
 
 | 顺序 | 文件 | 最小改动 |
 |---|---|---|
-| 1 | `apps/web/src/api/client.ts` | 增加不读写离线快照的 authoritative GET；撤销/到期 grant 不得被旧缓存复活。 |
-| 2 | `apps/web/src/api/ontologyExplorationAssets.ts` | 增加 strict `ShareGrantView` parser、resolve API 与 exact asset 回读；拒绝多字段、非 active、租户/引用/哈希矛盾。 |
-| 3 | `apps/web/src/api/ontologyExplorationAssets.test.ts` | 补充 active 正向与 malformed/status/hash/revision 失败关闭。 |
-| 4 | `apps/web/src/pages/s2/workshop.tsx` | 仅消费 URL opaque `shareRef`，成功后用 exact asset 恢复工作台；不把 URL/localStorage 当 authority，不自动创建/撤销 grant。 |
-| 5 | `apps/web/src/pages/s2/workshop.test.ts` | 补充 shareRef 保留、清理和交互语义回归。 |
-| 6 | `.evidence/workshop/2026-08-25-w4-06-saved-exploration-lifecycle.json` | 记录专项/累计/浏览器/一致性证据，不包含 opaque ref 实值。 |
+| 1 | `services/aos-api/aos_api/ontology_exploration_share.py` | 在原有 grant authority 上增加 purpose/markings 复验与 exact shared asset 组合读；不绕过 tenant/RLS。 |
+| 2 | `services/aos-api/aos_api/routers/oe_enhancements.py` | 增加服务端验证后的 shareRef → exact exploration 只读端点，并传入 Principal markings。 |
+| 3 | `services/aos-api/tests/aip/test_w_l16_saved_exploration_share.py` | 补充私有资产组合读、markings/purpose/hash/revoke/expiry 失败关闭。 |
+| 4 | `apps/web/src/api/client.ts` | 增加不读写离线快照的 authoritative GET；撤销/到期 grant 不得被旧缓存复活。 |
+| 5 | `apps/web/src/api/ontologyExplorationAssets.ts` | 增加 strict `ShareGrantView` parser 和 resolve API；拒绝多字段、非 active、租户/引用/哈希矛盾。 |
+| 6 | `apps/web/src/api/ontologyExplorationAssets.test.ts` | 补充 active 正向与 malformed/status/hash/revision 失败关闭。 |
+| 7 | `apps/web/src/pages/s2/workshop.tsx` | 仅消费 URL opaque `shareRef`，成功后用 exact asset 恢复工作台；不把 URL/localStorage 当 authority，不自动创建/撤销 grant。 |
+| 8 | `apps/web/src/components/ontology/ObjectExplorerWorkspace.tsx` 及相关测试 | 对页内跳转保留经过字符白名单的 opaque `shareRef`，不保留 payload。 |
+| 9 | `.evidence/workshop/2026-08-25-w4-06-saved-exploration-lifecycle.json` | 记录专项/累计/浏览器/一致性证据，不包含 opaque ref 实值。 |
 
 ### 8.3 安全与产品裁决
 
 - 遵循 163/164：SavedExploration 是原子能力的 exact 上下文引用，由 Logic/数字同事组合，工作台只展示贡献视图，不复制 authority 或治理状态机。
 - 本波不修改迁移，不执行真实 grant 创建/撤销，不发布；浏览器验收使用本地固定 fixture，不作为运营就绪证据。
 - `viewRef` 继续用于当前 Principal 可直接读取的已保存视图；`shareRef` 只是服务端验证的 opaque capability ref，两者不互换、不在客户端扩权。
+- 组合读只允许 `purpose=exploration_read`，要求 grant markings 是 Principal markings 的子集，且返回资产必须与 grant 的 assetId/revision/hash 完全相同；任一不符均不降级到普通 GET 或缓存。
