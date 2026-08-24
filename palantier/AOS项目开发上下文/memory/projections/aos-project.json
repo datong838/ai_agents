@@ -1,51 +1,42 @@
 {
   "completed": [
     "W2-02 through W2-10 read-only development remains complete without regression",
-    "S2.5 37/37 legacy Skill compatibility classification and SolutionPack exact validation complete",
-    "Task Cockpit SkillContribution read-only API and Web projection complete",
-    "S2 cumulative evaluator rerun complete with honest RED/NO_RELEASE decision"
+    "S2.5 Skill compatibility and Task Cockpit contribution projection remain complete",
+    "W3-01 canonical AgentRun Handoff Decision read SDK and stateless professional binding projection complete"
   ],
-  "content_hash": "sha256:a6a2f989bf5fb0b1f03d943c341fad6933e9e512c9ff9cea6193f62f116a9ea5",
-  "current_phase": "S2.5 compatibility refactor complete; S2 cumulative decision rerun; paused before S3",
-  "delivery_status": "S2_5_SKILL_COMPATIBILITY_CODE_BROWSER_GREEN_S2_RELEASE_RED_NO_RELEASE",
+  "content_hash": "sha256:ab13347cc9d613d447547684b658e19d402c8c3da20dbe730fc161bf775a2fe9",
+  "current_phase": "S3 public production contracts in progress; W3-01 complete; entering W3-02",
+  "delivery_status": "S3_W3_01_READONLY_AGENT_RUNTIME_SDK_GREEN_S3_IN_PROGRESS_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery-receipt",
-      "ref": "memory/receipts/deliveries/workshop-s2-5-skill-compatibility-refactor-20260824.json"
-    },
-    {
-      "kind": "correction-receipt",
-      "ref": "memory/receipts/deliveries/workshop-s2-5-delivery-receipt-commit-correction-20260824.json"
+      "ref": "memory/receipts/deliveries/workshop-w3-01-readonly-agent-runtime-sdk-20260824.json"
     },
     {
       "kind": "implementation-evidence",
-      "ref": ".evidence/workshop/2026-08-24-s2-5-skill-compatibility-refactor.json"
-    },
-    {
-      "kind": "release-decision",
-      "ref": ".evidence/workshop/2026-08-24-s2-5-w2-cumulative-gate-decision.json"
+      "ref": ".evidence/workshop/2026-08-24-w3-01-readonly-agent-runtime-sdk.json"
     }
   ],
-  "generated_at": "2026-08-24T20:47:39+08:00",
+  "generated_at": "2026-08-24T21:21:43+08:00",
   "hard_boundaries": [
-    "NO_RELEASE; no pipeline replay, business write, migration, provider call, installation mutation, or external side effect",
-    "Legacy Skill identities and historical Task Run Binding Receipt references remain immutable; no automatic migration or rebinding"
+    "NO_RELEASE; no unreviewed business write, migration, provider call, installation mutation, or external side effect",
+    "AgentRun and Handoff commands remain unavailable from Workshop until their explicit command gates pass"
   ],
   "incomplete": [
-    "P01 P02 P03 latest source runs are failed; source_data_green remains RED",
-    "formal runtime shared-context history and browser positive EvidencePack remain RED"
+    "S3 W3-02 through W3-14 remain incomplete",
+    "S2 operational release remains RED because source data runtime shared-context history and browser-positive evidence are not GREEN"
   ],
-  "last_green_gate": "S2_5_CODE_CONTRACT_BROWSER_NEGATIVE_ACCEPTANCE_GREEN",
-  "next_gate": "USER_DIRECTION_BEFORE_S3",
+  "last_green_gate": "W3_01_EXACT_AGENT_RUNTIME_READ_SDK_BROWSER_REGRESSION_GREEN",
+  "next_gate": "W3_02_TYPED_PRODUCTION_PROFILE_AND_EXACT_RESOLVER",
   "next_steps": [
-    "Pause at S2.5/S3 boundary and wait for user direction; do not enter S3 automatically"
+    "Refresh W3-02 live production profile and resolver facts, update plan, then implement the first safe exact-ref slice"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000210",
+  "project_revision": "AOS-000211",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "89d075bdec4b738287829e27ab6982d6048121a9",
-    "docs": "2db8cb144c24e2adc13ac3d84062befccd3cf0c6"
+    "aos-platform": "0337370e96ec603cd0fc1c69c920057ba2bfc8cf",
+    "docs": "4b924e98d31be5ad10a854305d74a1c82279de84"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
