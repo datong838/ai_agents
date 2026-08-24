@@ -166,11 +166,29 @@ B2 先拆出不依赖外部 Provider 的 `classify` 与 `createCase` 两项内�
 - 新增 `services/aos-api/aos_api/ecommerce_operation_command_execution_contracts.py`：定义 strict 命令请求、治理链引用、classify/createCase payload、成功 Receipt envelope 与稳定错误；请求模型禁止 `orgId/projectId/actorId`，仅接受 exact resource/version/hash/ref；
 - 新增 `services/aos-api/aos_api/ecommerce_operation_command_service.py`：先调用只读 canonical governance verifier，核对同租户 Proposal 已 approved、审批 quorum 有效、Lease active/未过期且 owner 为当前 Principal、proposal hash/action type/object ref 与请求完全一致；校验通过后才调用现有 `OperationAuthorityStore.append_classification` 或 `create_case`，返回 exact `OperationAuthorityReceipt`；
 - 修改 `services/aos-api/aos_api/routers/ecommerce_workshop.py`：增加两条显式 POST command endpoint，强制 `Idempotency-Key`，tenant 只取 Principal，并将版本/幂等/治理链/依赖错误映射为稳定 HTTP 错误；GET readiness 继续诚实反映“handler 已绑定但每次执行仍需 exact chain”，不得把存在 endpoint 表述为任意请求 ready；
+- 修改 `scripts/export_openapi.py` 与 `services/aos-api/tests/test_openapi_contract.py` 的受控 route/path/schema 总数，并确定性重生 `packages/contracts/openapi/v1.generated.json` 与 `v1.inventory.json`；补齐此前尚未进入冻结产物的 Operations view/readiness 两条 GET 与本子波两条显式 POST，共四条可解释差量，重复路由集合不得变化；
 - 修改 `services/aos-api/aos_api/ecommerce_operation_commands.py` 与 contracts：只把 handler 绑定事实从 blocker 中移除，命令执行资格仍按请求级 Proposal/Approval/Lease 动态裁决；页面在没有 exact chain 前保持禁用；
 - 新增 `services/aos-api/tests/test_ecommerce_operation_command_service.py`，扩展 `test_ecommerce_workshop_operations_api.py` 与 readiness 测试：覆盖正向 fake authority、跨租户、body scope 注入、maker/owner 漂移、过期或已消费 Lease、proposal/action/payload/hash 漂移、expectedVersion 冲突、幂等重放与幂等冲突；
 - 本子波不改 Web 为可执行态，不执行真实数据库写入，不创建真实 Proposal/Approval/Lease，不应用 migration，不调用外部 Action。页面浏览器回归仍需证明六按钮失败关闭、视觉稿信息层级未回退、零示例业务事实与零 console error。
 
 B2a 完成后自动进入 B2b membership/SLA；复用同一治理 verifier 与 command envelope，不另造 Proposal、Approval、Lease 或 Receipt authority。B3 再处理 automation kill 的 Proposal/Lease/executor checkpoint 专项预检；refund 等外部动作延后到 W5 canonical Action/Adapter 波次，当前保持 blocked。
+
+W3-12B2a 已由 `m1@45f938f` 完成代码控制闭环：`classify/createCase` 两条内部命令统一经过 Principal tenant、strict request、exact Proposal/Approval/ExecutionLease、`Idempotency-Key`、expectedVersion、canonical AIP Action Receipt 与 Operation authority Receipt，幂等重放返回原 Receipt、漂移请求失败关闭。累计后端 `56 passed`、OpenAPI deterministic check、Web `205 files / 2012 tests`、production build 与 diff check GREEN；内置浏览器在 1280/1440/1920 三档确认七切片、六命令仍全部禁用且零水平溢出。浏览器 fixture 只证明视觉与失败关闭，未执行真实命令、数据库写入或外部副作用。96 项主 Task 计数仍为 `22/96`。
+
+#### 3.3.7 W3-12B2b membership/SLA 内部命令执行门
+
+B2b 复用 B2a 唯一的 canonical governance verifier 与 Action execution/Receipt 链，只增加 `changeMembership` 与 `manageSla` 的 typed payload 和内部 Operation authority adapter；不得复制一套 Proposal、Approval、Lease、幂等或 Receipt authority。
+
+文件级施工范围：
+
+- 扩展 `services/aos-api/aos_api/ecommerce_operation_command_execution_contracts.py`：加入 strict membership revision 与 SLA clock decision 请求；禁止 body scope，要求 resource 当前版本精确递增，新建 SLA clock 仅接受 expectedVersion=0，并把 action payload 规范化为稳定 canonical JSON；
+- 扩展 `services/aos-api/aos_api/ecommerce_operation_command_service.py`：在现有 `_InternalOperationAdapter` 内接入 `OperationAuthorityStore.append_membership` 与 `append_sla_clock`，继续将 exact Operation authority Receipt 嵌入 canonical AIP Action Receipt；任何 unknown、timeout 或 Receipt 不一致均失败关闭且不自动重试；
+- 扩展 `services/aos-api/aos_api/routers/ecommerce_workshop.py`：增加两条显式 POST endpoint，复用 Principal tenant、安装门、`Idempotency-Key` 与稳定 409/503 映射；不提供通用任意 action endpoint；
+- 更新 `services/aos-api/aos_api/ecommerce_operation_commands.py`：四项内部 handler 均已绑定，但 readiness 仍返回 `EXACT_ACTION_CHAIN_REQUIRED`，`automationKill/refund` 继续保持各自未绑定或外部动作 blocker；
+- 扩展专项 API/service/store/OpenAPI 测试，覆盖 membership/SLA 正向 fake authority、跨租户、版本漂移、action/payload/hash 漂移、过期/已消费 Lease、同键重放与异键冲突；确定性重生 OpenAPI 与 inventory，重复路由集合不得变化；
+- Web 本波仍不接收 Proposal/Lease 输入，不切换按钮为可执行；浏览器三档回归继续对照正式视觉稿验证七切片、证据抽屉、六命令失败关闭、零示例业务事实与零水平溢出。
+
+B2b 退出后自动进入 B3 automation kill 专项预检与执行门。真实 automation kill、外部 refund、真实数据库写入、migration apply 或 Provider 调用均不属于本波。
 
 ## 4. 每个 Loop
 

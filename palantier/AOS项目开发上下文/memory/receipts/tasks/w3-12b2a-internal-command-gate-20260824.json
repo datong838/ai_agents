@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000168",
+  "created_at": "2026-08-24T09:28:01+08:00",
+  "excluded_scope": [
+    "real business data,migration apply,external provider actions,refund execution,web command enabling,release"
+  ],
+  "expected_outputs": [
+    "W3-12B2a strict internal classify/createCase command gate, tests, browser regression, Delivery Receipt, Prime sync"
+  ],
+  "lease_expires_at": "2026-08-24T20:00:00+08:00",
+  "owner": "codex-m1-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_operation_command_execution_contracts.py,services/aos-api/aos_api/ecommerce_operation_command_service.py,services/aos-api/aos_api/ecommerce_operation_commands.py,services/aos-api/aos_api/ecommerce_operation_command_contracts.py,services/aos-api/aos_api/routers/ecommerce_workshop.py,services/aos-api/tests/test_ecommerce_operation_command_service.py,services/aos-api/tests/test_ecommerce_operation_commands.py,services/aos-api/tests/test_ecommerce_workshop_operations_api.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12b2a-internal-command-gate-20260824"
+}

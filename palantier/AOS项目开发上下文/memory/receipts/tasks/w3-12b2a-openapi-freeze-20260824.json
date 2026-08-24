@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000168",
+  "created_at": "2026-08-24T09:54:10+08:00",
+  "excluded_scope": [
+    "unrelated API routes,duplicate route policy,migration apply,release"
+  ],
+  "expected_outputs": [
+    "deterministic cumulative Operations OpenAPI freeze and contract tests"
+  ],
+  "lease_expires_at": "2026-08-24T20:00:00+08:00",
+  "owner": "codex-m1-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "scripts/export_openapi.py,services/aos-api/tests/test_openapi_contract.py,packages/contracts/openapi/v1.generated.json,packages/contracts/openapi/v1.inventory.json"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w3-12b2a-openapi-freeze-20260824"
+}

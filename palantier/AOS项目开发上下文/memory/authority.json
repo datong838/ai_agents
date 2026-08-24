@@ -1,53 +1,41 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W2-01B Operations v1 strict read-only cockpit at m1@6b02110",
-    "W3-12B1 server command readiness, strict Web SDK and six-command fail-closed visual drawer at m1@a4b3479",
-    "W3-12B1 backend cumulative 27 passed, Web 2012/2012, TypeScript/build and 1280/1440/1920 fixture browser GREEN"
+    "W3-12B2a classify/createCase strict internal command execution gate"
   ],
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "W3_12B1_COMMAND_READINESS_CODE_AND_VISUAL_FIXTURE_GREEN_REAL_RUNTIME_UNAVAILABLE",
+  "delivery_status": "W3_12B2A_INTERNAL_COMMAND_CODE_CONTROL_GREEN_REAL_EXECUTION_NOT_INVOKED",
   "evidence": [
     {
-      "kind": "receipt",
-      "ref": "memory/receipts/deliveries/w3-12b1-operation-command-readiness-web-20260824.json"
+      "kind": "delivery_receipt",
+      "ref": "w3-12b2a-internal-command-gate-20260824"
     },
     {
-      "kind": "receipt",
-      "ref": "memory/receipts/deliveries/w3-12b1-operation-host-adjacent-test-20260824.json"
+      "kind": "delivery_receipt",
+      "ref": "w3-12b2a-openapi-freeze-20260824"
     },
     {
-      "kind": "commit",
-      "ref": "m1@a4b3479"
-    },
-    {
-      "kind": "tests",
-      "ref": "Backend cumulative 27 passed; Web 205 files / 2012 tests; TypeScript and Vite build GREEN"
-    },
-    {
-      "kind": "browser",
-      "ref": "Built-in browser 1280/1440/1920 read-only fixture: seven slices, six disabled commands, interaction and no overflow GREEN; real runtime excluded"
+      "kind": "verification",
+      "ref": "56 cumulative backend tests; OpenAPI deterministic; Web 2012 tests/build; built-in browser 1280/1440/1920 fail-closed visual regression"
     }
   ],
-  "evidence_cutoff": "2026-08-24T09:22:26+08:00",
+  "evidence_cutoff": "2026-08-24T10:00:23+08:00",
   "hard_boundaries": [
-    "No real business data mutation, provider side effect, migration apply or release without its explicit gate"
+    "No real DB command invocation, migration apply, provider call, refund, release, or UI enablement without exact per-request runtime authority"
   ],
   "incomplete": [
-    "Real local aos-api operational health and org-org/dev-project runtime browser evidence remain unavailable; fixture evidence is not operational GREEN",
-    "W3-12B2 internal authority commands, later proposal/approval/Lease and external action gates remain pending"
+    "W3-12B2b membership/SLA; W3-12B3 automation kill; external refund/action waves; real runtime invocation"
   ],
-  "last_green_gate": "W3_12B1_COMMAND_READINESS_CODE_AND_VISUAL_FIXTURE_GREEN",
-  "next_gate": "W3_12B2_INTERNAL_AUTHORITY_COMMANDS",
+  "last_green_gate": "W3_12B2A_INTERNAL_COMMAND_CODE_CONTROL_GREEN",
+  "next_gate": "W3_12B2B_MEMBERSHIP_SLA_INTERNAL_COMMANDS",
   "next_steps": [
-    "Review W3-12B2 upper plans and implement exact internal authority command contracts without external effects",
-    "After W3-12B2, continue W3-12B3 governance and rerun the full cumulative/browser matrix"
+    "Continue W3-12B2b membership and SLA internal command gate on m1"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000168",
+  "project_revision": "AOS-000169",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "main": "a4b3479481f46db8bfdbc6d2744bc0a82e15f0b8"
+    "aos-platform": "45f938f"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -57,5 +45,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T09:22:44+08:00"
+  "updated_at": "2026-08-24T10:02:07+08:00"
 }
