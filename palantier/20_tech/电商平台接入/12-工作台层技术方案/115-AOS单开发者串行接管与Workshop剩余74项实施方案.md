@@ -465,6 +465,10 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-06B 闭合检查点：代码已以 `m1@af4d817` 安全提交。新增 bounded canonical-reader protocol，仅接受 tenant-bound、同 cutoff、正 revision、canonical 五轴、每 view 最多 100 个唯一指标与 100 个唯一 exact refs；七 view 各自读取并独立失败关闭。reader 可达、五轴均 ready/not-applicable 且全部指标 ready 时才允许可信 ready/empty；任一 unknown/blocked/conflict 不计 ready，单 view tenant/cutoff/duplicate/bound drift 不污染其他 view。专项/邻接 `26 passed`、Workshop 累计 `98 passed`、compileall 与 diff check GREEN；未新增 store、迁移或真实查询执行。下一子波自动进入 W2-06C strict Web 与正式视觉验收。
 
+2026-08-24 W2-06C 闭合检查点：代码已以 `m1@571431a` 安全提交。Web 新增唯一 strict Analyst schema/parser/client 与正式七 Tab 只读页面；parser 对额外字段、canonical view/axis 顺序、tenant、共享 revision/cutoff、exact refs、metric partition ledger、page 守恒和 non-ready 数值全部失败关闭。页面保持 Observation、归因与因果声明分离，只展示决策摘要、证据链、归因路径、关键假设和不确定性，写入口恒为零。TypeScript noEmit、专项 `5/5`、Web 累计 `213 files / 2035 tests` GREEN；内置浏览器完成 blocked/empty/nonempty、方向键与 `390/768/1024/1280/1440/1920` 六档验收，七 Tab、五轴、单 H1、零写按钮、零横向溢出。未触发 QueryJob、计划物化、专业派发、Provider、迁移或真实业务数据副作用。复审发现服务组合层仍需把七 view 的 observed resource revision 差异失败关闭，故下一子波先执行 `W2-06B1` 共享 revision 守卫，再进入 W2-07。
+
+`W2-06B1` 文件级纠偏清单：仅修改 `services/aos-api/aos_api/ecommerce_workshop_analyst.py` 与 `services/aos-api/tests/test_ecommerce_workshop_analyst.py`；先增加七 view observation revision 不一致的失败测试，再以最小 guard 禁止将不同 observed revision 静默改写为聚合 revision。保持单 view reader failure 隔离、无 migration、无真实查询、无新真源，完成专项与 Workshop 累计回归后进入 W2-07。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

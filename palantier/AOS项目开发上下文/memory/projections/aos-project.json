@@ -1,34 +1,34 @@
 {
   "completed": [
-    "W2-06B bounded tenant-cutoff analyst canonical reader composition"
+    "W2-06C strict Analyst Web read model and formal visual acceptance"
   ],
-  "content_hash": "sha256:754762f736dd53e0965feb391aba65837ef67045303cc63773b1061daa5e2588",
+  "content_hash": "sha256:b29cecd83d1772963cdf3908ff982728658b28702ac9c9fcdfcf1ac66d60164c",
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S2",
-  "delivery_status": "W2_06B_ANALYST_BOUNDED_READER_GREEN_OPERATIONAL_NOT_INFERRED",
+  "delivery_status": "W2_06C_ANALYST_STRICT_WEB_VISUAL_GREEN_OPERATIONAL_NOT_INFERRED",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "memory/receipts/deliveries/w2-06b-analyst-bounded-reader-20260824.json"
+      "ref": "memory/receipts/deliveries/w2-06c-analyst-strict-web-visual-20260824.json"
     }
   ],
-  "generated_at": "2026-08-24T17:31:39+08:00",
+  "generated_at": "2026-08-24T17:50:48+08:00",
   "hard_boundaries": [
-    "Per-view reader failure is isolated and cannot promote another view",
-    "Trusted empty requires a reachable canonical reader and all readiness axes ready or not applicable"
+    "Analyst remains GET-only and cannot materialize plans, dispatch professional work, promote memory, or trigger provider side effects",
+    "Different observed view revisions must not be normalized into a fabricated shared revision"
   ],
   "incomplete": [
-    "W2-06C through W2-10 remain"
+    "W2-06B1 shared revision guard and W2-07 through W2-10 remain"
   ],
-  "last_green_gate": "W2_06B_ANALYST_BOUNDED_READER_GREEN",
-  "next_gate": "W2_06C_ANALYST_STRICT_WEB_VISUAL",
+  "last_green_gate": "W2_06C_ANALYST_STRICT_WEB_VISUAL_GREEN",
+  "next_gate": "W2_06B1_ANALYST_SHARED_REVISION_GUARD",
   "next_steps": [
-    "Implement W2-06C strict Web analyst page and formal visual acceptance"
+    "Implement W2-06B1 cross-view observed resource revision fail-closed guard"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000197",
+  "project_revision": "AOS-000198",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "workshop": "af4d817"
+    "workshop": "571431a"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

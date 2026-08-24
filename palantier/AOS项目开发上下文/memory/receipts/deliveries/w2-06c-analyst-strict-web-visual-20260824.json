@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000197",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/analystClient.test.ts",
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/index.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "571431a"
+  ],
+  "completed_at": "2026-08-24T17:49:24+08:00",
+  "completed_revision": "AOS-000197",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "Read-only only; no plan materialization, professional handoff, provider side effect, or real business data mutation enabled"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-06c-analyst-strict-web-visual-20260824",
+  "verification": [
+    "TypeScript noEmit GREEN",
+    "focused analyst tests 5/5 GREEN",
+    "Web cumulative 213 files 2035 tests GREEN",
+    "built-in browser blocked empty nonempty plus 390 768 1024 1280 1440 1920 widths and keyboard ArrowRight GREEN"
+  ]
+}
