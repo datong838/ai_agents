@@ -1,16 +1,16 @@
 # W3-05 AIP 生产启动组合门消费与权限接缝 ADR
 
 > 日期：2026-08-14；2026-08-24 实施刷新
-> 当前 authority：`AOS-000215`
+> 当前 authority：`AOS-000216`
 > 上游事实：W3-04 `49bd762`、Delivery Receipt `workshop-w3-04-production-context-freeze-20260824`
-> 状态：`BACKEND_EXACT_CHAIN_CODE_CONTROL_GREEN / STRICT_SDK_UI_PENDING / NO_RELEASE`
+> 状态：`COMPLETED_CODE_CONTROL_GREEN / NO_RELEASE / MIGRATION_NOT_APPLIED / NO_EXTERNAL_EFFECT`
 > 边界：只修改 m1 的通用生产合同与严格消费面；不执行迁移、生产启动、审批、发布或真实租户业务写入
 
 ## 1. 结论
 
 AIP W2-D2 已实现通用生产启动组合门后端，W2-D3 也已在 `m1@2eab0f7` 完成 strict SDK/UI，状态为 `GREEN_WITH_WARNINGS`。Workshop 不再设计或实现第二套 start service、依赖快照算法或 TaskRun 创建逻辑，而应通过唯一严格 SDK 消费 `/v1/aip/production-contracts/production-runs/start` 与 `ProductionStartDecision`。
 
-截至 `AOS-000215`，W3-01～04 顺序门已经关闭，W3-04 已提供 canonical ProductionContext freeze。当前仍有两个可由唯一开发者直接关闭的代码缺口：StageTemplate compile、Plan、ImpactPreview 与 StartDecision 尚未保留同一个 ProductionContext exact ref；Start mutation 仍只有 `require_principal`。本波先关闭 `DEP-PRODUCTION-CONTEXT-PROPAGATION` 与 `DEP-AIP-START-AUTHZ` 的代码控制面，真实 `org-org/dev-project` 正向启动仍保持失败关闭，不作为代码完成前提。
+截至 `AOS-000216`，W3-01～04 顺序门已经关闭，W3-04 已提供 canonical ProductionContext freeze；W3-05 后端 exact chain、角色门以及 strict SDK/UI 已按分段编排关闭代码缺口。真实 `org-org/dev-project` 正向启动仍保持失败关闭，不把无真实 Preview/Approval/Health 的空态冒充运行完成。
 
 ## 2. ProductionContext 如何进入 compile 与 AIP Start
 
@@ -109,17 +109,36 @@ Workshop 前端只根据服务端 permission/readiness 显示或禁用按钮，�
 
 该切片只关闭后端 exact-chain 与角色门；严格 SDK、页面 compile context 选择、Preview/Decision context 展示仍为同一 W3-05 的下一串行切片，未完成前不得宣称 W3-05 整体 GREEN。
 
+### 5.4 严格 SDK / 页面串行切片（AOS-000216）
+
+Task `workshop-w3-05-strict-sdk-ui-context-20260824` 的最小文件范围与裁决：
+
+1. `apps/web/src/api/aipProductionContracts/contracts.ts`
+   - compile input/result 增加必需 `productionContextRef`；
+   - Preview/Decision 使用 nullable ref 兼容历史回读；新命令输入仍由页面强制选择 exact ref。
+2. `apps/web/src/api/aipProductionContracts/parser.ts`
+   - 对 compile result 强校验 `ProductionContextRevision`；
+   - 对 Preview/Decision 允许历史 `null`，非空时强校验资源类型；
+   - ProductionContext 补回已存在的 `productionProfileRef` provenance，避免 W3-04 服务端字段在前端丢失。
+3. `apps/web/src/pages/s2/ProductionContractsPage.tsx`
+   - compile 必须选择与 Task、profile、ResponsibilityPlan 一致且 frozen/ready 的 ProductionContext；
+   - Preview/Start 只允许使用 Preview 已固定的同一个 context exact ref，历史无 ref 的 Preview 明确禁用；
+   - Decision 展示 context provenance，但不把 `started` 误写为 Agent 已运行。
+4. 对应 parser/client/page tests 覆盖类型漂移、历史 nullable、compile 传参、Preview mismatch 与零隐式启动。
+
+该页面不创建 ProductionContext、不自动选择“最新”记录、不自动生成 Idempotency-Key 重试旧意图，也不改变审批与 start 的分步交互。
+
 ## 6. 退出门
 
 - `DEP-AIP-W2D2`：`CODE_CONTROL_GREEN`；
 - `DEP-AIP-W2D3`：`GREEN_WITH_WARNINGS`；strict SDK/UI 已提交，真实正向 Start 未验；
-- `DEP-PRODUCTION-CONTEXT-PROPAGATION`：本波需达到 `CODE_CONTROL_GREEN`；
-- `DEP-AIP-START-AUTHZ`：本波需达到 `CODE_CONTROL_GREEN`；
+- `DEP-PRODUCTION-CONTEXT-PROPAGATION`：`CODE_CONTROL_GREEN`；
+- `DEP-AIP-START-AUTHZ`：`CODE_CONTROL_GREEN`；
 - `DEP-AIP-REAL-PREVIEW`：`BLOCKED`；
 - W2、W3-01～04：`COMPLETED_CODE_CONTROL_GREEN`；
-- W3-05：`IMPLEMENTATION_IN_PROGRESS / NO_RELEASE`。
+- W3-05：`COMPLETED_CODE_CONTROL_GREEN / NO_RELEASE / MIGRATION_NOT_APPLIED / NO_EXTERNAL_EFFECT`。
 
-机器证据：`aos-platform-w2-workshop/.evidence/workshop/2026-08-14-aip-w2d2-workshop-impact-preflight.json`。
+机器证据：`aos-platform/.evidence/workshop/2026-08-24-w3-05-staged-production-start.json`、`aos-platform/.evidence/workshop/2026-08-24-w3-05-strict-sdk-ui-context.json`。
 
 ## 7. AOS-000039 刷新与两轮复审
 
@@ -127,4 +146,14 @@ Workshop 前端只根据服务端 permission/readiness 显示或禁用按钮，�
 
 第二轮沿 W3-04 ProductionContext 反向追踪发现 compiler input、Plan productionContract、ImpactPreview、ProductionStartRequest/Decision 均未携带该 exact ref，且 start router 仍只有认证门。整改新增 `DEP-PRODUCTION-CONTEXT-PROPAGATION` 与现有 `DEP-AIP-START-AUTHZ` 双门，并保持真实 Preview/Start 正向证据门；结论 `PASS_AFTER_REMEDIATION`。
 
-刷新证据：`.evidence/workshop/2026-08-15-w3-05-production-context-start-refresh.json` 与 `.evidence/workshop/2026-08-15-w3-05-staged-start-doc-ledger.json`。最终状态仍为 `NOT_STARTED / HARD_GATE_BLOCKED / NO_EXTERNAL_EFFECT`。
+刷新证据：`.evidence/workshop/2026-08-15-w3-05-production-context-start-refresh.json` 与 `.evidence/workshop/2026-08-15-w3-05-staged-start-doc-ledger.json`。2026-08-24 的后端与 strict SDK/UI 实施将最终状态推进为 `COMPLETED_CODE_CONTROL_GREEN / NO_RELEASE / MIGRATION_NOT_APPLIED / NO_EXTERNAL_EFFECT`；真实运行正向事实仍须由独立运行/发布门裁决。
+
+## 8. 2026-08-24 实施验收
+
+- 后端 exact chain 与显式 start role：专项 28 passed；迁移保持未应用；
+- strict SDK/UI：专项 3 files / 26 tests passed；Web 累计 220 files / 2060 tests passed；TypeScript + Vite build passed；
+- 内置浏览器：`/aip/production-contracts` 单一 H1、1280px 无横向溢出、AIP 依赖不可用时 0 个受保护动作可执行；
+- 历史 Preview/Decision 缺少 context ref 时可读但不可启动；新 compile/Preview/Start 只能沿同一 `ProductionContextRevision` exact ref；
+- 0 Provider、0 TaskRun start、0 审批、0 发布、0 真实业务写入。
+
+下一串行任务为 W3-06；进入前按 94 号 ADR 重核 canonical Handoff transport、active AgentInstance、ModuleHandoffCompiler 与 HandoffDecision authority，不复用旧的“等别人交付”责任边界。
