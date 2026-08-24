@@ -63,3 +63,30 @@ kill 在 Proposal 创建、Lease 获取和 executor 调用前分别复验 exact 
 5. 固定 Receipt 顺序：`DATA_D0_INVENTORY_AFTERSALES_AUTHORITY_GREEN` → `W2_01A_READ_MODEL_SHELL_GREEN` → `W3_12A_OPERATION_CASE_AUTHORITY_GREEN` → `W2_01B_UNIFIED_OPERATIONS_VIEW_GREEN` → `W3_12B_OPERATION_COMMAND_BROWSER_GREEN`。
 
 当前唯一开发者可在 `m1` 串行维护 Data、Workshop、AIP 与运行层，因此不再因 Owner 交接停工；但缺少 exact authority 时只能实现诚实 blocked 合同，不得把计划、测试桩或通用对象名称冒充 runtime GREEN。
+
+## 8. 2026-08-25 AOS-000223 现场重核与闭合清单
+
+### 8.1 旧结论已过期
+
+当前 `m1` 已存在 OperationCase、CaseEvent、ClassificationDecision、AggregationPolicy、Membership、SLA 与 Kill strict contracts，tenant-bound append-only Store、RLS migration、统一运营七切片 View、五类内部 authority command、canonical Action/Approval/Lease/Receipt 复验、request-level observation、strict Web SDK 与失败关闭 UI。因此第 1、5、6 节中“runtime 不存在”只保留为 2026-08-15 历史截面；R37 的五段固定 Receipt 已在先前串行波次落地，本次执行主项一致性与浏览器闭合，不复制 authority。
+
+### 8.2 163/164 分层裁决
+
+- OperationCase、ClassificationDecision、AggregationPolicy、SLA/Kill Decision 是领域 authority，不是原子 Skill。
+- `classify/createCase/changeMembership/manageSla/automationKill` 是受控 Domain Command/Tool，必须经 canonical Proposal → Approval → ExecutionLease → Receipt；它们不是大而全 Skill。
+- 业务 Logic 可编排 `query-business-data`、`analyze-trend`、`detect-anomaly`、`compare-cohorts`、`verify-claims` 与人工门，但本域 Store 不复制 Skill、Logic、Agent 或 Binding authority。
+- Workshop 贡献视图复用 W3-09 公共 `ContributionLineage`。缺少 exact AgentRun、SkillBinding 或 LogicRevision 时原子 Skill、Logic 编排和数字同事保持 `unknown`；只陈述切片当前可验证的工作台贡献。
+- request-level observation 只解释 exact Proposal/Lease/Receipt，`unknown` 不自动重放；退款保持外部 Action 失败关闭。
+
+### 8.3 本波文件级清单
+
+1. 复核 OperationCase contracts/Store/migration、统一运营 View、五类内部 command 与 observation，不重建现有 authority。
+2. 在 `OperationsPage.tsx` 复用公共 `ContributionLineage`，按七切片表达领域事实如何成为 Logic 输入；没有 exact runtime refs 时保持 unknown。
+3. 补充 `OperationsPage.test.tsx` 的公共贡献链、unknown 诚实性、零写入口、unknown observation 不重放回归。
+4. 运行 OperationCase/command/observation/View/API 专项测试、OpenAPI 确定性检查、Workshop 后端累计、Web 全量、TypeScript 与 production build。
+5. 用内置浏览器在 `org-org/dev-project` 验收 1280/1440/1920、七切片、数量守恒、command 失败关闭、request observation、贡献链与无横向溢出；不冲刷离线队列。
+6. 生成同一 candidate identity 的 EvidencePack/Delivery Receipt，随后在 `m1` 串行 CAS authority 并回读 Prime。
+
+### 8.4 不变边界
+
+本波不 live apply migration，不对真实业务表执行 classify/create/membership/SLA/kill，不执行退款，不调用 Provider，不启动 AgentRun，不决定 Approval，不发 Handoff，不发布，不冲刷离线队列。代码/浏览器 GREEN 不等于 operational 或 release GREEN。

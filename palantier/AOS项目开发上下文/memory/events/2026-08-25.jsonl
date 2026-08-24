@@ -26,3 +26,4 @@
 {"base_revision":"AOS-000222","occurred_at":"2026-08-25T02:33:50+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-11-content-campaign-authority-20260825","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-25T02:43:04+08:00","result":"S3_W3_11_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w3-11-content-campaign-authority-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T02:47:02+08:00","project_revision":"AOS-000223","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000223","occurred_at":"2026-08-25T02:47:57+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-12-unified-operations-authority-20260825","type":"TASK_STARTED"}
