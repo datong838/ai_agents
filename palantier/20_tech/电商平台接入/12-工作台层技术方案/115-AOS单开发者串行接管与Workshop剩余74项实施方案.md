@@ -499,6 +499,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-08A 闭合检查点：代码已以 `m1@696cb60` 安全提交。新增 strict `customer-view/v1`、`customer/segment/journey/dialogue` 四 canonical view、CustomerLite/Consent/Segment/Journey/Dialogue/outreach-batch 六独立轴、purpose-scoped disclosure、Consent/retention、k-anonymity、original refs 与 `input = eligible + excluded + unknown + deduplicated` 守恒；DTO 不含 mobile、OpenID、nickname、avatar、address、email、realName、ProtectedContact 或 provider key。GET-only 路由由 active `ecommerce.customer` installation 与 Principal tenant 裁决，拒绝 query scope 注入。专项/API/OpenAPI `22 passed`、Workshop 累计 `109 passed`、确定性 OpenAPI、compileall 与 diff check GREEN；未新增 Store、migration、客户 authority、Provider 或触达副作用。下一子波自动进入 W2-08B bounded reader。
 
+2026-08-24 W2-08B 闭合检查点：代码已以 `m1@f24cddc` 安全提交。新增 tenant-bound bounded canonical reader，每个 view 固定同 cutoff/revision、六 canonical 轴、最多 100 个唯一 Customer projection/authority refs、input/dedup ledger 与 original reachability；可信空仅在 reader 可达且六轴合法时成立，单 view tenant/cutoff/bound drift 独立失败关闭，跨 view trusted revision 冲突则四 view 整体失败关闭。专项 `6 passed`、Workshop 累计 `111 passed`、compileall 与 diff check GREEN；未新增客户 Store、migration、ProtectedContact、Provider 或触达副作用。下一子波自动进入 W2-08C strict Web 与正式视觉验收。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

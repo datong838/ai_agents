@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000203",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_customer.py",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_reader.py",
+    "services/aos-api/tests/test_ecommerce_workshop_customer.py"
+  ],
+  "commits": [
+    "f24cddc"
+  ],
+  "completed_at": "2026-08-24T18:31:25+08:00",
+  "completed_revision": "AOS-000203",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "Read-only bounded reader only; no PII/protected contact, store/migration, authority write, provider/send, or real customer-data mutation."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-08b-customer-bounded-reader-20260824",
+  "verification": [
+    "focused customer tests 6 passed",
+    "Workshop API cumulative 111 passed",
+    "compileall and diff checks GREEN"
+  ]
+}

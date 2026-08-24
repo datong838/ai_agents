@@ -1,33 +1,33 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W2-08A strict customer contract and GET-only API shell"
+    "W2-08B bounded privacy-minimized customer reader"
   ],
-  "current_phase": "S2 / W2-08A customer contract shell complete",
-  "delivery_status": "W2_08A_CUSTOMER_CONTRACT_SHELL_GREEN_OPERATIONAL_NOT_INFERRED",
+  "current_phase": "S2 / W2-08B customer bounded reader complete",
+  "delivery_status": "W2_08B_CUSTOMER_BOUNDED_READER_GREEN_OPERATIONAL_NOT_INFERRED",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "memory/receipts/deliveries/w2-08a-customer-contract-shell-20260824.json"
+      "ref": "memory/receipts/deliveries/w2-08b-customer-bounded-reader-20260824.json"
     }
   ],
-  "evidence_cutoff": "2026-08-24T18:28:43+08:00",
+  "evidence_cutoff": "2026-08-24T18:31:25+08:00",
   "hard_boundaries": [
-    "Customer projection is GET-only and PII-free; no ProtectedContact resolution, migration, authority write, Provider/send, or real customer-data mutation."
+    "Reader remains PII-free and read-only; no ProtectedContact resolution, store/migration, authority write, Provider/send, or real customer-data mutation."
   ],
   "incomplete": [
-    "W2-08B through W2-10 remain in S2"
+    "W2-08C through W2-10 remain in S2"
   ],
-  "last_green_gate": "W2_08A_CUSTOMER_CONTRACT_SHELL_GREEN",
-  "next_gate": "W2_08B_CUSTOMER_BOUNDED_READER",
+  "last_green_gate": "W2_08B_CUSTOMER_BOUNDED_READER_GREEN",
+  "next_gate": "W2_08C_CUSTOMER_STRICT_WEB_VISUAL",
   "next_steps": [
-    "Implement W2-08B tenant-bound privacy-minimized canonical reader."
+    "Implement W2-08C strict Web customer page and built-in-browser acceptance."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000203",
+  "project_revision": "AOS-000204",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "workshop": "696cb60"
+    "workshop": "f24cddc"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -37,5 +37,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T18:29:09+08:00"
+  "updated_at": "2026-08-24T18:31:54+08:00"
 }
