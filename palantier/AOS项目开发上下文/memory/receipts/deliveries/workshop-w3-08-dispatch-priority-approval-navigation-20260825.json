@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000219",
+  "blockers": [
+    "live migration apply runtime operational readiness and release remain gated"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_dispatch_control.py",
+    "services/aos-api/aos_api/aip_dispatch_control_store.py",
+    "services/aos-api/alembic/versions/w3_017_dispatch_control.py",
+    "services/aos-api/aos_api/routers/aip_dispatch_control.py",
+    "services/aos-api/aos_api/routers/domain_manifest.json",
+    "apps/web/src/api/ecommerceWorkshop",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    ".evidence/workshop/2026-08-25-w3-08-dispatch-control.json"
+  ],
+  "commits": [
+    "879d815"
+  ],
+  "completed_at": "2026-08-25T01:34:00+08:00",
+  "completed_revision": "AOS-000219",
+  "result": "CODE_CONTROL_BROWSER_GREEN_NO_RELEASE_NO_MIGRATION_APPLIED_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "migration not applied and browser API unavailable; code/browser fail-close GREEN is not runtime operational or release GREEN",
+    "confirmation receipt requires a separate canonical command invocation and does not itself mutate downstream authority"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-08-dispatch-priority-approval-navigation-20260825",
+  "verification": [
+    "backend focused and cumulative 60 passed plus 2 subtests; Web focused 37 and cumulative 220 files 2068 tests; build compile migration graph interval SQL and built-in browser fail-close GREEN"
+  ]
+}
