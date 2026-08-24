@@ -116,3 +116,12 @@ Drawer 展示 Bundle coverage/missing/conflict/uncertainty，再按 item 展示 
 - 不在浏览器验收中触发真实 Disclosure 写入、离线队列 flush、下载、导出、Action、Approval、AgentRun 或 Provider 副作用。
 - 旧 decision 保持可审计，但不作为新访问令牌；L3 仅返回短期 scoped ref，本波不实现源正文下载。
 - 完成仅可声明 `CODE/TEST/BROWSER GREEN`；未经独立发布门不得声明运营、实时数据或发布 GREEN。
+
+### 8.4 交付复审（2026-08-25）
+
+- `m1@f37102333e6eed0874a429b3e9083f1153880b09` 已完成 Evidence 专用 exact-ref、受控 purpose、L1/L2/L3 服务端裁决、当前策略重评、过期拒绝、Citation/RedactionReceipt 对齐，以及严格 SDK、Drawer 和实际 Bundle 卡片接线。
+- 失败关闭复审覆盖 license denied/unknown、purpose 越级、applicability unknown/not-applicable、freshness stale/unknown、bundle revoke、hash/revision/resourceType 篡改、跨租户、历史 allowed 决策撤销后读取与过期 scoped ref；失败响应均不返回正文。
+- 专项后端 `5 passed`、相关后端累计 `27 passed`、Web 专项 `37 passed`、Web 全量 `221 files / 2088 tests passed`；TypeScript、production build、Python compileall、OpenAPI/Inventory 确定性与 diff check 通过。仓库虚拟环境未安装 black，本波未临时安装依赖。
+- 内置浏览器在真实 `org-org/dev-project` 的 `/aip/production-contracts` 完成 1280×720、1440×900、1920×1080 验收：无横向溢出、键盘焦点可见、console error 0。真实 authority 返回 0 个 Bundle，因此保留诚实空态和 0 个披露按钮；没有伪造 Bundle 或触发披露写入，Drawer 的状态矩阵由 SDK/组件/页面集成测试闭合。
+- 证据：`.evidence/workshop/2026-08-25-w4-02-evidence-citation-disclosure.json`。结论为 `W4_02_EVIDENCE_DISCLOSURE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT`；未执行 live migration、release、Provider、AgentRun、Action、Approval、下载、导出、真实业务写或离线队列 flush。
+- 163/164 一致性：Disclosure 是服务端原子 Skill 能力，页面只消费精确决策；没有把 Drawer 点击伪装成 Logic 运行，也没有推断数字同事或工作台贡献，未知 lineage 保持 unknown。
