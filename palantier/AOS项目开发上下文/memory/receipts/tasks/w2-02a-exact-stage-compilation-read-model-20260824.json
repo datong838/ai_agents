@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000172",
+  "created_at": "2026-08-24T12:15:05+08:00",
+  "excluded_scope": [
+    "migration; TaskRun start; Action execution; real business data mutation; Provider; release"
+  ],
+  "expected_outputs": [
+    "Exact run-scoped Stage compilation read model from canonical Plan risk, strict API/Web/UI, tests, browser acceptance, receipt, commit, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-24T20:00:00+08:00",
+  "owner": "aos-sole-developer-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api task cockpit contracts/service/router/tests; OpenAPI; apps/web ecommerceWorkshop SDK/TaskCockpitPage/tests/styles; Workshop plan/checklist; receipts and Prime projection"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-02a-exact-stage-compilation-read-model-20260824"
+}

@@ -217,6 +217,22 @@ B4 不新增副作用命令，先把既有 canonical Action Receipt 与 Operatio
 
 2026-08-24 闭合检查点：后端只读 observation 已在 `m1@7d0d63f`，Web strict SDK 与证据抽屉已在 `m1@2b9a8a8` 形成安全提交。Web 累计 `205 files / 2016 tests`、production build `319 modules`；后端本波精确组合 `35 passed`，OpenAPI deterministic export GREEN。内置浏览器已完成 1280/1440/1920 三档复核：七个权威切片完整、六个动作全部禁用、请求级 Proposal/Lease 表单可交互、失败返回 `INVALID_ERROR_RESPONSE` 并明确不重放或补偿、三档均无水平溢出，且未出现客户、批准退款或自动处理等示例事实。浏览器 fixture 只证明视觉与失败关闭；`applied/failed/unknown` 的语义由 strict parser/component/API 测试证明，不提升为真实执行事实。B4 可进入 Receipt/CAS/Prime 闭环，refund 仍留在 W5。
 
+### 3.4 S2 / W2-02A exact Stage compilation 只读切片
+
+W3-12B4 闭合后独立审查正式 96 项清单：W3-12 仍依赖 W3-10、W2-01 主项与真实 runtime/recovery 轴，W2-01 仍缺 aftersale event originals 与 timeline，因此两项均不提前勾选，主进度保持 `22/96`。下一实际代码波进入 W2-02 的第一个缺口，不等待其他开发者，也不复制第二套 Stage authority。
+
+本子波复用 canonical `aip_task_run.plan_revision_id → aip_plan_revision.risk.productionContract`，新增 run-scoped `production-context` GET 只读投影：
+
+- `ecommerce_workshop_task_cockpit_contracts.py`：新增 exact ref、Stage compilation item 与 production context envelope；只接受 `StageTemplateRevision`、`ResponsibilityPlanRevision`、`PlanRevision` 三类 exact ref，hash 为 64 位小写 SHA-256，stage id 唯一，`applicable/not_applicable` 显式分离；
+- `ecommerce_workshop_task_cockpit.py`：在 `REPEATABLE READ READ ONLY` 与 transaction-local tenant scope 中按 exact run/plan 读取 `steps/risk`，核对 Plan ref、StageTemplate ref、ResponsibilityPlan ref、compiler version 和 stage/step 数量守恒；缺失、旧格式、hash/type/step 漂移均结构化失败关闭，不回退为静态阶段；
+- `routers/ecommerce_workshop.py` 与 OpenAPI：新增唯一 GET `/views/task-cockpit/runs/{run_id}/production-context`，拒绝 body/query scope 注入并复用安装可见性门；
+- Web strict SDK/parser 与 `TaskCockpitPage.tsx`：展开 Run 时与 Step/Checkpoint 并行读取 Stage compilation，只显示 exact template/plan、适用性与阶段映射；保留正式视觉稿的“执行组—当日任务流—策划组—复盘”层级，不复制视觉稿中的任务数、六角色在线状态或经营样例；
+- 测试覆盖正向 exact mapping、跨租户、run/plan 不存在、risk 缺失、hash/type/compiler/stage-step 漂移、extra/missing Web 字段、明细任一失败整块失败关闭、三档视口、键盘展开、零水平溢出与 console；不新增 migration、不写真实数据、不启动 TaskRun、不执行 Action。
+
+W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approval/ReviewIssue/Action reconcile 仍按后续子波逐项消费 canonical owner，不以本波页面 GREEN 代替 W2-02 主项完成。
+
+2026-08-24 闭合检查点：代码已以 `m1@f47fb71` 安全提交；后端专项 `15 passed`、累计组合 `28 passed`，Web 累计 `205 files / 2016 tests`、production build `319 modules`，OpenAPI 确定性导出与检查通过。内置浏览器 1280/1440/1920 三档均显示 exact Plan/StageTemplate/ResponsibilityPlan ref、Stage 适用性、依赖与槽位，无水平溢出或禁止命令，console error 为 0。Delivery Receipt 为 `w2-02a-exact-stage-compilation-read-model-20260824`，authority/Prime 已经 `AOS-000174` 精确回读。`ruff` 可执行文件在环境中不可用，未虚构 lint GREEN；语法与行为由上述专项及累计测试覆盖。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

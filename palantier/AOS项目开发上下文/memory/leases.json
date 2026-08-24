@@ -1,36 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000167",
-      "created_at": "2026-08-24T08:58:49+08:00",
-      "excluded_scope": [
-        "real business data, migration apply, provider, external action, release"
-      ],
-      "expected_outputs": [
-        "GET-only operation command readiness, strict Web SDK, disabled visual action drawer, tests and browser evidence"
-      ],
-      "lease_expires_at": "2026-08-24T16:58:48+08:00",
-      "owner": "codex-m1-sole-developer",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "services/aos-api/aos_api/ecommerce_operation_command_contracts.py",
-        "services/aos-api/aos_api/ecommerce_operation_commands.py",
-        "services/aos-api/aos_api/routers/ecommerce_workshop.py",
-        "services/aos-api/tests/test_ecommerce_operation_commands.py",
-        "services/aos-api/tests/test_ecommerce_workshop_operations_api.py",
-        "apps/web/src/api/ecommerceWorkshop/contracts.ts",
-        "apps/web/src/api/ecommerceWorkshop/parser.ts",
-        "apps/web/src/api/ecommerceWorkshop/client.ts",
-        "apps/web/src/api/ecommerceWorkshop/index.ts",
-        "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
-        "apps/web/src/api/ecommerceWorkshop/client.test.ts",
-        "apps/web/src/components/workshop/OperationsPage.tsx",
-        "apps/web/src/components/workshop/OperationsPage.test.tsx",
-        "apps/web/src/styles/45-ecommerce-workshop.css"
-      ],
-      "status": "ACTIVE",
-      "task_id": "w3-12b1-operation-command-readiness-web-20260824"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
