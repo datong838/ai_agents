@@ -469,6 +469,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 `W2-06B1` 文件级纠偏清单：仅修改 `services/aos-api/aos_api/ecommerce_workshop_analyst.py` 与 `services/aos-api/tests/test_ecommerce_workshop_analyst.py`；先增加七 view observation revision 不一致的失败测试，再以最小 guard 禁止将不同 observed revision 静默改写为聚合 revision。保持单 view reader failure 隔离、无 migration、无真实查询、无新真源，完成专项与 Workshop 累计回归后进入 W2-07。
 
+2026-08-24 W2-06B1 闭合检查点：代码已以 `m1@f8a4587` 安全提交。新增跨 view trusted observation revision 集合守卫；当七 view 出现两个及以上 resource revision 时，全部视图以 `ANALYST_SHARED_RESOURCE_REVISION_CONFLICT` 失败关闭，清空 mixed metrics/refs，并禁止把不同 revision 静默改写成最大值。正常同 revision 与单 view tenant drift 语义保持不变。专项 `7 passed`、Workshop 累计 `99 passed`、compileall 与 diff check GREEN；未执行真实 query、迁移或数据写入。下一任务自动进入 W2-07 价格治理工作台。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
