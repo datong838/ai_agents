@@ -1,23 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000227",
-      "created_at": "2026-08-25T04:19:36+08:00",
-      "excluded_scope": [
-        "live migration release provider call real EvalRunner execution Action Approval business data mutation knowledge promotion external effect offline queue flush"
-      ],
-      "expected_outputs": [
-        "W4-03 code tests browser Evidence Delivery Receipt authority CAS Prime readback then automatic W4-04 start"
-      ],
-      "lease_expires_at": "2026-08-26T12:00:00+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "W4-03 EvalContract exact binding semantic Diff same-revision run and transitive publication revocation fail-closed, strict SDK/page integration tests and browser acceptance"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w4-03-eval-exact-binding-diff-run-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }

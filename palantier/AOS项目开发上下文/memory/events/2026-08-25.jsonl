@@ -39,3 +39,5 @@
 {"occurred_at":"2026-08-25T04:18:27+08:00","result":"W4_02_EVIDENCE_DISCLOSURE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w4-02-evidence-citation-disclosure-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T04:18:40+08:00","project_revision":"AOS-000227","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000227","occurred_at":"2026-08-25T04:19:36+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w4-03-eval-exact-binding-diff-run-20260825","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-25T04:52:58+08:00","result":"W4_03_EVAL_CONTRACT_LINEAGE_DIFF_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"workshop-w4-03-eval-exact-binding-diff-run-20260825","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-25T04:53:31+08:00","project_revision":"AOS-000228","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

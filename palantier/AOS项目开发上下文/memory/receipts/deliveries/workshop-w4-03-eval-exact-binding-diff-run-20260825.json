@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000227",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_eval_contracts.py",
+    "services/aos-api/aos_api/aip_eval_authority_store.py",
+    "services/aos-api/aos_api/aip_eval_runner.py",
+    "services/aos-api/alembic/versions/w4_002_eval_contract_run_lineage.py",
+    "apps/web/src/api/aipProductionContracts/index.ts",
+    "apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w4-03-eval-contract-lineage.json"
+  ],
+  "commits": [
+    "b6678dd0bc3824e34ae2c9878f56d3126e58e267",
+    "f7ba330",
+    "1a2ac04"
+  ],
+  "completed_at": "2026-08-25T04:52:58+08:00",
+  "completed_revision": "AOS-000227",
+  "result": "W4_03_EVAL_CONTRACT_LINEAGE_DIFF_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "NO_RELEASE; no live migration EvalRun Provider AgentRun Action Approval business mutation or queue flush",
+    "historical direct-suite runs remain readable but do not claim EvalContract lineage"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w4-03-eval-exact-binding-diff-run-20260825",
+  "verification": [
+    "backend focused 10; cumulative 64; Web targeted 30 and cumulative 221 files 2091 tests; TypeScript build compileall single Alembic head OpenAPI 13 diff GREEN",
+    "built-in browser org-org/dev-project 8 EvalContracts; server Diff revision 1 to 2; three viewports no overflow; create disabled; console errors 0"
+  ]
+}
