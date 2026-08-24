@@ -1,42 +1,37 @@
 {
   "completed": [
-    "W3-12A full code/control authority at m1@db44392,m1@423468c,m1@c81053e",
-    "W2-01B1 tenant-safe OperationCase reader and exact authority slice at m1@21c8a80",
-    "W2-01B1 targeted 15/15 and cumulative relevant 159/159 tests GREEN"
+    "W2-01B2 bounded tenant-safe Order, OrderLine, Shipment and Payment exact-ref readers at m1@cf3f949",
+    "W2-01B2 Inventory composition and five independent ready slices with count reconciliation",
+    "W2-01B2 targeted 13/13 and cumulative relevant 67/67 tests GREEN"
   ],
-  "content_hash": "sha256:0fe40284722cad7df587dec5fda2c6a588669abdb5f3f8bc5502644098e27a34",
+  "content_hash": "sha256:a4bacbf2d7d882b81bd42bf4f17845ad9bfb40f6cb8a936f58d6ace70bf1f23d",
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "W2_01B1_OPERATION_CASE_SLICE_GREEN_TRANSACTION_SLICES_NEXT",
+  "delivery_status": "W2_01B2_TRANSACTION_INVENTORY_SLICES_GREEN_AFTERSALES_READER_NEXT",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/w2-01b-operation-case-slice-code-20260824.json"
-    },
-    {
-      "kind": "commit",
-      "ref": "m1@21c8a80"
+      "ref": "w2-01b2-transaction-slices-code-20260824"
     }
   ],
-  "generated_at": "2026-08-24T06:24:06+08:00",
+  "generated_at": "2026-08-24T08:18:41+08:00",
   "hard_boundaries": [
-    "No real migration execution, business data write, provider effect or release without explicit gate",
-    "OperationCase slice GREEN is not full seven-slice or browser GREEN"
+    "No real business data mutation, provider side effect, migration apply or release without its explicit gate"
   ],
   "incomplete": [
-    "Orders, orderLines, inventory, shipments and payments read composition",
-    "Canonical aftersales original source and W3-12B commands/browser"
+    "Canonical aftersales original persistence/read contract and W2-01B aftersales slice",
+    "W3-12B commands, strict Web SDK/page and browser EvidencePack"
   ],
-  "last_green_gate": "W2_01B1_OPERATION_CASE_SLICE_CODE_GREEN",
-  "next_gate": "W2_01B2_TRANSACTION_INVENTORY_SLICES_CODE",
+  "last_green_gate": "W2_01B2_TRANSACTION_INVENTORY_SLICES_CODE_GREEN",
+  "next_gate": "D0_AFTERSALES_CANONICAL_READER_CODE",
   "next_steps": [
-    "Implement bounded tenant-safe ecom_object readers for Order, OrderLine, Shipment and Payment and compose existing Inventory reader",
-    "Preserve join/count ledger and keep aftersales structurally blocked until canonical originals exist"
+    "Review approved aftersales Event/Object contract and implement a tenant-safe canonical original reader without inferring refunds from transaction fields",
+    "Compose aftersales slice, then close W2-01B and enter W3-12B"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000164",
+  "project_revision": "AOS-000165",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "21c8a80"
+    "aos-platform/m1": "cf3f949"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
