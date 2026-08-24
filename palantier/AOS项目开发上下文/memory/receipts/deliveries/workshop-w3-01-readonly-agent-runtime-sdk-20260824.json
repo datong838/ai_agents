@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000210",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/aipAgentControl/contracts.ts",
+    "apps/web/src/api/aipAgentControl/index.ts",
+    "apps/web/src/api/aipAgentControl/index.test.ts",
+    "apps/web/src/api/aipAgentControl/parser.ts",
+    "apps/web/src/api/aipAgentControl/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/agentReadiness.ts",
+    "apps/web/src/api/ecommerceWorkshop/agentReadiness.test.ts",
+    ".evidence/workshop/2026-08-24-w3-01-readonly-agent-runtime-sdk.json",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/29-W3-01唯一AgentCapabilityHandoff-SDK与ExactRef预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "0337370e96ec603cd0fc1c69c920057ba2bfc8cf"
+  ],
+  "completed_at": "2026-08-24T21:20:54+08:00",
+  "completed_revision": "AOS-000210",
+  "result": "W3-01 canonical read SDK and stateless professional binding projection GREEN; no external effect",
+  "risks": [
+    "operational release remains gated; this wave intentionally exposes no command or external effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-01-readonly-agent-runtime-sdk-20260824",
+  "verification": [
+    "focused 3 files/16 tests; Workshop API 11 files/58 tests; full Web 220 files/2058 tests; TypeScript and production build GREEN",
+    "built-in browser /workshop and /workshop/task-cockpit GREEN with zero console errors"
+  ]
+}

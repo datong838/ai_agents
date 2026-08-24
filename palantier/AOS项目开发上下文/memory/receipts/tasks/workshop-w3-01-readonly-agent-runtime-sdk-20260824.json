@@ -1,0 +1,20 @@
+{
+  "base_revision": "AOS-000210",
+  "created_at": "2026-08-24T21:08:32+08:00",
+  "excluded_scope": [
+    "no Run/Handoff command; no database migration; no provider or external action; no real business data write; no second Store or BFF"
+  ],
+  "expected_outputs": [
+    "exact Skill Logic Binding AgentRun Handoff read contracts with strict parsers and fail-closed Workshop adapter",
+    "targeted and cumulative Web verification plus existing Task Cockpit browser regression"
+  ],
+  "lease_expires_at": "2026-08-27T23:59:59+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "W3-01 unique aipAgentControl read-only AgentRun Handoff Decision strict SDK and Workshop atomic-skill readiness adapter",
+    "docs ADR 29 and D-waves W3-01 status; tests and evidence"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-01-readonly-agent-runtime-sdk-20260824"
+}
