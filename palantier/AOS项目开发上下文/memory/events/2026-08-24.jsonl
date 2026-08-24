@@ -208,3 +208,6 @@
 {"base_revision":"AOS-000214","occurred_at":"2026-08-24T23:12:37+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-04-production-context-freeze-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T23:31:39+08:00","result":"COMPLETED_CODE_CONTROL_GREEN_NO_RELEASE_MIGRATION_NOT_APPLIED","schema":"aos-memory-event/v1","task_id":"workshop-w3-04-production-context-freeze-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T23:32:00+08:00","project_revision":"AOS-000215","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000215","occurred_at":"2026-08-24T23:36:45+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-05-staged-production-start-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T23:54:57+08:00","result":"BACKEND_EXACT_CHAIN_CODE_CONTROL_GREEN_STRICT_SDK_UI_PENDING_NO_RELEASE_MIGRATION_NOT_APPLIED","schema":"aos-memory-event/v1","task_id":"workshop-w3-05-staged-production-start-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T23:55:42+08:00","project_revision":"AOS-000216","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

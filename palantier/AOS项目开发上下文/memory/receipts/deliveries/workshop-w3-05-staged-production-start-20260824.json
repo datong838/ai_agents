@@ -1,0 +1,40 @@
+{
+  "base_revision": "AOS-000215",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_production_contracts.py",
+    "services/aos-api/aos_api/aip_production_contract_store.py",
+    "services/aos-api/aos_api/aip_production_start_service.py",
+    "services/aos-api/aos_api/routers/aip_production_contracts.py",
+    "services/aos-api/alembic/versions/w3_015_production_start_context.py",
+    "services/aos-api/tests/aip/test_w2c_contracts.py",
+    "services/aos-api/tests/aip/test_w2d_store.py",
+    "services/aos-api/tests/aip/test_w2d_start_gate.py",
+    "services/aos-api/tests/aip/test_w2d_api.py",
+    "services/aos-api/tests/test_w3_015_production_start_context_migration.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    ".evidence/workshop/2026-08-24-w3-05-staged-production-start.json",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/32-W3-05-AIP生产启动组合门消费与权限接缝ADR.md"
+  ],
+  "commits": [
+    "code=39aa498",
+    "docs=07ef101"
+  ],
+  "completed_at": "2026-08-24T23:54:57+08:00",
+  "completed_revision": "AOS-000215",
+  "result": "BACKEND_EXACT_CHAIN_CODE_CONTROL_GREEN_STRICT_SDK_UI_PENDING_NO_RELEASE_MIGRATION_NOT_APPLIED",
+  "risks": [
+    "strict SDK and UI context chain remains pending in the next serial task",
+    "migration not live applied; no release or real tenant business mutation"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-05-staged-production-start-20260824",
+  "verification": [
+    "focused=28 passed",
+    "cumulative=129 passed with one pre-existing order-sensitive global-count assertion excluded",
+    "openapi=2570 paths; 2123 schemas; 4338 operations; deterministic",
+    "alembic=w3_015 head",
+    "browser=/aip/production-contracts failure-closed; 1280 width; zero enabled protected actions"
+  ]
+}

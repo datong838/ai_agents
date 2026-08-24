@@ -1,43 +1,43 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W3-04 exact ProductionProfile provenance and active-installation resolution",
-    "Workshop typed four-contract freeze adapter with Preparation and Brief lineage",
-    "176 cumulative tests plus deterministic OpenAPI and built-in browser acceptance"
+    "ProductionContext exact ref pinned through compile Plan Preview and StartDecision",
+    "explicit production start role gate with drift and zero-side-effect tests",
+    "129 cumulative tests plus deterministic OpenAPI and built-in browser failure-closed acceptance"
   ],
   "current_phase": "S3 Workshop public production contracts serial implementation",
-  "delivery_status": "S3_W3_04_PRODUCTION_CONTEXT_FREEZE_CODE_GREEN_S3_IN_PROGRESS_NO_RELEASE_MIGRATION_NOT_APPLIED",
+  "delivery_status": "S3_W3_05_BACKEND_EXACT_CHAIN_CODE_GREEN_STRICT_SDK_UI_PENDING_NO_RELEASE_MIGRATION_NOT_APPLIED",
   "evidence": [
     {
       "kind": "code",
-      "ref": ".evidence/workshop/2026-08-24-w3-04-production-context-freeze.json"
+      "ref": ".evidence/workshop/2026-08-24-w3-05-staged-production-start.json"
     },
     {
       "kind": "receipt",
-      "ref": "workshop-w3-04-production-context-freeze-20260824"
+      "ref": "workshop-w3-05-staged-production-start-20260824"
     }
   ],
-  "evidence_cutoff": "2026-08-24T23:31:39+08:00",
+  "evidence_cutoff": "2026-08-24T23:54:57+08:00",
   "hard_boundaries": [
     "No live migration release Provider Run Action Handoff Approval or business mutation",
-    "Only active tenant installation may resolve an exact ProductionProfile"
+    "Historical nullable provenance remains read compatible but cannot authorize start"
   ],
   "incomplete": [
-    "W3-05 ProductionContext propagation through compile Preview Approval and start",
+    "W3-05 strict SDK and UI context selection and contribution display",
     "live migration and release remain unauthorized"
   ],
-  "last_green_gate": "W3_04_PRODUCTION_CONTEXT_FREEZE_CODE_GREEN_NO_RELEASE",
-  "next_gate": "W3_05_STAGED_COMPILE_PREVIEW_APPROVAL_START",
+  "last_green_gate": "W3_05_BACKEND_EXACT_CHAIN_CODE_GREEN_NO_RELEASE",
+  "next_gate": "W3_05_STRICT_SDK_UI_CONTEXT_CHAIN",
   "next_steps": [
-    "Review W3-05 ADR against current compiler Preview Action and Start authorities",
-    "Implement the first dependency-satisfied W3-05 slice without external side effects"
+    "Update strict TypeScript SDK parsers and contracts for exact context provenance",
+    "Bind compile to selected frozen ready ProductionContext and verify browser behavior"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000215",
+  "project_revision": "AOS-000216",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "49bd762",
-    "docs": "9c431d1"
+    "code": "39aa498",
+    "docs": "07ef101"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -47,5 +47,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T23:32:00+08:00"
+  "updated_at": "2026-08-24T23:55:42+08:00"
 }
