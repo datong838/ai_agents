@@ -119,6 +119,7 @@ SavedExplorationShareGrant
 | 2 | `services/aos-api/aos_api/routers/oe_enhancements.py` | 增加服务端验证后的 shareRef → exact exploration 只读端点，并传入 Principal markings。 |
 | 3 | `services/aos-api/tests/aip/test_w_l16_saved_exploration_share.py` | 补充私有资产组合读、markings/purpose/hash/revoke/expiry 失败关闭。 |
 | 3a | `packages/contracts/openapi/v1.yaml` 与 `v1.inventory.json` | 按确定性导出器同步新的只读路由合同，不手工编辑生成物。 |
+| 3b | `scripts/export_openapi.py` | 将新增的唯一 GET 纳入 route/operation 总数守卫；duplicate allowlist 不变。 |
 | 4 | `apps/web/src/api/client.ts` | 增加不读写离线快照的 authoritative GET；撤销/到期 grant 不得被旧缓存复活。 |
 | 5 | `apps/web/src/api/ontologyExplorationAssets.ts` | 增加 strict `ShareGrantView` parser 和 resolve API；拒绝多字段、非 active、租户/引用/哈希矛盾。 |
 | 6 | `apps/web/src/api/ontologyExplorationAssets.test.ts` | 补充 active 正向与 malformed/status/hash/revision 失败关闭。 |
