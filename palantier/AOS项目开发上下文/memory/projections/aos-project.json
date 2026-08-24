@@ -1,43 +1,37 @@
 {
   "completed": [
-    "W3-12 OperationCase classification reversible membership SLA kill authority and command observation code browser acceptance",
-    "W3-12 backend focused 65 cumulative 218 Web 221 files 2084 tests OpenAPI deterministic TypeScript build and three-viewport browser GREEN"
+    "W3-13 analyst authority strict contracts, tenant/CAS store, fail-closed canonical Task materializer boundary and ContributionLineage implemented",
+    "W3-13 backend focused 15 and cumulative 282, Web 221 files/2084 tests, TypeScript/build/OpenAPI/Alembic/browser three-viewports GREEN"
   ],
-  "content_hash": "sha256:00224d9cc3c06bfb4673f58793cde96dff15b71fa08cf778536e671a73546082",
+  "content_hash": "sha256:8b7018acf8bd43ac05745feb4279a33f9875549d7c1017c4ec9077444d86c832",
   "current_phase": "S3 Workshop domain authority serial implementation",
-  "delivery_status": "S3_W3_12_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "delivery_status": "S3_W3_13_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
-      "kind": "evidence",
-      "ref": ".evidence/workshop/2026-08-25-w3-12-unified-operations-authority.json"
-    },
-    {
-      "kind": "receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w3-12-unified-operations-authority-20260825.json"
+      "kind": "workshop_w3_13",
+      "ref": ".evidence/workshop/2026-08-25-w3-13-analyst-authority.json"
     }
   ],
-  "generated_at": "2026-08-25T02:55:55+08:00",
+  "generated_at": "2026-08-25T03:22:00+08:00",
   "hard_boundaries": [
-    "No live migration release Provider AgentRun Action Approval Handoff takeover business mutation refund kill or offline queue flush was executed",
-    "Operation domain authority is not an atomic Skill and absent exact AgentRun SkillBinding LogicRevision remains unknown"
+    "NO_RELEASE; no live migration, Provider, AgentRun, canonical Task creation, Action, Approval, Handoff, takeover, business mutation, offline queue flush, or MemoryCandidate promotion"
   ],
   "incomplete": [
-    "W3-13 W3-14 and S4 W4-01 through W4-08 remain serially pending",
-    "release live migration Provider AgentRun Action Approval Handoff takeover refund kill and real business mutation remain gated"
+    "W3-14 same-release three-domain authority and public orchestration cumulative gate remains",
+    "S4 W4-02 through W4-08 remain; W4-01 early bridge is already code-control green"
   ],
-  "last_green_gate": "W3_12_UNIFIED_OPERATIONS_CODE_BROWSER_GREEN_NO_RELEASE",
-  "next_gate": "W3_13_ANALYST_AUTHORITY_CLOSURE",
+  "last_green_gate": "W3_13_ANALYST_AUTHORITY_CODE_BROWSER_GREEN_NO_RELEASE",
+  "next_gate": "W3_14_THREE_DOMAIN_CUMULATIVE_GATE",
   "next_steps": [
-    "Start W3-13 analyst authority closure immediately and preserve atomic Skill Logic coworker Workshop contribution semantics",
-    "Continue W3-14 then automatically enter S4 without ordinary wave-boundary pause"
+    "Start W3-14 immediately; after S3 acceptance closes, automatically continue S4 W4-02 without pausing"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000224",
+  "project_revision": "AOS-000225",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "86785e29566a6d8b157afcab6ca3aef2c87dc60c",
-    "docs": "0f1cd4a",
-    "evidence": "45f5a33"
+    "code": "7138b83",
+    "docs": "a113f01",
+    "evidence": "80002eb"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
