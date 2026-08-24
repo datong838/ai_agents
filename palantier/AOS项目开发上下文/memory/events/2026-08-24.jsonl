@@ -134,3 +134,6 @@
 {"base_revision":"AOS-000194","occurred_at":"2026-08-24T17:07:14+08:00","schema":"aos-memory-event/v1","task_id":"w2-05c-media-studio-strict-web-visual-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T17:20:16+08:00","result":"W2-05C strict Web media studio and formal visual acceptance GREEN","schema":"aos-memory-event/v1","task_id":"w2-05c-media-studio-strict-web-visual-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T17:20:48+08:00","project_revision":"AOS-000195","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000195","occurred_at":"2026-08-24T17:23:16+08:00","schema":"aos-memory-event/v1","task_id":"w2-06a-analyst-contract-shell-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T17:29:06+08:00","result":"W2-06A strict analyst seven-view contract shell GREEN","schema":"aos-memory-event/v1","task_id":"w2-06a-analyst-contract-shell-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T17:29:07+08:00","project_revision":"AOS-000196","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

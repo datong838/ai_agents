@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000195",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_analyst_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_analyst.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_analyst.py"
+  ],
+  "commits": [
+    "19e043f"
+  ],
+  "completed_at": "2026-08-24T17:29:06+08:00",
+  "completed_revision": "AOS-000195",
+  "result": "W2-06A strict analyst seven-view contract shell GREEN",
+  "risks": [
+    "GET-only shell; no metric, insight, plan, task, effect, memory, migration, query job, or real-data side effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-06a-analyst-contract-shell-20260824",
+  "verification": [
+    "29 focused/API/OpenAPI passed; 96 Workshop cumulative passed; compileall and diff check GREEN"
+  ]
+}

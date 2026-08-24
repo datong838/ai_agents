@@ -451,6 +451,18 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-05C 闭合检查点：代码已以 `m1@da475ae` 安全提交。Web 端新增唯一 strict media-studio schema/parser/client 和正式三 Tab 只读页面，固定 `context/execution/delivery` 与 module/capability/assignee/provider/budget/publication 六轴；parser 对额外字段、轴顺序、tenant/cutoff、target/ready/blocked 伪状态、ledger 与 page 守恒全部失败关闭。页面只展示 lifecycle、exact authority、gap 与 blocker，写入口计数恒为零，不提供生成、批准、开始、取消、发布、结算或对账命令。TypeScript noEmit、专项 `3/3`、Web 累计 `211 files / 2030 tests` GREEN；内置浏览器完成 blocked/empty/nonempty 三态及 `390/768/1024/1280/1440/1920` 六档矩阵，三 Tab、六轴、单 H1、零写按钮、零横向溢出。未触发 Provider、发布、结算、迁移或真实业务数据副作用。下一任务自动进入 W2-06 分析师只读基座。
 
+### 3.18 S2 / W2-06 经营参谋七视图只读基座
+
+本波只实现 87 号 ADR 冻结的 `GET /v1/ecommerce-workshop/views/analyst`，不把 115～119 号新增“生意探究”93 项扩展偷渡进当前 W2-06。七 view 固定为 `overview/drivers/diagnosis/plan/effects/evidence/quality`，共享 tenant、`resourceRevision`、`evaluatedAt` 与 `dataCutoff`；每个 view 分别披露 metric source/query、model、Eval、plan materialization、professional-module Handoff readiness，任一 GREEN 不覆盖另一项 RED。
+
+- `W2-06A`：新增 strict Python DTO、GET-only service 与 route。指标最小合同包含 exact definition/observation refs、unit/grain/window/timezone/cohort/filter、numerator/denominator、source run/cutoff/quality/reconciliation/lineage；缺项时只允许 unknown/blocked，不得伪造 0。七 view canonical order、同 revision/cutoff、ledger 与 page 守恒失败关闭。
+- `W2-06B`：增加 bounded canonical reader 组合边界；只消费现有 Metric/Evidence/Plan/Task/Effect exact refs，不新增 Metric、Insight、Decision、GrowthPlan、Task、EffectReview、Memory 或 SavedExploration 真源。单 view 读取失败独立降级，不污染其他 view。
+- `W2-06C`：新增 strict Web schema/parser/client 与正式经营参谋只读页面；视觉对照 `workshop-analyst.html` 保留增长指挥中心、七 view、证据/质量/不确定性和计划/效果层次，但不提供任意 SQL、保存、洞察/计划 mutation、批准、materialize、dispatch 或 Memory promote。完成 blocked/empty/nonempty、键盘、三视口与六档响应式浏览器验收。
+
+文件级范围：`services/aos-api/aos_api/ecommerce_workshop_analyst*.py`、`services/aos-api/aos_api/routers/ecommerce_workshop.py`、对应 API/contract/OpenAPI 测试；`apps/web/src/api/ecommerceWorkshop/{contracts,parser,client}.ts`、`apps/web/src/components/workshop/{AnalystPage,EcommerceWorkshopHost}.tsx`、Workshop 样式与测试。禁止 migration、真实 query job、真实分析 Run、Provider 或业务数据写入。
+
+2026-08-24 W2-06A 闭合检查点：代码已以 `m1@19e043f` 安全提交。新增 strict `analyst-view/v1`，固定七 view、五 readiness 轴、同一 `resourceRevision/dataCutoff`、指标 exact definition/observation/source-run/quality/reconciliation refs 与完整 unit/grain/window/timezone/cohort/filter/numerator/denominator/lineage 语义；non-ready 指标禁止携带任何数值，因此 unknown 不可能伪装为 0。GET-only 路由拒绝 query scope 注入，并由 active `ecommerce.analyst` installation 与 principal tenant 裁决。专项/API/OpenAPI `29 passed`、Workshop 累计 `96 passed`、compileall 与 diff check GREEN；未新增真源、迁移、QueryJob 或真实数据副作用。下一子波自动进入 W2-06B bounded reader。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000195",
+  "created_at": "2026-08-24T17:23:16+08:00",
+  "excluded_scope": [
+    "services/aos-api/alembic/versions",
+    "real-business-data"
+  ],
+  "expected_outputs": [
+    "Strict GET-only seven-view analyst contract shell and focused tests"
+  ],
+  "lease_expires_at": "2026-08-25T06:00:00+08:00",
+  "owner": "aos-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_analyst_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_analyst.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_analyst.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/test_openapi_contract.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-06a-analyst-contract-shell-20260824"
+}
