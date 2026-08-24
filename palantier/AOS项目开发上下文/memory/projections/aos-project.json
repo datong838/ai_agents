@@ -1,43 +1,43 @@
 {
   "completed": [
-    "W3-07 immutable Responsibility successor and maker-checker runtime takeover assignment lease fence authority",
-    "Task Cockpit four-axis structural observed-readiness reassign takeover projection with strict SDK and fail-close browser acceptance",
-    "backend 54 tests Web 2068 tests build migration interval SQL OpenAPI and Python compile GREEN"
+    "W3-08 immutable dispatch intent maker-checker confirmation and Task priority decision CAS",
+    "Task Cockpit strict dispatch contribution observation and canonical approval navigation reuse",
+    "backend 60 tests plus 2 subtests Web 2068 tests build migration interval SQL and browser fail-close GREEN"
   ],
-  "content_hash": "sha256:6222e2a2bbb5fd0b4bfa6e1be49fa9429dc72ddbb5cc96e4c03184acf0009004",
+  "content_hash": "sha256:e9ecea469fb1d60b5a349ed13197bb34f422266163217e7b5e410a39e6c54132",
   "current_phase": "S3 Workshop public production contracts serial implementation",
-  "delivery_status": "S3_W3_07_RESPONSIBILITY_ASSIGNMENT_CODE_BROWSER_GREEN_NO_RELEASE",
+  "delivery_status": "S3_W3_08_DISPATCH_CONTROL_CODE_BROWSER_GREEN_NO_RELEASE",
   "evidence": [
     {
       "kind": "code",
-      "ref": ".evidence/workshop/2026-08-25-w3-07-responsibility-assignment.json"
+      "ref": ".evidence/workshop/2026-08-25-w3-08-dispatch-control.json"
     },
     {
       "kind": "receipt",
-      "ref": "workshop-w3-07-responsibility-readiness-reassign-takeover-20260825"
+      "ref": "workshop-w3-08-dispatch-priority-approval-navigation-20260825"
     }
   ],
-  "generated_at": "2026-08-25T01:03:37+08:00",
+  "generated_at": "2026-08-25T01:33:17+08:00",
   "hard_boundaries": [
     "No live migration release Provider AgentRun Action Approval Handoff takeover or real business mutation was executed",
     "Runtime active operational readiness remains current-fact gated and code GREEN is not release GREEN"
   ],
   "incomplete": [
-    "W3-08 daily dispatch intent priority decision and approval navigation command layering",
+    "W3-09 common production UI component package and accessibility closure",
     "live migration runtime start external effects and release remain gated"
   ],
-  "last_green_gate": "W3_07_RESPONSIBILITY_ASSIGNMENT_CODE_BROWSER_GREEN_NO_RELEASE",
-  "next_gate": "W3_08_DAILY_DISPATCH_PRIORITY_APPROVAL_NAVIGATION",
+  "last_green_gate": "W3_08_DISPATCH_CONTROL_CODE_BROWSER_GREEN_NO_RELEASE",
+  "next_gate": "W3_09_COMMON_PRODUCTION_UI",
   "next_steps": [
-    "Re-review W3-08 ADR against current m1 authority and implement the smallest serial gap without waiting for another developer",
+    "Start W3-09 immediately under the sole-developer serial authority and implement the smallest common production UI package gap",
     "Preserve atomic Skill Logic coworker binding Workshop contribution lineage and fail closed at all runtime side-effect gates"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000219",
+  "project_revision": "AOS-000220",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "2871891",
-    "docs": "9c0d402"
+    "code": "879d815",
+    "docs": "432033a"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
