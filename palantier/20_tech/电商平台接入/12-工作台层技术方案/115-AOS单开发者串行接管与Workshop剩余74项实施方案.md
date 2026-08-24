@@ -440,12 +440,14 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 串行文件级清单：
 
 - `W2-05A`：新增 `ecommerce_workshop_media_studio_contracts.py`、`ecommerce_workshop_media_studio.py` 及 API 测试；冻结三个 canonical slice、六类 readiness、exact ref、target-state 缺口、family/attempt/usage 数量守恒、同 cutoff、稳定分页与 GET-only 路由。缺失 canonical authority 时逐轴 blocked，不伪造 target achieved；同步 OpenAPI 与 operation inventory。
-- `W2-05B`：新增 tenant-bound bounded reader，只读取 canonical TaskRun/Stage attempt、Artifact relation、Usage/Settlement 与 Action/Effect authority；读不到的轴独立失败关闭，可信空只在 reader 可用时成立。该子波只用 fake connection 验证 repeatable-read、租户漂移、唯一性、币种分桶、unknown/reconcile 和 family/attempt 守恒，不连接或写真实库，不 apply migration。
+- `W2-05B`：新增 tenant-bound bounded composition reader，只消费 canonical TaskRun/Stage attempt、Artifact relation、Usage/Settlement 与 Action/Effect reader 返回的 exact refs，不创建媒体聚合表或第二 authority；读不到的轴独立失败关闭，可信空只在 reader 可用时成立。该子波用 fake canonical reader 验证 tenant/cutoff/limit、唯一性、unknown/conflict 与六轴守恒，不连接或写真实库，不 apply migration。真实 SQL 的 repeatable-read、币种分桶和 family/attempt/Usage 细节仍由各 canonical authority 自己负责，Workshop 不复制其存储职责。
 - `W2-05C`：在唯一 strict Web SDK 增加 media-studio parser/client，新增正式三 Tab 只读页面并挂载 `ecommerce.media-studio`；页面保留生命周期、context/execution/delivery 层次和 blocker/evidence，但移除 prepare/freeze/compile/approve/start/claim/pause/resume/cancel/publish/settle/reconcile。完成 blocked/empty/nonempty、390/768/1024/1280/1440/1920 浏览器矩阵、专项/累计回归与方案一致性复审。
 
 本波禁止把通用 production contract、ModelRoute 目录、Provider accepted、HTTP 2xx、TaskRun succeeded、静态视觉稿或 target-state 当作媒体交付/发布证明。页面和 API 必须明确 `degraded/read-only`，不同币种不自动合计，unknown 必须进入 reconcile；真实 Provider、发布、预算扣减、迁移和业务数据变更均留在后续独立治理门。
 
 2026-08-24 W2-05A 闭合检查点：代码已以 `m1@46a1193` 安全提交。新增 strict `media-studio-view/v1`，固定 `context/execution/delivery` canonical order、module/capability/assignee/provider/budget/publication 六轴与同 cutoff；每个 target axis 必须同时给出 target contract、gap 和 blocker，且禁止 exact ref，因此 target 不可能计入 ready/achieved。分母 ledger 强制 ready/target/blocked/unknown/conflict/not-applicable 不相交守恒，page 只计 exact refs。GET-only 路由通过 active installation 与 principal tenant 裁决，拒绝 query scope 注入和 POST。专项/API/OpenAPI `27 passed`、Workshop 累计 `87 passed`、compileall 与 diff check GREEN；未新增 Job/Artifact/Provider/Usage 真源，未连接真实库或触发媒体/发布副作用。下一子波自动进入 W2-05B bounded reader。
+
+2026-08-24 W2-05B 闭合检查点：代码已以 `m1@08ec27e` 安全提交。新增 bounded canonical-reader composition boundary，仅接受 tenant、同一 exact cutoff、limit=100、canonical 六轴与最多 100 个唯一 exact refs；不新增媒体聚合表。三个 slice 独立调用 reader，单 slice tenant/cutoff/type/duplicate drift 只使本 slice 回到 target-blocked，不污染其他 slice；reader 可用且六轴均 ready/not-applicable 时才允许可信 ready/empty。ledger 现在严格等于六轴 ready/target/blocked/unknown/conflict/not-applicable 分区，authority page 独立统计 exact refs，unknown/conflict 不计 ready。专项/邻接 `25 passed`、Workshop 累计 `90 passed`、compileall 与 diff check GREEN；未连接或写真实数据库、未触发 Provider/发布/结算。下一子波自动进入 W2-05C strict Web 与正式视觉验收。
 
 ## 4. 每个 Loop
 

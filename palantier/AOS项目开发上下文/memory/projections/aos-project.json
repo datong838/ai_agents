@@ -1,38 +1,38 @@
 {
   "completed": [
-    "W2-05A media studio three-slice strict contract and GET-only shell"
+    "W2-05B tenant-bound media canonical reader composition"
   ],
-  "content_hash": "sha256:f4750cbc78530fc5663da6524e4163c859ca3c8ddedbb1e32e75c106b132d86e",
+  "content_hash": "sha256:395061e7e24e57af71b9aa72e563252e45859d86b793652a00356ed3d211766b",
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S2",
-  "delivery_status": "W2_05A_MEDIA_STUDIO_CONTRACT_SHELL_GREEN_OPERATIONAL_NOT_INFERRED",
+  "delivery_status": "W2_05B_MEDIA_STUDIO_BOUNDED_READER_GREEN_OPERATIONAL_NOT_INFERRED",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "w2-05a-media-studio-contract-shell-20260824"
+      "ref": "w2-05b-media-studio-bounded-reader-20260824"
     },
     {
       "kind": "verification",
-      "ref": "Media studio 27 focused and 87 cumulative tests GREEN"
+      "ref": "Media reader 25 focused and 90 cumulative tests GREEN"
     }
   ],
-  "generated_at": "2026-08-24T17:03:28+08:00",
+  "generated_at": "2026-08-24T17:06:50+08:00",
   "hard_boundaries": [
-    "Target state is excluded from ready achieved delivered and published counts",
-    "No media provider publication migration budget mutation or real data side effect"
+    "Workshop composes canonical readers and does not create a second media authority",
+    "Unknown conflict and target remain excluded from ready achieved delivered and published"
   ],
   "incomplete": [
-    "W2-05B..W2-10 remaining S2 readonly foundations"
+    "W2-05C..W2-10 remaining S2 readonly foundations"
   ],
-  "last_green_gate": "W2_05A_MEDIA_STUDIO_CONTRACT_SHELL_GREEN",
-  "next_gate": "W2_05B_MEDIA_STUDIO_BOUNDED_READER",
+  "last_green_gate": "W2_05B_MEDIA_STUDIO_BOUNDED_READER_GREEN",
+  "next_gate": "W2_05C_MEDIA_STUDIO_STRICT_WEB_VISUAL",
   "next_steps": [
-    "Implement W2-05B tenant-bound bounded reader"
+    "Implement W2-05C strict Web client and formal media studio page"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000193",
+  "project_revision": "AOS-000194",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "46a1193"
+    "aos-platform": "08ec27e"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

@@ -128,3 +128,6 @@
 {"base_revision":"AOS-000192","occurred_at":"2026-08-24T16:59:33+08:00","schema":"aos-memory-event/v1","task_id":"w2-05a-media-studio-contract-shell-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T17:03:28+08:00","result":"W2_05A_MEDIA_STUDIO_CONTRACT_SHELL_GREEN","schema":"aos-memory-event/v1","task_id":"w2-05a-media-studio-contract-shell-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T17:03:28+08:00","project_revision":"AOS-000193","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000193","occurred_at":"2026-08-24T17:04:05+08:00","schema":"aos-memory-event/v1","task_id":"w2-05b-media-studio-bounded-reader-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T17:06:50+08:00","result":"W2_05B_MEDIA_STUDIO_BOUNDED_READER_GREEN","schema":"aos-memory-event/v1","task_id":"w2-05b-media-studio-bounded-reader-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T17:06:50+08:00","project_revision":"AOS-000194","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
