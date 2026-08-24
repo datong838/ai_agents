@@ -317,6 +317,22 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@62c9090` 安全提交。Shell 现在只读取一次 tenant-bound canonical `SourceReadinessEnvelope`，数据源面板和 Task Cockpit 消费同一易失响应；Task evaluatedAt/taskCutoff 与 Source checkedAt/cutoffAt 分别展示，blocked、0/12 与 `receiptRef=null` 均保持失败关闭。后端 Workshop 累计 `79 passed`，Web 累计 `205 files / 2017 tests`，production build `320 modules`，OpenAPI deterministic 与合同 `13 passed`；内置浏览器 1280/1440/1920 三档零横向溢出、唯一 H1、旧 blocker 消失、新 independent-snapshot warning/无 exact EvidencePack Receipt 可见、零禁止任务命令，本次页面加载后 console error 为 0。正式视觉稿复审确认新增摘要位于权威指标与只读命令边界之间，没有复制经营数字、在线角色或示例数据。Delivery Receipt 为 `w2-02f-source-readiness-business-context-read-model-20260824`。W2-02 的代码轴已累计闭合，但真实非空 Step/Checkpoint 与目标态完整 EvidencePack 尚无授权证据，因此 96 项主计数诚实保持 `22/96`；不阻塞串行开发，下一子波立即进入 `W2-03`。
 
+### 3.10 S2 / W2-03A 内容活动只读合同与失败关闭 API 壳
+
+复核 `11` 号内容与活动技术方案、`84` 号 W2-03 预检 ADR、`99` 号 W3-11 authority 预检 ADR 和 `07` 号领域读模型合同后，冻结唯一 GET-only 表面 `GET /v1/ecommerce-workshop/views/content-campaign`。响应必须在同一 tenant/evaluatedAt/dataCutoff 下显式分离 `plan/calendar/content` 三个切片；CampaignRevision、CalendarEntry、MasterContentIntent 是三个独立 canonical authority，ContentVariant 只能是 Artifact revision 的读投影，不得自建 body 真源。
+
+本子波先闭合可验证的严格合同/API 壳：
+
+- 新增 `services/aos-api/aos_api/ecommerce_workshop_content_campaign_contracts.py`，定义 strict camelCase envelope、三切片固定顺序、aware timestamp、exact authority ref、blocker、eligible/attached/unmatched/conflicted 守恒与稳定无假 cursor 分页；
+- 新增 `services/aos-api/aos_api/ecommerce_workshop_content_campaign.py`，仅组合 Principal tenant 下的失败关闭壳。当 canonical reader/Receipt 未实现时，三切片均返回结构化 `blocked`、明确 `CANONICAL_*_AUTHORITY_NOT_AVAILABLE`、`eligible=0/items=[]`；这只表示没有可评估的 authority，不能将空数据表述为业务结果为零或 readiness GREEN；
+- 扩展 `services/aos-api/aos_api/routers/ecommerce_workshop.py`，使用 `ecommerce.content-campaign` 安装门、Principal 租户、拒绝任何 query scope 注入，且 OpenAPI 仅暴露 operationId `ecommerceWorkshopContentCampaignViewGet` 的 GET；
+- 新增 `services/aos-api/tests/test_ecommerce_workshop_content_campaign.py`，并扩展 `test_ecommerce_workshop_operations_api.py`，覆盖 strict extra/missing、三切片顺序、守恒、false-ready、naive time、tenant 绑定、安装失败、scope 注入和非 GET 拒绝；
+- 确定性重生 `packages/contracts/openapi/v1.generated.json` 与 `v1.inventory.json`，仅接受这一条 GET 的可解释差量。
+
+禁止项：本子波不新增/执行 migration，不写真实业务数据，不返回 prompt/body/token/PII/Provider id，不创建或修订 Campaign/Calendar/Intent/Artifact，不排期、审批、启动、发布或回滚。A 壳 GREEN 后自动进入 W2-03B canonical authority foundation；由当前唯一开发者补齐必需跨层代码，但 migration apply、真实数据写入与发布仍必须保持独立门。
+
+2026-08-24 闭合检查点：代码已以 `m1@b35f410` 安全提交。唯一 GET-only 表面已按 Principal tenant 与 `ecommerce.content-campaign` 安装门关闭 scope 注入；plan/calendar/content 三切片在 authority reader/Receipt 未实现时均返回结构化 blocked、空 items 与 `eligible=0`，未把无可评估 authority 冒充业务零值或 GREEN。专项合同/API `17 passed`，Workshop 后端累计 `75 passed`，OpenAPI `4325` operations 确定性导出/检查与 diff check GREEN；内置浏览器累计回归在 1280/1440/1920 三档均零横向溢出、唯一 H1、零可执行禁止类副作用按钮，本次重载新增 console error 为 0。本子波不新增/执行 migration，没有任何 Campaign/Calendar/Intent/Artifact 写入、排期、发布或 Provider 调用。Delivery Receipt 为 `w2-03a-content-campaign-readonly-contract-shell-20260824`；W2-03 主项继续未勾选，96 项主计数保持 `22/96`，下一子波立即进入 W2-03B canonical authority foundation。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

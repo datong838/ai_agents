@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000179",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_content_campaign_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_content_campaign.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_content_campaign.py",
+    "services/aos-api/tests/test_ecommerce_workshop_operations_api.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json"
+  ],
+  "commits": [
+    "aos-platform/m1@b35f410"
+  ],
+  "completed_at": "2026-08-24T15:15:12+08:00",
+  "completed_revision": "AOS-000179",
+  "result": "W2-03A strict tenant-bound GET-only content-campaign plan/calendar/content shell sealed; missing canonical authorities remain explicitly blocked and no business zero or GREEN is fabricated.",
+  "risks": [
+    "Canonical CampaignRevision, CalendarEntry and MasterContentIntent readers/Receipts are not implemented yet; all three slices intentionally remain blocked.",
+    "W2-03 main task remains open pending authority, ContentVariant Artifact projection, strict Web and formal visual acceptance."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-03a-content-campaign-readonly-contract-shell-20260824",
+  "verification": [
+    "Focused contract/API: 17 passed",
+    "Workshop backend cumulative: 75 passed",
+    "OpenAPI deterministic: 4325 operations",
+    "Built-in browser cumulative regression 1280/1440/1920: no horizontal overflow, one H1, zero enabled forbidden side-effect buttons, current reload console errors 0"
+  ]
+}

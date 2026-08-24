@@ -1,40 +1,39 @@
 {
   "completed": [
-    "W2-02D exact ActionReceipt unknown/reconcile read model and three-viewport visual acceptance",
-    "W2-02E exact AssigneeResolutionReceipt observation-only readiness read model and three-viewport visual acceptance",
-    "W2-02F canonical SourceReadiness shared business-context snapshot and three-viewport visual acceptance"
+    "W2-03A tenant-bound GET-only content-campaign strict contract/API shell"
   ],
-  "content_hash": "sha256:edaf4141483d8e328e807d1fdcf86d0710a3ed15e110e8e99dd8e51cbf63d2e1",
+  "content_hash": "sha256:cc958da2f9ac02f5cfa705457056670a91a971c62b092a730867a1fbfe9a4182",
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S2",
-  "delivery_status": "W2_02F_SOURCE_READINESS_BUSINESS_CONTEXT_CODE_AND_VISUAL_GREEN",
+  "delivery_status": "W2_03A_CONTENT_CAMPAIGN_READONLY_CONTRACT_SHELL_GREEN_AUTHORITIES_BLOCKED",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "w2-02f-source-readiness-business-context-read-model-20260824"
+      "ref": "w2-03a-content-campaign-readonly-contract-shell-20260824"
     },
     {
       "kind": "verification",
-      "ref": "backend 79 passed; Web 205 files/2017 tests; build 320 modules; deterministic OpenAPI 13 passed; built-in browser 1280/1440/1920 GREEN"
+      "ref": "backend 75 passed; OpenAPI 4325 deterministic; built-in browser 1280/1440/1920 cumulative regression GREEN"
     }
   ],
-  "generated_at": "2026-08-24T15:00:32+08:00",
+  "generated_at": "2026-08-24T15:15:28+08:00",
   "hard_boundaries": [
-    "No real DB business mutation, migration apply, TaskRun start, Action execution, provider call, refund, replay, release, or UI enablement without exact authority"
+    "No real DB business mutation, migration apply, TaskRun start, Action execution, campaign schedule/publish, provider call, refund, replay, release, or UI enablement without exact authority"
   ],
   "incomplete": [
+    "W2-03 CampaignRevision/CalendarEntry/MasterContentIntent authority, ContentVariant Artifact projection, strict Web and formal visual acceptance",
     "W2-02 main real non-empty Step/Checkpoint and complete target-state EvidencePack evidence",
     "W2-01 aftersale originals/timeline; W3-12 main closure; real runtime invocation"
   ],
-  "last_green_gate": "W2_02F_SOURCE_READINESS_BUSINESS_CONTEXT_CODE_AND_VISUAL_GREEN",
-  "next_gate": "W2_03_READ_ONLY_BASE",
+  "last_green_gate": "W2_03A_CONTENT_CAMPAIGN_READONLY_CONTRACT_SHELL_GREEN",
+  "next_gate": "W2_03B_CONTENT_CAMPAIGN_AUTHORITY_FOUNDATION",
   "next_steps": [
-    "Start W2-03 read-only base without treating W2-02 evidence gaps as code-development blockers"
+    "Start W2-03B canonical authority contract and migration code-control foundation without applying migration or writing real business data"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000179",
+  "project_revision": "AOS-000180",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "62c9090"
+    "aos-platform": "b35f410"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
