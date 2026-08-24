@@ -123,3 +123,14 @@ W-L14 已把 TaskRun 完成与 Step claim 改为“每个 step 仅看最新 atte
 ### 7.5 验证与安全边界
 
 先以测试证明 rule missing/hash drift、resolution missing/cross-tenant、权限拒绝、DAG invalidation/reuse、事件 hash 漂移均失败；再跑 AIP 专项与累计回归、Web 专项与全量测试、类型检查、构建、OpenAPI 确定性检查、Alembic 单 head，并以 `org-org/dev-project` 内置浏览器只读验收。迁移仅生成与静态验证，不对真实数据库执行；不触发真实 EvalRun/AgentRun/Action/Approval/Handoff、发布或业务写入。
+
+## 8. 实施与验收结果（2026-08-25）
+
+- `m1@6f62541` 新增租户隔离、append-only 的 `ReviewRuleRevision` authority；create issue 必须重读 exact id/revision/hash，missing、跨租户或 drift 均失败关闭。ReviewIssueEvent 新事件保存 canonical payload 并由 Task Cockpit 回读时复算 hash；历史无 payload 的事件保持可读并显式标记 `legacy_unavailable`。
+- resolve 只接受并精确校验 Artifact、Evidence、EvalReportRevision、ReturnDecision；return 由服务端读取 Plan 的显式 DAG，目标和传递下游输出 `invalidate`，不受影响节点输出 `reuse`，缺边、畸形边、自环或环路均失败关闭。ReturnDecision 保存该不可变影响集合；既有 latest-attempt 与 N+1 queued attempt 语义保持不变。
+- create 与 resolve/return 使用分离的显式 review/control 角色门；Workshop 只展示服务端事件 payload、attempt 和影响决定，不复制 DAG 算法、不发布新 Skill、不自动改绑数字同事，也不声明运营贡献。
+- 后端专项 `35 passed`，W4 累计 `61 passed`；OpenAPI `13 passed`、确定性导出 `2582 paths / 2162 schemas`；Web 全量 `221 files / 2091 tests`、Desktop `9 files / 40 tests` 与 production build 均通过；compileall、diff check、Alembic 单 head `w4_003` 通过。
+- 内置浏览器在真实租户 `org-org/dev-project` 的 canonical `/workshop/cockpit` 只读页面完成宿主、真实任务与失败关闭验收，1280 有效视口无横向溢出且未触发任何命令。当前真实页面没有可见的 W4-04 ReviewIssue，因此 exact payload 与 invalidate/reuse 的呈现由 strict parser/component 测试闭合；不据此宣称 live migration、运营 lineage 或 release GREEN。
+- 证据：`.evidence/workshop/2026-08-25-w4-04-review-return-lineage.json`；代码提交 `6f62541`，证据提交 `a1a7c7f`。
+
+结论：W4-04 在代码、控制面、严格读模型和只读浏览器宿主范围内闭合，且旧功能测试无倒退；真实 migration、返工执行、EvalRun、Provider、Action、Approval、Handoff、发布与业务写入均未发生。下一串行任务为 W4-05。
