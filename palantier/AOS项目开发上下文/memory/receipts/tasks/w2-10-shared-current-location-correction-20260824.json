@@ -1,0 +1,20 @@
+{
+  "base_revision": "AOS-000208",
+  "created_at": "2026-08-24T19:38:25+08:00",
+  "excluded_scope": [
+    "API,target resolution,data,writes,external side effects"
+  ],
+  "expected_outputs": [
+    "unique page aria-current with exact shared target location semantics"
+  ],
+  "lease_expires_at": "2026-08-25T08:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopSharedContext.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopSharedContext.test.tsx"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-10-shared-current-location-correction-20260824"
+}

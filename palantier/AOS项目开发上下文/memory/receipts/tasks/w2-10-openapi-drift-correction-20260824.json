@@ -1,0 +1,19 @@
+{
+  "base_revision": "AOS-000208",
+  "created_at": "2026-08-24T19:26:46+08:00",
+  "excluded_scope": [
+    "API logic,routes,migrations,data,external side effects"
+  ],
+  "expected_outputs": [
+    "deterministic runtime OpenAPI baseline including W2-09B shared-context fields"
+  ],
+  "lease_expires_at": "2026-08-25T08:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-10-openapi-drift-correction-20260824"
+}

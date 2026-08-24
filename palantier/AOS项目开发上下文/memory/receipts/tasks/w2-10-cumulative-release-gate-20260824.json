@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000208",
+  "created_at": "2026-08-24T19:17:05+08:00",
+  "excluded_scope": [
+    ".evidence/aip,plugins/ops,real business data,writes,migrations,external side effects,release mutations"
+  ],
+  "expected_outputs": [
+    "W2-10 fail-closed six-axis cumulative gate, current read-only fact decision, full regression/browser evidence, delivery receipt and Prime projection"
+  ],
+  "lease_expires_at": "2026-08-25T08:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "scripts/workshop/w2_cumulative_gate.py",
+    "scripts/workshop/tests/test_w2_cumulative_gate.py",
+    ".evidence/workshop/2026-08-24-w2-10-cumulative-gate-input.json",
+    ".evidence/workshop/2026-08-24-w2-10-cumulative-gate-decision.json",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/91-W2-10-八页浏览器矩阵与真实数据对账累计门预检ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/115-AOS单开发者串行接管与Workshop剩余74项实施方案.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "w2-10-cumulative-release-gate-20260824"
+}

@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000208",
+  "blockers": [],
+  "changed_files": [
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json"
+  ],
+  "commits": [
+    "e251dbedda43ce806dbce7c58bc13ab8f910f6e1"
+  ],
+  "completed_at": "2026-08-24T19:46:54+08:00",
+  "completed_revision": "AOS-000208",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "No API logic, migration, data, or external side effect changed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-10-openapi-drift-correction-20260824",
+  "verification": [
+    "OpenAPI deterministic check GREEN; 4341 inventory rows and 4331 unique operations"
+  ]
+}

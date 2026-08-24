@@ -3,8 +3,8 @@
 > 日期：2026-08-24
 > 开工基线：`AOS-000156 / aos-platform/m1@54031a8`
 > 用户授权：当前执行者成为整个 AOS 唯一开发者，在 `m1` 串行维护 Data、Ontology/Domain、AIP、Workshop 与运行交付层
-> 当前事实：96 个主 Task 已完成 22 个，剩余 74 个；下一主 Task 为 W2-01
-> 执行状态：`APPROVED_FOR_SERIAL_IMPLEMENTATION / S1_IN_PROGRESS / AOS-000158`
+> 当前事实：S2 的 W2-02～W2-10 开发链已闭合；W2-10 运营累计决定为 `RED / NO_RELEASE`
+> 执行状态：`APPROVED_FOR_SERIAL_IMPLEMENTATION / S2_DEVELOPMENT_COMPLETE / PAUSE_BEFORE_S3`
 
 ## 1. 目标与不变量
 
@@ -518,6 +518,24 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 2026-08-24 W2-09B 闭合检查点：代码已以 `m1@d285996` 安全提交。新增 tenant-bound bounded canonical reader 与 assembler；ready context 必须携带 exact permission decision、disclosure policy 和唯一 bounded markings，并同时通过 tenant/token/cutoff/expiry、active source/target route、exact primary subject 和 timeline ref reachability 校验。跨租户重放返回 non-disclosing forbidden，过期返回 non-disclosing expired，其余 authority/route/ref drift 返回 non-disclosing blocked；三者均不返回 module、subject、timeline 或 navigation target。专项 `9 passed`、Workshop API 累计 `120 passed`、compileall 与 diff check GREEN；未新增 Store、migration、业务 payload copy、真实数据写入或外部副作用。下一子波自动进入 W2-09C strict Web shared rail/timeline/navigation。
 
 2026-08-24 W2-09C 闭合检查点：代码已以 `m1@afc8438` 安全提交。唯一 Web SDK 新增 strict `shared-context/v1` parser/client；exact-key 校验 token/tenant、permission/policy/marking、non-disclosing 状态、timeline 稳定顺序/唯一 identity/reachable refs/unknown-reconcile 和 target exact primary subject。八 Module 共用 Host 按 URL opaque context token 挂载共享对象引用栏、canonical timeline 与仅服务端 resolved target；目标 URL 只携带 `context` 和 `target`，当前 route 使用唯一 `aria-current=page`，无 token 不发请求，非法/blocked/expired 均无 target disclosure。专项 `39 passed`、TypeScript GREEN、Web 累计 `218 files / 2050 tests`。内置浏览器完成 nonempty/blocked/expired/invalid-token、目标跳转、刷新恢复、唯一 H1/main/nav/aria-current、禁止写入口和 390/768/1024/1280/1440/1920 六档矩阵；浏览器桥对 history evaluate 超时，因此前进后退的纯 URL 恢复由组件/路由测试覆盖，未虚构该项浏览器动作。视觉数据仅来自本地 visual fixture，不推导真实业务数据或 operational GREEN。下一子波自动进入 W2-10 累计发布门。
+
+### 3.22 S2 / W2-10 六轴累计发布门
+
+本波按 91 号 ADR 实现确定性、失败关闭的 EvidencePack 判定器，而不是用测试数或截图直接勾选。输入必须绑定同一 release/bundle/installation/API/schema/cutoff，覆盖 W2-00～W2-09 exact Receipt、P01～P12 latest run 及数量守恒、八 Module × 三视口×适用状态、SharedContext/timeline/navigation 与双租户安全证据。
+
+- 代码范围：`scripts/workshop/w2_cumulative_gate.py` 与 `scripts/workshop/tests/test_w2_cumulative_gate.py`。
+- 证据范围：`.evidence/workshop/2026-08-24-w2-10-cumulative-gate-input.json` 和确定性 decision JSON。
+- 判定轴：`source_data_green`、`eight_view_contract_green`、`eight_view_runtime_green`、`shared_context_timeline_navigation_green`、`browser_positive_green`、`security_isolation_green`。
+- 失败关闭：任一缺证、跨 release/cutoff、mock/fixture 正向、canary 非零、PII/Secret 泄露或数量不守恒均决定 `NO_RELEASE`，但判定器实现与 RED 决定本身可闭合 S2 的开发工作。
+- 禁止项：不重跑 pipeline，不写真实业务表，不发布/安装/切换，不把视觉 fixture 当作 operational GREEN。
+
+W2-10 累计回归发现确定性 OpenAPI 仍是 W2-09A 基线，未包含 W2-09B 已提交的 `permissionDecisionRef`、`disclosurePolicyRef` 和 `markings`。纠偏范围仅为 `packages/contracts/openapi/v1.generated.json` 与 `v1.inventory.json`；从当前 runtime 双进程确定性导出，不改 API 逻辑、route 数、migration 或数据。导出后必须 `--check` GREEN，并用新 hash 更新 W2-10 release identity。
+
+正式 HTTP DOM 首轮发现 AppShell 的顶层 `<main>` 内，Operations/Content/Creator 详情又使用 `<main>`，形成嵌套 main landmark。纠偏仅修改 `OperationsPage.tsx`、`ContentCampaignPage.tsx`、`CreatorGrowthPage.tsx`：内层详情改为有 `aria-label` 的 `<section>`，保持 className、子节点、数据、视觉和交互不变。退出条件是八条正式 HTTP route 各仅一个 H1 与 main、当前菜单唯一 `aria-current=page`，且三页专项和 Web 累计回归 GREEN。
+
+SharedContext 刷新复验发现 target 仅按 route 相等就标记 `aria-current=page`，导致与全局菜单重复，且未选中 exact target 时语义不真实。纠偏仅修改 `EcommerceWorkshopHost.tsx`、`EcommerceWorkshopSharedContext.tsx` 及它的测试：Host 从 query 解析 opaque `target`，共享导航只在 exact targetId 相等时标记 `aria-current=location`；当前页面仍只由全局菜单标记 `aria-current=page`。不改服务端 target、href、tenant/token 或 payload。
+
+2026-08-24 W2-10 闭合检查点：OpenAPI 漂移修正提交为 `m1@e251dbe`，页面 landmark/SharedContext current-location 修正提交为 `m1@0d8c564`，六轴累计判定器与 EvidencePack 提交为 `m1@9be744e`。判定器专项 `16 passed`，Workshop API 累计 `135 passed`，Web 累计 `218 files / 2051 tests`，TypeScript、compileall、OpenAPI deterministic 与 diff check GREEN。内置浏览器覆盖八 route × 1280/1440/1920 的唯一 H1/main/page-current，并验证 SharedContext exact target 与刷新恢复；fixture 不作为正式运行证据。当前六轴为合同/隔离 GREEN，source/runtime/shared/browser RED，确定性决定 `RED / NO_RELEASE / sideEffectsPerformed=[]`。因此 S2 的代码、测试、浏览器负向验收与失败关闭决定已经闭合；运营 release 未获放行。按用户要求暂停在 S2/S3 边界，不自动进入 S3。
 
 ## 4. 每个 Loop
 

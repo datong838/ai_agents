@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000208",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopSharedContext.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopSharedContext.test.tsx"
+  ],
+  "commits": [
+    "0d8c56451afc44318111c3b04ef552df584a12d7"
+  ],
+  "completed_at": "2026-08-24T19:46:54+08:00",
+  "completed_revision": "AOS-000208",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "No server target, tenant, payload, write, or side effect change"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-10-shared-current-location-correction-20260824",
+  "verification": [
+    "Exact target location tests GREEN; browser refresh preserves one page-current and one location-current"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000208",
+  "blockers": [],
+  "changed_files": [
+    "scripts/workshop/w2_cumulative_gate.py",
+    "scripts/workshop/tests/test_w2_cumulative_gate.py",
+    ".evidence/workshop/2026-08-24-w2-10-cumulative-gate-input.json",
+    ".evidence/workshop/2026-08-24-w2-10-cumulative-gate-decision.json"
+  ],
+  "commits": [
+    "9be744e"
+  ],
+  "completed_at": "2026-08-24T19:46:54+08:00",
+  "completed_revision": "AOS-000208",
+  "result": "COMPLETED_GREEN_WITH_OPERATIONAL_RELEASE_RED",
+  "risks": [
+    "P01/P02/P03 latest runs failed; runtime/shared/browser evidence is fixture or test-only; release remains blocked and sideEffectsPerformed is empty"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-10-cumulative-release-gate-20260824",
+  "verification": [
+    "16 focused tests; API 135 passed; Web 218 files / 2051 tests; browser 8 routes x 3 widths; deterministic decision RED NO_RELEASE"
+  ]
+}
