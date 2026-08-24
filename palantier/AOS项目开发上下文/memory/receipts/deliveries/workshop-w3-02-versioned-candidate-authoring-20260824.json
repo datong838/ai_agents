@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000211",
+  "blockers": [],
+  "changed_files": [
+    "bundles/candidates/ecommerce",
+    ".evidence/workshop/2026-08-24-w3-02-production-profiles-exact-resolver.json"
+  ],
+  "commits": [
+    "878806f",
+    "701da22"
+  ],
+  "completed_at": "2026-08-24T22:06:40+08:00",
+  "completed_revision": "AOS-000211",
+  "result": "GREEN_AUTHORING_CANDIDATE_NO_RELEASE",
+  "risks": [
+    "NO_RELEASE; no publish/install/migration/provider/action/business write"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-02-versioned-candidate-authoring-20260824",
+  "verification": [
+    "8/8 strict production profiles and 5 shared schemas; Asset Registry 843 passed with 3 pre-existing baseline failures"
+  ]
+}

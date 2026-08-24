@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000211",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_responsibility_template_authority.py",
+    "services/aos-api/aos_api/aip_production_profile_contracts.py",
+    "services/aos-api/tests/aip/test_aip_responsibility_template_authority.py",
+    "services/aos-api/tests/aip/test_aip_production_profile_contracts.py"
+  ],
+  "commits": [
+    "878806f",
+    "701da22"
+  ],
+  "completed_at": "2026-08-24T22:06:40+08:00",
+  "completed_revision": "AOS-000211",
+  "result": "GREEN_CODE_CONTROL_NO_RELEASE",
+  "risks": [
+    "NO_RELEASE; no publish/install/migration/provider/action/business write"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-02-production-profiles-exact-resolver-20260824",
+  "verification": [
+    "28 focused tests passed; exact tenant/install/lock/published/signed/digest negative matrix GREEN"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000211",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/asset_registry/manifest_loader.py",
+    "services/aos-api/tests/asset_registry/test_workshop_module_contracts.py",
+    "services/aos-api/tests/test_w2b_production_contract_api.py"
+  ],
+  "commits": [
+    "878806f",
+    "701da22"
+  ],
+  "completed_at": "2026-08-24T22:06:40+08:00",
+  "completed_revision": "AOS-000211",
+  "result": "GREEN_COMPATIBILITY_NO_RELEASE",
+  "risks": [
+    "NO_RELEASE; no publish/install/migration/provider/action/business write"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-02-bundle-version-adjacency-20260824",
+  "verification": [
+    "18 AIP Registry adjacency tests passed; historical author roots zero diff"
+  ]
+}

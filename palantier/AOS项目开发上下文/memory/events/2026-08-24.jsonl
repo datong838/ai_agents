@@ -190,3 +190,10 @@
 {"base_revision":"AOS-000210","occurred_at":"2026-08-24T21:08:32+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-01-readonly-agent-runtime-sdk-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T21:20:54+08:00","result":"W3-01 canonical read SDK and stateless professional binding projection GREEN; no external effect","schema":"aos-memory-event/v1","task_id":"workshop-w3-01-readonly-agent-runtime-sdk-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T21:21:43+08:00","project_revision":"AOS-000211","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000211","occurred_at":"2026-08-24T21:29:34+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-02-production-profiles-exact-resolver-20260824","type":"TASK_STARTED"}
+{"base_revision":"AOS-000211","occurred_at":"2026-08-24T21:43:27+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-02-bundle-version-adjacency-20260824","type":"TASK_STARTED"}
+{"base_revision":"AOS-000211","occurred_at":"2026-08-24T21:48:06+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w3-02-versioned-candidate-authoring-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T22:06:40+08:00","result":"GREEN_CODE_CONTROL_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w3-02-production-profiles-exact-resolver-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T22:06:40+08:00","result":"GREEN_COMPATIBILITY_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w3-02-bundle-version-adjacency-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T22:06:40+08:00","result":"GREEN_AUTHORING_CANDIDATE_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w3-02-versioned-candidate-authoring-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T22:07:00+08:00","project_revision":"AOS-000212","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

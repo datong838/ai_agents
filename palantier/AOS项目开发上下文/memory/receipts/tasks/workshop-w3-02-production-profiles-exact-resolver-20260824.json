@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000211",
+  "created_at": "2026-08-24T21:29:34+08:00",
+  "excluded_scope": [
+    "bundles/releases",
+    "org-org/dev-project",
+    "migrations"
+  ],
+  "expected_outputs": [
+    "W3-02-code-control-green-no-release"
+  ],
+  "lease_expires_at": "2026-08-25T01:29:21.932104+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_responsibility_template_authority.py",
+    "services/aos-api/aos_api/aip_production_profile_contracts.py",
+    "services/aos-api/tests/aip/test_aip_responsibility_template_authority.py",
+    "services/aos-api/tests/aip/test_aip_production_profile_contracts.py",
+    "services/aos-api/tests/asset_registry/test_workshop_module_contracts.py",
+    "bundles/domains/ecommerce-core",
+    "bundles/solutions/ecommerce-growth",
+    "bundles/solutions/ecommerce-operations-base",
+    ".evidence/workshop/2026-08-24-w3-02-production-profiles-exact-resolver.json",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/30-W3-02八Module生产Profile与ExactResolver预检ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-02-production-profiles-exact-resolver-20260824"
+}

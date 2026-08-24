@@ -1,0 +1,16 @@
+{
+  "base_revision": "AOS-000211",
+  "created_at": "2026-08-24T21:48:06+08:00",
+  "excluded_scope": [],
+  "expected_outputs": [
+    "W3-02-versioned-candidates-green-no-release"
+  ],
+  "lease_expires_at": "2026-08-25T01:29:21.932104+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "bundles/candidates/ecommerce"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-02-versioned-candidate-authoring-20260824"
+}

@@ -2,41 +2,43 @@
   "completed": [
     "W2-02 through W2-10 read-only development remains complete without regression",
     "S2.5 Skill compatibility and Task Cockpit contribution projection remain complete",
-    "W3-01 canonical AgentRun Handoff Decision read SDK and stateless professional binding projection complete"
+    "W3-01 canonical AgentRun Handoff Decision read SDK and stateless professional binding projection complete",
+    "W3-02 tenant-installed exact production-profile resolver and eight immutable profile candidates complete at code-control with no release"
   ],
-  "content_hash": "sha256:ab13347cc9d613d447547684b658e19d402c8c3da20dbe730fc161bf775a2fe9",
-  "current_phase": "S3 public production contracts in progress; W3-01 complete; entering W3-02",
-  "delivery_status": "S3_W3_01_READONLY_AGENT_RUNTIME_SDK_GREEN_S3_IN_PROGRESS_NO_RELEASE",
+  "content_hash": "sha256:92bcdad07996c55ad95d365dded97d3e9efa74bad7ccd7367baa9c8f262fb070",
+  "current_phase": "S3 public production contracts in progress; W3-01 and W3-02 complete; entering W3-03",
+  "delivery_status": "S3_W3_02_EXACT_PROFILE_CANDIDATES_CODE_GREEN_S3_IN_PROGRESS_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery-receipt",
-      "ref": "memory/receipts/deliveries/workshop-w3-01-readonly-agent-runtime-sdk-20260824.json"
+      "ref": "memory/receipts/deliveries/workshop-w3-02-production-profiles-exact-resolver-20260824.json"
     },
     {
       "kind": "implementation-evidence",
-      "ref": ".evidence/workshop/2026-08-24-w3-01-readonly-agent-runtime-sdk.json"
+      "ref": ".evidence/workshop/2026-08-24-w3-02-production-profiles-exact-resolver.json"
     }
   ],
-  "generated_at": "2026-08-24T21:21:43+08:00",
+  "generated_at": "2026-08-24T22:07:00+08:00",
   "hard_boundaries": [
     "NO_RELEASE; no unreviewed business write, migration, provider call, installation mutation, or external side effect",
-    "AgentRun and Handoff commands remain unavailable from Workshop until their explicit command gates pass"
+    "W3-02 candidates require separate publish/sign/install evidence before operational use"
   ],
   "incomplete": [
-    "S3 W3-02 through W3-14 remain incomplete",
+    "S3 W3-03 through W3-14 remain incomplete",
+    "W3-02 candidate bundles are not published, signed or installed; operational release remains closed",
     "S2 operational release remains RED because source data runtime shared-context history and browser-positive evidence are not GREEN"
   ],
-  "last_green_gate": "W3_01_EXACT_AGENT_RUNTIME_READ_SDK_BROWSER_REGRESSION_GREEN",
-  "next_gate": "W3_02_TYPED_PRODUCTION_PROFILE_AND_EXACT_RESOLVER",
+  "last_green_gate": "W3_02_INSTALLED_EXACT_RESOLVER_AND_8_PROFILE_CANDIDATES_CODE_GREEN_NO_RELEASE",
+  "next_gate": "W3_03_PREPARE_AGGREGATE",
   "next_steps": [
-    "Refresh W3-02 live production profile and resolver facts, update plan, then implement the first safe exact-ref slice"
+    "Review W3-03 prepare aggregate ADR against current stores and implement the first safe no-execution slice"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000211",
+  "project_revision": "AOS-000212",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "0337370e96ec603cd0fc1c69c920057ba2bfc8cf",
-    "docs": "4b924e98d31be5ad10a854305d74a1c82279de84"
+    "aos-platform": "878806f6202da40bbb04d4a30d19d59e16122447",
+    "docs": "701da225ff1e7aa9885145971570de9b39741fac"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

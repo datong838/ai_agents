@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000211",
+  "created_at": "2026-08-24T21:43:27+08:00",
+  "excluded_scope": [],
+  "expected_outputs": [
+    "W3-02-version-adjacency-green"
+  ],
+  "lease_expires_at": "2026-08-25T01:29:21.932104+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_solution_pack_publisher.py",
+    "services/aos-api/aos_api/aip_assignee_resolution_store.py",
+    "services/aos-api/aos_api/aip_analyst_templates.py",
+    "services/aos-api/aos_api/asset_registry/manifest_loader.py",
+    "services/aos-api/tests/aip/test_w_l20_assignee_resolution.py",
+    "services/aos-api/tests/aip/test_w_r18_marketplace_catalog.py",
+    "services/aos-api/tests/test_w2b_production_contract_api.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w3-02-bundle-version-adjacency-20260824"
+}
