@@ -361,6 +361,21 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@47976bf` 安全提交。三类 publish 内部 Store 均在连接前校验 item tenant/actor，连接内先查 immutable Receipt、再 `FOR UPDATE` head 并校验 expectedVersion/单步 revision，成功时同一事务 append revision + Receipt + commit；同 key 同 hash 返回原 exact ref，异 hash 冲突。Calendar decision 只 append。三类 reader 均使用 `REPEATABLE READ READ ONLY`、tenant/cutoff/稳定排序/limit<=100，row 或 payload tenant drift 失败关闭。专项累计 `16 passed`，Workshop+内容活动累计 `91 passed`，diff check GREEN；内置浏览器累计回归 1280/1440/1920 零横向溢出、唯一 H1、零可执行禁止类副作用按钮、页面新增 console error 0。测试只用 fake connection，未执行 migration、未连接真实数据库、未注册写 API。Delivery Receipt 为 `w2-03c-content-campaign-store-readers-20260824`；W2-03 主项仍未勾选，下一子波立即进入 W2-03D GET view reader composition。
 
+### 3.13 S2 / W2-03D revision Receipt 联结与 GET view composition
+
+C 后的方案一致性复审发现：若 revision row 不持久化创建它的 immutable Receipt ID，W2 只读视图就无法对每个 item 返回真实 exact Receipt，并会诱发用代码 Delivery Receipt 冒充业务 revision Receipt 的错误。因此 D 先在尚未 apply 的 `w3_011` schema 中增加 `receipt_id NOT NULL`，与 Store 同事务生成/写入的 authority Receipt 一对一联结，然后才组合 GET view。
+
+文件级范围：
+
+- 修改 `w3_011_content_campaign_authority.py`，revision/decision 表加 `receipt_id TEXT NOT NULL`，同 tenant 组合唯一；迁移仍未执行，因此不做线上 ALTER；
+- 修改 `ecommerce_content_campaign_authority_store.py`，在 append revision 前生成 receipt ID，revision row 与 Receipt row 同事务写入同一 ID；reader 返回 typed `ContentCampaignAuthorityObservation(revision, receiptId)`，禁止缺 Receipt 或错 tenant row；
+- 修改 `ecommerce_workshop_content_campaign.py/contracts.py`，依赖注入 Store 并分别读 plan/calendar/content；reader 成功且空时可返回 ready empty，非空时每项必须带 exact revision/hash/authority Receipt，单切片 reader 失败只阻塞该切片、不伪造全局空值；
+- 扩展 migration/Store/view/API 测试，覆盖 receipt 联结、空 ready、非空 exact refs、单切片失败、tenant drift、count ledger 与 GET-only 不回退。
+
+禁止项：不将 Delivery Receipt 当业务 Receipt，不执行 migration，不连接/写入真实库，不开放写 API，不伪造 ContentVariant，不排期或发布。D GREEN 后自动进入 W2-03E ArtifactRelation-based ContentVariant projection，只读 canonical Artifact/Relation，不建第二正文 authority。
+
+2026-08-24 闭合检查点：代码已以 `m1@2b7f3dc` 安全提交。四类 revision/decision row 与同事务 authority Receipt 使用同一 `receipt_id` 并在 tenant 内唯一；reader 只返回 typed revision + exact Receipt observation。GET view 对 plan/calendar/content 三切片独立读取：可信空 authority 为 `ready + eligible=0`，非空数据逐项返回 exact resource/revision/hash/Receipt，单 reader 失败只阻塞对应切片。专项 `17 passed`，Workshop 累计 `92 passed`，OpenAPI deterministic 与 diff check GREEN；内置浏览器累计回归 1280/1440/1920 零横向溢出、唯一 H1、本页零可执行禁止类副作用按钮。迁移未执行、真实数据库未连接、未注册写 API，也未创建 ContentVariant 或触发任何排期/发布/Provider 副作用。Delivery Receipt 为 `w2-03d-content-campaign-view-composition-20260824`；下一子波自动进入 W2-03E ArtifactRelation-based ContentVariant projection。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

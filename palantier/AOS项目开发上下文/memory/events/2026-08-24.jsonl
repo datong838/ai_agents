@@ -97,3 +97,6 @@
 {"base_revision":"AOS-000181","occurred_at":"2026-08-24T15:23:29+08:00","schema":"aos-memory-event/v1","task_id":"w2-03c-content-campaign-store-readers-20260824","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-24T15:29:07+08:00","result":"W2-03C tenant-bound content-campaign authority Store and bounded read-only readers sealed with fake-connection CAS, idempotency and isolation evidence; no migration or real database access occurred.","schema":"aos-memory-event/v1","task_id":"w2-03c-content-campaign-store-readers-20260824","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-24T15:29:07+08:00","project_revision":"AOS-000182","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000182","occurred_at":"2026-08-24T15:29:56+08:00","schema":"aos-memory-event/v1","task_id":"w2-03d-content-campaign-view-composition-20260824","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-24T15:39:06+08:00","result":"W2-03D exact revision-to-authority-Receipt linkage and tenant-bound per-slice GET composition sealed; migration and real database remain untouched.","schema":"aos-memory-event/v1","task_id":"w2-03d-content-campaign-view-composition-20260824","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-24T15:39:46+08:00","project_revision":"AOS-000183","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
