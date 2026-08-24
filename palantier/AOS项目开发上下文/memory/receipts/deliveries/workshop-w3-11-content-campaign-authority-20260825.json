@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000222",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/ContentCampaignPage.tsx",
+    "apps/web/src/components/workshop/ContentCampaignPage.test.tsx",
+    ".evidence/workshop/2026-08-25-w3-11-content-campaign-authority.json",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/99-W3-11内容活动CampaignCalendarIntentArtifact排期预检ADR.md",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "dd0917efbbea40873f8115addf12a40c412c2f62",
+    "b501febbd14f87e8a09145a95affa7c30607a24a",
+    "9a4172d0",
+    "2c22d55"
+  ],
+  "completed_at": "2026-08-25T02:43:04+08:00",
+  "completed_revision": "AOS-000222",
+  "result": "S3_W3_11_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "NO_RELEASE; live migration was not applied and no Provider, AgentRun, Action, Approval, Handoff, takeover, business mutation, external publish or offline queue flush occurred",
+    "Runtime ContributionLineage remains unknown until exact AgentRun, SkillBinding and LogicRevision authority is available"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w3-11-content-campaign-authority-20260825",
+  "verification": [
+    "backend focused 36 passed; Web focused 17 passed; backend cumulative 181 passed; OpenAPI deterministic exporter check PASS; Web cumulative 221 files / 2084 tests; TypeScript and production build GREEN",
+    "built-in browser on org-org/dev-project: 1280x720, 1440x900 and 1920x1080 no horizontal overflow; three canonical slices, blockers and honest contribution lineage visible; mutation controls absent; offline queue not flushed"
+  ]
+}
