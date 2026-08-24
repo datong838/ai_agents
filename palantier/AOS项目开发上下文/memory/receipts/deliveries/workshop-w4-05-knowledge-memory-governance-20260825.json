@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000229",
+  "blockers": [
+    "knowledge_package_installation_authority_unavailable",
+    "gold_set_registry_authority_unavailable"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_memory_readiness.py",
+    "services/aos-api/tests/aip/test_aip_memory_readiness.py",
+    "apps/web/src/api/aipMemory/contracts.ts",
+    "apps/web/src/api/aipMemory/client.test.ts",
+    "apps/web/src/pages/s2/MemoryGovernancePage.tsx",
+    "apps/web/src/pages/s2/MemoryGovernancePage.test.tsx",
+    ".evidence/workshop/2026-08-25-w4-05-knowledge-memory-governance.json"
+  ],
+  "commits": [
+    "70b9a19b143588e6d8915b06106e4ee70464ec81",
+    "7b3fb57"
+  ],
+  "completed_at": "2026-08-25T05:42:07+08:00",
+  "completed_revision": "AOS-000229",
+  "result": "W4_05_GOVERNED_MEMORY_ASSEMBLY_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "KnowledgePackage installation authority, GoldSet registry authority, and real positive Candidate/Memory/Citation samples remain readiness-governed; no operational or release GREEN"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w4-05-knowledge-memory-governance-20260825",
+  "verification": [
+    "backend 21 targeted and 73 cumulative passed; Web 23 targeted and 221 files/2093 tests passed; build/OpenAPI 13/compileall/diff GREEN; built-in browser exact context and contradiction fail-closed"
+  ]
+}

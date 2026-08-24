@@ -1,23 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000229",
-      "created_at": "2026-08-25T05:29:47+08:00",
-      "excluded_scope": [
-        "live migration;release;provider side effects;real business mutation;unrelated dirty files"
-      ],
-      "expected_outputs": [
-        "W4-05 production assembly truth, governed query/memory contribution projection, tests, browser evidence, receipt"
-      ],
-      "lease_expires_at": "2026-08-26T12:00:00+00:00",
-      "owner": "codex-m1-serial",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "services/aos-api/aos_api/aip_memory_*;services/aos-api/tests/aip/test_aip_memory_*;apps/web/src/api/aipMemory;apps/web/src/pages/s2/MemoryGovernancePage*;Workshop W4-05 docs/evidence"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w4-05-knowledge-memory-governance-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
