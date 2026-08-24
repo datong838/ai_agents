@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000234",
+  "created_at": "2026-08-25T07:05:36+08:00",
+  "excluded_scope": [
+    "product code, live migration, release, provider invocation, AgentRun, Action, Approval, Handoff, tenant business mutation, unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "W5-00 matrix freeze evidence, delivery receipt, authority CAS and W5-01 file-level entry"
+  ],
+  "lease_expires_at": "2026-08-25T22:00:00+08:00",
+  "owner": "codex-root-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "m1: W5-00 ActionType risk/account/budget matrix review, docs, evidence and receipts"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w5-00-action-risk-matrix-freeze-20260825"
+}

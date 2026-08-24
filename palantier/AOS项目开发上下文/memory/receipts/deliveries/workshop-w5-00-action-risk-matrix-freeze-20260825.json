@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000234",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-25-w5-00-action-risk-matrix-freeze.json",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/40-W5-00-ActionType能力风险账号预算矩阵预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "c785f15",
+    "docs:ab65d1a"
+  ],
+  "completed_at": "2026-08-25T07:11:34+08:00",
+  "completed_revision": "AOS-000234",
+  "result": "W5_00_MATRIX_CONTRACT_FROZEN_GREEN_ALL_EXTERNAL_ROWS_BLOCKED_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "all external Action rows remain blocked; no production Adapter revision, account binding, Action budget, canary, release or external effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w5-00-action-risk-matrix-freeze-20260825",
+  "verification": [
+    "Action baseline 14 passed; JSON and diff checks GREEN; non-visual matrix contract review; no browser route added"
+  ]
+}
