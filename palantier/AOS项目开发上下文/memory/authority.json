@@ -3,35 +3,48 @@
   "completed": [
     "Canonical tenant-safe append-only aftersales event schema at m1@0d6ec53",
     "Bounded read-only aftersales reader and D0 semantic revision 2 descriptor",
-    "Targeted 21/21 and cumulative relevant 45/45 tests GREEN; single Alembic head"
+    "W2-01B Operations v1 strict SDK, visual-draft-aligned read-only cockpit and Host at m1@6b02110",
+    "W2-01B targeted 26/26, Web cumulative 2010/2010, TypeScript/build and 1280/1440 fixture browser interaction GREEN"
   ],
   "current_phase": "AOS_SOLE_DEVELOPER_WORKSHOP_SERIAL_IMPLEMENTATION_S1",
-  "delivery_status": "D0_AFTERSALES_CANONICAL_READER_CODE_GREEN_W2_01B_FULL_VIEW_NEXT",
+  "delivery_status": "W2_01B_STRICT_WEB_CODE_AND_VISUAL_FIXTURE_GREEN_REAL_RUNTIME_UNAVAILABLE",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "d0-aftersale-canonical-reader-code-20260824"
+      "ref": "memory/receipts/deliveries/w2-01b-operations-strict-web-code-20260824.json"
+    },
+    {
+      "kind": "commit",
+      "ref": "m1@6b02110"
+    },
+    {
+      "kind": "tests",
+      "ref": "Web cumulative 205 files / 2010 tests, targeted 26/26, TypeScript and Vite build GREEN"
+    },
+    {
+      "kind": "browser",
+      "ref": "Built-in browser 1280/1440 fixture visual and interaction acceptance; real local API unavailable recorded separately"
     }
   ],
-  "evidence_cutoff": "2026-08-24T08:28:15+08:00",
+  "evidence_cutoff": "2026-08-24T08:52:01+08:00",
   "hard_boundaries": [
     "No real business data mutation, provider side effect, migration apply or release without its explicit gate"
   ],
   "incomplete": [
-    "W2-01B strict SDK/page/browser and full seven-slice EvidencePack",
+    "Real local aos-api health/SourceReadiness and org-org/dev-project Operations browser response remain unavailable; no operational GREEN claim",
     "W3-12B command/runtime interaction and browser acceptance"
   ],
-  "last_green_gate": "D0_AFTERSALES_CANONICAL_READER_CODE_GREEN",
-  "next_gate": "W2_01B_UNIFIED_OPERATIONS_VIEW_CODE",
+  "last_green_gate": "W2_01B_STRICT_WEB_CODE_AND_VISUAL_FIXTURE_GREEN",
+  "next_gate": "W3_12B_COMMAND_RUNTIME_INTERACTION",
   "next_steps": [
-    "Close W2-01B API to strict SDK to page composition using seven exact authority slices",
-    "Run positive org-org/dev-project and negative dev-org/dev-project browser matrix without real data mutation"
+    "Review W3-12B upper plans and implement the first missing command/runtime slice without external side effects",
+    "After W3-12B, rerun real positive org-org/dev-project and negative dev-org/dev-project browser matrix"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000166",
+  "project_revision": "AOS-000167",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform/m1": "0d6ec53"
+    "main": "6b02110"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -41,5 +54,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-24T08:28:38+08:00"
+  "updated_at": "2026-08-24T08:53:12+08:00"
 }

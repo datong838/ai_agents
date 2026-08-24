@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000166",
+  "blockers": [
+    "W2-01 overall remains open until W3-12B command/review closure and final browser/data gates"
+  ],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/components/workshop/OperationsPage.tsx",
+    "apps/web/src/components/workshop/OperationsPage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "6b02110"
+  ],
+  "completed_at": "2026-08-24T08:52:01+08:00",
+  "completed_revision": "AOS-000166",
+  "result": "W2-01B strict Operations v1 Web SDK、视觉稿对齐只读驾驶舱、Host 挂载与 fail-closed 边界 GREEN",
+  "risks": [
+    "Browser positive layout used a local canonical fixture only; real local aos-api health and SourceReadiness remained 503/unavailable, so no operational or real-business GREEN is claimed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-01b-operations-strict-web-code-20260824",
+  "verification": [
+    "RED: parseOperationsView/getOperationsView/OperationsPage absent; targeted 4 files 26/26; web cumulative 205 files 2010/2010; TypeScript; Vite production build; diff check; built-in browser DOM/keyboard interaction at 1280/1440 with 7 slices/default blocked focus/read-only/no fake action"
+  ]
+}
