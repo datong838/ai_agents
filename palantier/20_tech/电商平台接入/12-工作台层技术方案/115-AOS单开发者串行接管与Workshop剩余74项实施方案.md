@@ -463,6 +463,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-06A 闭合检查点：代码已以 `m1@19e043f` 安全提交。新增 strict `analyst-view/v1`，固定七 view、五 readiness 轴、同一 `resourceRevision/dataCutoff`、指标 exact definition/observation/source-run/quality/reconciliation refs 与完整 unit/grain/window/timezone/cohort/filter/numerator/denominator/lineage 语义；non-ready 指标禁止携带任何数值，因此 unknown 不可能伪装为 0。GET-only 路由拒绝 query scope 注入，并由 active `ecommerce.analyst` installation 与 principal tenant 裁决。专项/API/OpenAPI `29 passed`、Workshop 累计 `96 passed`、compileall 与 diff check GREEN；未新增真源、迁移、QueryJob 或真实数据副作用。下一子波自动进入 W2-06B bounded reader。
 
+2026-08-24 W2-06B 闭合检查点：代码已以 `m1@af4d817` 安全提交。新增 bounded canonical-reader protocol，仅接受 tenant-bound、同 cutoff、正 revision、canonical 五轴、每 view 最多 100 个唯一指标与 100 个唯一 exact refs；七 view 各自读取并独立失败关闭。reader 可达、五轴均 ready/not-applicable 且全部指标 ready 时才允许可信 ready/empty；任一 unknown/blocked/conflict 不计 ready，单 view tenant/cutoff/duplicate/bound drift 不污染其他 view。专项/邻接 `26 passed`、Workshop 累计 `98 passed`、compileall 与 diff check GREEN；未新增 store、迁移或真实查询执行。下一子波自动进入 W2-06C strict Web 与正式视觉验收。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

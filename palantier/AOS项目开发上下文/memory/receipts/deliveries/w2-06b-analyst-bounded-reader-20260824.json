@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000196",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_analyst_reader.py",
+    "services/aos-api/aos_api/ecommerce_workshop_analyst.py",
+    "services/aos-api/tests/test_ecommerce_workshop_analyst.py"
+  ],
+  "commits": [
+    "af4d817"
+  ],
+  "completed_at": "2026-08-24T17:31:17+08:00",
+  "completed_revision": "AOS-000196",
+  "result": "W2-06B bounded analyst canonical reader GREEN",
+  "risks": [
+    "Read-only bounded composition; no canonical store or real query execution"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-06b-analyst-bounded-reader-20260824",
+  "verification": [
+    "26 focused/adjacent passed; 98 Workshop cumulative passed; compileall and diff check GREEN"
+  ]
+}
