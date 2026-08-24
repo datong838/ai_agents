@@ -517,6 +517,8 @@ C 后的方案一致性复审发现：若 revision row 不持久化创建它的 
 
 2026-08-24 W2-09B 闭合检查点：代码已以 `m1@d285996` 安全提交。新增 tenant-bound bounded canonical reader 与 assembler；ready context 必须携带 exact permission decision、disclosure policy 和唯一 bounded markings，并同时通过 tenant/token/cutoff/expiry、active source/target route、exact primary subject 和 timeline ref reachability 校验。跨租户重放返回 non-disclosing forbidden，过期返回 non-disclosing expired，其余 authority/route/ref drift 返回 non-disclosing blocked；三者均不返回 module、subject、timeline 或 navigation target。专项 `9 passed`、Workshop API 累计 `120 passed`、compileall 与 diff check GREEN；未新增 Store、migration、业务 payload copy、真实数据写入或外部副作用。下一子波自动进入 W2-09C strict Web shared rail/timeline/navigation。
 
+2026-08-24 W2-09C 闭合检查点：代码已以 `m1@afc8438` 安全提交。唯一 Web SDK 新增 strict `shared-context/v1` parser/client；exact-key 校验 token/tenant、permission/policy/marking、non-disclosing 状态、timeline 稳定顺序/唯一 identity/reachable refs/unknown-reconcile 和 target exact primary subject。八 Module 共用 Host 按 URL opaque context token 挂载共享对象引用栏、canonical timeline 与仅服务端 resolved target；目标 URL 只携带 `context` 和 `target`，当前 route 使用唯一 `aria-current=page`，无 token 不发请求，非法/blocked/expired 均无 target disclosure。专项 `39 passed`、TypeScript GREEN、Web 累计 `218 files / 2050 tests`。内置浏览器完成 nonempty/blocked/expired/invalid-token、目标跳转、刷新恢复、唯一 H1/main/nav/aria-current、禁止写入口和 390/768/1024/1280/1440/1920 六档矩阵；浏览器桥对 history evaluate 超时，因此前进后退的纯 URL 恢复由组件/路由测试覆盖，未虚构该项浏览器动作。视觉数据仅来自本地 visual fixture，不推导真实业务数据或 operational GREEN。下一子波自动进入 W2-10 累计发布门。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：

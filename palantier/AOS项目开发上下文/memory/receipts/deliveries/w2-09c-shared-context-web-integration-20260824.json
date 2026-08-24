@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000207",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/components/workshop/EcommerceWorkshopSharedContext.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopSharedContext.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.tsx"
+  ],
+  "commits": [
+    "afc8438"
+  ],
+  "completed_at": "2026-08-24T19:13:20+08:00",
+  "completed_revision": "AOS-000207",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "Visual states use local fixture only; browser bridge history evaluate timed out and back-forward restoration is covered by pure URL component/router tests; no operational GREEN inference."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-09c-shared-context-web-integration-20260824",
+  "verification": [
+    "Focused 39 passed; TypeScript GREEN; Web cumulative 218 files and 2050 tests; built-in browser nonempty blocked expired invalid-token target navigation refresh aria-current and six widths GREEN"
+  ]
+}
