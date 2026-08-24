@@ -1,0 +1,44 @@
+{
+  "base_revision": "AOS-000175",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests/test_ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/tests/test_ecommerce_workshop_api.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopHost.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    "scripts/export_openapi.py"
+  ],
+  "commits": [
+    "68ccb10"
+  ],
+  "completed_at": "2026-08-24T13:37:38+08:00",
+  "completed_revision": "AOS-000175",
+  "result": "W2_02C_APPROVAL_REVIEW_ISSUE_CODE_AND_VISUAL_GREEN",
+  "risks": [
+    "Visual fixture proves presentation only; no real runtime, business write, migration, provider, refund, replay or release was invoked",
+    "Plan approval opening is read-only; Action approval destination requires reauthorization; approved does not mean applied",
+    "Open ReviewIssue without ReturnDecision keeps attempt_unresolved and W2-02 remains incomplete until Action receipt/unknown/reconcile closes"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "w2-02c-approval-review-issue-read-model-20260824",
+  "verification": [
+    "backend focused 21 passed; backend cumulative and OpenAPI 39 passed",
+    "Web focused 37 passed; Web cumulative 205 files and 2016 tests passed",
+    "Web typecheck and production build 319 modules passed; deterministic OpenAPI check passed",
+    "built-in browser exact Approval and ReviewIssue visible at 1280/1440/1920 with no horizontal overflow, no approval/action controls, and no new console errors",
+    "formal visual hierarchy compared; top metrics, three-lane task flow, review evidence and shared capability structure retained without fabricated samples"
+  ]
+}

@@ -248,6 +248,23 @@ W2-02A 只关闭 exact Stage compilation 缺口；Responsibility/Handoff/Approva
 
 2026-08-24 闭合检查点：代码已以 `m1@f1f38db` 安全提交；后端专项 `18 passed`、累计与 OpenAPI `31 passed`，Web 累计 `205 files / 2016 tests`、production build `319 modules`，OpenAPI 确定性导出与检查通过。内置浏览器在 1280/1440/1920 三档确认 exact ResponsibilityPlan、职责槽位、结构 assignee、Handoff 与 decision timeline，无横向溢出或命令入口；刷新前后 error log 均为 4 条历史热更新错误，本次新增为 0。正式视觉稿已逐区对照“指标—指令区—执行组—任务流—策划组—复盘”层次，经营样例、在线角色与“下达”按钮未复制。Delivery Receipt 为 `w2-02b-responsibility-handoff-read-model-20260824`；下一子波为 `W2-02C Approval/ReviewIssue exact read model`，主清单仍不提前勾选 W2-02。
 
+### 3.6 S2 / W2-02C Approval／ReviewIssue 精确只读切片
+
+本子波只组合既有 Plan、ActionProposal/ApprovalEvent、Artifact、ReviewIssue/Event 与 ReturnDecision authority，不新建审批、问题、返工或导航 authority。Run 已存在时，其 Plan 审批只作历史事实回读；Action 审批导航只返回服务端固定 route identity、exact target、目的页重新鉴权要求与 return-focus token，打开目的页不等于批准，批准也不等于 Action applied。
+
+文件级施工范围：
+
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py`：新增 Plan approval、Action approval timeline、ApprovalNavigationTarget、ReviewIssue timeline/lineage 与 run-scoped envelope；数量、事件顺序、proposal hash/version、artifact hash、return stage 与 attempt 关联必须守恒；
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py`：在单一 `REPEATABLE READ READ ONLY` tenant 事务内读取 Run→Task→Plan、同 Run ActionProposal→ApprovalEvent、同 Run Artifact→ReviewIssue/Event→ReturnDecision；ReviewIssue 仅允许通过 `artifact.run_id` 精确归属，ReturnDecision 必须再次匹配同 Run、Stage 与 StepRun attempt。没有 ReturnDecision 的 open issue 明示 `attempt_unresolved`，不得按标题、时间或“最新”猜 attempt；
+- `services/aos-api/aos_api/routers/ecommerce_workshop.py` 与 OpenAPI：新增唯一 GET `/views/task-cockpit/runs/{run_id}/approval-review-issues`，只取 Principal tenant、拒绝 query/body scope 注入、复用模块安装门；
+- `apps/web/src/api/ecommerceWorkshop/*`：增加 strict contract/parser/client，extra/missing、未知枚举、非连续事件、hash/version/数量漂移均失败关闭；
+- `apps/web/src/components/workshop/TaskCockpitPage.tsx` 与既有样式：在 Run 明细中展示 Plan 审批事实、Action 审批决定链、导航 readiness 与 ReviewIssue 证据/返工 lineage；本波不提供 approve/resolve/return/apply 按钮，不使用示例审批、问题或人员数据；
+- 后端、API、Web 测试覆盖 exact 正向、空集合、open issue attempt 未解析、returned issue exact attempt、跨 Run/tenant、hash/version/event/step drift、404/409/503、明细整块失败关闭；页面继续做 1280/1440/1920、键盘展开、零横向溢出、零新增 console error，并逐区对照正式视觉稿层级。
+
+禁止项：不新增 migration，不修改真实业务数据，不执行 Plan/Action Approval，不 resolve/return ReviewIssue，不创建新 attempt，不应用 Action，不把 Plan approved 表述为 ProductionStart，也不把 Action approved 表述为 applied。W2-02C 完成后自动进入 W2-02D Task-scoped Action receipt/unknown/reconcile 只读聚合；W2-02 主项在剩余轴闭合前不提前计数。
+
+2026-08-24 闭合检查点：代码已以 `m1@68ccb10` 安全提交；后端专项 `21 passed`、累计与 OpenAPI `39 passed`，Web 专项 `37 passed`、累计 `205 files / 2016 tests`、typecheck 与 production build `319 modules`，OpenAPI 确定性导出与检查通过。内置浏览器在 1280/1440/1920 三档确认 exact Plan approval、Action approval timeline/navigation readiness、ReviewIssue 证据与返工 lineage，无横向溢出；审批区按钮和链接均为 0，旧的 Approval/ReviewIssue blocker 已消失，新的 assignee operational-readiness blocker 正确保留，且本次没有新增 console error。正式视觉稿已逐区对照“顶部指标—三路任务流—右侧复核—底部共享能力”层次，没有复制经营样例、在线角色或命令入口。Delivery Receipt 为 `w2-02c-approval-review-issue-read-model-20260824`；authority 与 Prime 已推进到 `AOS-000176` 且强一致投影 CURRENT。下一子波为 `W2-02D Task-scoped Action receipt/unknown/reconcile read model`，主清单仍保持 `22/96`，不提前勾选 W2-02。
+
 ## 4. 每个 Loop
 
 每个子波固定执行：
