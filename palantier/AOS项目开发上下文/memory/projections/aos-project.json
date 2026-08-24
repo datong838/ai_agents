@@ -1,34 +1,36 @@
 {
   "completed": [
-    "W4-06 SavedExploration sole authority and share consumption lifecycle"
+    "W4-07 three-authority AsyncJobProjection, authoritative strict Web SDK and Workshop Job Drawer"
   ],
-  "content_hash": "sha256:97a2050a067e7758627d866c13254ed83fb7d01bf27becd1c60f40310732910a",
-  "current_phase": "S4_W4_06_COMPLETE_W4_07_QUERY_RESEARCH_JOB_NEXT",
-  "delivery_status": "W4_06_SAVED_EXPLORATION_LIFECYCLE_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
+  "content_hash": "sha256:89f1b40aa522a2d5932aa353dcc504e07cc358d3e439c478d798f47291b68500",
+  "current_phase": "S4_W4_07_COMPLETE_W4_08_CUMULATIVE_GATE_NEXT",
+  "delivery_status": "W4_07_ASYNC_JOB_PROJECTION_CODE_BROWSER_GREEN_NO_RELEASE_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
       "kind": "workshop",
-      "ref": ".evidence/workshop/2026-08-25-w4-06-saved-exploration-lifecycle.json"
+      "ref": ".evidence/workshop/2026-08-25-w4-07-query-research-job-lifecycle.json"
     }
   ],
-  "generated_at": "2026-08-25T06:11:14+08:00",
+  "generated_at": "2026-08-25T06:39:58+08:00",
   "hard_boundaries": [
-    "No release, live migration, real share mutation, Provider/Action execution, external side effect, or real business mutation"
+    "no live migration, Provider submit/cancel/retry/reconcile, real business mutation or release"
   ],
   "incomplete": [
-    "live migration; production share mutation; W4-07 QueryJob/ResearchJob lifecycle; W4-08 cumulative gate; release"
+    "W4-08 cross-capability cumulative browser/security gate; live migration; real Provider commands; release"
   ],
-  "last_green_gate": "W4_06_CODE_BROWSER_GREEN",
-  "next_gate": "W4_07_QUERY_RESEARCH_JOB_LIFECYCLE",
+  "last_green_gate": "W4_07_CODE_BROWSER_GREEN",
+  "next_gate": "W4_08_CROSS_CAPABILITY_CUMULATIVE_GATE",
   "next_steps": [
-    "Start W4-07 QueryJob/ResearchJob lifecycle serially after fresh gate check"
+    "Start W4-08 cumulative gate serially after fresh memory gate check"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000232",
+  "project_revision": "AOS-000233",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "515d20b6415e8e22f535069bbe47216bdbb29cba",
-    "evidence": "1131c1d"
+    "aos": "fe0a8da0642ba1a57373099d09e093e087f954c0",
+    "docs": "761c019",
+    "evidence": "a283b90",
+    "receipt": "9f27864"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
