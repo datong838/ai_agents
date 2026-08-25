@@ -1,40 +1,38 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W5-07 canonical Kill authority, bounded Canary plan, pre-Attempt dispatch fence and simulation-only in-flight reconcile drill are code/test GREEN"
+    "W5-08 cumulative code safety, canonical ActionBoundaryPanel, production build and fail-closed three-viewport browser disposition are GREEN"
   ],
-  "current_phase": "S5_W5_08_CUMULATIVE_ACTION_GATE_NEXT",
-  "delivery_status": "W5_07_CANONICAL_KILL_POLICY_CANARY_PLAN_SIMULATION_CODE_GREEN_NO_REAL_CANARY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "S6_W6_01_EXACT_CAPABILITY_ASSIGNEE_READINESS_NEXT",
+  "delivery_status": "W5_08_CUMULATIVE_CODE_BROWSER_DISPOSITION_GREEN_OPERATIONAL_EXTERNAL_ACTION_RELEASE_BLOCKED_NO_REAL_CANARY_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "workshop",
-      "ref": ".evidence/workshop/2026-08-25-w5-07-action-canary-kill-control.json"
-    },
-    {
-      "kind": "delivery_receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w5-07-action-canary-kill-control-20260825.json"
+      "kind": "w5_08",
+      "ref": ".evidence/workshop/2026-08-25-w5-08-cumulative-action-browser-disposition.json"
     }
   ],
-  "evidence_cutoff": "2026-08-25T11:15:41+08:00",
+  "evidence_cutoff": "2026-08-25T11:41:24+08:00",
   "hard_boundaries": [
-    "NO_REAL_CANARY_WITHOUT_EXACT_ACTIVE_ACCOUNT_ADAPTER_CAPABILITY_SCOPE_AND_EXPLICIT_RESULT_AUTHORITY",
-    "NO_EXTERNAL_EFFECT_NO_RELEASE"
+    "NO_REAL_CANARY",
+    "NO_EXTERNAL_EFFECT",
+    "NO_RELEASE"
   ],
   "incomplete": [
-    "Real org-org Canary traffic, production Adapter/Secret, Provider callback, external Effect and release remain blocked"
+    "Real org-org Canary, production Adapter/Secret, external Provider/Effect and release remain blocked"
   ],
-  "last_green_gate": "W5_07_KILL_AUTHORITY_ZERO_EFFECT_DRILL_CODE_GREEN",
-  "next_gate": "W5_08_CUMULATIVE_ACTION_SAFETY_BROWSER_DISPOSITION_GATE",
+  "last_green_gate": "W5_08_CUMULATIVE_CODE_BROWSER_DISPOSITION_GREEN",
+  "next_gate": "W6_01_EXACT_CAPABILITY_ASSIGNEE_RESOLVER_READINESS_GATE",
   "next_steps": [
-    "Start W5-08 cumulative safety, browser and external-action disposition gate without invoking real Provider or external effects"
+    "Start W6-01 exact capability, assignee resolver and readiness implementation under the sole-developer serial loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000242",
+  "project_revision": "AOS-000243",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "8636806",
-    "delivery_receipt": "b7d3f18",
-    "workshop_docs": "7c7f996"
+    "code": "2f05451",
+    "delivery_receipt": "d1a5ebd",
+    "evidence": "696b3f5",
+    "workshop_docs": "216bffb"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -44,5 +42,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-25T11:16:38+08:00"
+  "updated_at": "2026-08-25T11:43:11+08:00"
 }
