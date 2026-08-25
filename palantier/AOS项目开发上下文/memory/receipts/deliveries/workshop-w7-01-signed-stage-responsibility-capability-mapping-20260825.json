@@ -1,0 +1,35 @@
+{
+  "base_revision": "AOS-000254",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-01-signed-stage-responsibility-capability-mapping.json",
+    "aos-platform:bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0",
+    "aos-platform:services/aos-api/aos_api/aip_media_production_templates.py",
+    "aos-platform:services/aos-api/aos_api/aip_responsibility_template_authority.py",
+    "aos-platform:services/aos-api/tests/aip/test_aip_media_production_templates.py",
+    "aos-platform:services/aos-api/tests/aip/test_aip_responsibility_template_authority.py",
+    "aos-platform:services/aos-api/tests/asset_registry/test_workshop_module_contracts.py",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/59-W7-01签名StageResponsibilityTemplate与十Capability映射预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "aos-platform/m1@9cb95574",
+    "docs/m1@4c5d4d9"
+  ],
+  "completed_at": "2026-08-25T18:15:22+08:00",
+  "completed_revision": "AOS-000254",
+  "result": "W7_01_SIGNED_INSTALLABLE_MEDIA_TEMPLATES_CODE_CONTRACT_BROWSER_GREEN_OPERATIONAL_PUBLICATION_GATE_RETAINED_NO_RELEASE",
+  "risks": [
+    "Candidate and controlled fixture are not published/installed operational authority; Provider, media generation, external publication, migration and release remain gated",
+    "Two independently reproducible legacy fixture/candidate baseline gaps remain outside W7-01 scope and are not counted GREEN"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-01-signed-stage-responsibility-capability-mapping-20260825",
+  "verification": [
+    "43 focused and adjacent pytest passed with 7 warnings",
+    "OpenAPI and deterministic domain router 22 passed plus 2 subtests with 7 warnings",
+    "Web 232 files and 2130 tests passed; production build 344 modules",
+    "Alembic single head w6_009; security scanner tests 9 passed; scoped 13 files critical=0 warning=0",
+    "Built-in browser 1280/1440/1920 no overflow, fixture/degraded/no-write visible, three tabs checked, console errors 0"
+  ]
+}
