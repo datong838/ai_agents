@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000248",
+  "blockers": [
+    "NO_LIVE_MIGRATION_APPLY",
+    "NO_EXTERNAL_NOTICE_REPRICE_OR_RELEASE_AUTHORITY"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_price_research.py",
+    "services/aos-api/aos_api/ecommerce_workshop_price_research_store.py",
+    "services/aos-api/alembic/versions/w6_005_price_research.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "apps/web/src/components/workshop/PriceGovernancePage.tsx",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w6-05-price-research-match-policy-batch-prepare.json"
+  ],
+  "commits": [
+    "de8eaf4",
+    "04c37bb"
+  ],
+  "completed_at": "2026-08-25T15:02:01+08:00",
+  "completed_revision": "AOS-000248",
+  "result": "W6_05_CODE_CONTRACT_BROWSER_GREEN_NO_PROVIDER_NO_RESEARCH_JOB_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Migration not applied; real price research authority remains trusted-empty at runtime; W6-06 external actions remain independently gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-05-price-research-match-policy-batch-prepare-20260825",
+  "verification": [
+    "Backend W6/API/OpenAPI 56 passed; frontend target 6 and full 2115 passed; build 343 modules; OpenAPI deterministic; w6_005 unique head; built-in browser GREEN"
+  ]
+}
