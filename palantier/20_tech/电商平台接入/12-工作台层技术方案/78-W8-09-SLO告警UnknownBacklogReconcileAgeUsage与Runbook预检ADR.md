@@ -1,13 +1,13 @@
 # W8-09 SLO、告警、Unknown Backlog、Reconcile Age、Usage 与 Runbook 预检 ADR
 
 > 日期：2026-08-15  
-> 状态：`OPERATING_CONTRACT_APPROVED / IMPLEMENTATION_BLOCKED / NO_EXTERNAL_EFFECT`  
-> 基线：`AOS-000034`、`w2-workshop@0510a77b56442a6348f9f13c4da76f7e277f5f41`  
-> 证据：`.evidence/workshop/2026-08-15-w8-09-slo-alert-unknown-reconcile-usage-runbook-preflight.json`
+> 状态：`ENGINEERING_OPERATING_CONTRACT_BROWSER_GREEN / REAL_BASELINE_AND_DRILLS_BLOCKED / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 基线：`AOS-000278`、`m1@f9f5fd64b9c024bdb8b23b9cf36b3cfbfe985444`、证据 `m1@99d48fc830212d119aefb7717d9f8be766f5fdff`
+> 证据：`.evidence/workshop/w8-09/`
 
 ## 1. 决策
 
-运营就绪不是“有 Dashboard 和告警”。W8-09 必须以同一 release、Bundle、Installation 和 canonical authority refs 形成可复算的 SLI/SLO、告警 Receipt、unknown/reconcile 队列、Usage 质量与演练过的 runbook。W5-08、W6-10、W7-11 未 GREEN，本轮只冻结合同，不编造数值目标或运行生产处置。
+运营就绪不是“有 Dashboard 和告警”。W8-09 必须以同一 release、Bundle、Installation 和 canonical authority refs 形成可复算的 SLI/SLO、告警 Receipt、unknown/reconcile 队列、Usage 质量与演练过的 runbook。历史上 W5-08、W6-10、W7-11 未 GREEN 时只能冻结合同；当前三项工程依赖已闭合，因此补齐只读、失败关闭的工程判定与贡献视图，但仍不编造数值目标或运行生产处置。
 
 ## 2. SLI/SLO
 
@@ -31,7 +31,7 @@ Runbook 包含 trigger/reasonCode、owner/severity、只读 authority/tenant 核
 
 ## 5. 两轮审查与阻断
 
-第一轮删除预设数值目标，补齐分母、event clock、风险/age backlog 和五轴 closure。第二轮补齐告警 Receipt、manual reconcile 职责分离、Usage 质量维度、监控静默与恢复验证。合同通过；因产品未封板、三项上游累计门、实测 baseline、运营投影和 drill EvidencePack 均缺失，实际 W8-09 保持未勾选。
+第一轮删除预设数值目标，补齐分母、event clock、风险/age backlog 和五轴 closure。第二轮补齐告警 Receipt、manual reconcile 职责分离、Usage 质量维度、监控静默与恢复验证。合同通过；当前工程实现已闭合，实测 baseline、批准数值目标、同 release 运营投影、真实告警 Receipt 和 drill EvidencePack 仍缺失，故只签发工程 GREEN，不签发 operational/release GREEN。
 
 ## 6. 2026-08-26 串行实施复核与文件级清单
 
@@ -51,3 +51,12 @@ W5-08、W6-10、W7-11 的工程合同已经闭合，旧的“等待上游开发�
 - Web 累计测试与生产构建不得回退；涉及页面必须用内置浏览器确认唯一主标题、只读失败关闭、无伪造指标、无处置入口和无横向溢出。
 - 任一既有测试、浏览器入口或合同守恒失败，立即停止闭合，不更新 W8-09 完成状态。
 - 本波最多签发 `ENGINEERING_OPERATING_CONTRACT_BROWSER_GREEN / REAL_BASELINE_AND_DRILLS_BLOCKED / NO_EXTERNAL_EFFECT / NO_RELEASE`；真实 operational ready 仍必须由批准目标、同版真实 EvidencePack 和演练闭合另行证明。
+
+## 8. 2026-08-26 实施与验收结果
+
+1. `workshopOperatingReadiness.ts` 已落地纯计算、失败关闭的运营就绪判定：严格校验 exact release/Bundle/Installation/cutoff、十项 SLI、完整 SLO 定义、Unknown Backlog 首次计龄、Usage 七分桶、五轴 closure、告警 ledger 与十类 runbook drill；缺失或漂移逐项形成 blocker，unknown 绝不折算为 0。
+2. `WorkshopOperatingReadinessCard.tsx` 已挂入 Task Cockpit，按“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献”展示证据缺口。无 authority 输入时显示 41 个 blocker、Unknown backlog/oldest age/Usage 为“未知（不以 0 代替）”、五轴 `0/5`，且卡片内无处置按钮。
+3. 专项 `3 files / 21 tests`、TypeScript、Web 累计 `245 files / 2218 tests`、生产构建 `347 modules` 全部 GREEN；既有 React act、Router future flag 与大 chunk 提示未升级为失败。
+4. 内置浏览器在正式依赖不可用时确认 Catalog 失败关闭、唯一 H1/main、1280×720 无横向溢出、无 uncaught error。GET-only 视觉夹具仅用于检查新卡片，仍令所有 canonical 数据接口返回 503；确认 41 个缺口、unknown 不归零、五轴 `0/5`、卡片按钮 0、error 日志 0。该夹具不是 authority、baseline、告警或 drill 证据。
+5. 代码提交 `f9f5fd64b9c024bdb8b23b9cf36b3cfbfe985444`，证据提交 `99d48fc830212d119aefb7717d9f8be766f5fdff`；截图 SHA-256 与完整验证矩阵见 `.evidence/workshop/w8-09/verification.json`。
+6. 本波未执行 migration、未写真实业务数据、未创建/确认/静默/升级/解决告警、未 reconcile、未调用 Provider、未产生外部副作用或 release。结论为 `ENGINEERING_OPERATING_CONTRACT_BROWSER_GREEN / REAL_BASELINE_AND_DRILLS_BLOCKED / NO_EXTERNAL_EFFECT / NO_RELEASE`；下一项为 W8-10 的备份恢复、投影重建、RLS 与灾难恢复工程合同。
