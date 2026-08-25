@@ -1,12 +1,12 @@
 # W7-02 Profile 建议、成本区间与用户确认预检 ADR
 
 > 日期：2026-08-15；2026-08-25 唯一开发者串行复核并开工
-> 状态：`IN_PROGRESS / PREREQUISITES_RECHECKED / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 状态：`COMPLETED_CODE_CONTRACT_BROWSER_GREEN / NO_EXTERNAL_EFFECT / NO_RELEASE`
 > 范围：W7-02 Profile 建议、预计成本区间、用户确认与只读贡献视图；只新增迁移定义，不 apply 数据库，不操作真实租户。
 
 ## 1. 结论
 
-W7-02 当前不能编码。W7-01 尚未实现，且 ProfileRecommendation、ProfileConfirmation、MergePolicy、ProjectedCost 与对应 UI authority 均不存在。现有 ResponsibilityPlan/StageTemplate 是通用形状，现有 CostAttribution 是事后 Usage 归因，二者不能冒充本任务完成。
+本节记录 2026-08-15 预检时的历史结论：当时 W7-01 尚未实现，且 ProfileRecommendation、ProfileConfirmation、MergePolicy、ProjectedCost 与对应 UI authority 均不存在，因此不能编码。该结论已由第 8 节 2026-08-25 独立复核解除，不代表当前状态。
 
 本 ADR 冻结目标合同，使后续实现不以自由文本档位、静态前端报价、本地确认状态或预计成本覆盖实际费用。
 
@@ -118,3 +118,22 @@ Brief、Evidence、Eval、template、MergePolicy、Policy、ProviderPrice、lice
 - `.evidence/workshop/2026-08-25-w7-02-profile-cost-confirmation.json`
 
 若实现中必须扩大范围，先回写本 ADR 与 Task Lease，再改代码。
+
+## 10. 2026-08-25 实施与验收封板
+
+W7-02 已按第 8/9 节完成，且没有新建第二套 Profile 真源：
+
+1. 在现有 `ProfileRecommendationRevision`、`ProfileConfirmationReceipt` 与 `MergePolicyRevision` 上补齐 TaskBrief/Evidence/Eval/Stage/Responsibility/Policy/ProviderPrice exact dependency snapshot、按币种分组的 `ProjectedCostRange`、`ProjectedDurationRange`、assumptions/confidence/unknown/expiry 与确定性 hash。
+2. Recommendation 对模板、Policy、价目有效期和 exact hash 漂移失败关闭；不同币种不相加，缺价保持 unknown 且不能伪装为 0。
+3. Confirmation 使用 `If-Match` CAS 与 `Idempotency-Key`，同键同命令返回同一 Receipt，同键异命令拒绝；确认不 freeze ResponsibilityPlan、不创建 TaskRun、不调用 Provider、不扣 hard budget。
+4. 媒体 Candidate 新增 fail-closed 成本投影合同并由 Module exact 路径引用；工作台展示 LITE/STANDARD/FULL 建议、预计区间、unknown、时长、假设和确认入口。
+5. 分层保持 163/164：原子 Skill 产出成本/时长事实，Logic + Policy 选择 Profile，数字同事只绑定职责，工作台只展示建议、证据、假设、贡献与阻断。
+
+验证结果：
+
+- 专项与邻接后端 `11 passed`；OpenAPI/Router `22 passed + 2 subtests`；迁移单头 `w7_001`，未 apply 真实数据库。
+- Web 专项 `2 files / 23 tests`，累计 `232 files / 2132 tests`，生产构建 `344 modules`。
+- 定向安全扫描 `15 files / critical=0 / warning=0`；Python 编译、Candidate JSON 与 `git diff --check` GREEN。
+- 内置浏览器 `768/1440/1920` 三视口无横向溢出，STANDARD 建议、CNY 已知区间、FULL `LIVE_VIDEO_PRICE_UNKNOWN`、预计时长与确认入口可见，console error 0；未点击确认，未产生业务写入。
+
+证据：`.evidence/workshop/2026-08-25-w7-02-profile-cost-confirmation.json`。结论：`W7_02_PROFILE_PROJECTED_COST_CONFIRMATION_CODE_CONTRACT_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE`，自动进入 W7-03。
