@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000249",
+  "created_at": "2026-08-25T15:04:25+08:00",
+  "excluded_scope": [
+    "migration apply,real provider call,real notification send,repricing,real business mutation,canary,release"
+  ],
+  "expected_outputs": [
+    "W6-06 code,tests,browser evidence,Delivery Receipt,authority CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-25T19:15:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs:54-W6-06 ADR,price plan,D-waves checklist; code:typed price disposition contracts/compiler,tenant append-only store,internal API,additive migration,strict price contribution UI,tests,browser evidence"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w6-06-price-notice-recommendation-reprice-20260825"
+}
