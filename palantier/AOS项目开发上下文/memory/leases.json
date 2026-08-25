@@ -1,4 +1,29 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000242",
+      "created_at": "2026-08-25T11:21:45+08:00",
+      "excluded_scope": [
+        "real-tenant-business-data",
+        "external-provider-side-effects",
+        "production-release"
+      ],
+      "expected_outputs": [
+        "W5_08_CUMULATIVE_CODE_BROWSER_DISPOSITION_GREEN_NO_REAL_CANARY_NO_EXTERNAL_EFFECT_NO_RELEASE"
+      ],
+      "lease_expires_at": "2026-08-25T05:21:36+00:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "apps/web/src/components/aip/ActionBoundaryPanel.tsx",
+        "apps/web/src/components/aip/ActionBoundaryPanel.test.tsx",
+        "apps/web/src/pages/CanonicalDraftInboxPage.tsx",
+        "apps/web/src/pages/CanonicalDraftInboxPage.test.tsx",
+        ".evidence/workshop/2026-08-25-w5-08-cumulative-action-browser-disposition.json"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w5-08-cumulative-action-safety-browser-disposition-20260825"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
