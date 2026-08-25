@@ -1,0 +1,38 @@
+{
+  "base_revision": "AOS-000276",
+  "blockers": [
+    "READY_REQUIRES_PRODUCTION_HTTP",
+    "EXACT_MODULE_INSTALLATION_EVIDENCE_NOT_AVAILABLE"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/workshopAcceptance.ts",
+    "apps/web/src/components/workshop/workshopAcceptance.test.ts",
+    "apps/web/src/components/workshop/EcommerceWorkshopShell.test.tsx",
+    "apps/web/src/components/workshop/MediaStudioPage.tsx",
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/PriceGovernancePage.tsx",
+    "apps/web/src/components/workshop/CustomerPage.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/w8-07/acceptance-matrix.json",
+    ".evidence/workshop/w8-07/browser-route-matrix.json",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/76-W8-07-八Module三视口七态Blocked键盘验收预检ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "6b41a32ba5b012a645fd4d1465258e5853d0af04",
+    "d338cfffa9ca22ae8494fd28f685c62e709f6e0a",
+    "ad1e9be1720c1545459f85362834cff6775ce7ea"
+  ],
+  "completed_at": "2026-08-26T06:17:53+08:00",
+  "completed_revision": "AOS-000276",
+  "result": "ENGINEERING_ACCEPTANCE_CONTRACT_BROWSER_GREEN_OPERATIONAL_MATRIX_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "240/240 operational cells remain blocked because exact active Installation/Module authority and production HTTP are unavailable; local build is engineering evidence only"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-07-eight-module-viewport-state-keyboard-acceptance-20260826",
+  "verification": [
+    "targeted 6 files/39 tests passed; full Web 242 files/2193 tests passed; TypeScript and Vite production build 344 modules passed",
+    "built-in browser 8 exact routes x 1280/1440/1920 = 24 checks: one H1, accessible status regions, no horizontal overflow; 0 uncaught script errors"
+  ]
+}

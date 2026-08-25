@@ -1,47 +1,44 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W8-06"
+    "W8-07 eight Module x three viewport x ten state acceptance contract, four tab keyboard/a11y closure, reduced-motion, targeted/full/build/browser engineering evidence"
   ],
   "current_phase": "S7_WORKSHOP_W8_SCENARIOS_AND_RELEASE_GATES",
-  "delivery_status": "W8_06_BATCH_PREPARE_START_PARTIAL_UNKNOWN_RECONCILE_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "W8_07_EIGHT_MODULE_THREE_VIEWPORT_TEN_STATE_KEYBOARD_ACCEPTANCE_CONTRACT_BROWSER_GREEN_OPERATIONAL_MATRIX_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "delivery",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w8-06-batch-prepare-start-reconcile-scenario-20260826.json"
+      "kind": "acceptance",
+      "ref": ".evidence/workshop/w8-07/acceptance-matrix.json"
     },
     {
-      "kind": "receipt",
-      "ref": ".evidence/workshop/2026-08-26-w8-06-batch-prepare-start-reconcile-scenario.json"
+      "kind": "browser",
+      "ref": ".evidence/workshop/w8-07/browser-route-matrix.json"
+    },
+    {
+      "kind": "adr",
+      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/76-W8-07-八Module三视口七态Blocked键盘验收预检ADR.md#9"
     }
   ],
-  "evidence_cutoff": "2026-08-26T05:52:52+08:00",
+  "evidence_cutoff": "2026-08-26T06:17:53+08:00",
   "hard_boundaries": [
-    "NO_SHARED_MIGRATION_APPLY",
-    "NO_REAL_TENANT_BUSINESS_WRITE",
-    "NO_BATCH_COMMAND_EXECUTION",
-    "NO_PROVIDER_OR_ACTION_EXECUTION",
-    "NO_AUTOMATIC_RETRY",
-    "NO_EXTERNAL_EFFECT",
-    "NO_RELEASE"
+    "org-org/dev-project is the only positive tenant; dev-org/dev-project is isolation-only",
+    "No migration apply, real installation mutation, Provider/Action, external effect or release; W8-07 local build does not issue operational ready"
   ],
   "incomplete": [
-    "W8-07_TO_W8-12"
+    "W8-07 operational matrix 240/240 blocked without exact active Installation/Module authority and production HTTP; W8-08 through W8-12 remain"
   ],
-  "last_green_gate": "W8-06_ENGINEERING_EXACT_BINDING",
-  "next_gate": "W8-07",
+  "last_green_gate": "W8_07_ENGINEERING_ACCEPTANCE_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W8_08_INSTALL_UPGRADE_UNINSTALL_ROLLBACK_ROUTE_RETIREMENT_ENGINEERING_CLOSURE",
   "next_steps": [
-    "Execute W8-07 eight-Module, three-viewport, seven-state plus blocked keyboard cumulative acceptance; preserve exact refs, honest N/A, no external effect and no release."
+    "Start W8-08 serially: re-read ADR-77, audit canonical installation lifecycle and legacy route retirement contracts, then implement the first fail-closed gap without real installation mutation"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000276",
+  "project_revision": "AOS-000277",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "34a6cdf0b60ce9b84a0532bccd0045afe71fe765",
-    "docs-checklist": "8a43189175d9187434307f96b6901f7bbcb14430",
-    "docs-receipt": "a70188783fb0e088ee2d40d32398ed294f202bcf",
-    "docs-review": "7f93ad14210835dd28822ff7fe11aaaef3825954",
-    "evidence": "4959e000c7adc2cf56ed8376fbde1f6988b708f4"
+    "aos-platform-code": "6b41a32ba5b012a645fd4d1465258e5853d0af04",
+    "aos-platform-evidence": "d338cfffa9ca22ae8494fd28f685c62e709f6e0a",
+    "docs": "ad1e9be1720c1545459f85362834cff6775ce7ea"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -51,5 +48,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T05:57:01+08:00"
+  "updated_at": "2026-08-26T06:18:56+08:00"
 }

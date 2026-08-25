@@ -1,31 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000276",
-      "created_at": "2026-08-26T05:58:26+08:00",
-      "excluded_scope": [
-        "real tenant business data",
-        "shared migration apply",
-        "Provider/Action/publish/release side effects"
-      ],
-      "expected_outputs": [
-        "W8-07 executable eight-Module by three-viewport by state/blocked/keyboard acceptance matrix with honest N/A and fail-closed evidence",
-        "targeted+cumulative tests, built-in browser evidence, Delivery Receipt and AOS-000277 projection"
-      ],
-      "lease_expires_at": "2026-08-26T20:00:00+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "aos-platform/apps/web/src/components/workshop/*",
-        "aos-platform/apps/web/src/shell/*",
-        "aos-platform/apps/web/src/api/ecommerceWorkshop/*",
-        "aos-platform/.evidence/workshop/2026-08-26-w8-07*",
-        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/76-W8-07-*",
-        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w8-07-eight-module-viewport-state-keyboard-acceptance-20260826"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
