@@ -1,4 +1,32 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000254",
+      "created_at": "2026-08-25T17:57:28+08:00",
+      "excluded_scope": [
+        "aos-platform:.DS_Store",
+        "aos-platform:.evidence/aip/2026-08-23-r32-browser-final",
+        "aos-platform:plugins"
+      ],
+      "expected_outputs": [
+        "W7-01 signed-installable LITE/STANDARD/FULL media templates, eight responsibility slots, ten canonical capability mapping, exact active-installation resolver, tests, browser evidence, Delivery Receipt, authority CAS and Prime readback"
+      ],
+      "lease_expires_at": "2026-08-26T02:30:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "aos-platform:bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0",
+        "aos-platform:services/aos-api/aos_api/aip_media_production_templates.py",
+        "aos-platform:services/aos-api/aos_api/aip_responsibility_template_authority.py",
+        "aos-platform:services/aos-api/tests/aip/test_aip_media_production_templates.py",
+        "aos-platform:services/aos-api/tests/aip/test_aip_responsibility_template_authority.py",
+        "aos-platform:services/aos-api/tests/asset_registry/test_m5_ecommerce_bundle_contracts.py",
+        "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/59-W7-01签名StageResponsibilityTemplate与十Capability映射预检ADR.md",
+        "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w7-01-signed-stage-responsibility-capability-mapping-20260825"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
