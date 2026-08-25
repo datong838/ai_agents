@@ -1,7 +1,7 @@
 # W7-06 四门同版 Eval、ReviewIssue、ReturnDecision 与新 Attempt 预检 ADR
 
-> 状态：`IMPLEMENTATION_IN_PROGRESS / NO_EXTERNAL_EFFECT / NO_RELEASE`  
-> 当前事实：`AOS-000261`，`m1@496e2c0f`（W7-05 code），W7-05 Delivery/Prime 投影已 CURRENT；任务 `workshop-w7-06-four-gate-eval-review-return-attempt-20260825` 已登记单一 Lease。
+> 状态：`COMPLETED_CODE_CONTRACT_BROWSER_GREEN / SECURITY_SCOPED_GREEN / REPO_BASELINE_RED / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 当前事实：以 `AOS-000261` 为开工基线，代码提交 `m1@7787fcc1`、证据路径对齐提交 `m1@1c79d07f`；任务 `workshop-w7-06-four-gate-eval-review-return-attempt-20260825` 已形成 Delivery Receipt 并释放 Lease。
 
 ## 1. 裁决
 
@@ -51,10 +51,21 @@ blocking finding 必须引用 exact EvalRule、EvalReport、Evidence、Artifact/
 
 第二轮技术与安全审查：唯一 Eval/Issue/Task/Artifact authority、exact GateSet、latest attempt、invalidation/reuse、合同迁移、hard block 与 fail-closed 完整；10 项实现缺口未误写为完成，无代码、迁移、真实租户或外部动作；`PASS`。
 
-结论：旧依赖阻断已经解除，W7-06 已进入唯一开发者串行实施；清单在完整代码、测试、浏览器、安全、Receipt 与 CAS 证据闭合前保持未勾选。
+结论：旧依赖阻断已经解除，W7-06 已按唯一开发者串行实施完成；代码、合同、测试、内置浏览器、安全与 Delivery Receipt 已闭合，authority CAS/Prime 回读完成后进入 W7-07。
 
 ## 7. 开工边界与 163/164 一致性
 
 - 四门评价复用 `review-output-quality`、`verify-claims` 等原子 Skill 的 canonical Eval/Review 产物，由 Logic 固定四门组合与 return mapping；数字同事只绑定职责，工作台只消费贡献投影；
 - 工作台不复制 Eval、Issue、Task、Artifact 或 Approval authority，不用 UI 状态、旧 succeeded、单门通过或 Issue resolved 冒充 4/4 或批准；
 - 本波不调用 Provider、不生成媒体、不提交真实评价/Issue/Return、不写 `org-org/dev-project` 业务数据、不发布；`dev-org/dev-project` 只用于隔离负向测试。
+
+## 8. 实施与验收闭环
+
+- 代码：`7787fcc1` 新增兼容可空的媒体 Eval subject/attempt/policy/cutoff exact binding、签名四门 profile、同版 GateSet、ReviewIssue return-stage 校验和显式 ContractMigrationDecision；`1c79d07f` 仅把证据文件名对齐 Task Receipt 的冻结 scope。
+- 后端：W7-06 专项 `4 passed`；W4/W7 累计 `44 passed`；OpenAPI 合同 `14 passed`；Domain Router `8 passed + 2 subtests`；compileall 与 diff check GREEN。OpenAPI 为 `2651 paths / 2344 schemas / 4426 operations`，inventory/runtime route 为 `4436/4440`，runtime hash 为 `22ea804fc4135987161d0a04f69eade53be01818cd9d8bc88ea6fe6a796ee5b1`。
+- Web：ProductionContractsPage 定向 `17 passed`，全量 `232 files / 2137 tests`，build `344 modules` GREEN；工作台按“原子 Eval Skill → Logic 四门编排 → 媒体数字同事 → 贡献视图”展示，不复制 Eval/Issue/Approval authority。
+- 数据库：Alembic 单头 `w7_004`；只在 disposable database 验证 upgrade/downgrade、RLS/FORCE RLS 与 append-only，不 apply 到共享或真实数据库。
+- 浏览器：内置浏览器在受控 fixture 的实际 `1280x720` 视口显示四门、`issue-copyright-browser@v1`、`MEDIA_GATE_COPYRIGHT_FAILED` 与禁用生产启动，无横向溢出，本轮刷新新增 console error 为 `0`。浏览器临时 viewport override 未生效，因此不声称 768/1440/1920 三档通过。
+- 安全：本波 18 个 scope 文件扫描 `0 critical / 0 warning`；全仓仍是既有 `5 critical / 326 warning` RED 基线，未把局部 GREEN 冒充仓库 GREEN。
+
+退出结论：`W7_06_MEDIA_FOUR_GATE_SAME_ARTIFACT_EVAL_REVIEW_RETURN_ATTEMPT_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE`。证据：`.evidence/workshop/2026-08-25-w7-06-four-gate-eval-review-return-attempt.json`；未写真实租户、未 apply 共享迁移、未调用 Provider、未生成媒体、未执行 Review Return/合同迁移、未发布。下一串行入口为 W7-07。

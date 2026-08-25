@@ -1,0 +1,44 @@
+{
+  "base_revision": "AOS-000261",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-06-four-gate-eval-review-return-attempt.json",
+    "aos-platform:services/aos-api/alembic/versions/w7_004_media_four_gate_review.py",
+    "aos-platform:services/aos-api/aos_api/aip_eval_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_eval_authority_store.py",
+    "aos-platform:services/aos-api/aos_api/aip_eval_runner.py",
+    "aos-platform:services/aos-api/aos_api/aip_production_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_production_contract_store.py",
+    "aos-platform:services/aos-api/aos_api/routers/aip_production_contracts.py",
+    "aos-platform:services/aos-api/tests/aip/test_w7_06_media_four_gate.py",
+    "aos-platform:apps/web/src/api/aipProductionContracts/contracts.ts",
+    "aos-platform:apps/web/src/api/aipProductionContracts/parser.ts",
+    "aos-platform:apps/web/src/api/aipProductionContracts/index.ts",
+    "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.test.tsx",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "aos-platform:packages/contracts/openapi/v1.inventory.json",
+    "aos-platform:scripts/export_openapi.py",
+    "aos-platform:services/aos-api/tests/test_domain_router_manifest.py",
+    "aos-platform:services/aos-api/tests/test_openapi_contract.py"
+  ],
+  "commits": [
+    "7787fcc1a52a8ddfd0f23990846a8d8be8f75c66",
+    "1c79d07fc5be347d8512a535dd08d55f7ba27586"
+  ],
+  "completed_at": "2026-08-25T22:01:19+08:00",
+  "completed_revision": "AOS-000261",
+  "result": "W7_06_MEDIA_FOUR_GATE_SAME_ARTIFACT_EVAL_REVIEW_RETURN_ATTEMPT_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "repository security gate remains RED on existing 5 critical/326 warning baseline; browser viewport override unavailable; no shared migration apply, real tenant mutation, Provider invocation, media generation, review return, external publication or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-06-four-gate-eval-review-return-attempt-20260825",
+  "verification": [
+    "focused backend 4 passed; W4/W7 cumulative 44 passed; OpenAPI 14 passed; domain router 8 passed plus 2 subtests",
+    "Web full 232 files/2137 tests; ProductionContractsPage 17 tests; build 344 modules",
+    "OpenAPI 2651 paths/2344 schemas/4426 operations; inventory 4436/runtime 4440; Alembic w7_004 disposable upgrade/downgrade and RLS only",
+    "built-in browser controlled fixture 1280x720, no horizontal overflow, four-gate/ReviewIssue/blocker visible, 0 new console errors; viewport override did not apply and is not claimed",
+    "scoped security 18 files 0 critical/0 warning; repository existing baseline 5 critical/326 warning"
+  ]
+}
