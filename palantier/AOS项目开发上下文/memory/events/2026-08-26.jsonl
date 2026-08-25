@@ -9,3 +9,11 @@
 {"occurred_at":"2026-08-26T02:31:36+08:00","result":"W7_11_MEDIA_CUMULATIVE_EIGHT_ENGINEERING_GATES_GREEN_THREE_EXTERNAL_GATES_BLOCKED_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w7-11-media-cumulative-browser-security-fault-20260826","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T02:32:48+08:00","project_revision":"AOS-000267","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000267","occurred_at":"2026-08-26T02:34:29+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w8-01-growth-scenario-exact-binding-20260826","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T03:07:56+08:00","project_revision":"AOS-000268","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000268","occurred_at":"2026-08-26T03:10:41+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w8-02-price-operation-customer-remedy-20260826","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T03:42:45+08:00","project_revision":"AOS-000269","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-26T03:43:23+08:00","project_revision":"AOS-000270","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000270","occurred_at":"2026-08-26T03:47:33+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w8-03-cross-domain-dispatch-takeover-scenario-20260826","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T04:18:37+08:00","project_revision":"AOS-000271","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-26T04:19:17+08:00","project_revision":"AOS-000272","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-26T04:20:12+08:00","project_revision":"AOS-000273","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
