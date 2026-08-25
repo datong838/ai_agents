@@ -84,3 +84,17 @@ W7-09 不新增媒体业务 authority 或迁移；它只在同一 tenant/cutoff/
 ## 6. 最终裁决
 
 W7-09 产品与技术合同继续作为施工基线。AOS-000264 已证明 W7-03～08 前置闭合，因此原 `IMPLEMENTATION_BLOCKED` 解除并进入最小实现；这不提升真实 Provider、外部动作或发布许可。历史预检事实仍保留在 `.evidence/workshop/2026-08-15-w7-09-media-studio-lifecycle-responsibility-stage-artifact-issue-ui-preflight.json`，不得覆盖。
+
+## 7. 2026-08-26 实施与验收闭环
+
+本轮按第 5 节最小写集完成 v4 只读聚合，没有新增迁移或第二套业务真源：
+
+- 服务端从同一 tenant/cutoff/frozen context 聚合八职责、ProductionStart、TaskRun、ProviderJob、ArtifactFamily、GateSet、ReviewIssue、ReturnDecision 与财务引用；上下文为空时返回可信空，多上下文且无 exact selector 时失败关闭。
+- 页面三 Tab 共用同一生命周期贡献，展示七节点、八职责、Stage/attempt/Provider、Artifact Family 与 Review Issue；六类 command capability 由服务端返回且全部 `allowed=false`，没有执行按钮。
+- 旧 v1/v2/v3 继续由严格 SDK 兼容解析；v4 拒绝职责槽乱序、伪 `allowed=true`、非 canonical 生命周期与漂移 hash。
+- 专项后端 `17 passed`，W7-03～09 累计后端 `59 passed`；OpenAPI/domain `22 passed + 2 subtests`，确定性导出为 `2666 paths / 2378 schemas / 4443 unique operations / 4453 route rows`。
+- Web 定向 `2 files / 7 tests`，全量 `233 files / 2144 tests`，类型检查与 `344 modules` 生产构建通过。
+- 内置浏览器在 `org-org/dev-project` 本地只读 fixture 下完成 1280px 三 Tab 验收：七节点、八职责、TaskRun/Provider Stage、Artifact Family、Review Issue 与六类禁用命令可见；document/body 均为 1280px，无横向溢出、无新增 console error、无业务写入口。
+- scoped security `22 files / 0 critical / 0 warning`，scanner 单测 `9 passed`；全仓既有基线仍为 `4910 files / 5 critical / 326 warning`，不得据此发布。
+
+证据固化于 `.evidence/workshop/2026-08-26-w7-09-media-studio-lifecycle-ui.json` 与同日 browser 目录。裁决为 `CODE_CONTRACT_BROWSER_GREEN / SECURITY_SCOPED_GREEN / REPO_BASELINE_RED / NO_REAL_PROVIDER / NO_EXTERNAL_EFFECT / NO_RELEASE`；W7-09 只完成代码、合同和浏览器层闭环，不能冒充真实 Provider、运营或发布就绪。

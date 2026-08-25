@@ -1,0 +1,39 @@
+{
+  "base_revision": "AOS-000264",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-26-w7-09-browser/",
+    "aos-platform:.evidence/workshop/2026-08-26-w7-09-media-studio-lifecycle-ui.json",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio_lifecycle_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio_lifecycle.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio.py",
+    "aos-platform:services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/components/workshop/MediaStudioPage.tsx",
+    "aos-platform:apps/web/src/styles/45-ecommerce-workshop.css",
+    "aos-platform:packages/contracts/openapi/v1.generated.json"
+  ],
+  "commits": [
+    "94e62ac0038f03b26e3af4886c6d22ff089d20f9",
+    "1bd0857bd4f132a0ead60606d531e043466168d7"
+  ],
+  "completed_at": "2026-08-26T00:57:47+08:00",
+  "completed_revision": "AOS-000264",
+  "result": "W7_09_MEDIA_STUDIO_LIFECYCLE_CONTRIBUTION_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "no shared migration apply, real tenant mutation, real Provider invocation, media generation, business Action, automatic retry, external effect or release",
+    "browser acceptance used a local read-only fixture and is code/UI evidence, not operational Provider or release readiness",
+    "repository security baseline remains RED on pre-existing 5 critical/326 warning findings"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-09-media-studio-lifecycle-ui-20260826",
+  "verification": [
+    "focused backend 17 passed; W7-03 through W7-09 cumulative backend 59 passed with 7 warnings",
+    "OpenAPI/domain 22 passed plus 2 subtests; deterministic OpenAPI 2666 paths/2378 schemas/4443 unique operations/4453 route rows",
+    "Web targeted 2 files/7 tests; full 233 files/2144 tests; typecheck and build 344 modules passed",
+    "built-in browser 1280px local read-only fixture: seven lifecycle nodes, eight responsibilities, TaskRun/Provider Stage, Artifact Family, Review Issue and six disabled commands visible; no horizontal overflow and 0 new console errors",
+    "scoped security 22 files 0 critical/0 warning; scanner tests 9 passed; repository baseline remains 5 critical/326 warning"
+  ]
+}
