@@ -1,0 +1,19 @@
+{
+  "base_revision": "AOS-000244",
+  "created_at": "2026-08-25T12:29:23+08:00",
+  "excluded_scope": [
+    "real business data, external Provider effects, installation mutation, release"
+  ],
+  "expected_outputs": [
+    "W6-02 code, tests, browser disposition, evidence, Delivery Receipt and authority CAS"
+  ],
+  "lease_expires_at": "2026-08-25T14:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs:50-W6-02 ADR + D-waves checklist",
+    "code:AIP profile recommendation confirmation merge policy authority, API, migration, tests and Workshop consumer"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w6-02-profile-recommendation-merge-policy-20260825"
+}
