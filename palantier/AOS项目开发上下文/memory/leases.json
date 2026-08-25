@@ -1,4 +1,43 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000261",
+      "created_at": "2026-08-25T21:11:02+08:00",
+      "excluded_scope": [
+        "real tenant mutation, shared migration apply, Provider/media generation/publication, external effect, release",
+        "unrelated dirty or untracked user files"
+      ],
+      "expected_outputs": [
+        "immutable signed four-gate profile and same-version GateSet authority",
+        "exact EvalReport Artifact/Step attempt binding, ReviewIssue return-stage validation, contract migration decision",
+        "strict API/SDK/read-only Workshop contribution view with focused, cumulative, browser and security evidence"
+      ],
+      "lease_expires_at": "2026-08-26T12:00:00+08:00",
+      "owner": "codex-m1-serial",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "aos-platform/services/aos-api/alembic/versions/w7_004_media_four_gate_review.py",
+        "aos-platform/services/aos-api/aos_api/aip_eval_contracts.py",
+        "aos-platform/services/aos-api/aos_api/aip_eval_authority_store.py",
+        "aos-platform/services/aos-api/aos_api/aip_eval_runner.py",
+        "aos-platform/services/aos-api/aos_api/aip_production_contracts.py",
+        "aos-platform/services/aos-api/aos_api/aip_production_contract_store.py",
+        "aos-platform/services/aos-api/aos_api/routers/aip_production_contracts.py",
+        "aos-platform/services/aos-api/tests/aip/test_w7_06_media_four_gate.py",
+        "aos-platform/apps/web/src/api/aipProductionContracts/",
+        "aos-platform/apps/web/src/pages/s2/ProductionContractsPage.tsx",
+        "aos-platform/apps/web/src/pages/s2/ProductionContractsPage.test.tsx",
+        "aos-platform/packages/contracts/openapi/",
+        "aos-platform/scripts/export_openapi.py",
+        "aos-platform/services/aos-api/tests/test_domain_router_manifest.py",
+        "aos-platform/services/aos-api/tests/test_openapi_contract.py",
+        "aos-platform/.evidence/workshop/2026-08-25-w7-06-four-gate-eval-review-return-attempt.json",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/64-W7-06-四门同版EvalReviewIssueReturnAttempt预检ADR.md",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w7-06-four-gate-eval-review-return-attempt-20260825"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
