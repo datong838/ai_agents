@@ -1,35 +1,35 @@
 {
   "completed": [
-    "W5-05 typed unknown/accepted reconciliation, manual maker-checker authority and exact policy-generated compensation code controls are GREEN"
+    "W5-06 canonical endpoint identity, signature verification, durable replay, exact attempt binding and no-LWW ordering controls are GREEN"
   ],
-  "content_hash": "sha256:767aa3fd7875c6e72275ec4408ec08a4b6b0ad3ef2a5b6a9493f12f4f364eab3",
-  "current_phase": "S5_W5_06_WEBHOOK_INBOX_REPLAY_ORDERING_NEXT",
-  "delivery_status": "W5_05_TYPED_RECONCILE_MANUAL_AUTHORITY_EXACT_COMPENSATION_POLICY_CODE_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:607df5e9a5f131d4ebe018dcc802698f59ddddb67c7724776b6002ada4911726",
+  "current_phase": "S5_W5_07_CANARY_KILL_CONTROL_NEXT",
+  "delivery_status": "W5_06_CANONICAL_WEBHOOK_INBOX_REPLAY_ORDERING_CODE_GREEN_NO_REAL_CALLBACK_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "workshop",
-      "ref": ".evidence/workshop/2026-08-25-w5-05-unknown-reconcile-compensation.json"
+      "ref": ".evidence/workshop/2026-08-25-w5-06-action-webhook-inbox.json"
     }
   ],
-  "generated_at": "2026-08-25T09:58:57+08:00",
+  "generated_at": "2026-08-25T10:39:55+08:00",
   "hard_boundaries": [
-    "NO_LIVE_MIGRATION; NO_RELEASE; NO_EXTERNAL_EFFECT; no real secret resolution, Provider callback, Action execution, canary or tenant business mutation"
+    "NO_LIVE_MIGRATION; NO_RELEASE; NO_EXTERNAL_EFFECT; no real endpoint/secret publication, Provider callback, Action execution, canary or tenant business mutation"
   ],
   "incomplete": [
-    "Webhook Inbox, live migration, real Provider callbacks, external effects, canary and release remain incomplete"
+    "Real endpoint and Secret publication, Provider callback, live migration, canary, Kill drill and release remain incomplete"
   ],
-  "last_green_gate": "W5_05_UNKNOWN_RECONCILE_COMPENSATION",
-  "next_gate": "W5_06_WEBHOOK_INBOX_REPLAY_ORDERING",
+  "last_green_gate": "W5_06_WEBHOOK_INBOX_REPLAY_ORDERING",
+  "next_gate": "W5_07_CANARY_KILL_CONTROL",
   "next_steps": [
-    "Review and implement W5-06 canonical Action Webhook Inbox, signature, replay and ordering controls without external effects"
+    "Review W5-07 and implement all zero-side-effect Canary/Kill authority and drill controls while keeping real canary blocked without exact authorization"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000240",
+  "project_revision": "AOS-000241",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "84acc76",
-    "docs": "a488a04",
-    "evidence": "88ca950"
+    "code": "ad26cd4",
+    "delivery_receipt": "5a1949a",
+    "workshop_docs": "59fd50d"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
