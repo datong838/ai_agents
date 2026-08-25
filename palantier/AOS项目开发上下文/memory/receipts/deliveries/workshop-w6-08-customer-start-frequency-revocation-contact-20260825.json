@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000251",
+  "blockers": [
+    "NO_LIVE_MIGRATION_APPLY",
+    "NO_PERMIT_REDEMPTION_PROTECTED_CONTACT_RESOLUTION_PROVIDER_DISPATCH_OR_SEND",
+    "NO_REAL_CONSENT_OPERATIONAL_DATA_CANARY_EFFECT_OR_RELEASE_AUTHORITY"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_customer_contact.py",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_contact_store.py",
+    "services/aos-api/alembic/versions/w6_008_customer_contact.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "apps/web/src/components/workshop/CustomerPage.tsx",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w6-08-customer-start-frequency-revocation-contact-governance.json"
+  ],
+  "commits": [
+    "f3573f83",
+    "8be1bd4"
+  ],
+  "completed_at": "2026-08-25T16:52:20+08:00",
+  "completed_revision": "AOS-000251",
+  "result": "W6_08_CUSTOMER_START_FREQUENCY_WITHDRAWAL_CONTACT_GOVERNANCE_CODE_CONTRACT_BROWSER_GREEN_ZERO_CONTACT_ZERO_PROVIDER_CALL_ZERO_SEND_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Migration not applied; permit redemption, protected contact resolution, operational consent data, provider dispatch, real send, canary, external effect and release remain independently gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-08-customer-start-frequency-revocation-contact-20260825",
+  "verification": [
+    "Backend target 11 passed; W6 cumulative 65 passed; API/OpenAPI 19 passed; frontend target 10 and full 2125 passed; TypeScript and production build GREEN; OpenAPI 2634/2292/4413/4403 deterministic; w6_008 unique head; built-in browser governance card, Skill-to-Logic binding, tenant and zero-send fail-closed GREEN with zero protected contact leak, forbidden buttons and console errors"
+  ]
+}
