@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000250",
+  "blockers": [
+    "NO_LIVE_MIGRATION_APPLY",
+    "NO_PROTECTED_CONTACT_RESOLUTION_START_SEND_OR_PROVIDER_CALL",
+    "NO_REAL_CONSENT_OPERATIONAL_DATA_CANARY_EFFECT_OR_RELEASE_AUTHORITY"
+  ],
+  "changed_files": [
+    "bundles/platforms/ecommerce-niushop/content/mappings/p08-customer-lite.yaml",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_lifecycle.py",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_lifecycle_store.py",
+    "services/aos-api/alembic/versions/w6_007_customer_lifecycle.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "apps/web/src/components/workshop/CustomerPage.tsx",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w6-07-customer-segment-journey-dialogue-batch-prepare.json"
+  ],
+  "commits": [
+    "c85501c2",
+    "3f32222"
+  ],
+  "completed_at": "2026-08-25T16:14:00+08:00",
+  "completed_revision": "AOS-000250",
+  "result": "W6_07_CUSTOMER_LIFECYCLE_BATCH_CODE_CONTRACT_BROWSER_GREEN_ZERO_CONTACT_ZERO_START_ZERO_SEND_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Migration not applied; protected contact, operational consent data, customer start, frequency reservation, withdrawal race, provider dispatch and release remain independently gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-07-customer-segment-journey-dialogue-batch-prepare-20260825",
+  "verification": [
+    "Backend target 27 passed; P08/JDBC/customer read 25 passed; W6 cumulative 54 passed; frontend target 8 and full 2121 passed; TypeScript and production build GREEN; OpenAPI 2629/2276/4408/4398 deterministic; w6_007 unique head; built-in browser 8 Skills, Logic, primary assignee, bucket conservation and zero-touch fail-closed GREEN with zero protected fields, action buttons and console errors"
+  ]
+}

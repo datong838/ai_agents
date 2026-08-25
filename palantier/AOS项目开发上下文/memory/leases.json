@@ -1,23 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000250",
-      "created_at": "2026-08-25T15:43:30+08:00",
-      "excluded_scope": [
-        "migration apply,protected contact resolution,customer start,real provider call,real send,real business mutation,canary,release"
-      ],
-      "expected_outputs": [
-        "W6-07 PII contract remediation,customer lifecycle authority,batch prepare/freeze,tests,browser evidence,Delivery Receipt,authority CAS and Prime readback"
-      ],
-      "lease_expires_at": "2026-08-25T20:30:00+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "docs:55-W6-07 ADR,customer plan,D-waves; code:P08 mapping contract,customer consent/segment/journey/dialogue/batch authority,tenant store,internal API,additive migration,strict contribution UI,tests,browser evidence"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w6-07-customer-segment-journey-dialogue-batch-prepare-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
