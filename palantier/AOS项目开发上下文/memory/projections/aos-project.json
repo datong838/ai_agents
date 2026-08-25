@@ -1,38 +1,38 @@
 {
   "completed": [
-    "W5-08 cumulative code safety, canonical ActionBoundaryPanel, production build and fail-closed three-viewport browser disposition are GREEN"
+    "W6-01 exact capability, canonical assignee resolver, freshness receipt and fail-closed Task Cockpit consumption are GREEN"
   ],
-  "content_hash": "sha256:9476b90e29c5ea0cb62d013f4dbacee9e287ff6bc84d295decb2a714dffe09cd",
-  "current_phase": "S6_W6_01_EXACT_CAPABILITY_ASSIGNEE_READINESS_NEXT",
-  "delivery_status": "W5_08_CUMULATIVE_CODE_BROWSER_DISPOSITION_GREEN_OPERATIONAL_EXTERNAL_ACTION_RELEASE_BLOCKED_NO_REAL_CANARY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:b3e144159d22289261fad103becfe10df4b7ab1e4dc971d2116adbc12fc7317c",
+  "current_phase": "S6_W6_02_PROFILE_RECOMMENDATION_MERGE_POLICY_NEXT",
+  "delivery_status": "W6_01_EXACT_CAPABILITY_ASSIGNEE_READINESS_CODE_CONTRACT_BROWSER_DISPOSITION_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "w5_08",
-      "ref": ".evidence/workshop/2026-08-25-w5-08-cumulative-action-browser-disposition.json"
+      "kind": "w6_01",
+      "ref": ".evidence/workshop/2026-08-25-w6-01-exact-capability-assignee-readiness.json"
     }
   ],
-  "generated_at": "2026-08-25T11:43:11+08:00",
+  "generated_at": "2026-08-25T12:28:35+08:00",
   "hard_boundaries": [
     "NO_REAL_CANARY",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "Real org-org Canary, production Adapter/Secret, external Provider/Effect and release remain blocked"
+    "Positive installed Task Cockpit browser path, real Canary, external Provider/Effect and release remain blocked"
   ],
-  "last_green_gate": "W5_08_CUMULATIVE_CODE_BROWSER_DISPOSITION_GREEN",
-  "next_gate": "W6_01_EXACT_CAPABILITY_ASSIGNEE_RESOLVER_READINESS_GATE",
+  "last_green_gate": "W6_01_EXACT_CAPABILITY_ASSIGNEE_READINESS_GATE",
+  "next_gate": "W6_02_PROFILE_RECOMMENDATION_CONFIRMATION_MERGE_POLICY_GATE",
   "next_steps": [
-    "Start W6-01 exact capability, assignee resolver and readiness implementation under the sole-developer serial loop"
+    "Start W6-02 LITE/STANDARD/FULL recommendation, user confirmation and MergePolicy authority under the sole-developer serial loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000243",
+  "project_revision": "AOS-000244",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "2f05451",
-    "delivery_receipt": "d1a5ebd",
-    "evidence": "696b3f5",
-    "workshop_docs": "216bffb"
+    "code": "b128be0",
+    "delivery_receipt": "ac6421b",
+    "evidence": "c835c9d",
+    "workshop_docs": "eea527d"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
