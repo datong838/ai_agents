@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000274",
+  "created_at": "2026-08-26T04:54:09+08:00",
+  "excluded_scope": [
+    "shared migrations;real tenant business writes;Provider execution;Action execution;publish/canary;external effects;release;unrelated user changes"
+  ],
+  "expected_outputs": [
+    "W8-05 exact-bound GET-only FULL video production/fault-recovery contribution, tests, built-in-browser evidence, Delivery Receipt, safe commits and AOS authority/Prime projection"
+  ],
+  "lease_expires_at": "2026-08-26T16:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_full_video_scenario_contracts.py;services/aos-api/aos_api/ecommerce_workshop_full_video_scenario.py;services/aos-api/aos_api/routers/ecommerce_workshop.py;services/aos-api/tests/test_ecommerce_workshop_full_video_scenario.py;services/aos-api/tests/test_ecommerce_workshop_api.py;services/aos-api/tests/test_openapi_contract.py;apps/web/src/api/ecommerceWorkshop/contracts.ts;apps/web/src/api/ecommerceWorkshop/parser.ts;apps/web/src/api/ecommerceWorkshop/client.ts;apps/web/src/api/ecommerceWorkshop/fullVideoScenarioParser.test.ts;apps/web/src/components/workshop/MediaStudioPage.tsx;apps/web/src/components/workshop/MediaStudioPage.test.tsx;apps/web/src/styles/45-ecommerce-workshop.css;scripts/export_openapi.py;packages/contracts/openapi/v1.generated.json;packages/contracts/openapi/v1.inventory.json;.evidence/workshop/2026-08-26-w8-05-full-video-fault-recovery-scenario.json;docs ADR/checklist/receipts/authority projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w8-05-full-video-fault-recovery-scenario-20260826"
+}
