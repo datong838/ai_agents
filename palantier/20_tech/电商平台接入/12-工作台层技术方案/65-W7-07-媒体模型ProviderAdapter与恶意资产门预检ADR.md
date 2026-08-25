@@ -1,7 +1,7 @@
 # W7-07 媒体/模型 Provider Adapter 与恶意资产门预检 ADR
 
-> 状态：`IMPLEMENTATION_IN_PROGRESS / NO_REAL_PROVIDER_CALL / NO_EXTERNAL_EFFECT / NO_RELEASE`
-> 当前事实：`AOS-000262`，`m1@1c79d07f`；W7-04 executor/fence/checkpoint 与 W7-06 four-gate 已 GREEN，Task/Lease 为 `workshop-w7-07-media-model-provider-adapter-malicious-asset-20260825`。
+> 状态：`CODE_CONTRACT_BROWSER_GREEN / SECURITY_SCOPED_GREEN / REPO_BASELINE_RED / NO_REAL_PROVIDER_CALL / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 当前事实：`AOS-000262`，实现提交 `m1@35b688a7`、证据对齐提交 `m1@e9a6278a`；W7-04 executor/fence/checkpoint、W7-06 four-gate 与 W7-07 media Provider Job/quarantine 已 GREEN，Task 为 `workshop-w7-07-media-model-provider-adapter-malicious-asset-20260825`。
 
 ## 1. 裁决
 
@@ -54,9 +54,23 @@ Adapter 固定 `dryValidate → submit → status/webhook → artifact/receipt �
 7. `apps/web/src/api/ecommerceWorkshop/*` 与 `MediaStudioPage*`：严格解析并只读展示 source/authorization/scan/provider/execution/unknown/reconcile、主责内容官和协作角色，以及“原子 Skill → Logic 编排 → 数字同事 → 工作台贡献”；不添加真实 submit/cancel 按钮。
 8. `test_w7_07_media_provider_job.py`、邻接 API/Web/OpenAPI/Router 测试：覆盖伪 MIME、超限、archive bomb、malware、license/肖像/商标/同意、OCR/EXIF/字幕/脚本 prompt injection、跨租户、secret/URI 泄露、重复 submit、timeout unknown、重复 webhook、cancel/reconcile、drift/revoke、RLS/append-only、重启回读和普通现有功能回归。
 9. 生成 `.evidence/workshop/2026-08-25-w7-07-media-model-provider-adapter-malicious-asset.json`，执行专项、累计、OpenAPI、Web 全量/build、内置浏览器、安全扫描与两轮一致性复审；不 apply 共享迁移、不调用真实 Provider、不生成媒体、不发布。
+10. 累计迁移回归若暴露既有 migration 可逆性缺陷，在不使用 `CASCADE`、不放宽事实保护的前提下修正依赖表删除顺序，并用独立 disposable database 重跑 empty downgrade/upgrade；该修复只恢复既定可逆合同，不改变任何 W5 webhook 运行时能力或数据语义。2026-08-25 已定位 `w5_005` 先删 revision、后删仍持 FK 的 directory，裁决为先删 directory 再按反序删除 tenant tables。
 
 ## 7. 与 163/164 的一致性
 
 - 媒体 acquire/generate/TTS/render/transcode 是 Provider Tool/Capability，不包装成“大媒体 Skill”；Brief/策略/脚本/素材选择/渠道适配/质量审查仍由原子 Skill 组合。
 - Logic 固定 Stage、exact model/provider/policy/scan gate 与返工路径；内容官主责，活动策划师/数据参谋/合规等按 ResponsibilitySlot 协作；工作台只显示 contribution projection。
 - Job、Artifact、Eval、Issue、Receipt、Usage 分别保留唯一 authority；页面状态、scanner 文案、Provider submitted 或输出 decode 均不能冒充交付、Approval 或 release。
+
+## 8. 实施与验收结论（2026-08-25）
+
+- `w7_005` 新增 tenant-scoped scan observation、MediaProviderJob、append-only event/receipt、purpose-bound access grant 与 idempotency authority；RLS/FORCE RLS、append-only、双租户与 restart readback 只在 disposable database 验证，未 apply 共享迁移。
+- Service 复用 canonical ModelRoute/Provider/RuntimePolicy/Plugin authority，输入/输出扫描均由 server-owned scanner 决定；默认无 scanner/adapter 失败关闭。submit timeout/异常进入 `unknown`，重复 submit 在 adapter 前被拒绝；重复 webhook 按语义 hash 去重。
+- 恶意资产矩阵覆盖伪 MIME、size、archive bomb、malware、license、肖像、商标、OCR、EXIF、字幕与脚本注入；AccessGrant 只持久 token hash、principal/purpose/Artifact/license/expiry/receipt，不持久 Secret 或短时明文 token。
+- Media Studio 保留 v1 解析兼容并新增 v2 严格贡献投影：`原子 Skill → TaskRun Logic → 内容官绑定 → Model/Provider/Adapter → scan refs`；页面无 submit/cancel/publish 入口，外部副作用固定关闭。
+- 后端专项 `30 passed`，W7/AIP 邻接累计 `93 passed`，OpenAPI `14 passed`；Web 定向 `4 passed`、全量 `232 files / 2137 tests`、TypeScript 与 build `344 modules` 通过。OpenAPI 为 `2659 paths / 2354 schemas / 4435 unique operations / 4445 route rows`。
+- 累计迁移回归发现并修复既有 `w5_005` 空库 downgrade FK 删除顺序；先删 directory 再删 revision，不使用 `CASCADE`，独立可逆回归通过，运行时能力与数据语义未改变。
+- 内置浏览器通过本机只读 fixture 验收实际 1280px 内容宽度：贡献链、`内容官 · unknown`、`media-generate`、reconcile blocker、scan count 与“外部副作用关闭”可见，无横向溢出、无新增 console error；仅存在两条 React Router v7 既有 future warning。
+- 本波安全扫描 `19 files / 0 critical / 0 warning`，scanner 单测 `9 passed`；全仓 tracked baseline 仍为 `5 critical / 326 warning`，所以不冒充 repository security GREEN。
+
+证据：`.evidence/workshop/2026-08-25-w7-07-media-model-provider-adapter-malicious-asset.json`、`.evidence/workshop/2026-08-25-w7-07-browser/media-studio-provider-job.png`。未写真实租户、未调用真实 Provider、未生成媒体、未自动重试、未产生外部 Effect、未发布。退出结论：`W7_07_MEDIA_PROVIDER_ADAPTER_MALICIOUS_ASSET_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE`；下一串行入口为 W7-08。

@@ -1,0 +1,51 @@
+{
+  "base_revision": "AOS-000262",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-07-browser/",
+    "aos-platform:.evidence/workshop/2026-08-25-w7-07-media-model-provider-adapter-malicious-asset.json",
+    "aos-platform:services/aos-api/alembic/versions/w5_005_action_webhook_inbox.py",
+    "aos-platform:services/aos-api/alembic/versions/w7_005_media_provider_job_adapter.py",
+    "aos-platform:services/aos-api/aos_api/aip_media_provider_job_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_media_provider_job_store.py",
+    "aos-platform:services/aos-api/aos_api/aip_media_provider_job_service.py",
+    "aos-platform:services/aos-api/aos_api/routers/aip_media_provider_jobs.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio.py",
+    "aos-platform:services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "aos-platform:services/aos-api/aos_api/routers/domain_manifest.json",
+    "aos-platform:services/aos-api/aos_api/routers/domain_aggregates.py",
+    "aos-platform:services/aos-api/tests/aip/test_w7_07_media_provider_job.py",
+    "aos-platform:services/aos-api/tests/test_ecommerce_workshop_media_studio.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/components/workshop/MediaStudioPage.tsx",
+    "aos-platform:apps/web/src/components/workshop/MediaStudioPage.test.tsx",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "aos-platform:packages/contracts/openapi/v1.inventory.json",
+    "aos-platform:scripts/export_openapi.py",
+    "aos-platform:services/aos-api/tests/test_openapi_contract.py"
+  ],
+  "commits": [
+    "35b688a769e92647bccc9dddcae0739de1ac885e",
+    "e9a6278a39299f048a25994e41e280f78ec64fa1"
+  ],
+  "completed_at": "2026-08-25T23:01:02+08:00",
+  "completed_revision": "AOS-000262",
+  "result": "W7_07_MEDIA_PROVIDER_ADAPTER_MALICIOUS_ASSET_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "repository security baseline remains RED on existing 5 critical/326 warning findings",
+    "no shared migration apply, real tenant mutation, real Provider invocation, media generation, automatic retry, external publication or release",
+    "browser acceptance used a local read-only fixture; it is code/UI evidence, not operational Provider readiness"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-07-media-model-provider-adapter-malicious-asset-20260825",
+  "verification": [
+    "focused backend 30 passed; W7/AIP cumulative 93 passed; OpenAPI 14 passed",
+    "Web targeted 4 passed; full 232 files/2137 tests; TypeScript and build 344 modules passed",
+    "OpenAPI 2659 paths/2354 schemas/4435 unique operations/4445 route rows; w7_005 disposable RLS/append-only only",
+    "built-in browser local read-only fixture at 1280px: contribution chain, unknown/reconcile and external-effect-off visible; no horizontal overflow and 0 new console errors",
+    "scoped security 19 files 0 critical/0 warning; scanner tests 9 passed; repository existing baseline 5 critical/326 warning",
+    "w5_005 empty downgrade dependency order remediated without CASCADE; isolated reversible migration test passed"
+  ]
+}
