@@ -1,36 +1,36 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W6-06"
-  ],
-  "current_phase": "S6_W6_07_CUSTOMER_SEGMENT_JOURNEY_DIALOGUE_BATCH_PREPARE_SERIAL_DEVELOPMENT",
-  "delivery_status": "W6_06_PRICE_DISPOSITION_CODE_CONTRACT_BROWSER_GREEN_REPRICING_DISABLED_NO_EXTERNAL_EFFECT_NO_RELEASE",
-  "evidence": [
-    {
-      "kind": "w6_06",
-      "ref": ".evidence/workshop/2026-08-25-w6-06-price-disposition-gates.json"
-    }
-  ],
-  "evidence_cutoff": "2026-08-25T15:37:55+08:00",
-  "hard_boundaries": [
-    "No migration apply, real provider call, customer contact, price notification send, repricing, real business mutation, canary or release."
-  ],
-  "incomplete": [
     "W6-07"
   ],
-  "last_green_gate": "W6_06_CODE_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W6_07_CUSTOMER_SEGMENT_JOURNEY_DIALOGUE_BATCH_PREPARE",
+  "current_phase": "S6_W6_08_CUSTOMER_EXPLICIT_START_FREQUENCY_REVOCATION_CONTACT_SERIAL_DEVELOPMENT",
+  "delivery_status": "W6_07_CUSTOMER_LIFECYCLE_BATCH_CODE_CONTRACT_BROWSER_GREEN_ZERO_CONTACT_ZERO_START_ZERO_SEND_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "evidence": [
+    {
+      "kind": "w6_07",
+      "ref": ".evidence/workshop/2026-08-25-w6-07-customer-segment-journey-dialogue-batch-prepare.json"
+    }
+  ],
+  "evidence_cutoff": "2026-08-25T16:14:00+08:00",
+  "hard_boundaries": [
+    "No migration apply, real protected contact resolution, provider dispatch, customer message send, real business mutation, canary, external effect or release."
+  ],
+  "incomplete": [
+    "W6-08"
+  ],
+  "last_green_gate": "W6_07_CODE_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W6_08_CUSTOMER_EXPLICIT_START_FREQUENCY_REVOCATION_CONTACT",
   "next_steps": [
-    "Re-review W6-07 against the live W4/W6 foundations, remediate customer domain authority, consent-purpose and PII contract drift, then implement segment, journey, dialogue and side-effect-free batch preparation without customer contact, real provider call, external effect, migration apply or release."
+    "Re-review W6-08 against the closed W6-07 lifecycle authority and W5 controlled Action chain, then implement customer start, withdrawal linearization, frequency reservation, opaque contact permits, durable attempts and partial/unknown reconciliation while keeping provider dispatch, real contact resolution, external effect, migration apply and release operationally gated."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000250",
+  "project_revision": "AOS-000251",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "58c8f7e",
-    "delivery_receipt": "58c3a6b",
-    "evidence": "58c8f7e",
-    "workshop_docs": "0b81a0f"
+    "code": "c85501c2",
+    "delivery_receipt": "3ca87d6",
+    "evidence": "c85501c2",
+    "workshop_docs": "3f32222"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -40,5 +40,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-25T15:39:16+08:00"
+  "updated_at": "2026-08-25T16:15:36+08:00"
 }
