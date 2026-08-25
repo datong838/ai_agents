@@ -88,3 +88,25 @@ W6-10 的目标产品/技术契约通过两轮文档复审，当前实现门未�
 ### 7.3 当前裁决
 
 `AUTHORIZED_FOR_CUMULATIVE_VERIFICATION / OPERATIONAL_EXTERNAL_EFFECT_GATE_RETAINED / NO_RELEASE`
+
+## 8. 2026-08-25 累计门封板
+
+### 8.1 唯一整改
+
+累计路由门发现 `domain_manifest.json` 漏登记已经处于 runtime 聚合中的 `aip_action_canary` 与 `aip_action_webhooks`。整改仅把两组现有安全路由登记到 `aip_actions` 后并顺延 manifest ordinal；没有新增 API、业务逻辑、数据库写或外部副作用。生成聚合与 OpenAPI inventory 保持当前发布顺序和内容不漂移。
+
+### 8.2 当前证据
+
+- 后端 W6-01～09 与 API/OpenAPI/Router 合并复跑 `103 passed / 2 subtests passed`；其中 W6 专项累计 `76 passed`，Router/API/OpenAPI `27 passed / 2 subtests passed`。
+- Web 全量 `232 files / 2130 tests passed`；TypeScript 与 production build `344 modules` GREEN。
+- Router manifest `541 entries`，runtime `4422 routes`，OpenAPI `2639 paths / 2307 schemas / 4418 route rows / 4408 unique operations`；双进程 deterministic check GREEN。
+- Alembic 唯一 head `w6_009`；Python compile、diff check GREEN。仓库 security gate scanner tests GREEN；W6/manifest/Workshop UI/Web build 定向扫描 `239 files / critical=0 / warning=16`。
+- 内置浏览器以受控 canonical fixture 验收达人、价格、客户三页 × 1280/1440/1920：九格均无横向溢出，原子 Skill→Logic→数字同事→工作台贡献和五轴均可见，禁用动作按钮为 0，console error 为 0；skip link 为可聚焦 `#ecommerce-workshop-main` 锚点。
+
+### 8.3 边界与结论
+
+fixture 只证明当前代码、合同和交互，不证明真实业务数据或运营可用。迁移 apply、Provider、ProtectedContact、发送、真实业务 mutation、Handoff consume、Canary、外部 Effect、Memory promotion 与 release 均为 0，仍需后续独立门。
+
+代码提交：`aos-platform/m1@7388a8cf`；证据：`.evidence/workshop/2026-08-25-w6-10-cumulative-contract-service-browser-security.json`。
+
+结论：`CUMULATIVE_CODE_CONTRACT_SERVICE_BROWSER_SECURITY_GREEN / OPERATIONAL_EXTERNAL_EFFECT_GATE_RETAINED / NO_RELEASE`。
