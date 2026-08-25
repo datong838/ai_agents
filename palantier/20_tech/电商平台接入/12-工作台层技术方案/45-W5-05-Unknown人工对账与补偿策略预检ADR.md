@@ -2,7 +2,7 @@
 
 > 日期：2026-08-14
 > 核查基线：Workshop `w2-workshop@a443532`，authority `AOS-000026`
-> 状态：`IMPLEMENTATION_ACTIVE / W5_04_DEPENDENCY_GREEN / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 状态：`IMPLEMENTATION_COMPLETE / CODE_AND_CONTRACT_GREEN / NO_EXTERNAL_EFFECT / NO_RELEASE`
 > 边界：仅实施代码控制、迁移定义、专项测试与方案整改；不执行真实迁移，不读取真实账号/密钥，不调用外部 Provider，不触发租户业务写入或发布
 
 ## 1. 结论
@@ -75,11 +75,15 @@ Compensation Proposal 固定原 Proposal、Attempt、resolved outcome Receipt、
 
 本轮在 `m1@ecf3417`、authority `AOS-000239` 上承接 W5-04 durable Attempt/Receipt，保持既有内部 AIP-3B Action API 兼容，同时对 W5 external family 关闭自由补偿绕过。实现继续遵循“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献视图”：对账与补偿是 Action Logic 的受控后续步骤，其 Case、Evidence、Decision、Policy、Proposal 与 Receipt 都作为同一贡献链的 exact facts，不新增第二套业务 authority。
 
-- [ ] `services/aos-api/alembic/versions/w5_004_action_reconcile_compensation.py`：新增 tenant-scoped `ReconcileAttempt`、`ManualReconcileCase`、immutable `ManualReconcileDecisionReceipt`、versioned `CompensationPolicyRevision` 与补偿 exact refs；所有结论、策略与历史 Receipt append-only，存在事实时降级失败关闭。
-- [ ] `services/aos-api/aos_api/aip_action_execution.py`：unknown/accepted 只通过 durable reconcile claim 查询；applied/failed/partial 与 automatic/manual 分轴；缺稳定 ref、查询不可用/冲突/超期转 Manual Case，绝不补发原动作。
-- [ ] `services/aos-api/aos_api/aip_action_models.py` 与 `routers/aip_actions.py`：公开 typed reconcile/manual case/decision/compensation readiness；人工结论要求 maker-checker、CAS、受控 Evidence，证据不足保持 unresolved。
-- [ ] `services/aos-api/aos_api/aip_action_execution.py`：external compensation 只消费 exact policy revision，校验原 ActionType/outcome/effect scope、重复/残余量和联合 binding；由策略生成逆操作 Draft/Proposal，再走 Preview→Approval→Lease→Receipt，不接受调用者自由 ActionType/payload。
-- [ ] `services/aos-api/tests/aip/test_w5_05_action_reconcile_compensation.py` 与迁移/相邻回归：覆盖 reconciled failed 不可补偿、accepted/unknown 并发幂等、无 provider ref 转 Case、单人断言拒绝、Evidence 不足 unresolved、exact policy/hash/outcome/scope、partial residual 与跨租户失败关闭。
-- [ ] `packages/contracts/openapi/v1.generated.json`、`v1.inventory.json` 与 `.evidence/workshop/2026-08-25-w5-05-unknown-reconcile-compensation.json`：确定性导出并封存专项、累计、编译、Alembic、diff 证据；若本波无页面变化，浏览器明确记 `N/A_NO_UI_CHANGE`，不得以此代替后续 W5 累计页面验收。
+- [x] `services/aos-api/alembic/versions/w5_004_action_reconcile_compensation.py`：新增 tenant-scoped `ReconcileAttempt`、`ManualReconcileCase`、immutable `ManualReconcileDecisionReceipt`、versioned `CompensationPolicyRevision`、durable compensation intent 与补偿 exact refs；所有结论、策略与历史 Receipt append-only，存在事实时降级失败关闭。
+- [x] `services/aos-api/aos_api/aip_action_execution.py`：unknown/accepted 只通过 durable reconcile claim 查询；applied/failed/partial 与 automatic/manual 分轴；缺稳定 ref、查询不可用/冲突/超期转 Manual Case，绝不补发原动作。
+- [x] `services/aos-api/aos_api/aip_action_models.py`、`aip_action_store.py` 与 `routers/aip_actions.py`：公开 typed reconcile/manual case/decision/compensation contribution facts；人工结论要求 maker-checker、CAS、受控 Evidence，证据不足保持 unresolved。
+- [x] `services/aos-api/aos_api/aip_action_execution.py`：exact policy compensation 校验原 ActionType/outcome/effect scope/maximum/risk floor，由策略生成逆操作 Draft/Proposal，不接受调用者自由 ActionType/payload；创建建议时保留当前 residual effect，不提前宣称逆操作已生效。
+- [x] `services/aos-api/tests/aip/test_w5_05_action_reconcile_compensation.py` 与迁移/相邻回归：专项 18 项、W5-01～W5-05 累计 68 项 GREEN，覆盖 failed 不可补偿、accepted/unknown 并发幂等、无 provider ref 转 Case、maker-checker、Evidence 不足 unresolved、exact policy/hash/outcome/scope/maximum 与 residual 守恒。
+- [x] `packages/contracts/openapi/v1.generated.json`、`v1.inventory.json` 与 `.evidence/workshop/2026-08-25-w5-05-unknown-reconcile-compensation.json`：OpenAPI 确定性检查、compileall、Alembic 单 head、diff check GREEN；本波无页面变化，浏览器记 `N/A_NO_UI_CHANGE`。
 
 本波代码 GREEN 仍不等于 operational GREEN：production Adapter/账号/预算 reservation、真实迁移、Canary、外部副作用与 release 保持 blocked。任何 provider 结果不确定、人工证据不足、policy/exact binding 漂移或 residual 不守恒都失败关闭。
+
+## 9. 完成一致性复审
+
+实现与本 ADR 的 Outcome/Reconciliation 分轴、人工 authority、策略生成补偿、历史事实不可改写和 residual 守恒一致。兼容性保持为加法：既有内部 Action compensation 入口仍可使用；W5 external family 的自由 ActionType/payload 路径明确失败关闭。专项及累计回归均无能力倒退。代码 GREEN 只证明合同和控制面闭合，不升级真实 Provider、Canary 或发布状态；下一串行入口为 W5-06 Webhook Inbox。
