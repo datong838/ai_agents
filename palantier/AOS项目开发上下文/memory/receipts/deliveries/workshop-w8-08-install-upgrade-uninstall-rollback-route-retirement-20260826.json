@@ -1,0 +1,39 @@
+{
+  "base_revision": "AOS-000277",
+  "blockers": [
+    "NO_REAL_INSTALLATION_MUTATION_AUTHORITY",
+    "NO_RELEASE_OWNER_RETIREMENT_RECEIPT"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/workshopLifecycleAcceptance.ts",
+    "apps/web/src/components/workshop/workshopLifecycleAcceptance.test.ts",
+    "apps/web/src/components/workshop/EcommerceWorkshopCatalogContext.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopCatalogContext.test.tsx",
+    "apps/web/src/components/workshop/index.ts",
+    "apps/web/src/pages/s2/ecommerce/routes.tsx",
+    "apps/web/src/shell/AppShell.workshop.test.tsx",
+    ".evidence/workshop/w8-08/",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/77-W8-08-安装升级卸载回滚与旧路由退役预检ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "8e33ed9e58bd15be5041a626b919a381bb4128de",
+    "75b2a61864a3e36cf0db0436a001141e0d78ef65",
+    "6ae1fe3ca379365103a3254d87c4e77fbde1a21f"
+  ],
+  "completed_at": "2026-08-26T06:34:45+08:00",
+  "completed_revision": "AOS-000277",
+  "result": "W8-08 engineering lifecycle and explicit route-retirement contract closed; operational mutation remains fail-closed",
+  "risks": [
+    "No production lifecycle EvidencePack or release-owner Retirement Receipt; real mutation and retirement remain blocked"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-08-install-upgrade-uninstall-rollback-route-retirement-20260826",
+  "verification": [
+    "Web targeted 3 files / 24 tests passed",
+    "Web cumulative 243 files / 2207 tests passed",
+    "backend Installation targeted 10 tests passed",
+    "TypeScript and Vite production build passed with 345 modules",
+    "in-app browser preserved /workshop/orders with unique h1/main, no overflow and zero uncaught errors when canonical API was unavailable"
+  ]
+}

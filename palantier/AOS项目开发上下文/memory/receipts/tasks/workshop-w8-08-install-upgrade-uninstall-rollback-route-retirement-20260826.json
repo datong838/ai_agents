@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000277",
+  "created_at": "2026-08-26T06:23:12+08:00",
+  "excluded_scope": [
+    "real tenant data, migration apply, real publish/install/upgrade/rollback/uninstall/route retirement, Provider/Action, external effect, release"
+  ],
+  "expected_outputs": [
+    "fail-closed lifecycle and explicit route-retirement evaluator with negative coverage",
+    "targeted/full Web regression, production build, built-in browser acceptance, Delivery Receipt, CAS and Prime reread"
+  ],
+  "lease_expires_at": "2026-08-27T06:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/workshopLifecycleAcceptance.ts",
+    "apps/web/src/components/workshop/workshopLifecycleAcceptance.test.ts",
+    "apps/web/src/components/workshop/EcommerceWorkshopCatalogContext.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopCatalogContext.test.tsx",
+    "apps/web/src/pages/s2/ecommerce/routes.tsx",
+    "apps/web/src/shell/AppShell.workshop.test.tsx",
+    ".evidence/workshop/w8-08/",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/77-W8-08-安装升级卸载回滚与旧路由退役预检ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w8-08-install-upgrade-uninstall-rollback-route-retirement-20260826"
+}

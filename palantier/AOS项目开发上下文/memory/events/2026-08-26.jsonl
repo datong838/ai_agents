@@ -28,3 +28,6 @@
 {"base_revision":"AOS-000276","occurred_at":"2026-08-26T05:58:26+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w8-07-eight-module-viewport-state-keyboard-acceptance-20260826","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-26T06:17:53+08:00","result":"ENGINEERING_ACCEPTANCE_CONTRACT_BROWSER_GREEN_OPERATIONAL_MATRIX_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w8-07-eight-module-viewport-state-keyboard-acceptance-20260826","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T06:18:56+08:00","project_revision":"AOS-000277","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000277","occurred_at":"2026-08-26T06:23:12+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w8-08-install-upgrade-uninstall-rollback-route-retirement-20260826","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T06:34:45+08:00","result":"W8-08 engineering lifecycle and explicit route-retirement contract closed; operational mutation remains fail-closed","schema":"aos-memory-event/v1","task_id":"workshop-w8-08-install-upgrade-uninstall-rollback-route-retirement-20260826","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T06:35:12+08:00","project_revision":"AOS-000278","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
