@@ -1,0 +1,34 @@
+{
+  "base_revision": "AOS-000270",
+  "created_at": "2026-08-26T03:47:33+08:00",
+  "excluded_scope": [
+    "services/aos-api/alembic",
+    "real-tenant-business-data",
+    "production-provider-adapters",
+    "action-execution",
+    "publish-or-release"
+  ],
+  "expected_outputs": [
+    "GET-only TaskGraphRevision and TaskRun rooted dispatch scenario with exact Skill Logic role binding composition, decision conservation and zero commands",
+    "targeted and cumulative regression, built-in browser evidence, Delivery Receipt, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-26T12:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_workshop_dispatch_scenario.py",
+    "services/aos-api/aos_api/ecommerce_workshop_dispatch_scenario_contracts.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "services/aos-api/tests",
+    "apps/web/src/api/ecommerceWorkshop",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "packages/contracts/openapi",
+    ".evidence/workshop",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/72-W8-03-日常总控跨域派发拒绝RequestMore人工接管预检ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w8-03-cross-domain-dispatch-takeover-scenario-20260826"
+}
