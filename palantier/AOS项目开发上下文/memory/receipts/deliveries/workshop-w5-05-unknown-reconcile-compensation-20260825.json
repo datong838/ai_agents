@@ -1,0 +1,38 @@
+{
+  "base_revision": "AOS-000239",
+  "blockers": [
+    "REAL_ACCOUNT_AND_PROVIDER_AUTHORITY_NOT_USED",
+    "NO_EXTERNAL_EFFECT_NO_RELEASE"
+  ],
+  "changed_files": [
+    "services/aos-api/alembic/versions/w5_004_action_reconcile_compensation.py",
+    "services/aos-api/aos_api/aip_action_execution.py",
+    "services/aos-api/aos_api/aip_action_models.py",
+    "services/aos-api/aos_api/aip_action_store.py",
+    "services/aos-api/aos_api/routers/aip_actions.py",
+    "services/aos-api/tests/aip/test_w5_05_action_reconcile_compensation.py",
+    "services/aos-api/tests/aip/test_w5_05_action_reconcile_compensation_migration.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    ".evidence/workshop/2026-08-25-w5-05-unknown-reconcile-compensation.json",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/45-W5-05-Unknown人工对账与补偿策略预检ADR.md",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "code:84acc76",
+    "docs:a488a04"
+  ],
+  "completed_at": "2026-08-25T09:57:17+08:00",
+  "completed_revision": "AOS-000239",
+  "result": "W5_05_TYPED_RECONCILE_MANUAL_AUTHORITY_EXACT_COMPENSATION_POLICY_CODE_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "real migration, Provider reconciliation, external Action, canary and release remain blocked"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w5-05-unknown-reconcile-compensation-20260825",
+  "verification": [
+    "focused 18 passed; cumulative 68 passed; compileall green; OpenAPI deterministic green; Alembic w5_004 single head; diff check green; browser N/A_NO_UI_CHANGE"
+  ]
+}

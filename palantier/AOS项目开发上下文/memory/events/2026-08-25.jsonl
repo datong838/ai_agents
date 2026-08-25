@@ -73,3 +73,4 @@
 {"occurred_at":"2026-08-25T09:10:49+08:00","result":"W5_04_DURABLE_ATTEMPT_EXACT_DELIVERY_BRIDGE_CODE_GREEN_EXTERNAL_RESERVATION_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w5-04-executor-receipt-usage-lineage-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T09:13:26+08:00","project_revision":"AOS-000239","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000239","occurred_at":"2026-08-25T09:15:02+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w5-05-unknown-reconcile-compensation-20260825","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-25T09:57:17+08:00","result":"W5_05_TYPED_RECONCILE_MANUAL_AUTHORITY_EXACT_COMPENSATION_POLICY_CODE_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w5-05-unknown-reconcile-compensation-20260825","type":"TASK_COMPLETED"}
