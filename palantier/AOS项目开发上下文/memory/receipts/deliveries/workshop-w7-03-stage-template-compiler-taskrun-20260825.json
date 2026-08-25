@@ -1,0 +1,39 @@
+{
+  "base_revision": "AOS-000257",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-03-stage-template-compiler-taskrun.json",
+    "aos-platform:services/aos-api/aos_api/aip_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_production_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_production_contract_store.py",
+    "aos-platform:services/aos-api/aos_api/aip_production_start_service.py",
+    "aos-platform:services/aos-api/aos_api/aip_task_store.py",
+    "aos-platform:services/aos-api/tests/aip/test_w7_03_stage_template_compiler.py",
+    "aos-platform:services/aos-api/tests/aip/test_w2c_contracts.py",
+    "aos-platform:services/aos-api/tests/test_openapi_contract.py",
+    "aos-platform:apps/web/src/api/aipProductionContracts/contracts.ts",
+    "aos-platform:apps/web/src/api/aipProductionContracts/parser.ts",
+    "aos-platform:apps/web/src/api/aipProductionContracts/parser.test.ts",
+    "aos-platform:apps/web/src/api/aipProductionContracts/index.test.ts",
+    "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.test.tsx",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "aos-platform:packages/contracts/openapi/v1.inventory.json",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/61-W7-03-StageTemplate编译PlanStep与TaskRun组合门预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "d0851ad5"
+  ],
+  "completed_at": "2026-08-25T19:29:20+08:00",
+  "completed_revision": "AOS-000257",
+  "result": "W7_03_STAGE_TEMPLATE_PLAN_COMPILER_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "repository security gate retains existing baseline 5 critical/326 warning; no real tenant mutation, migration apply, Plan approval, TaskRun, Provider, media generation, install or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-03-stage-template-compiler-taskrun-20260825",
+  "verification": [
+    "pytest 66 passed + 2 subtests; Web 232 files/2133 tests, tsc, build 344; OpenAPI 2641/2314/4412; browser 768/1440/1920 no overflow and 0 console errors; scoped security 16 files 0/0"
+  ]
+}

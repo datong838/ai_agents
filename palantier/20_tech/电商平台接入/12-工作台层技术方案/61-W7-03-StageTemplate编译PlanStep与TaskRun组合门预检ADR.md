@@ -1,7 +1,7 @@
 # W7-03 StageTemplate 编译 PlanStep 与 TaskRun 组合门预检 ADR
 
 > 日期：2026-08-15；2026-08-25 唯一开发者串行复核并开工
-> 状态：`IN_PROGRESS / PREREQUISITES_RECHECKED / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 状态：`COMPLETED_GREEN / CODE_CONTRACT_BROWSER_GREEN / SECURITY_SCOPED_GREEN_REPO_BASELINE_RED / NO_EXTERNAL_EFFECT / NO_RELEASE`
 
 ## 决策
 
@@ -72,3 +72,29 @@ Compiler 不启动运行，Workshop/BFF 不建 Plan、StageRun、TaskRun 第二�
 - `.evidence/workshop/2026-08-25-w7-03-stage-template-compiler-taskrun.json`
 
 若实现中必须扩大范围，先回写本 ADR 与 Task Lease，再改代码。
+
+## 2026-08-25 累计回归基线修复说明
+
+累计回归独立发现两项测试基线需要随当前 authority 合同同步，均不改变运行语义：
+
+1. `ExactContractRef` 新增为 OpenAPI schema 后，确定性 schema 数量由 2313 增至 2314；只更新结构计数基线，route 数量保持 2641。
+2. 既有 W2-C review-return 测试夹具仍引用 `EvalRuleRevision/rule-w2c@1`，但没有插入已经强制校验的 `aip_review_rule_revision` authority。修复夹具为显式插入 exact rule，不删除或绕过 `_require_review_rule` 失败关闭。
+
+两项均位于开工前已登记的文件范围：
+
+- `services/aos-api/tests/aip/test_w2c_contracts.py`
+- `services/aos-api/tests/test_openapi_contract.py`
+
+## 2026-08-25 交付闭环
+
+W7-03 已按本 ADR 完成，且在最终一致性复审中补齐了 start gate 对 `inputHash` 的独立复算：组合门现在同时复算治理依赖输入摘要与 Plan 结构摘要，替换 `governedDependencies`、Stage/Plan/Context exact refs、规范化 Stage 集合或 Plan step/dependency 均会失败关闭。
+
+验收事实：
+
+1. 后端专项与累计 `66 passed + 2 subtests`；稳定拓扑、环/未知依赖、schema compatibility、治理 exact refs、assignee/capability、canonical skip、input/compilation hash 与 start gate 漂移均覆盖。
+2. Web 专项 `35 tests`、全量 `232 files / 2133 tests`、TypeScript 与 build `344 modules` GREEN；OpenAPI/Router artifact 为 `2641 paths / 2314 schemas / 4412 operations`。
+3. 内置浏览器受控 fixture 在 768/1440/1920 三视口无横向溢出；治理输入锁定提示可见，编译草稿按钮可用但未点击，ProductionStart 仍禁用，console error 为 0。
+4. Alembic 保持单 head `w7_001` 且未 apply；16 个本波文件安全扫描 `0 critical / 0 warning`。全仓安全门仍有历史基线 `5 critical / 326 warning`，不冒充全仓 GREEN，也不扩大本波代码范围处理。
+5. 未修改真实租户数据，未审批 Plan，未创建 TaskRun，未调用 Provider，未生成媒体，未安装、发布或上线。
+
+证据：`.evidence/workshop/2026-08-25-w7-03-stage-template-compiler-taskrun.json`。结论：`W7_03_STAGE_TEMPLATE_PLAN_COMPILER_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE`，交付闭环后自动进入 W7-04。
