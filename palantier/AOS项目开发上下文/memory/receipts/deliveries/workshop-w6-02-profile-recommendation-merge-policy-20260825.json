@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000244",
+  "blockers": [
+    "real Canary, external effect and release remain unauthorized"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_responsibility_profile.py",
+    "services/aos-api/aos_api/aip_responsibility_profile_store.py",
+    "services/aos-api/alembic/versions/w6_002_responsibility_profiles.py",
+    "services/aos-api/aos_api/aip_production_contract_store.py",
+    "apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    ".evidence/workshop/2026-08-25-w6-02-profile-recommendation-merge-policy.json"
+  ],
+  "commits": [
+    "bf88eff",
+    "d9b1e58",
+    "ec4a1e0"
+  ],
+  "completed_at": "2026-08-25T12:55:52+08:00",
+  "completed_revision": "AOS-000244",
+  "result": "W6_02_PROFILE_RECOMMENDATION_CONFIRMATION_MERGE_POLICY_CODE_CONTRACT_BROWSER_GREEN",
+  "risks": [
+    "positive governed plan browser row not created because no real tenant backfill or installation mutation was authorized"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-02-profile-recommendation-merge-policy-20260825",
+  "verification": [
+    "24 backend tests passed; 21 frontend tests passed",
+    "TypeScript, production build, deterministic OpenAPI, Alembic w6_002 and diff check GREEN",
+    "built-in browser confirmed historical plan governance warning and disabled freeze/start controls"
+  ]
+}
