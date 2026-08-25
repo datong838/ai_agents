@@ -88,3 +88,26 @@ W6-09 不把 partial、Usage、EffectReview 或 Handoff 包装成新的角色大
 本波可达状态是 `THREE_MODULE_CLOSURE_CODE_CONTRACT_BROWSER_GREEN`：能够从 canonical 三领域 authority 重建 partial，绑定已有 Usage/EffectReview/Handoff exact refs，并展示 immature/insufficient/unknown 与业务决定。没有真实 Observation 或成熟样本时必须诚实为空或 blocked；测试 fixture 只能证明合同，不得写入真实业务数据，也不得晋升 MemoryCandidate。
 
 本波不 apply migration，不触发 Provider、ProtectedContact、通知、邀约、调价、发送、Handoff token consume、真实业务 mutation、Canary、外部 Effect 或 release。任何 operational authority 缺失仍逐门失败关闭，不能由单开发者全栈授权替代。
+
+## 7. 2026-08-25 实施与验收封板
+
+### 7.1 实现结果
+
+- 代码提交：`aos-platform/m1@f297dd0d`；结果为 `THREE_MODULE_CLOSURE_CODE_CONTRACT_BROWSER_GREEN / NO_EXTERNAL_EFFECT / NO_RELEASE`。
+- 新增 canonical `ThreeModuleClosureRevision` 与 Usage、Effect、Handoff 三类独立 binding authority；item ledger 必须数量守恒，调用方不能自报 batch success/partial。
+- 达人从 `CreatorBatchStartDecisionRevision + lane Observation`、价格从 `PriceDispositionRevision + Observation`、客户从 `CustomerBatchStartDecisionRevision + dispatch Observation` 重建 original outcome；original status、original ref 与 Receipt 均保留。
+- Usage 只解析平台 `UsageReceipt + Adjustment`；`unknown` 必须保持 `quantity=null`，不得伪造 `0`。Effect 只在 canonical maturity 为 `mature` 时令 `effectCompleted=true`。Handoff transport 与 business decision 分开，页面不消费 token。
+- 三个绑定入口在写入前重新解析 closure 并检查对应模块 active installation；伪 `closureRef`、跨租户、hash 漂移与未安装路径全部失败关闭。
+- 三页面沿用 163/164 的“原子 Skill → 领域 Logic → 数字同事 → 工作台贡献视图”，分开展示 item outcome、Action outcome、Usage settlement、Effect maturity、Handoff decision；不复制领域大 Skill 或公共 Usage/Effect/Handoff authority。
+
+### 7.2 验收证据
+
+- 后端专项与 API：`16 passed`；W6 累计：`76 passed`；OpenAPI 合同：`14 passed`。
+- 前端专项：`17 passed`；全量：`232 files / 2130 tests passed`；TypeScript 与生产构建 GREEN。
+- OpenAPI 确定性：`2639 paths / 2307 schemas / 4418 route rows / 4408 unique operations`；Alembic 唯一 head：`w6_009`，迁移仅验证未 apply。
+- 内置浏览器验收 `/workshop/creator-outreach`、`/workshop/price-governance`、`/workshop/customer`：五轴、`unknown 不造 0`、insufficient 不成熟、transport 不等于业务接受、三类零副作用均可见；新验收标签页 console error 为 `0`。
+- 结构化证据：`.evidence/workshop/2026-08-25-w6-09-three-module-partial-usage-effect-handoff.json`。
+
+### 7.3 能力与边界结论
+
+重构前达人、价格、客户各自合同、服务与页面能力没有缺失；累计测试全绿。新增的是三领域共用的五轴 closure bridge 与贡献视图，不改变原领域真源。真实 Provider、ProtectedContact、通知/发送、调价、Handoff consume、Memory promotion、迁移 apply、Canary、外部 Effect 与 release 仍为 `0`。W6-09 可以勾选，下一入口为 W6-10 累计 contract/service/browser/security 处置门。
