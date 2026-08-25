@@ -113,3 +113,24 @@ W6-07 目标契约通过文档复审，当前实现未通过。正确入口是�
 ### 7.5 关闭口径
 
 W6-07 的代码 GREEN 只证明隐私最小化资产、客户领域 authority、零副作用 Batch 与工作台贡献视图闭合。ProtectedContact 解析、真实 Consent 运营数据、渠道账号/capability、start、频控 reservation、撤回竞态、发送、Provider、Effect、迁移 apply 与 release 均不在本波伪造；它们由 W6-08 重新核验并逐门开启。
+
+## 8. 2026-08-25 交付关闭
+
+### 8.1 实现与合同
+
+- 已把 P08 CustomerLite 映射收敛到公开 allowlist 与 schema v2，资产合同不再声明 mobile、email、OpenID、地址等 protected 字段；runtime drop 与资产一致性由负向测试共同约束。
+- 已实现 tenant-scoped、append-only、version/hash CAS 的 Consent policy、Segment、Journey、Dialogue strategy 与 Dialogue Batch authority，并通过 additive RLS/FORCE RLS 迁移表达；迁移只验证、未 apply。
+- Batch prepare/freeze 固定 Segment/Journey/Brief/Evidence/Eval/Responsibility/Consent policy 与 target/item hashes，并验证 `input = eligible + excluded + needs_review + unknown + deduplicated`；item 不持有联系方式、raw message 或 provider payload。
+- API 只发布内部 authority 命令和贡献 GET，没有 contact resolve、start、send 或 provider 路由；页面按“8 个原子 Skill → `ecommerce-customer-relationship` Logic → 私域管家主责（内容官、客服专员、导购顾问、数据参谋协作）→贡献视图”落位。
+
+### 8.2 验证证据
+
+- 后端 W6-07/Store/API/OpenAPI 专项 `27 passed`；P08/JDBC/客户只读基座 `25 passed`；W6 累计 `54 passed`。
+- 前端专项 `8 passed`；累计 `229 files / 2121 tests passed`；TypeScript 与生产构建 GREEN。
+- OpenAPI 基线为 `2629 paths / 2276 schemas / 4408 route rows / 4398 operations`，双进程确定性检查 GREEN；唯一迁移 head 为 `w6_007`，迁移未 live apply。
+- 内置浏览器在 `org-org/dev-project` 验收 8 个原子 Skill、Logic、私域管家职责绑定、五桶守恒、零触达与失败关闭；protected 字段不可见，外部动作按钮 `0`，控制台错误 `0`。
+- 代码提交：`c85501c2`；证据文件：`.evidence/workshop/2026-08-25-w6-07-customer-segment-journey-dialogue-batch-prepare.json`。
+
+### 8.3 安全结论与下一入口
+
+`contact_resolution_count = action_count = provider_call_count = send_count = external_effect_count = 0`。真实 Consent 运营数据、ProtectedContact 解析、渠道账号/capability、start、频控 reservation、撤回竞态、发送、Provider、迁移 apply、Canary 与 release 均未发生。W6-07 以 `CODE_CONTRACT_BROWSER_GREEN / ZERO_CONTACT / ZERO_START / ZERO_SEND / NO_EXTERNAL_EFFECT / NO_RELEASE` 关闭；唯一开发者串行进入 W6-08，先复审显式 start、撤回线性化、客户级频控、opaque contact permit 与 durable attempt 的失败关闭边界。
