@@ -1,38 +1,39 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W6-01 exact capability, canonical assignee resolver, freshness receipt and fail-closed Task Cockpit consumption are GREEN"
+    "W6-01 exact capability, canonical assignee resolver, freshness receipt and fail-closed Task Cockpit consumption are GREEN",
+    "W6-02 deterministic LITE/STANDARD/FULL recommendation, confirmation, MergePolicy and exact merge Receipt governance are GREEN"
   ],
-  "current_phase": "S6_W6_02_PROFILE_RECOMMENDATION_MERGE_POLICY_NEXT",
-  "delivery_status": "W6_01_EXACT_CAPABILITY_ASSIGNEE_READINESS_CODE_CONTRACT_BROWSER_DISPOSITION_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "S6_W6_03_CREATOR_DISCOVERY_MATCH_BATCH_PREPARE_NEXT",
+  "delivery_status": "W6_02_PROFILE_RECOMMENDATION_CONFIRMATION_MERGE_POLICY_CODE_CONTRACT_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "w6_01",
-      "ref": ".evidence/workshop/2026-08-25-w6-01-exact-capability-assignee-readiness.json"
+      "kind": "w6_02",
+      "ref": ".evidence/workshop/2026-08-25-w6-02-profile-recommendation-merge-policy.json"
     }
   ],
-  "evidence_cutoff": "2026-08-25T12:27:38+08:00",
+  "evidence_cutoff": "2026-08-25T12:55:52+08:00",
   "hard_boundaries": [
     "NO_REAL_CANARY",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "Positive installed Task Cockpit browser path, real Canary, external Provider/Effect and release remain blocked"
+    "Positive governed-plan browser row, real Canary, external Provider/Effect and release remain blocked"
   ],
-  "last_green_gate": "W6_01_EXACT_CAPABILITY_ASSIGNEE_READINESS_GATE",
-  "next_gate": "W6_02_PROFILE_RECOMMENDATION_CONFIRMATION_MERGE_POLICY_GATE",
+  "last_green_gate": "W6_02_PROFILE_RECOMMENDATION_CONFIRMATION_MERGE_POLICY_GATE",
+  "next_gate": "W6_03_CREATOR_DISCOVERY_EVIDENCE_MATCH_BATCH_PREPARE_GATE",
   "next_steps": [
-    "Start W6-02 LITE/STANDARD/FULL recommendation, user confirmation and MergePolicy authority under the sole-developer serial loop"
+    "Start W6-03 creator discovery, evidence, match and side-effect-free batch prepare under the sole-developer serial loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000244",
+  "project_revision": "AOS-000245",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "b128be0",
-    "delivery_receipt": "ac6421b",
-    "evidence": "c835c9d",
-    "workshop_docs": "eea527d"
+    "code": "bf88eff",
+    "delivery_receipt": "896d925",
+    "evidence": "d9b1e58",
+    "workshop_docs": "ec4a1e0"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -42,5 +43,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-25T12:28:35+08:00"
+  "updated_at": "2026-08-25T12:57:00+08:00"
 }
