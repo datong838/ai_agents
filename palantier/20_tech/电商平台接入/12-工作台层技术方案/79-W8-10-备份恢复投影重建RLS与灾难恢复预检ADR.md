@@ -1,9 +1,9 @@
 # W8-10 备份恢复、投影重建、RLS 与灾难恢复预检 ADR
 
 > 日期：2026-08-15  
-> 状态：`DR_CONTRACT_APPROVED / IMPLEMENTATION_IN_PROGRESS / NO_DATA_OPERATION / NO_RELEASE`
-> 基线：`AOS-000279`、`m1@99d48fc830212d119aefb7717d9f8be766f5fdff`
-> 证据：`.evidence/workshop/2026-08-15-w8-10-backup-projection-rebuild-rls-disaster-recovery-preflight.json`
+> 状态：`ENGINEERING_DR_CONTRACT_BROWSER_GREEN / REAL_RESTORE_AND_DRILLS_BLOCKED / NO_DATA_OPERATION / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 基线：`AOS-000279`、代码 `d7eed3fee0915733d40cd1872493bdf486fdb844`、证据 `2b720d484988bcd678778204f3cd53d6e66668b8`
+> 证据：`.evidence/workshop/w8-10/`；历史预检 `.evidence/workshop/2026-08-15-w8-10-backup-projection-rebuild-rls-disaster-recovery-preflight.json`
 
 ## 1. 决策
 
@@ -48,3 +48,16 @@ W8-10 是全 authority、对象存储、投影、安全边界和外部事实共�
 - 专项测试、Task Cockpit 既有测试、Web 全量、TypeScript 与生产构建不得回退；页面必须用内置浏览器确认唯一主标题、无横向溢出、unknown 不归零、无恢复按钮或其他数据操作入口。
 - 任一真实数据操作、迁移、RLS 变更、Provider/Action、外部副作用或发布入口出现，立即停止闭合。
 - 本波最多签发 `ENGINEERING_DR_CONTRACT_BROWSER_GREEN / REAL_RESTORE_AND_DRILLS_BLOCKED / NO_DATA_OPERATION / NO_EXTERNAL_EFFECT / NO_RELEASE`；它不等于备份可恢复、RPO/RTO 达标、灾备 ready 或 release GREEN。
+
+## 8. 2026-08-26 实施与验收闭环
+
+W8-10 已按第 6 节的文件级清单完成最小实现。纯计算 evaluator 将 authority inventory、backup manifest、十二阶段恢复顺序、RPO/RTO、隔离 target、职责分离、四类 RLS 负向证明、投影守恒、五类外部事实、恢复/failback Receipt 与十类 drill 分轴判定；所有数据操作命令恒为 false。只读卡片已挂入 Task Cockpit，并保持“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献”产品链路。
+
+验收结果：
+
+- 专项：`3 files / 23 tests` GREEN；其中 evaluator 8 项、卡片 1 项、Task Cockpit 14 项。
+- 累计：Web `247 files / 2228 tests` GREEN；TypeScript `tsc --noEmit` GREEN；生产构建 `349 modules` GREEN。既有 React act/Router 与 chunk warning 未扩大为失败。
+- 内置浏览器：正式无 API 路径保持失败关闭；只读视觉夹具下唯一 H1、唯一 main、1280×720 无横向溢出，卡片显示“灾备失败关闭”和 34 个 blocker，authority `0/8`、RLS `0/4`、external `0/5`、drill `0/10`，未知 backup/projection/RPO-RTO 没有伪装成 0，卡片按钮为 0，未出现可用数据操作入口。视觉夹具不构成真实 authority、备份、RLS 或 DR 证据。
+- 代码提交：`d7eed3fee0915733d40cd1872493bdf486fdb844`；证据提交：`2b720d484988bcd678778204f3cd53d6e66668b8`；证据目录：`.evidence/workshop/w8-10/`。
+
+方案/代码一致性复审通过：没有 migration、真实数据读取/恢复、RLS 变更、Provider/Action、外部副作用或发布入口。真实备份、隔离恢复、RPO/RTO 实测与全量演练仍无权威正向证据，因此结论严格为 `ENGINEERING_DR_CONTRACT_BROWSER_GREEN / REAL_RESTORE_AND_DRILLS_BLOCKED / NO_DATA_OPERATION / NO_EXTERNAL_EFFECT / NO_RELEASE`，不提升为 operational 或 release GREEN。下一波按串行 Loop 进入 W8-11 累计门。
