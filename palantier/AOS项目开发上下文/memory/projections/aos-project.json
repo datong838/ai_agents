@@ -1,36 +1,36 @@
 {
   "completed": [
-    "W6-05"
-  ],
-  "content_hash": "sha256:d96c2d96102b405c55b5a62d5b72c1372b25abcf737cc6a6e59641addaf48792",
-  "current_phase": "S6_W6_06_PRICE_NOTICE_RECOMMENDATION_REPRICE_SERIAL_DEVELOPMENT",
-  "delivery_status": "W6_05_PRICE_RESEARCH_MATCH_POLICY_BATCH_PREPARE_CODE_CONTRACT_BROWSER_GREEN_NO_PROVIDER_NO_RESEARCH_JOB_NO_EXTERNAL_EFFECT_NO_RELEASE",
-  "evidence": [
-    {
-      "kind": "w6_05",
-      "ref": ".evidence/workshop/2026-08-25-w6-05-price-research-match-policy-batch-prepare.json"
-    }
-  ],
-  "generated_at": "2026-08-25T15:03:10+08:00",
-  "hard_boundaries": [
-    "No migration apply, real provider call, price notification send, repricing, real business mutation, canary or release."
-  ],
-  "incomplete": [
     "W6-06"
   ],
-  "last_green_gate": "W6_05_CODE_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W6_06_PRICE_NOTICE_RECOMMENDATION_REPRICE",
+  "content_hash": "sha256:a8e61c4f93b5db4c05ab3ef5a770b0631dcb35754d84ed130ae7944cb582d9fc",
+  "current_phase": "S6_W6_07_CUSTOMER_SEGMENT_JOURNEY_DIALOGUE_BATCH_PREPARE_SERIAL_DEVELOPMENT",
+  "delivery_status": "W6_06_PRICE_DISPOSITION_CODE_CONTRACT_BROWSER_GREEN_REPRICING_DISABLED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "evidence": [
+    {
+      "kind": "w6_06",
+      "ref": ".evidence/workshop/2026-08-25-w6-06-price-disposition-gates.json"
+    }
+  ],
+  "generated_at": "2026-08-25T15:39:16+08:00",
+  "hard_boundaries": [
+    "No migration apply, real provider call, customer contact, price notification send, repricing, real business mutation, canary or release."
+  ],
+  "incomplete": [
+    "W6-07"
+  ],
+  "last_green_gate": "W6_06_CODE_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W6_07_CUSTOMER_SEGMENT_JOURNEY_DIALOGUE_BATCH_PREPARE",
   "next_steps": [
-    "Re-review W6-06 against the now-closed W6-05 domain authority and W5 controlled Action chain, then implement typed notice, internal advice, minimal Handoff and specialized repricing gates without real provider call, external effect, migration apply or release."
+    "Re-review W6-07 against the live W4/W6 foundations, remediate customer domain authority, consent-purpose and PII contract drift, then implement segment, journey, dialogue and side-effect-free batch preparation without customer contact, real provider call, external effect, migration apply or release."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000249",
+  "project_revision": "AOS-000250",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "de8eaf4",
-    "delivery_receipt": "882e649",
-    "evidence": "de8eaf4",
-    "workshop_docs": "04c37bb"
+    "code": "58c8f7e",
+    "delivery_receipt": "58c3a6b",
+    "evidence": "58c8f7e",
+    "workshop_docs": "0b81a0f"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
