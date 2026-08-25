@@ -1,15 +1,13 @@
 # W6-01 Exact Capability、Assignee Resolver 与 Readiness 预检 ADR
 
 > 日期：2026-08-14
-> 核查基线：Workshop `w2-workshop@b368821`，authority `AOS-000027`
-> 状态：`IMPLEMENTATION_IN_PROGRESS / UPSTREAM_GAPS_RECHECKED / NO_EXTERNAL_EFFECT`
-> 边界：只读代码、资产、专项测试与方案整改；未修改 AIP/Workshop 源码、迁移、真实租户或外部 Provider
+> 核查基线：历史预检 `w2-workshop@b368821 / AOS-000027`；实施基线 `m1@696b3f5 / AOS-000243`
+> 状态：`IMPLEMENTED_GREEN / BROWSER_FAIL_CLOSED_DISPOSITION / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 边界：已兼容增强 AIP/Workshop 合同、Store、迁移与 Task Cockpit；未修改真实租户业务数据，未调用外部 Provider，未发布
 
 ## 1. 结论
 
-六数字同事 6/6、Logic 37/37、共享 Capability 10/10 的定义目录与 crosswalk 完整，Logic 的 Agent/Capability 引用 0 缺失；ResponsibilityPlan、AgentInstance、SkillBinding、CapabilityBinding 也有可信的 PostgreSQL authority 基础。但“目录存在”不等于“职责可分配”：正式生产 Router 未注入 ResponsibilityTemplateResolver，八 Module 的 `responsibilityTemplateRefs` 全为空，也没有 canonical assignee resolver。
-
-专项测试进一步发现 `solution.ecommerce.growth` 已升级为 1.3.0，而 AIP publisher 仍硬编码只接受 1.2.0，导致当前目录安装 API 自身回归失败。后端结果为 25 passed / 1 failed，前端 16 tests GREEN。因此 W6-01 保持未勾选。
+历史预检确认六数字同事 6/6、Logic 37/37、共享 Capability 10/10 的定义目录与 crosswalk 完整，但当时正式 Router、模板引用和 resolver 尚未闭合。2026-08-25 重新核验后，上游 publisher、安装 resolver、八 Module 模板引用和 W3-07 接管 authority 已存在；本波补齐 canonical 多候选解析、四类 assignee readiness、exact CapabilityBinding、不可变 freshness snapshot，以及生产职责合同和 Task Cockpit 对新旧 Receipt 的失败关闭消费。W6-01 现已实现并勾选；它只关闭代码/合同/浏览器处置门，不授权真实 Canary、外部动作或发布。
 
 ## 2. 唯一职责解析链
 
@@ -101,6 +99,12 @@ reassign 与人工接管不能合并为一个“修改 owner”动作。TaskRun 
   - 覆盖四类正负向、确定性排序、exact capability/hash、stale/disabled、tenant isolation 与稳定 snapshot hash。
 - `services/aos-api/tests/test_w2b_production_contract_store.py`
   - 覆盖非 Agent assignee 必须有 canonical Receipt，且 unrelated tenant-wide binding 不得点亮职责槽。
+- `services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py`、`ecommerce_workshop_task_cockpit.py`
+  - Task Cockpit 只把带 snapshot hash、selected assignee 且在 `evaluatedAt` 未过期的新 Receipt 映射为 exact ready；历史无 expiry Receipt 保持可读但不得点亮当前 readiness。
+- `apps/web/src/api/ecommerceWorkshop/{contracts,parser}.ts`、`apps/web/src/components/workshop/TaskCockpitPage.tsx`
+  - 严格消费 snapshot/expiry/exact capability 数，不在浏览器重算 resolver；职责贡献视图明确显示 exact 截止时间和 legacy/unverified 边界。
+- 对应后端、SDK/parser 与页面测试
+  - 覆盖旧 Receipt 兼容可读但不点亮、新 Receipt exact/fresh 显示、过期失败关闭与键盘/多视口无回归。
 - `.evidence/workshop/2026-08-25-w6-01-exact-capability-assignee-readiness.json`
   - 固化专项、累计、迁移、OpenAPI、租户隔离和无外部副作用结果。
 
@@ -111,3 +115,14 @@ reassign 与人工接管不能合并为一个“修改 owner”动作。TaskRun 
 - 不激活任何 Agent/Skill/Capability/Tool/Provider Binding，不写真实租户业务数据，不调用 Provider；
 - Candidate Bundle 只做静态/测试解析，不发布、不安装、不升级；
 - 相同 tenant、subject、required capabilities、candidate authority snapshot 必须得到相同 selected ref 与 snapshot hash；任何 freshness、version、hash、status 或 tenant 漂移均失败关闭。
+
+## 9. 2026-08-25 完成证据与一致性复审
+
+- 代码提交：`aos-platform/m1@b128be0`；Alembic 单 head 为 `w6_001`；OpenAPI 与 inventory 确定性校验 GREEN。
+- 后端专项：`54 passed`，覆盖 resolver、四类 assignee、迁移、Production ResponsibilityPlan 与 Task Cockpit；前端 parser/page 专项：`37 passed`；生产构建 GREEN。
+- 内置浏览器访问 `http://localhost:5173/workshop/task-cockpit`，当前 active installation 不含该模块，页面诚实展示“模块未安装”。没有注入 fixture 或修改真实安装来伪造正向验收，因此浏览器结论是 `FAIL_CLOSED_DISPOSITION_GREEN / POSITIVE_INSTALLED_PATH_NOT_CLAIMED`。
+- AIP 广域回归为 `1628 passed / 14 failed`；失败集中在历史 downgrade 依赖顺序、共享状态幂等和 lifespan cron 测试，均不在 W6-01 changed-file surface，且 W6-01 定向组合无失败。本波不把广域失败写成全量 GREEN，也不越界顺手改写这些独立基线。
+- 方案一致性：请求保留旧 `assignee` 兼容入口，但服务端统一 canonical 排序；Receipt 为 additive、append-only；历史行不回填猜测 snapshot；Task Cockpit 只把 exact selected assignee + snapshot hash + 未过期 expiry 映射为观测时 resolved。
+- 风险边界：Human capability entitlement 仍无独立 canonical authority，有 required Capability 时明确 `HUMAN_CAPABILITY_BINDING_MISSING`；当前真实安装未提供正向页面路径；这些边界不阻塞 W6-02 的方案/实现，但继续阻断真实执行与发布。
+
+机器证据：`.evidence/workshop/2026-08-25-w6-01-exact-capability-assignee-readiness.json`。
