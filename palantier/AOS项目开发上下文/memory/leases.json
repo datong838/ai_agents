@@ -1,4 +1,46 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000267",
+      "created_at": "2026-08-26T02:34:29+08:00",
+      "excluded_scope": [
+        "real-tenant-write",
+        "provider-submit",
+        "action-execute",
+        "publish-canary",
+        "shared-migration-apply"
+      ],
+      "expected_outputs": [
+        "GET-only Analyst v2 GrowthPlan-rooted scenario contribution with exact binding conservation and fail-closed external axes",
+        "backend/frontend regression, built-in browser evidence, Delivery Receipt and Prime CAS"
+      ],
+      "lease_expires_at": "2026-08-26T10:30:00+08:00",
+      "owner": "codex-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "aos-platform/services/aos-api/aos_api/ecommerce_workshop_growth_scenario_contracts.py",
+        "aos-platform/services/aos-api/aos_api/ecommerce_workshop_growth_scenario.py",
+        "aos-platform/services/aos-api/aos_api/ecommerce_workshop_analyst_contracts.py",
+        "aos-platform/services/aos-api/aos_api/ecommerce_workshop_analyst.py",
+        "aos-platform/services/aos-api/aos_api/routers/ecommerce_workshop.py",
+        "aos-platform/services/aos-api/tests/test_ecommerce_workshop_growth_scenario.py",
+        "aos-platform/services/aos-api/tests/test_ecommerce_workshop_analyst.py",
+        "aos-platform/services/aos-api/tests/test_openapi_contract.py",
+        "aos-platform/apps/web/src/api/ecommerceWorkshop/contracts.ts",
+        "aos-platform/apps/web/src/api/ecommerceWorkshop/parser.ts",
+        "aos-platform/apps/web/src/api/ecommerceWorkshop/growthScenarioParser.test.ts",
+        "aos-platform/apps/web/src/components/workshop/AnalystPage.tsx",
+        "aos-platform/apps/web/src/components/workshop/AnalystPage.test.tsx",
+        "aos-platform/packages/contracts/openapi/v1.generated.json",
+        "aos-platform/packages/contracts/openapi/v1.inventory.json",
+        "aos-platform/.evidence/workshop/2026-08-26-w8-01-growth-scenario",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/70-W8-01-洞察GrowthPlan内容达人媒体发布复盘同链预检ADR.md",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md",
+        "docs/palantier/AOS项目开发上下文/memory"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w8-01-growth-scenario-exact-binding-20260826"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
