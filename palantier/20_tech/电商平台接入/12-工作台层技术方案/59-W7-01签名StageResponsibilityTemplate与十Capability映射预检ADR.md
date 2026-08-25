@@ -100,6 +100,7 @@ W7-01 采用以下唯一合同基线：
 - `bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0/bundle.yaml`
 - `bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0/content/media-production-templates/*.json`
 - `bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0/content/workshops/ecommerce.media-studio.json`
+- `.evidence/workshop/2026-08-25-w7-01-signed-stage-responsibility-capability-mapping.json`
 
 若实现过程中发现必须扩大文件范围，先回写本 ADR，再改代码。
 

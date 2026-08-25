@@ -15,6 +15,7 @@
       "owner": "aos-main-development",
       "schema": "aos-memory-task-receipt/v1",
       "scope": [
+        "aos-platform:.evidence/workshop/2026-08-25-w7-01-signed-stage-responsibility-capability-mapping.json",
         "aos-platform:bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0",
         "aos-platform:services/aos-api/aos_api/aip_media_production_templates.py",
         "aos-platform:services/aos-api/aos_api/aip_responsibility_template_authority.py",
