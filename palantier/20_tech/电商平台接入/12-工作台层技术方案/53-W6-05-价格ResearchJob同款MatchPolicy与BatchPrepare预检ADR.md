@@ -90,7 +90,7 @@ W6-05 按“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台�
 |---|---|---|
 | `W6-05A` | 本 ADR、`16-价格治理技术方案.md`、D-waves 总清单 | 方案、边界、exact refs 与施工顺序一致 |
 | `W6-05B` | `ecommerce_workshop_price_research.py`、`ecommerce_workshop_price_research_store.py` | Profile、Normalizer、Match Observation/Decision、Policy、prepare/freeze 严格合同；append-only/CAS/租户隔离 |
-| `W6-05C` | `routers/ecommerce_workshop.py`、OpenAPI 测试 | 内部 authority 命令与贡献只读 API；typed error；零 Provider/ResearchJob/Action |
+| `W6-05C` | `routers/ecommerce_workshop.py`、`scripts/export_openapi.py`、`packages/contracts/openapi/v1.generated.json`、`v1.inventory.json` 与 OpenAPI 测试 | 内部 authority 命令与贡献只读 API；8 个新增操作进入确定性合同基线；typed error；零 Provider/ResearchJob/Action |
 | `W6-05D` | `alembic/versions/w6_005_price_research.py` 与迁移合同测试 | additive、RLS/FORCE RLS、唯一 head；只验证、不 apply |
 | `W6-05E` | Web contracts/parser/client、`PriceGovernancePage.tsx` 及测试 | strict contribution view；失败关闭；无外部动作控件 |
 | `W6-05F` | 专项＋W6 累计回归、build、内置浏览器、diff/方案复审、Evidence/Receipt/CAS/Prime | 能力不倒退，代码/合同/浏览器闭合后才勾选 W6-05 |
@@ -98,3 +98,13 @@ W6-05 按“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台�
 ### 7.4 本波关闭口径
 
 `prepare/freeze` 只能固化输入、exact refs、逐项处置和数量台账；`provider_call_count = research_job_count = notification_count = action_proposal_count = repricing_count = external_effect_count = 0`。任何许可、original、口径、Match、Policy/Eval、Skill/Logic/Agent binding、rate/capacity/budget 漂移均使批次 stale 或阻断。W6-05 GREEN 仅表示价格领域代码/合同/浏览器 prepare 门闭合，不授予 W6-06 外部通知或调价权限。
+
+## 8. 2026-08-25 实施与验收封存
+
+- 实现提交：`aos-platform/m1@de8eaf4`。已新增 tenant-scoped append-only Profile、Observation、Match Observation/Decision、MonitoringPolicy 与 PriceResearchBatch prepare/freeze authority；exact ref、content hash、version/CAS、数量守恒及零副作用计数均进入强类型合同。
+- 公共合同：新增 8 个内部 authority/贡献操作；确定性 OpenAPI 为 `2616 paths / 2248 schemas / 4395 route rows / 4385 unique operations`，双清洁进程导出 GREEN，未删除或放宽旧合同断言。
+- 测试：W6 与 API/OpenAPI 累计 `56 passed`；前端专项 `2 files / 6 tests passed`，全量累计 `227 files / 2115 tests passed`；生产 build `343 modules`，compileall、diff check、`w6_005` 唯一 head GREEN。迁移仅验证，未 apply。
+- 浏览器：内置浏览器在 `org-org/dev-project` 的 `/workshop/price-governance` 验证贡献链、数据参谋主责、协作同事、可信空 batch、零 Provider/ResearchJob/external effect、无 start/notify/reprice 控件；P01/P03/P07/P09/P11 当前失败事实保持可见，未被页面提升。
+- 安全结论：未读写真实业务数据，未创建 ResearchJob，未调用 Provider，未发送通知，未创建 Action/调价 Proposal，未发布。
+
+结论：`W6_05_CODE_CONTRACT_BROWSER_GREEN / NO_PROVIDER / NO_RESEARCH_JOB / NO_EXTERNAL_EFFECT / NO_RELEASE`。W6-05 可以勾选；下一串行任务为 W6-06，仍须独立建立通知、建议、Handoff 与调价分门，不能借 W6-05 GREEN 点亮外部动作。
