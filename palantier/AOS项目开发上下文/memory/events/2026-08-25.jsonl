@@ -68,3 +68,4 @@
 {"occurred_at":"2026-08-25T08:03:28+08:00","project_revision":"AOS-000237","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000237","occurred_at":"2026-08-25T08:04:33+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w5-03-draft-proposal-approval-lease-20260825","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-25T08:39:08+08:00","result":"W5_03_EXPLICIT_DRAFT_EXACT_APPROVAL_LEASE_CODE_GREEN_EXTERNAL_RESERVATION_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w5-03-draft-proposal-approval-lease-20260825","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-25T08:39:55+08:00","project_revision":"AOS-000238","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
