@@ -105,3 +105,13 @@ W8-02 场景合同可以作为未来施工与验收基线；当前不得运行�
 - PriceCase 不等于动作授权；message accepted、refund submitted、price applied、Case resolved、Effect mature 五轴不得互相推导；
 - unknown/partial/late/duplicate 保留风险敞口，不通过重试或数据库回滚伪造成功；
 - 回滚仅移除 Price Governance v2 的 remedy scenario 字段和 UI，v1 三视图、价格调研、处分分门与 W8-01 保持不变。
+
+## 8. 2026-08-26 工程实现与验收结论
+
+W8-02 已完成 GET-only Price Governance v2 同链贡献。新增严格 `RemedyScenarioContribution`：exact `PriceCaseRevision` 与 `price_case` 阶段必须完全一致，固定九阶段顺序，并把调价应用、退款/补偿提交、客户消息接受、OperationCase 解决、Effect 成熟保持为五个独立结果轴。缺根、租户/cutoff/binding/root-stage 漂移、数量不守恒、PII/支付/Provider 正文键、任何命令开放或全 ready 运营伪状态均失败关闭；v1 三视图仍保持兼容。
+
+专项后端 Price/Scenario/API/OpenAPI `33 passed`，Web 定向 `3 files / 12 tests`，Web 全量 `237 files / 2161 tests`，TypeScript 与生产 build `344 modules transformed`，OpenAPI 为 `2666 paths / 2407 schemas` 且 deterministic check 通过，安全 scanner `9 tests`、scoped `16 files / 0 critical / 0 warning`。内置浏览器在实际 `1280x720` 视口确认九阶段、五轴、三 Tab、方向键切换与 aria-selected、受保护联系正文未解析及零业务写按钮；未把该证据误标成未实际取得的 1440/1920 截图。
+
+浏览器 fixture 准备期间曾误启动完整本地 `aos-api` 约 12 秒；观察到既有 JDBC SSH tunnel 启动，发现后立即终止，shutdown 日志确认 tunnel cache 已清理。期间没有调用 W8-02 业务 endpoint，也没有执行调价、退款/补偿、客户消息、Case 关闭、发布或 release；但由于启动日志包含幂等 schema/seed 检查，本 ADR 不把该次完整 runtime 启动当作“已证明零 bootstrap 写”的证据。正式浏览器验收已改用纯 loopback GET-only fixture 重跑，后续禁止为页面验收启动完整 runtime。
+
+代码提交 `55306606`；证据包为 `.evidence/workshop/2026-08-26-w8-02-price-remedy-scenario.json`，浏览器图为 `.evidence/workshop/2026-08-26-w8-02-browser/price-remedy-scenario-viewport.png`。工程退出裁决：`W8_02_PRICE_REMEDY_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE`。这只关闭 W8-02 工程清单，不签发真实 PriceCase、订单集合、Consent/Permit、Provider/Action、外部效果或 release；下一串行入口为 W8-03。
