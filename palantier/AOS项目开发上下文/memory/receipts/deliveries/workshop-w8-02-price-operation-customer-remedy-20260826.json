@@ -1,0 +1,44 @@
+{
+  "base_revision": "AOS-000268",
+  "blockers": [
+    "PRICE_CASE_EXACT_ROOT_REQUIRED",
+    "CUSTOMER_REMEDY_OPERATIONAL_AUTHORIZATION_REQUIRED",
+    "REPOSITORY_BASELINE_REMAINS_RED"
+  ],
+  "changed_files": [
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_remedy_scenario.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_remedy_scenario_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_price_governance.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_price_governance_contracts.py",
+    "aos-platform:services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "aos-platform:services/aos-api/tests/test_ecommerce_workshop_remedy_scenario.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/components/workshop/PriceGovernancePage.tsx",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "aos-platform:.evidence/workshop/2026-08-26-w8-02-price-remedy-scenario.json",
+    "aos-platform:.evidence/workshop/2026-08-26-w8-02-browser/price-remedy-scenario-viewport.png",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/71-W8-02-价格异常运营Case客户补救同链预检ADR.md"
+  ],
+  "commits": [
+    "55306606",
+    "81b5efde",
+    "70935ce"
+  ],
+  "completed_at": "2026-08-26T03:40:45+08:00",
+  "completed_revision": "AOS-000269",
+  "result": "W8_02_PRICE_REMEDY_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
+  "risks": [
+    "NO_SHARED_MIGRATION_APPLY; NO_PRICE_CHANGE; NO_REFUND_OR_COMPENSATION; NO_CUSTOMER_MESSAGE; NO_CASE_CLOSE; NO_PROVIDER; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_RELEASE",
+    "built-in browser acceptance used a local GET-only fixture at the actual 1280x720 viewport and is not operational authority or real canary evidence",
+    "a full local API runtime was mistakenly started for about 12 seconds and immediately stopped; no W8-02 business endpoint was called, but this run does not claim independent proof that every bootstrap write was absent"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-02-price-operation-customer-remedy-20260826",
+  "verification": [
+    "backend scenario/Price Governance/API/OpenAPI 33 passed with 7 warnings",
+    "Web targeted 3 files/12 tests; full 237 files/2161 tests; typecheck/build 344 modules passed",
+    "OpenAPI deterministic at 2666 paths/2407 schemas; scanner unit 9 passed; scoped security 16 files 0 critical/0 warning",
+    "built-in browser actual 1280x720 confirmed 9 stages, 5 independent axes, 3 semantic tabs, keyboard switch, protected-contact non-resolution and no write entry",
+    "screenshot sha256 700bb85625ad4d747789a16979c86c2451df31fca75a5f16b59f99ddf3433c00"
+  ]
+}
