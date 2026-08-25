@@ -1,30 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000243",
-      "created_at": "2026-08-25T11:50:11+08:00",
-      "excluded_scope": [
-        "real-tenant-business-data",
-        "external-provider-side-effects",
-        "production-release"
-      ],
-      "expected_outputs": [
-        "W6_01_EXACT_CAPABILITY_ASSIGNEE_RESOLVER_READINESS_CODE_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE"
-      ],
-      "lease_expires_at": "2026-08-25T09:50:11+00:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "docs:12-工作台层技术方案/49-W6-01 ADR + D-waves checklist",
-        "code:services/aos-api/aip_assignee_resolution contracts/store/router",
-        "code:services/aos-api/aip_production_contracts/store",
-        "migration:w6_001 exact assignee snapshots",
-        "tests:W6-01 focused + cumulative",
-        "evidence:.evidence/workshop/2026-08-25-w6-01"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w6-01-exact-capability-assignee-readiness-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }

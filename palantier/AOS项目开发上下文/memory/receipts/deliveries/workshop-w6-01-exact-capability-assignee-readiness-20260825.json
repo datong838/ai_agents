@@ -1,0 +1,35 @@
+{
+  "base_revision": "AOS-000243",
+  "blockers": [
+    "real Canary, external effect and release remain unauthorized"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_assignee_resolution.py",
+    "services/aos-api/aos_api/aip_assignee_resolution_store.py",
+    "services/aos-api/aos_api/aip_production_contract_store.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "services/aos-api/alembic/versions/w6_001_exact_assignee_resolution.py",
+    ".evidence/workshop/2026-08-25-w6-01-exact-capability-assignee-readiness.json"
+  ],
+  "commits": [
+    "b128be0",
+    "c835c9d",
+    "eea527d"
+  ],
+  "completed_at": "2026-08-25T12:27:38+08:00",
+  "completed_revision": "AOS-000243",
+  "result": "W6_01_EXACT_CAPABILITY_ASSIGNEE_READINESS_CODE_CONTRACT_BROWSER_DISPOSITION_GREEN",
+  "risks": [
+    "positive installed Task Cockpit browser path not claimed because no canonical active installation exists",
+    "broad AIP regression 1628 passed / 14 unrelated historical migration, shared-state and lifespan failures"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-01-exact-capability-assignee-readiness-20260825",
+  "verification": [
+    "54 focused backend tests passed",
+    "37 focused frontend tests passed",
+    "production build, deterministic OpenAPI, Alembic w6_001 and diff check GREEN",
+    "built-in browser showed honest module-not-installed fail-closed state"
+  ]
+}
