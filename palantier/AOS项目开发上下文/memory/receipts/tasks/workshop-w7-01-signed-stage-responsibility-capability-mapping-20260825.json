@@ -19,6 +19,7 @@
     "aos-platform:services/aos-api/tests/aip/test_aip_media_production_templates.py",
     "aos-platform:services/aos-api/tests/aip/test_aip_responsibility_template_authority.py",
     "aos-platform:services/aos-api/tests/asset_registry/test_m5_ecommerce_bundle_contracts.py",
+    "aos-platform:services/aos-api/tests/asset_registry/test_workshop_module_contracts.py",
     "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/59-W7-01签名StageResponsibilityTemplate与十Capability映射预检ADR.md",
     "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
   ],

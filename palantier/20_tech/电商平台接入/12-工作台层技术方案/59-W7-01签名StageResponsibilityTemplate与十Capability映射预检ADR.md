@@ -96,6 +96,7 @@ W7-01 采用以下唯一合同基线：
 - `services/aos-api/tests/aip/test_aip_media_production_templates.py`
 - `services/aos-api/tests/aip/test_aip_responsibility_template_authority.py`
 - `services/aos-api/tests/asset_registry/test_m5_ecommerce_bundle_contracts.py`
+- `services/aos-api/tests/asset_registry/test_workshop_module_contracts.py`
 - `bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0/bundle.yaml`
 - `bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0/content/media-production-templates/*.json`
 - `bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0/content/workshops/ecommerce.media-studio.json`
