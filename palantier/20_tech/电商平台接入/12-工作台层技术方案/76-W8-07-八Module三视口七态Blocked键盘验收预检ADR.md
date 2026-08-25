@@ -1,7 +1,7 @@
 # W8-07 八 Module 三视口七态、Blocked 与键盘验收预检 ADR
 
 > 日期：2026-08-15
-> 状态：`ACCEPTANCE_CONTRACT_APPROVED / IMPLEMENTATION_BLOCKED / NO_EXTERNAL_EFFECT`
+> 状态：`ENGINEERING_ACCEPTANCE_CONTRACT_BROWSER_GREEN / OPERATIONAL_MATRIX_FAIL_CLOSED / NO_EXTERNAL_EFFECT / NO_RELEASE`
 > 基线：`AOS-000034`、`w2-workshop@7ada162d4242b9dcc320b4965bfc9c82699346c2`、`m1@4018dd382c169fbed567c633bdbb698e6f26447f`
 > 证据：`.evidence/workshop/2026-08-15-w8-07-eight-modules-three-viewports-state-keyboard-preflight.json`
 
@@ -73,10 +73,10 @@ W1～W7 与 W8-01～W8-06 已在 `m1` 形成八 Module 路由、只读 read mode
 | 切面 | 文件 | 最小改动 |
 | --- | --- | --- |
 | 验收合同 | `apps/web/src/components/workshop/workshopAcceptance.ts` | 定义八 Module、三视口、十状态、240 格、键盘路径、exact evidence 校验与失败关闭汇总 |
-| 累计测试 | `apps/web/src/components/workshop/workshopAcceptance.test.tsx` | 覆盖 240 格不丢失、ready 缺 exact evidence 阻断、N/A 必填 reason，八 Module 壳 H1/skip/main/exact refs 与导航唯一 current |
+| 累计测试 | `apps/web/src/components/workshop/workshopAcceptance.test.ts` | 覆盖 240 格不丢失、ready 缺 exact evidence 阻断、N/A 必填 reason；八 Module 壳 H1/skip/main/exact route 由 `EcommerceWorkshopShell.test.tsx` 闭合 |
 | Tab 无障碍 | `MediaStudioPage.tsx`、`AnalystPage.tsx`、`PriceGovernancePage.tsx`、`CustomerPage.tsx` 及对应测试 | 补 roving tabindex、方向键/Home/End、稳定 tab/panel id 和 controls/labelledby，不改 read model 或命令边界 |
 | 公共壳与样式 | `EcommerceWorkshopShell.tsx`、`EcommerceWorkshopShell.test.tsx`、`apps/web/src/styles/45-ecommerce-workshop.css` | 验证 skip link 焦点、Focus Mode 恢复、visible focus、200%/reduced-motion 与三视口无溢出；只修确认的公共缺口 |
-| 证据/上下文 | `.evidence/workshop/2026-08-26-w8-07-*`、本 ADR、D-waves 总清单、Task/Delivery Receipt、authority/Prime 投影 | 记录生产构建、专项/累计回归、三视口 DOM/键盘/console/截图、240 格处置和 `NO_RELEASE` |
+| 证据/上下文 | `.evidence/workshop/w8-07/`、本 ADR、D-waves 总清单、Task/Delivery Receipt、authority/Prime 投影 | 记录生产构建、专项/累计回归、三视口 DOM/console/截图、240 格处置和 `NO_RELEASE` |
 
 ### 8.4 验收、证据分级与回退
 
@@ -84,3 +84,23 @@ W1～W7 与 W8-01～W8-06 已在 `m1` 形成八 Module 路由、只读 read mode
 - 内置浏览器在新鲜 production build 上验证 1280/1440/1920、八路由、H1/landmark/skip/current nav、Tab 键盘、visible focus、长文案、无水平溢出与 console；本地 fixture 只签发 engineering browser evidence。
 - 真实生产 ready 格若无 `org-org/dev-project` 正式 HTTP 和 exact EvidencePack 则保持 blocked；`dev-org/dev-project` 只能是跨租户负向格。
 - 回退只移除 acceptance 合同/测试并恢复本波 Tab 无障碍属性；不修改 authority、业务数据、Provider、Action 或发布状态，不需要 migration 或数据回滚。
+
+## 9. 2026-08-26 实施与失败关闭结论
+
+### 9.1 最小实施
+
+- 代码 `m1@6b41a32ba5b012a645fd4d1465258e5853d0af04` 新增八 Module、三视口、十状态的 240 格唯一验收合同，对 route、正向租户、production build SHA、Module/Installation exact ref 和证据包逐项失败关闭。
+- Media Studio、Analyst、Price Governance、Customer 四组 Tab 统一补齐 roving tabindex、方向键/Home/End、稳定 tab/panel id、`aria-controls` 和 `aria-labelledby`；不改 read model、命令能力或业务状态。
+- 公共工作台样式新增 `prefers-reduced-motion` 收敛；八 Module 公共壳逐项验证唯一 H1、skip link、main 与精确 route。
+
+### 9.2 测试与浏览器
+
+- TDD RED 先证明验收合同缺失且 Media Tab 不符合 roving tabindex；实施后专项 6 文件 39 项全绿。
+- Web 累计回归 `242 files / 2193 tests passed`；TypeScript 通过，Vite production build `344 modules transformed`。
+- 证据提交 `m1@d338cfffa9ca22ae8494fd28f685c62e709f6e0a` 保存 240 格矩阵、24 个 Module/视口路由事实与 1280/1440/1920 代表截图。内置浏览器确认 24/24 路由均为唯一 H1、状态区可达且无横向溢出；未捕获脚本错误。
+
+### 9.3 证据分级与安全裁决
+
+本地正式构建的 API/Catalog 不可用，也没有 active Installation exact ref 和生产 HTTP，页面因此诚实显示“读取失败 / 正式服务未返回可验证结果”。矩阵中 240/240 格全部保持 `blocked`：24 个 ready 格为 `READY_REQUIRES_PRODUCTION_HTTP`，其余 216 格为 `EXACT_MODULE_INSTALLATION_EVIDENCE_NOT_AVAILABLE`。
+
+因此 W8-07 只闭合“可执行验收合同 + 无障碍回归修复 + 工程浏览器证据”，不签发 operational/release GREEN。本波没有 migration、真实租户写入、Provider/Action、自动重试、外部副作用或发布；结论为 `ENGINEERING_ACCEPTANCE_CONTRACT_BROWSER_GREEN / OPERATIONAL_MATRIX_FAIL_CLOSED / NO_EXTERNAL_EFFECT / NO_RELEASE`。下一串行入口为 W8-08。
