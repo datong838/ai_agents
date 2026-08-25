@@ -1,45 +1,48 @@
 {
   "completed": [
-    "W8-01"
+    "W8-02"
   ],
-  "content_hash": "sha256:d65e2253d924764318476173a9b6d809688786ec646d9f50769095060a27cba7",
+  "content_hash": "sha256:7ff846e2e75d71b023dd1e13b949e5b1965fea02a46a836dd3d6aac1cca31051",
   "current_phase": "S7_WORKSHOP_W8_SCENARIOS_AND_RELEASE_GATES",
-  "delivery_status": "W8_01_GROWTH_SCENARIO_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "W8_02_PRICE_REMEDY_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": ".evidence/workshop/2026-08-26-w8-01-growth-scenario-exact-binding.json"
+      "ref": ".evidence/workshop/2026-08-26-w8-02-price-remedy-scenario.json"
     },
     {
       "kind": "receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w8-01-growth-scenario-exact-binding-20260826.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w8-02-price-operation-customer-remedy-20260826.json"
     }
   ],
-  "generated_at": "2026-08-26T03:07:56+08:00",
+  "generated_at": "2026-08-26T03:43:23+08:00",
   "hard_boundaries": [
     "NO_SHARED_MIGRATION_APPLY",
     "NO_REAL_TENANT_MUTATION",
     "NO_REAL_PROVIDER",
     "NO_ACTION_EXECUTION",
-    "NO_PUBLISH",
-    "NO_MEMORY_PROMOTION",
+    "NO_REPRICE",
+    "NO_REFUND_OR_COMPENSATION",
+    "NO_CUSTOMER_MESSAGE",
+    "NO_CASE_CLOSE",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "W8-02_TO_W8-12"
+    "W8-03_TO_W8-12"
   ],
-  "last_green_gate": "W8-01_ENGINEERING_EXACT_BINDING",
-  "next_gate": "W8-02",
+  "last_green_gate": "W8-02_ENGINEERING_EXACT_BINDING",
+  "next_gate": "W8-03",
   "next_steps": [
-    "Execute W8-02 price anomaly to operation case to customer remedy exact-binding GET-only scenario; retain no repricing, refund, outreach, external effect or release."
+    "Execute W8-03 content to media feedback exact-binding GET-only scenario; retain no Provider, no publish, no external effect and no release."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000268",
+  "project_revision": "AOS-000270",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "89f6fbe542cf9e0145ab52f6f19bed94cedd2bda",
-    "docs": "8634540"
+    "aos-platform": "55306606be739c52f8360033ddca31aa9a10af28",
+    "docs": "d4c998f1da11a658c243500203bd1197308ed086",
+    "evidence": "81b5efde68cf724309cf57c8e8a511332f32ccf8"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

@@ -25,12 +25,13 @@
     "70935ce"
   ],
   "completed_at": "2026-08-26T03:40:45+08:00",
-  "completed_revision": "AOS-000269",
+  "completed_revision": "AOS-000270",
   "result": "W8_02_PRICE_REMEDY_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
   "risks": [
     "NO_SHARED_MIGRATION_APPLY; NO_PRICE_CHANGE; NO_REFUND_OR_COMPENSATION; NO_CUSTOMER_MESSAGE; NO_CASE_CLOSE; NO_PROVIDER; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_RELEASE",
     "built-in browser acceptance used a local GET-only fixture at the actual 1280x720 viewport and is not operational authority or real canary evidence",
-    "a full local API runtime was mistakenly started for about 12 seconds and immediately stopped; no W8-02 business endpoint was called, but this run does not claim independent proof that every bootstrap write was absent"
+    "a full local API runtime was mistakenly started for about 12 seconds and immediately stopped; no W8-02 business endpoint was called, but this run does not claim independent proof that every bootstrap write was absent",
+    "AOS-000269 carried an invalid expanded source SHA and was never synchronized; AOS-000270 is the explicit CAS correction with verified full source commits"
   ],
   "schema": "aos-memory-delivery-receipt/v1",
   "task_id": "workshop-w8-02-price-operation-customer-remedy-20260826",
