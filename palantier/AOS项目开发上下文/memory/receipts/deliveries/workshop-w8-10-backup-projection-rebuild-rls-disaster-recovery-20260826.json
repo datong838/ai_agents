@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000279",
+  "blockers": [
+    "no authorized real restore, RLS mutation, failover/failback, Provider/Action, external effect or release"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/workshopDisasterRecoveryReadiness.ts",
+    "apps/web/src/components/workshop/workshopDisasterRecoveryReadiness.test.ts",
+    "apps/web/src/components/workshop/WorkshopDisasterRecoveryCard.tsx",
+    "apps/web/src/components/workshop/WorkshopDisasterRecoveryCard.test.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    ".evidence/workshop/w8-10"
+  ],
+  "commits": [
+    "d7eed3fee0915733d40cd1872493bdf486fdb844",
+    "2b720d484988bcd678778204f3cd53d6e66668b8",
+    "2f4fe7d79f064d7893fdd637dab239d4a15a3aa0"
+  ],
+  "completed_at": "2026-08-26T07:17:00+08:00",
+  "completed_revision": "AOS-000279",
+  "result": "ENGINEERING_DR_CONTRACT_BROWSER_GREEN / REAL_RESTORE_AND_DRILLS_BLOCKED / NO_DATA_OPERATION / NO_EXTERNAL_EFFECT / NO_RELEASE",
+  "risks": [
+    "real backup restore, isolated DR, RPO/RTO measurement and drills remain unproven"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-10-backup-projection-rebuild-rls-disaster-recovery-20260826",
+  "verification": [
+    "targeted 3 files/23 tests; web 247 files/2228 tests; tsc; build 349 modules; built-in browser fail-closed and visual acceptance"
+  ]
+}

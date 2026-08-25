@@ -1,44 +1,44 @@
 {
   "completed": [
-    "W8-09 release-bound SLI/SLO, alert, unknown backlog/reconcile age, Usage, five-axis closure and runbook/drill fail-closed engineering contract with browser acceptance"
+    "W8-10 read-only DR evaluator, contribution card, tests, build and browser acceptance"
   ],
-  "content_hash": "sha256:9573dee7a0043cdb54a09e38628f81387389adde1fc31802d2270a8da9099a10",
+  "content_hash": "sha256:5a4e2cebef28947d6d5cba9e1bb345becf2bb8c0221c5608ff47723e1ea70f91",
   "current_phase": "S7_WORKSHOP_W8_SCENARIOS_AND_RELEASE_GATES",
-  "delivery_status": "W8_09_OPERATING_READINESS_CONTRACT_CODE_BROWSER_GREEN_REAL_BASELINE_DRILLS_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "W8_10_DR_READINESS_CONTRACT_CODE_BROWSER_GREEN_REAL_RESTORE_DRILLS_BLOCKED_NO_DATA_OPERATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/w8-09/verification.json"
+      "ref": ".evidence/workshop/w8-10/verification.json"
     },
     {
       "kind": "browser",
-      "ref": ".evidence/workshop/w8-09/operating-readiness-visual-fixture.png"
+      "ref": ".evidence/workshop/w8-10/dr-readiness-visual-fixture.jpg"
     },
     {
       "kind": "adr",
-      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/78-W8-09-SLO告警UnknownBacklogReconcileAgeUsage与Runbook预检ADR.md#8"
+      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/79-W8-10-备份恢复投影重建RLS与灾难恢复预检ADR.md#8"
     }
   ],
-  "generated_at": "2026-08-26T07:03:09+08:00",
+  "generated_at": "2026-08-26T07:17:56+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only positive tenant; dev-org/dev-project is isolation-only",
-    "No migration apply, real backup/restore, projection rebuild, RLS mutation, Provider/Action, external effect or release; engineering acceptance is not operational authority"
+    "No migration apply, real data operation, RLS mutation, Provider/Action, external effect or release; engineering acceptance is not operational authority"
   ],
   "incomplete": [
-    "Real baseline, approved targets, alert/resolution Receipts and drill EvidencePacks absent; W8-10 through W8-12 remain; no operational readiness or release"
+    "real backup restore, isolated DR target, approved/measured RPO-RTO, RLS mutation and full drills"
   ],
-  "last_green_gate": "W8_09_ENGINEERING_OPERATING_READINESS_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W8_10_BACKUP_RESTORE_PROJECTION_REBUILD_RLS_DR_ENGINEERING_CLOSURE",
+  "last_green_gate": "W8_10_ENGINEERING_DR_READINESS_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W8_11_CUMULATIVE_OPENAPI_ALEMBIC_BUNDLE_EVAL_SECURITY_DIFF_ENGINEERING_CLOSURE",
   "next_steps": [
-    "Start W8-10 serially: re-read ADR-79 and implement only non-mutating backup/restore, projection rebuild, RLS and DR verification contracts"
+    "Execute W8-11 cumulative OpenAPI/Alembic/Bundle Eval/security/diff gate without migration apply, external effect or release"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000279",
+  "project_revision": "AOS-000280",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform-code": "f9f5fd64b9c024bdb8b23b9cf36b3cfbfe985444",
-    "aos-platform-evidence": "99d48fc830212d119aefb7717d9f8be766f5fdff",
-    "docs": "ce53717"
+    "aos-platform-code": "d7eed3fee0915733d40cd1872493bdf486fdb844",
+    "aos-platform-evidence": "2b720d484988bcd678778204f3cd53d6e66668b8",
+    "docs": "2f4fe7d79f064d7893fdd637dab239d4a15a3aa0"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
