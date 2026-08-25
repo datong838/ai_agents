@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000240",
+  "created_at": "2026-08-25T10:01:41+08:00",
+  "excluded_scope": [
+    "real secrets, Provider callbacks, live migration, external effects, canary and release"
+  ],
+  "expected_outputs": [
+    "canonical endpoint revision and tenant-resolved ingress",
+    "verify-before-parse quarantine, replay/drift and ordering reducer",
+    "focused and cumulative tests, deterministic OpenAPI, evidence and safe commit"
+  ],
+  "lease_expires_at": "2026-08-25T14:01:24+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/alembic/versions",
+    "services/aos-api/aos_api/aip_action_webhook_models.py",
+    "services/aos-api/aos_api/aip_action_webhook_service.py",
+    "services/aos-api/aos_api/routers/aip_action_webhooks.py",
+    "services/aos-api/aos_api/routers/domain_aggregates.py",
+    "services/aos-api/tests/aip",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi",
+    ".evidence/workshop",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/46-W5-06-ActionWebhookInbox验签防重放与乱序对账预检ADR.md",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w5-06-webhook-inbox-replay-ordering-20260825"
+}
