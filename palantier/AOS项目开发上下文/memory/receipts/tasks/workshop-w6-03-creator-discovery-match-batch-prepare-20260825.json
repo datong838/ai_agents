@@ -1,0 +1,19 @@
+{
+  "base_revision": "AOS-000245",
+  "created_at": "2026-08-25T12:59:24+08:00",
+  "excluded_scope": [
+    "real outreach/start/sample/contract/commission,external provider/effect,installation mutation,release"
+  ],
+  "expected_outputs": [
+    "W6-03 code,tests,browser evidence,Delivery Receipt and authority CAS"
+  ],
+  "lease_expires_at": "2026-08-25T15:59:12+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs:51-W6-03 ADR,D-waves checklist,163/164 alignment",
+    "code:creator discovery evidence normalization identity match batch prepare authority API migration tests and Workshop consumer"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w6-03-creator-discovery-match-batch-prepare-20260825"
+}
