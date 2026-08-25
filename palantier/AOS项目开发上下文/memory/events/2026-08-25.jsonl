@@ -97,3 +97,4 @@
 {"occurred_at":"2026-08-25T14:29:08+08:00","result":"W6_04_CREATOR_EXPLICIT_START_PARTIAL_LIFECYCLE_CODE_CONTRACT_BROWSER_GREEN_OPERATIONAL_GATE_RETAINED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w6-04-creator-explicit-start-partial-lifecycle-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T14:30:16+08:00","project_revision":"AOS-000247","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"occurred_at":"2026-08-25T14:30:36+08:00","project_revision":"AOS-000248","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000248","occurred_at":"2026-08-25T14:32:29+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w6-05-price-research-match-policy-batch-prepare-20260825","type":"TASK_STARTED"}

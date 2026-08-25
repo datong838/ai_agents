@@ -1,4 +1,23 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000248",
+      "created_at": "2026-08-25T14:32:29+08:00",
+      "excluded_scope": [
+        "migration apply,real provider call,price notification,repricing,real business mutation,canary,release"
+      ],
+      "expected_outputs": [
+        "W6-05 code,tests,browser evidence,Delivery Receipt,authority CAS and Prime readback"
+      ],
+      "lease_expires_at": "2026-08-25T18:35:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "docs:53-W6-05 ADR,price plan,D-waves checklist; code:price ResearchJob profile,source normalization,same-item match observation/decision,monitoring policy,side-effect-free batch prepare,strict read model,tests,browser evidence"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w6-05-price-research-match-policy-batch-prepare-20260825"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
