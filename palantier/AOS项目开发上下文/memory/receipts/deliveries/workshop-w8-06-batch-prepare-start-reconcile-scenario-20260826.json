@@ -1,0 +1,40 @@
+{
+  "base_revision": "AOS-000275",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_batch_scenario_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_batch_scenario.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-08-26-w8-06-batch-prepare-start-reconcile-scenario.json"
+  ],
+  "commits": [
+    "34a6cdf0b60ce9b84a0532bccd0045afe71fe765",
+    "4959e000c7adc2cf56ed8376fbde1f6988b708f4",
+    "7f93ad14210835dd28822ff7fe11aaaef3825954",
+    "8a43189175d9187434307f96b6901f7bbcb14430"
+  ],
+  "completed_at": "2026-08-26T05:52:52+08:00",
+  "completed_revision": "AOS-000275",
+  "result": "W8_06_BATCH_PREPARE_START_PARTIAL_UNKNOWN_RECONCILE_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "NO_SHARED_MIGRATION_APPLY",
+    "NO_REAL_TENANT_BUSINESS_WRITE",
+    "NO_BATCH_COMMAND_EXECUTION",
+    "NO_PROVIDER_OR_ACTION_EXECUTION",
+    "NO_AUTOMATIC_RETRY",
+    "NO_EXTERNAL_EFFECT",
+    "NO_RELEASE"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-06-batch-prepare-start-reconcile-scenario-20260826",
+  "verification": [
+    "backend targeted/API/OpenAPI 25 passed; cumulative Workshop 198 passed",
+    "frontend targeted 14 passed; cumulative 241 files 2180 tests; build 344 modules",
+    "built-in browser desktop/narrow GREEN; console errors/warnings 0; command buttons 0"
+  ]
+}
