@@ -1,49 +1,53 @@
 {
   "completed": [
-    "W7-01",
-    "W7-02",
-    "W7-03",
-    "W7-04",
-    "W7-05",
-    "W7-06"
+    "W7-07"
   ],
-  "content_hash": "sha256:53e50b5f7db82539a3a59212f0e4c354a206f9a82371383671d7191b540dd641",
-  "current_phase": "S7_W7_07_MEDIA_MODEL_PROVIDER_ADAPTER_MALICIOUS_ASSET_SERIAL_DEVELOPMENT",
-  "delivery_status": "W7_06_MEDIA_FOUR_GATE_SAME_ARTIFACT_EVAL_REVIEW_RETURN_ATTEMPT_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:0334eba31b9cd036698471c5edac9c9a0ebdedf07093d1a17c81cdad42e37421",
+  "current_phase": "S7_WORKSHOP_W7_MEDIA_ADAPTIVE_PRODUCTION",
+  "delivery_status": "W7_07_MEDIA_PROVIDER_ADAPTER_MALICIOUS_ASSET_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-06-four-gate-eval-review-return-attempt-20260825.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-07-media-model-provider-adapter-malicious-asset-20260825.json"
     },
     {
       "kind": "implementation",
-      "ref": ".evidence/workshop/2026-08-25-w7-06-four-gate-eval-review-return-attempt.json"
+      "ref": ".evidence/workshop/2026-08-25-w7-07-media-model-provider-adapter-malicious-asset.json"
     },
     {
       "kind": "adr",
-      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/64-W7-06-四门同版EvalReviewIssueReturnAttempt预检ADR.md"
+      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/65-W7-07-媒体模型ProviderAdapter与恶意资产门预检ADR.md"
     }
   ],
-  "generated_at": "2026-08-25T22:03:19+08:00",
+  "generated_at": "2026-08-25T23:04:33+08:00",
   "hard_boundaries": [
-    "No migration apply, real provider/media generation/publication, protected data operation, external effect or release without its exact gate."
+    "NO_SHARED_MIGRATION_APPLY",
+    "NO_REAL_TENANT_MUTATION",
+    "NO_REAL_PROVIDER_INVOCATION",
+    "NO_AUTOMATIC_RETRY",
+    "NO_EXTERNAL_EFFECT",
+    "NO_RELEASE"
   ],
   "incomplete": [
-    "W7-07"
+    "W7-08",
+    "W7-09",
+    "W7-10",
+    "W7-11",
+    "W8"
   ],
-  "last_green_gate": "W7_06_MEDIA_FOUR_GATE_SAME_ARTIFACT_EVAL_REVIEW_RETURN_ATTEMPT_CODE_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W7_07_MEDIA_MODEL_PROVIDER_ADAPTER_MALICIOUS_ASSET",
+  "last_green_gate": "W7-07",
+  "next_gate": "W7-08",
   "next_steps": [
-    "Review W7-07 against current canonical W7-04 executor, AIP ModelRoute/Provider/Policy authority and 163/164 atomic Skill composition; close any missing common-layer authority before implementing adapter and malicious-asset gates, without real Provider invocation or release."
+    "Review W7-08 against the now-GREEN W7-07 MediaProviderJob authority and current Capacity/Budget/Usage contracts; close media attempt reservation, cancel/late receipt, partial settlement and read-only cost projection without real Provider invocation or release."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000262",
+  "project_revision": "AOS-000263",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "7787fcc1a52a8ddfd0f23990846a8d8be8f75c66",
-    "delivery_receipt": "c142192e7d891f503ee0222f082d4f7c3376bde6",
-    "evidence": "1c79d07fc5be347d8512a535dd08d55f7ba27586",
-    "workshop_docs": "c142192e7d891f503ee0222f082d4f7c3376bde6"
+    "code": "35b688a769e92647bccc9dddcae0739de1ac885e",
+    "delivery_receipt": "46a3985a84268d215cb278c276b8e50ea9e99e9d",
+    "evidence": "e9a6278a39299f048a25994e41e280f78ec64fa1",
+    "workshop_docs": "90741fa47f041e0e4b1b2b9ad4fb15246f5a357a"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
