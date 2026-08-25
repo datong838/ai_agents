@@ -1,4 +1,45 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000257",
+      "created_at": "2026-08-25T18:54:47+08:00",
+      "excluded_scope": [
+        "aos-platform:.DS_Store",
+        "aos-platform:.evidence/aip/2026-08-23-r32-browser-final",
+        "aos-platform:plugins"
+      ],
+      "expected_outputs": [
+        "W7-03 deterministic StageTemplate compiler, structured PlanStep, governed dependency snapshot, TaskRun composition gate, SDK/UI, tests, browser evidence, Delivery Receipt, authority CAS and Prime readback"
+      ],
+      "lease_expires_at": "2026-08-26T06:00:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "aos-platform:.evidence/workshop/2026-08-25-w7-03-stage-template-compiler-taskrun.json",
+        "aos-platform:services/aos-api/aos_api/aip_contracts.py",
+        "aos-platform:services/aos-api/aos_api/aip_production_contracts.py",
+        "aos-platform:services/aos-api/aos_api/aip_production_contract_store.py",
+        "aos-platform:services/aos-api/aos_api/aip_production_start_service.py",
+        "aos-platform:services/aos-api/aos_api/aip_task_store.py",
+        "aos-platform:services/aos-api/tests/aip/test_w7_03_stage_template_compiler.py",
+        "aos-platform:services/aos-api/tests/aip/test_w2c_contracts.py",
+        "aos-platform:services/aos-api/tests/aip/test_w2d_start_gate.py",
+        "aos-platform:apps/web/src/api/aipProductionContracts/contracts.ts",
+        "aos-platform:apps/web/src/api/aipProductionContracts/parser.ts",
+        "aos-platform:apps/web/src/api/aipProductionContracts/parser.test.ts",
+        "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.tsx",
+        "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.test.tsx",
+        "aos-platform:packages/contracts/openapi/v1.generated.json",
+        "aos-platform:packages/contracts/openapi/v1.inventory.json",
+        "aos-platform:scripts/export_openapi.py",
+        "aos-platform:services/aos-api/tests/test_openapi_contract.py",
+        "aos-platform:services/aos-api/tests/test_domain_router_manifest.py",
+        "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/61-W7-03-StageTemplate编译PlanStep与TaskRun组合门预检ADR.md",
+        "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w7-03-stage-template-compiler-taskrun-20260825"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
