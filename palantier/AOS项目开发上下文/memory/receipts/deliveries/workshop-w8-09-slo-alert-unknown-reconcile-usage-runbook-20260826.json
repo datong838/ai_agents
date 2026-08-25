@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000278",
+  "blockers": [
+    "REAL_BASELINE_AND_DRILLS_MISSING"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/workshopOperatingReadiness.ts",
+    "apps/web/src/components/workshop/workshopOperatingReadiness.test.ts",
+    "apps/web/src/components/workshop/WorkshopOperatingReadinessCard.tsx",
+    "apps/web/src/components/workshop/WorkshopOperatingReadinessCard.test.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    ".evidence/workshop/w8-09/"
+  ],
+  "commits": [
+    "f9f5fd64b9c024bdb8b23b9cf36b3cfbfe985444",
+    "99d48fc830212d119aefb7717d9f8be766f5fdff",
+    "ce53717"
+  ],
+  "completed_at": "2026-08-26T07:02:31+08:00",
+  "completed_revision": "AOS-000278",
+  "result": "ENGINEERING_OPERATING_CONTRACT_BROWSER_GREEN / REAL_BASELINE_AND_DRILLS_BLOCKED / NO_EXTERNAL_EFFECT / NO_RELEASE",
+  "risks": [
+    "No real baseline, approved targets, append-only alert Receipts, canonical resolution reread, or drill EvidencePacks; operational readiness and release remain blocked"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-09-slo-alert-unknown-reconcile-usage-runbook-20260826",
+  "verification": [
+    "Targeted 3 files/21 tests GREEN; TypeScript GREEN; Web 245 files/2218 tests GREEN; build 347 modules GREEN; built-in browser formal fail-closed and GET-only visual fixture acceptance GREEN"
+  ]
+}

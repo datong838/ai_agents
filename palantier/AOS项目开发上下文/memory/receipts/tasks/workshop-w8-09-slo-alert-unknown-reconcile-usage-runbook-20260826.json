@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000278",
+  "created_at": "2026-08-26T06:38:28+08:00",
+  "excluded_scope": [
+    "services/aos-api/migrations",
+    "real-business-data",
+    "provider-action-external-effect-release"
+  ],
+  "expected_outputs": [
+    "W8-09 read-only fail-closed operating readiness contract and browser evidence"
+  ],
+  "lease_expires_at": "2026-08-26T06:38:17.833498+00:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/workshopOperatingReadiness.ts",
+    "apps/web/src/components/workshop/workshopOperatingReadiness.test.ts",
+    "apps/web/src/components/workshop/WorkshopOperatingReadinessCard.tsx",
+    "apps/web/src/components/workshop/WorkshopOperatingReadinessCard.test.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    ".evidence/workshop/w8-09",
+    "docs/palantier/AOS项目开发上下文/memory"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w8-09-slo-alert-unknown-reconcile-usage-runbook-20260826"
+}

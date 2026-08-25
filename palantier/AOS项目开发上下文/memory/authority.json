@@ -1,44 +1,44 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W8-08 install, replacement upgrade, leaf-first rollback, terminal uninstall and explicit route-retirement engineering contract with browser fail-closed acceptance"
+    "W8-09 release-bound SLI/SLO, alert, unknown backlog/reconcile age, Usage, five-axis closure and runbook/drill fail-closed engineering contract with browser acceptance"
   ],
   "current_phase": "S7_WORKSHOP_W8_SCENARIOS_AND_RELEASE_GATES",
-  "delivery_status": "W8_08_LIFECYCLE_RETIREMENT_CONTRACT_CODE_BROWSER_GREEN_OPERATIONAL_MUTATION_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "W8_09_OPERATING_READINESS_CONTRACT_CODE_BROWSER_GREEN_REAL_BASELINE_DRILLS_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/w8-08/lifecycle-acceptance.json"
+      "ref": ".evidence/workshop/w8-09/verification.json"
     },
     {
       "kind": "browser",
-      "ref": ".evidence/workshop/w8-08/browser-acceptance.json"
+      "ref": ".evidence/workshop/w8-09/operating-readiness-visual-fixture.png"
     },
     {
       "kind": "adr",
-      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/77-W8-08-安装升级卸载回滚与旧路由退役预检ADR.md#9"
+      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/78-W8-09-SLO告警UnknownBacklogReconcileAgeUsage与Runbook预检ADR.md#8"
     }
   ],
-  "evidence_cutoff": "2026-08-26T06:34:45+08:00",
+  "evidence_cutoff": "2026-08-26T07:03:09+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only positive tenant; dev-org/dev-project is isolation-only",
-    "No migration apply, real installation mutation, route retirement, Provider/Action, external effect or release; engineering acceptance is not operational authority"
+    "No migration apply, real backup/restore, projection rebuild, RLS mutation, Provider/Action, external effect or release; engineering acceptance is not operational authority"
   ],
   "incomplete": [
-    "W8-08 production lifecycle EvidencePack and release-owner Retirement Receipt absent; real mutation/retirement remain blocked; W8-09 through W8-12 remain"
+    "Real baseline, approved targets, alert/resolution Receipts and drill EvidencePacks absent; W8-10 through W8-12 remain; no operational readiness or release"
   ],
-  "last_green_gate": "W8_08_ENGINEERING_LIFECYCLE_RETIREMENT_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W8_09_SLO_ALERT_UNKNOWN_BACKLOG_RECONCILE_USAGE_RUNBOOK_ENGINEERING_CLOSURE",
+  "last_green_gate": "W8_09_ENGINEERING_OPERATING_READINESS_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W8_10_BACKUP_RESTORE_PROJECTION_REBUILD_RLS_DR_ENGINEERING_CLOSURE",
   "next_steps": [
-    "Start W8-09 serially: re-read ADR-78 and audit SLO, alert, unknown backlog, reconcile age, Usage and runbook contracts before the first minimal change"
+    "Start W8-10 serially: re-read ADR-79 and implement only non-mutating backup/restore, projection rebuild, RLS and DR verification contracts"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000278",
+  "project_revision": "AOS-000279",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform-code": "8e33ed9e58bd15be5041a626b919a381bb4128de",
-    "aos-platform-evidence": "75b2a61864a3e36cf0db0436a001141e0d78ef65",
-    "docs": "6ae1fe3ca379365103a3254d87c4e77fbde1a21f"
+    "aos-platform-code": "f9f5fd64b9c024bdb8b23b9cf36b3cfbfe985444",
+    "aos-platform-evidence": "99d48fc830212d119aefb7717d9f8be766f5fdff",
+    "docs": "ce53717"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -48,5 +48,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T06:35:12+08:00"
+  "updated_at": "2026-08-26T07:03:09+08:00"
 }
