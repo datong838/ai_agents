@@ -2,7 +2,7 @@
 
 > 日期：2026-08-14
 > 核查基线：Workshop `w2-workshop@b37252d`，authority `AOS-000026`
-> 状态：`PREFLIGHT_COMPLETED / PROTOCOL_BASELINE_APPROVED / REAL_CANARY_BLOCKED`
+> 状态：`KILL_AUTHORITY_AND_ZERO_EFFECT_DRILL_CODE_GREEN / REAL_CANARY_BLOCKED / NO_RELEASE`
 > 边界：只读代码、专项测试与协议整改；未读取或修改真实租户，未调用外部 Provider，未执行迁移或真实 Canary
 
 ## 1. 结论
@@ -72,11 +72,24 @@ W5-07 只有在真实 Canary 获得单独授权并完成后才可勾选。GREEN 
 
 文件级清单：
 
-- [ ] `services/aos-api/alembic/versions/w5_006_action_canary_kill_control.py`：新增 append-only `KillPolicyRevision`、mutable CAS head、maker-checker approval、immutable command receipt、exact `CanaryPlanRevision/Approval`、`KillDrillPlanRevision/Receipt`；所有 tenant 表 RLS，事实存在时降级失败关闭。
-- [ ] `services/aos-api/aos_api/aip_action_canary_models.py` 与 `aip_action_canary_service.py`：Kill revision 只能通过 expected head version + idempotency 建议；另一主体审批后才生效；reset 必须是新 revision。按 platform/org/project/account/adapter/capability/action type 求最严格 exact policy，expiry 后不放大权限。
-- [ ] `services/aos-api/aos_api/aip_action_execution.py`：在 exact binding 解析后、Attempt/outbox 持久化前复验 canonical Kill policy；被 kill 的新 dispatch 不创建 Attempt，已存在 dispatch_claimed/accepted/unknown 只进入 reconcile 处置，不声称取消或自动补偿。旧 `aip_action_guardrail` 与环境 kill 保持兼容，canonical policy 作为加法约束。
-- [ ] `services/aos-api/aos_api/routers/aip_action_canary.py` 与 `routers/domain_aggregates.py`：提供 Principal-scoped Kill proposal/approval/effective read、Canary plan proposal/approval 和 zero-side-effect drill simulation；API 不提供“跳过审批”“真实执行 canary”或 Secret/Provider 参数。
-- [ ] `services/aos-api/tests/aip/test_w5_07_action_canary_kill_control.py` 与迁移测试：覆盖 CAS、幂等漂移、maker-checker、reset 新 revision、多层最严格、exact binding mismatch、expiry、dispatch fence、in-flight reconcile、跨租户 0 可见及 simulation Receipt 守恒。
-- [ ] `packages/contracts/openapi/v1.generated.json`、`v1.inventory.json` 与 `.evidence/workshop/2026-08-25-w5-07-action-canary-kill-control.json`：封存专项、W5 累计、compileall、Alembic、diff 与浏览器裁决；若不改页面，浏览器记 `N/A_NO_UI_CHANGE`，不得替代真实 Canary EvidencePack。
+- [x] `services/aos-api/alembic/versions/w5_006_action_canary_kill_control.py`：新增 append-only `KillPolicyRevision`、mutable CAS head、maker-checker approval、immutable command receipt、exact `CanaryPlanRevision/Approval`、`KillDrillReceipt`；所有 tenant 表 RLS，事实存在时降级失败关闭。
+- [x] `services/aos-api/aos_api/aip_action_canary_models.py` 与 `aip_action_canary_service.py`：Kill revision 只能通过 expected head version + idempotency 建议；另一主体审批后才生效；reset 必须是新 revision。按 platform/org/project/account/adapter/capability/action type 求最严格 exact policy，expiry 后不放大权限。
+- [x] `services/aos-api/aos_api/aip_action_execution.py`：在 exact binding 解析后、Attempt/outbox 持久化前复验 canonical Kill policy；被 kill 的新 dispatch 不创建 Attempt，已存在 dispatch_claimed/accepted/unknown 只进入 reconcile 处置，不声称取消或自动补偿。旧 `aip_action_guardrail` 与环境 kill 保持兼容，canonical policy 作为加法约束。
+- [x] `services/aos-api/aos_api/routers/aip_action_canary.py` 与 `routers/domain_aggregates.py`：提供 Principal-scoped Kill proposal/approval/effective read、Canary plan proposal/approval 和 zero-side-effect drill simulation；API 不提供“跳过审批”“真实执行 canary”或 Secret/Provider 参数。
+- [x] `services/aos-api/tests/aip/test_w5_07_action_canary_kill_control.py` 与迁移测试：覆盖 CAS、幂等漂移、maker-checker、reset 新 revision、多层最严格、exact binding mismatch、expiry、dispatch fence、in-flight reconcile、跨租户 0 可见及 simulation Receipt 守恒。
+- [x] `packages/contracts/openapi/v1.generated.json`、`v1.inventory.json` 与 `.evidence/workshop/2026-08-25-w5-07-action-canary-kill-control.json`：封存专项、W5 累计、compileall、Alembic、diff 与浏览器裁决；本波不改页面，浏览器记 `N/A_NO_UI_CHANGE`，不得替代真实 Canary EvidencePack。
 
 本切片完成后只能形成 `KILL_AUTHORITY_AND_ZERO_EFFECT_DRILL_CODE_GREEN / REAL_CANARY_BLOCKED`。只有第 6 节的 exact 真实链和用户结果验收完成，W5-07 主 Task 才能勾选；否则总清单必须把代码控制面进展与真实 Canary 缺口分轴记录。
+
+## 8. 2026-08-25 实施与验收事实
+
+W5-07 零副作用控制面已在 `m1@8636806` 完成：
+
+1. 新增 tenant RLS、append-only 的 Kill revision/approval/command、Canary plan/approval 与 simulation-only drill receipt；策略 head 是唯一允许 CAS 更新的投影。
+2. Kill proposal、approval/reject、Canary proposal/approval 和 drill 都使用幂等键与 transaction advisory lock；maker 不能审批自己的 revision；reset 只能新增并审批 `killEnabled=false` revision。
+3. canonical policy 在 exact Adapter/Account/Capability binding 解析后、Attempt/outbox 写入前复验。命中时 Provider 调用、Attempt、outbox 和 Usage 均为 0；旧环境 kill 与 `aip_action_guardrail` 继续作为加法约束。
+4. 已在途 `dispatch_claimed/accepted/unknown` 只写 simulation receipt 并列入 reconcile，不变更 Attempt 状态、不调用 Provider、不声称取消或自动补偿。
+5. CanaryPlan 冻结 ActionType/Capability/Account/Adapter/Object/数量/预算/币种/时窗/操作者/停止条件；OpenAPI 明确不存在真实 Canary execute route。
+6. 专项 `9 passed`；W5-01～W5-07 与 OpenAPI 累计 `69 passed`；OpenAPI 双进程确定导出 `4374 / 4364`；compileall、diff、Alembic `w5_006` 及零事实 downgrade/upgrade 往返 GREEN。没有页面改动，浏览器为 `N/A_NO_UI_CHANGE`。
+
+交付证据：`.evidence/workshop/2026-08-25-w5-07-action-canary-kill-control.json`。本结论只关闭代码控制面和零副作用演练缺口，真实 `org-org/dev-project` Canary、账号 Secret、Provider callback、外部 Effect 与 release 继续 blocked；这些 blocker 不阻止进入 W5-08 的只读累计安全门。
