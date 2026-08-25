@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000246",
+  "blockers": [
+    "real outreach/sample/contract/commission remains governed by exact W5 operational gates and explicit external authorization"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_creator_lifecycle.py",
+    "services/aos-api/aos_api/ecommerce_workshop_creator_lifecycle_store.py",
+    "services/aos-api/alembic/versions/w6_004_creator_lifecycle.py",
+    "apps/web/src/components/workshop/CreatorGrowthPage.tsx",
+    ".evidence/workshop/2026-08-25-w6-04-creator-explicit-start-partial-lifecycle.json"
+  ],
+  "commits": [
+    "1aad7b6",
+    "docs:6dc8d27"
+  ],
+  "completed_at": "2026-08-25T14:29:08+08:00",
+  "completed_revision": "AOS-000246",
+  "result": "W6_04_CREATOR_EXPLICIT_START_PARTIAL_LIFECYCLE_CODE_CONTRACT_BROWSER_GREEN_OPERATIONAL_GATE_RETAINED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "migration not applied; production adapter/account/secret/budget/external authority not operational; no external effect; no release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-04-creator-explicit-start-partial-lifecycle-20260825",
+  "verification": [
+    "backend W6 cumulative 61 passed; OpenAPI 14 passed; frontend targeted 5 passed and full cumulative 2112 passed; TypeScript/build/Alembic/compile/diff/built-in browser GREEN"
+  ]
+}

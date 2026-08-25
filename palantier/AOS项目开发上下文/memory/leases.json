@@ -1,24 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000246",
-      "created_at": "2026-08-25T13:45:38+08:00",
-      "excluded_scope": [
-        "migration apply,real provider call,outreach,sample shipment,contract signature,commission change,real business mutation,canary,release"
-      ],
-      "expected_outputs": [
-        "W6-04 code,tests,browser evidence,Delivery Receipt,authority CAS and Prime readback"
-      ],
-      "lease_expires_at": "2026-08-25T17:45:00+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "docs:52-W6-04 ADR,13 creator plan,D-waves checklist",
-        "code:creator frozen item compatibility,start decision,independent action lanes,partial reducer,reconcile,contract delivery relationship authority,read model,tests,browser evidence"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w6-04-creator-explicit-start-partial-lifecycle-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
