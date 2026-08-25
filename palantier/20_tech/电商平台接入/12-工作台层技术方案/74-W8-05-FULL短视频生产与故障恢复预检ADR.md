@@ -1,7 +1,7 @@
 # W8-05 FULL 短视频生产与故障恢复预检 ADR
 
 > 日期：2026-08-15  
-> 决策：`NOT_STARTED / SCENARIO_CONTRACT_APPROVED / HARD_GATE_BLOCKED / NO_PROVIDER_OR_PUBLISH_EFFECT`  
+> 决策：历史预检为 `NOT_STARTED / SCENARIO_CONTRACT_APPROVED / HARD_GATE_BLOCKED`；2026-08-26 工程裁决为 `CODE_CONTRACT_BROWSER_GREEN / OPERATIONAL_FAIL_CLOSED / NO_PROVIDER_OR_PUBLISH_EFFECT / NO_RELEASE`
 > 前置：产品正式封板；W7-11、DEP-M9 当前 release 全 GREEN；签名 FULL 模板和生产 Adapter 齐备
 
 ## 1. 当前事实
@@ -100,5 +100,35 @@ W7 已形成 Media Studio 七节点生命周期、八责任槽、Stage/Artifact/
 
 - 专项：后端 scenario/API/OpenAPI，Web parser/page；累计：Workshop 后端集、Web 全量与 production build。
 - 安全：仅 GET、严格租户、无 secret/PII/media payload、无 Provider/Action/publish 执行、无请求时 DDL。
-- 浏览器：使用内置浏览器在新鲜页签核对单一 H1、四层贡献、七阶段、八责任、故障矩阵、全 false 命令、无横向溢出和 console error。
+- 浏览器：使用内置浏览器在新鲜页签核对不新增重复 H1、四层贡献、七阶段、八责任、故障矩阵、全 false 命令、无横向溢出和 console error。
 - 回退粒度是本波新增 scenario 合同/路由/SDK/UI 贡献；不修改 canonical TaskRun/Artifact/Provider/Usage authority，因而不需要数据回滚或 migration。
+
+## 8. 2026-08-26 实施、一致性复审与验收结论
+
+### 8.1 实施结果
+
+- 新增 strict `FullVideoScenarioContribution` 与 canonical reader；exact `MediaProductionBriefRevision + TaskRun`、`fullProductionBindingHash`、composition、八责任、七阶段、九故障轴与数量 ledger 任一漂移均整体失败关闭。
+- 新增 `GET /v1/ecommerce-workshop/views/media-studio/full-production-scenario`；未知 query 被拒绝，未增加 POST/PUT/PATCH/DELETE operation。
+- Media Studio v7 在原三 Tab 之前增加 FULL 场景贡献区，明确展示“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献”；八责任不等于八个固定 Agent。
+- `prepare/start/resume/takeover/cancel/reconcile/publish/settle` 八项均为 false；前端只存在“重新读取 + 三个只读 Tab”四个按钮，不生成命令按钮。
+
+代码提交为 `aos-platform/m1@604ca9b4`，浏览器证据提交为 `aos-platform/m1@874321dd`。
+
+### 8.2 新鲜验证
+
+- 后端专项 scenario/API：`10 passed / 7 warnings`；Workshop/OpenAPI 累计：`209 passed / 7 warnings`。
+- Web parser/page 专项：`2 files / 11 tests`；Web 全量：`240 files / 2177 tests`；production build：`344 modules`。
+- OpenAPI：`2669 paths / 2442 schemas / 4446 unique operations`，exporter `4456 rows`。
+- security scanner unit：`9 passed`；本波 14 文件 scoped security：`critical=0 / warning=0`。
+- 内置浏览器桌面 `1440×1000`：七阶段、八责任、九故障轴、八个不可执行命令完整可见，console error/warning 为 0；切换“职责与执行”Tab 后场景仍在且按钮仍为 4。
+- 内置浏览器窄屏 `720×900`：`bodyScrollWidth=714 <= innerWidth=720`，阶段/责任/故障网格均折为单列，无横向溢出。
+
+结构化证据：`.evidence/workshop/2026-08-26-w8-05-full-video-fault-recovery-scenario.json`；关键截图：`.evidence/workshop/2026-08-26-w8-05-browser/full-video-scenario-viewport.jpg` 与 `full-video-fault-command-viewport.jpg`。
+
+### 8.3 方案—代码一致性与风险复审
+
+第二轮复审结论为 `PASS`：文件级清单全部落位；合同数量、root 绑定、命令边界和 163/164 四层贡献均与第 7 节一致；既有 Media Studio 三 Tab、Provider/Finance/Lifecycle/Publish/Cumulative 贡献未被移除，累计测试无倒退。
+
+剩余风险保持显式：测试夹具只证明工程产品合同，不是 Provider Adapter、真实发布 canary 或 operational readiness。未 apply 共享迁移、未写真实租户、未启动/恢复/接管 TaskRun、未自动重试、未调用 Provider/Action、未发布、未结算、未产生外部副作用，故最终裁决为：
+
+`W8_05_FULL_VIDEO_RECOVERY_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE`
