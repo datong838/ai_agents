@@ -1,0 +1,34 @@
+{
+  "base_revision": "AOS-000252",
+  "blockers": [
+    "NO_LIVE_MIGRATION_APPLY",
+    "NO_REAL_PROVIDER_CONTACT_SEND_BUSINESS_MUTATION_OR_HANDOFF_CONSUME",
+    "NO_EXTERNAL_EFFECT_MEMORY_PROMOTION_OR_RELEASE_AUTHORITY"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_three_module_closure.py",
+    "services/aos-api/aos_api/ecommerce_workshop_three_module_closure_store.py",
+    "services/aos-api/alembic/versions/w6_009_three_module_closure.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "apps/web/src/components/workshop/CreatorOutreachPage.tsx",
+    "apps/web/src/components/workshop/PriceGovernancePage.tsx",
+    "apps/web/src/components/workshop/CustomerPage.tsx",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w6-09-three-module-partial-usage-effect-handoff.json"
+  ],
+  "commits": [
+    "f297dd0d",
+    "edc5f73"
+  ],
+  "completed_at": "2026-08-25T17:30:56+08:00",
+  "completed_revision": "AOS-000252",
+  "result": "W6_09_THREE_MODULE_PARTIAL_USAGE_EFFECT_HANDOFF_CODE_CONTRACT_BROWSER_GREEN_ZERO_HANDOFF_CONSUME_ZERO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Migration not applied; no real provider/contact/send, business mutation, handoff consume, external effect, memory promotion or release authority"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-09-three-module-partial-usage-effect-handoff-20260825",
+  "verification": [
+    "Backend target/API 16 passed; W6 cumulative 76 passed; OpenAPI contract 14 passed; frontend target 17 passed and full 232 files/2130 tests; TypeScript/build GREEN; OpenAPI 2639/2307/4418/4408 deterministic; w6_009 unique head; built-in browser three pages five-axis contribution, unknown usage, insufficient maturity, transport/business acceptance separation and zero external-effect console GREEN"
+  ]
+}

@@ -1,23 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000252",
-      "created_at": "2026-08-25T17:00:00+08:00",
-      "excluded_scope": [
-        "migration apply,real provider or protected contact action,real business mutation,handoff token consume,canary,external effect,memory promotion,release"
-      ],
-      "expected_outputs": [
-        "W6-09 three-module item algebra,Usage attribution bridge,Effect maturity binding,Handoff compiler,tests,browser evidence,Delivery Receipt,authority CAS and Prime readback"
-      ],
-      "lease_expires_at": "2026-08-25T23:30:00+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "docs:57-W6-09 ADR,three-domain plans,D-waves; code:three-module closure contracts,tenant store,internal API,additive migration,strict contribution UI,tests,browser evidence"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w6-09-three-module-partial-usage-effect-handoff-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
