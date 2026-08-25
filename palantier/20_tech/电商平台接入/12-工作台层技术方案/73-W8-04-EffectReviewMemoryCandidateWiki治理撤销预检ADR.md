@@ -78,3 +78,19 @@ W8-04 场景合同可以作为未来施工和验收基线；当前不得运行�
 6. 重生 OpenAPI generated/inventory，执行专项与累计后端、全量 Web、typecheck/build、OpenAPI 确定性、scoped security 和内置浏览器验收；最后形成 EvidencePack、Delivery Receipt、安全提交、authority CAS 和 Prime 独立长记忆事实。
 
 兼容与安全边界：复用现有 `aip_effect_review` 与 `aip_memory_*` 合同语义但不调用其写服务；不修改旧 Analyst v2 字段；不 apply 共享迁移；不写 `org-org/dev-project`；不提交/批准/晋升 Candidate，不创建/发布/撤销 Wiki，不展开知识或 Evidence 正文，不调用 Provider、Action 或 release。
+
+## 8. 2026-08-26 实现、验证与一致性复审
+
+W8-04 已按第 7 节完成 GET-only 工程闭合，代码提交为 `aos-platform/m1@a58a1bda4f8086b73dbb537b59bf228aeede84b0`，浏览器与 EvidencePack 提交为 `cb84d7d262c02ce441de91f2fc87db1fab1641aa`。新增 `/v1/ecommerce-workshop/views/analyst/learning-scenario`，严格固定 7 阶段、5 独立结果轴、2 个原子 Skill、1 个 LogicRevision、1 个数字同事 SkillBinding；`EffectReviewRevision + EffectMaturityPolicyRevision`、组合 refs 与 stage refs 一起进入 `learningBindingHash`。scope/cutoff/root/binding 漂移、Exposure 丢失、伪 ready、命令开启或全轴 ready 冒充 operational 均失败关闭。
+
+验证结果：
+
+1. 后端专项与路由 `11 passed / 7 warnings`；Workshop/OpenAPI 累计 `203 passed / 7 warnings`。
+2. Web 专项 `10 passed`；全量 `239 files / 2173 tests passed`；TypeScript 与生产构建 GREEN（`344 modules`）。
+3. OpenAPI 确定性导出 `4445 operations`，合同门 `2668 paths / 2429 schemas`。
+4. scanner 单测 `9 passed`；W8-04 精确范围 `16 files / critical=0 / warning=0`；`py_compile`、`git diff --check` GREEN。
+5. 内置浏览器以纯 loopback GET-only fixture 验收：7 阶段、5 轴、四层贡献、Exposure `2/2`、影响 refs `0/1` 和五个 false 命令均可见；无 Candidate/Wiki/revoke 写按钮，新鲜标签页控制台 error 为 0。截图及 SHA-256 见 `.evidence/workshop/2026-08-26-w8-04-learning-governance-scenario.json`。
+
+方案/代码一致性复审 `PASS`：实现没有修改旧 Analyst v2 结构，学习场景独立失败不会破坏原视图；页面不展示受保护正文或模型私有思维链；approve 与 promote、Candidate 与知识状态、历史 Exposure 与未来查询授权均保持独立。浏览器夹具不构成真实 runtime、operational authority 或发布证据。
+
+最终裁决：`CODE_CONTRACT_BROWSER_GREEN / SECURITY_SCOPED_GREEN / OPERATIONAL_FAIL_CLOSED / NO_RELEASE`。W8-04 工程清单可勾选；真实 Candidate 提交/批准/晋升、Wiki 发布/撤销、Provider、Action、外部副作用和 release 继续关闭，下一工程入口为 W8-05。
