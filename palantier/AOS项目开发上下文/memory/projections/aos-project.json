@@ -1,36 +1,36 @@
 {
   "completed": [
-    "W6-03"
-  ],
-  "content_hash": "sha256:46c51a89fe62cc47c6680a3213c667f3805d102dfb11595f1241ed0957cceaa8",
-  "current_phase": "S6_W6_04_CREATOR_EXPLICIT_START_PARTIAL_CONTRACT_DELIVERY_RELATIONSHIP_SERIAL_DEVELOPMENT",
-  "delivery_status": "W6_03_CREATOR_DISCOVERY_MATCH_BATCH_PREPARE_CODE_CONTRACT_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
-  "evidence": [
-    {
-      "kind": "w6_03",
-      "ref": ".evidence/workshop/2026-08-25-w6-03-creator-discovery-match-batch-prepare.json"
-    }
-  ],
-  "generated_at": "2026-08-25T13:44:14+08:00",
-  "hard_boundaries": [
-    "No migration apply, provider call, outreach, sample shipment, contract signature, commission change, real business mutation, canary or release."
-  ],
-  "incomplete": [
     "W6-04"
   ],
-  "last_green_gate": "W6_03_CODE_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W6_04_CREATOR_START_PARTIAL_CONTRACT_RELATIONSHIP",
+  "content_hash": "sha256:2bf825c315c517fec7810316aba4a92ec5b94e56e79e65af732ba9bddbd254fa",
+  "current_phase": "S6_W6_05_PRICE_RESEARCH_MATCH_POLICY_BATCH_PREPARE_SERIAL_DEVELOPMENT",
+  "delivery_status": "W6_04_CREATOR_EXPLICIT_START_PARTIAL_LIFECYCLE_CODE_CONTRACT_BROWSER_GREEN_OPERATIONAL_GATE_RETAINED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "evidence": [
+    {
+      "kind": "w6_04",
+      "ref": ".evidence/workshop/2026-08-25-w6-04-creator-explicit-start-partial-lifecycle.json"
+    }
+  ],
+  "generated_at": "2026-08-25T14:30:36+08:00",
+  "hard_boundaries": [
+    "No migration apply, provider call, price notification, repricing, real business mutation, canary or release."
+  ],
+  "incomplete": [
+    "W6-05"
+  ],
+  "last_green_gate": "W6_04_CODE_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W6_05_PRICE_RESEARCH_MATCH_POLICY_BATCH_PREPARE",
   "next_steps": [
-    "Review W6-04 plan, register exact scope, implement governed internal start preparation while keeping real outreach and other external effects blocked until their independent operational gates."
+    "Review and remediate W6-05 against the live W4/W6 foundations, then implement price ResearchJob, same-item match, policy and side-effect-free batch preparation without migration apply, provider call, repricing, external effect or release."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000246",
+  "project_revision": "AOS-000248",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "c2a1367",
-    "delivery_receipt": "ef1b266",
-    "evidence": "c2a1367",
-    "workshop_docs": "94d40ad"
+    "code": "1aad7b6",
+    "delivery_receipt": "00d78b5",
+    "evidence": "1aad7b6",
+    "workshop_docs": "6dc8d27"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
