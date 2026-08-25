@@ -102,3 +102,32 @@ W4、W5、W6 和 W8-01～W8-05 已在 `m1` 形成 Evidence、受控 Action、达
 - 安全：只接受 tenant-bound exact refs；禁止 secret/PII/provider payload；不解析受保护联系方式；无请求时 DDL；无 Provider/Action/publish/reconcile 执行。
 - 浏览器：内置浏览器新鲜页签验证四层贡献、frozen total、四类准备决定、七阶段、partial/unknown、append-only reconcile、五结果轴、命令全 false、无新增写按钮、窄屏无横向溢出和 console error。
 - 回退只移除本波 scenario 合同/路由/SDK/UI 贡献；不修改 canonical Batch/TaskRun/Action/Receipt/Usage/Effect authority，因此不需要数据回滚或 migration。
+
+## 8. 2026-08-26 实施、一致性复审与验收结论
+
+### 8.1 实施结果
+
+- 新增 strict `BatchScenarioContribution` 与 canonical reader；exact `BatchPreparationRevision + BatchStartDecision`、`batchStartBindingHash`、四层 composition、四类 item decision、七阶段、五结果轴、child outcome 与 reconcile Receipt 任一漂移均整体失败关闭。
+- 新增 `GET /v1/ecommerce-workshop/views/task-cockpit/batch-scenario`；未知 query 被拒绝，未增加 POST/PUT/PATCH/DELETE operation，不新增 Batch store 或 migration。
+- Task Cockpit 增加“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献”视图，显示 `included/excluded/blocked/unknown` 和 frozen-total 守恒、partial/unknown/reconciled 分离及 append-only reconcile。
+- `prepare/start/cancel/reconcile` 全部 false，`automaticRetryAllowed=false`、`externalEffectsAllowed=false`、`releaseAllowed=false`；页面只有“重新读取”，不生成批次命令按钮。
+
+代码提交为 `aos-platform/m1@34a6cdf0`，浏览器证据提交为 `aos-platform/m1@4959e000`。
+
+### 8.2 新鲜验证
+
+- 后端专项/API/OpenAPI：`25 passed`；Workshop 后端累计：`198 passed / 7 warnings`。
+- Web parser/page 专项：`14 passed`；Web 全量：`241 files / 2180 tests`；production build：`344 modules`。
+- OpenAPI 确定性检查 PASS：`2670 paths / 2456 schemas / 4447 unique operations`，exporter `4457 rows`。
+- 内置浏览器桌面 `1440×1000`：7 阶段、5 结果轴、4 类准备决定与四层贡献可见，命令按钮 0，console error/warning 0。
+- 内置浏览器窄屏 `720×900`：`body/root scrollWidth=714 <= innerWidth=720`，stage/axis 折为单列，无水平溢出，命令按钮 0。
+
+结构化证据：`.evidence/workshop/2026-08-26-w8-06-batch-prepare-start-reconcile-scenario.json`；截图：`.evidence/workshop/2026-08-26-w8-06-browser/batch-scenario-desktop.png` 与 `batch-scenario-narrow.png`。
+
+### 8.3 方案—代码一致性与风险复审
+
+第二轮复审结论为 `PASS`：文件级清单全部落位；root/binding/item/ledger 守恒、unknown/reconcile 语义、命令边界和 163/164 四层贡献与第 7 节一致；原有 Task Cockpit 任务明细与 W8-03 贡献未被移除，累计测试无倒退。
+
+本波只证明工程产品合同和 GET-only 失败关闭，不证明可写 shared Batch runtime 、真实批次或 operational readiness。未 apply 迁移、未写真实租户、未 prepare/start/cancel/reconcile 批次、未自动重试、未调用 Provider/Action、未产生外部副作用或 release，故最终裁决为：
+
+`W8_06_BATCH_PREPARE_START_PARTIAL_UNKNOWN_RECONCILE_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE`
