@@ -1,4 +1,23 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000251",
+      "created_at": "2026-08-25T16:18:08+08:00",
+      "excluded_scope": [
+        "migration apply,real protected contact resolution,permit redemption,provider dispatch,real send,real business mutation,canary,external effect,release"
+      ],
+      "expected_outputs": [
+        "W6-08 frequency/withdrawal/start/reservation/permit/attempt/reconcile code,tests,browser evidence,Delivery Receipt,authority CAS and Prime readback"
+      ],
+      "lease_expires_at": "2026-08-25T22:30:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "docs:56-W6-08 ADR,customer plan,D-waves; code:customer contact governance authority,tenant store,internal API,additive migration,strict contribution UI,tests,browser evidence"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w6-08-customer-start-frequency-revocation-contact-20260825"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
