@@ -1,0 +1,36 @@
+{
+  "base_revision": "AOS-000266",
+  "blockers": [
+    "MEDIA_PRODUCTION_PROVIDER_ADAPTER_RECEIPT_REQUIRED",
+    "MEDIA_PUBLISH_CANARY_RECEIPT_REQUIRED",
+    "MEDIA_OPERATIONAL_READY_RECEIPT_REQUIRED"
+  ],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-26-w7-11-media-cumulative-gate.json",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_cumulative.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_cumulative_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/components/workshop/MediaStudioPage.tsx",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/69-W7-11-多媒体累计浏览器安全故障注入门预检ADR.md"
+  ],
+  "commits": [
+    "be380d16e5c7a18eecd54550d51b5d8ecc331360",
+    "de5d55e3"
+  ],
+  "completed_at": "2026-08-26T02:31:36+08:00",
+  "completed_revision": "AOS-000266",
+  "result": "W7_11_MEDIA_CUMULATIVE_EIGHT_ENGINEERING_GATES_GREEN_THREE_EXTERNAL_GATES_BLOCKED_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "NO_SHARED_MIGRATION_APPLY; NO_REAL_TENANT_MUTATION; NO_REAL_PROVIDER; NO_PUBLISH_CANARY; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_RELEASE",
+    "local fixture and engineering EvidencePack are not Provider, Canary, operational-ready or release evidence"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-11-media-cumulative-browser-security-fault-20260826",
+  "verification": [
+    "backend cumulative/API/OpenAPI 41 passed with 7 warnings; Python compile passed",
+    "Web targeted 13 and tenant-negative parser 5 passed; full 235 files/2152 tests; typecheck/build passed",
+    "built-in browser 1280/1440/1920, 11 gates, 3 semantic tabs, refresh stable, no overflow or write",
+    "scoped security 16 files 0 critical/0 warning; scanner 9 passed; repository baseline 5/326 remains RED"
+  ]
+}
