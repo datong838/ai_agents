@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000275",
+  "created_at": "2026-08-26T05:24:40+08:00",
+  "excluded_scope": [
+    "real tenant business data",
+    "shared migration apply",
+    "Provider/Action/publish/release side effects"
+  ],
+  "expected_outputs": [
+    "strict GET-only batch prepare/explicit-start/partial-unknown/reconcile scenario contract",
+    "163/164 four-layer Workshop contribution view",
+    "targeted+cumulative tests, built-in browser evidence, Delivery Receipt and AOS-000276 projection"
+  ],
+  "lease_expires_at": "2026-08-26T18:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "aos-platform/services/aos-api/aos_api/ecommerce_workshop_batch_scenario*",
+    "aos-platform/services/aos-api/tests/test_ecommerce_workshop_batch_scenario*",
+    "aos-platform/apps/web/src/api/ecommerceWorkshop/*",
+    "aos-platform/apps/web/src/components/workshop/*",
+    "aos-platform/apps/web/src/styles/45-ecommerce-workshop.css",
+    "aos-platform/packages/contracts/openapi/v1.*.json",
+    "aos-platform/.evidence/workshop/2026-08-26-w8-06*",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/75-W8-06-*",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w8-06-batch-prepare-start-reconcile-scenario-20260826"
+}
