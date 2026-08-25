@@ -1,37 +1,46 @@
 {
   "completed": [
     "W7-01",
-    "W7-02"
-  ],
-  "content_hash": "sha256:0de4d330f980a61405421c1f9f9a544f7bf327b6381f2fbf931946e8e72213e2",
-  "current_phase": "S7_W7_03_STAGE_TEMPLATE_COMPILER_PLANSTEP_TASKRUN_SERIAL_DEVELOPMENT",
-  "delivery_status": "W7_02_PROFILE_PROJECTED_COST_CONFIRMATION_CODE_CONTRACT_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
-  "evidence": [
-    {
-      "kind": "w7_02",
-      "ref": ".evidence/workshop/2026-08-25-w7-02-profile-cost-confirmation.json"
-    }
-  ],
-  "generated_at": "2026-08-25T18:50:40+08:00",
-  "hard_boundaries": [
-    "No migration apply, real provider/media generation/publication, protected data operation, external effect, memory promotion or release."
-  ],
-  "incomplete": [
+    "W7-02",
     "W7-03"
   ],
-  "last_green_gate": "W7_02_PROFILE_PROJECTED_COST_CONFIRMATION_CODE_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W7_03_STAGE_TEMPLATE_COMPILER_PLANSTEP_TASKRUN_COMPOSITION",
+  "content_hash": "sha256:89c28e3ced88d95b74a263c666a709f8164d545656f56d804b5ceae3a3eec850",
+  "current_phase": "S7_W7_04_STAGE_EXECUTOR_LEASE_CHECKPOINT_SERIAL_DEVELOPMENT",
+  "delivery_status": "W7_03_STAGE_TEMPLATE_PLAN_COMPILER_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "evidence": [
+    {
+      "kind": "delivery_receipt",
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-03-stage-template-compiler-taskrun-20260825.json"
+    },
+    {
+      "kind": "implementation",
+      "ref": ".evidence/workshop/2026-08-25-w7-03-stage-template-compiler-taskrun.json"
+    },
+    {
+      "kind": "adr",
+      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/61-W7-03-StageTemplate编译PlanStep与TaskRun组合门预检ADR.md"
+    }
+  ],
+  "generated_at": "2026-08-25T19:31:40+08:00",
+  "hard_boundaries": [
+    "No migration apply, real provider/media generation/publication, protected data operation, external effect or release without its exact gate."
+  ],
+  "incomplete": [
+    "W7-04"
+  ],
+  "last_green_gate": "W7_03_STAGE_TEMPLATE_PLAN_COMPILER_CODE_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W7_04_STAGE_EXECUTOR_LEASE_CHECKPOINT_PAUSE_RESUME_TAKEOVER",
   "next_steps": [
-    "Re-review W7-03 against current StageTemplate compiler, W7-01 signed media templates, W7-02 exact confirmation, DEP-C0 and 163/164 atomic Skill composition; close deterministic PlanStep/TaskRun composition without creating a second runtime truth."
+    "Re-review W7-04 against current canonical TaskRun/StepRun, W7-03 w7c.v1 Plan envelope, DEP-M9 runtime capability and 163/164 atomic Skill composition; implement lease/fence/checkpoint/pause/resume/takeover without real Provider effects."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000257",
+  "project_revision": "AOS-000258",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "a12a8e4f",
-    "delivery_receipt": "8177022",
-    "evidence": "a12a8e4f",
-    "workshop_docs": "951ae22"
+    "code": "d0851ad5",
+    "delivery_receipt": "3b3fe13",
+    "evidence": "d0851ad5",
+    "workshop_docs": "3b3fe13"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
