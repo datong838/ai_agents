@@ -103,3 +103,26 @@ outreach-message | sample-shipment | contract-signature | commission-change
 - 旧 W6-03 batch 与 W2-04 read model 必须保持可读；缺 item exact refs 时显式 legacy blocked，不回填、不推断。
 - StartDecision 只表示用户显式进入 Action 治理，不表示 Proposal approved、Lease issued、Provider called 或 Effect applied。
 - 本波不 apply migration，不修改真实业务数据，不连接真实达人账号，不触达、寄样、签约、改佣金、做 Canary 或发布。
+
+## 8. 2026-08-25 实施与验收封板
+
+### 8.1 已交付能力
+
+- `aos-platform/m1@1aad7b6` 新增 `CreatorBatchStartDecisionRevision`，只消费 frozen W6-03 batch，并以 expected version/hash、完整 eligible item 覆盖和 exact candidate ref 失败关闭。
+- 每个 eligible candidate 固化私信、寄样、签约、佣金四条独立 lane；每条 lane 分别绑定 ActionType、ImpactPreview、AdapterCapability、AccountBinding、ActionBudgetReservation 与 ApprovalPolicy exact ref，binding hash 不跨 lane 复用。
+- reducer 保持 prepared/accepted/applied/failed/unknown/disputed 数量守恒，只有 `applied + failed` 计入 completed；unknown 不自报 resolved outcome，Receipt 必须与 lane binding hash 精确一致。
+- 合同 revision、履约 observation 与关系 revision 共用 collaboration lineage；signed observation 需要 ActionReceipt，长期关系 mature 需要到达成熟窗口且至少有一个履约 observation。
+- W6-03 batch 增量保存 item exact refs；历史无 items 的 batch 继续可读，但 start 明确 `CREATOR_BATCH_ITEMS_NOT_AVAILABLE`，不回填、不推断。
+- 工作台增加生命周期贡献卡和 strict SDK/parser；API 未部署或 migration 未 apply 时显示可信空与稳定 blocker，页面不产生任何外部动作按钮。
+
+### 8.2 验收证据
+
+- 后端 W6-01～W6-04、Creator read model、Workshop API 与 OpenAPI 累计 `61 passed`；OpenAPI 契约 `14 passed`。
+- 前端 W6-04 专项 `5 passed`，本次改动后的全量累计记录为 `226 files / 2112 tests passed`；TypeScript 与生产构建 `343 modules` GREEN。
+- OpenAPI 为 `2608 paths / 2228 schemas / 4387 route rows / 4377 unique operations` 且确定性检查 GREEN；Alembic `w6_004` 为唯一 head，未 apply。
+- 内置浏览器在 `http://localhost:5173/workshop/creator-growth` 验证生命周期卡可见，`partial/unknown` 不计完成，区域 `buttonCount=0`；SourceReadiness 的 mixed failed/ready 事实未被提升。
+- 机器证据：`.evidence/workshop/2026-08-25-w6-04-creator-explicit-start-partial-lifecycle.json`。
+
+### 8.3 最终结论
+
+`W6-04 CODE_CONTRACT_BROWSER_GREEN / OPERATIONAL_EXTERNAL_EFFECT_GATE_RETAINED / NO_MIGRATION_APPLY / NO_EXTERNAL_EFFECT / NO_RELEASE`。代码链与失败关闭边界已闭合，真实 Adapter/Account/Secret、预算、外部授权、迁移 apply、Canary 与发布仍逐门裁决；下一串行任务为 W6-05。
