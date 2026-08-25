@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000245",
+  "blockers": [
+    "real outreach/sample/contract/commission remains governed by W6-04 and independent operational gates"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_creator_prepare.py",
+    "services/aos-api/aos_api/ecommerce_workshop_creator_prepare_store.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "apps/web/src/components/workshop/CreatorGrowthPage.tsx",
+    ".evidence/workshop/2026-08-25-w6-03-creator-discovery-match-batch-prepare.json"
+  ],
+  "commits": [
+    "c2a1367",
+    "docs:94d40ad"
+  ],
+  "completed_at": "2026-08-25T13:42:40+08:00",
+  "completed_revision": "AOS-000245",
+  "result": "W6_03_CREATOR_DISCOVERY_MATCH_BATCH_PREPARE_CODE_CONTRACT_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "migration not applied; creator authority not live; source readiness mixed; no external effect; no release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-03-creator-discovery-match-batch-prepare-20260825",
+  "verification": [
+    "backend W6 cumulative 55 passed; frontend Workshop cumulative 55 passed; TypeScript/build/OpenAPI/Alembic/compile/diff GREEN; built-in browser fail-closed compatibility GREEN"
+  ]
+}
