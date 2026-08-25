@@ -1,48 +1,46 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W8-03"
+    "W8-04"
   ],
   "current_phase": "S7_WORKSHOP_W8_SCENARIOS_AND_RELEASE_GATES",
-  "delivery_status": "W8_03_DISPATCH_TAKEOVER_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
+  "delivery_status": "W8_04_LEARNING_GOVERNANCE_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": ".evidence/workshop/2026-08-26-w8-03-dispatch-scenario.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w8-04-effect-memory-wiki-governance-scenario-20260826.json"
     },
     {
       "kind": "receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w8-03-cross-domain-dispatch-takeover-scenario-20260826.json"
+      "ref": ".evidence/workshop/2026-08-26-w8-04-learning-governance-scenario.json"
     }
   ],
-  "evidence_cutoff": "2026-08-26T04:17:10+08:00",
+  "evidence_cutoff": "2026-08-26T04:50:15+08:00",
   "hard_boundaries": [
     "NO_SHARED_MIGRATION_APPLY",
-    "NO_REAL_TENANT_MUTATION",
-    "NO_REAL_PROVIDER",
-    "NO_ACTION_EXECUTION",
-    "NO_OWNER_MUTATION",
-    "NO_HANDOFF_DECISION_WRITE",
-    "NO_TAKEOVER_REQUEST_OR_APPROVAL",
+    "NO_REAL_TENANT_BUSINESS_WRITE",
+    "NO_CANDIDATE_OR_WIKI_MUTATION",
+    "NO_PROVIDER_OR_ACTION_EXECUTION",
     "NO_EXTERNAL_EFFECT",
-    "NO_MEMORY_PROMOTION",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "W8-04_TO_W8-12"
+    "W8-05_TO_W8-12"
   ],
-  "last_green_gate": "W8-03_ENGINEERING_EXACT_BINDING",
-  "next_gate": "W8-04",
+  "last_green_gate": "W8-04_ENGINEERING_EXACT_BINDING",
+  "next_gate": "W8-05",
   "next_steps": [
-    "Execute W8-04 EffectReview to MemoryCandidate to Wiki governance and revocation exact-binding GET-only scenario; retain no automatic promotion, no publication, no external effect and no release."
+    "Execute W8-05 FULL video production and fault-recovery exact-binding GET-only scenario; retain no Provider execution, no publish effect, no business mutation and no release."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000273",
+  "project_revision": "AOS-000274",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "34ebf3bea645bf4345f7dd3051aa627c1f057809",
-    "docs": "1e50b9906962328a5040c687688908d581ba6e5e",
-    "evidence": "0d8d082bd1090e87362e4e110997b0452222d774"
+    "code": "a58a1bda4f8086b73dbb537b59bf228aeede84b0",
+    "docs-checklist": "340d3f754761395e8ef314d4d900c20c4170a95c",
+    "docs-receipt": "1861158dcf11527591ecad2adc31655b63f67e56",
+    "docs-review": "ee70d7b790233f1859489b3178276f184119362d",
+    "evidence": "cb84d7d262c02ce441de91f2fc87db1fab1641aa"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -52,5 +50,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T04:20:12+08:00"
+  "updated_at": "2026-08-26T04:51:10+08:00"
 }
