@@ -1,47 +1,47 @@
 {
   "completed": [
-    "W8-05"
+    "W8-06"
   ],
-  "content_hash": "sha256:32c5f287161e4e22cb9dfe8902e2ac40ee17e39a0237f139df345108015fd3ef",
+  "content_hash": "sha256:89196035ada87ffa214d67a566f7169090fc12de2f7f1ede4403d5ecbefd12d3",
   "current_phase": "S7_WORKSHOP_W8_SCENARIOS_AND_RELEASE_GATES",
-  "delivery_status": "W8_05_FULL_VIDEO_RECOVERY_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
+  "delivery_status": "W8_06_BATCH_PREPARE_START_PARTIAL_UNKNOWN_RECONCILE_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w8-05-full-video-fault-recovery-scenario-20260826.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w8-06-batch-prepare-start-reconcile-scenario-20260826.json"
     },
     {
       "kind": "receipt",
-      "ref": ".evidence/workshop/2026-08-26-w8-05-full-video-fault-recovery-scenario.json"
+      "ref": ".evidence/workshop/2026-08-26-w8-06-batch-prepare-start-reconcile-scenario.json"
     }
   ],
-  "generated_at": "2026-08-26T05:23:10+08:00",
+  "generated_at": "2026-08-26T05:57:01+08:00",
   "hard_boundaries": [
     "NO_SHARED_MIGRATION_APPLY",
     "NO_REAL_TENANT_BUSINESS_WRITE",
+    "NO_BATCH_COMMAND_EXECUTION",
     "NO_PROVIDER_OR_ACTION_EXECUTION",
     "NO_AUTOMATIC_RETRY",
-    "NO_PUBLISH_OR_SETTLEMENT",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "W8-06_TO_W8-12"
+    "W8-07_TO_W8-12"
   ],
-  "last_green_gate": "W8-05_ENGINEERING_EXACT_BINDING",
-  "next_gate": "W8-06",
+  "last_green_gate": "W8-06_ENGINEERING_EXACT_BINDING",
+  "next_gate": "W8-07",
   "next_steps": [
-    "Execute W8-06 batch prepare, explicit start, partial/unknown/reconcile exact-binding scenario; retain no business write, no Action execution, no automatic retry, no external effect and no release."
+    "Execute W8-07 eight-Module, three-viewport, seven-state plus blocked keyboard cumulative acceptance; preserve exact refs, honest N/A, no external effect and no release."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000275",
+  "project_revision": "AOS-000276",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "604ca9b47373e008491b7576658649a8e477299c",
-    "docs-checklist": "8c140309c957907374b172a75011e45ff3142ad0",
-    "docs-receipt": "8ac075a34f78648015ea1b692b8bf44275b6823b",
-    "docs-review": "dc8fb172c1ebf466160a67afd3c68aef47bc1f24",
-    "evidence": "874321dd32e16c7365168a159279682523d26ce5"
+    "code": "34a6cdf0b60ce9b84a0532bccd0045afe71fe765",
+    "docs-checklist": "8a43189175d9187434307f96b6901f7bbcb14430",
+    "docs-receipt": "a70188783fb0e088ee2d40d32398ed294f202bcf",
+    "docs-review": "7f93ad14210835dd28822ff7fe11aaaef3825954",
+    "evidence": "4959e000c7adc2cf56ed8376fbde1f6988b708f4"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
