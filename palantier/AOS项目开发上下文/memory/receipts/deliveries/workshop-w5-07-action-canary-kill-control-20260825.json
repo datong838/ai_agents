@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000241",
+  "blockers": [
+    "NO_REAL_CANARY_TRAFFIC_AUTHORITY",
+    "NO_ACTIVE_EXACT_ACCOUNT_INSTALLATION_FOR_EXTERNAL_ACTION",
+    "NO_EXTERNAL_EFFECT_OR_RELEASE_AUTHORITY"
+  ],
+  "changed_files": [
+    "services/aos-api/alembic/versions/w5_006_action_canary_kill_control.py",
+    "services/aos-api/aos_api/aip_action_canary_service.py",
+    "services/aos-api/aos_api/aip_action_execution.py",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w5-07-action-canary-kill-control.json"
+  ],
+  "commits": [
+    "8636806",
+    "7c7f996"
+  ],
+  "completed_at": "2026-08-25T11:15:41+08:00",
+  "completed_revision": "AOS-000241",
+  "result": "W5_07_CANONICAL_KILL_POLICY_CANARY_PLAN_SIMULATION_CODE_GREEN_NO_REAL_CANARY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "REAL_CANARY_PROVIDER_SECRET_EXTERNAL_EFFECT_RELEASE_REMAIN_BLOCKED"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w5-07-action-canary-kill-control-20260825",
+  "verification": [
+    "focused 9 passed; W5-01 through W5-07 plus OpenAPI cumulative 69 passed; deterministic OpenAPI 4374/4364; compileall, diff, Alembic w5_006 and zero-fact downgrade-upgrade green; browser N/A no UI change"
+  ]
+}

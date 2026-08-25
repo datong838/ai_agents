@@ -1,42 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000241",
-      "created_at": "2026-08-25T10:43:08+08:00",
-      "excluded_scope": [
-        "real-secret",
-        "real-provider-callback",
-        "real-canary",
-        "tenant-business-data",
-        "live-migration",
-        "release"
-      ],
-      "expected_outputs": [
-        "KillPolicyRevision",
-        "CanaryPlanRevision",
-        "KillDrillReceipt",
-        "dispatch-fence-tests",
-        "DeliveryReceipt"
-      ],
-      "lease_expires_at": "2026-08-25T12:43:08+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "services/aos-api/alembic/versions",
-        "services/aos-api/aos_api/aip_action_canary_models.py",
-        "services/aos-api/aos_api/aip_action_canary_service.py",
-        "services/aos-api/aos_api/aip_action_execution.py",
-        "services/aos-api/aos_api/routers/aip_action_canary.py",
-        "services/aos-api/aos_api/routers/domain_aggregates.py",
-        "services/aos-api/tests/aip",
-        "packages/contracts/openapi",
-        "scripts/export_openapi.py",
-        ".evidence/workshop",
-        "docs:12-工作台层技术方案/47-W5-07"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w5-07-action-canary-kill-control-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
