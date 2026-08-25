@@ -1,18 +1,18 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W5-03 explicit append-only Draft revisions, atomic submit, exact ApprovalEvent and ExecutionLease code controls are GREEN"
+    "W5-04 durable ActionExecutionAttempt/outbox and exact Receipt/Usage/settlement/lineage delivery bridge code controls are GREEN"
   ],
-  "current_phase": "S5_W5_04_EXECUTOR_RECEIPT_USAGE_LINEAGE_ACTIVE",
-  "delivery_status": "W5_03_EXPLICIT_DRAFT_EXACT_APPROVAL_LEASE_CODE_GREEN_EXTERNAL_RESERVATION_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "S5_W5_05_UNKNOWN_RECONCILE_COMPENSATION_ACTIVE",
+  "delivery_status": "W5_04_DURABLE_ATTEMPT_EXACT_DELIVERY_BRIDGE_CODE_GREEN_EXTERNAL_RESERVATION_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "code",
-      "ref": ".evidence/workshop/2026-08-25-w5-03-draft-proposal-approval-lease.json"
+      "ref": ".evidence/workshop/2026-08-25-w5-04-executor-receipt-usage-lineage.json"
     },
     {
       "kind": "delivery",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w5-03-draft-proposal-approval-lease-20260825.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w5-04-executor-receipt-usage-lineage-20260825.json"
     }
   ],
   "evidence_cutoff": "2026-08-25T08:39:08+08:00",
@@ -20,20 +20,20 @@
     "NO_LIVE_MIGRATION; NO_RELEASE; NO_EXTERNAL_EFFECT; no real account or secret resolution, Approval/Lease issuance, Action execution, provider invocation, canary or tenant business mutation"
   ],
   "incomplete": [
-    "durable ActionExecutionAttempt/outbox, exact Receipt/Usage/settlement/lineage bridge, production ApprovalPolicy/eligibility/ActionBudget reservation, live migration, external effects, canary and release remain incomplete"
+    "unknown/manual reconciliation closure, exact CompensationPolicy, production ApprovalPolicy/eligibility/ActionBudget reservation, live migration, external effects, canary and release remain incomplete"
   ],
-  "last_green_gate": "W5_03_EXPLICIT_DRAFT_EXACT_APPROVAL_LEASE_CODE_GREEN",
-  "next_gate": "W5_04_EXECUTOR_RECEIPT_USAGE_LINEAGE",
+  "last_green_gate": "W5_04_EXECUTOR_RECEIPT_USAGE_LINEAGE",
+  "next_gate": "W5_05_UNKNOWN_RECONCILE_COMPENSATION",
   "next_steps": [
-    "Review and implement W5-04 durable Executor, Receipt, Usage, settlement and lineage delivery bridge without external effects"
+    "Review and implement W5-05 unknown, automatic/manual reconcile and policy-bound compensation without external effects"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000238",
+  "project_revision": "AOS-000239",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "7c6975c",
-    "docs": "10154a6",
-    "evidence": "69e1287"
+    "code": "ecf3417",
+    "docs": "0ed4a5b",
+    "evidence": "31e20f3"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -43,5 +43,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-25T08:39:55+08:00"
+  "updated_at": "2026-08-25T09:13:26+08:00"
 }
