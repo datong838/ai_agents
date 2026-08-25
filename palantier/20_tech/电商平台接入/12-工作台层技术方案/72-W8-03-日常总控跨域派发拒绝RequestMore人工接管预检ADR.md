@@ -78,3 +78,15 @@ W8-03 场景合同可以作为未来施工和验收基线；当前不得运行�
 6. 重生 `packages/contracts/openapi/v1.generated.json` 与 inventory，执行专项、全量 Web、typecheck/build、OpenAPI 确定性、scoped security 和内置浏览器验收；最后写 EvidencePack、Delivery Receipt、CAS 和 Prime 独立长记忆事实。
 
 兼容与安全边界：不修改旧 Task Cockpit v1 已有字段语义；不 apply 共享迁移；不调用 dispatch/Handoff/takeover canonical Command；不写 `org-org/dev-project`；不调用 Provider、Action、发布、记忆晋升或 release。
+
+## 8. 2026-08-26 施工结果与一致性复审
+
+施工按第 7 节文件级清单完成，结果为 `CODE_CONTRACT_BROWSER_GREEN / OPERATIONAL_BLOCKED / NO_EXTERNAL_EFFECT / NO_RELEASE`：
+
+1. API 新增独立 GET-only `ecommerceWorkshopTaskCockpitDispatchScenarioGet`，默认 reader 缺失时返回结构化 blocked；没有引入 owner、Handoff、takeover 或 Provider 写路径。
+2. 场景合同固定 7 段决定链、5 个独立结果轴、exact revision/hash refs、Skill/Logic/数字同事绑定分层、决定 ledger 守恒和最多一个 active owner；所有 Command 均为 false。
+3. Web 严格解析同一合同，在旧 Task Cockpit 旁独立加载并展示贡献视图；新场景失败不破坏原有 Task Cockpit，也没有新增可执行按钮。
+4. 后端专项与路由 11 项、旧 Handoff 8 项、Workshop/OpenAPI 累计 197 项、前端专项 15 项、前端累计 2167 项、TypeScript 与 production build 均通过；敏感信息扫描 17 个目标文件为 0 critical / 0 warning，扫描器自身 9 项测试通过。
+5. 内置浏览器在 `org-org/dev-project` scope 的只读 fixture 上确认 7 阶段、5 结果轴、两项原子 Skill、一个 Logic 和一个数字同事绑定可见；新鲜 reload 控制台错误为 0。未提供 Health/SourceReadiness 的部分明确失败关闭，不冒充 operational GREEN。
+
+两轮复审结论：实现没有扩大旧合同、没有真实租户写入、没有共享迁移、没有 Provider/Action/发布/记忆晋升或 release；163/164 的“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献视图”与代码、测试、页面一致。W8-03 仅可勾选代码/合同/浏览器交付，运行、运营和发布门继续保持 blocked。
