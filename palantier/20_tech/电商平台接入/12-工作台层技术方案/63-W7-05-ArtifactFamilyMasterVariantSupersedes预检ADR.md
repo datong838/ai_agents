@@ -1,6 +1,6 @@
 # W7-05 ArtifactFamily、Master、Variant 与 Supersedes 预检 ADR
 
-> 状态：`IN_PROGRESS / DEPENDENCIES_GREEN / NO_EXTERNAL_EFFECT / NO_RELEASE`  
+> 状态：`CODE_CONTRACT_BROWSER_GREEN / SECURITY_SCOPED_GREEN / REPO_BASELINE_RED / NO_EXTERNAL_EFFECT / NO_RELEASE`
 > 当前事实：`AOS-000259`，`m1@3e364b59`
 
 ## 1. 裁决
@@ -72,3 +72,15 @@ W7-04 已由 `3e364b59` 完成并投影为 `AOS-000259`，原依赖阻断解除�
 6. 补齐专项、W2-C/D 与 W7-04 累计回归、OpenAPI/Alembic、安全、双租户和内置浏览器三视口证据；不 apply migration、不写真实业务数据、不调用 Provider、不发布。
 
 开工 Task Receipt/Lease：`workshop-w7-05-artifact-family-master-variant-supersedes-20260825`。第一轮产品复审保持家族分叉与选择可见、角色/批准/执行分离；第二轮技术复审保持单一 Artifact/Relation authority、append-only、CAS、RLS 与 exact hash，允许进入最小实现。
+
+## 9. 实施与验收闭环（2026-08-25）
+
+代码提交 `496e2c0f` 已完成 `w7_003`、typed contract/store/API、普通 Artifact 兼容路径、strict SDK、只读 family timeline 和确定性 OpenAPI。Artifact 与 family metadata 在创建时冻结；成员关系、Variant → Master、supersedes 继续写唯一 canonical `ArtifactRelation`；并发叶子返回 `conflict`，只有绑定 exact candidate hashes、policy revision、actor、reason 与 family CAS version 的不可变选择决定才能得到 `selected`，不按时间猜当前版本，也不删除分叉历史。
+
+专项后端 `5 passed`；W2-C/D、W7-04、W7-05、OpenAPI 与 Router 累计 `70 passed`；Web 定向 `38 passed`，全量 `232 files / 2136 tests`，typecheck 与 build `344 modules` GREEN。OpenAPI 为 `2645 paths / 2325 schemas / 4417 operations`，deterministic inventory 为 `4427 rows`，runtime route inventory 为 `4431 rows`；Alembic 单头 `w7_003`，只在 disposable test database 实际升级，未 apply 到共享或真实数据库。
+
+内置浏览器使用受控 family fixture 验收 `/aip/production-contracts`：768、1440、1920 三视口均无横向溢出；`family-browser-1` 的并发分叉、Master/Variant 时间线、候选必须显式选择以及 3 个成员各自的“批准未知 / 执行未知”均可见；创建、启动、编译、评审解决与退回按钮保持禁用；console error 为 0。该 fixture 只证明页面合同与布局，不代表真实运营数据或运行许可。
+
+定向敏感信息扫描 `18 files / critical=0 / warning=0`，scanner 自测 `9 passed`；全仓门仍保留既有基线 `4874 files / 5 critical / 326 warning`，不得宣称 release GREEN。方案一致性复审结论：家族分叉/显式选择/历史保留、批准执行分离、单一 Artifact/Relation authority、exact hash、CAS、RLS/FORCE RLS、append-only 与双租户失败关闭均 `PASS`；未写真实租户、未 apply migration、未调用 Provider、未生成媒体、未提交真实选择、未发布。
+
+退出结论：`W7_05_IMMUTABLE_ARTIFACT_FAMILY_MASTER_VARIANT_SUPERSEDES_CONFLICT_SELECTION_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE`。交付证据：`.evidence/workshop/2026-08-25-w7-05-artifact-family-master-variant-supersedes.json`；下一串行入口为 W7-06。

@@ -1,0 +1,37 @@
+{
+  "base_revision": "AOS-000259",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-05-artifact-family-master-variant-supersedes.json",
+    "aos-platform:services/aos-api/alembic/versions/w7_003_artifact_family_master_variant.py",
+    "aos-platform:services/aos-api/aos_api/aip_production_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_production_contract_store.py",
+    "aos-platform:services/aos-api/aos_api/aip_task_store.py",
+    "aos-platform:services/aos-api/aos_api/routers/aip_production_contracts.py",
+    "aos-platform:services/aos-api/tests/aip/test_w7_05_artifact_family.py",
+    "aos-platform:services/aos-api/tests/test_openapi_contract.py",
+    "aos-platform:services/aos-api/tests/test_domain_router_manifest.py",
+    "aos-platform:scripts/export_openapi.py",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "aos-platform:packages/contracts/openapi/v1.inventory.json",
+    "aos-platform:apps/web/src/api/aipProductionContracts",
+    "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.test.tsx",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/63-W7-05-ArtifactFamilyMasterVariantSupersedes预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "496e2c0f"
+  ],
+  "completed_at": "2026-08-25T21:04:40+08:00",
+  "completed_revision": "AOS-000259",
+  "result": "W7_05_IMMUTABLE_ARTIFACT_FAMILY_MASTER_VARIANT_SUPERSEDES_CONFLICT_SELECTION_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "repository security gate retains existing baseline 5 critical/326 warning; no real tenant mutation, shared migration apply, Provider invocation/retry, media generation, candidate selection, external publication or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-05-artifact-family-master-variant-supersedes-20260825",
+  "verification": [
+    "backend 70 passed; Web 232 files/2136 tests, build 344; OpenAPI 2645/2325/4417; Router 4427/4431; Alembic w7_003; browser 768/1440/1920 no overflow and 0 console errors; scoped security 18 files 0/0"
+  ]
+}
