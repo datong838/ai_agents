@@ -1,0 +1,41 @@
+{
+  "base_revision": "AOS-000265",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-26-w7-10-browser/",
+    "aos-platform:.evidence/workshop/2026-08-26-w7-10-media-publish-contribution.json",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_publish_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_publish.py",
+    "aos-platform:services/aos-api/aos_api/aip_action_execution.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio.py",
+    "aos-platform:services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/components/workshop/MediaStudioPage.tsx",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/68-W7-10-发布VariantImpactActionReceipt预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "9889890d3b8f22b0201008912f161ca1a3d37ab5",
+    "09d4c12425ebb569bba99b212306f8153b4af448"
+  ],
+  "completed_at": "2026-08-26T01:50:45+08:00",
+  "completed_revision": "AOS-000265",
+  "result": "W7_10_MEDIA_PUBLISH_CONTRIBUTION_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "no shared migration apply, real tenant mutation, real Provider invocation, Action execution, media publication, automatic retry, external effect or release",
+    "browser acceptance used a local read-only fixture and is code/UI evidence, not operational Provider or release readiness",
+    "repository root Web baseline retains 3 pre-existing Desktop alias-resolution failures and security baseline remains RED on pre-existing 5 critical/326 warning findings"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-10-publish-variant-impact-action-receipt-20260826",
+  "verification": [
+    "focused backend 4 passed; W7-02 through W7-10 plus Workshop API cumulative backend 103 passed with 7 warnings",
+    "OpenAPI 14 passed and domain manifest 8 passed plus 2 subtests; deterministic OpenAPI 2666 paths/2385 schemas/4443 unique operations/4453 route rows",
+    "Web targeted 3 files/10 tests; app full 234 files/2147 tests; typecheck and build 344 modules passed",
+    "built-in browser 1280px local read-only fixture: Candidate/Impact/Action/Receipt/Handoff and atomic Skill/Logic/colleague contribution visible; no horizontal overflow, no business write button and 0 new console errors",
+    "scoped security 20 files 0 critical/0 warning; scanner tests 9 passed; repository baseline remains 5 critical/326 warning"
+  ]
+}

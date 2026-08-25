@@ -105,3 +105,19 @@ W7-10 合同已收敛为后续施工基线；实现与一切外部发布仍禁�
 - 无数据库迁移、无真实 Provider、无真实租户写、无 Action execute/reconcile、无外部发布、无 release。
 - 新 v5 字段 additive；删除 v5 接线即可回退到 v4，原 v1～v4 parser/API 保持兼容。
 - 若 canonical Action 或 Artifact authority 无法稳定只读，W7-10 必须 `blocked`，不得以 mock、localStorage、手工状态或第二套真源补齐。
+
+## 7. 2026-08-26 实施与验收结论
+
+W7-10 已按第 6 节文件级清单完成 GET-only Media Studio v5：服务端在同一 tenant scope/cutoff 下联合校验 selected Variant、ready GateSet、frozen ImpactPreview 与 canonical `content.publish` Action，并只读投影 Approval、Lease、Attempt、Receipt/reconcile 和人工 Handoff。没有新增媒体 Proposal/Receipt 真源，没有数据库迁移，也没有新增 execute、publish、reconcile、replay 或 handoff-complete 写入口。
+
+163/164 的落位保持为“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献”：Capability/Binding 与 Plan 使用 exact revision/hash；现有 preview 未提供可验证数字同事 binding hash 时，贡献合同保持空数组而不伪造；Media Studio 只展示 Candidate → Impact → Action → Receipt → Handoff。Receipt 缺失、outcome unknown/partial 或 reconcile 未闭合时必须显示 Handoff requirement，人工勾选不能产生 applied。
+
+验收事实：
+
+- 后端专项 `4 passed`，W7-02～W7-10 与 Workshop API 累计 `103 passed / 7 warnings`；
+- OpenAPI `14 passed`，domain manifest `8 passed + 2 subtests`，确定性结果 `2666 paths / 2385 schemas / 4443 unique operations / 4453 route rows`；
+- Web 定向 `3 files / 10 tests`，Web 全量 `234 files / 2147 tests`，TypeScript 与 production build `344 modules` GREEN；根级混合回归另有 3 个既有 Desktop `@aos-web/*` alias 套件失败，241 文件、2182 项通过，维持 `REPO_BASELINE_RED`，与 W7-10 文件无交集；
+- 内置浏览器在 1280px 只读 fixture 中确认五段贡献、exact binding、缺失 Receipt/Handoff、外部副作用关闭、无业务写按钮、无横向溢出、本次新增 console error 0；
+- scoped security `20 files / 0 critical / 0 warning`，scanner `9 passed`；全仓既有 `5 critical / 326 warning`，不宣称全仓 GREEN。
+
+证据固化于 `.evidence/workshop/2026-08-26-w7-10-media-publish-contribution.json` 与同日 browser 目录，代码提交 `9889890d`、证据对齐提交 `09d4c124`。本波未 apply 共享迁移、未写真实租户、未调用 Provider、未执行 Action、未发布媒体、未产生外部副作用或 release。退出裁决：`W7_10_MEDIA_PUBLISH_CONTRIBUTION_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE`；下一串行入口为 W7-11 累计门。
