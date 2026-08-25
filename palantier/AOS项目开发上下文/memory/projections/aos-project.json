@@ -1,39 +1,39 @@
 {
   "completed": [
-    "W5-01 immutable adapter contracts, exact in-memory registry and deterministic zero-side-effect conformance suite are code-control GREEN"
+    "W5-02 exact external Action Preview envelope, explicit Proposal actionBindingHash, stable-family mandatory Preview gate and drift checks are code-control GREEN"
   ],
-  "content_hash": "sha256:4f96ada9bb16698e3c973660a511d3f49b10b887deffa6dcbb1868501875149b",
-  "current_phase": "S5_W5_02_IMPACT_PREVIEW_EXACT_BINDING_ACTIVE",
-  "delivery_status": "W5_01_ADAPTER_CAPABILITY_CONTRACT_SUITE_CODE_CONTROL_GREEN_NO_PRODUCTION_PUBLICATION_NO_EXTERNAL_EFFECT",
+  "content_hash": "sha256:edb7e7f83d7fb99bec4c683aeddc28d573f503f39bc64874ae379a26ce734c63",
+  "current_phase": "S5_W5_03_DRAFT_PROPOSAL_APPROVAL_LEASE_ACTIVE",
+  "delivery_status": "W5_02_EXACT_BINDING_CODE_GREEN_INTERNAL_COMPATIBILITY_GREEN_EXTERNAL_AUTHORITIES_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "code",
-      "ref": ".evidence/workshop/2026-08-25-w5-01-adapter-capability-contract-suite.json"
+      "ref": ".evidence/workshop/2026-08-25-w5-02-impact-preview-exact-binding.json"
     },
     {
       "kind": "delivery",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w5-01-adapter-capability-contract-suite-20260825.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/tasks/workshop-w5-02-impact-preview-exact-binding-20260825.json"
     }
   ],
-  "generated_at": "2026-08-25T07:42:38+08:00",
+  "generated_at": "2026-08-25T08:03:28+08:00",
   "hard_boundaries": [
-    "NO_PRODUCTION_PUBLICATION; NO_RELEASE; NO_EXTERNAL_EFFECT; no provider invocation, real account resolution, Action execution, live migration or tenant business mutation"
+    "NO_LIVE_MIGRATION; NO_RELEASE; NO_EXTERNAL_EFFECT; no real account or secret resolution, Approval/Lease issuance, Action execution, provider invocation, canary or tenant business mutation"
   ],
   "incomplete": [
-    "production Adapter publication authority, real Account resolver, persistent exact joint binding, Action budget, Webhook, canary and release remain incomplete"
+    "production Account/Adapter/Risk/ActionBudget/Kill/DryValidation authorities, W5-03 approval/lease controls, live migration, external effects, canary and release remain incomplete"
   ],
-  "last_green_gate": "W5_01_ADAPTER_CAPABILITY_CONTRACT_SUITE_GREEN",
-  "next_gate": "W5_02_IMPACT_PREVIEW_EXACT_BINDING",
+  "last_green_gate": "W5_02_IMPACT_PREVIEW_EXACT_BINDING_CODE_GREEN",
+  "next_gate": "W5_03_DRAFT_PROPOSAL_APPROVAL_LEASE",
   "next_steps": [
-    "Review and implement W5-02 ImpactPreview exact binding while preserving current Action safety chain and no external effects"
+    "Review and implement W5-03 Draft to Proposal to Approval to Lease authority while preserving no external effects"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000236",
+  "project_revision": "AOS-000237",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "6185444",
-    "docs": "91d43ba",
-    "evidence": "6185444"
+    "code": "f71c1ea",
+    "docs": "93d600b",
+    "evidence": "f1b81e7"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
