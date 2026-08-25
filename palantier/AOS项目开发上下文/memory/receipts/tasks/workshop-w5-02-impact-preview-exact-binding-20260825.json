@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000236",
+  "created_at": "2026-08-25T07:43:00+08:00",
+  "excluded_scope": [
+    "provider invocation, real account secret resolution, real Action execution, canary, release, tenant business mutation, unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "W5-02 exact binding implementation, tests, browser acceptance, evidence, delivery receipt, authority CAS and W5-03 entry"
+  ],
+  "lease_expires_at": "2026-08-25T22:00:00+08:00",
+  "owner": "codex-root-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "m1: W5-02 ImpactPreview external Action exact binding design, minimal code/migration/tests/browser evidence and receipts"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w5-02-impact-preview-exact-binding-20260825"
+}

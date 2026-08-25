@@ -1,8 +1,8 @@
 # W5-02 ImpactPreview 外部 Action 精确绑定预检 ADR
 
-> 日期：2026-08-14（2026-08-25 于 `m1` 开始实施）  
-> 核查基线：`m1@6185444`，authority `AOS-000236`  
-> 状态：`CODE_CONTROL_GREEN / EXACT_BINDING_PERSISTED / EXTERNAL_AUTHORITIES_BLOCKED / NO_RELEASE`  
+> 日期：2026-08-14（2026-08-25 于 `m1` 开始实施）
+> 核查基线：`m1@6185444`，authority `AOS-000236`
+> 状态：`CODE_CONTROL_GREEN / EXACT_BINDING_PERSISTED / EXTERNAL_AUTHORITIES_BLOCKED / NO_RELEASE`
 > 边界：已在 `m1` 完成模型、持久化、迁移资产与失败关闭回归；未对真实环境执行 migration，未读取真实账号或 Secret，未发放 Approval/Lease，未调用外部 Provider
 
 ## 1. 结论
