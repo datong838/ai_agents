@@ -1,0 +1,41 @@
+{
+  "base_revision": "AOS-000258",
+  "created_at": "2026-08-25T19:36:09+08:00",
+  "excluded_scope": [
+    "aos-platform:.DS_Store",
+    "aos-platform:.evidence/aip/2026-08-23-r32-browser-final",
+    "aos-platform:plugins"
+  ],
+  "expected_outputs": [
+    "W7-04 canonical Stage executor integration with monotonic assignment fence, pausing safe point, immutable resume decision, structured checkpoint, Task Cockpit read model, tests, browser evidence, Delivery Receipt, authority CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-26T07:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-04-stage-executor-lease-checkpoint-takeover.json",
+    "aos-platform:services/aos-api/alembic/versions/w7_002_stage_executor_fence_checkpoint.py",
+    "aos-platform:services/aos-api/aos_api/aip_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_task_models.py",
+    "aos-platform:services/aos-api/aos_api/aip_task_store.py",
+    "aos-platform:services/aos-api/aos_api/aip_taor_loop.py",
+    "aos-platform:services/aos-api/aos_api/aip_responsibility_assignment_store.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "aos-platform:services/aos-api/tests/aip/test_w7_04_stage_executor_fence_checkpoint.py",
+    "aos-platform:services/aos-api/tests/aip/test_aip1_taor_runtime.py",
+    "aos-platform:services/aos-api/tests/aip/test_w3_07_responsibility_assignment.py",
+    "aos-platform:services/aos-api/tests/test_openapi_contract.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "aos-platform:apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "aos-platform:apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "aos-platform:packages/contracts/openapi/v1.inventory.json",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/62-W7-04-StageExecutorLeaseCheckpoint暂停恢复与接管预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w7-04-stage-executor-lease-checkpoint-takeover-20260825"
+}
