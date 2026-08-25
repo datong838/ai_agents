@@ -1,0 +1,41 @@
+{
+  "base_revision": "AOS-000273",
+  "blockers": [
+    "EFFECT_REVIEW_OPERATIONAL_AUTHORIZATION_REQUIRED",
+    "RELEASE_GATE_REMAINS_CLOSED"
+  ],
+  "changed_files": [
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_learning_scenario.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_learning_scenario_contracts.py",
+    "aos-platform:services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "aos-platform:services/aos-api/tests/test_ecommerce_workshop_learning_scenario.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop",
+    "aos-platform:apps/web/src/components/workshop/AnalystPage.tsx",
+    "aos-platform:packages/contracts/openapi",
+    "aos-platform:.evidence/workshop/2026-08-26-w8-04-learning-governance-scenario.json",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/73-W8-04-EffectReviewMemoryCandidateWiki治理撤销预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "a58a1bda4f8086b73dbb537b59bf228aeede84b0",
+    "cb84d7d262c02ce441de91f2fc87db1fab1641aa",
+    "ee70d7b",
+    "340d3f7"
+  ],
+  "completed_at": "2026-08-26T04:50:15+08:00",
+  "completed_revision": "AOS-000273",
+  "result": "W8_04_LEARNING_GOVERNANCE_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
+  "risks": [
+    "NO_SHARED_MIGRATION_APPLY; NO_REAL_TENANT_BUSINESS_WRITE; NO_CANDIDATE_SUBMIT_APPROVE_OR_PROMOTION; NO_WIKI_PUBLISH_OR_REVOCATION; NO_PROVIDER; NO_ACTION; NO_EXTERNAL_EFFECT; NO_RELEASE",
+    "built-in browser acceptance used a pure loopback GET-only fixture and is not operational authority or real canary evidence"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-04-effect-memory-wiki-governance-scenario-20260826",
+  "verification": [
+    "backend targeted/router 11 passed and cumulative Workshop/OpenAPI 203 passed with 7 warnings",
+    "Web targeted 10, full 239 files/2173 tests, TypeScript/build 344 modules GREEN",
+    "OpenAPI deterministic 4445 operations and contract 2668 paths/2429 schemas",
+    "scanner unit 9 passed; scoped security 16 files 0 critical/0 warning; py_compile/diff check GREEN",
+    "built-in browser confirmed 7 stages, 5 axes, 2 atomic Skills, 1 Logic, 1 digital colleague binding, exposure 2/2, all commands false, no write buttons and fresh console errors 0"
+  ]
+}
