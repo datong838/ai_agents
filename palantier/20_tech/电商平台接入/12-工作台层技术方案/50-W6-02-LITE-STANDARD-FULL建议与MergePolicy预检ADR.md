@@ -2,7 +2,7 @@
 
 > 日期：2026-08-14  
 > 核查基线：历史预检 `w2-workshop@6cc7bb9 / AOS-000027`；实施基线 `m1@c835c9d / AOS-000244`  
-> 状态：`IMPLEMENTATION_IN_PROGRESS / W6_01_GREEN / NO_EXTERNAL_EFFECT / NO_RELEASE`  
+> 状态：`IMPLEMENTED_GREEN / CODE_CONTRACT_BROWSER_GREEN / NO_EXTERNAL_EFFECT / NO_RELEASE`
 > 边界：只新增 profile 建议、确认、MergePolicy 与 immutable Receipt authority 及其只读消费；不改真实安装、不触发 TaskRun 或 Provider
 
 ## 1. 结论
@@ -87,3 +87,16 @@ W6-01 exact assignee readiness、W3-02 签名模板和 W3-07 coverage/reassign �
   - 固化专项、累计、OpenAPI、迁移、浏览器与无副作用结论。
 
 不回填历史 Plan，不修改 Bundle Candidate 或 active installation，不静默选择/降档，不启动 TaskRun，不调用外部 Provider；涉及页面时必须用内置浏览器验收，未安装路径只能记为失败关闭处置，不能冒充正向 GREEN。
+
+## 8. 2026-08-25 实施与验收结论
+
+W6-02 已按第 7 节完成 additive 实施：三档建议器、用户确认、版本化 MergePolicy、MergeDecisionReceipt、ResponsibilityPlan 治理引用、四个 canonical API、`w6_002` 单迁移头和上线执行审批只读贡献视图均已落地。方案/代码一致性复审额外补齐了 merge group 重叠/成环拒绝、Receipt 对基线 Plan 与 source/target/type shape 的精确匹配，以及 freeze 时重新核验 recommendation、confirmation、policy、merge Receipt 和 assignee readiness。
+
+验收事实：
+
+- 后端专项与累计 `24 passed`，前端专项 `21 passed`；TypeScript、production build、compileall、OpenAPI 双进程确定性检查、`w6_002 (head)`、diff check 全部 GREEN；
+- 内置浏览器验收 `http://localhost:5173/aip/production-contracts`：现有历史职责计划明确显示“未固定档位建议与合并策略”，同时提示兼容读取不代表可用于新生产组合；冻结按钮和启动门保持禁用；
+- 没有回填真实租户、修改 installation、启动 TaskRun/Agent/Provider、自动改档/合并或发布；
+- 代码提交 `aos-platform/m1@bf88eff`；机器证据 `.evidence/workshop/2026-08-25-w6-02-profile-recommendation-merge-policy.json`。
+
+结论：`W6_02_PROFILE_RECOMMENDATION_CONFIRMATION_MERGE_POLICY_CODE_CONTRACT_BROWSER_GREEN / NO_EXTERNAL_EFFECT / NO_RELEASE`。下一串行入口为 W6-03。
