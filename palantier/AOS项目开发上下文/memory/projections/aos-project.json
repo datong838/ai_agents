@@ -1,25 +1,25 @@
 {
   "completed": [
-    "W7-07"
+    "W7-08"
   ],
-  "content_hash": "sha256:0334eba31b9cd036698471c5edac9c9a0ebdedf07093d1a17c81cdad42e37421",
+  "content_hash": "sha256:bab21301cbf9c5a4ce107ada6e2949b17608c4198049037e6a4b15e418cf9419",
   "current_phase": "S7_WORKSHOP_W7_MEDIA_ADAPTIVE_PRODUCTION",
-  "delivery_status": "W7_07_MEDIA_PROVIDER_ADAPTER_MALICIOUS_ASSET_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "W7_08_MEDIA_FINANCE_SETTLEMENT_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-07-media-model-provider-adapter-malicious-asset-20260825.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-08-media-finance-settlement-20260825.json"
     },
     {
       "kind": "implementation",
-      "ref": ".evidence/workshop/2026-08-25-w7-07-media-model-provider-adapter-malicious-asset.json"
+      "ref": ".evidence/workshop/2026-08-25-w7-08-media-finance-settlement.json"
     },
     {
       "kind": "adr",
-      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/65-W7-07-媒体模型ProviderAdapter与恶意资产门预检ADR.md"
+      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/66-W7-08-CapacityBudgetUsage取消与最终对账预检ADR.md"
     }
   ],
-  "generated_at": "2026-08-25T23:04:33+08:00",
+  "generated_at": "2026-08-26T00:04:21+08:00",
   "hard_boundaries": [
     "NO_SHARED_MIGRATION_APPLY",
     "NO_REAL_TENANT_MUTATION",
@@ -29,25 +29,24 @@
     "NO_RELEASE"
   ],
   "incomplete": [
-    "W7-08",
     "W7-09",
     "W7-10",
     "W7-11",
     "W8"
   ],
-  "last_green_gate": "W7-07",
-  "next_gate": "W7-08",
+  "last_green_gate": "W7-08",
+  "next_gate": "W7-09",
   "next_steps": [
-    "Review W7-08 against the now-GREEN W7-07 MediaProviderJob authority and current Capacity/Budget/Usage contracts; close media attempt reservation, cancel/late receipt, partial settlement and read-only cost projection without real Provider invocation or release."
+    "Review W7-09 against the now-GREEN W7-03 through W7-08 authorities; implement one frozen Media Studio lifecycle read model with responsibility matrix, Stage/Artifact/Issue/cost contribution UI and server-owned command capability boundaries, without real Provider invocation, external effect or release."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000263",
+  "project_revision": "AOS-000264",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "35b688a769e92647bccc9dddcae0739de1ac885e",
-    "delivery_receipt": "46a3985a84268d215cb278c276b8e50ea9e99e9d",
-    "evidence": "e9a6278a39299f048a25994e41e280f78ec64fa1",
-    "workshop_docs": "90741fa47f041e0e4b1b2b9ad4fb15246f5a357a"
+    "code": "5e44093236f428790d0a5677242d368363a27990",
+    "delivery_receipt": "8405a46",
+    "evidence": "d5a185e9b3bb6000cb0da5e91e2d982646bd2e97",
+    "workshop_docs": "8405a46"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
