@@ -1,7 +1,7 @@
 # W8-01 洞察→GrowthPlan→内容/达人/媒体→发布→复盘同链预检 ADR
 
-> 日期：2026-08-15  
-> 决策：`NOT_STARTED / SCENARIO_CONTRACT_APPROVED / HARD_GATE_BLOCKED / NO_EXTERNAL_EFFECT`  
+> 日期：2026-08-15
+> 决策：`NOT_STARTED / SCENARIO_CONTRACT_APPROVED / HARD_GATE_BLOCKED / NO_EXTERNAL_EFFECT`
 > 前置：产品正式封板；W2-10、W3-14、W4-08、W5-08、W6-10、W7-11、DEP-A8 当前 release 全 GREEN
 
 ## 1. 当前事实
@@ -100,3 +100,18 @@ W8-01 场景合同可作为未来 E2E 施工与验收基线；当前不得运行
 - accepted 不等于 completed，Provider applied、Usage settled、Effect mature、MemoryCandidate governed/promoted 四轴不互相推导；
 - 页面只存决策摘要、证据链、归因路径、关键假设和不确定性，不存私有思维链；
 - 回滚只移除 Analyst v2 场景字段和对应 UI，现有 Analyst v1 七视图与 W2～W7 读模型保持不变。
+
+## 8. 2026-08-26 实施、复审与验收结论
+
+W8-01 已完成 GET-only Analyst v2 同链贡献实现。新增严格的 `GrowthScenarioContribution`，固定八阶段顺序，并把 Provider applied、Usage settled、Effect mature、Memory governed 保持为四个独立结果轴；`GrowthPlanRevision` 必须与 `growth_plan` 阶段 exact ref 完全一致，binding、租户或 cutoff 漂移均返回不含可信 refs 的结构化 blocked。全部阶段与结果轴均 ready 时也不会被解释为运营放行，而是稳定降级为 `GROWTH_SCENARIO_OPERATIONAL_AUTHORIZATION_REQUIRED`。
+
+验收事实：
+
+- 后端场景、Analyst、Workshop API 与 OpenAPI 回归 `32 passed / 7 warnings`；OpenAPI 保持 `2666 paths`，schema 增至 `2398`；
+- Web 专项 `2 files / 6 tests`，全量 `236 files / 2156 tests`，TypeScript 与 production build `344 modules` 通过；
+- sensitive scanner 自测 `9 passed`，本任务 `15 files / 0 critical / 0 warning`；全仓既有安全基线仍为 RED，因此不宣称 release GREEN；
+- 内置浏览器通过 1280/1440/1920，确认 8 阶段、4 结果轴、7 语义 Tab、方向键实际切换、`GROWTH_PLAN_EXACT_ROOT_REQUIRED` 失败关闭状态，以及业务写按钮为 0；
+- 页面和合同持续采用“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献”，没有把岗位名称、fixture 或页面可见冒充 exact AgentRun/Binding；
+- 未 apply 共享迁移、未写真实租户、未调用 Provider、未物化/派发计划、未发布、未晋升 Memory/Wiki、无外部副作用、无 release。
+
+代码提交 `89f6fbe5`，证据提交 `eac191f9`；证据包为 `.evidence/workshop/2026-08-26-w8-01-growth-scenario-exact-binding.json`，浏览器图为 `.evidence/workshop/2026-08-26-w8-01-browser/analyst-growth-scenario-1920.jpg`。工程退出裁决：`W8_01_GROWTH_SCENARIO_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE`。这只关闭 W8-01 的工程清单，不解除真实 Provider、Canary、Action、发布或 release 门；下一串行入口为 W8-02。

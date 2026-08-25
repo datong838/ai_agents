@@ -1,0 +1,35 @@
+{
+  "base_revision": "AOS-000267",
+  "blockers": [
+    "GROWTH_PLAN_EXACT_ROOT_REQUIRED",
+    "GROWTH_SCENARIO_OPERATIONAL_AUTHORIZATION_REQUIRED"
+  ],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-26-w8-01-growth-scenario-exact-binding.json",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_growth_scenario.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_growth_scenario_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_analyst.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/components/workshop/AnalystPage.tsx",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/70-W8-01-洞察GrowthPlan内容达人媒体发布复盘同链预检ADR.md"
+  ],
+  "commits": [
+    "89f6fbe542cf9e0145ab52f6f19bed94cedd2bda",
+    "eac191f9"
+  ],
+  "completed_at": "2026-08-26T02:57:59+08:00",
+  "completed_revision": "AOS-000267",
+  "result": "W8_01_GROWTH_SCENARIO_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "NO_SHARED_MIGRATION_APPLY; NO_REAL_TENANT_MUTATION; NO_REAL_PROVIDER; NO_ACTION_EXECUTION; NO_PUBLISH; NO_MEMORY_PROMOTION; NO_EXTERNAL_EFFECT; NO_RELEASE",
+    "local GET-only fixture and engineering tests are not operational authority, Provider, Canary or release evidence"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-01-growth-scenario-exact-binding-20260826",
+  "verification": [
+    "backend scenario/Analyst/API/OpenAPI 32 passed with 7 warnings",
+    "Web targeted 6; full 236 files/2156 tests; typecheck/build 344 modules passed",
+    "built-in browser 1280/1440/1920, 8 stages, 4 axes, 7 tabs, keyboard switch and no write entry",
+    "scoped security 15 files 0 critical/0 warning; scanner 9 passed; repository baseline remains RED"
+  ]
+}
