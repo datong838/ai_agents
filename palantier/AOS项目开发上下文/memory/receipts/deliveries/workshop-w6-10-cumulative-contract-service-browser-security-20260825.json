@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000253",
+  "blockers": [
+    "NO_LIVE_MIGRATION_APPLY",
+    "NO_REAL_PROVIDER_PROTECTED_CONTACT_SEND_HANDOFF_CONSUME_OR_BUSINESS_MUTATION",
+    "NO_REAL_CANARY_EXTERNAL_EFFECT_MEMORY_PROMOTION_OR_RELEASE_AUTHORITY"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/routers/domain_manifest.json",
+    "services/aos-api/tests/test_domain_router_manifest.py",
+    ".evidence/workshop/2026-08-25-w6-10-cumulative-contract-service-browser-security.json"
+  ],
+  "commits": [
+    "7388a8cf",
+    "4ac846d"
+  ],
+  "completed_at": "2026-08-25T17:52:12+08:00",
+  "completed_revision": "AOS-000253",
+  "result": "W6_10_CUMULATIVE_CODE_CONTRACT_SERVICE_BROWSER_SECURITY_GREEN_OPERATIONAL_EXTERNAL_EFFECT_GATE_RETAINED_NO_RELEASE",
+  "risks": [
+    "Browser used controlled canonical fixture; no live migration, provider, protected contact, send, handoff consume, real business mutation, canary, external effect, memory promotion or release evidence"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-10-cumulative-contract-service-browser-security-20260825",
+  "verification": [
+    "Backend W6/API/OpenAPI/Router combined 103 passed plus 2 subtests; Web full 232 files/2130 tests; TypeScript/build 344 modules; router 541 entries/4422 routes; OpenAPI 2639/2307/4418/4408 deterministic; w6_009 unique head; scoped security 239 files critical=0; built-in browser three pages x three viewports no overflow, contribution chain/five axes visible, forbidden action buttons 0, console errors 0"
+  ]
+}

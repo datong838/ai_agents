@@ -1,23 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000253",
-      "created_at": "2026-08-25T17:33:46+08:00",
-      "excluded_scope": [
-        "migration apply,real provider/protected contact/send,handoff consume,real business mutation,canary,external effect,memory promotion,release"
-      ],
-      "expected_outputs": [
-        "current W6 cumulative contract/service/security results,three-page three-viewport built-in-browser evidence,deterministic OpenAPI/Alembic/build/security evidence,Delivery Receipt,authority CAS and Prime readback"
-      ],
-      "lease_expires_at": "2026-08-26T01:30:00+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "docs:58-W6-10 ADR,D-waves; code/tests:W6 contract,service,browser,security cumulative gate and minimal fail-closed remediation; evidence:W6-10 EvidencePack"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w6-10-cumulative-contract-service-browser-security-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
