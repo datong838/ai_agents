@@ -3,45 +3,46 @@
     "W7-01",
     "W7-02",
     "W7-03",
-    "W7-04"
+    "W7-04",
+    "W7-05"
   ],
-  "content_hash": "sha256:c400d8a135619e9b60fc5f2eb74cdf15409dd9dbc8c6cf6cc5fbe39a879f1a2e",
-  "current_phase": "S7_W7_05_ARTIFACT_FAMILY_MASTER_VARIANT_SUPERSEDES_SERIAL_DEVELOPMENT",
-  "delivery_status": "W7_04_CANONICAL_EXECUTOR_FENCE_CHECKPOINT_PAUSE_RESUME_TAKEOVER_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:728dbb3c95402092d252c01b89e8b6052c412efd4d418dd55b17fd22d90dea21",
+  "current_phase": "S7_W7_06_FOUR_GATE_EVAL_REVIEW_RETURN_ATTEMPT_SERIAL_DEVELOPMENT",
+  "delivery_status": "W7_05_IMMUTABLE_ARTIFACT_FAMILY_MASTER_VARIANT_SUPERSEDES_CONFLICT_SELECTION_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-04-stage-executor-lease-checkpoint-takeover-20260825.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-05-artifact-family-master-variant-supersedes-20260825.json"
     },
     {
       "kind": "implementation",
-      "ref": ".evidence/workshop/2026-08-25-w7-04-stage-executor-fence-checkpoint-takeover.json"
+      "ref": ".evidence/workshop/2026-08-25-w7-05-artifact-family-master-variant-supersedes.json"
     },
     {
       "kind": "adr",
-      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/62-W7-04-StageExecutorLeaseCheckpoint暂停恢复与接管预检ADR.md"
+      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/63-W7-05-ArtifactFamilyMasterVariantSupersedes预检ADR.md"
     }
   ],
-  "generated_at": "2026-08-25T20:21:04+08:00",
+  "generated_at": "2026-08-25T21:08:16+08:00",
   "hard_boundaries": [
     "No migration apply, real provider/media generation/publication, protected data operation, external effect or release without its exact gate."
   ],
   "incomplete": [
-    "W7-05"
+    "W7-06"
   ],
-  "last_green_gate": "W7_04_CANONICAL_EXECUTOR_FENCE_CHECKPOINT_PAUSE_RESUME_TAKEOVER_CODE_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W7_05_ARTIFACT_FAMILY_MASTER_VARIANT_SUPERSEDES",
+  "last_green_gate": "W7_05_IMMUTABLE_ARTIFACT_FAMILY_MASTER_VARIANT_SUPERSEDES_CONFLICT_SELECTION_CODE_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W7_06_FOUR_GATE_EVAL_REVIEW_ISSUE_RETURN_ATTEMPT",
   "next_steps": [
-    "Review W7-05 against current canonical Artifact/ArtifactRelation authority and 163/164 atomic Skill composition; implement append-only family/master/variant/supersedes and exact selection without real Provider, publication or release effects."
+    "Review W7-06 against current canonical W4-03/W4-04/W7-05 authority and 163/164 atomic Skill composition; implement fact/brand/copyright/platform same-version gate set and new attempt without Provider, publication or release effects."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000259",
+  "project_revision": "AOS-000261",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "3e364b59",
-    "delivery_receipt": "0980ecb",
-    "evidence": "3e364b59",
-    "workshop_docs": "0980ecb"
+    "code": "496e2c0f",
+    "delivery_receipt": "23c9215",
+    "evidence": "496e2c0f",
+    "workshop_docs": "23c9215"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
