@@ -1,0 +1,37 @@
+{
+  "base_revision": "AOS-000255",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-02-profile-cost-confirmation.json",
+    "aos-platform:services/aos-api/aos_api/aip_responsibility_profile.py",
+    "aos-platform:services/aos-api/aos_api/aip_responsibility_profile_store.py",
+    "aos-platform:services/aos-api/aos_api/routers/aip_production_contracts.py",
+    "aos-platform:services/aos-api/alembic/versions/w7_001_profile_projected_cost_confirmation.py",
+    "aos-platform:apps/web/src/api/aipProductionContracts",
+    "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.tsx",
+    "aos-platform:bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0",
+    "aos-platform:packages/contracts/openapi",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/60-W7-02-Profile建议成本区间与用户确认预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "aos-platform/m1@a12a8e4f",
+    "docs/m1@951ae22"
+  ],
+  "completed_at": "2026-08-25T18:47:47+08:00",
+  "completed_revision": "AOS-000255",
+  "result": "W7_02_PROFILE_PROJECTED_COST_CONFIRMATION_CODE_CONTRACT_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Projected cost remains advisory and separate from Usage authority; missing price remains unknown and blocks confirmation",
+    "Controlled browser fixture and candidate bundle are not production authority; migration apply, Provider invocation, media generation, external publication and release remain gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-02-profile-cost-confirmation-20260825",
+  "verification": [
+    "11 focused and adjacent pytest passed with 7 warnings",
+    "OpenAPI and deterministic domain router 22 passed plus 2 subtests with 7 warnings",
+    "Web focused 2 files and 23 tests; cumulative 232 files and 2132 tests; production build 344 modules",
+    "Alembic single head w7_001 without real database apply; scoped security 15 files critical=0 warning=0",
+    "Built-in browser 768/1440/1920 no overflow, known and unknown cost, duration and confirmation contribution visible, no click, console errors 0"
+  ]
+}
