@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000239",
+  "created_at": "2026-08-25T09:15:02+08:00",
+  "excluded_scope": [
+    "real accounts/secrets, live migration, real Approval/Lease/Action/Provider invocation, canary, release and tenant business mutation"
+  ],
+  "expected_outputs": [
+    "W5-05 durable automatic/manual reconcile authority and exact CompensationPolicy code-control evidence with no external effects"
+  ],
+  "lease_expires_at": "2026-08-25T17:20:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_action_execution.py",
+    "services/aos-api/aos_api/aip_action_models.py",
+    "services/aos-api/aos_api/aip_action_service.py",
+    "services/aos-api/alembic/versions",
+    "services/aos-api/tests/aip",
+    "packages/contracts/openapi",
+    ".evidence/workshop",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/45-W5-05-Unknown人工对账与补偿策略预检ADR.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w5-05-unknown-reconcile-compensation-20260825"
+}
