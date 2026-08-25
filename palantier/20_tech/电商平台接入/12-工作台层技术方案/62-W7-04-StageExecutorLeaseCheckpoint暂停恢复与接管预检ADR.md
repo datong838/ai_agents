@@ -1,7 +1,7 @@
 # W7-04 StageExecutor、Lease、Checkpoint、暂停恢复与接管预检 ADR
 
 > 日期：2026-08-15；2026-08-25 现状复核并进入实施  
-> 状态：`IN_PROGRESS / CANONICAL_RUNTIME_REUSE / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 状态：`COMPLETED_GREEN / CANONICAL_RUNTIME_REUSE / NO_EXTERNAL_EFFECT / NO_RELEASE`
 
 ## 1. 决策
 
@@ -62,3 +62,11 @@ W7-03 已以 `d0851ad5` 完成并由 authority `AOS-000258` 投影为 GREEN，�
 第二轮技术与安全：单一 runtime authority、attempt scope、fencing、CAS/幂等、不可变 Checkpoint、漂移复验与 fail-closed 完整；13 项缺口未误写为完成，无代码/迁移/真实租户/Provider 变更，`PASS`。
 
 2026-08-25 第二轮复审结论：实施范围与 163/164、W7 上位方案一致；采用已有 W3-07 authority 可避免双真源，允许登记 Task Receipt/Lease 后开始最小实现。
+
+## 9. 2026-08-25 实施与验收结论
+
+W7-04 已由提交 `3e364b59` 完成。canonical TaskRun/StepRun/Checkpoint 与 W3-07 assignment head 已闭合为单一执行权：claim 与合法接管推进单调 fence，heartbeat、TAOR phase、complete/fail 同时校验 owner、lease 与 fence；暂停在任一活跃 Step 未抵达安全点时保持 `pausing`，最后一个 Step 落盘 v2 Checkpoint 后才进入 `paused`；resume 独立重算 dependency snapshot 与 Checkpoint input hash，并追加 reuse/invalidation decision，漂移失败关闭。
+
+两轮实现后复审额外关闭了两处缺口：不得把 Checkpoint 自身 input hash 当作重算结果；多 Step Run 不得由首个完成 Step 提前宣告 paused。专项与累计后端 `85 passed`，Web 全量 `232 files / 2133 tests`，生产构建 `344 modules`，OpenAPI `2641 paths / 2314 schemas / 4412 operations`，Alembic 单 head `w7_002`，本波 33 文件安全扫描 `0 critical / 0 warning`。全仓安全扫描仍保留既有 `5 critical / 326 warning`，不误报全仓 GREEN。
+
+内置浏览器以受控只读 fixture 验收 `/workshop/task-cockpit`：768/1440/1920 三视口无横向溢出，owner/fence/safe-point/reconcile 与 exact Checkpoint 恢复事实可见，旧版明细合同严格失败关闭，successor/takeover/dispatch/priority 按钮均禁用，console error 为 0。未 apply migration、未写真实租户、未调用 Provider、未重试外部请求、未生成媒体、未发布或 release。机器证据：`.evidence/workshop/2026-08-25-w7-04-stage-executor-fence-checkpoint-takeover.json`。

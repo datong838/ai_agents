@@ -1,0 +1,40 @@
+{
+  "base_revision": "AOS-000258",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-04-stage-executor-fence-checkpoint-takeover.json",
+    "aos-platform:services/aos-api/alembic/versions/w7_002_stage_executor_fence_checkpoint.py",
+    "aos-platform:services/aos-api/aos_api/aip_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_task_models.py",
+    "aos-platform:services/aos-api/aos_api/aip_task_store.py",
+    "aos-platform:services/aos-api/aos_api/aip_taor_loop.py",
+    "aos-platform:services/aos-api/aos_api/aip_responsibility_assignment_store.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_task_cockpit_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "aos-platform:services/aos-api/tests/aip/test_w7_04_stage_executor_fence_checkpoint.py",
+    "aos-platform:services/aos-api/tests/aip/test_aip1_taor_runtime.py",
+    "aos-platform:services/aos-api/tests/test_w3_07_responsibility_assignment.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "aos-platform:apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "aos-platform:packages/contracts/openapi/v1.inventory.json",
+    "aos-platform:scripts/aip/bootstrap_r2_*_skill_authority.py",
+    "aos-platform:scripts/aip/execute_r2_*_real_pilot.py",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/62-W7-04-StageExecutorLeaseCheckpoint暂停恢复与接管预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": ["3e364b59"],
+  "completed_at": "2026-08-25T20:18:41+08:00",
+  "completed_revision": "AOS-000258",
+  "result": "W7_04_CANONICAL_EXECUTOR_FENCE_CHECKPOINT_PAUSE_RESUME_TAKEOVER_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "repository security gate retains existing baseline 5 critical/326 warning; no real tenant mutation, migration apply, Provider invocation/retry, media generation, publication or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-04-stage-executor-lease-checkpoint-takeover-20260825",
+  "verification": [
+    "backend 85 passed; Web 232 files/2133 tests, build 344; OpenAPI 2641/2314/4412; Alembic w7_002; browser 768/1440/1920 no overflow and 0 console errors; scoped security 33 files 0/0"
+  ]
+}

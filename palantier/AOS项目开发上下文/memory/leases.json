@@ -1,22 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000258",
-      "expires_at": "2026-08-26T07:00:00+08:00",
-      "owner": "aos-main-development",
-      "scope_prefixes": [
-        "aos-platform:services/aos-api/alembic/versions/w7_002_",
-        "aos-platform:services/aos-api/aos_api/aip_",
-        "aos-platform:services/aos-api/aos_api/ecommerce_workshop_task_cockpit",
-        "aos-platform:services/aos-api/tests/aip/test_w7_04_",
-        "aos-platform:apps/web/src/api/ecommerceWorkshop/",
-        "aos-platform:apps/web/src/components/workshop/TaskCockpitPage",
-        "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/62-W7-04-",
-        "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/"
-      ],
-      "started_at": "2026-08-25T19:36:09+08:00",
-      "task_id": "workshop-w7-04-stage-executor-lease-checkpoint-takeover-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
