@@ -28,12 +28,13 @@
     "fbce091"
   ],
   "completed_at": "2026-08-26T04:17:10+08:00",
-  "completed_revision": "AOS-000271",
+  "completed_revision": "AOS-000273",
   "result": "W8_03_DISPATCH_TAKEOVER_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
   "risks": [
     "NO_SHARED_MIGRATION_APPLY; NO_OWNER_MUTATION; NO_HANDOFF_DECISION_WRITE; NO_TAKEOVER_REQUEST_OR_APPROVAL; NO_PROVIDER; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_MEMORY_PROMOTION; NO_RELEASE",
     "built-in browser acceptance used a pure loopback GET-only fixture and is not operational authority or real canary evidence",
-    "Health and SourceReadiness were intentionally absent from the fixture and remained visibly fail-closed"
+    "Health and SourceReadiness were intentionally absent from the fixture and remained visibly fail-closed",
+    "AOS-000271 used malformed evidence arguments and AOS-000272 still referenced pre-correction artifacts; neither revision was synchronized. AOS-000273 is the explicit CAS correction with verified full source commits and corrected artifacts"
   ],
   "schema": "aos-memory-delivery-receipt/v1",
   "task_id": "workshop-w8-03-cross-domain-dispatch-takeover-scenario-20260826",
