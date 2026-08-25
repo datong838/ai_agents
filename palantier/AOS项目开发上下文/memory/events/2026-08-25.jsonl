@@ -101,3 +101,4 @@
 {"occurred_at":"2026-08-25T15:02:01+08:00","result":"W6_05_CODE_CONTRACT_BROWSER_GREEN_NO_PROVIDER_NO_RESEARCH_JOB_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w6-05-price-research-match-policy-batch-prepare-20260825","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-25T15:03:10+08:00","project_revision":"AOS-000249","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000249","occurred_at":"2026-08-25T15:04:25+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w6-06-price-notice-recommendation-reprice-20260825","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-25T15:37:55+08:00","result":"W6_06_PRICE_DISPOSITION_CODE_CONTRACT_BROWSER_GREEN_REPRICING_DISABLED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w6-06-price-notice-recommendation-reprice-20260825","type":"TASK_COMPLETED"}

@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000249",
+  "blockers": [
+    "NO_LIVE_MIGRATION_APPLY",
+    "NO_PROVIDER_ACCOUNT_SECRET_OR_OPERATIONAL_CAPABILITY",
+    "NO_NOTIFICATION_HANDOFF_CONSUME_REPRICE_CANARY_EFFECT_OR_RELEASE_AUTHORITY"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_price_disposition.py",
+    "services/aos-api/aos_api/ecommerce_workshop_price_disposition_store.py",
+    "services/aos-api/alembic/versions/w6_006_price_disposition.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "apps/web/src/components/workshop/PriceGovernancePage.tsx",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w6-06-price-disposition-gates.json"
+  ],
+  "commits": [
+    "58c8f7e",
+    "0b81a0f"
+  ],
+  "completed_at": "2026-08-25T15:37:55+08:00",
+  "completed_revision": "AOS-000249",
+  "result": "W6_06_PRICE_DISPOSITION_CODE_CONTRACT_BROWSER_GREEN_REPRICING_DISABLED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Migration not applied; production authority resolver remains fail-closed; notification, handoff consume and repricing remain independently operationally gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w6-06-price-notice-recommendation-reprice-20260825",
+  "verification": [
+    "Backend W6-06/API 23 passed; API/OpenAPI 14 passed; frontend target 9 and full 2118 passed; build 343 modules; OpenAPI 2622/2260/4401/4391 deterministic; w6_006 unique head; built-in browser four typed cards GREEN with zero action buttons and zero console errors"
+  ]
+}
