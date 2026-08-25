@@ -1,42 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000255",
-      "created_at": "2026-08-25T18:18:59+08:00",
-      "excluded_scope": [
-        "aos-platform:.DS_Store",
-        "aos-platform:.evidence/aip/2026-08-23-r32-browser-final",
-        "aos-platform:plugins"
-      ],
-      "expected_outputs": [
-        "W7-02 exact ProfileRecommendation ProjectedCostRange MergePolicy and ProfileConfirmation authority, SDK/UI, tests, browser evidence, Delivery Receipt, authority CAS and Prime readback"
-      ],
-      "lease_expires_at": "2026-08-26T04:00:00+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "aos-platform:.evidence/workshop/2026-08-25-w7-02-profile-cost-confirmation.json",
-        "aos-platform:bundles/candidates/ecommerce/solution.ecommerce.growth/1.4.0",
-        "aos-platform:services/aos-api/aos_api/aip_responsibility_profile.py",
-        "aos-platform:services/aos-api/aos_api/aip_responsibility_profile_store.py",
-        "aos-platform:services/aos-api/aos_api/routers/aip_production_contracts.py",
-        "aos-platform:services/aos-api/aos_api/routers/domain_manifest.json",
-        "aos-platform:services/aos-api/alembic/versions/w7_001_profile_projected_cost_confirmation.py",
-        "aos-platform:services/aos-api/tests/aip/test_w7_02_profile_cost_confirmation.py",
-        "aos-platform:services/aos-api/tests/aip/test_w7_02_profile_cost_confirmation_migration.py",
-        "aos-platform:services/aos-api/tests/aip/test_w6_02_responsibility_profiles.py",
-        "aos-platform:apps/web/src/api/aipProductionContracts/contracts.ts",
-        "aos-platform:apps/web/src/api/aipProductionContracts/parser.ts",
-        "aos-platform:apps/web/src/api/aipProductionContracts/index.ts",
-        "aos-platform:apps/web/src/api/aipProductionContracts/index.test.ts",
-        "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.tsx",
-        "aos-platform:apps/web/src/pages/s2/ProductionContractsPage.test.tsx",
-        "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/60-W7-02-Profile建议成本区间与用户确认预检ADR.md",
-        "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w7-02-profile-cost-confirmation-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
