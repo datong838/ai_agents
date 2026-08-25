@@ -1,36 +1,36 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W6-04"
-  ],
-  "current_phase": "S6_W6_05_PRICE_RESEARCH_MATCH_POLICY_BATCH_PREPARE_SERIAL_DEVELOPMENT",
-  "delivery_status": "W6_04_CREATOR_EXPLICIT_START_PARTIAL_LIFECYCLE_CODE_CONTRACT_BROWSER_GREEN_OPERATIONAL_GATE_RETAINED_NO_EXTERNAL_EFFECT_NO_RELEASE",
-  "evidence": [
-    {
-      "kind": "w6_04",
-      "ref": ".evidence/workshop/2026-08-25-w6-04-creator-explicit-start-partial-lifecycle.json"
-    }
-  ],
-  "evidence_cutoff": "2026-08-25T14:29:08+08:00",
-  "hard_boundaries": [
-    "No migration apply, provider call, price notification, repricing, real business mutation, canary or release."
-  ],
-  "incomplete": [
     "W6-05"
   ],
-  "last_green_gate": "W6_04_CODE_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W6_05_PRICE_RESEARCH_MATCH_POLICY_BATCH_PREPARE",
+  "current_phase": "S6_W6_06_PRICE_NOTICE_RECOMMENDATION_REPRICE_SERIAL_DEVELOPMENT",
+  "delivery_status": "W6_05_PRICE_RESEARCH_MATCH_POLICY_BATCH_PREPARE_CODE_CONTRACT_BROWSER_GREEN_NO_PROVIDER_NO_RESEARCH_JOB_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "evidence": [
+    {
+      "kind": "w6_05",
+      "ref": ".evidence/workshop/2026-08-25-w6-05-price-research-match-policy-batch-prepare.json"
+    }
+  ],
+  "evidence_cutoff": "2026-08-25T15:02:01+08:00",
+  "hard_boundaries": [
+    "No migration apply, real provider call, price notification send, repricing, real business mutation, canary or release."
+  ],
+  "incomplete": [
+    "W6-06"
+  ],
+  "last_green_gate": "W6_05_CODE_CONTRACT_BROWSER_GREEN",
+  "next_gate": "W6_06_PRICE_NOTICE_RECOMMENDATION_REPRICE",
   "next_steps": [
-    "Review and remediate W6-05 against the live W4/W6 foundations, then implement price ResearchJob, same-item match, policy and side-effect-free batch preparation without migration apply, provider call, repricing, external effect or release."
+    "Re-review W6-06 against the now-closed W6-05 domain authority and W5 controlled Action chain, then implement typed notice, internal advice, minimal Handoff and specialized repricing gates without real provider call, external effect, migration apply or release."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000248",
+  "project_revision": "AOS-000249",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "1aad7b6",
-    "delivery_receipt": "00d78b5",
-    "evidence": "1aad7b6",
-    "workshop_docs": "6dc8d27"
+    "code": "de8eaf4",
+    "delivery_receipt": "882e649",
+    "evidence": "de8eaf4",
+    "workshop_docs": "04c37bb"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -40,5 +40,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-25T14:30:36+08:00"
+  "updated_at": "2026-08-25T15:03:10+08:00"
 }
