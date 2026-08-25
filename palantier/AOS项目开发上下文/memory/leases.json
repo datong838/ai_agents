@@ -1,4 +1,51 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000262",
+      "created_at": "2026-08-25T22:05:45+08:00",
+      "excluded_scope": [
+        "real tenant mutation, shared migration apply, real Provider invocation, media generation, external publication, release",
+        "unrelated dirty or untracked user files"
+      ],
+      "expected_outputs": [
+        "canonical media provider Job preparation/event/receipt authority with exact model/provider/policy/adapter binding and no automatic retry",
+        "server-owned input/output quarantine guard, purpose-bound access contract, malicious asset and prompt-injection fail-closed tests",
+        "strict API/SDK and Media Studio atomic Skill to Logic to digital colleague contribution view with focused, cumulative, browser and security evidence"
+      ],
+      "lease_expires_at": "2026-08-26T14:00:00+08:00",
+      "owner": "codex-m1-serial",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "aos-platform/services/aos-api/alembic/versions/w7_005_media_provider_job_adapter.py",
+        "aos-platform/services/aos-api/aos_api/aip_media_provider_job_contracts.py",
+        "aos-platform/services/aos-api/aos_api/aip_media_provider_job_store.py",
+        "aos-platform/services/aos-api/aos_api/aip_media_provider_job_service.py",
+        "aos-platform/services/aos-api/aos_api/routers/aip_media_provider_jobs.py",
+        "aos-platform/services/aos-api/aos_api/routers/domain_aggregates.py",
+        "aos-platform/services/aos-api/aos_api/ecommerce_workshop_media_studio_contracts.py",
+        "aos-platform/services/aos-api/aos_api/ecommerce_workshop_media_studio_reader.py",
+        "aos-platform/services/aos-api/aos_api/ecommerce_workshop_media_studio.py",
+        "aos-platform/services/aos-api/aos_api/routers/ecommerce_workshop.py",
+        "aos-platform/services/aos-api/tests/aip/test_w7_07_media_provider_job.py",
+        "aos-platform/services/aos-api/tests/test_ecommerce_workshop_media_studio.py",
+        "aos-platform/services/aos-api/tests/test_ecommerce_workshop_operations_api.py",
+        "aos-platform/apps/web/src/api/ecommerceWorkshop/contracts.ts",
+        "aos-platform/apps/web/src/api/ecommerceWorkshop/parser.ts",
+        "aos-platform/apps/web/src/api/ecommerceWorkshop/client.ts",
+        "aos-platform/apps/web/src/api/ecommerceWorkshop/mediaStudioClient.test.ts",
+        "aos-platform/apps/web/src/components/workshop/MediaStudioPage.tsx",
+        "aos-platform/apps/web/src/components/workshop/MediaStudioPage.test.tsx",
+        "aos-platform/packages/contracts/openapi/",
+        "aos-platform/scripts/export_openapi.py",
+        "aos-platform/services/aos-api/tests/test_domain_router_manifest.py",
+        "aos-platform/services/aos-api/tests/test_openapi_contract.py",
+        "aos-platform/.evidence/workshop/2026-08-25-w7-07-media-model-provider-adapter-malicious-asset.json",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/65-W7-07-媒体模型ProviderAdapter与恶意资产门预检ADR.md",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w7-07-media-model-provider-adapter-malicious-asset-20260825"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
