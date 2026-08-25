@@ -56,12 +56,18 @@ inbox/quarantine 设 TTL、大小上限、按 endpoint/backlog/gap/signature fai
 
 本轮承接 `m1@84acc76` 与 authority `AOS-000240`，只实现 canonical Action callback 控制面，不接收真实 Provider 回调、不解析真实 Secret、不执行真实迁移。实现继续遵循“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献视图”：Webhook Observation 只是 Action Logic 的外部观察事实，必须先绑定原 Attempt/Receipt，才能进入 W5-05 对账贡献链；它本身无权直接改写 Action 结果。
 
-- [ ] `services/aos-api/alembic/versions/w5_005_action_webhook_inbox.py`：新增 immutable `WebhookEndpointRevision`、tenant-scoped Inbox Receipt/Observation、持久 replay key、reducer view 与 quarantine Case；endpoint public key 唯一解析租户，Secret 只存 `secretRef`，Receipt/Observation append-only，存在事实时降级失败关闭。
-- [ ] `services/aos-api/aos_api/aip_action_webhook_models.py`：定义 endpoint exact refs、验签结果、Inbox Receipt、Observation、gap/disputed reducer view 与安全响应模型；禁止原始 Secret/body/PII 出现在返回合同。
-- [ ] `services/aos-api/aos_api/aip_action_webhook_service.py`：按 endpoint identity 解析唯一 tenant；先限制 body 大小并计算 hash、再按 exact signature policy 与 key revision 验签，验签前不 JSON parse；稳定 providerEventId/nonce 去重，同键同 hash 幂等、不同 hash drift quarantine；verified 事件按 providerRequestId/account/actionBindingHash 精确绑定单一 Attempt。
-- [ ] `services/aos-api/aos_api/aip_action_webhook_service.py`：实现无 last-write-wins 的 reducer；连续 sequence 才推进，gap 保持 awaiting_gap，迟到 accepted 不覆盖终态，applied/failed 冲突进入 disputed；只追加 Observation/Case，不直接更新 Proposal 或既有 Receipt。
-- [ ] `services/aos-api/aos_api/routers/aip_action_webhooks.py` 与 `routers/domain_aggregates.py`：新增独立 provider ingress，不依赖浏览器 Principal，也不接受 `X-Org-Id/X-Project-Id` 作为租户 authority；未知 endpoint/key 使用非枚举式失败响应。
-- [ ] `services/aos-api/tests/aip/test_w5_06_action_webhook_inbox.py` 与迁移测试：覆盖伪造 tenant header、未知 endpoint/key、过期/错签名/超大 body、rotation、并发 replay/drift、unmatched/multi/schema drift、顺序/乱序/gap/迟到/重复/终态冲突和跨租户隔离；验证旧 `action_webhook` 未进入 canonical authority。
-- [ ] `packages/contracts/openapi/v1.generated.json`、`v1.inventory.json` 与 `.evidence/workshop/2026-08-25-w5-06-action-webhook-inbox.json`：确定性导出并封存专项、累计、compileall、Alembic、diff 证据；本波若无页面变化，浏览器明确记 `N/A_NO_UI_CHANGE`。
+- [x] `services/aos-api/alembic/versions/w5_005_action_webhook_inbox.py`：新增 immutable `WebhookEndpointRevision`、tenant-scoped Inbox Receipt/Observation、持久 replay key、reducer view 与 quarantine Case；endpoint public key 唯一解析租户，Secret 只存 `secretRef`，Receipt/Observation append-only，存在事实时降级失败关闭。
+- [x] `services/aos-api/aos_api/aip_action_webhook_models.py`：定义验签结果、Inbox Receipt、Observation、gap/disputed reducer view 与安全响应模型；禁止原始 Secret/body/PII 出现在返回合同。
+- [x] `services/aos-api/aos_api/aip_action_webhook_service.py`：按 endpoint identity 解析唯一 tenant；先限制 body 大小并计算 hash、再按 exact signature policy、signed headers 与 key revision 验签，验签前不 JSON parse；稳定 providerEventId/nonce 去重，同键同 hash 幂等、不同 hash drift quarantine；verified 事件按 providerRequestId/account/actionBindingHash 精确绑定单一 Attempt。
+- [x] `services/aos-api/aos_api/aip_action_webhook_service.py`：实现无 last-write-wins 的 reducer；连续 sequence 才推进，gap 保持 awaiting_gap，迟到 accepted 不覆盖终态，相同 sequence 漂移或 applied/failed 冲突进入 disputed；只追加 Observation/Case，不直接更新 Proposal 或既有 Receipt。
+- [x] `services/aos-api/aos_api/routers/aip_action_webhooks.py` 与 `routers/domain_aggregates.py`：新增独立 provider ingress，不依赖浏览器 Principal，也不接受 `X-Org-Id/X-Project-Id` 作为租户 authority；未知 endpoint/key 使用非枚举式失败响应。
+- [x] `services/aos-api/tests/aip/test_w5_06_action_webhook_inbox.py` 与迁移测试：覆盖伪造 tenant header、未知 endpoint/key、过期/错签名/超大 body、rotation、并发 replay、binding/schema drift、顺序/乱序/gap/迟到/重复/相同 sequence 与终态冲突及跨租户隔离；旧 `action_webhook` 未进入 canonical 路由或 authority。
+- [x] `packages/contracts/openapi/v1.generated.json`、`v1.inventory.json` 与 `.evidence/workshop/2026-08-25-w5-06-action-webhook-inbox.json`：确定性导出并封存专项、累计、compileall、Alembic、diff 证据；本波无页面变化，浏览器为 `N/A_NO_UI_CHANGE`。
 
 本波代码 GREEN 仍不等于 endpoint operational GREEN。真实 endpoint/key 发布、Secret resolver、网络入口、Provider callback、live migration、Canary、外部副作用与 release 全部保持 blocked；任何 endpoint、key、schema、account、Attempt 或 sequence 不能 exact resolve 时必须 quarantine/disputed，不得猜测租户或 Action。
+
+## 9. 2026-08-25 实施关闭与一致性复审
+
+W5-06 已形成 canonical provider ingress、endpoint-directory tenant resolution、exact endpoint revision、HMAC signed-header/key-revision 验签、append-only Inbox/Observation/Case、持久 replay key 与 gap/disputed reducer。重放键登记在不可变 Receipt 成功之后，并由 endpoint/event 事务级 advisory lock 串行化；并发重复不会留下孤儿 claim，同 key 异 body 不覆盖原事实。Observation 固化 Adapter revision ref、endpoint revision 与 schema hash；Webhook 从不改写既有 Action Proposal/Receipt。
+
+专项 `9 passed`，W5-01～W5-06 累计 `70 passed`，OpenAPI 合同 `12 passed`，compileall、Alembic 单 head `w5_005`、确定性 OpenAPI 与 diff check GREEN。无页面、路由导航或视觉行为变化，浏览器验收不适用。实现与第 2～7 节一致；剩余边界不是代码缺口伪装成 GREEN：真实 endpoint/Secret resolver、Provider callback、live migration、Canary、Kill 演练和 release 仍需各自 exact authority，当前均未执行。
