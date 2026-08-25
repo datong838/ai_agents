@@ -1,4 +1,23 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000266",
+      "created_at": "2026-08-26T02:00:03+08:00",
+      "excluded_scope": [
+        "real tenant writes;real Provider;external effects;Action execution;publish canary;release;shared migration apply;unrelated dirty docs;protected untracked main repo scope"
+      ],
+      "expected_outputs": [
+        "W7-11 cumulative contract/browser/security/fault evidence with honest provider/canary/operational blockers, no real Provider, no external effect and no release"
+      ],
+      "lease_expires_at": "2026-08-26T12:00:00+08:00",
+      "owner": "codex-m1-serial",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "docs:ADR69,task-receipt,lease;code:W7 cumulative GateSet read model,Media Studio v6,strict SDK,UI,cumulative and fault-injection tests,evidence"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w7-11-media-cumulative-browser-security-fault-20260826"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
