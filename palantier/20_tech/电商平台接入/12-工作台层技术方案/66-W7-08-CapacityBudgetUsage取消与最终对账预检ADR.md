@@ -1,8 +1,8 @@
 # W7-08 Capacity、Budget、Usage、取消与最终对账预检 ADR
 
 > 日期：2026-08-15  
-> 决策：`IMPLEMENTATION_ACTIVE / CONTRACT_BASELINE_APPROVED / NO_EXTERNAL_EFFECT / NO_RELEASE`  
-> 当前基线：`AOS-000263`；`m1@e9a6278a`；W7-07 已按 `W7_07_MEDIA_PROVIDER_ADAPTER_MALICIOUS_ASSET_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE` 闭合  
+> 决策：`CODE_CONTRACT_BROWSER_GREEN / SECURITY_SCOPED_GREEN / REPO_BASELINE_RED / NO_REAL_PROVIDER / NO_EXTERNAL_EFFECT / NO_RELEASE`
+> 当前基线：`AOS-000263`；代码提交 `5e440932`；证据对齐 `d5a185e9`；W7-08 已按本 ADR 第 7 节闭合
 > 前置：W7-07 code/control/browser GREEN；AIP Capacity、Budget、Usage 与媒体 Provider attempt 只按 exact ref 接缝复用，不建立 Workshop 第二真源
 
 ## 1. 审查问题与事实
@@ -85,3 +85,13 @@ Media Studio 应展示双预留、Stage/attempt Usage、取消结果、迟到 Re
 ## 6. 最终裁决
 
 产品与技术合同已收敛，W7-07 前置已满足，W7-08 进入最小实现。代码 GREEN 仍只表示合同、离线迁移、测试与浏览器投影闭合；在真实 Provider、真实租户 migration apply、运营批准与发布门之前，必须保持 `NO_EXTERNAL_EFFECT / NO_RELEASE`。历史预检证据仍保留在 `.evidence/workshop/2026-08-15-w7-08-capacity-budget-usage-cancel-settlement-preflight.json`，不得覆盖。
+
+## 7. 2026-08-26 实施与验收闭合
+
+W7-08 已在 `m1` 串行完成，代码提交为 `5e44093236f428790d0a5677242d368363a27990`，证据对齐提交为 `d5a185e9b3bb6000cb0da5e91e2d982646bd2e97`。实现新增 `w7_006` tenant-scoped、RLS/FORCE RLS、append-only 财务事件 authority，按 exact attempt 绑定 MediaProviderJob、TaskRun/PlanStep、request fingerprint、Capacity pool、Budget revision 与预计币种区间；Provider submit 在 Adapter 调用前要求 Capacity/Budget 双预留有效。取消意图、Provider 结果、Usage、容量 consume/release 与 Settlement 独立追加；unknown 用量不得伪造金额并阻止 settled；无费用取消必须有 exact Provider Receipt；不同币种分别结算且不自动换汇。
+
+专项后端 `5 passed`；W7 累计后端 `85 passed + 2 subtests`；OpenAPI/domain `22 passed`，确定性导出为 `2666 paths / 2368 schemas / 4443 unique operations / 4453 route rows`；隔离 PostgreSQL empty downgrade/upgrade 通过。Web 定向在视觉微调后 `32 passed`，全量 `232 files / 2139 tests`，类型检查及生产构建 `344 modules` 通过。内置浏览器在 1280px 本地只读 fixture 中验证“原子 Skill → Logic 编排 → 数字同事绑定 → 工作台贡献”、双预留、cancel/fee、CNY/USD 分桶与 settled；body/document 均为 1280px，无横向溢出、无新增 console error、无业务写入口。视觉复审补充了财务标题状态间距与币种分桶逐行展示。
+
+安全扫描 scoped `23 files / 0 critical / 0 warning`，扫描器单测 `9 passed`；全仓既有基线仍为 `5 critical / 326 warning`，因此仓库发布门保持 RED。证据：`.evidence/workshop/2026-08-25-w7-08-media-finance-settlement.json`、`.evidence/workshop/2026-08-25-w7-08-browser/media-finance-settlement-region.png`。未 live apply 共享迁移、未写真实租户、未调用真实 Provider、未生成媒体、未自动重试、未换汇、未产生外部 Effect、未发布。
+
+退出结论：`W7_08_MEDIA_FINANCE_SETTLEMENT_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE`。W7-09 的 W7-03～08 代码前置已满足；下一串行入口为 Media Studio 生命周期、职责矩阵、Stage/Artifact/Issue UI 的方案复核与最小实现，不继承真实 Provider 或发布许可。

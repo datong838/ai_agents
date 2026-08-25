@@ -1,0 +1,40 @@
+{
+  "base_revision": "AOS-000263",
+  "blockers": [],
+  "changed_files": [
+    "aos-platform:.evidence/workshop/2026-08-25-w7-08-browser/",
+    "aos-platform:.evidence/workshop/2026-08-25-w7-08-media-finance-settlement.json",
+    "aos-platform:services/aos-api/alembic/versions/w7_006_media_finance_settlement.py",
+    "aos-platform:services/aos-api/aos_api/aip_media_finance_contracts.py",
+    "aos-platform:services/aos-api/aos_api/aip_media_finance_store.py",
+    "aos-platform:services/aos-api/aos_api/aip_media_finance_service.py",
+    "aos-platform:services/aos-api/aos_api/routers/aip_media_finance.py",
+    "aos-platform:services/aos-api/aos_api/aip_media_provider_job_service.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio_contracts.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_media_studio.py",
+    "aos-platform:apps/web/src/components/workshop/MediaStudioPage.tsx",
+    "aos-platform:apps/web/src/styles/45-ecommerce-workshop.css",
+    "aos-platform:packages/contracts/openapi/v1.generated.json"
+  ],
+  "commits": [
+    "5e44093236f428790d0a5677242d368363a27990",
+    "d5a185e9b3bb6000cb0da5e91e2d982646bd2e97"
+  ],
+  "completed_at": "2026-08-26T00:01:48+08:00",
+  "completed_revision": "AOS-000263",
+  "result": "W7_08_MEDIA_FINANCE_SETTLEMENT_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "no shared migration apply, real tenant mutation, real Provider invocation, media generation, automatic retry, currency conversion, external effect or release",
+    "browser acceptance used local read-only fixture and is code/UI evidence, not operational Provider or release readiness",
+    "repository security baseline remains RED on pre-existing 5 critical/326 warning findings"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w7-08-media-finance-settlement-20260825",
+  "verification": [
+    "focused backend 5 passed; cumulative backend 85 passed plus 2 subtests; OpenAPI/domain 22 passed",
+    "Web targeted 32 passed after visual refinement; full 232 files/2139 tests; typecheck and build 344 modules passed",
+    "isolated PostgreSQL empty downgrade/upgrade passed; deterministic OpenAPI 2666 paths/2368 schemas/4443 unique operations/4453 route rows",
+    "built-in browser 1280px local read-only fixture: exact contribution chain, dual reservation, cancel/fee, CNY/USD buckets and settled visible; no horizontal overflow and 0 console errors",
+    "scoped security 23 files 0 critical/0 warning; scanner tests 9 passed; repository baseline remains 5 critical/326 warning"
+  ]
+}

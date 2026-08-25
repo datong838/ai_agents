@@ -1,23 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000263",
-      "created_at": "2026-08-25T23:08:47+08:00",
-      "excluded_scope": [
-        "authority.json,01/06,Prime core projection until delivery CAS;real tenant writes;real Provider;external effects;release;unrelated dirty docs;protected untracked main repo scope"
-      ],
-      "expected_outputs": [
-        "W7-08 code/contract/browser/security scoped GREEN with no real Provider, no external effect and no release"
-      ],
-      "lease_expires_at": "2026-08-25T23:08:46.719755+00:00",
-      "owner": "codex-m1-serial",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "docs:ADR66,task-receipt,lease;code:w7_006,aip_media_finance contracts/store/service/router,media-studio v3 read projection,tests,evidence"
-      ],
-      "status": "ACTIVE",
-      "task_id": "workshop-w7-08-media-finance-settlement-20260825"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
