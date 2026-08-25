@@ -1,0 +1,36 @@
+{
+  "base_revision": "AOS-000237",
+  "blockers": [
+    "APPROVAL_POLICY_REVISION_AUTHORITY_UNAVAILABLE",
+    "APPROVER_ELIGIBILITY_AUTHORITY_UNAVAILABLE",
+    "ACTION_BUDGET_RESERVATION_AUTHORITY_UNAVAILABLE",
+    "ACCOUNT_ADAPTER_AND_DRY_VALIDATION_AUTHORITIES_UNAVAILABLE"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_action_models.py",
+    "services/aos-api/aos_api/aip_action_store.py",
+    "services/aos-api/aos_api/aip_action_service.py",
+    "services/aos-api/aos_api/aip_action_execution.py",
+    "services/aos-api/aos_api/routers/aip_actions.py",
+    "services/aos-api/alembic/versions/w5_002_action_draft_approval_lease.py",
+    "services/aos-api/tests/aip/test_w5_03_draft_proposal_approval_lease.py",
+    "services/aos-api/tests/aip/test_w2d_store.py",
+    "services/aos-api/tests/test_w2a_production_contract_api.py",
+    ".evidence/workshop/2026-08-25-w5-03-draft-proposal-approval-lease.json"
+  ],
+  "commits": [
+    "7c6975c",
+    "10154a6"
+  ],
+  "completed_at": "2026-08-25T08:36:23+08:00",
+  "completed_revision": "AOS-000237",
+  "result": "W5_03_EXPLICIT_DRAFT_EXACT_APPROVAL_LEASE_CODE_GREEN_EXTERNAL_RESERVATION_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Production ApprovalPolicy/eligibility and ActionBudget reservation authorities remain unavailable, so no external operational readiness, migration application, real Approval/Lease, external effect, canary or release is claimed."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w5-03-draft-proposal-approval-lease-20260825",
+  "verification": [
+    "focused 4 passed; adjacent 32 passed; cumulative 96 passed; compileall GREEN; alembic w5_002 head; diff check GREEN; browser N/A no UI change"
+  ]
+}
