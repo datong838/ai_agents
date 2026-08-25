@@ -17,3 +17,4 @@
 {"occurred_at":"2026-08-26T04:18:37+08:00","project_revision":"AOS-000271","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"occurred_at":"2026-08-26T04:19:17+08:00","project_revision":"AOS-000272","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"occurred_at":"2026-08-26T04:20:12+08:00","project_revision":"AOS-000273","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000273","occurred_at":"2026-08-26T04:22:42+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w8-04-effect-memory-wiki-governance-scenario-20260826","type":"TASK_STARTED"}

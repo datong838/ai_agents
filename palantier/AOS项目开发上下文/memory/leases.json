@@ -1,4 +1,41 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000273",
+      "created_at": "2026-08-26T04:22:42+08:00",
+      "excluded_scope": [
+        "services/aos-api/alembic",
+        "real-tenant-business-data",
+        "production-provider-adapters",
+        "action-execution",
+        "candidate-promotion",
+        "wiki-publication-or-revocation",
+        "publish-or-release"
+      ],
+      "expected_outputs": [
+        "GET-only EffectReview rooted learning scenario with exact Skill Logic role binding composition, governance and revocation conservation, and zero commands",
+        "targeted and cumulative regression, built-in browser evidence, Delivery Receipt, CAS and Prime readback"
+      ],
+      "lease_expires_at": "2026-08-26T12:00:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "services/aos-api/aos_api/ecommerce_workshop_learning_scenario.py",
+        "services/aos-api/aos_api/ecommerce_workshop_learning_scenario_contracts.py",
+        "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+        "services/aos-api/tests",
+        "apps/web/src/api/ecommerceWorkshop",
+        "apps/web/src/components/workshop/AnalystPage.tsx",
+        "apps/web/src/components/workshop/AnalystPage.test.tsx",
+        "apps/web/src/styles/45-ecommerce-workshop.css",
+        "packages/contracts/openapi",
+        ".evidence/workshop",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/73-W8-04-EffectReviewMemoryCandidateWiki治理撤销预检ADR.md",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "workshop-w8-04-effect-memory-wiki-governance-scenario-20260826"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
