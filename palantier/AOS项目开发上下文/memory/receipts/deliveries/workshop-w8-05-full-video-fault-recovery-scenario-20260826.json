@@ -1,0 +1,40 @@
+{
+  "base_revision": "AOS-000274",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_full_video_scenario_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_full_video_scenario.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/client.ts",
+    "apps/web/src/components/workshop/MediaStudioPage.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-08-26-w8-05-full-video-fault-recovery-scenario.json"
+  ],
+  "commits": [
+    "604ca9b47373e008491b7576658649a8e477299c",
+    "874321dd",
+    "dc8fb17",
+    "8c14030"
+  ],
+  "completed_at": "2026-08-26T05:20:46+08:00",
+  "completed_revision": "AOS-000274",
+  "result": "W8_05_FULL_VIDEO_RECOVERY_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
+  "risks": [
+    "NO_SHARED_MIGRATION_APPLY",
+    "NO_REAL_TENANT_BUSINESS_WRITE",
+    "NO_PROVIDER_OR_ACTION_EXECUTION",
+    "NO_AUTOMATIC_RETRY",
+    "NO_PUBLISH_OR_SETTLEMENT",
+    "NO_EXTERNAL_EFFECT",
+    "NO_RELEASE"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-05-full-video-fault-recovery-scenario-20260826",
+  "verification": [
+    "backend targeted 10 passed; cumulative 209 passed",
+    "frontend targeted 11 passed; cumulative 240 files 2177 tests; build 344 modules",
+    "built-in browser desktop/responsive GREEN; console errors 0; security scoped 14 files 0/0"
+  ]
+}
