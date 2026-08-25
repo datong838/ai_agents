@@ -1,36 +1,36 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W6-09"
-  ],
-  "current_phase": "S6_W6_10_CUMULATIVE_CONTRACT_SERVICE_BROWSER_SECURITY_GATE_SERIAL_DEVELOPMENT",
-  "delivery_status": "W6_09_THREE_MODULE_PARTIAL_USAGE_EFFECT_HANDOFF_CODE_CONTRACT_BROWSER_GREEN_ZERO_HANDOFF_CONSUME_ZERO_EXTERNAL_EFFECT_NO_RELEASE",
-  "evidence": [
-    {
-      "kind": "w6_09",
-      "ref": ".evidence/workshop/2026-08-25-w6-09-three-module-partial-usage-effect-handoff.json"
-    }
-  ],
-  "evidence_cutoff": "2026-08-25T17:30:56+08:00",
-  "hard_boundaries": [
-    "No migration apply, real provider/contact/send, real business mutation, handoff token consume, external effect, memory promotion or release."
-  ],
-  "incomplete": [
     "W6-10"
   ],
-  "last_green_gate": "W6_09_CODE_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W6_10_CUMULATIVE_CONTRACT_SERVICE_BROWSER_SECURITY_GATE",
+  "current_phase": "S7_W7_01_SIGNED_STAGE_RESPONSIBILITY_TEMPLATE_CAPABILITY_MAPPING_SERIAL_DEVELOPMENT",
+  "delivery_status": "W6_10_CUMULATIVE_CODE_CONTRACT_SERVICE_BROWSER_SECURITY_GREEN_OPERATIONAL_EXTERNAL_EFFECT_GATE_RETAINED_NO_RELEASE",
+  "evidence": [
+    {
+      "kind": "w6_10",
+      "ref": ".evidence/workshop/2026-08-25-w6-10-cumulative-contract-service-browser-security.json"
+    }
+  ],
+  "evidence_cutoff": "2026-08-25T17:52:12+08:00",
+  "hard_boundaries": [
+    "No migration apply, real provider/media generation/publication, protected data operation, external effect, memory promotion or release."
+  ],
+  "incomplete": [
+    "W7-01"
+  ],
+  "last_green_gate": "W6_10_CUMULATIVE_CODE_CONTRACT_SERVICE_BROWSER_SECURITY_GREEN",
+  "next_gate": "W7_01_SIGNED_STAGE_RESPONSIBILITY_TEMPLATE_CAPABILITY_MAPPING",
   "next_steps": [
-    "Re-review W6-10 against the full W6 typed authority, run cumulative contract/service/browser/security gates, close any fail-closed regression with minimal changes, and retain migration apply, real provider/contact/send, handoff consume, external effect, memory promotion and release as independently gated."
+    "Re-review W7-01 against W6 exact responsibility/profile authorities and 163/164 atomic Skill composition; implement signed Stage/Responsibility templates and ten exact Capability mappings across the required AIP/Workshop layers while keeping real provider, media generation, publication, migration apply, external effect and release independently gated."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000253",
+  "project_revision": "AOS-000254",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "f297dd0d",
-    "delivery_receipt": "ffacbbe",
-    "evidence": "f297dd0d",
-    "workshop_docs": "edc5f73"
+    "code": "7388a8cf",
+    "delivery_receipt": "ddd83ea",
+    "evidence": "7388a8cf",
+    "workshop_docs": "4ac846d"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -40,5 +40,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-25T17:31:42+08:00"
+  "updated_at": "2026-08-25T17:52:45+08:00"
 }
