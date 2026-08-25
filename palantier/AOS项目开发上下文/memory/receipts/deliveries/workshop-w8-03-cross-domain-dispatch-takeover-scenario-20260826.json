@@ -1,0 +1,48 @@
+{
+  "base_revision": "AOS-000270",
+  "blockers": [
+    "DISPATCH_SCENARIO_CANONICAL_ROOT_REQUIRED",
+    "DISPATCH_SCENARIO_OPERATIONAL_AUTHORIZATION_REQUIRED",
+    "RELEASE_GATE_REMAINS_CLOSED"
+  ],
+  "changed_files": [
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_dispatch_scenario.py",
+    "aos-platform:services/aos-api/aos_api/ecommerce_workshop_dispatch_scenario_contracts.py",
+    "aos-platform:services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    "aos-platform:services/aos-api/tests/test_ecommerce_workshop_dispatch_scenario.py",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "aos-platform:apps/web/src/api/ecommerceWorkshop/client.ts",
+    "aos-platform:apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "aos-platform:apps/web/src/styles/45-ecommerce-workshop.css",
+    "aos-platform:packages/contracts/openapi/v1.generated.json",
+    "aos-platform:.evidence/workshop/2026-08-26-w8-03-dispatch-scenario.json",
+    "aos-platform:.evidence/workshop/2026-08-26-w8-03-browser",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/72-W8-03-日常总控跨域派发拒绝RequestMore人工接管预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "commits": [
+    "34ebf3be",
+    "4728f3e4",
+    "a56000e",
+    "fbce091"
+  ],
+  "completed_at": "2026-08-26T04:17:10+08:00",
+  "completed_revision": "AOS-000271",
+  "result": "W8_03_DISPATCH_TAKEOVER_EXACT_BINDING_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_OPERATIONAL_FAIL_CLOSED_NO_RELEASE",
+  "risks": [
+    "NO_SHARED_MIGRATION_APPLY; NO_OWNER_MUTATION; NO_HANDOFF_DECISION_WRITE; NO_TAKEOVER_REQUEST_OR_APPROVAL; NO_PROVIDER; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_MEMORY_PROMOTION; NO_RELEASE",
+    "built-in browser acceptance used a pure loopback GET-only fixture and is not operational authority or real canary evidence",
+    "Health and SourceReadiness were intentionally absent from the fixture and remained visibly fail-closed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-03-cross-domain-dispatch-takeover-scenario-20260826",
+  "verification": [
+    "backend scenario/API 11 passed with 7 warnings; legacy Handoff compatibility 8 passed",
+    "Workshop/OpenAPI cumulative 197 passed with 7 warnings; Web targeted 15 and full 238 files/2167 tests passed",
+    "TypeScript/build 344 modules passed; OpenAPI deterministic at 2667 paths/2418 schemas",
+    "scanner unit 9 passed; scoped security 17 files 0 critical/0 warning",
+    "built-in browser confirmed 7 stages, 5 independent axes, 2 atomic Skills, 1 Logic, 1 digital colleague binding, all commands false and fresh console errors 0",
+    "four screenshot sha256 values are sealed in .evidence/workshop/2026-08-26-w8-03-dispatch-scenario.json"
+  ]
+}
