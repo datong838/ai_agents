@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000240",
+  "blockers": [
+    "REAL_ENDPOINT_AND_SECRET_RESOLVER_NOT_PUBLISHED",
+    "NO_REAL_PROVIDER_CALLBACK_OR_CANARY_AUTHORITY"
+  ],
+  "changed_files": [
+    "services/aos-api/alembic/versions/w5_005_action_webhook_inbox.py",
+    "services/aos-api/aos_api/aip_action_webhook_service.py",
+    "services/aos-api/aos_api/routers/aip_action_webhooks.py",
+    "packages/contracts/openapi/v1.generated.json",
+    ".evidence/workshop/2026-08-25-w5-06-action-webhook-inbox.json"
+  ],
+  "commits": [
+    "460b89c",
+    "ad26cd4",
+    "59fd50d"
+  ],
+  "completed_at": "2026-08-25T10:38:24+08:00",
+  "completed_revision": "AOS-000240",
+  "result": "W5_06_CANONICAL_WEBHOOK_INBOX_REPLAY_ORDERING_CODE_GREEN_NO_REAL_CALLBACK_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "REAL_ENDPOINT_SECRET_PROVIDER_CANARY_KILL_RELEASE_REMAIN_BLOCKED"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w5-06-webhook-inbox-replay-ordering-20260825",
+  "verification": [
+    "focused 9 passed; W5 cumulative 70 passed; OpenAPI 12 passed; deterministic export/compileall/Alembic w5_005/diff green; browser N/A no UI change"
+  ]
+}
