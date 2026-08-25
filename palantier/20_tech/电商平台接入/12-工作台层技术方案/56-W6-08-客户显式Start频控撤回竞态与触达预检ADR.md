@@ -99,3 +99,13 @@ W6-08 不新建“客户触达大 Skill”。客户判断与文案继续由 W6-0
 ### 7.5 关闭口径
 
 W6-08 的代码 GREEN 只证明客户触达治理 authority、竞态顺序、频控 reservation、durable attempt/outbox intent、partial/unknown/reconcile 与工作台贡献视图闭合。真实 permit 兑换、ProtectedContact 解析、账号/capability、Provider dispatch、发送、真实 Consent 数据、迁移 apply、Canary、外部 Effect 和 release 必须由当时的 exact operational authority 独立裁决，不能由本波测试或开发授权替代。
+
+## 8. 实现封板与一致性复审（2026-08-25）
+
+W6-08 已按第 7 节最小范围实现并封板，代码提交为 `aos-platform/m1@f3573f83`，证据为 `.evidence/workshop/2026-08-25-w6-08-customer-start-frequency-revocation-contact-governance.json`。实现新增 tenant-bound、append-only 的频控策略、撤回观察、start 决策、跨批次 frequency reservation、不可兑换 permit、durable attempt/outbox intent、dispatch observation 与贡献 read model；API 与工作台只暴露治理准备和只读贡献，不存在 permit redeem、ProtectedContact resolve、Provider dispatch 或 send 路由。
+
+施工复审发现首版 reservation 只随 start 决策生成，尚不足以证明并发 Batch 共享频控 authority。封板前已整改为独立 `CustomerFrequencyReservationRevision`：以 tenant/customer/channel/purpose/policy/window 为 canonical 串行化边界，强制 exact policy ref、quiet hours、rolling-window held count、幂等键和 RLS/FORCE RLS；`unknown/accepted_pending` 保持占用，禁止 timeout 释放和自动重发。该整改使实现与第 3、5.2 节一致，没有削弱撤回 sequence、item 守恒或零外部副作用边界。
+
+验收结果：后端 W6-08 专项 `11 passed`、W6 累计 `65 passed`、API/OpenAPI `19 passed`；OpenAPI 双进程确定性 GREEN（`2634 paths / 2292 schemas / 4413 route rows / 4403 operations`）；前端专项 `10 passed`、累计 `230 files / 2125 tests passed`，TypeScript 与生产构建 GREEN；内置浏览器 `/workshop/customer` 验收确认治理卡、Skill→Logic→角色绑定、tenant 与零发送边界可见，发送/触达控件为 0、联系方式泄漏为 0、控制台错误为 0。迁移只验证未 apply。
+
+最终结论为 `CODE_CONTRACT_BROWSER_GREEN / GOVERNANCE_PREPARED_ONLY / ZERO_CONTACT / ZERO_PROVIDER_CALL / ZERO_SEND / NO_EXTERNAL_EFFECT / NO_RELEASE`。它不是 operational ready、真实触达或发布证据；W6-09 只能消费这里的 typed authority 与守恒事实，不能把治理准备映射成已执行效果。
