@@ -1,25 +1,25 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W7-08"
+    "W7-09"
   ],
   "current_phase": "S7_WORKSHOP_W7_MEDIA_ADAPTIVE_PRODUCTION",
-  "delivery_status": "W7_08_MEDIA_FINANCE_SETTLEMENT_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "W7_09_MEDIA_STUDIO_LIFECYCLE_CONTRIBUTION_CODE_CONTRACT_BROWSER_GREEN_SECURITY_SCOPED_GREEN_REPO_BASELINE_RED_NO_REAL_PROVIDER_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-08-media-finance-settlement-20260825.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/workshop-w7-09-media-studio-lifecycle-ui-20260826.json"
     },
     {
       "kind": "implementation",
-      "ref": ".evidence/workshop/2026-08-25-w7-08-media-finance-settlement.json"
+      "ref": ".evidence/workshop/2026-08-26-w7-09-media-studio-lifecycle-ui.json"
     },
     {
       "kind": "adr",
-      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/66-W7-08-CapacityBudgetUsage取消与最终对账预检ADR.md"
+      "ref": "palantier/20_tech/电商平台接入/12-工作台层技术方案/67-W7-09-MediaStudio生命周期职责StageArtifactIssueUI预检ADR.md"
     }
   ],
-  "evidence_cutoff": "2026-08-26T00:01:48+08:00",
+  "evidence_cutoff": "2026-08-26T00:57:47+08:00",
   "hard_boundaries": [
     "NO_SHARED_MIGRATION_APPLY",
     "NO_REAL_TENANT_MUTATION",
@@ -29,24 +29,23 @@
     "NO_RELEASE"
   ],
   "incomplete": [
-    "W7-09",
     "W7-10",
     "W7-11",
     "W8"
   ],
-  "last_green_gate": "W7-08",
-  "next_gate": "W7-09",
+  "last_green_gate": "W7-09",
+  "next_gate": "W7-10",
   "next_steps": [
-    "Review W7-09 against the now-GREEN W7-03 through W7-08 authorities; implement one frozen Media Studio lifecycle read model with responsibility matrix, Stage/Artifact/Issue/cost contribution UI and server-owned command capability boundaries, without real Provider invocation, external effect or release."
+    "Review W7-10 against the now-GREEN W7-05, W7-06 and W7-09 authorities; implement exact PublishCandidate/ImpactPreview/Action/Receipt and no-API Handoff code paths while retaining NO_REAL_PROVIDER, NO_EXTERNAL_EFFECT and NO_RELEASE."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000264",
+  "project_revision": "AOS-000265",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "5e44093236f428790d0a5677242d368363a27990",
-    "delivery_receipt": "8405a46",
-    "evidence": "d5a185e9b3bb6000cb0da5e91e2d982646bd2e97",
-    "workshop_docs": "8405a46"
+    "code": "94e62ac0038f03b26e3af4886c6d22ff089d20f9",
+    "delivery_receipt": "7126f9214ca437a3a03626b6318c010026de6d22",
+    "evidence": "1bd0857bd4f132a0ead60606d531e043466168d7",
+    "workshop_docs": "7126f9214ca437a3a03626b6318c010026de6d22"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -56,5 +55,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T00:04:21+08:00"
+  "updated_at": "2026-08-26T01:03:54+08:00"
 }
