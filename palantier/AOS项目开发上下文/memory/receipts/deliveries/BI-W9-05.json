@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000350",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/business_investigation_instance_overlay.py",
+    "services/aos-api/tests/fixtures/business_investigation/instance_overlay.json",
+    "services/aos-api/tests/test_business_investigation_instance_overlay.py"
+  ],
+  "commits": [
+    "948291abf0372dff95b8c7faae0a02c2137bd178"
+  ],
+  "completed_at": "2026-08-27T06:41:07+08:00",
+  "completed_revision": "AOS-000350",
+  "result": "BI_W9_05_TENANT_BOUND_DISABLED_INSTANCE_OVERLAY_CODE_GREEN_NO_SECRET_RESOLUTION_NO_RELEASE",
+  "risks": [
+    "disabled synthetic overlay only; org-org/dev-project positive and dev-org/dev-project isolation negative; no secret resolution/session creation/schedule runtime/profile activation/platform access/external effect/release; local database remains behind existing migration and was not mutated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W9-05",
+  "verification": [
+    "targeted 26 passed; cumulative W3-07/W9-01..05 98 passed; investigation migration contract 4 passed; JSON/compile/diff-check green; alembic single head biw8_001; browser not applicable because no page or route"
+  ]
+}
