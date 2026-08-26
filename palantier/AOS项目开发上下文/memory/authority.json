@@ -5,34 +5,35 @@
     "BI-W2-01_TO_BI-W2-07",
     "BI-W3-01",
     "BI-W3-02",
-    "BI-W3-03"
+    "BI-W3-03",
+    "BI-W3-04"
   ],
-  "current_phase": "BI_W3_03_SCHEMA_PROFILING_CODE_CONTROL_GREEN",
-  "delivery_status": "BI_W3_03_GREEN_HYPOTHESIS_NOT_MAPPING_AUTHORITY_UNKNOWN_CONSERVED_SHARED_MIGRATION_NOT_APPLIED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "BI_W3_04_CONFIRMED_SOURCE_MAPPING_CODE_CONTROL_GREEN",
+  "delivery_status": "BI_W3_04_GREEN_REVIEW_AUTHORITY_VERIFIED_UNKNOWN_NOT_MAPPED_SHARED_MIGRATION_NOT_APPLIED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "DeliveryReceipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-03-schema-reasoning-profiling.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-04-source-canonical-mapping.json"
     }
   ],
-  "evidence_cutoff": "2026-08-26T15:20:00+08:00",
+  "evidence_cutoff": "2026-08-26T15:38:00+08:00",
   "hard_boundaries": [
-    "No shared migration apply, LLM/Adapter/browser activation, raw/sample value persistence, automatic mapping publication, Ontology/DataProduct write, real tenant mutation, external effect or release."
+    "No shared migration apply, automatic mapping/hydration, direct Ontology/DataProduct table write, raw/sample/PII/Secret persistence, LLM/Adapter/browser activation, real tenant mutation, external effect or release."
   ],
   "incomplete": [
-    "BI-W3-04_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W3-05_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI_W3_03_AGGREGATE_ONLY_HIGH_RISK_REVIEW_TENANT_ISOLATION_GREEN",
-  "next_gate": "BI_W3_04_SOURCEFIELD_CANONICALFIELD_MAPPINGREVISION",
+  "last_green_gate": "BI_W3_04_REVIEW_EXACT_REF_CAS_REVERSE_TRACE_ISOLATION_GREEN",
+  "next_gate": "BI_W3_05_SEMANTIC_HYDRATION_EXACT_OUTPUT_REFS",
   "next_steps": [
-    "Implement tenant-bound SourceField to CanonicalField MappingRevision from exact profiling evidence; require human confirmation for governed/high-risk mappings and preserve unknowns."
+    "Implement tenant-bound SemanticHydrationJob consuming exact confirmed SourceMappingRevision and writing only through governed Owner APIs with exact output refs, quarantine and unknown conservation."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000297",
+  "project_revision": "AOS-000298",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "bd777842",
-    "plan": "9ede8f7"
+    "code": "b2e8986d",
+    "plan": "f9d3eae"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -42,5 +43,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T15:20:20+08:00"
+  "updated_at": "2026-08-26T15:37:32+08:00"
 }

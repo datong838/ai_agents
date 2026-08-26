@@ -1,26 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000297",
-      "created_at": "2026-08-26T15:22:20+08:00",
-      "excluded_scope": [
-        "shared database apply; automatic mapping publication; Ontology/DataProduct write; LLM/Adapter/browser; real tenant/external/release"
-      ],
-      "expected_outputs": [
-        "append-only tenant SourceMappingRevision with exact profiling evidence, human confirmation, version CAS, reverse trace and unknown preservation"
-      ],
-      "lease_expires_at": "2026-08-26T17:22:09+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "services/aos-api/alembic/versions/biw3_004_source_mapping_revision.py",
-        "services/aos-api/aos_api/business_investigation_mapping.py",
-        "services/aos-api/tests/test_business_investigation_mapping_revision.py",
-        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
-      ],
-      "status": "ACTIVE",
-      "task_id": "bi-w3-04-source-canonical-mapping"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }

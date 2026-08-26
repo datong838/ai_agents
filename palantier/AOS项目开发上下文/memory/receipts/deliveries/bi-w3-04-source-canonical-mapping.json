@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000297",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw3_004_source_mapping_revision.py",
+    "services/aos-api/aos_api/business_investigation_mapping.py",
+    "services/aos-api/tests/test_business_investigation_mapping_revision.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "b2e8986d"
+  ],
+  "completed_at": "2026-08-26T15:37:18+08:00",
+  "completed_revision": "AOS-000297",
+  "result": "BI_W3_04_CONFIRMED_SOURCE_MAPPING_CODE_CONTROL_GREEN_REVIEW_AUTHORITY_VERIFIED_UNKNOWN_NOT_MAPPED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "shared database not applied; no real review/mapping, automatic publication, ontology/data-product write, semantic hydration, external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w3-04-source-canonical-mapping",
+  "verification": [
+    "target:6 passed; cumulative:50 passed; disposable PostgreSQL review/mapping idempotency, CAS, unknown rejection, isolation, direct-write and downgrade GREEN; migration head biw3_004; compileall/diff GREEN; browser N/A"
+  ]
+}
