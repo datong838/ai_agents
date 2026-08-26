@@ -159,3 +159,4 @@
 {"occurred_at":"2026-08-26T21:07:03+08:00","result":"BI_W6_01_COMPILE_SAGA_RECEIPT_CODE_DB_GREEN","schema":"aos-memory-event/v1","task_id":"BI-W6-01","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T21:07:50+08:00","project_revision":"AOS-000321","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"occurred_at":"2026-08-26T21:10:34+08:00","project_revision":"AOS-000322","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000322","occurred_at":"2026-08-26T21:13:38+08:00","schema":"aos-memory-event/v1","task_id":"BI-W6-02","type":"TASK_STARTED"}
