@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000304",
+  "blockers": [
+    "NO_REAL_ACTIVE_CASE",
+    "NO_AIP_TASKRUN",
+    "NO_EXTERNAL_EFFECT"
+  ],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw4_003_run_active_trigger_guard.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_run.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_run.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_run_guard.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "ab986c56"
+  ],
+  "completed_at": "2026-08-26T17:12:02+08:00",
+  "completed_revision": "AOS-000304",
+  "result": "BI-W4-03 single-active Run slot and trigger Receipt idempotency closed with scheduled overlap skip",
+  "risks": [
+    "active slot release and SchedulePolicy trigger composition remain gated to BI-W4-06/07 and BI-W8"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w4-03-run-active-trigger-idempotency",
+  "verification": [
+    "target pytest: 8 passed",
+    "cumulative BI-W1..BI-W4-03 pytest: 92 passed",
+    "disposable PostgreSQL trigger replay, overlap Receipt, single active slot, RLS and downgrade tests passed",
+    "compileall, alembic head biw4_003, diff and targeted security checks passed; browser NOT_APPLICABLE"
+  ]
+}
