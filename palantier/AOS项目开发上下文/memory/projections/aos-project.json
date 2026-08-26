@@ -1,43 +1,44 @@
 {
   "completed": [
     "BI-W8-01",
-    "BI-W8-02"
+    "BI-W8-02",
+    "BI-W8-03"
   ],
-  "content_hash": "sha256:0cd07ee1e9f46bf0453a9a65dbf50dd5d3e622a05fe9223b2fa0d7c3f2784085",
-  "current_phase": "BI-W8 Workshop schedule policy and command orchestration implementation",
-  "delivery_status": "BI_W8_02_SCHEDULE_POLICY_CODE_CONTROL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:7d0450153e8a80593656fac840a1104a94a8b80b2e8324b8985a359cc8f8e76f",
+  "current_phase": "BI-W8 Workshop review-return command orchestration implementation",
+  "delivery_status": "BI_W8_03_RECEIPT_FIRST_DATA_COMMAND_CODE_BROWSER_GREEN_VISUAL_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "BI-W8-02-IMPL2.json"
+      "ref": "BI-W8-03-IMPL2.json"
     },
     {
       "kind": "tests",
-      "ref": "BI-W8-02-focused27-cumulative228-postgresql-green"
+      "ref": "BI-W8-03-focused33-web26-cumulative236-web2287-browser-three-viewports-green"
     },
     {
       "kind": "code",
-      "ref": "c1d3bdb0c0f2e503e21e189d83f9f582baab5231"
+      "ref": "656dad9689c2328bbd2440b7ca012c87b2d4ab16"
     }
   ],
-  "generated_at": "2026-08-27T02:46:33+08:00",
+  "generated_at": "2026-08-27T03:55:47+08:00",
   "hard_boundaries": [
     "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_PROVIDER_CALL; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
   ],
   "incomplete": [
-    "BI-W8-03"
+    "BI-W8-04"
   ],
-  "last_green_gate": "BI-W8-02 focused27 cumulative228 PostgreSQL create-update-replay-conflict-RLS-downgrade compileall alembic-head diff-check GREEN",
-  "next_gate": "BI-W8-03",
+  "last_green_gate": "BI-W8-03 focused backend33 web26 cumulative backend236 web2287 browser1280-1440-1920 build compileall alembic-head diff-check GREEN",
+  "next_gate": "BI-W8-04",
   "next_steps": [
-    "Implement BI-W8-03 analysis command orchestration with canonical receipts and no external effect; retain final S8 eight-menu visual plus frontend plus backend hard gate"
+    "Implement BI-W8-04 Workshop consumption of canonical review-return authority; retain final S8-Visual eight-menu frontend-backend-visual hard gate"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000340",
+  "project_revision": "AOS-000341",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos": "c1d3bdb0c0f2e503e21e189d83f9f582baab5231",
-    "docs": "146f144"
+    "aos": "656dad9689c2328bbd2440b7ca012c87b2d4ab16",
+    "docs": "3beab72dc6b722b702615a9b1690853b8178caac"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
