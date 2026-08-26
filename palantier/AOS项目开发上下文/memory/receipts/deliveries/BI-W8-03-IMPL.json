@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000340",
+  "blockers": [],
+  "changed_files": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "cc5cf7c"
+  ],
+  "completed_at": "2026-08-27T02:55:27+08:00",
+  "completed_revision": "AOS-000340",
+  "result": "SCOPE_EXPANDED_BEFORE_CODE_NO_IMPLEMENTATION",
+  "risks": [
+    "No production code changed under this Lease; implementation moves to BI-W8-03-IMPL2"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W8-03-IMPL",
+  "verification": [
+    "pre-code replay audit found canonical DataRequirement Receipt query must enter exact scope"
+  ]
+}
