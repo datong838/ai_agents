@@ -27,42 +27,44 @@
     "BI-W5-06",
     "BI-W5-07",
     "BI-W5-08",
-    "BI-W6-01"
+    "BI-W6-01",
+    "BI-W6-02"
   ],
-  "current_phase": "BI-W6 Receipt-first saga in progress; compile leg complete",
-  "delivery_status": "BI_W6_01_COMPILE_SAGA_RECEIPT_CODE_DB_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "BI-W6 Receipt-first saga in progress; data request leg complete",
+  "delivery_status": "BI_W6_02_EXACT_DATA_REQUIREMENT_COMMAND_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W6-01.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W6-02.json"
     },
     {
       "kind": "plan",
       "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "evidence_cutoff": "2026-08-26T21:07:03+08:00",
+  "evidence_cutoff": "2026-08-26T21:24:25+08:00",
   "hard_boundaries": [
     "NO_SHARED_MIGRATION_APPLY",
     "NO_REAL_BUSINESS_DATA",
+    "NO_SOURCE_SYSTEM_READ",
     "NO_PROVIDER_EXECUTION",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W6-02_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W6-03_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W6-01 targeted DB 6, adjacent 16, business-investigation cumulative 153 tests GREEN; compileall/diff/Alembic single-head GREEN; browser N/A",
-  "next_gate": "BI-W6-02 AIP to DataRequirement command and receipt",
+  "last_green_gate": "BI-W6-02 adjacency 29/29 and Business Investigation cumulative 162/162 GREEN; compileall/diff/Alembic head GREEN",
+  "next_gate": "BI-W6-03 Fulfillment to AIP resume",
   "next_steps": [
-    "Start BI-W6-02 AIP to DataRequirement command and receipt; continue serial Loop"
+    "Start BI-W6-03 Fulfillment to AIP resume with exact refs and fail-closed ownership"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000322",
+  "project_revision": "AOS-000323",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "16e3dc7f",
-    "bi-w6-01-plan": "f8e225b"
+    "aos-platform": "d146ea99",
+    "bi-w6-02-plan": "6a914f3"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -72,5 +74,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T21:10:34+08:00"
+  "updated_at": "2026-08-26T21:25:02+08:00"
 }
