@@ -1,4 +1,26 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000298",
+      "created_at": "2026-08-26T15:38:14+08:00",
+      "excluded_scope": [
+        "shared database apply; direct Owner table write; real ontology/data-product mutation; raw/sample/PII/Secret persistence; Adapter/browser/LLM; external/release"
+      ],
+      "expected_outputs": [
+        "tenant-bound SemanticHydrationJob and immutable receipt with exact confirmed mapping and exact Owner API output refs, quarantine and unknown conservation"
+      ],
+      "lease_expires_at": "2026-08-26T17:42:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "services/aos-api/alembic/versions/biw3_005_semantic_hydration_job.py",
+        "services/aos-api/aos_api/business_investigation_hydration.py",
+        "services/aos-api/tests/test_business_investigation_semantic_hydration.py",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "bi-w3-05-semantic-hydration-job"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }

@@ -91,3 +91,4 @@
 {"base_revision":"AOS-000297","occurred_at":"2026-08-26T15:22:20+08:00","schema":"aos-memory-event/v1","task_id":"bi-w3-04-source-canonical-mapping","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-26T15:37:18+08:00","result":"BI_W3_04_CONFIRMED_SOURCE_MAPPING_CODE_CONTROL_GREEN_REVIEW_AUTHORITY_VERIFIED_UNKNOWN_NOT_MAPPED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"bi-w3-04-source-canonical-mapping","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T15:37:32+08:00","project_revision":"AOS-000298","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000298","occurred_at":"2026-08-26T15:38:14+08:00","schema":"aos-memory-event/v1","task_id":"bi-w3-05-semantic-hydration-job","type":"TASK_STARTED"}
