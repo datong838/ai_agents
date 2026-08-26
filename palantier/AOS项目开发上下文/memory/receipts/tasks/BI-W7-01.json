@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000328",
+  "created_at": "2026-08-26T22:38:46+08:00",
+  "excluded_scope": [
+    "BI-W7-02 Case list/overview; backend API/parser/client; commands/schedule/handoff; real business data; source reads; Provider invocation; external effects; release"
+  ],
+  "expected_outputs": [
+    "default-first BusinessInvestigationTab behind exact ecommerce.investigation.read flag; flag-off seven-view compatibility; focused/cumulative web tests; built-in browser evidence; Delivery Receipt; authority CAS; Prime readback"
+  ],
+  "lease_expires_at": "2026-08-26T20:38:36+00:00",
+  "owner": "codex-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx; apps/web/src/components/workshop/businessInvestigationFeatureFlags.ts; apps/web/src/components/workshop/AnalystPage.tsx; apps/web/src/components/workshop/AnalystPage.test.tsx; apps/web/src/styles/45-ecommerce-workshop.css; docs plan/receipts/authority projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W7-01"
+}
