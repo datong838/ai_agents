@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000346",
+  "created_at": "2026-08-27T06:10:05+08:00",
+  "excluded_scope": [
+    "production code, real business data, source read, Adapter installation, external effects and release"
+  ],
+  "expected_outputs": [
+    "BI-W9-01 immutable evidence record and evidence commit"
+  ],
+  "lease_expires_at": "2026-08-28T12:00:00+08:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    ".evidence/workshop/2026-08-27-biw9-01-disabled-adapter-capability.json"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W9-01-EVIDENCE"
+}

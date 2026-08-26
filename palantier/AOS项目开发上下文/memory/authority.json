@@ -7,52 +7,53 @@
     "BI-W8-04",
     "BI-W8-05",
     "BI-W8-06",
-    "BI-W8-07"
+    "BI-W8-07",
+    "BI-W9-01"
   ],
   "current_phase": "BI-W9 AdapterPack implementation",
-  "delivery_status": "BI_W8_07_REPLAY_EXPIRY_CONFLICT_PERMISSION_UNKNOWN_OUTCOME_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "BI_W9_01_DISABLED_GENERIC_ADAPTER_CAPABILITY_CONTRACT_GREEN_NO_SOURCE_READ_NO_RELEASE",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "BI-W8-07-IMPL2.json"
+      "ref": "BI-W9-01-IMPL.json"
     },
     {
       "kind": "receipt",
-      "ref": "BI-W8-07-SCOPE-RECONCILE.json"
+      "ref": "BI-W9-01-EVIDENCE.json"
     },
     {
       "kind": "tests",
-      "ref": "BI-W8-07-backend62-frontend71-scope11-browser1280-green"
+      "ref": "BI-W9-01-targeted18-cumulative29-green"
     },
     {
       "kind": "code",
-      "ref": "2c5adffc"
+      "ref": "183427df"
     },
     {
       "kind": "docs",
-      "ref": "b491531"
+      "ref": "0a57f57"
     }
   ],
-  "evidence_cutoff": "2026-08-27T06:02:35+08:00",
+  "evidence_cutoff": "2026-08-27T06:11:06+08:00",
   "hard_boundaries": [
-    "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_PROVIDER_CALL; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
+    "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_ADAPTER_INSTALLATION; NO_PLATFORM_TERMS_CLAIM; NO_PROVIDER_CALL; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
   ],
   "incomplete": [
-    "BI-W9-01",
+    "BI-W9-02",
     "S8-Visual"
   ],
-  "last_green_gate": "BI-W8-07 backend cumulative62 frontend cumulative71 typecheck build compileall alembic diff browser known-rejection GREEN; scope reconcile targeted11 GREEN; final S8-Visual pending",
-  "next_gate": "BI-W9-01",
+  "last_green_gate": "BI-W9-01 RED import; targeted18 cumulative29 JSON compile Alembic diff GREEN; browser N/A no page; final S8-Visual pending",
+  "next_gate": "BI-W9-02",
   "next_steps": [
-    "Review and implement BI-W9-01 exact AdapterPack task without source read or external effect",
+    "Review and implement BI-W9-02 disabled Niushop menu database object mapping Profile without source access",
     "Retain final S8-Visual eight-menu frontend-backend 1280/1440/1920 exact visual hard gate"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000346",
+  "project_revision": "AOS-000347",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos": "2c5adffc",
-    "docs": "b491531"
+    "aos": "183427df",
+    "docs": "0a57f57"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -62,5 +63,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T06:02:53+08:00"
+  "updated_at": "2026-08-27T06:11:22+08:00"
 }

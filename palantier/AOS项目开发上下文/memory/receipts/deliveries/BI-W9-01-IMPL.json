@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000346",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/business_investigation_adapter_capability.py",
+    "services/aos-api/tests/fixtures/business_investigation/adapter_capability_matrix.json",
+    "services/aos-api/tests/test_business_investigation_adapter_capability.py"
+  ],
+  "commits": [
+    "b87fb0a173c8ec00137488dde7693971e3abcc65"
+  ],
+  "completed_at": "2026-08-27T06:09:58+08:00",
+  "completed_revision": "AOS-000346",
+  "result": "BI_W9_01_DISABLED_GENERIC_ADAPTER_CAPABILITY_CODE_GREEN",
+  "risks": [
+    "disabled contract only; no installation, terms, SourceReadiness, runtime or release claim; S8-Visual pending"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W9-01-IMPL",
+  "verification": [
+    "RED import failure; targeted 18 passed; BI-W3-07 cumulative 29 passed; JSON compile Alembic diff GREEN; browser N/A no page"
+  ]
+}
