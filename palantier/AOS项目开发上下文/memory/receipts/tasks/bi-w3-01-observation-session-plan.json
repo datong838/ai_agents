@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000293",
+  "created_at": "2026-08-26T14:39:53+08:00",
+  "excluded_scope": [
+    "shared database upgrade; browser/session activation; Cookie/password/captcha/token/localStorage/session payload; ObservationReceipt; Adapter call; mapping/hydration; real tenant mutation; external effect; release; unrelated dirty or untracked files"
+  ],
+  "expected_outputs": [
+    "Frozen BI-W3-01 plan, strict read-only ObservationSessionLease/ObservationPlan authority, tenant/CAS/disposable PostgreSQL tests, Delivery Receipt and safe commits"
+  ],
+  "lease_expires_at": "2026-08-26T12:00:00+00:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/alembic/versions/biw3_001_observation_session_plan.py",
+    "services/aos-api/aos_api/business_investigation_observation_contracts.py",
+    "services/aos-api/aos_api/business_investigation_observation_store.py",
+    "services/aos-api/tests/test_business_investigation_observation_session_plan.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "bi-w3-01-observation-session-plan"
+}
