@@ -7,47 +7,45 @@
     "BI-W3-03",
     "BI-W3-04",
     "BI-W3-05",
-    "BI-W3-06"
+    "BI-W3-06",
+    "BI-W3-07"
   ],
-  "content_hash": "sha256:b93d789d5922c0d5524638f8c0dae34f0f20678a5e87180332797d1de399629a",
-  "current_phase": "BI-W3_PLATFORM_OBSERVATION_MAPPING_HYDRATION",
-  "delivery_status": "BI_W3_06_DATA_HANDLING_CODE_CONTROL_GREEN_CANONICAL_RETENTION_VERIFIED_RAW_BYPASS_DENIED_OTHER_POLICY_OPERATIONAL_NOT_PROVEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:b56051d2707c3f99ce97034487de5a7cc629a265e31ad6ca54cfd0a087cfc69a",
+  "current_phase": "BI-W3 complete; BI-W4 BusinessInvestigationCase/Run domain authority",
+  "delivery_status": "BI_W3_07_CONNECTOR_DISABLED_FIXTURE_CONTRACT_GREEN_NO_REAL_PLATFORM_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "DeliveryReceipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-06-data-handling-policy.json"
+      "kind": "delivery",
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-07-connector-failure-restart-contracts.json"
     },
     {
-      "kind": "CodeCommit",
-      "ref": "4d2b605f9806a1020e359b9927bb08d8f7048dd2"
-    },
-    {
-      "kind": "PlanCommit",
-      "ref": "03777acbae8d6a766292257ae387b9d60ffc53e5"
+      "kind": "plan",
+      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "generated_at": "2026-08-26T16:18:20+08:00",
+  "generated_at": "2026-08-26T16:33:19+08:00",
   "hard_boundaries": [
-    "NO_SHARED_MIGRATION_APPLY",
-    "NO_REAL_ARTIFACT_DELETE",
     "NO_REAL_PLATFORM_ACCESS",
+    "NO_ADAPTER_INSTALLATION",
+    "NO_AUTOMATIC_RETRY",
+    "NO_CAPTCHA_SOLVE",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W3-07_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W4-01_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W3-06 targeted 7/7 and cumulative 64/64; disposable PostgreSQL exact retention/subject/raw-bypass/cleanup/isolation/immutability GREEN; migration head biw3_006",
-  "next_gate": "BI-W3-07 connector-side fixture and contract test closure",
+  "last_green_gate": "BI-W3-07 disabled connector contract tests and BI-W1..BI-W3 cumulative regression GREEN",
+  "next_gate": "BI-W4-01 BusinessInvestigationCase/Revision authority",
   "next_steps": [
-    "Open BI-W3-07 exact scope; review connector/fixture contracts and implement disabled synthetic connector-side contract tests without real platform access"
+    "Start BI-W4-01 BusinessInvestigationCase/Revision authority from exact frozen requirements; continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000301",
+  "project_revision": "AOS-000302",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "4d2b605f9806a1020e359b9927bb08d8f7048dd2",
-    "plan": "03777acbae8d6a766292257ae387b9d60ffc53e5"
+    "aos-platform": "66c41e45",
+    "bi-w3-07-plan": "46c2cd6376830f87161704aede01e5815b9aa700"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

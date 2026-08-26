@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000301",
+  "blockers": [
+    "NO_REAL_PLATFORM_ACCESS",
+    "NO_EXTERNAL_EFFECT"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/business_investigation_connector_contract.py",
+    "services/aos-api/tests/fixtures/business_investigation/connector_failure_matrix.json",
+    "services/aos-api/tests/test_business_investigation_connector_contract.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "66c41e45"
+  ],
+  "completed_at": "2026-08-26T16:32:15+08:00",
+  "completed_revision": "AOS-000301",
+  "result": "BI-W3-07 disabled connector failure/restart contract acceptance closed fail-safe; no real platform access or external effect",
+  "risks": [
+    "fixture contract green does not prove AdapterPack installation, SourceReadiness, real platform read-only pilot, operational readiness, or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w3-07-connector-failure-restart-contracts",
+  "verification": [
+    "target pytest: 11 passed",
+    "cumulative BI-W1..BI-W3-07 pytest: 52 passed",
+    "compileall, JSON, diff, alembic head biw3_006 and security scan passed",
+    "browser NOT_APPLICABLE: no page or route"
+  ]
+}
