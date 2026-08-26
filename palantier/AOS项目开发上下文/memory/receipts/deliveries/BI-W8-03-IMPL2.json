@@ -1,0 +1,48 @@
+{
+  "base_revision": "AOS-000340",
+  "blockers": [],
+  "changed_files": [
+    "/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "services/aos-api/aos_api/aip_business_investigation_compile_saga.py",
+    "services/aos-api/aos_api/aip_business_investigation_data_saga.py",
+    "services/aos-api/aos_api/aip_business_investigation_runtime.py",
+    "services/aos-api/aos_api/data_requirement_store.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_application.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_data_command.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_projection.py",
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/tests/test_aip_business_investigation_data_saga.py",
+    "services/aos-api/tests/test_aip_business_investigation_runtime.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_data_command.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_projection.py"
+  ],
+  "commits": [
+    "656dad9689c2328bbd2440b7ca012c87b2d4ab16"
+  ],
+  "completed_at": "2026-08-27T03:54:00+08:00",
+  "completed_revision": "AOS-000341",
+  "result": "BI_W8_03_RECEIPT_FIRST_DATA_COMMAND_CODE_BROWSER_GREEN_VISUAL_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Current AOS dark shell, wide sidebar, vertical density and spacing remain materially different from the light dense visual baseline; final S8-Visual eight-menu frontend/backend/visual hard gate remains pending",
+    "No real business data write, source read, fulfillment, TaskRun resume, Provider execution, migration apply, external effect or release was performed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W8-03-IMPL2",
+  "verification": [
+    "backend focused: 33/33 GREEN",
+    "backend business-investigation cumulative: 236/236 GREEN with 7 pre-existing warnings",
+    "web focused parser/client/component: 26/26 GREEN",
+    "web cumulative: 255 files / 2287 tests GREEN",
+    "TypeScript + Vite production build + compileall + Alembic single head biw8_001 + diff-check GREEN",
+    "built-in browser commands-off and safe fixture command states at 1280/1440/1920: 8 tabs, no horizontal overflow, default zero write buttons, one server-authorized DataRequirement form, keyboard/focus GREEN, console errors 0, no POST clicked",
+    "visual comparison recorded material baseline differences; BI-W8-03 does not claim visual completion"
+  ]
+}
