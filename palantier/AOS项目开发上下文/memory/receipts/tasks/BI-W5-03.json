@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000314",
+  "created_at": "2026-08-26T19:43:58+08:00",
+  "excluded_scope": [
+    "research-job-persistence",
+    "provider-registration-and-execution",
+    "data-source-ownership",
+    "ontology-authority",
+    "human-work-queue-authority",
+    "database-migration",
+    "real-business-data",
+    "external-effect-and-release"
+  ],
+  "expected_outputs": [
+    "canonical-research-job-request-adapter",
+    "data-ontology-human-source-owner-contract",
+    "fail-closed-research-reuse-tests"
+  ],
+  "lease_expires_at": "2026-08-27T00:15:00+08:00",
+  "owner": "aip-analysis-orchestration",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_business_investigation_research.py",
+    "services/aos-api/tests/test_aip_business_investigation_research.py",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W5-03"
+}
