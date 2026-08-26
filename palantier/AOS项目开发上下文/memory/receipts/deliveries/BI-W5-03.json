@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000314",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_business_investigation_research.py",
+    "services/aos-api/tests/test_aip_business_investigation_research.py"
+  ],
+  "commits": [
+    "120bda9c"
+  ],
+  "completed_at": "2026-08-26T19:49:37+08:00",
+  "completed_revision": "AOS-000314",
+  "result": "BI_W5_03_CANONICAL_RESEARCH_JOB_REUSE_GREEN_SOURCE_OWNER_PRESERVED_NO_PROVIDER_EXECUTION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "adapter creates manifests only and never submits provider execution",
+    "data ontology and human source authorities remain external to AIP"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W5-03",
+  "verification": [
+    "targeted=6 passed",
+    "adjacent-research-job=20 passed",
+    "business-investigation-cumulative=125 passed",
+    "compileall-and-diff-check=GREEN",
+    "browser=NOT_APPLICABLE_BACKEND_ONLY"
+  ]
+}
