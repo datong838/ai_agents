@@ -1,0 +1,40 @@
+{
+  "base_revision": "AOS-000337",
+  "created_at": "2026-08-27T01:54:04+08:00",
+  "excluded_scope": [
+    "database",
+    "migrations",
+    "real-business-data",
+    "provider-execution",
+    "external-effects",
+    "release",
+    "AIP-Data-Adapter"
+  ],
+  "expected_outputs": [
+    "BI-W8-01 server command projection",
+    "strict command client and fail-closed UI",
+    "tests browser receipt authority memory Prime closure"
+  ],
+  "lease_expires_at": "2026-08-26T18:54:04+00:00",
+  "owner": "Codex-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/components/workshop/businessInvestigationFeatureFlags.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W8-01-IMPL"
+}
