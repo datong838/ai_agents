@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000345",
+  "created_at": "2026-08-27T05:50:29+08:00",
+  "excluded_scope": [
+    "all other production files",
+    "real business data",
+    "shared migration apply",
+    "Provider or Action execution",
+    "external effects",
+    "release",
+    "unrelated dirty or untracked files"
+  ],
+  "expected_outputs": [
+    "BI-W8-07 unknown-outcome minimal fix plus replay expiry conflict permission matrix, tests, browser evidence, Receipt, commit, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-28T12:00:00+08:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/tests/test_ecommerce_business_investigation_wave8_acceptance.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "services/aos-api/tests/aip/test_aip_handoff_api.py",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W8-07-IMPL2"
+}

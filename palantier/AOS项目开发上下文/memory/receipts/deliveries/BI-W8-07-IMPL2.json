@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000345",
+  "blockers": [
+    "scope reconciliation only; no product or safety blocker"
+  ],
+  "changed_files": [
+    "services/aos-api/tests/test_ecommerce_business_investigation_wave8_acceptance.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "services/aos-api/tests/aip/test_aip_handoff_api.py",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "services/aos-api/aos_api/aip_handoff_service.py"
+  ],
+  "commits": [
+    "ea6b82b090c1599a465ca2b7a5d09eae56df405c",
+    "4622ea51"
+  ],
+  "completed_at": "2026-08-27T06:00:39+08:00",
+  "completed_revision": "AOS-000345",
+  "result": "BI_W8_07_IMPLEMENTATION_GREEN_SCOPE_RECONCILIATION_REQUIRED",
+  "risks": [
+    "production scope expanded after red regression; original lease scope omitted aip_handoff_service.py, requiring explicit follow-up scope reconciliation lease"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W8-07-IMPL2",
+  "verification": [
+    "backend cumulative 62 passed; frontend cumulative 71 passed; TypeScript and Vite build GREEN; browser known rejection no false success; S8-Visual pending"
+  ]
+}

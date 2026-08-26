@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000345",
+  "blockers": [
+    "production-scope-expansion-required"
+  ],
+  "changed_files": [
+    "services/aos-api/tests/test_ecommerce_business_investigation_wave8_acceptance.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "services/aos-api/tests/aip/test_aip_handoff_api.py",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx"
+  ],
+  "commits": [
+    "3c389ef"
+  ],
+  "completed_at": "2026-08-27T05:50:19+08:00",
+  "completed_revision": "AOS-000345",
+  "result": "BI_W8_07_RED_TEST_CONFIRMED_HANDOFF_UNKNOWN_OUTCOME_GAP_SCOPE_EXPANSION",
+  "risks": [
+    "handoff-compile-network-unknown-retry-risk"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W8-07-IMPL",
+  "verification": [
+    "backend-targeted-21-passed",
+    "frontend-red-2-confirmed"
+  ]
+}

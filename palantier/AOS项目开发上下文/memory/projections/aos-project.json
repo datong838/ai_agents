@@ -5,49 +5,54 @@
     "BI-W8-03",
     "BI-W8-04",
     "BI-W8-05",
-    "BI-W8-06"
+    "BI-W8-06",
+    "BI-W8-07"
   ],
-  "content_hash": "sha256:62fd5175bef66b17d7c3b9144d0f8837afe4fd9760a8f5fca862fc1356849973",
-  "current_phase": "BI-W8 command review and handoff orchestration",
-  "delivery_status": "BI_W8_06_CONTROLLED_CROSS_MODULE_HANDOFF_CODE_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:67c5b3caecc278dd415114bcc388febe6af4b75d86968d396267eba26244576a",
+  "current_phase": "BI-W9 AdapterPack implementation",
+  "delivery_status": "BI_W8_07_REPLAY_EXPIRY_CONFLICT_PERMISSION_UNKNOWN_OUTCOME_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "BI-W8-06-IMPL2.json"
+      "ref": "BI-W8-07-IMPL2.json"
+    },
+    {
+      "kind": "receipt",
+      "ref": "BI-W8-07-SCOPE-RECONCILE.json"
     },
     {
       "kind": "tests",
-      "ref": "BI-W8-06-backend137-frontend69-browser1280-green"
+      "ref": "BI-W8-07-backend62-frontend71-scope11-browser1280-green"
     },
     {
       "kind": "code",
-      "ref": "8d7ae312"
+      "ref": "2c5adffc"
     },
     {
       "kind": "docs",
-      "ref": "b8af768"
+      "ref": "b491531"
     }
   ],
-  "generated_at": "2026-08-27T05:43:43+08:00",
+  "generated_at": "2026-08-27T06:02:53+08:00",
   "hard_boundaries": [
     "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_PROVIDER_CALL; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
   ],
   "incomplete": [
-    "BI-W8-07",
+    "BI-W9-01",
     "S8-Visual"
   ],
-  "last_green_gate": "BI-W8-06 backend targeted8 cumulative137 frontend69 typecheck build compileall diff browser1280 local panel GREEN; final S8-Visual pending",
-  "next_gate": "BI-W8-07",
+  "last_green_gate": "BI-W8-07 backend cumulative62 frontend cumulative71 typecheck build compileall alembic diff browser known-rejection GREEN; scope reconcile targeted11 GREEN; final S8-Visual pending",
+  "next_gate": "BI-W9-01",
   "next_steps": [
-    "Review and implement BI-W8-07 exact command review and handoff closure without treating accepted as downstream completion",
+    "Review and implement BI-W9-01 exact AdapterPack task without source read or external effect",
     "Retain final S8-Visual eight-menu frontend-backend 1280/1440/1920 exact visual hard gate"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000345",
+  "project_revision": "AOS-000346",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos": "8d7ae312",
-    "docs": "b8af768"
+    "aos": "2c5adffc",
+    "docs": "b491531"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
