@@ -1,8 +1,43 @@
 {
   "completed": [
+    "BI-W1-01_TO_BI-W1-06",
+    "BI-W2-01_TO_BI-W2-07",
+    "BI-W3-01",
+    "BI-W3-02",
+    "BI-W3-03",
+    "BI-W3-04",
+    "BI-W3-05",
+    "BI-W3-06",
+    "BI-W3-07",
+    "BI-W4-01",
+    "BI-W4-02",
+    "BI-W4-03",
+    "BI-W4-04",
+    "BI-W4-05",
+    "BI-W4-06",
+    "BI-W4-07",
+    "BI-W4-08",
+    "BI-W4-09",
+    "BI-W5-01",
+    "BI-W5-02",
+    "BI-W5-03",
+    "BI-W5-04",
+    "BI-W5-05",
+    "BI-W5-06",
+    "BI-W5-07",
+    "BI-W5-08",
+    "BI-W6-01",
+    "BI-W6-02",
+    "BI-W6-03",
+    "BI-W6-04",
+    "BI-W6-05",
+    "BI-W6-06",
+    "BI-W6-07",
+    "BI-W7-01",
+    "BI-W7-02",
     "BI-W7-03"
   ],
-  "content_hash": "sha256:bfbc290a26b3b32e2c61c7b1c3caf57ae3ad8a1a160fcd3f826875fbbeda9c17",
+  "content_hash": "sha256:4722d61714e6c6175baf7d13fb0112e6b5023b58551389e0d250b37a8aed0883",
   "current_phase": "BI-W7 Workshop read-only workspace implementation",
   "delivery_status": "BI_W7_03_SERVER_STAGE_RAIL_CODE_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
@@ -11,7 +46,7 @@
       "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W7-03.json"
     }
   ],
-  "generated_at": "2026-08-26T23:43:48+08:00",
+  "generated_at": "2026-08-26T23:45:18+08:00",
   "hard_boundaries": [
     "NO_REAL_BUSINESS_DATA; NO_SOURCE_READ; NO_PROVIDER_EXECUTION; NO_EXTERNAL_EFFECT; NO_RELEASE"
   ],
@@ -24,7 +59,7 @@
     "Implement current-stage workspace with server-owned stage payload and honest state boundaries"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000331",
+  "project_revision": "AOS-000332",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
     "aos-platform": "066a704a37cbdf7cb3005fd92b60799cb25f8f30"

@@ -1,6 +1,41 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
+    "BI-W1-01_TO_BI-W1-06",
+    "BI-W2-01_TO_BI-W2-07",
+    "BI-W3-01",
+    "BI-W3-02",
+    "BI-W3-03",
+    "BI-W3-04",
+    "BI-W3-05",
+    "BI-W3-06",
+    "BI-W3-07",
+    "BI-W4-01",
+    "BI-W4-02",
+    "BI-W4-03",
+    "BI-W4-04",
+    "BI-W4-05",
+    "BI-W4-06",
+    "BI-W4-07",
+    "BI-W4-08",
+    "BI-W4-09",
+    "BI-W5-01",
+    "BI-W5-02",
+    "BI-W5-03",
+    "BI-W5-04",
+    "BI-W5-05",
+    "BI-W5-06",
+    "BI-W5-07",
+    "BI-W5-08",
+    "BI-W6-01",
+    "BI-W6-02",
+    "BI-W6-03",
+    "BI-W6-04",
+    "BI-W6-05",
+    "BI-W6-06",
+    "BI-W6-07",
+    "BI-W7-01",
+    "BI-W7-02",
     "BI-W7-03"
   ],
   "current_phase": "BI-W7 Workshop read-only workspace implementation",
@@ -24,7 +59,7 @@
     "Implement current-stage workspace with server-owned stage payload and honest state boundaries"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000331",
+  "project_revision": "AOS-000332",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
     "aos-platform": "066a704a37cbdf7cb3005fd92b60799cb25f8f30"
@@ -37,5 +72,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T23:43:48+08:00"
+  "updated_at": "2026-08-26T23:45:18+08:00"
 }
