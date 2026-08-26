@@ -1,0 +1,35 @@
+{
+  "base_revision": "AOS-000339",
+  "blockers": [],
+  "changed_files": [
+    "/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md",
+    "services/aos-api/alembic/versions/biw8_001_investigation_schedule_policy.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_case.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_schedule.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_application.py",
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_schedule.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_lifecycle.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_migrations.py"
+  ],
+  "commits": [
+    "c1d3bdb0c0f2e503e21e189d83f9f582baab5231",
+    "33a2ece"
+  ],
+  "completed_at": "2026-08-27T02:45:19+08:00",
+  "completed_revision": "AOS-000339",
+  "result": "BI_W8_02_SCHEDULE_POLICY_CODE_CONTROL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "No real scheduler, shared migration apply, real business Run, source read, Provider, external effect or release; final eight-menu visual acceptance remains pending S8"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W8-02-IMPL2",
+  "verification": [
+    "focused: 27/27 GREEN",
+    "business-investigation cumulative: 228/228 GREEN",
+    "disposable PostgreSQL create/update/replay/conflict/RLS/direct-write/downgrade GREEN",
+    "compileall + alembic single head biw8_001 + diff-check GREEN",
+    "browser: NOT_APPLICABLE (no page change; final S8 visual hard gate retained)"
+  ]
+}
