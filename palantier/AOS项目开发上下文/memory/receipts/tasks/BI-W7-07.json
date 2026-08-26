@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000335",
+  "created_at": "2026-08-27T01:26:08+08:00",
+  "excluded_scope": [
+    "backend projection;Router;parser;client;migration;real business data;source reads;Provider;external effects;release;unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "loading/empty/stale/partial/forbidden/failed state matrix; GET-only recovery; focused/cumulative tests; built-in browser evidence; Delivery Receipt; authority CAS; Prime CURRENT"
+  ],
+  "lease_expires_at": "2026-08-27T03:25:35+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx;apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx;apps/web/src/styles/45-ecommerce-workshop.css;docs plan/Receipt/authority projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W7-07"
+}
