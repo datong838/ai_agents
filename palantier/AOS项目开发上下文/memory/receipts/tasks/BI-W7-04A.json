@@ -1,0 +1,19 @@
+{
+  "base_revision": "AOS-000332",
+  "created_at": "2026-08-27T00:02:51+08:00",
+  "excluded_scope": [
+    "runtime-client",
+    "external-effect"
+  ],
+  "expected_outputs": [
+    "v3-client-fixture-compatibility"
+  ],
+  "lease_expires_at": "2026-08-27T23:59:00+08:00",
+  "owner": "codex-m1-single-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W7-04A"
+}
