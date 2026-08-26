@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000316",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_business_investigation_evidence.py",
+    "services/aos-api/tests/test_aip_business_investigation_evidence.py"
+  ],
+  "commits": [
+    "f5759ad7"
+  ],
+  "completed_at": "2026-08-26T20:19:28+08:00",
+  "completed_revision": "AOS-000316",
+  "result": "Canonical EvidenceBundle BuildJob adapter preserves server-owned coverage, freshness, conflicts, unknown and counter-evidence refs",
+  "risks": [
+    "NO_REAL_BUSINESS_DATA; NO_PROVIDER_INVOCATION; NO_TASK_RUN_TRANSITION; NO_EXTERNAL_EFFECT; NO_RELEASE"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W5-05",
+  "verification": [
+    "targeted 5; existing Evidence Build adjacent 8; business-investigation cumulative 134; compileall/diff GREEN; browser N/A"
+  ]
+}

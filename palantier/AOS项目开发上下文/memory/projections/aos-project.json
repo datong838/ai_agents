@@ -21,41 +21,42 @@
     "BI-W5-01",
     "BI-W5-02",
     "BI-W5-03",
-    "BI-W5-04"
+    "BI-W5-04",
+    "BI-W5-05"
   ],
-  "content_hash": "sha256:785d1ae522050840825ecaf788011994fe966b8008616c1aa3454ee0e5fe088d",
-  "current_phase": "BI-W5 AIP analysis orchestration in progress; canonical missing-fact DataRequirement request complete",
-  "delivery_status": "BI_W5_04_CANONICAL_DATA_REQUIREMENT_REQUEST_GREEN_NO_SOURCE_ACCESS_NO_FULFILLMENT_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:37b476484fdeb7fae7db0017c3910ad515f89aaa4907d208185752c1f8eccc55",
+  "current_phase": "BI-W5 AIP analysis orchestration in progress; canonical evidence assessment complete",
+  "delivery_status": "BI_W5_05_CANONICAL_EVIDENCE_BUILD_ASSESSMENT_GREEN_UNKNOWN_COUNTER_EVIDENCE_PRESERVED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W5-04.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W5-05.json"
     },
     {
       "kind": "plan",
       "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "generated_at": "2026-08-26T20:09:49+08:00",
+  "generated_at": "2026-08-26T20:19:48+08:00",
   "hard_boundaries": [
     "NO_REAL_BUSINESS_DATA",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W5-05_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W5-06_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W5-04 targeted 4, DataRequirement adjacent 23, business-investigation cumulative 129 tests GREEN; compileall/diff GREEN; browser N/A",
-  "next_gate": "BI-W5-05 EvidenceBuildJob reuse and coverage/freshness/conflict contract",
+  "last_green_gate": "BI-W5-05 targeted 5, existing Evidence Build adjacent 8, business-investigation cumulative 134 tests GREEN; compileall/diff GREEN; browser N/A",
+  "next_gate": "BI-W5-06 EvalContract EvalRun ReviewIssue stage quality gate",
   "next_steps": [
-    "Start BI-W5-05 by reusing canonical EvidenceBuildJob; preserve unknown and counter-evidence; continue serial Loop"
+    "Start BI-W5-06 by reusing canonical EvalContract, EvalRun and ReviewIssue; continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000316",
+  "project_revision": "AOS-000317",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "80d91378",
-    "bi-w5-04-plan": "25e1eab"
+    "aos-platform": "f5759ad7",
+    "bi-w5-05-plan": "ca8e86b"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
