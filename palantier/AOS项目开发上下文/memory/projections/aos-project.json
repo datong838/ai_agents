@@ -15,43 +15,47 @@
     "BI-W4-04",
     "BI-W4-05",
     "BI-W4-06",
-    "BI-W4-07"
+    "BI-W4-07",
+    "BI-W4-08"
   ],
-  "content_hash": "sha256:aea8c0e3d3927c35e53cc6cb9fe340ba07b5e07aff721632efbeeeac9a575574",
-  "current_phase": "BI-W4 Case/Run domain authority; BI-W4-07 complete",
-  "delivery_status": "BI_W4_07_WAITING_UNKNOWN_RECONCILING_STATE_AUTHORITY_GREEN_NO_RETRY_NO_RECONCILE_SUCCESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:00afce865e15cbc12c6745430b5e040cd013daee7d3a0b712e19ff58f5acca28",
+  "current_phase": "BI-W4 Case/Run domain authority; BI-W4-08 complete",
+  "delivery_status": "BI_W4_08_REBUILDABLE_WORKBENCH_VIEW_PROJECTION_GREEN_NO_PERSISTED_PROJECTION_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w4-07-run-waiting-unknown-reconcile-state-machine.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W4-08.json"
+    },
+    {
+      "kind": "delivery",
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W4-08-ROUTER-BASELINE.json"
     },
     {
       "kind": "plan",
       "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "generated_at": "2026-08-26T18:35:55+08:00",
+  "generated_at": "2026-08-26T19:02:08+08:00",
   "hard_boundaries": [
-    "NO_RETRY",
-    "NO_RECONCILE_SUCCESS",
-    "NO_REAL_RUN_DATA_REQUIREMENT",
+    "NO_PERSISTED_PROJECTION_AUTHORITY",
+    "NO_REAL_BUSINESS_DATA",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W4-08_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W4-09_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W4-07 target 18 router 8 and cumulative 125 tests plus 2 router subtests GREEN",
-  "next_gate": "BI-W4-08 rebuildable Workbench View projection",
+  "last_green_gate": "BI-W4-08 projection 7 target and cumulative 140 tests plus 2 subtests GREEN; PostgreSQL restart rebuild and tenant RLS GREEN",
+  "next_gate": "BI-W4-09 event replay rebuild and drift audit",
   "next_steps": [
-    "Start BI-W4-08 rebuildable Workbench View projection; continue serial Loop"
+    "Start BI-W4-09 event replay rebuild and drift audit; continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000309",
+  "project_revision": "AOS-000311",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "a5410fe3",
-    "bi-w4-07-plan": "ed88576"
+    "aos-platform": "c6dce7f2",
+    "bi-w4-08-plan": "7f8e8de"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

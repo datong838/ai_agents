@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000309",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_domain_router_manifest.py"
+  ],
+  "commits": [
+    "c6dce7f2"
+  ],
+  "completed_at": "2026-08-26T19:00:19+08:00",
+  "completed_revision": "AOS-000309",
+  "result": "BI-W4-08 exact runtime route and OpenAPI baseline aligned",
+  "risks": [
+    "No manifest entry or generated aggregate changed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W4-08-ROUTER-BASELINE",
+  "verification": [
+    "runtime routes 4479; OpenAPI paths 2686; deterministic sha256 ccfd89f5ccadd933966a04dc3f412934f888e7e940ee66f95acda106eeae0bc3; duplicates unchanged"
+  ]
+}

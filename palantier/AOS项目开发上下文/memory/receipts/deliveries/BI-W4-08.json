@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000309",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_projection.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_application.py",
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py"
+  ],
+  "commits": [
+    "c6dce7f2"
+  ],
+  "completed_at": "2026-08-26T19:00:19+08:00",
+  "completed_revision": "AOS-000309",
+  "result": "BI-W4-08 rebuildable tenant-bound Workbench View projection GREEN; no persisted projection, external effect or release",
+  "risks": [
+    "Ruff unavailable; BI-W5 Skill contributions, BI-W6 Saga, UI and release remain gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W4-08",
+  "verification": [
+    "7 projection targeted passed; 13 projection+HTTP targeted passed; 140 cumulative passed plus 2 subtests",
+    "disposable PostgreSQL rebuild/restart and org-org/dev-project versus dev-org/dev-project RLS isolation GREEN",
+    "Alembic head biw4_007; compileall, router generator and diff check GREEN; browser N/A"
+  ]
+}

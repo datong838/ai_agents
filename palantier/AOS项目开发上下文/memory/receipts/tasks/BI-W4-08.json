@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000309",
+  "created_at": "2026-08-26T18:39:38+08:00",
+  "excluded_scope": [
+    "real-business-data",
+    "shared-database-migration-apply",
+    "existing-workshop-seven-view-contract",
+    "external-side-effects-and-release"
+  ],
+  "expected_outputs": [
+    "rebuildable-tenant-bound-workbench-view-projection",
+    "deterministic-projection-hash-and-source-watermark",
+    "targeted-cumulative-http-contract-and-security-tests"
+  ],
+  "lease_expires_at": "2026-08-26T14:39:38+00:00",
+  "owner": "ecommerce",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_projection.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_application.py",
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W4-08"
+}
