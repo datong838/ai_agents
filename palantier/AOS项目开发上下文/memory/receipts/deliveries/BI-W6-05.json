@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000325",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_business_investigation_reconcile_saga.py",
+    "services/aos-api/tests/test_aip_business_investigation_reconcile_saga.py"
+  ],
+  "commits": [
+    "15ed9ed9"
+  ],
+  "completed_at": "2026-08-26T22:16:55+08:00",
+  "completed_revision": "AOS-000325",
+  "result": "BI-W6-05 timeout to UNKNOWN to RECONCILING coordination GREEN; canonical W4 Run state reused; no original command replay; no external effect; no release",
+  "risks": [
+    "No original command replay, Provider invocation, source read, real business data, external effect, migration apply, or release. RECONCILING does not claim resolved outcome."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W6-05",
+  "verification": [
+    "focused and W4 adjacency 12/12 GREEN; BI-W6 adjacency 55/55 GREEN; Business Investigation cumulative 198/198 GREEN; compileall and diff-check GREEN; browser NOT_APPLICABLE"
+  ]
+}

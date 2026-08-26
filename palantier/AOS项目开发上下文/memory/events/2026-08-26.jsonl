@@ -168,3 +168,6 @@
 {"base_revision":"AOS-000324","occurred_at":"2026-08-26T21:46:47+08:00","schema":"aos-memory-event/v1","task_id":"BI-W6-04","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-26T22:03:48+08:00","result":"Exact Eval-gated Artifact CAS publication, immutable PublicationReceipt, and receipt-before-Step completion are code and disposable-DB green.","schema":"aos-memory-event/v1","task_id":"BI-W6-04","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T22:04:58+08:00","project_revision":"AOS-000325","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000325","occurred_at":"2026-08-26T22:09:13+08:00","schema":"aos-memory-event/v1","task_id":"BI-W6-05","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T22:16:55+08:00","result":"BI-W6-05 timeout to UNKNOWN to RECONCILING coordination GREEN; canonical W4 Run state reused; no original command replay; no external effect; no release","schema":"aos-memory-event/v1","task_id":"BI-W6-05","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T22:18:25+08:00","project_revision":"AOS-000326","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
