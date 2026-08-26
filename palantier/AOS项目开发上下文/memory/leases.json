@@ -1,4 +1,26 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000288",
+      "created_at": "2026-08-26T11:57:43+08:00",
+      "excluded_scope": [
+        "real database upgrade; requirement state auto-advance; routers; service; OpenAPI; SourceReadiness authority changes; adapters; external effects; release; unrelated dirty or untracked files"
+      ],
+      "expected_outputs": [
+        "Frozen BI-W2-03 plan, exact artifact/FulfillmentReceipt idempotent binding Store and controlled migration, tenant/negative/disposable database tests, Delivery Receipt and safe commits"
+      ],
+      "lease_expires_at": "2026-08-26T08:30:00+00:00",
+      "owner": "codex-m1-serial",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "services/aos-api/alembic/versions/biw2_003_data_fulfillment_binding.py",
+        "services/aos-api/aos_api/data_fulfillment_store.py",
+        "services/aos-api/tests/test_data_fulfillment_store.py",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "bi-w2-03-fulfillment-exact-receipt-binding"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
