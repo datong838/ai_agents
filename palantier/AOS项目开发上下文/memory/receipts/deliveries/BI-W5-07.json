@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000318",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_business_investigation_contribution.py",
+    "services/aos-api/tests/test_aip_business_investigation_contribution.py"
+  ],
+  "commits": [
+    "be1e72d6"
+  ],
+  "completed_at": "2026-08-26T20:40:59+08:00",
+  "completed_revision": "AOS-000318",
+  "result": "BI_W5_07_CANONICAL_CONTRIBUTION_HANDOFF_READ_MODEL_GREEN",
+  "risks": [
+    "NO_REAL_BUSINESS_DATA",
+    "NO_AGENT_RUN_OR_HANDOFF_CREATION",
+    "NO_TASK_RUN_TRANSITION",
+    "NO_EXTERNAL_EFFECT",
+    "NO_RELEASE"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W5-07",
+  "verification": [
+    "targeted=9/9;task-cockpit-adjacent=41/41;business-investigation-cumulative=147/147;compileall=GREEN;diff-check=GREEN;browser=NOT_APPLICABLE"
+  ]
+}
