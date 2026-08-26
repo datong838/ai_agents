@@ -1,4 +1,32 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000320",
+      "created_at": "2026-08-26T20:50:48+08:00",
+      "excluded_scope": [
+        "shared-database-migration-apply",
+        "real-business-data",
+        "provider-execution",
+        "external-effect-and-release"
+      ],
+      "expected_outputs": [
+        "stable-server-derived-command-id",
+        "immutable-tenant-scoped-compilation-receipt",
+        "same-hash-replay-and-different-hash-conflict",
+        "exact-run-plan-compilation-lineage"
+      ],
+      "lease_expires_at": "2026-08-27T02:30:00+08:00",
+      "owner": "cross-layer-receipt-saga",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "services/aos-api/alembic/versions/biw6_001_investigation_compile_receipt.py",
+        "services/aos-api/aos_api/aip_business_investigation_compile_saga.py",
+        "services/aos-api/tests/test_aip_business_investigation_compile_saga.py",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "BI-W6-01"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
