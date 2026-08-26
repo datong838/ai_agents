@@ -25,3 +25,5 @@
 {"base_revision":"AOS-000339","occurred_at":"2026-08-27T02:17:57+08:00","schema":"aos-memory-event/v1","task_id":"BI-W8-02-IMPL2","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T02:45:19+08:00","result":"BI_W8_02_SCHEDULE_POLICY_CODE_CONTROL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W8-02-IMPL2","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T02:46:33+08:00","project_revision":"AOS-000340","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000340","occurred_at":"2026-08-27T02:49:55+08:00","schema":"aos-memory-event/v1","task_id":"BI-W8-03-PLAN","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T02:52:15+08:00","result":"BI_W8_03_EXACT_CONSTRUCTION_PACKAGE_READY","schema":"aos-memory-event/v1","task_id":"BI-W8-03-PLAN","type":"TASK_COMPLETED"}
