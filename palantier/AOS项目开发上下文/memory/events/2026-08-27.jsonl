@@ -68,3 +68,6 @@
 {"base_revision":"AOS-000348","occurred_at":"2026-08-27T06:20:48+08:00","schema":"aos-memory-event/v1","task_id":"BI-W9-03","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T06:25:00+08:00","result":"BI_W9_03_WECHAT_STORE_DISABLED_PROFILE_CODE_GREEN_NO_PLATFORM_ACCESS_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W9-03","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T06:26:32+08:00","project_revision":"AOS-000349","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000349","occurred_at":"2026-08-27T06:29:57+08:00","schema":"aos-memory-event/v1","task_id":"BI-W9-04","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T06:35:03+08:00","result":"BI_W9_04_DOUYIN_STORE_DISABLED_PROFILE_DRIFT_DETECTION_CODE_GREEN_NO_PLATFORM_ACCESS_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W9-04","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T06:35:46+08:00","project_revision":"AOS-000350","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
