@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000317",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_business_investigation_eval.py",
+    "services/aos-api/tests/test_aip_business_investigation_eval.py"
+  ],
+  "commits": [
+    "54a0b523"
+  ],
+  "completed_at": "2026-08-26T20:30:56+08:00",
+  "completed_revision": "AOS-000317",
+  "result": "Three-stage canonical Eval ReviewIssue ReturnDecision coordinator sealed with automatic promotion forbidden",
+  "risks": [
+    "NO_REAL_MODEL_OR_PROVIDER; NO_AUTO_PROMOTION; NO_DIRECT_TASK_RUN_MUTATION; NO_EXTERNAL_EFFECT; NO_RELEASE"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W5-06",
+  "verification": [
+    "targeted 4; existing Eval Review adjacent 15; business-investigation cumulative 138; compileall/diff GREEN; browser N/A"
+  ]
+}
