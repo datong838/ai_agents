@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000326",
+  "created_at": "2026-08-26T22:20:18+08:00",
+  "excluded_scope": [
+    "production domain changes unless test proves a real gap; real business data; source reads; Provider invocation; external effects; shared migration apply; release"
+  ],
+  "expected_outputs": [
+    "duplicate, out-of-order, late-arrival and partial-failure convergence matrix; immutable-history evidence; Delivery Receipt; authority CAS; Prime readback"
+  ],
+  "lease_expires_at": "2026-08-27T04:00:00+00:00",
+  "owner": "codex-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/tests/test_business_investigation_saga_convergence.py; docs plan/receipts/authority projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W6-06"
+}

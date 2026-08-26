@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000326",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_business_investigation_saga_convergence.py"
+  ],
+  "commits": [
+    "cfe06ab6"
+  ],
+  "completed_at": "2026-08-26T22:26:39+08:00",
+  "completed_revision": "AOS-000326",
+  "result": "BI-W6-06 duplicate, out-of-order, late-arrival and partial-failure convergence matrix GREEN; no production gap found; immutable history preserved",
+  "risks": [
+    "QA-only. No production authority change, Provider invocation, source read, real business data, original command replay, external effect, migration apply, or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W6-06",
+  "verification": [
+    "convergence matrix 4/4 GREEN; BI-W6 adjacency 59/59 GREEN; Business Investigation cumulative 202/202 GREEN; compileall and diff-check GREEN; browser NOT_APPLICABLE"
+  ]
+}

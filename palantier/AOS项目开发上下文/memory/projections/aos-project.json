@@ -30,34 +30,35 @@
     "BI-W6-02",
     "BI-W6-03",
     "BI-W6-04",
-    "BI-W6-05"
+    "BI-W6-05",
+    "BI-W6-06"
   ],
-  "content_hash": "sha256:25c2de1b3d64681a4c353a28953ec08aadf2d8ea412a29ddb195ec26aa78921a",
-  "current_phase": "BI-W6 Receipt-first saga in progress; timeout UNKNOWN/RECONCILING coordination complete",
-  "delivery_status": "BI_W6_05_TIMEOUT_UNKNOWN_RECONCILING_GREEN_NO_COMMAND_REPLAY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:87f5ca34d74f0a2a4f9461ea19ccc17c4f9ad53fed7f09d54ec789913f2ba848",
+  "current_phase": "BI-W6 Receipt-first saga in progress; convergence QA matrix complete",
+  "delivery_status": "BI_W6_06_CONVERGENCE_MATRIX_GREEN_HISTORY_PRESERVED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W6-05.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W6-06.json"
     }
   ],
-  "generated_at": "2026-08-26T22:18:25+08:00",
+  "generated_at": "2026-08-26T22:26:56+08:00",
   "hard_boundaries": [
     "NO_REAL_BUSINESS_DATA; NO_SOURCE_READ; NO_PROVIDER_EXECUTION; NO_COMMAND_REPLAY; NO_EXTERNAL_EFFECT; NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W6-06"
+    "BI-W6-07"
   ],
-  "last_green_gate": "BI-W6-05 focused/W4 adjacency 12/12, BI-W6 adjacency 55/55, Business Investigation cumulative 198/198 GREEN",
-  "next_gate": "BI-W6-06",
+  "last_green_gate": "BI-W6-06 matrix 4/4, BI-W6 adjacency 59/59, Business Investigation cumulative 202/202 GREEN",
+  "next_gate": "BI-W6-07",
   "next_steps": [
-    "Implement duplicate, out-of-order, late-arrival and partial-failure convergence tests without losing immutable history"
+    "Run process restart and cross-service rollback drills; preserve immutable Receipts and recovery evidence"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000326",
+  "project_revision": "AOS-000327",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "15ed9ed9"
+    "aos-platform": "cfe06ab6"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
