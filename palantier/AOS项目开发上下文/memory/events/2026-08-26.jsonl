@@ -128,3 +128,9 @@
 {"occurred_at":"2026-08-26T19:00:19+08:00","result":"BI-W4-08 exact runtime route and OpenAPI baseline aligned","schema":"aos-memory-event/v1","task_id":"BI-W4-08-ROUTER-BASELINE","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T19:01:03+08:00","project_revision":"AOS-000310","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"occurred_at":"2026-08-26T19:02:08+08:00","project_revision":"AOS-000311","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000311","occurred_at":"2026-08-26T19:04:10+08:00","schema":"aos-memory-event/v1","task_id":"BI-W4-09","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T19:15:53+08:00","result":"BI-W4-09 cumulative Case/Run authority acceptance GREEN; no production logic changed; NO_EXTERNAL_EFFECT and NO_RELEASE retained","schema":"aos-memory-event/v1","task_id":"BI-W4-09","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T19:16:25+08:00","project_revision":"AOS-000312","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000312","occurred_at":"2026-08-26T19:19:29+08:00","schema":"aos-memory-event/v1","task_id":"BI-W5-01","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T19:32:09+08:00","result":"BI_W5_01_EXACT_PROFILE_COMPILER_GREEN_NO_RUNTIME_AUTHORIZATION_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W5-01","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T19:32:26+08:00","project_revision":"AOS-000313","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
