@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000349",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/business_investigation_douyin_store_profile.py",
+    "services/aos-api/tests/fixtures/business_investigation/douyin_store_profile.json",
+    "services/aos-api/tests/test_business_investigation_douyin_store_profile.py"
+  ],
+  "commits": [
+    "c393551303eab1b8dbdd4f40abda32e6d7d5c294"
+  ],
+  "completed_at": "2026-08-27T06:35:03+08:00",
+  "completed_revision": "AOS-000349",
+  "result": "BI_W9_04_DOUYIN_STORE_DISABLED_PROFILE_DRIFT_DETECTION_CODE_GREEN_NO_PLATFORM_ACCESS_NO_RELEASE",
+  "risks": [
+    "disabled profile and pure semantic drift evaluator only; matched signature never activates profile; no platform access/export/API/PII/adapter installation/external effect/release; local database remains behind existing migration and was not mutated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W9-04",
+  "verification": [
+    "targeted 16 passed; cumulative W3-07/W9-01/W9-02/W9-03/W9-04 72 passed; investigation migration contract 4 passed; JSON/compile/diff-check green; alembic single head biw8_001; browser not applicable because no page or route"
+  ]
+}
