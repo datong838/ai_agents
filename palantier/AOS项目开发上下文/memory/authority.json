@@ -2,40 +2,35 @@
   "authority_owner": "aos-main-development",
   "completed": [
     "BI-W1-01_TO_BI-W1-06",
-    "BI-W2-01",
-    "BI-W2-02",
-    "BI-W2-03",
-    "BI-W2-04",
-    "BI-W2-05",
-    "BI-W2-06",
-    "BI-W2-07"
+    "BI-W2-01_TO_BI-W2-07",
+    "BI-W3-01"
   ],
-  "current_phase": "BI_W2_07_CUMULATIVE_ENGINEERING_GREEN",
-  "delivery_status": "BI_W2_07_CUMULATIVE_GREEN_SHARED_MIGRATION_NOT_APPLIED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "BI_W3_01_READ_ONLY_OBSERVATION_AUTHORITY_CODE_CONTROL_GREEN",
+  "delivery_status": "BI_W3_01_GREEN_SHARED_MIGRATION_NOT_APPLIED_SESSION_NOT_ACTIVATED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "DeliveryReceipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w2-07-cumulative-acceptance.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-01-observation-session-plan.json"
     }
   ],
-  "evidence_cutoff": "2026-08-26T14:36:00+08:00",
+  "evidence_cutoff": "2026-08-26T14:53:00+08:00",
   "hard_boundaries": [
-    "No shared migration apply, platform login or observation activation, real tenant data, adapter execution, Case/Run authority, external effect or release."
+    "No shared migration apply, browser login/session activation, Adapter or export execution, secret/session payload persistence, real tenant data, ObservationReceipt inference, external effect or release."
   ],
   "incomplete": [
-    "BI-W3-01_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W3-02_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI_W2_07_MIGRATION_CONTRACT_API_ISOLATION_PERFORMANCE_GREEN",
-  "next_gate": "BI_W3_01_OBSERVATION_SESSION_LEASE_PLAN",
+  "last_green_gate": "BI_W3_01_LEASE_PLAN_TENANT_CAS_SECURITY_GREEN",
+  "next_gate": "BI_W3_02_OBSERVATION_RECEIPT",
   "next_steps": [
-    "Freeze tenant-bound expiring ObservationSessionLease and read-only purpose-limited ObservationPlan; no platform activation or Case/Run authority."
+    "Implement page/menu/field ObservationReceipt with exact plan/step/capability/session refs; keep locating evidence distinct from business fact authority."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000293",
+  "project_revision": "AOS-000294",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "3c2bcf4ca",
-    "plan": "27ca4fa"
+    "code": "021805da",
+    "plan": "8f69189"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -45,5 +40,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T14:33:31+08:00"
+  "updated_at": "2026-08-26T14:53:31+08:00"
 }

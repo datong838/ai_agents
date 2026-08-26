@@ -79,3 +79,5 @@
 {"occurred_at":"2026-08-26T14:33:31+08:00","result":"BI_W2_07_CUMULATIVE_ENGINEERING_GREEN_ENTRY_CORRECTED","schema":"aos-memory-event/v1","task_id":"bi-w2-07-cumulative-acceptance","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T14:33:31+08:00","project_revision":"AOS-000293","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000293","occurred_at":"2026-08-26T14:39:53+08:00","schema":"aos-memory-event/v1","task_id":"bi-w3-01-observation-session-plan","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T14:52:57+08:00","result":"BI_W3_01_READ_ONLY_OBSERVATION_AUTHORITY_CODE_CONTROL_GREEN","schema":"aos-memory-event/v1","task_id":"bi-w3-01-observation-session-plan","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T14:53:31+08:00","project_revision":"AOS-000294","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

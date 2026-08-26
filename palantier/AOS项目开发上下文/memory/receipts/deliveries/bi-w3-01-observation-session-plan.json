@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000293",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw3_001_observation_session_plan.py",
+    "services/aos-api/aos_api/business_investigation_observation_contracts.py",
+    "services/aos-api/aos_api/business_investigation_observation_store.py",
+    "services/aos-api/tests/test_business_investigation_observation_session_plan.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "code=5f9835db83fbc99445e21e9c39ed543541615652",
+    "test=021805da",
+    "plan=8f69189"
+  ],
+  "completed_at": "2026-08-26T14:52:57+08:00",
+  "completed_revision": "AOS-000293",
+  "result": "BI_W3_01_READ_ONLY_OBSERVATION_AUTHORITY_CODE_CONTROL_GREEN",
+  "risks": [
+    "Shared database not upgraded; browser/session/Adapter/export not activated; no Cookie/password/captcha/token/localStorage/session payload stored; no ObservationReceipt, real tenant mutation, external effect or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w3-01-observation-session-plan",
+  "verification": [
+    "RED missing module; targeted=5 passed; cumulative BI-W1/BI-W2/BI-W3-01=36 passed; disposable PostgreSQL issue/replay/conflict, plan create/revise/stale CAS, revoke, expired/revoked rejection, tenant isolation, direct write denial, nonempty downgrade refusal and empty downgrade/upgrade=GREEN",
+    "compileall=GREEN; diff check=GREEN; unique alembic head=biw3_001; browser=NOT_APPLICABLE; Ruff=UNAVAILABLE"
+  ]
+}
