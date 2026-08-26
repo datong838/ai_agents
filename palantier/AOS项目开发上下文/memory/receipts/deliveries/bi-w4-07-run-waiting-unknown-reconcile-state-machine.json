@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000308",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw4_007_run_waiting_unknown_reconcile_state_machine.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_run.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_application.py",
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/aos_api/errors.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_reconciliation.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "services/aos-api/tests/test_error_contract.py",
+    "services/aos-api/tests/test_domain_router_manifest.py"
+  ],
+  "commits": [
+    "a5410fe3"
+  ],
+  "completed_at": "2026-08-26T18:35:38+08:00",
+  "completed_revision": "AOS-000308",
+  "result": "BI-W4-07 WAITING_DATA UNKNOWN RECONCILING fail-closed state authority GREEN; no automatic reconcile success, retry, external effect or release",
+  "risks": [
+    "Ruff unavailable; shared migration apply and reconciliation resolution remain gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w4-07-run-waiting-unknown-reconcile-state-machine",
+  "verification": [
+    "18 targeted passed; router 8 passed plus 2 subtests; 125 cumulative passed plus 2 subtests; Alembic head biw4_007; compileall generator diff check GREEN; browser N/A"
+  ]
+}
