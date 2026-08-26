@@ -75,3 +75,6 @@
 {"base_revision":"AOS-000291","occurred_at":"2026-08-26T14:19:36+08:00","schema":"aos-memory-event/v1","task_id":"bi-w2-06-outbox-restart-reconcile","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-26T14:29:08+08:00","result":"BI_W2_06_FENCED_OUTBOX_RESTART_RECONCILE_GREEN_NO_AUTO_REPLAY","schema":"aos-memory-event/v1","task_id":"bi-w2-06-outbox-restart-reconcile","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T14:29:08+08:00","project_revision":"AOS-000292","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000292","occurred_at":"2026-08-26T14:30:39+08:00","schema":"aos-memory-event/v1","task_id":"bi-w2-07-cumulative-acceptance","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T14:33:31+08:00","result":"BI_W2_07_CUMULATIVE_ENGINEERING_GREEN_ENTRY_CORRECTED","schema":"aos-memory-event/v1","task_id":"bi-w2-07-cumulative-acceptance","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T14:33:31+08:00","project_revision":"AOS-000293","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
