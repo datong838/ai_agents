@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000336",
+  "blockers": [
+    "NO_REAL_BUSINESS_DATA;NO_SOURCE_READ;NO_PROVIDER_EXECUTION;NO_EXTERNAL_EFFECT;NO_MIGRATION;NO_RELEASE;FINAL_S8_VISUAL_BACKEND_GATE_PENDING"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx"
+  ],
+  "commits": [
+    "c78b08540d4b5b5ef7c5374b74a189d3504618c1"
+  ],
+  "completed_at": "2026-08-27T01:46:36+08:00",
+  "completed_revision": "AOS-000336",
+  "result": "BI_W7_08_FUNCTION_KEYBOARD_BROWSER_1280_1440_1920_GREEN_VISUAL_BASELINE_DELTA_ROUTED_TO_FINAL_S8_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "1440 visual source comparison shows significant shell/layout/style delta; final S8 eight-menu visual plus frontend plus backend hard gate remains incomplete"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W7-08",
+  "verification": [
+    "focused 25/25; backend 208/208; workshop web 255 files 2280 tests; tsc; vite 359 modules; built-in browser actual 1280x720 1440x900 1920x1080 no horizontal overflow, eight tabs, keyboard tab switch, details open, zero business writes"
+  ]
+}
