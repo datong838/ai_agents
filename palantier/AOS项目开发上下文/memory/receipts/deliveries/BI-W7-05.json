@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000333",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/client.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "79507c805881511e9264bbdb987dd767b768024d"
+  ],
+  "completed_at": "2026-08-27T00:58:19+08:00",
+  "completed_revision": "AOS-000333",
+  "result": "Canonical SourceReadiness investigation contract and exact DataRequirement six-axis read-only gate closed with backward compatibility and honest unknown/conflict.",
+  "risks": [
+    "NO_REAL_BUSINESS_DATA; NO_SOURCE_READ; NO_PROVIDER_EXECUTION; NO_EXTERNAL_EFFECT; NO_RELEASE; 1440/1920 remain for final S8 hard gate"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W7-05",
+  "verification": [
+    "focused 49/49; Workshop Web 255 files and 2274/2274; TypeScript/Vite 359 modules; diff-check GREEN; built-in browser actual route 1280x720 visual comparison, no horizontal overflow, zero sensitive write buttons, zero console errors"
+  ]
+}
