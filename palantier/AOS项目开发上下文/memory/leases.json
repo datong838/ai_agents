@@ -1,29 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000291",
-      "created_at": "2026-08-26T14:19:36+08:00",
-      "excluded_scope": [
-        "services/aos-api/alembic/versions/biw2_001_data_requirement_authority.py",
-        "services/aos-api/alembic/versions/biw2_002_data_requirement_cas.py",
-        "services/aos-api/alembic/versions/biw2_003_data_fulfillment_binding.py",
-        "real tenant data, shared database upgrade, adapter execution, external side effects, release, unrelated dirty or untracked files"
-      ],
-      "expected_outputs": [
-        "Additive tenant-bound Outbox delivery authority with fenced claim/ack/fail/unknown reconcile, restart recovery, isolation and disposable migration tests."
-      ],
-      "lease_expires_at": "2026-08-26T12:00:00+00:00",
-      "owner": "codex-m1-serial",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "services/aos-api/alembic/versions/biw2_004_data_requirement_outbox_delivery.py",
-        "services/aos-api/aos_api/data_requirement_outbox_store.py",
-        "services/aos-api/tests/test_data_requirement_outbox_store.py",
-        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
-      ],
-      "status": "ACTIVE",
-      "task_id": "bi-w2-06-outbox-restart-reconcile"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }

@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000291",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw2_004_data_requirement_outbox_delivery.py",
+    "services/aos-api/aos_api/data_requirement_outbox_store.py",
+    "services/aos-api/tests/test_data_requirement_outbox_store.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "3c2bcf4ca",
+    "27ca4fa"
+  ],
+  "completed_at": "2026-08-26T14:29:08+08:00",
+  "completed_revision": "AOS-000291",
+  "result": "BI_W2_06_FENCED_OUTBOX_RESTART_RECONCILE_GREEN_NO_AUTO_REPLAY",
+  "risks": [
+    "Shared database migration was not applied; no adapter, real tenant data, external effect or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w2-06-outbox-restart-reconcile",
+  "verification": [
+    "5 targeted passed; 34 cumulative passed plus 2 subtests; disposable PostgreSQL downgrade/upgrade, restart takeover, stale fence, exact receipt reconcile, tenant isolation and direct-write denial GREEN",
+    "compileall, diff check and unique biw2_004 head GREEN; browser N/A; Ruff unavailable"
+  ]
+}

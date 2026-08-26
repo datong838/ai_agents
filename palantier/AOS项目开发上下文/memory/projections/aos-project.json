@@ -5,39 +5,36 @@
     "BI-W2-02",
     "BI-W2-03",
     "BI-W2-04",
-    "BI-W2-05"
+    "BI-W2-05",
+    "BI-W2-06"
   ],
-  "content_hash": "sha256:91983b465a7d4b113884efc91672eee48fc3c59751f7075a2b967258ebcd5124",
-  "current_phase": "BI_W2_05_PRINCIPAL_SCOPED_CANONICAL_API_GREEN",
-  "delivery_status": "BI_W2_05_CANONICAL_API_CODE_CONTROL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:10159ac1212755be6cb19f6868a41dad413b6a8aabf9a3fe5f42b46cd92335fa",
+  "current_phase": "BI_W2_06_FENCED_OUTBOX_RECOVERY_GREEN",
+  "delivery_status": "BI_W2_06_CODE_CONTROL_GREEN_NO_AUTO_REPLAY_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "DeliveryReceipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w2-05-principal-scoped-canonical-api.json"
-    },
-    {
-      "kind": "DeliveryReceipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w2-05-router-baseline-alignment.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w2-06-outbox-restart-reconcile.json"
     }
   ],
-  "generated_at": "2026-08-26T14:17:24+08:00",
+  "generated_at": "2026-08-26T14:29:08+08:00",
   "hard_boundaries": [
-    "No migration apply, real tenant data, adapter execution, plan/fulfill/reconcile external effect or release."
+    "No shared database migration apply, automatic failed/unknown replay, adapter execution, real tenant data, external effect or release."
   ],
   "incomplete": [
-    "BI-W2-06_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W3-01_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI_W2_05_PRINCIPAL_TENANT_ETAG_CUMULATIVE_GREEN",
-  "next_gate": "BI_W2_06_OUTBOX_RESTART_RECONCILE_PLAN",
+  "last_green_gate": "BI_W2_06_RESTART_RECONCILE_POSTGRES_CUMULATIVE_GREEN",
+  "next_gate": "BI_W3_01_SHARED_BUSINESSINVESTIGATION_DOMAIN_PLAN",
   "next_steps": [
-    "Freeze additive tenant-bound Outbox claim/ack/fail/reconcile and restart recovery; no adapter or real tenant execution."
+    "Freeze BI-W3 shared BusinessInvestigationCase/Run domain authority against 115/116/119 and 163/164; no second DataRequirement authority."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000291",
+  "project_revision": "AOS-000292",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "d8e6a3caaa3e19270e8d29fd0f39d3fd25c5a244",
-    "plan": "09858113a4da7bec1aa9a5b9eb8779e63b4013c0"
+    "code": "3c2bcf4ca",
+    "plan": "27ca4fa"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
