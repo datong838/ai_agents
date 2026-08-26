@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000285",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw2_001_data_requirement_authority.py",
+    "services/aos-api/aos_api/data_requirement_contracts.py",
+    "services/aos-api/tests/test_data_requirement_authority.py"
+  ],
+  "commits": [
+    "code=417278a84427fdeca14fcc891e0eb787520f0ce6"
+  ],
+  "completed_at": "2026-08-26T11:45:57+08:00",
+  "completed_revision": "AOS-000285",
+  "result": "BI_W2_01_DATA_REQUIREMENT_AUTHORITY_CODE_GREEN_NO_RUNTIME_ENTRY",
+  "risks": [
+    "No real database upgrade, router, service, store, API, adapter, external effect or release. Full-suite shared database order isolation remains a repository test-harness risk; no product regression reproduced."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w2-01-data-requirement-authority",
+  "verification": [
+    "targeted=6 passed; adjacent cumulative=28 passed; disposable PostgreSQL RLS empty downgrade and nonempty refusal=GREEN; compileall and alembic head=GREEN; full suite sample=154 passed before interruption with 6 shared-test-db failures, all 6 isolated reruns GREEN"
+  ]
+}

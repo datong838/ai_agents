@@ -1,28 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000285",
-      "created_at": "2026-08-26T11:25:37+08:00",
-      "excluded_scope": [
-        "existing database upgrade or real tenant data mutation",
-        "routers, service, store, API registration, feature flag, platform adapter, external effect, release"
-      ],
-      "expected_outputs": [
-        "BI-W2-01 current-cutoff exact implementation plan maintained in 119",
-        "additive biw2_001 DataRequirement authority schema with RLS and rollback guard",
-        "strict DataRequirement authority contracts and RED-GREEN tests"
-      ],
-      "lease_expires_at": "2026-08-26T07:25:36.595754+00:00",
-      "owner": "codex-m1-serial",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "services/aos-api/alembic/versions/biw2_001_data_requirement_authority.py",
-        "services/aos-api/aos_api/data_requirement_contracts.py",
-        "services/aos-api/tests/test_data_requirement_authority.py"
-      ],
-      "status": "ACTIVE",
-      "task_id": "bi-w2-01-data-requirement-authority"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }

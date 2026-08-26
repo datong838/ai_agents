@@ -1,33 +1,35 @@
 {
   "completed": [
-    "BI-W1-01_TO_BI-W1-06"
+    "BI-W1-01_TO_BI-W1-06",
+    "BI-W2-01"
   ],
-  "content_hash": "sha256:27ced540b6215236cb147daecd6ae02730b467da74c4b464647766bafdcf02e2",
-  "current_phase": "BI_W1_SHARED_SEMANTIC_CONTRACTS_GREEN",
-  "delivery_status": "BI_W1_01_TO_06_CODE_GREEN_NO_RUNTIME_ENTRY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:1bb94afcf4643018924ce80310dd917e75d8ad4d87a1e928bae99abcb6dbf49e",
+  "current_phase": "BI_W2_01_DATA_REQUIREMENT_AUTHORITY_CODE_GREEN",
+  "delivery_status": "BI_W2_01_SCHEMA_CONTRACT_MIGRATION_GREEN_NO_DATABASE_UPGRADE_NO_RUNTIME_ENTRY_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "DeliveryReceipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w1-shared-semantic-contracts.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w2-01-data-requirement-authority.json"
     }
   ],
-  "generated_at": "2026-08-26T11:18:21+08:00",
+  "generated_at": "2026-08-26T11:46:26+08:00",
   "hard_boundaries": [
-    "No router, store, migration, feature flag, real tenant data, external effect or release in BI-W1"
+    "No real database upgrade, router, service, API, adapter, tenant data mutation, external effect or release in BI-W2-01."
   ],
   "incomplete": [
-    "BI-W2_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W2-02_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI_W1_CONTRACT_PARSER_CUMULATIVE_GREEN",
-  "next_gate": "BI_W2_DATA_REQUIREMENT_AUTHORITY_IMPLEMENTATION_PLAN_AND_MIGRATION_LEASE",
+  "last_green_gate": "BI_W2_01_DISPOSABLE_MIGRATION_RLS_ROLLBACK_GREEN",
+  "next_gate": "BI_W2_02_DATA_REQUIREMENT_STORE_CAS_IMPLEMENTATION_PLAN",
   "next_steps": [
-    "Review and freeze BI-W2 exact table/store/API/migration plan, then acquire migration lease before persistence changes"
+    "Freeze BI-W2-02 exact Store/CAS scope, register lease, then implement tenant-bound request/accept/reject/cancel CAS without adding a runtime route."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000285",
+  "project_revision": "AOS-000286",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "2b65104d89d6ca27d07a6d51675f9e7bfc14a627"
+    "code": "417278a84427fdeca14fcc891e0eb787520f0ce6",
+    "plan": "4c98375c0a98b7d6c403da8e971c908c3b8a00a1"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
