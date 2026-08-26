@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000304",
+  "created_at": "2026-08-26T17:03:34+08:00",
+  "excluded_scope": [
+    "HTTP APIs,Run lifecycle transitions,AIP TaskRun,Saga delivery,real tenant data,external effects,migration apply,release"
+  ],
+  "expected_outputs": [
+    "single-active slot plus trigger receipt idempotency with scheduled overlap skip and nonclaims"
+  ],
+  "lease_expires_at": "2026-08-26T12:00:00+00:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/alembic/versions/biw4_003_run_active_trigger_guard.py,services/aos-api/aos_api/ecommerce_business_investigation_run.py,services/aos-api/tests/test_ecommerce_business_investigation_run.py,services/aos-api/tests/test_ecommerce_business_investigation_run_guard.py,docs:119-plan-and-memory-receipts"
+  ],
+  "status": "ACTIVE",
+  "task_id": "bi-w4-03-run-active-trigger-idempotency"
+}
