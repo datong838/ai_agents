@@ -180,3 +180,4 @@
 {"base_revision":"AOS-000328","occurred_at":"2026-08-26T22:38:46+08:00","schema":"aos-memory-event/v1","task_id":"BI-W7-01","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-26T22:49:14+08:00","result":"BI-W7-01 exact read-only feature flag and default-first BusinessInvestigationTab GREEN; flag-off seven-view behavior preserved; no commands or canonical Case projection fabricated","schema":"aos-memory-event/v1","task_id":"BI-W7-01","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T22:49:46+08:00","project_revision":"AOS-000329","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000329","occurred_at":"2026-08-26T22:54:21+08:00","schema":"aos-memory-event/v1","task_id":"BI-W7-02","type":"TASK_STARTED"}

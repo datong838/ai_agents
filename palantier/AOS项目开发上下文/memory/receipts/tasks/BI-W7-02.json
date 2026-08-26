@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000329",
+  "created_at": "2026-08-26T22:54:21+08:00",
+  "excluded_scope": [
+    "backend authority/API/migrations; BI-W7-03+ envelope/stage/workspace/readiness/artifact state; BI-W8 commands/schedules/reviews/handoff; real business data/source reads/Provider/external effects/release"
+  ],
+  "expected_outputs": [
+    "Strict canonical Case/Run read SDK and atomic channel-to-entity-to-record selection UI with stale-response suppression and no write controls"
+  ],
+  "lease_expires_at": "2026-08-27T02:00:00+08:00",
+  "owner": "codex-m1-single-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts,apps/web/src/api/ecommerceInvestigation/parser.ts,apps/web/src/api/ecommerceInvestigation/parser.test.ts,apps/web/src/api/ecommerceInvestigation/client.ts,apps/web/src/api/ecommerceInvestigation/client.test.ts,apps/web/src/api/ecommerceInvestigation/index.ts,apps/web/src/components/workshop/BusinessInvestigationTab.tsx,apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx,apps/web/src/components/workshop/AnalystPage.tsx,apps/web/src/components/workshop/AnalystPage.test.tsx,apps/web/src/styles/45-ecommerce-workshop.css,docs plan and memory receipts"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W7-02"
+}
