@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000288",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw2_003_data_fulfillment_binding.py",
+    "services/aos-api/aos_api/data_fulfillment_store.py",
+    "services/aos-api/tests/test_data_fulfillment_store.py"
+  ],
+  "commits": [
+    "code=1fe086688cfb8b14fdf77a5101c68abf9508b809",
+    "plan=2fd22c6363f03a94a0f3daf828d106b62aea51d3"
+  ],
+  "completed_at": "2026-08-26T12:02:12+08:00",
+  "completed_revision": "AOS-000288",
+  "result": "BI_W2_03_EXACT_FULFILLMENT_RECEIPT_BINDING_GREEN_NO_STATE_INFERENCE",
+  "risks": [
+    "Receipt binding does not advance Requirement status and does not mutate SourceReadiness. No real database upgrade, router, service, API, adapter, tenant mutation, external effect or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w2-03-fulfillment-exact-receipt-binding",
+  "verification": [
+    "targeted=4 passed; cumulative BI-W1/BI-W2-01/02/03/SourceReadiness=23 passed; disposable PostgreSQL exact-current/idempotency/conflict/cross-tenant/direct-insert-denial=GREEN; py_compile/diff=GREEN; alembic head=biw2_003; browser=NOT_APPLICABLE"
+  ]
+}
