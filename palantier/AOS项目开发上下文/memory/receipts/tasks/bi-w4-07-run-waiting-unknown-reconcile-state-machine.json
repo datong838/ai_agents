@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000308",
+  "created_at": "2026-08-26T18:12:23+08:00",
+  "excluded_scope": [
+    "real business data;shared database migration apply;AIP TaskRun;automatic retry;reconcile success resolution;Workbench projection;external effects;release"
+  ],
+  "expected_outputs": [
+    "Fail-closed PREPARING to WAITING_DATA and RUNNING/PAUSED to UNKNOWN to RECONCILING canonical state successors with exact refs, Receipt/CAS/RLS/restart tests and request-data HTTP contract"
+  ],
+  "lease_expires_at": "2026-08-26T14:11:33+00:00",
+  "owner": "codex-m1-single",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/alembic/versions/biw4_007_run_waiting_unknown_reconcile_state_machine.py;services/aos-api/aos_api/ecommerce_business_investigation_run.py;services/aos-api/aos_api/ecommerce_business_investigation_application.py;services/aos-api/aos_api/routers/ecommerce_business_investigations.py;services/aos-api/tests/test_ecommerce_business_investigation_reconciliation.py;services/aos-api/tests/test_ecommerce_business_investigation_api.py;services/aos-api/tests/test_ecommerce_business_investigation_lifecycle.py;services/aos-api/tests/test_ecommerce_business_investigation_run.py;services/aos-api/tests/test_ecommerce_business_investigation_artifact.py;services/aos-api/tests/test_ecommerce_business_investigation_artifact_binding.py;docs 119 plan and memory receipts/projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "bi-w4-07-run-waiting-unknown-reconcile-state-machine"
+}
