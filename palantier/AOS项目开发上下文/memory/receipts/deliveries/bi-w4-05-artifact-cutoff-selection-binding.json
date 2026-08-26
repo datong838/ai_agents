@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000306",
+  "blockers": [
+    "NO_REAL_ARTIFACT_BINDING",
+    "NO_AIP_STAGE_EXECUTION",
+    "NO_EXTERNAL_EFFECT"
+  ],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw4_005_artifact_cutoff_selection_binding.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_artifact.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_artifact_binding.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "0dacb6b3"
+  ],
+  "completed_at": "2026-08-26T17:30:57+08:00",
+  "completed_revision": "AOS-000306",
+  "result": "BI-W4-05 append-only artifact exact-ref binding with atomic selectionRevision dataCutoff and lineage closed",
+  "risks": [
+    "binding creation remains owner-only until BI-W6-04 publication command and Workbench projection remains BI-W4-08"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w4-05-artifact-cutoff-selection-binding",
+  "verification": [
+    "target artifact tests: 14 passed",
+    "cumulative BI-W1..BI-W4-05 pytest: 106 passed",
+    "disposable PostgreSQL exact artifact/Case/Run/selection guard, RLS and downgrade tests passed",
+    "compileall, alembic head biw4_005, diff and targeted security checks passed; browser NOT_APPLICABLE"
+  ]
+}

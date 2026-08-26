@@ -12,42 +12,43 @@
     "BI-W4-01",
     "BI-W4-02",
     "BI-W4-03",
-    "BI-W4-04"
+    "BI-W4-04",
+    "BI-W4-05"
   ],
-  "content_hash": "sha256:c9ec91e1e50b73389b64a05522ddacbe0b36a9d9beb6e924ddd398ba3ffadc2b",
-  "current_phase": "BI-W4 Case/Run domain authority; BI-W4-04 complete",
-  "delivery_status": "BI_W4_04_GOVERNED_ARTIFACT_REVISIONS_CODE_CONTROL_GREEN_NO_REAL_ARTIFACT_NO_AIP_STAGE_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:1b30ab944e68364523f84976a02779872ca6e0a8ca11e1c024c5d2af40305fe2",
+  "current_phase": "BI-W4 Case/Run domain authority; BI-W4-05 complete",
+  "delivery_status": "BI_W4_05_ARTIFACT_CUTOFF_SELECTION_BINDING_CODE_CONTROL_GREEN_NO_REAL_BINDING_NO_AIP_STAGE_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w4-04-governed-artifact-revision-refs.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w4-05-artifact-cutoff-selection-binding.json"
     },
     {
       "kind": "plan",
       "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "generated_at": "2026-08-26T17:23:07+08:00",
+  "generated_at": "2026-08-26T17:30:57+08:00",
   "hard_boundaries": [
-    "NO_REAL_ARTIFACT",
+    "NO_REAL_ARTIFACT_BINDING",
     "NO_AIP_STAGE_EXECUTION",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W4-05_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W4-06_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W4-04 target 9 and cumulative 101 tests GREEN",
-  "next_gate": "BI-W4-05 ArtifactRef dataCutoff selectionRevision atomic binding",
+  "last_green_gate": "BI-W4-05 target 14 and cumulative 106 tests GREEN",
+  "next_gate": "BI-W4-06 canonical Case/Run query and lifecycle command API",
   "next_steps": [
-    "Start BI-W4-05 artifact cutoff and selection binding; continue serial Loop"
+    "Start BI-W4-06 canonical query and lifecycle command API; continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000306",
+  "project_revision": "AOS-000307",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "52943945",
-    "bi-w4-04-plan": "8f9fae9"
+    "aos-platform": "0dacb6b3",
+    "bi-w4-05-plan": "3d99556"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
