@@ -1,0 +1,41 @@
+{
+  "base_revision": "AOS-000337",
+  "blockers": [
+    "none for BI-W8-01; real external effects and release remain prohibited"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/components/workshop/businessInvestigationFeatureFlags.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "bb372244130aea2e5adf96fcfa2197c88fee86ca",
+    "8430dd8583d7fb9293d1bcc37ca06eded96f5cdb"
+  ],
+  "completed_at": "2026-08-27T02:10:12+08:00",
+  "completed_revision": "AOS-000337",
+  "result": "BI_W8_01_CONTROLLED_COMMAND_CODE_BROWSER_GREEN_VISUAL_DELTA_ROUTED_TO_FINAL_S8_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "known visual baseline delta remains explicitly routed to final S8 eight-menu visual/frontend/backend hard gate"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W8-01-IMPL",
+  "verification": [
+    "backend focused 21/21 and cumulative Business Investigation 213/213",
+    "frontend focused 32/32 and cumulative 255 files/2284 tests",
+    "TypeScript and Vite build GREEN 359 modules",
+    "built-in browser 1280/1440/1920 no overflow; eight tabs; default command panel/buttons zero",
+    "scheme-code consistency and diff-check GREEN"
+  ]
+}
