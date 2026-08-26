@@ -1,0 +1,40 @@
+{
+  "base_revision": "AOS-000280",
+  "blockers": [
+    "BACKEND_BASELINE_RED",
+    "SECURITY_CRITICAL_FINDINGS_PRESENT",
+    "SAME_CUTOFF_TENANT_EVIDENCE_MISSING",
+    "EXACT_RECEIPT_READBACK_MISSING"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/workshopCumulativeReleaseGate.ts",
+    "apps/web/src/components/workshop/workshopCumulativeReleaseGate.test.ts",
+    "apps/web/src/components/workshop/WorkshopCumulativeReleaseGateCard.tsx",
+    "apps/web/src/components/workshop/WorkshopCumulativeReleaseGateCard.test.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    ".evidence/workshop/w8-11/README.md",
+    ".evidence/workshop/w8-11/verification.json"
+  ],
+  "commits": [
+    "b20d98014770bb806b2064130dfe229570241683",
+    "7e11fb7a472954cd2fd597ce310f0b35b85f5778",
+    "921889dd44c01371019b9112045490c415578bf0",
+    "6dcc131"
+  ],
+  "completed_at": "2026-08-26T08:14:38+08:00",
+  "completed_revision": "AOS-000280",
+  "result": "ENGINEERING_CUMULATIVE_GATE_BROWSER_GREEN_RELEASE_LEDGER_POSITIVE_EVIDENCE_BLOCKED_NO_MIGRATION_APPLY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Backend cumulative baseline remains RED: pytest lastfailed cache 335 of 12461 collected",
+    "Security cumulative scan remains RED: 5 critical and 326 warnings; no secret values read or recorded"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-11-cumulative-release-gate-20260826",
+  "verification": [
+    "W8-11 targeted 3 files/26 tests GREEN; compatibility 5/60 GREEN",
+    "Web 249 files/2240 tests, Web/Desktop typecheck, build 351 modules GREEN",
+    "OpenAPI/SDK/Desktop/Helm/Alembic read-only graph/diff checks recorded in .evidence/workshop/w8-11",
+    "Built-in browser: formal catalog fail-closed; GET-only card 0/14, 0/8, 26 blockers, no action buttons"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000280",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/components/aip/ActionBoundaryPanel.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/workshopCumulativeReleaseGate.ts"
+  ],
+  "commits": [
+    "7e11fb7a472954cd2fd597ce310f0b35b85f5778"
+  ],
+  "completed_at": "2026-08-26T08:14:48+08:00",
+  "completed_revision": "AOS-000280",
+  "result": "DESKTOP_TARGET_COMPATIBILITY_GREEN_NO_BEHAVIOR_REGRESSION",
+  "risks": [
+    "Mechanical ES target compatibility only; no API, tenant, data, command, or release behavior changed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-11-desktop-typescript-compat-20260826",
+  "verification": [
+    "Relevant 5 files/60 tests GREEN",
+    "Web typecheck GREEN",
+    "Desktop typecheck GREEN"
+  ]
+}

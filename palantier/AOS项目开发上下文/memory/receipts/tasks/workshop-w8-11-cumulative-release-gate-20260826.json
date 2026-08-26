@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000280",
+  "created_at": "2026-08-26T07:19:14+08:00",
+  "excluded_scope": [
+    "migration apply, generated artifact mutation, real tenant mutation, Provider/Action, external effect, release flag or release execution"
+  ],
+  "expected_outputs": [
+    "W8-11 fourteen-column cumulative release ledger evaluator, read-only contribution card, targeted/full tests, typecheck, build, browser acceptance, Receipt and safe commits"
+  ],
+  "lease_expires_at": "2026-08-26T15:19:04+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/workshopCumulativeReleaseGate.ts",
+    "apps/web/src/components/workshop/workshopCumulativeReleaseGate.test.ts",
+    "apps/web/src/components/workshop/WorkshopCumulativeReleaseGateCard.tsx",
+    "apps/web/src/components/workshop/WorkshopCumulativeReleaseGateCard.test.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    ".evidence/workshop/w8-11",
+    "docs ADR 80 and master checklist"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w8-11-cumulative-release-gate-20260826"
+}

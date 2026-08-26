@@ -1,44 +1,48 @@
 {
   "completed": [
-    "W8-10 read-only DR evaluator, contribution card, tests, build and browser acceptance"
+    "W8-11 cumulative release gate evaluator, read-only contribution card, compatibility fix, cumulative tests and built-in browser acceptance"
   ],
-  "content_hash": "sha256:5a4e2cebef28947d6d5cba9e1bb345becf2bb8c0221c5608ff47723e1ea70f91",
+  "content_hash": "sha256:c7935b63b620cd1bcad82882254c16ec7248724311d36f22968c0b15113c5378",
   "current_phase": "S7_WORKSHOP_W8_SCENARIOS_AND_RELEASE_GATES",
-  "delivery_status": "W8_10_DR_READINESS_CONTRACT_CODE_BROWSER_GREEN_REAL_RESTORE_DRILLS_BLOCKED_NO_DATA_OPERATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "W8_11_CUMULATIVE_ENGINEERING_GATE_CODE_BROWSER_GREEN_RELEASE_LEDGER_POSITIVE_EVIDENCE_BLOCKED_BACKEND_SECURITY_RED_NO_MIGRATION_APPLY_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/w8-10/verification.json"
+      "ref": ".evidence/workshop/w8-11/verification.json"
     },
     {
       "kind": "browser",
-      "ref": ".evidence/workshop/w8-10/dr-readiness-visual-fixture.jpg"
+      "ref": ".evidence/workshop/w8-11/cumulative-release-gate-visual-fixture.jpg"
     },
     {
       "kind": "adr",
-      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/79-W8-10-备份恢复投影重建RLS与灾难恢复预检ADR.md#8"
+      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/80-W8-11-累计OpenAPIAlembicBundleEvalSecurityDiff门预检ADR.md#7"
     }
   ],
-  "generated_at": "2026-08-26T07:17:56+08:00",
+  "generated_at": "2026-08-26T08:15:42+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only positive tenant; dev-org/dev-project is isolation-only",
-    "No migration apply, real data operation, RLS mutation, Provider/Action, external effect or release; engineering acceptance is not operational authority"
+    "No migration apply, real data mutation, Bundle installation, security auto-fix, Provider/Action, external effect or release",
+    "Continuous development authorization is not release approval; W8-12 must remain NO_GO without exact candidate and explicit maker-checker approval"
   ],
   "incomplete": [
-    "real backup restore, isolated DR target, approved/measured RPO-RTO, RLS mutation and full drills"
+    "Backend cumulative baseline remains RED: lastfailed cache 335/12461",
+    "Security cumulative scan remains RED: 5 critical/326 warnings",
+    "Same-cutoff org-org positive and dev-org negative release evidence, exact release identity and Receipt readback remain missing"
   ],
-  "last_green_gate": "W8_10_ENGINEERING_DR_READINESS_CONTRACT_BROWSER_GREEN",
-  "next_gate": "W8_11_CUMULATIVE_OPENAPI_ALEMBIC_BUNDLE_EVAL_SECURITY_DIFF_ENGINEERING_CLOSURE",
+  "last_green_gate": "W8_11_ENGINEERING_CUMULATIVE_GATE_BROWSER_GREEN",
+  "next_gate": "W8_12_OPERATIONAL_READINESS_RELEASE_DECISION_ENGINEERING_CLOSURE",
   "next_steps": [
-    "Execute W8-11 cumulative OpenAPI/Alembic/Bundle Eval/security/diff gate without migration apply, external effect or release"
+    "Execute W8-12 operational readiness and release decision engineering closure as NO_GO without real tenant mutation, external effect or release"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000280",
+  "project_revision": "AOS-000281",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform-code": "d7eed3fee0915733d40cd1872493bdf486fdb844",
-    "aos-platform-evidence": "2b720d484988bcd678778204f3cd53d6e66668b8",
-    "docs": "2f4fe7d79f064d7893fdd637dab239d4a15a3aa0"
+    "aos-platform-code": "b20d98014770bb806b2064130dfe229570241683",
+    "aos-platform-compat": "7e11fb7a472954cd2fd597ce310f0b35b85f5778",
+    "aos-platform-evidence": "921889dd44c01371019b9112045490c415578bf0",
+    "docs": "6dcc131"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
