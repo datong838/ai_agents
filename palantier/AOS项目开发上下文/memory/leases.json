@@ -1,32 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000315",
-      "created_at": "2026-08-26T19:51:50+08:00",
-      "excluded_scope": [
-        "data-requirement-authority-persistence",
-        "source-database-access",
-        "fulfillment-and-resume",
-        "database-migration",
-        "real-business-data",
-        "external-effect-and-release"
-      ],
-      "expected_outputs": [
-        "canonical-data-requirement-request-adapter",
-        "missing-facts-to-exact-request-contract",
-        "fail-closed-no-source-read-tests"
-      ],
-      "lease_expires_at": "2026-08-27T00:30:00+08:00",
-      "owner": "aip-analysis-orchestration",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "services/aos-api/aos_api/aip_business_investigation_data_requester.py",
-        "services/aos-api/tests/test_aip_business_investigation_data_requester.py",
-        "palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
-      ],
-      "status": "ACTIVE",
-      "task_id": "BI-W5-04"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }
