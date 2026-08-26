@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000289",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/source_readiness_contracts.py",
+    "services/aos-api/tests/test_source_readiness_investigation_projection.py"
+  ],
+  "commits": [
+    "code=a920c0e41211f8d506bc1d44cbbd23b64e6b1978",
+    "plan=a5f3efde2d0070bf75b4647e2f1a7c15558cd8de"
+  ],
+  "completed_at": "2026-08-26T12:05:31+08:00",
+  "completed_revision": "AOS-000289",
+  "result": "BI_W2_04_CANONICAL_SOURCE_READINESS_INVESTIGATION_PROJECTION_GREEN",
+  "risks": [
+    "Contract-only optional projection; no second authority, service fact acquisition, router, database, real tenant probe, adapter, external effect or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w2-04-source-readiness-investigation-projection",
+  "verification": [
+    "targeted SourceReadiness=10 passed; cumulative BI-W1/BI-W2-01_TO_04=30 passed; old v1 compatibility and negative coverage/cutoff/history/raw-field cases=GREEN; py_compile/diff=GREEN; browser=NOT_APPLICABLE"
+  ]
+}
