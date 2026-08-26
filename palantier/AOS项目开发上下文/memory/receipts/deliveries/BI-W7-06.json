@@ -1,0 +1,36 @@
+{
+  "base_revision": "AOS-000334",
+  "blockers": [
+    "NO_REAL_BUSINESS_DATA",
+    "NO_SOURCE_READ",
+    "NO_PROVIDER_EXECUTION",
+    "NO_EXTERNAL_EFFECT",
+    "NO_RELEASE"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "1bf7e88ff3db0127751c374689d6bc4182322c36"
+  ],
+  "completed_at": "2026-08-27T01:22:12+08:00",
+  "completed_revision": "AOS-000334",
+  "result": "BI_W7_06_EVIDENCE_ARTIFACT_TIMELINE_CODE_VISUAL_BROWSER_1280_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Current browser fixture remains v3; canonical v4 covered by backend/API/parser/component tests. 1440/1920 and all eight-menu visual parity remain final S8 hard gate."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W7-06",
+  "verification": [
+    "backend focused 16/16; Business Investigation cumulative 208/208; frontend focused 16/16; TypeScript; Vite build; diff-check; built-in browser 1280x720 no horizontal overflow and Artifact details interaction; current route honest legacy-v3 fallback"
+  ]
+}

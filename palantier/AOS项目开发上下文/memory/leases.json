@@ -1,23 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000334",
-      "created_at": "2026-08-27T01:04:42+08:00",
-      "excluded_scope": [
-        "real business data;source system reads;provider execution;external effects;migrations;release;unrelated dirty files"
-      ],
-      "expected_outputs": [
-        "v4 canonical Evidence/Artifact/Timeline drilldown with v3 compatibility, strict parser, read-only UI, focused and cumulative tests, visual-source browser acceptance, Receipt and Prime closure"
-      ],
-      "lease_expires_at": "2026-08-27T09:03:37+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "services/aos-api/aos_api/ecommerce_business_investigation_projection.py;services/aos-api/tests/test_ecommerce_business_investigation_projection.py;services/aos-api/tests/test_ecommerce_business_investigation_api.py;apps/web/src/api/ecommerceInvestigation/contracts.ts;apps/web/src/api/ecommerceInvestigation/parser.ts;apps/web/src/api/ecommerceInvestigation/parser.test.ts;apps/web/src/api/ecommerceInvestigation/client.test.ts;apps/web/src/components/workshop/BusinessInvestigationTab.tsx;apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx;apps/web/src/styles/45-ecommerce-workshop.css;docs-plan-119;task-and-delivery-receipts;authority-cas-projections"
-      ],
-      "status": "ACTIVE",
-      "task_id": "BI-W7-06"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }

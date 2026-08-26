@@ -1,42 +1,42 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "BI-W7-05"
+    "BI-W7-06"
   ],
   "current_phase": "BI-W7 Workshop read-only workspace implementation",
-  "delivery_status": "BI_W7_05_EXACT_DATA_READINESS_GATES_CODE_VISUAL_BROWSER_1280_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "BI_W7_06_EVIDENCE_ARTIFACT_TIMELINE_CODE_VISUAL_BROWSER_1280_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "BI-W7-05.json"
+      "ref": "BI-W7-06.json"
     },
     {
       "kind": "browser",
-      "ref": "built-in-actual-route-1280x720-visual-source-comparison-green"
+      "ref": "built-in-actual-route-1280x720-legacy-v3-honest-drilldown-interaction"
     },
     {
       "kind": "tests",
-      "ref": "BI-W7-05-focused49-web2274-build359-green"
+      "ref": "BI-W7-06-backend16-cumulative208-web16-tsc-build-green"
     }
   ],
-  "evidence_cutoff": "2026-08-27T00:59:51+08:00",
+  "evidence_cutoff": "2026-08-27T01:22:12+08:00",
   "hard_boundaries": [
-    "NO_REAL_BUSINESS_DATA_WRITE; NO_PROVIDER_CALL; NO_EXTERNAL_EFFECT; NO_MIGRATION; NO_RELEASE; 1440_AND_1920_VISUAL_ACCEPTANCE_DEFERRED_TO_S8_HARD_GATE"
+    "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_PROVIDER_CALL; NO_EXTERNAL_EFFECT; NO_MIGRATION; NO_RELEASE; CURRENT_BROWSER_FIXTURE_LEGACY_V3; 1440_AND_1920_AND_EIGHT_MENU_VISUAL_ACCEPTANCE_DEFERRED_TO_S8_HARD_GATE"
   ],
   "incomplete": [
-    "BI-W7-06"
+    "BI-W7-07"
   ],
-  "last_green_gate": "BI-W7-05 focused 49/49; Web 2274/2274; build 359 modules; built-in browser actual route 1280x720 no overflow, no write action, console 0",
-  "next_gate": "BI-W7-06",
+  "last_green_gate": "BI-W7-06 backend focused 16/16; Business Investigation cumulative 208/208; Web focused 16/16; TypeScript/Vite build; built-in browser actual route 1280x720 no overflow and Artifact detail interaction",
+  "next_gate": "BI-W7-07",
   "next_steps": [
-    "Re-read frozen BI plan and implement BI-W7-06 with exact file scope, focused and cumulative tests, visual-source browser acceptance, Receipt and Prime closure"
+    "Re-read frozen BI plan and implement BI-W7-07 state matrix with focused and cumulative tests, visual-source browser acceptance, Receipt and Prime closure"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000334",
+  "project_revision": "AOS-000335",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "docs": "44d771e10b6db78d7b02a5d31e25f2a1c7f96011",
-    "workshop": "79507c805881511e9264bbdb987dd767b768024d"
+    "docs": "a4cbdd8219ac7145598a7606a484d62862893321",
+    "workshop": "1bf7e88ff3db0127751c374689d6bc4182322c36"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -46,5 +46,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T01:00:07+08:00"
+  "updated_at": "2026-08-27T01:23:05+08:00"
 }
