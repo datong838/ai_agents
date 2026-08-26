@@ -1,4 +1,33 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000301",
+      "created_at": "2026-08-26T16:20:10+08:00",
+      "excluded_scope": [
+        "real-platform-access",
+        "credential-or-session-resolution",
+        "adapter-installation",
+        "real-retry",
+        "captcha-solve",
+        "real-business-data",
+        "external-effect",
+        "release"
+      ],
+      "expected_outputs": [
+        "BI-W3-07 disabled synthetic connector failure/restart fixture matrix and deterministic contract acceptance tests with blocker visibility and no automatic retry"
+      ],
+      "lease_expires_at": "2026-08-26T19:00:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "services/aos-api/aos_api/business_investigation_connector_contract.py",
+        "services/aos-api/tests/fixtures/business_investigation/connector_failure_matrix.json",
+        "services/aos-api/tests/test_business_investigation_connector_contract.py",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "bi-w3-07-connector-failure-restart-contracts"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }

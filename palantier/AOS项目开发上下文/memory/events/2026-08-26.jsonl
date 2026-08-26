@@ -98,3 +98,4 @@
 {"base_revision":"AOS-000300","occurred_at":"2026-08-26T16:00:36+08:00","schema":"aos-memory-event/v1","task_id":"bi-w3-06-data-handling-policy","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-26T16:17:59+08:00","result":"BI-W3-06 data-handling code-control authority closed with canonical retention verification, raw SQL bypass denial and cleanup receipt verification; no real data or deletion","schema":"aos-memory-event/v1","task_id":"bi-w3-06-data-handling-policy","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T16:18:20+08:00","project_revision":"AOS-000301","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000301","occurred_at":"2026-08-26T16:20:10+08:00","schema":"aos-memory-event/v1","task_id":"bi-w3-07-connector-failure-restart-contracts","type":"TASK_STARTED"}
