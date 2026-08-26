@@ -42,3 +42,12 @@
 {"occurred_at":"2026-08-26T08:14:38+08:00","result":"ENGINEERING_CUMULATIVE_GATE_BROWSER_GREEN_RELEASE_LEDGER_POSITIVE_EVIDENCE_BLOCKED_NO_MIGRATION_APPLY_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w8-11-cumulative-release-gate-20260826","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T08:14:48+08:00","result":"DESKTOP_TARGET_COMPATIBILITY_GREEN_NO_BEHAVIOR_REGRESSION","schema":"aos-memory-event/v1","task_id":"workshop-w8-11-desktop-typescript-compat-20260826","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T08:15:42+08:00","project_revision":"AOS-000281","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000281","occurred_at":"2026-08-26T08:17:29+08:00","schema":"aos-memory-event/v1","task_id":"workshop-w8-12-operational-readiness-release-decision-20260826","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T08:30:03+08:00","result":"ENGINEERING_OPERATIONAL_DECISION_CONTRACT_BROWSER_GREEN_RELEASE_DECISION_NO_GO_NO_REAL_TENANT_MUTATION_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"workshop-w8-12-operational-readiness-release-decision-20260826","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T08:30:38+08:00","project_revision":"AOS-000282","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000282","occurred_at":"2026-08-26T10:10:09+08:00","schema":"aos-memory-event/v1","task_id":"bi-w0-plan-remediation-and-rereview","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T10:28:42+08:00","result":"BI_W0_PLAN_REMEDIATION_PARTIAL_SAFE_BLOCKED","schema":"aos-memory-event/v1","task_id":"bi-w0-plan-remediation-and-rereview","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T10:29:52+08:00","project_revision":"AOS-000283","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000283","occurred_at":"2026-08-26T10:42:39+08:00","schema":"aos-memory-event/v1","task_id":"bi-w0b-implementation-package-readiness","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T10:57:33+08:00","result":"BI_W0A_W0B_PLAN_GREEN_P0_0_P1_0_READY_FOR_EXPLICIT_BI_W1_IMPLEMENTATION_AUTHORIZATION","schema":"aos-memory-event/v1","task_id":"bi-w0b-implementation-package-readiness","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T10:58:27+08:00","project_revision":"AOS-000284","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
