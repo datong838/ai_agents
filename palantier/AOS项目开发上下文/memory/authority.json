@@ -3,42 +3,51 @@
   "completed": [
     "BI-W8-01",
     "BI-W8-02",
-    "BI-W8-03"
+    "BI-W8-03",
+    "BI-W8-04",
+    "BI-W8-05",
+    "BI-W8-06"
   ],
-  "current_phase": "BI-W8 Workshop review-return command orchestration implementation",
-  "delivery_status": "BI_W8_03_RECEIPT_FIRST_DATA_COMMAND_CODE_BROWSER_GREEN_VISUAL_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "BI-W8 command review and handoff orchestration",
+  "delivery_status": "BI_W8_06_CONTROLLED_CROSS_MODULE_HANDOFF_CODE_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "BI-W8-03-IMPL2.json"
+      "ref": "BI-W8-06-IMPL2.json"
     },
     {
       "kind": "tests",
-      "ref": "BI-W8-03-focused33-web26-cumulative236-web2287-browser-three-viewports-green"
+      "ref": "BI-W8-06-backend137-frontend69-browser1280-green"
     },
     {
       "kind": "code",
-      "ref": "656dad9689c2328bbd2440b7ca012c87b2d4ab16"
+      "ref": "8d7ae312"
+    },
+    {
+      "kind": "docs",
+      "ref": "b8af768"
     }
   ],
-  "evidence_cutoff": "2026-08-27T03:54:00+08:00",
+  "evidence_cutoff": "2026-08-27T05:43:31+08:00",
   "hard_boundaries": [
-    "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_PROVIDER_CALL; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
+    "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_PROVIDER_CALL; NO_ACTION_EXECUTION; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
   ],
   "incomplete": [
-    "BI-W8-04"
+    "BI-W8-07",
+    "S8-Visual"
   ],
-  "last_green_gate": "BI-W8-03 focused backend33 web26 cumulative backend236 web2287 browser1280-1440-1920 build compileall alembic-head diff-check GREEN",
-  "next_gate": "BI-W8-04",
+  "last_green_gate": "BI-W8-06 backend targeted8 cumulative137 frontend69 typecheck build compileall diff browser1280 local panel GREEN; final S8-Visual pending",
+  "next_gate": "BI-W8-07",
   "next_steps": [
-    "Implement BI-W8-04 Workshop consumption of canonical review-return authority; retain final S8-Visual eight-menu frontend-backend-visual hard gate"
+    "Review and implement BI-W8-07 exact command review and handoff closure without treating accepted as downstream completion",
+    "Retain final S8-Visual eight-menu frontend-backend 1280/1440/1920 exact visual hard gate"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000341",
+  "project_revision": "AOS-000345",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos": "656dad9689c2328bbd2440b7ca012c87b2d4ab16",
-    "docs": "3beab72dc6b722b702615a9b1690853b8178caac"
+    "aos": "8d7ae312",
+    "docs": "b8af768"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -48,5 +57,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T03:55:47+08:00"
+  "updated_at": "2026-08-27T05:43:43+08:00"
 }

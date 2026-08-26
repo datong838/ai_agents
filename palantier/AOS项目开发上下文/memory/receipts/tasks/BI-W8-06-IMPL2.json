@@ -1,0 +1,46 @@
+{
+  "base_revision": "AOS-000344",
+  "created_at": "2026-08-27T05:05:34+08:00",
+  "excluded_scope": [
+    "real business data",
+    "source reads",
+    "Provider or Action execution",
+    "migration apply",
+    "external effects",
+    "release",
+    "unrelated dirty or untracked files"
+  ],
+  "expected_outputs": [
+    "BI-W8-06 canonical approved GrowthPlan handoff compile, exact receiver reauthorization, Workshop command UI, tests, browser visual evidence, Receipt, commit, CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-27T23:00:00+08:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_contracts.py",
+    "services/aos-api/aos_api/aip_agent_registry_contracts.py",
+    "services/aos-api/aos_api/aip_handoff_service.py",
+    "services/aos-api/aos_api/aip_handoff_reference_authority.py",
+    "services/aos-api/aos_api/routers/aip_handoffs.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_handoff.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_application.py",
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/tests/aip/test_aip_handoff_api.py",
+    "services/aos-api/tests/aip/test_aip_handoff_service.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_handoff.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "apps/web/src/api/aipAgentControl/contracts.ts",
+    "apps/web/src/api/aipAgentControl/parser.ts",
+    "apps/web/src/api/aipAgentControl/index.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W8-06-IMPL2"
+}

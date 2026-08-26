@@ -1,0 +1,54 @@
+{
+  "base_revision": "AOS-000344",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_contracts.py",
+    "services/aos-api/aos_api/aip_agent_registry_contracts.py",
+    "services/aos-api/aos_api/aip_handoff_service.py",
+    "services/aos-api/aos_api/aip_handoff_reference_authority.py",
+    "services/aos-api/aos_api/routers/aip_handoffs.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_handoff.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_application.py",
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/aos_api/ecommerce_workshop_handoff_contracts.py",
+    "services/aos-api/tests/aip/test_aip_handoff_service.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_handoff.py",
+    "apps/web/src/api/aipAgentControl/contracts.ts",
+    "apps/web/src/api/aipAgentControl/parser.ts",
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-08-27-biw8-06-controlled-handoff.json"
+  ],
+  "commits": [
+    "52f1f196",
+    "8d7ae312",
+    "b8af768"
+  ],
+  "completed_at": "2026-08-27T05:43:31+08:00",
+  "completed_revision": "AOS-000344",
+  "result": "BI_W8_06_CONTROLLED_CROSS_MODULE_HANDOFF_CODE_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "historical-openapi-duplicate-operationid-warnings-preexisting",
+    "react-act-warnings-preexisting-test-environment",
+    "final-S8-Visual-eight-menu-three-viewport-gate-pending"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W8-06-IMPL2",
+  "verification": [
+    "backend-targeted-8-passed",
+    "backend-cumulative-137-passed",
+    "frontend-targeted-69-passed",
+    "frontend-typecheck-green",
+    "frontend-build-green-existing-chunk-warning",
+    "python-compileall-green",
+    "git-diff-check-green",
+    "built-in-browser-1280x720-local-panel-green"
+  ]
+}
