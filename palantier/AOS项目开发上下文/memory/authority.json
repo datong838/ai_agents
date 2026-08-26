@@ -1,42 +1,43 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "BI-W8-01"
+    "BI-W8-01",
+    "BI-W8-02"
   ],
-  "current_phase": "BI-W8 Workshop controlled commands schedules review and handoff implementation",
-  "delivery_status": "BI_W8_01_CONTROLLED_COMMAND_CODE_BROWSER_GREEN_VISUAL_DELTA_ROUTED_TO_FINAL_S8_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "BI-W8 Workshop schedule policy and command orchestration implementation",
+  "delivery_status": "BI_W8_02_SCHEDULE_POLICY_CODE_CONTROL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "BI-W8-01-IMPL.json"
-    },
-    {
-      "kind": "browser",
-      "ref": "built-in-1280-1440-1920-default-command-closed-no-overflow-eight-tabs"
+      "ref": "BI-W8-02-IMPL2.json"
     },
     {
       "kind": "tests",
-      "ref": "BI-W8-01-backend213-web2284-tsc-build359-green"
+      "ref": "BI-W8-02-focused27-cumulative228-postgresql-green"
+    },
+    {
+      "kind": "code",
+      "ref": "c1d3bdb0c0f2e503e21e189d83f9f582baab5231"
     }
   ],
-  "evidence_cutoff": "2026-08-27T02:10:55+08:00",
+  "evidence_cutoff": "2026-08-27T02:45:19+08:00",
   "hard_boundaries": [
-    "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_PROVIDER_CALL; NO_EXTERNAL_EFFECT; NO_MIGRATION; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_AND_BACKEND_GATE_REQUIRED"
+    "NO_REAL_BUSINESS_DATA_WRITE; NO_SOURCE_READ; NO_PROVIDER_CALL; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
   ],
   "incomplete": [
-    "BI-W8-02"
+    "BI-W8-03"
   ],
-  "last_green_gate": "BI-W8-01 backend213 frontend2284 TypeScript Vite browser1280/1440/1920 default-command-closed exact-readback-green",
-  "next_gate": "BI-W8-02",
+  "last_green_gate": "BI-W8-02 focused27 cumulative228 PostgreSQL create-update-replay-conflict-RLS-downgrade compileall alembic-head diff-check GREEN",
+  "next_gate": "BI-W8-03",
   "next_steps": [
-    "Implement BI-W8-02 periodic plan projection and controlled schedule contract without real scheduling or external effect; retain final S8 eight-menu visual plus backend hard gate"
+    "Implement BI-W8-03 analysis command orchestration with canonical receipts and no external effect; retain final S8 eight-menu visual plus frontend plus backend hard gate"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000339",
+  "project_revision": "AOS-000340",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "docs": "e6348d043376a13241e4a9f0781aeeceb71cca43",
-    "workshop": "bb372244130aea2e5adf96fcfa2197c88fee86ca"
+    "aos": "c1d3bdb0c0f2e503e21e189d83f9f582baab5231",
+    "docs": "146f144"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -46,5 +47,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T02:13:01+08:00"
+  "updated_at": "2026-08-27T02:46:33+08:00"
 }

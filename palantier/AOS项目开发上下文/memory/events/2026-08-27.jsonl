@@ -24,3 +24,4 @@
 {"occurred_at":"2026-08-27T02:17:44+08:00","result":"SCOPE_EXPANDED_BEFORE_CODE_NO_IMPLEMENTATION","schema":"aos-memory-event/v1","task_id":"BI-W8-02-IMPL","type":"TASK_COMPLETED"}
 {"base_revision":"AOS-000339","occurred_at":"2026-08-27T02:17:57+08:00","schema":"aos-memory-event/v1","task_id":"BI-W8-02-IMPL2","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T02:45:19+08:00","result":"BI_W8_02_SCHEDULE_POLICY_CODE_CONTROL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W8-02-IMPL2","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T02:46:33+08:00","project_revision":"AOS-000340","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
