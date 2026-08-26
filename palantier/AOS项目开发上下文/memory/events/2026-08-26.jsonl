@@ -64,3 +64,4 @@
 {"base_revision":"AOS-000288","occurred_at":"2026-08-26T11:57:43+08:00","schema":"aos-memory-event/v1","task_id":"bi-w2-03-fulfillment-exact-receipt-binding","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-26T12:02:12+08:00","result":"BI_W2_03_EXACT_FULFILLMENT_RECEIPT_BINDING_GREEN_NO_STATE_INFERENCE","schema":"aos-memory-event/v1","task_id":"bi-w2-03-fulfillment-exact-receipt-binding","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T12:02:12+08:00","project_revision":"AOS-000289","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000289","occurred_at":"2026-08-26T12:02:56+08:00","schema":"aos-memory-event/v1","task_id":"bi-w2-04-source-readiness-investigation-projection","type":"TASK_STARTED"}
