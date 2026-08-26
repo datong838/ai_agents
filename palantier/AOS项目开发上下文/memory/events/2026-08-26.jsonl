@@ -95,3 +95,4 @@
 {"occurred_at":"2026-08-26T15:55:05+08:00","result":"BI-W3-05 semantic hydration code-control authority closed with exact mapping-to-owner-command target binding; no shared migration apply or Owner API call","schema":"aos-memory-event/v1","task_id":"bi-w3-05-semantic-hydration-job","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T15:55:52+08:00","project_revision":"AOS-000299","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"occurred_at":"2026-08-26T15:57:05+08:00","project_revision":"AOS-000300","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000300","occurred_at":"2026-08-26T16:00:36+08:00","schema":"aos-memory-event/v1","task_id":"bi-w3-06-data-handling-policy","type":"TASK_STARTED"}

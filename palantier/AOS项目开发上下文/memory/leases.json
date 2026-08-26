@@ -1,4 +1,33 @@
 {
-  "leases": [],
+  "leases": [
+    {
+      "base_revision": "AOS-000300",
+      "created_at": "2026-08-26T16:00:36+08:00",
+      "excluded_scope": [
+        "shared-database-migration-apply",
+        "existing-canonical-marking-authority-replacement",
+        "raw-platform-payload",
+        "pii-or-secret-values",
+        "real-artifact-deletion",
+        "browser-or-adapter-runtime",
+        "external-effect",
+        "release"
+      ],
+      "expected_outputs": [
+        "BI-W3-06 tenant-safe investigation data handling policy bindings, redaction receipts, retention/disposal decisions, targeted/cumulative/real-PostgreSQL tests, Delivery Receipt and Prime closure"
+      ],
+      "lease_expires_at": "2026-08-26T18:30:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        "services/aos-api/alembic/versions/biw3_006_investigation_data_handling.py",
+        "services/aos-api/aos_api/business_investigation_data_handling.py",
+        "services/aos-api/tests/test_business_investigation_data_handling.py",
+        "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "bi-w3-06-data-handling-policy"
+    }
+  ],
   "schema": "aos-memory-leases/v1"
 }
