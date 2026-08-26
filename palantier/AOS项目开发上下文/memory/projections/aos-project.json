@@ -24,41 +24,42 @@
     "BI-W5-04",
     "BI-W5-05",
     "BI-W5-06",
-    "BI-W5-07"
+    "BI-W5-07",
+    "BI-W5-08"
   ],
-  "content_hash": "sha256:0ef0adfeb1ba4feec078e66d9b1deabce4e10dc9d7739ec91191ed86ef4ef4cc",
-  "current_phase": "BI-W5 AIP analysis orchestration in progress; canonical contribution and handoff read model complete",
-  "delivery_status": "BI_W5_07_CANONICAL_CONTRIBUTION_HANDOFF_READ_MODEL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:2ff568eebffe13e6cf6398af2211c1c788e98c709dce9c523e3861eb4cd82d15",
+  "current_phase": "BI-W5 AIP analysis orchestration complete; BI-W6 Receipt-first saga ready",
+  "delivery_status": "BI_W5_08_FAIL_CLOSED_READINESS_MATRIX_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W5-07.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W5-08.json"
     },
     {
       "kind": "plan",
       "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "generated_at": "2026-08-26T20:42:20+08:00",
+  "generated_at": "2026-08-26T20:48:19+08:00",
   "hard_boundaries": [
     "NO_REAL_BUSINESS_DATA",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W5-08_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W6-01_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W5-07 targeted 9, Task Cockpit adjacent 41, business-investigation cumulative 147 tests GREEN; compileall/diff GREEN; browser N/A",
-  "next_gate": "BI-W5-08 observability spans and lineage",
+  "last_green_gate": "BI-W5-08 negative 20, BI-W5 cumulative 42, business-investigation cumulative 147 tests GREEN; compileall/diff GREEN; browser N/A",
+  "next_gate": "BI-W6-01 Run to AIP compile command and receipt",
   "next_steps": [
-    "Start BI-W5-08 observability spans and lineage; continue serial Loop"
+    "Start BI-W6-01 Run to AIP compile command and receipt; continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000319",
+  "project_revision": "AOS-000320",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "be1e72d6",
-    "bi-w5-07-plan": "799a692"
+    "aos-platform": "751d4ae3",
+    "bi-w5-08-plan": "f4194be"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

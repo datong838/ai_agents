@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000319",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_aip_business_investigation_compiler.py",
+    "services/aos-api/tests/test_aip_business_investigation_research.py",
+    "services/aos-api/tests/test_aip_business_investigation_contribution.py"
+  ],
+  "commits": [
+    "751d4ae3"
+  ],
+  "completed_at": "2026-08-26T20:48:00+08:00",
+  "completed_revision": "AOS-000319",
+  "result": "BI_W5_08_FAIL_CLOSED_READINESS_MATRIX_GREEN",
+  "risks": [
+    "NO_PLAN_WITHOUT_SKILL_BINDING_SET",
+    "NO_RESEARCH_JOB_WITHOUT_PROVIDER",
+    "NO_FAKE_AGENT_RUN_OR_CONTRIBUTION",
+    "NO_REAL_BUSINESS_DATA",
+    "NO_EXTERNAL_EFFECT",
+    "NO_RELEASE"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W5-08",
+  "verification": [
+    "negative-targeted=20/20;bi-w5-cumulative=42/42;business-investigation-cumulative=147/147;compileall=GREEN;diff-check=GREEN;browser=NOT_APPLICABLE"
+  ]
+}
