@@ -160,3 +160,11 @@
 {"occurred_at":"2026-08-26T21:07:50+08:00","project_revision":"AOS-000321","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"occurred_at":"2026-08-26T21:10:34+08:00","project_revision":"AOS-000322","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000322","occurred_at":"2026-08-26T21:13:38+08:00","schema":"aos-memory-event/v1","task_id":"BI-W6-02","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T21:24:25+08:00","result":"BI_W6_02_EXACT_DATA_REQUIREMENT_COMMAND_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W6-02","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T21:25:02+08:00","project_revision":"AOS-000323","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000323","occurred_at":"2026-08-26T21:29:20+08:00","schema":"aos-memory-event/v1","task_id":"BI-W6-03","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T21:42:57+08:00","result":"BI_W6_03_EXACT_FULFILLMENT_RESUME_GATE_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W6-03","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T21:43:13+08:00","project_revision":"AOS-000324","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000324","occurred_at":"2026-08-26T21:46:47+08:00","schema":"aos-memory-event/v1","task_id":"BI-W6-04","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-26T22:03:48+08:00","result":"Exact Eval-gated Artifact CAS publication, immutable PublicationReceipt, and receipt-before-Step completion are code and disposable-DB green.","schema":"aos-memory-event/v1","task_id":"BI-W6-04","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-26T22:04:58+08:00","project_revision":"AOS-000325","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

@@ -29,43 +29,39 @@
     "BI-W5-08",
     "BI-W6-01",
     "BI-W6-02",
-    "BI-W6-03"
+    "BI-W6-03",
+    "BI-W6-04"
   ],
-  "current_phase": "BI-W6 Receipt-first saga in progress; exact fulfillment resume gate complete",
-  "delivery_status": "BI_W6_03_EXACT_FULFILLMENT_RESUME_GATE_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "BI-W6 Receipt-first saga in progress; exact Artifact publication/accept complete",
+  "delivery_status": "BI_W6_04_EXACT_ARTIFACT_PUBLICATION_ACCEPT_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W6-03.json"
+      "kind": "plan",
+      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md#49"
     },
     {
-      "kind": "plan",
-      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+      "kind": "receipt",
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/delivery/BI-W6-04.json"
     }
   ],
-  "evidence_cutoff": "2026-08-26T21:42:57+08:00",
+  "evidence_cutoff": "2026-08-26T22:03:48+08:00",
   "hard_boundaries": [
-    "NO_SHARED_MIGRATION_APPLY",
-    "NO_REAL_BUSINESS_DATA",
-    "NO_SOURCE_SYSTEM_READ",
-    "NO_PROVIDER_EXECUTION",
-    "NO_EXTERNAL_EFFECT",
-    "NO_RELEASE"
+    "No real source-system read, Provider invocation, external business mutation/effect, shared migration apply, deploy, or release."
   ],
   "incomplete": [
-    "BI-W6-04_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W6-05_TO_BI-W11-06"
   ],
-  "last_green_gate": "BI-W6-03 focused 16/16, adjacency 50/50, Business Investigation cumulative 178/178 GREEN; compileall/diff GREEN",
-  "next_gate": "BI-W6-04 stage Artifact publish and accept",
+  "last_green_gate": "BI-W6-04 focused 12/12, adjacency 36/36, Business Investigation cumulative 190/190, disposable PostgreSQL publication/RLS/replay/downgrade, compileall/diff/Alembic single head GREEN; browser N/A",
+  "next_gate": "BI-W6-05 cross-layer state transition/outbox coordination",
   "next_steps": [
-    "Start BI-W6-04 stage Artifact publish and accept with exact revision/hash/cutoff binding"
+    "BI-W6-05"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000324",
+  "project_revision": "AOS-000325",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "e69875cc",
-    "bi-w6-03-plan": "f85ede8"
+    "aos-platform": "bd7599e8",
+    "bi-w6-04-plan": "c73e651"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -75,5 +71,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T21:43:13+08:00"
+  "updated_at": "2026-08-26T22:04:58+08:00"
 }

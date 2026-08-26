@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000324",
+  "created_at": "2026-08-26T21:46:47+08:00",
+  "excluded_scope": [
+    "真实源系统读取、Provider 调用、外部业务写、迁移 apply、发布/部署、无关脏工作树"
+  ],
+  "expected_outputs": [
+    "BI-W6-04 exact artifact publication CAS, immutable receipt, and receipt-before-step-completion saga"
+  ],
+  "lease_expires_at": "2026-08-26T19:46:24+00:00",
+  "owner": "codex-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md",
+    "services/aos-api/aos_api/ecommerce_business_investigation_artifact.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_artifact_publication.py",
+    "services/aos-api/aos_api/aip_business_investigation_artifact_saga.py",
+    "services/aos-api/alembic/versions/biw6_002_investigation_artifact_publication.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_artifact_publication.py",
+    "services/aos-api/tests/test_aip_business_investigation_artifact_saga.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W6-04"
+}

@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000324",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_artifact.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_artifact_publication.py",
+    "services/aos-api/aos_api/aip_business_investigation_artifact_saga.py",
+    "services/aos-api/alembic/versions/biw6_002_investigation_artifact_publication.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_artifact_publication.py",
+    "services/aos-api/tests/test_aip_business_investigation_artifact_saga.py"
+  ],
+  "commits": [
+    "bd7599e8"
+  ],
+  "completed_at": "2026-08-26T22:03:48+08:00",
+  "completed_revision": "AOS-000324",
+  "result": "Exact Eval-gated Artifact CAS publication, immutable PublicationReceipt, and receipt-before-Step completion are code and disposable-DB green.",
+  "risks": [
+    "Shared migration not applied; no real source read, Provider invocation, external business mutation/effect, or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W6-04",
+  "verification": [
+    "focused 12/12 GREEN; Artifact/Eval/Task adjacency 36/36 GREEN; Business Investigation cumulative 190/190 GREEN; disposable PostgreSQL first-write/replay/tenant/RLS/nonempty-downgrade GREEN; compileall/diff/Alembic single head GREEN; browser NOT_APPLICABLE"
+  ]
+}
