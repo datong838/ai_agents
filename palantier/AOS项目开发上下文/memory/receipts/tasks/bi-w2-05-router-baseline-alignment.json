@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000290",
+  "created_at": "2026-08-26T12:24:20+08:00",
+  "excluded_scope": [
+    "application code; migrations; real tenant data; external effects; release; unrelated files"
+  ],
+  "expected_outputs": [
+    "Exact 544-router and 4467-route deterministic baseline for BI-W2-05 canonical API"
+  ],
+  "lease_expires_at": "2026-08-26T09:30:00+00:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/tests/test_domain_router_manifest.py"
+  ],
+  "status": "ACTIVE",
+  "task_id": "bi-w2-05-router-baseline-alignment"
+}

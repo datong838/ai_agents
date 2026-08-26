@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000290",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/data_requirement_store.py",
+    "services/aos-api/aos_api/routers/data_requirements.py",
+    "services/aos-api/aos_api/routers/domain_manifest.json",
+    "services/aos-api/aos_api/routers/domain_aggregates.py",
+    "services/aos-api/tests/test_data_requirement_api.py"
+  ],
+  "commits": [
+    "d8e6a3caaa3e19270e8d29fd0f39d3fd25c5a244"
+  ],
+  "completed_at": "2026-08-26T12:27:54+08:00",
+  "completed_revision": "AOS-000290",
+  "result": "Principal-scoped canonical DataRequirement create/get/accept/reject/cancel and receipt-list API GREEN",
+  "risks": [
+    "No migration apply, real tenant write, adapter execution, plan/fulfill/reconcile, external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w2-05-principal-scoped-canonical-api",
+  "verification": [
+    "30 passed, 7 warnings, 2 subtests; aggregate 544 check; compileall and diff check GREEN"
+  ]
+}

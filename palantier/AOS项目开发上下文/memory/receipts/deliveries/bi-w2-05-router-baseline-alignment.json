@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000290",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_domain_router_manifest.py"
+  ],
+  "commits": [
+    "d8e6a3caaa3e19270e8d29fd0f39d3fd25c5a244"
+  ],
+  "completed_at": "2026-08-26T12:27:53+08:00",
+  "completed_revision": "AOS-000290",
+  "result": "544 manifest entries, 4467 runtime routes and 2676 OpenAPI paths exact baseline GREEN",
+  "risks": [
+    "No application code, data, migration, external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w2-05-router-baseline-alignment",
+  "verification": [
+    "test_domain_router_manifest: GREEN within 30 passed + 2 subtests"
+  ]
+}

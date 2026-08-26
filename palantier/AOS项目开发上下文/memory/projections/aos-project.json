@@ -4,35 +4,40 @@
     "BI-W2-01",
     "BI-W2-02",
     "BI-W2-03",
-    "BI-W2-04"
+    "BI-W2-04",
+    "BI-W2-05"
   ],
-  "content_hash": "sha256:cab5dba8c6387934b980fdd8e015293b6974fe92a26471e75960ecb7469d54e2",
-  "current_phase": "BI_W2_04_CANONICAL_SOURCE_READINESS_PROJECTION_GREEN",
-  "delivery_status": "BI_W2_04_ADDITIVE_CONTRACT_GREEN_NO_SECOND_AUTHORITY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:91983b465a7d4b113884efc91672eee48fc3c59751f7075a2b967258ebcd5124",
+  "current_phase": "BI_W2_05_PRINCIPAL_SCOPED_CANONICAL_API_GREEN",
+  "delivery_status": "BI_W2_05_CANONICAL_API_CODE_CONTROL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "DeliveryReceipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w2-04-source-readiness-investigation-projection.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w2-05-principal-scoped-canonical-api.json"
+    },
+    {
+      "kind": "DeliveryReceipt",
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w2-05-router-baseline-alignment.json"
     }
   ],
-  "generated_at": "2026-08-26T12:05:31+08:00",
+  "generated_at": "2026-08-26T14:17:24+08:00",
   "hard_boundaries": [
-    "No second readiness authority, service fact acquisition, database, real tenant probe, adapter, external effect or release."
+    "No migration apply, real tenant data, adapter execution, plan/fulfill/reconcile external effect or release."
   ],
   "incomplete": [
-    "BI-W2-05_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W2-06_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI_W2_04_SOURCE_READINESS_CUMULATIVE_GREEN",
-  "next_gate": "BI_W2_05_PRINCIPAL_SCOPED_CANONICAL_API_PLAN",
+  "last_green_gate": "BI_W2_05_PRINCIPAL_TENANT_ETAG_CUMULATIVE_GREEN",
+  "next_gate": "BI_W2_06_OUTBOX_RESTART_RECONCILE_PLAN",
   "next_steps": [
-    "Freeze Principal-scoped canonical DataRequirement/Fulfillment API with tenant spoof and authorization negative tests; no adapter execution."
+    "Freeze additive tenant-bound Outbox claim/ack/fail/reconcile and restart recovery; no adapter or real tenant execution."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000290",
+  "project_revision": "AOS-000291",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "a920c0e41211f8d506bc1d44cbbd23b64e6b1978",
-    "plan": "a5f3efde2d0070bf75b4647e2f1a7c15558cd8de"
+    "code": "d8e6a3caaa3e19270e8d29fd0f39d3fd25c5a244",
+    "plan": "09858113a4da7bec1aa9a5b9eb8779e63b4013c0"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
