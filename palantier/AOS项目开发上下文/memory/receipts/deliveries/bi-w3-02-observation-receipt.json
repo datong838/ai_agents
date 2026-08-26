@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000294",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw3_002_observation_receipt.py",
+    "services/aos-api/aos_api/business_investigation_observation_contracts.py",
+    "services/aos-api/aos_api/business_investigation_observation_store.py",
+    "services/aos-api/tests/test_business_investigation_observation_receipt.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "code=6c3668d8",
+    "plan=48e0e2f"
+  ],
+  "completed_at": "2026-08-26T15:04:59+08:00",
+  "completed_revision": "AOS-000294",
+  "result": "BI_W3_02_EXACT_OBSERVATION_RECEIPT_CODE_CONTROL_GREEN",
+  "risks": [
+    "Shared database not upgraded; no browser/session/Adapter/export activation; no raw URL/query/HTML/DOM/screenshot content or values persisted; no real tenant observation, external effect or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w3-02-observation-receipt",
+  "verification": [
+    "RED missing receipt contract; targeted=5 passed; cumulative BI-W1 through BI-W3-02=41 passed; disposable PostgreSQL idempotency/conflict,current plan/step,revoked/expired lease,tenant isolation,direct write denial,nonempty downgrade refusal and empty downgrade/upgrade=GREEN",
+    "compileall=GREEN; diff check=GREEN; unique alembic head=biw3_002; browser=NOT_APPLICABLE; Ruff=UNAVAILABLE"
+  ]
+}

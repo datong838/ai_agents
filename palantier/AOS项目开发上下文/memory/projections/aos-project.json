@@ -2,35 +2,36 @@
   "completed": [
     "BI-W1-01_TO_BI-W1-06",
     "BI-W2-01_TO_BI-W2-07",
-    "BI-W3-01"
+    "BI-W3-01",
+    "BI-W3-02"
   ],
-  "content_hash": "sha256:dd61d530b55fe68744bbee9a9d063c06e778f02af946de203cb4e8b03f8e7e49",
-  "current_phase": "BI_W3_01_READ_ONLY_OBSERVATION_AUTHORITY_CODE_CONTROL_GREEN",
-  "delivery_status": "BI_W3_01_GREEN_SHARED_MIGRATION_NOT_APPLIED_SESSION_NOT_ACTIVATED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:0970381c54289c75dd27d6c56a9e73bb0f0e5a0cf65b8230f9974bc5add1e581",
+  "current_phase": "BI_W3_02_EXACT_OBSERVATION_RECEIPT_CODE_CONTROL_GREEN",
+  "delivery_status": "BI_W3_02_GREEN_LOCATION_EVIDENCE_NOT_BUSINESS_FACT_SHARED_MIGRATION_NOT_APPLIED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "DeliveryReceipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-01-observation-session-plan.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-02-observation-receipt.json"
     }
   ],
-  "generated_at": "2026-08-26T14:53:31+08:00",
+  "generated_at": "2026-08-26T15:05:21+08:00",
   "hard_boundaries": [
-    "No shared migration apply, browser login/session activation, Adapter or export execution, secret/session payload persistence, real tenant data, ObservationReceipt inference, external effect or release."
+    "No shared migration apply, browser/session/Adapter/export activation, raw page or secret persistence, real tenant observation, canonical mapping inference, external effect or release."
   ],
   "incomplete": [
-    "BI-W3-02_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W3-03_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI_W3_01_LEASE_PLAN_TENANT_CAS_SECURITY_GREEN",
-  "next_gate": "BI_W3_02_OBSERVATION_RECEIPT",
+  "last_green_gate": "BI_W3_02_RECEIPT_EXACT_REF_SECURITY_ISOLATION_GREEN",
+  "next_gate": "BI_W3_03_SCHEMA_REASONING_ADAPTIVE_PROFILING",
   "next_steps": [
-    "Implement page/menu/field ObservationReceipt with exact plan/step/capability/session refs; keep locating evidence distinct from business fact authority."
+    "Implement Schema Reasoning and Adaptive Profiling Job from exact ObservationReceipt/PlatformObservation inputs; output hypothesis, coverage and unknown without canonical mapping inference."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000294",
+  "project_revision": "AOS-000295",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "021805da",
-    "plan": "8f69189"
+    "code": "6c3668d8",
+    "plan": "48e0e2f"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
