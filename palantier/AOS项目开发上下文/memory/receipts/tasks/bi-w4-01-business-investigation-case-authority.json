@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000302",
+  "created_at": "2026-08-26T16:35:28+08:00",
+  "excluded_scope": [
+    "BusinessInvestigationRun/Event/Outbox (BI-W4-02+)",
+    "canonical query/command HTTP API (BI-W4-06)",
+    "AIP TaskRun or Analyst artifact authority",
+    "real platform access, business mutation, release"
+  ],
+  "expected_outputs": [
+    "Tenant-scoped append-only BusinessInvestigationCase revisions with CAS/idempotency/FORCE RLS, exact channel/entity refs and no duplicate Analyst authority"
+  ],
+  "lease_expires_at": "2026-08-26T23:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/alembic/versions/biw4_001_business_investigation_case.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_case.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_case.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "bi-w4-01-business-investigation-case-authority"
+}
