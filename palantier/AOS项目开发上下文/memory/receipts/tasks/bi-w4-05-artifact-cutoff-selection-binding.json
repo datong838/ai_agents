@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000306",
+  "created_at": "2026-08-26T17:24:28+08:00",
+  "excluded_scope": [
+    "artifact publication command,HTTP APIs,Workbench projection,AIP stage execution,real tenant data,external effects,migration apply,release"
+  ],
+  "expected_outputs": [
+    "append-only artifact exact-ref binding with atomic channel/entity/case/run selectionRevision, dataCutoff and lineage"
+  ],
+  "lease_expires_at": "2026-08-26T13:30:00+00:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/alembic/versions/biw4_005_artifact_cutoff_selection_binding.py,services/aos-api/aos_api/ecommerce_business_investigation_artifact.py,services/aos-api/tests/test_ecommerce_business_investigation_artifact_binding.py,docs:119-plan-and-memory-receipts"
+  ],
+  "status": "ACTIVE",
+  "task_id": "bi-w4-05-artifact-cutoff-selection-binding"
+}
