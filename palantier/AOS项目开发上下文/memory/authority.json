@@ -19,14 +19,15 @@
     "BI-W4-07",
     "BI-W4-08",
     "BI-W4-09",
-    "BI-W5-01"
+    "BI-W5-01",
+    "BI-W5-02"
   ],
-  "current_phase": "BI-W5 AIP analysis orchestration in progress; exact InvestigationProfile compiler complete",
-  "delivery_status": "BI_W5_01_EXACT_PROFILE_COMPILER_GREEN_NO_RUNTIME_AUTHORIZATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "BI-W5 AIP analysis orchestration in progress; canonical runtime reuse complete",
+  "delivery_status": "BI_W5_02_CANONICAL_RUNTIME_REUSE_GREEN_NO_SECOND_STATE_MACHINE_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W5-01.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W5-02.json"
     },
     {
       "kind": "plan",
@@ -40,19 +41,19 @@
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W5-02_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W5-03_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W5-01 targeted 5, adjacent 38, business-investigation cumulative 110 tests GREEN; compileall/diff GREEN; browser N/A",
-  "next_gate": "BI-W5-02 canonical Task/PlanRevision/TaskRun/Checkpoint reuse contract",
+  "last_green_gate": "BI-W5-02 targeted 9, adjacent Task/Stage 31, business-investigation cumulative 119 tests GREEN; compileall/diff GREEN; browser N/A",
+  "next_gate": "BI-W5-03 canonical ResearchJob reuse for data ontology and human research steps",
   "next_steps": [
-    "Start BI-W5-02 canonical Task/PlanRevision/TaskRun/Checkpoint reuse contract; continue serial Loop"
+    "Start BI-W5-03 canonical ResearchJob reuse; preserve source authority and continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000313",
+  "project_revision": "AOS-000314",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "d6e9fda6",
-    "bi-w5-01-plan": "cd12781"
+    "aos-platform": "87d030c6",
+    "bi-w5-02-plan": "f9ccacf"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -62,5 +63,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T19:32:26+08:00"
+  "updated_at": "2026-08-26T19:42:17+08:00"
 }

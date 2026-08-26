@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000313",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_business_investigation_runtime.py",
+    "services/aos-api/tests/test_aip_business_investigation_runtime.py"
+  ],
+  "commits": [
+    "87d030c6"
+  ],
+  "completed_at": "2026-08-26T19:42:03+08:00",
+  "completed_revision": "AOS-000313",
+  "result": "BI_W5_02_CANONICAL_RUNTIME_REUSE_GREEN_NO_SECOND_STATE_MACHINE_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "binding is read-only and does not authorize TaskRun start/resume",
+    "runtime authority still requires exact readiness and start gates"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W5-02",
+  "verification": [
+    "targeted=9 passed",
+    "adjacent-task-stage=31 passed",
+    "business-investigation-cumulative=119 passed",
+    "compileall-and-diff-check=GREEN",
+    "browser=NOT_APPLICABLE_BACKEND_ONLY"
+  ]
+}
