@@ -1,0 +1,35 @@
+{
+  "base_revision": "AOS-000329",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/index.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "ca1aa4b59acefdf33a7e9c7b8fad5658439c33c9"
+  ],
+  "completed_at": "2026-08-26T23:13:35+08:00",
+  "completed_revision": "AOS-000329",
+  "result": "BI_W7_02_CASE_CASCADE_CODE_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Browser runtime exposes fixed 1280x720 viewport; 1440/1920 were not fabricated. Responsive wider layout remains covered by fluid CSS and build tests.",
+    "No real business data/source read/Provider/external effect/release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W7-02",
+  "verification": [
+    "Focused ecommerceInvestigation and Analyst tests 17/17 GREEN",
+    "Cumulative Web tests 2267/2267 GREEN",
+    "TypeScript/Vite build GREEN; git diff-check GREEN",
+    "Built-in browser 1280x720: channel/entity/Case atomic switches and Run isolation GREEN; body/root no horizontal overflow"
+  ]
+}
