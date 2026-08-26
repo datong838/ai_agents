@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000298",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw3_005_semantic_hydration_job.py",
+    "services/aos-api/aos_api/business_investigation_hydration.py",
+    "services/aos-api/tests/test_business_investigation_semantic_hydration.py"
+  ],
+  "commits": [
+    "8d1b8e32f528c19435f50d3eb028b932b819f55d"
+  ],
+  "completed_at": "2026-08-26T15:55:05+08:00",
+  "completed_revision": "AOS-000298",
+  "result": "BI-W3-05 semantic hydration code-control authority closed with exact mapping-to-owner-command target binding; no shared migration apply or Owner API call",
+  "risks": [
+    "Owner API production command/receipt availability is not proven; shared migration was not applied; no business data or external effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w3-05-semantic-hydration-job",
+  "verification": [
+    "targeted pytest 7 passed; cumulative pytest 57 passed; disposable PostgreSQL upgrade/downgrade, exact target mismatch rejection, tenant isolation, direct-write denial and nonempty downgrade guard GREEN; alembic head biw3_005; compile/diff GREEN; browser N/A"
+  ]
+}

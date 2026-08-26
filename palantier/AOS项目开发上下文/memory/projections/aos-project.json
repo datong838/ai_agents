@@ -5,35 +5,48 @@
     "BI-W3-01",
     "BI-W3-02",
     "BI-W3-03",
-    "BI-W3-04"
+    "BI-W3-04",
+    "BI-W3-05"
   ],
-  "content_hash": "sha256:c0456a7417dbc1f9a87704b8a74be80f97a9b1f40e579ce288c287a5d33c108f",
-  "current_phase": "BI_W3_04_CONFIRMED_SOURCE_MAPPING_CODE_CONTROL_GREEN",
-  "delivery_status": "BI_W3_04_GREEN_REVIEW_AUTHORITY_VERIFIED_UNKNOWN_NOT_MAPPED_SHARED_MIGRATION_NOT_APPLIED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:4e3e9e55fc3bf19277047eb76991b1ebd0c336f7363b8b72fab82820719f73c2",
+  "current_phase": "BI-W3_PLATFORM_OBSERVATION_MAPPING_HYDRATION",
+  "delivery_status": "BI_W3_05_SEMANTIC_HYDRATION_CODE_CONTROL_GREEN_EXACT_OWNER_TARGET_BINDING_GREEN_OWNER_API_OPERATIONAL_NOT_PROVEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "DeliveryReceipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-04-source-canonical-mapping.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-05-semantic-hydration-job.json"
+    },
+    {
+      "kind": "CodeCommit",
+      "ref": "8d1b8e32f528c19435f50d3eb028b932b819f55d"
+    },
+    {
+      "kind": "PlanCommit",
+      "ref": "e50b964"
     }
   ],
-  "generated_at": "2026-08-26T15:37:32+08:00",
+  "generated_at": "2026-08-26T15:57:05+08:00",
   "hard_boundaries": [
-    "No shared migration apply, automatic mapping/hydration, direct Ontology/DataProduct table write, raw/sample/PII/Secret persistence, LLM/Adapter/browser activation, real tenant mutation, external effect or release."
+    "NO_SHARED_MIGRATION_APPLY",
+    "NO_OWNER_API_CALL",
+    "NO_BUSINESS_DATA_WRITE",
+    "NO_EXTERNAL_EFFECT",
+    "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W3-05_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W3-06_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI_W3_04_REVIEW_EXACT_REF_CAS_REVERSE_TRACE_ISOLATION_GREEN",
-  "next_gate": "BI_W3_05_SEMANTIC_HYDRATION_EXACT_OUTPUT_REFS",
+  "last_green_gate": "BI-W3-05 targeted 7/7 and cumulative 57/57; disposable PostgreSQL exact binding/isolation/direct-write/downgrade GREEN; migration head biw3_005",
+  "next_gate": "BI-W3-06 marking/PII/Secret redaction and retention policy code-control closure",
   "next_steps": [
-    "Implement tenant-bound SemanticHydrationJob consuming exact confirmed SourceMappingRevision and writing only through governed Owner APIs with exact output refs, quarantine and unknown conservation."
+    "Open BI-W3-06 exact scope; review 115/117/160/119 and existing marking/redaction authorities; implement minimum tenant-safe policy contracts, tests and receipt"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000298",
+  "project_revision": "AOS-000300",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "b2e8986d",
-    "plan": "f9d3eae"
+    "code": "8d1b8e32f528c19435f50d3eb028b932b819f55d",
+    "plan": "e50b964"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
