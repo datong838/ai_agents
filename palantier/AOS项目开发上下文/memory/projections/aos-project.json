@@ -16,46 +16,42 @@
     "BI-W4-05",
     "BI-W4-06",
     "BI-W4-07",
-    "BI-W4-08"
+    "BI-W4-08",
+    "BI-W4-09"
   ],
-  "content_hash": "sha256:00afce865e15cbc12c6745430b5e040cd013daee7d3a0b712e19ff58f5acca28",
-  "current_phase": "BI-W4 Case/Run domain authority; BI-W4-08 complete",
-  "delivery_status": "BI_W4_08_REBUILDABLE_WORKBENCH_VIEW_PROJECTION_GREEN_NO_PERSISTED_PROJECTION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:da70457e7bf089b01dbb360b6fd564677cc532df312c998a3e11074d8e395e04",
+  "current_phase": "BI-W4 Case/Run domain authority complete; BI-W5 AIP analysis orchestration starting",
+  "delivery_status": "BI_W4_09_CUMULATIVE_AUTHORITY_ACCEPTANCE_GREEN_NO_PRODUCTION_LOGIC_CHANGE_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W4-08.json"
-    },
-    {
-      "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W4-08-ROUTER-BASELINE.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W4-09.json"
     },
     {
       "kind": "plan",
       "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "generated_at": "2026-08-26T19:02:08+08:00",
+  "generated_at": "2026-08-26T19:16:25+08:00",
   "hard_boundaries": [
-    "NO_PERSISTED_PROJECTION_AUTHORITY",
     "NO_REAL_BUSINESS_DATA",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W4-09_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W5-01_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W4-08 projection 7 target and cumulative 140 tests plus 2 subtests GREEN; PostgreSQL restart rebuild and tenant RLS GREEN",
-  "next_gate": "BI-W4-09 event replay rebuild and drift audit",
+  "last_green_gate": "BI-W4-09 cumulative 142 tests including 8 deterministic router tests GREEN; disposable PostgreSQL migration/RLS/Receipt/CAS/restart/projection/direct-write/downgrade gates GREEN",
+  "next_gate": "BI-W5-01 atomic investigation analysis Skill contract",
   "next_steps": [
-    "Start BI-W4-09 event replay rebuild and drift audit; continue serial Loop"
+    "Start BI-W5-01 atomic investigation analysis Skill contract under 163/164; continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000311",
+  "project_revision": "AOS-000312",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "c6dce7f2",
-    "bi-w4-08-plan": "7f8e8de"
+    "aos-platform": "73c2d781",
+    "bi-w4-09-plan": "aaae23b"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

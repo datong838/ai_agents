@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000311",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_ecommerce_business_investigation_wave4_acceptance.py",
+    "palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "73c2d781",
+    "aaae23b"
+  ],
+  "completed_at": "2026-08-26T19:15:53+08:00",
+  "completed_revision": "AOS-000311",
+  "result": "BI-W4-09 cumulative Case/Run authority acceptance GREEN; no production logic changed; NO_EXTERNAL_EFFECT and NO_RELEASE retained",
+  "risks": [
+    "Ruff unavailable and therefore not reported GREEN",
+    "shared database migration not applied; real business data and external effects untouched"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W4-09",
+  "verification": [
+    "BI-W4 QA 53 passed",
+    "BI-W1 through BI-W4-09 cumulative 142 passed including 8 deterministic router tests",
+    "disposable PostgreSQL receipt/idempotency/CAS/restart/projection/RLS/direct-write/downgrade gates GREEN",
+    "Alembic single head biw4_007; router manifest 545; compileall/generator/diff GREEN",
+    "browser NOT_APPLICABLE backend-only QA wave"
+  ]
+}
