@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000347",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-27-biw9-02-niushop-profile.json"
+  ],
+  "commits": [
+    "HEAD"
+  ],
+  "completed_at": "2026-08-27T06:16:57+08:00",
+  "completed_revision": "AOS-000347",
+  "result": "BI_W9_02_EVIDENCE_SEALED",
+  "risks": [
+    "S8-Visual remains pending"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W9-02-EVIDENCE",
+  "verification": [
+    "evidence JSON parsed and records disabled, no-source-read, no-physical-table, no-hydration boundaries"
+  ]
+}

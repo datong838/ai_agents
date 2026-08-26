@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000347",
+  "created_at": "2026-08-27T06:16:33+08:00",
+  "excluded_scope": [
+    "production code, real source, business data, Adapter installation, external effects and release"
+  ],
+  "expected_outputs": [
+    "BI-W9-02 evidence JSON and evidence commit"
+  ],
+  "lease_expires_at": "2026-08-28T12:00:00+08:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    ".evidence/workshop/2026-08-27-biw9-02-niushop-profile.json"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W9-02-EVIDENCE"
+}

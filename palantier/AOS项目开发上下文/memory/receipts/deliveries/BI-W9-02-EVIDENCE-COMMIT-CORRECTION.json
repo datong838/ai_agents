@@ -1,0 +1,19 @@
+{
+  "base_revision": "AOS-000347",
+  "blockers": [],
+  "changed_files": [],
+  "commits": [
+    "1d8161160b107c8823cffd1f5eae39f7f72c200b"
+  ],
+  "completed_at": "2026-08-27T06:17:19+08:00",
+  "completed_revision": "AOS-000347",
+  "result": "BI_W9_02_EVIDENCE_EXACT_COMMIT_RECEIPT_CORRECTED",
+  "risks": [
+    "none beyond pending S8-Visual"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W9-02-EVIDENCE-COMMIT-CORRECTION",
+  "verification": [
+    "exact evidence commit SHA independently resolved; no file changed; original literal-HEAD Receipt retained append-only"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000347",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/business_investigation_niushop_profile.py",
+    "services/aos-api/tests/fixtures/business_investigation/niushop_profile.json",
+    "services/aos-api/tests/test_business_investigation_niushop_profile.py"
+  ],
+  "commits": [
+    "4e077cb3"
+  ],
+  "completed_at": "2026-08-27T06:16:26+08:00",
+  "completed_revision": "AOS-000347",
+  "result": "BI_W9_02_NIUSHOP_DISABLED_PROFILE_CODE_GREEN_NO_SOURCE_READ",
+  "risks": [
+    "synthetic disabled Profile only; physical tables, source freshness, installation, runtime and release unproven; S8-Visual pending"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W9-02-IMPL",
+  "verification": [
+    "RED module missing; targeted14 cumulative43; JSON compile Alembic diff GREEN; browser N/A no page"
+  ]
+}
