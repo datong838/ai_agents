@@ -32,34 +32,35 @@
     "BI-W6-04",
     "BI-W6-05",
     "BI-W6-06",
-    "BI-W6-07"
+    "BI-W6-07",
+    "BI-W7-01"
   ],
-  "content_hash": "sha256:e8422e2bdfccd969b9e11b032d1b89bef21f422e5878aaac4059f9ee6dba47b3",
-  "current_phase": "BI-W6 Receipt-first saga complete; entering BI-W7 Workshop read-only workspace",
-  "delivery_status": "BI_W6_07_RECOVERY_ROLLBACK_DRILL_GREEN_BI_W6_COMPLETE_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:96f29c1c8ce275bda2e61847a86e54f6411a97228ebcf8aec768e17d08d7c36a",
+  "current_phase": "BI-W7 Workshop read-only workspace implementation",
+  "delivery_status": "BI_W7_01_DEFAULT_FIRST_READ_TAB_FLAG_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W6-07.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W7-01.json"
     }
   ],
-  "generated_at": "2026-08-26T22:34:26+08:00",
+  "generated_at": "2026-08-26T22:49:46+08:00",
   "hard_boundaries": [
-    "NO_REAL_BUSINESS_DATA; NO_SOURCE_READ; NO_PROVIDER_EXECUTION; NO_COMMAND_REPLAY; NO_EXTERNAL_EFFECT; NO_RELEASE"
+    "NO_REAL_BUSINESS_DATA; NO_SOURCE_READ; NO_PROVIDER_EXECUTION; NO_EXTERNAL_EFFECT; NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W7-01"
+    "BI-W7-02"
   ],
-  "last_green_gate": "BI-W6-07 recovery drill 4/4, BI-W6 adjacency 63/63, Business Investigation cumulative 206/206 GREEN; Alembic head biw6_002",
-  "next_gate": "BI-W7-01",
+  "last_green_gate": "BI-W7-01 focused 53/53, cumulative Web 2259/2259, TypeScript/Vite build and built-in browser 1440x900 GREEN",
+  "next_gate": "BI-W7-02",
   "next_steps": [
-    "Add Business Investigation default first tab and independent feature flag without changing the other seven tabs"
+    "Implement canonical tenant-scoped Case list and current Case overview inside BusinessInvestigationTab without adding write commands"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000328",
+  "project_revision": "AOS-000329",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "92e9b4b1"
+    "aos-platform": "27a8c610"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
