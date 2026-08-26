@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000348",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/business_investigation_wechat_store_profile.py",
+    "services/aos-api/tests/fixtures/business_investigation/wechat_store_profile.json",
+    "services/aos-api/tests/test_business_investigation_wechat_store_profile.py"
+  ],
+  "commits": [
+    "1fea84f2e3aec359722bf2213066af2fa1e3b95b"
+  ],
+  "completed_at": "2026-08-27T06:25:00+08:00",
+  "completed_revision": "AOS-000348",
+  "result": "BI_W9_03_WECHAT_STORE_DISABLED_PROFILE_CODE_GREEN_NO_PLATFORM_ACCESS_NO_RELEASE",
+  "risks": [
+    "disabled profile only; no platform access/export/API/adapter installation/business fact hydration/external effect/release; local database remains behind existing migration and was not mutated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W9-03",
+  "verification": [
+    "targeted 13 passed; cumulative W3-07/W9-01/W9-02/W9-03 56 passed; investigation migration contract 4 passed; JSON/compile/diff-check green; alembic single head biw8_001; browser not applicable because no page or route"
+  ]
+}
