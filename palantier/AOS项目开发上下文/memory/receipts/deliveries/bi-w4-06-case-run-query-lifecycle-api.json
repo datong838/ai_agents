@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000307",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw4_006_case_run_query_lifecycle_api.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_application.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_case.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_run.py",
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/aos_api/routers/domain_manifest.json",
+    "services/aos-api/aos_api/routers/domain_aggregates.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_lifecycle.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_run.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_artifact.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_artifact_binding.py",
+    "services/aos-api/tests/test_domain_router_manifest.py"
+  ],
+  "commits": [
+    "f4ca0efd"
+  ],
+  "completed_at": "2026-08-26T18:09:15+08:00",
+  "completed_revision": "AOS-000307",
+  "result": "BI-W4-06 canonical Case/Run query and lifecycle API code-control GREEN; no shared migration apply, no real Case/Run, no AIP TaskRun control, no external effect, no release",
+  "risks": [
+    "Ruff unavailable; shared migration/runtime pilot remains gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w4-06-case-run-query-lifecycle-api",
+  "verification": [
+    "18 targeted passed plus 2 router subtests; 117 cumulative passed plus 2 router subtests; Alembic head biw4_006; generator, compileall and diff check GREEN; browser N/A"
+  ]
+}

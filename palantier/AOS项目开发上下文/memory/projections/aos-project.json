@@ -13,42 +13,43 @@
     "BI-W4-02",
     "BI-W4-03",
     "BI-W4-04",
-    "BI-W4-05"
+    "BI-W4-05",
+    "BI-W4-06"
   ],
-  "content_hash": "sha256:1b30ab944e68364523f84976a02779872ca6e0a8ca11e1c024c5d2af40305fe2",
-  "current_phase": "BI-W4 Case/Run domain authority; BI-W4-05 complete",
-  "delivery_status": "BI_W4_05_ARTIFACT_CUTOFF_SELECTION_BINDING_CODE_CONTROL_GREEN_NO_REAL_BINDING_NO_AIP_STAGE_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:5e75485cf3f4e26f03588e3a07855527435a64887663d4899661e7cec761dc63",
+  "current_phase": "BI-W4 Case/Run domain authority; BI-W4-06 complete",
+  "delivery_status": "BI_W4_06_CANONICAL_QUERY_LIFECYCLE_API_CODE_CONTROL_GREEN_NO_REAL_CASE_RUN_NO_AIP_TASKRUN_CONTROL_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w4-05-artifact-cutoff-selection-binding.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w4-06-case-run-query-lifecycle-api.json"
     },
     {
       "kind": "plan",
       "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "generated_at": "2026-08-26T17:30:57+08:00",
+  "generated_at": "2026-08-26T18:09:43+08:00",
   "hard_boundaries": [
-    "NO_REAL_ARTIFACT_BINDING",
-    "NO_AIP_STAGE_EXECUTION",
+    "NO_REAL_CASE_RUN",
+    "NO_AIP_TASKRUN_CONTROL",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W4-06_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W4-07_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W4-05 target 14 and cumulative 106 tests GREEN",
-  "next_gate": "BI-W4-06 canonical Case/Run query and lifecycle command API",
+  "last_green_gate": "BI-W4-06 target 18 and cumulative 117 tests plus 2 router subtests GREEN",
+  "next_gate": "BI-W4-07 PREPARING WAITING_DATA UNKNOWN RECONCILING state machine",
   "next_steps": [
-    "Start BI-W4-06 canonical query and lifecycle command API; continue serial Loop"
+    "Start BI-W4-07 failure and recovery state machine; continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000307",
+  "project_revision": "AOS-000308",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "0dacb6b3",
-    "bi-w4-05-plan": "3d99556"
+    "aos-platform": "f4ca0efd",
+    "bi-w4-06-plan": "4aaf482"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
