@@ -1,48 +1,48 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "W8-11 cumulative release gate evaluator, read-only contribution card, compatibility fix, cumulative tests and built-in browser acceptance"
+    "W8-12 pure operational decision contract, four-layer contribution card, tests and built-in browser acceptance; Workshop engineering checklist 96/96"
   ],
-  "current_phase": "S7_WORKSHOP_W8_SCENARIOS_AND_RELEASE_GATES",
-  "delivery_status": "W8_11_CUMULATIVE_ENGINEERING_GATE_CODE_BROWSER_GREEN_RELEASE_LEDGER_POSITIVE_EVIDENCE_BLOCKED_BACKEND_SECURITY_RED_NO_MIGRATION_APPLY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "S7_WORKSHOP_W8_ENGINEERING_CHECKLIST_COMPLETE",
+  "delivery_status": "W8_12_ENGINEERING_OPERATIONAL_DECISION_CONTRACT_BROWSER_GREEN_RELEASE_DECISION_NO_GO_BACKEND_SECURITY_RED_NO_REAL_TENANT_MUTATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/w8-11/verification.json"
+      "ref": ".evidence/workshop/w8-12/verification.json"
     },
     {
       "kind": "browser",
-      "ref": ".evidence/workshop/w8-11/cumulative-release-gate-visual-fixture.jpg"
+      "ref": ".evidence/workshop/w8-12/operational-release-no-go-visual-fixture.jpg"
     },
     {
       "kind": "adr",
-      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/80-W8-11-累计OpenAPIAlembicBundleEvalSecurityDiff门预检ADR.md#7"
+      "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/81-W8-12-运营就绪与发布决定预检ADR.md#7"
     }
   ],
-  "evidence_cutoff": "2026-08-26T08:14:48+08:00",
+  "evidence_cutoff": "2026-08-26T08:30:09+08:00",
   "hard_boundaries": [
     "org-org/dev-project is the only positive tenant; dev-org/dev-project is isolation-only",
-    "No migration apply, real data mutation, Bundle installation, security auto-fix, Provider/Action, external effect or release",
-    "Continuous development authorization is not release approval; W8-12 must remain NO_GO without exact candidate and explicit maker-checker approval"
+    "No migration apply, real data mutation, Bundle installation, Feature Flag mutation, Provider/Action, external effect or release",
+    "Engineering checklist 96/96 is not product freeze, operational readiness or release approval"
   ],
   "incomplete": [
     "Backend cumulative baseline remains RED: lastfailed cache 335/12461",
     "Security cumulative scan remains RED: 5 critical/326 warnings",
-    "Same-cutoff org-org positive and dev-org negative release evidence, exact release identity and Receipt readback remain missing"
+    "Exact release candidate, W8-11 positive cumulative EvidencePack, product formal freeze, explicit maker-checker release approval and operational Receipt remain missing"
   ],
-  "last_green_gate": "W8_11_ENGINEERING_CUMULATIVE_GATE_BROWSER_GREEN",
-  "next_gate": "W8_12_OPERATIONAL_READINESS_RELEASE_DECISION_ENGINEERING_CLOSURE",
+  "last_green_gate": "W8_12_ENGINEERING_OPERATIONAL_DECISION_CONTRACT_BROWSER_GREEN",
+  "next_gate": "PRODUCT_FORMAL_REVIEW_AND_EXACT_RELEASE_CANDIDATE_AUTHORITY",
   "next_steps": [
-    "Execute W8-12 operational readiness and release decision engineering closure as NO_GO without real tenant mutation, external effect or release"
+    "Keep ReleaseDecision NO_GO; re-enter only after exact candidate-bound product/release authority and all current positive operational evidence exist"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000281",
+  "project_revision": "AOS-000282",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform-code": "b20d98014770bb806b2064130dfe229570241683",
-    "aos-platform-compat": "7e11fb7a472954cd2fd597ce310f0b35b85f5778",
-    "aos-platform-evidence": "921889dd44c01371019b9112045490c415578bf0",
-    "docs": "6dcc131"
+    "aos-platform-code": "5b8ca21d914b893634399350662c659846869b5e",
+    "aos-platform-evidence": "7f8701ba",
+    "docs": "d77c3de",
+    "docs-plan": "9667c15"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -52,5 +52,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-26T08:15:42+08:00"
+  "updated_at": "2026-08-26T08:30:38+08:00"
 }

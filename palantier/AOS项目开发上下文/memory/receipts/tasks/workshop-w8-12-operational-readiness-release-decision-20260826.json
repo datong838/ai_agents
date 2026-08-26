@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000281",
+  "created_at": "2026-08-26T08:17:29+08:00",
+  "excluded_scope": [
+    "real tenant mutation, database migration, Bundle install, Feature Flag, Provider/Action, external effect, production release"
+  ],
+  "expected_outputs": [
+    "Pure capability readiness and candidate-bound release decision evaluator, read-only NO_GO card, tests, browser evidence, Delivery Receipt, AOS-000282 projection"
+  ],
+  "lease_expires_at": "2026-08-26T12:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/workshopOperationalReleaseDecision.ts",
+    "apps/web/src/components/workshop/workshopOperationalReleaseDecision.test.ts",
+    "apps/web/src/components/workshop/WorkshopOperationalReleaseDecisionCard.tsx",
+    "apps/web/src/components/workshop/WorkshopOperationalReleaseDecisionCard.test.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    ".evidence/workshop/w8-12",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/81-W8-12-运营就绪与发布决定预检ADR.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-w8-12-operational-readiness-release-decision-20260826"
+}

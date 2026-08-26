@@ -1,0 +1,36 @@
+{
+  "base_revision": "AOS-000281",
+  "blockers": [
+    "BACKEND_BASELINE_RED",
+    "SECURITY_CRITICAL_FINDINGS_PRESENT",
+    "RELEASE_CANDIDATE_MISSING",
+    "W8_11_CUMULATIVE_GREEN_MISSING",
+    "EXPLICIT_RELEASE_APPROVAL_MISSING",
+    "OPERATIONAL_RECEIPT_MISSING"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/workshopOperationalReleaseDecision.ts",
+    "apps/web/src/components/workshop/workshopOperationalReleaseDecision.test.ts",
+    "apps/web/src/components/workshop/WorkshopOperationalReleaseDecisionCard.tsx",
+    "apps/web/src/components/workshop/WorkshopOperationalReleaseDecisionCard.test.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    ".evidence/workshop/w8-12/verification.json"
+  ],
+  "commits": [
+    "aos-platform-code=5b8ca21d914b893634399350662c659846869b5e",
+    "aos-platform-evidence=7f8701ba",
+    "docs=d77c3de"
+  ],
+  "completed_at": "2026-08-26T08:30:03+08:00",
+  "completed_revision": "AOS-000281",
+  "result": "ENGINEERING_OPERATIONAL_DECISION_CONTRACT_BROWSER_GREEN_RELEASE_DECISION_NO_GO_NO_REAL_TENANT_MUTATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Backend cumulative baseline RED 335/12461; Security repository scan RED 5 critical/326 warning; no exact release candidate or operational authority"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-w8-12-operational-readiness-release-decision-20260826",
+  "verification": [
+    "W8-12 targeted 3 files/27 tests GREEN; Web cumulative 251 files/2252 tests GREEN; Web/Desktop typecheck GREEN; build 353 modules GREEN; built-in browser 1280x720 NO_GO fail-closed GREEN"
+  ]
+}
