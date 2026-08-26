@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000302",
+  "blockers": [
+    "NO_REAL_CASE_CREATED",
+    "NO_OWNER_REF_AVAILABILITY_CLAIM",
+    "NO_EXTERNAL_EFFECT"
+  ],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw4_001_business_investigation_case.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_case.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_case.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "6ecf0960"
+  ],
+  "completed_at": "2026-08-26T16:49:50+08:00",
+  "completed_revision": "AOS-000302",
+  "result": "BI-W4-01 canonical BusinessInvestigationCase DRAFT authority closed with append-only revisions, Receipt, FORCE RLS and fail-closed exact refs",
+  "risks": [
+    "Channel/Entity/Binding exact refs are contract-bound but Owner availability is not yet proven; only DRAFT create is enabled"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w4-01-business-investigation-case-authority",
+  "verification": [
+    "target pytest: 6 passed",
+    "cumulative BI-W1..BI-W4-01 pytest: 58 passed",
+    "disposable PostgreSQL migration/RLS/idempotency/restart/isolation/downgrade tests passed",
+    "compileall, alembic head biw4_001, diff and security review passed",
+    "browser NOT_APPLICABLE: no page or route"
+  ]
+}

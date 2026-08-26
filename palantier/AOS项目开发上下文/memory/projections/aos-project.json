@@ -8,44 +8,43 @@
     "BI-W3-04",
     "BI-W3-05",
     "BI-W3-06",
-    "BI-W3-07"
+    "BI-W3-07",
+    "BI-W4-01"
   ],
-  "content_hash": "sha256:b56051d2707c3f99ce97034487de5a7cc629a265e31ad6ca54cfd0a087cfc69a",
-  "current_phase": "BI-W3 complete; BI-W4 BusinessInvestigationCase/Run domain authority",
-  "delivery_status": "BI_W3_07_CONNECTOR_DISABLED_FIXTURE_CONTRACT_GREEN_NO_REAL_PLATFORM_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:88f3d54d9ac5c4241780ab1089036c4f6f22b67e5e343b291662cbdb63aaee0e",
+  "current_phase": "BI-W4 Case/Run domain authority; BI-W4-01 complete",
+  "delivery_status": "BI_W4_01_CASE_DRAFT_AUTHORITY_CODE_CONTROL_GREEN_OWNER_REF_AVAILABILITY_NOT_PROVEN_NO_REAL_CASE_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w3-07-connector-failure-restart-contracts.json"
+      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w4-01-business-investigation-case-authority.json"
     },
     {
       "kind": "plan",
       "ref": "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
     }
   ],
-  "generated_at": "2026-08-26T16:33:19+08:00",
+  "generated_at": "2026-08-26T16:50:10+08:00",
   "hard_boundaries": [
-    "NO_REAL_PLATFORM_ACCESS",
-    "NO_ADAPTER_INSTALLATION",
-    "NO_AUTOMATIC_RETRY",
-    "NO_CAPTCHA_SOLVE",
+    "NO_REAL_CASE_CREATED",
+    "NO_OWNER_REF_AVAILABILITY_CLAIM",
     "NO_EXTERNAL_EFFECT",
     "NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W4-01_TO_BI-W11_AND_RUNTIME_GATES"
+    "BI-W4-02_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI-W3-07 disabled connector contract tests and BI-W1..BI-W3 cumulative regression GREEN",
-  "next_gate": "BI-W4-01 BusinessInvestigationCase/Revision authority",
+  "last_green_gate": "BI-W4-01 DRAFT Case authority target 6 and cumulative 58 tests GREEN",
+  "next_gate": "BI-W4-02 BusinessInvestigationRun/Event/Outbox authority",
   "next_steps": [
-    "Start BI-W4-01 BusinessInvestigationCase/Revision authority from exact frozen requirements; continue serial Loop"
+    "Start BI-W4-02 BusinessInvestigationRun/Event/Outbox authority; continue serial Loop"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000302",
+  "project_revision": "AOS-000303",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "66c41e45",
-    "bi-w3-07-plan": "46c2cd6376830f87161704aede01e5815b9aa700"
+    "aos-platform": "6ecf0960",
+    "bi-w4-01-plan": "ee79d63"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
