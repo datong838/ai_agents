@@ -54,3 +54,4 @@
 {"base_revision":"AOS-000284","occurred_at":"2026-08-26T11:03:44+08:00","schema":"aos-memory-event/v1","task_id":"bi-w1-shared-semantic-contracts","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-26T11:17:31+08:00","result":"BI_W1_SHARED_CONTRACTS_CODE_GREEN_NO_RUNTIME_ENTRY","schema":"aos-memory-event/v1","task_id":"bi-w1-shared-semantic-contracts","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-26T11:18:21+08:00","project_revision":"AOS-000285","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000285","occurred_at":"2026-08-26T11:25:37+08:00","schema":"aos-memory-event/v1","task_id":"bi-w2-01-data-requirement-authority","type":"TASK_STARTED"}
