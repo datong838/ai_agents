@@ -1,33 +1,33 @@
 {
   "completed": [
-    "BI-W0A/W0B plan calibration; 93-task DAG preservation; GrowthPlan authority reconciliation; exact OpenAPI/Schema/migration/Saga/security/test/flag package; safe docs commit afd474d"
+    "BI-W1-01_TO_BI-W1-06"
   ],
-  "content_hash": "sha256:59e13ef94acef85a5eb486fd0a70f5eae7fe07b6ad5ff8303cbad97bb0d8fce0",
-  "current_phase": "BI_W0A_W0B_PLAN_GREEN_READY_FOR_BI_W1_AUTHORIZATION",
-  "delivery_status": "BI_W0A_W0B_IMPLEMENTATION_PACKAGE_P0_0_P1_0_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:27ced540b6215236cb147daecd6ae02730b467da74c4b464647766bafdcf02e2",
+  "current_phase": "BI_W1_SHARED_SEMANTIC_CONTRACTS_GREEN",
+  "delivery_status": "BI_W1_01_TO_06_CODE_GREEN_NO_RUNTIME_ENTRY_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "delivery_receipt",
-      "ref": "AOS项目开发上下文/memory/receipts/deliveries/bi-w0b-implementation-package-readiness.json"
+      "kind": "DeliveryReceipt",
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/bi-w1-shared-semantic-contracts.json"
     }
   ],
-  "generated_at": "2026-08-26T10:58:27+08:00",
+  "generated_at": "2026-08-26T11:18:21+08:00",
   "hard_boundaries": [
-    "NO_BUSINESS_CODE_CHANGE; NO_MIGRATION_EXECUTION; NO_REAL_DATA; NO_EXTERNAL_EFFECT; NO_RELEASE"
+    "No router, store, migration, feature flag, real tenant data, external effect or release in BI-W1"
   ],
   "incomplete": [
-    "BI-W1 through BI-W11 implementation; platform activation; real SourceReadiness/Provider Health; bounded pilot; release decision"
+    "BI-W2_TO_BI-W11_AND_RUNTIME_GATES"
   ],
-  "last_green_gate": "BI_W0B_EXACT_PACKAGE_REVIEW_GREEN",
-  "next_gate": "EXPLICIT_BI_W1_IMPLEMENTATION_AUTHORIZATION_AND_TASK_RECEIPT",
+  "last_green_gate": "BI_W1_CONTRACT_PARSER_CUMULATIVE_GREEN",
+  "next_gate": "BI_W2_DATA_REQUIREMENT_AUTHORITY_IMPLEMENTATION_PLAN_AND_MIGRATION_LEASE",
   "next_steps": [
-    "Obtain explicit authorization for the six-file BI-W1 first write set in 119 section 7.6, then recheck fixed Git and exact receipts and register a new Task Receipt/Lease"
+    "Review and freeze BI-W2 exact table/store/API/migration plan, then acquire migration lease before persistence changes"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000284",
+  "project_revision": "AOS-000285",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "docs": "afd474d"
+    "code": "2b65104d89d6ca27d07a6d51675f9e7bfc14a627"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

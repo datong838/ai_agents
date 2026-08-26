@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000284",
+  "blockers": [],
+  "changed_files": [
+    "packages/contracts/schemas/business-investigation/shared-v1.schema.json",
+    "services/aos-api/aos_api/business_investigation_shared_contracts.py",
+    "services/aos-api/tests/test_business_investigation_shared_contracts.py",
+    "apps/web/src/api/ecommerceWorkshop/investigation/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/investigation/parser.ts",
+    "apps/web/src/api/ecommerceWorkshop/investigation/parser.test.ts"
+  ],
+  "commits": [
+    "code=2b65104d89d6ca27d07a6d51675f9e7bfc14a627"
+  ],
+  "completed_at": "2026-08-26T11:17:31+08:00",
+  "completed_revision": "AOS-000284",
+  "result": "BI_W1_SHARED_CONTRACTS_CODE_GREEN_NO_RUNTIME_ENTRY",
+  "risks": [
+    "DTO and strict parser only; no router, persistence, migration, bundle, feature flag, real tenant data, external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w1-shared-semantic-contracts",
+  "verification": [
+    "Python cumulative 65 passed; frontend cumulative 36 passed; TypeScript noEmit GREEN; Python compileall GREEN; JSON syntax GREEN; git diff check GREEN"
+  ]
+}
