@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000300",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw3_006_investigation_data_handling.py",
+    "services/aos-api/aos_api/business_investigation_data_handling.py",
+    "services/aos-api/tests/test_business_investigation_data_handling.py"
+  ],
+  "commits": [
+    "4d2b605f9806a1020e359b9927bb08d8f7048dd2"
+  ],
+  "completed_at": "2026-08-26T16:17:59+08:00",
+  "completed_revision": "AOS-000300",
+  "result": "BI-W3-06 data-handling code-control authority closed with canonical retention verification, raw SQL bypass denial and cleanup receipt verification; no real data or deletion",
+  "risks": [
+    "marking/purpose/minimum-population/Secret policy refs without local canonical tables remain type-only and operationally unproven; shared migration not applied; no real artifact deletion or external effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w3-06-data-handling-policy",
+  "verification": [
+    "targeted pytest 7 passed; cumulative pytest 64 passed; disposable PostgreSQL exact retention/subject, raw bypass, missing cleanup, isolation, direct-write, immutable and downgrade guards GREEN; alembic head biw3_006; compile/diff/security scan GREEN; browser N/A"
+  ]
+}
