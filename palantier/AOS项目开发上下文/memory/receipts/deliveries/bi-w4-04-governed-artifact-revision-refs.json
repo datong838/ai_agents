@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000305",
+  "blockers": [
+    "NO_REAL_ARTIFACT",
+    "NO_AIP_STAGE_EXECUTION",
+    "NO_EXTERNAL_EFFECT"
+  ],
+  "changed_files": [
+    "services/aos-api/alembic/versions/biw4_004_investigation_artifact_revisions.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_artifact.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_artifact.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "52943945"
+  ],
+  "completed_at": "2026-08-26T17:22:50+08:00",
+  "completed_revision": "AOS-000305",
+  "result": "BI-W4-04 four governed L1 artifact revision contracts and empty authority schema closed without parallel Analyst truth",
+  "risks": [
+    "publication CAS and cutoff/selection binding remain gated to BI-W6-04 and BI-W4-05"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "bi-w4-04-governed-artifact-revision-refs",
+  "verification": [
+    "target pytest: 9 passed",
+    "cumulative BI-W1..BI-W4-04 pytest: 101 passed",
+    "disposable PostgreSQL exact Case/Run FK, RLS, runtime write denial and downgrade tests passed",
+    "compileall, alembic head biw4_004, diff and targeted security checks passed; browser NOT_APPLICABLE"
+  ]
+}
