@@ -1,0 +1,36 @@
+{
+  "base_revision": "AOS-000330",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_projection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_projection.py",
+    "apps/web/src/api/ecommerceInvestigation/contracts.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.ts",
+    "apps/web/src/api/ecommerceInvestigation/parser.test.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.ts",
+    "apps/web/src/api/ecommerceInvestigation/client.test.ts",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "066a704a37cbdf7cb3005fd92b60799cb25f8f30"
+  ],
+  "completed_at": "2026-08-26T23:43:21+08:00",
+  "completed_revision": "AOS-000330",
+  "result": "BI_W7_03_SERVER_STAGE_RAIL_CODE_BROWSER_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "ruff is not installed in the current Python environment; tool unavailability was not reported as GREEN",
+    "No real business data/source read/Provider/external effect/release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W7-03",
+  "verification": [
+    "Backend projection/API focused 16/16 GREEN",
+    "Frontend SDK/component focused 11/11 GREEN",
+    "Business Investigation backend cumulative 208/208 GREEN",
+    "Workshop Web cumulative 2270/2270 GREEN; TypeScript/Vite build GREEN",
+    "Built-in browser 1280x720 runtime/checkpoint and unbound switch GREEN; no horizontal overflow; zero business write buttons",
+    "compileall and git diff-check GREEN"
+  ]
+}
