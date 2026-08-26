@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000327",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_business_investigation_saga_recovery_drill.py"
+  ],
+  "commits": [
+    "92e9b4b1"
+  ],
+  "completed_at": "2026-08-26T22:34:06+08:00",
+  "completed_revision": "AOS-000327",
+  "result": "BI-W6-07 process restart and cross-service rollback refusal drill GREEN; immutable Receipts remain readable; BI-W6 wave complete",
+  "risks": [
+    "QA-only on disposable PostgreSQL. No shared migration apply, real business data, source read, Provider invocation, original command replay, external effect, destructive rollback, or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W6-07",
+  "verification": [
+    "recovery drill 4/4 GREEN; BI-W6 adjacency 63/63 GREEN; Business Investigation cumulative 206/206 GREEN; Alembic single head biw6_002; compileall and diff-check GREEN; browser NOT_APPLICABLE"
+  ]
+}
