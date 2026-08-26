@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000335",
+  "blockers": [
+    "NO_REAL_BUSINESS_DATA;NO_SOURCE_READ;NO_PROVIDER_EXECUTION;NO_EXTERNAL_EFFECT;NO_MIGRATION;NO_RELEASE"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "commits": [
+    "cc692fdc5cae993ec28fddd43491c4ccfa1edc8a"
+  ],
+  "completed_at": "2026-08-27T01:33:11+08:00",
+  "completed_revision": "AOS-000335",
+  "result": "BI_W7_07_STATE_MATRIX_GET_ONLY_RECOVERY_CODE_BROWSER_1280_GREEN_S8_VISUAL_GATE_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "current fixture did not naturally exercise stale/partial or Run/View failed; component tests seal those states; BI-W7-08 and final S8 remain required"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W7-07",
+  "verification": [
+    "component 8/8; workshop web 255 files 2279 tests; tsc; vite 359 modules; browser /workshop/analyst 1280x720 no horizontal overflow, zero write entry"
+  ]
+}
