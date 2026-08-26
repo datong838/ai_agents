@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000336",
+  "created_at": "2026-08-27T01:37:12+08:00",
+  "excluded_scope": [
+    "backend routes/domain state/client/migration/real business data/provider/external effect/release"
+  ],
+  "expected_outputs": [
+    "parser/component/keyboard and 1280/1440/1920 built-in-browser acceptance with honest visual delta routing to final S8"
+  ],
+  "lease_expires_at": "2026-08-27T02:22:02+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "apps/web/src/api/ecommerceInvestigation/parser.test.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W7-08"
+}
