@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000360",
+  "created_at": "2026-08-27T14:21:38+08:00",
+  "excluded_scope": [
+    "apps/web",
+    "real-business-data"
+  ],
+  "expected_outputs": [
+    "Reconcile two deterministic legacy ecom contract assertions without weakening fail-closed behavior"
+  ],
+  "lease_expires_at": "2026-08-27T08:21:13+00:00",
+  "owner": "codex-m1-single-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ec_ot_writer.py",
+    "services/aos-api/tests/test_ec_d1_e2e_link_landing.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W11-01-LEGACY-EC-CONTRACT-RECONCILIATION"
+}
