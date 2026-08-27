@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000366",
+  "blockers": [
+    "BI-W10 natural Cron remains 4/12; full ecom deterministic audit has 32 legacy fixture failures remaining"
+  ],
+  "changed_files": [
+    "services/aos-api/tests/test_ec_d1_negative.py",
+    "services/aos-api/tests/test_ec_d1_exit_gate.py",
+    "services/aos-api/tests/test_ec_d1_source_adapter.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "bf9c16f9",
+    "e9c54dc"
+  ],
+  "completed_at": "2026-08-27T15:32:00+08:00",
+  "completed_revision": "AOS-000366",
+  "result": "D1_SOURCE_DLQ_LINK_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_32",
+  "risks": [
+    "Production code unchanged; no real Source connection, Pipeline run, business-data mutation, external side effect, migration apply or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-01-D1-SOURCE-DLQ-LINK-FIXTURE-REPAIR",
+  "verification": [
+    "D1 negative/exit/source targeted 37/37 GREEN; cumulative with DLQ, JDBC/SSH, ecom consistency, Step14 and Dataset Sink 143/143 GREEN; diff check GREEN; browser N/A"
+  ]
+}

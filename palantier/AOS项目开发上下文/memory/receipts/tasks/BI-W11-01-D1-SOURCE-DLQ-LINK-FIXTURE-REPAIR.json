@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000366",
+  "created_at": "2026-08-27T15:26:21+08:00",
+  "excluded_scope": [
+    "services/aos-api/aos_api",
+    "apps/web",
+    "real-business-data"
+  ],
+  "expected_outputs": [
+    "Align D1 source runtime, DLQ run identity, dangling-link side channel and strict source projection fixtures to canonical contracts"
+  ],
+  "lease_expires_at": "2026-08-27T10:00:00+00:00",
+  "owner": "codex-m1-single-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/tests/test_ec_d1_negative.py",
+    "services/aos-api/tests/test_ec_d1_exit_gate.py",
+    "services/aos-api/tests/test_ec_d1_source_adapter.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W11-01-D1-SOURCE-DLQ-LINK-FIXTURE-REPAIR"
+}
