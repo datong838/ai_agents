@@ -16,26 +16,39 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "content_hash": "sha256:f52f90bf951700ac343ce92990ec827334075db8d948ff95a9890bda3ab2e06c",
-  "current_phase": "BI-W10 real tenant read-only pilot readiness repair and fresh Cron verification",
-  "delivery_status": "BI_W10_01_PREFLIGHT_CODE_AND_SECRET_EXPOSURE_REPAIRS_GREEN_SOURCE_READINESS_RUNTIME_FAILED_PENDING_POST_FIX_NATURAL_CRON_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:4428009742da4e9f483742adf099b350686a45a2f8e623606bab86f89221313c",
+  "current_phase": "BI-W10 natural Cron verification with BI-W11 no-effect preflight and shared-schema recovery sealed",
+  "delivery_status": "BI_W11_BACKEND_FRONTEND_PREFLIGHT_GREEN_SHARED_SCHEMA_RECOVERED_TI4_ISOLATED_BI_W10_RUNTIME_CRON_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W10-01"
+      "ref": "BI-W11-01-PREFLIGHT"
+    },
+    {
+      "kind": "delivery_receipt",
+      "ref": "BI-W11-02-PREFLIGHT"
+    },
+    {
+      "kind": "delivery_receipt",
+      "ref": "BI-W11-03-SCHEMA-RECOVERY"
     },
     {
       "kind": "test",
-      "ref": "targeted81-cumulative74-source-public6"
+      "ref": "backend385+148+migration107+security0"
+    },
+    {
+      "kind": "test",
+      "ref": "frontend59+full2298+build359"
     },
     {
       "kind": "runtime",
-      "ref": "source-readiness-failed-old-cron-p07-readonly19"
+      "ref": "biw8_001+case-list-200-empty+ti4-shared-db-guard56"
     }
   ],
-  "generated_at": "2026-08-27T12:14:19+08:00",
+  "generated_at": "2026-08-27T12:50:42+08:00",
   "hard_boundaries": [
-    "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, migration apply, provider execution, external effect, automatic retry, or release",
+    "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
+    "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
     "Never expose source credentials; org-org/dev-project is the only real tenant and dev-org/dev-project is isolation canary only"
   ],
   "incomplete": [
@@ -51,17 +64,18 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W10-01 code repair: idempotency targeted81, consistency/source-readiness74, public-source focused6, forbidden source field count0, P07 bounded read-only19 rows; runtime SourceReadiness not green",
+  "last_green_gate": "BI-W11 preflight: backend385+148 migration107 security critical0; frontend59 full2298 build359; shared schema biw8_001 and TI4 shared-db guard56 skipped",
   "next_gate": "BI-W10-01",
   "next_steps": [
-    "Keep BI-W10-02 closed; consume the next natural P12/P01 Cron receipt under a9158d1c and re-read SourceReadiness/DLQ, while continuing BI-W11-01 no-effect static and regression gates"
+    "Consume the next natural P12/P01 Cron receipt under current code, re-read SourceReadiness and DLQ, then continue BI-W10 without manual replay",
+    "Run formal TI-4 downgrade/upgrade only in a disposable database named *_ti4_test"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000355",
+  "project_revision": "AOS-000356",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "7d4dac9a",
-    "docs": "02f44f4"
+    "aos-platform": "dc8bbd98",
+    "docs": "21fce36"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
