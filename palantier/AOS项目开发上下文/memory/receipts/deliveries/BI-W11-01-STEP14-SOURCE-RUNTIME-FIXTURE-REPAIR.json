@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000364",
+  "blockers": [
+    "BI-W10 natural Cron remains 4/12; full ecom deterministic audit has 51 legacy fixture failures remaining"
+  ],
+  "changed_files": [
+    "services/aos-api/tests/test_ec_d1_5_step14_e2e_validation.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "e29ea63b",
+    "8c07fe1"
+  ],
+  "completed_at": "2026-08-27T15:13:01+08:00",
+  "completed_revision": "AOS-000364",
+  "result": "STEP14_RUNTIME_AND_DERIVED_CAS_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_51",
+  "risks": [
+    "Production code unchanged; no JDBC connection, Pipeline run, real data mutation, external side effect, migration apply or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-01-STEP14-SOURCE-RUNTIME-FIXTURE-REPAIR",
+  "verification": [
+    "Step14 5/5 GREEN; Step14 plus JDBC/SSH, live executor and P08 adjacent cumulative 48/48 GREEN; diff check GREEN; browser N/A because no page change"
+  ]
+}
