@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000361",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_ec_d4_standard_pipeline_links.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform/m1@fac51986",
+    "docs/m1@d3e29e5"
+  ],
+  "completed_at": "2026-08-27T14:31:48+08:00",
+  "completed_revision": "AOS-000361",
+  "result": "BI_W11_01_SCHEDULE_EXECUTOR_FIXTURE_RECONCILIATION_GREEN_LEGACY_EXPANDED_BASELINE_ALL_GREEN_NO_RELEASE",
+  "risks": [
+    "Natural BI-W10 runtime SourceReadiness evidence remains pending and is not inferred from synthetic tests"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-01-SCHEDULE-EXECUTOR-FIXTURE-RECONCILIATION",
+  "verification": [
+    "D4 schedule/history/lineage/health targeted: 25 passed",
+    "D4 plus link/store and ecom authority/SourceReadiness cumulative: 88 passed",
+    "remaining 16 deterministic baseline failures closed; introduced failures 0",
+    "browser N/A: no page/router/visual change"
+  ]
+}

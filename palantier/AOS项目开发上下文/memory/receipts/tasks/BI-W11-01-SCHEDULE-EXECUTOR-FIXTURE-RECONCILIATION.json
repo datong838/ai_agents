@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000361",
+  "created_at": "2026-08-27T14:30:09+08:00",
+  "excluded_scope": [
+    "services/aos-api/aos_api",
+    "apps/web",
+    "real-business-data"
+  ],
+  "expected_outputs": [
+    "Align legacy D4 synthetic executor fixture with current run_id/run_started_at dispatch contract"
+  ],
+  "lease_expires_at": "2026-08-27T08:21:13+00:00",
+  "owner": "codex-m1-single-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/tests/test_ec_d4_standard_pipeline_links.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W11-01-SCHEDULE-EXECUTOR-FIXTURE-RECONCILIATION"
+}
