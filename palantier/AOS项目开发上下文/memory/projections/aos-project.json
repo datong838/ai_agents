@@ -11,48 +11,50 @@
     "BI-W9-02",
     "BI-W9-03",
     "BI-W9-04",
-    "BI-W9-05"
+    "BI-W9-05",
+    "BI-W9-06"
   ],
-  "content_hash": "sha256:2517ffb135dd2a66513f4f69dd57d1cfe38dde692321f40f4872eb1e05ad2fad",
+  "content_hash": "sha256:6346e9bc950e69725ea31bdfa7e64c2162906119e46b81f590de246b0122dff9",
   "current_phase": "BI-W9 AdapterPack implementation",
-  "delivery_status": "BI_W9_05_TENANT_BOUND_DISABLED_INSTANCE_OVERLAY_CODE_GREEN_NO_SECRET_RESOLUTION_NO_RELEASE",
+  "delivery_status": "BI_W9_06_FAIL_CLOSED_ACTIVATION_DECISION_CODE_GREEN_REAL_PLATFORM_ACTIVATION_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "receipt",
-      "ref": "BI-W9-05.json"
+      "ref": "BI-W9-06.json"
     },
     {
       "kind": "tests",
-      "ref": "BI-W9-05-targeted26-cumulative98-migration-contract4-green"
+      "ref": "BI-W9-06-targeted13-cumulative111-migration-contract4-green"
     },
     {
       "kind": "code",
-      "ref": "948291abf0372dff95b8c7faae0a02c2137bd178"
+      "ref": "40fd217b359f336e20fb2dfb82d1da46353f07c8"
     },
     {
       "kind": "docs",
-      "ref": "163a5158239f73c0b419b0c145ae99bd60e0809a"
+      "ref": "119-BI-W0-plan-current-working-copy"
     }
   ],
-  "generated_at": "2026-08-27T06:41:48+08:00",
+  "generated_at": "2026-08-27T07:04:09+08:00",
   "hard_boundaries": [
     "NO_REAL_BUSINESS_DATA_WRITE; NO_SECRET_RESOLUTION; NO_SESSION_CREATION; NO_SCHEDULE_RUNTIME; NO_PROFILE_ACTIVATION; NO_PLATFORM_ACCESS; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
   ],
   "incomplete": [
-    "BI-W9-06",
+    "BI-W9-07",
     "S8-Visual"
   ],
-  "last_green_gate": "BI-W9-05 RED import; targeted26 cumulative98 migration-contract4 JSON compile diff GREEN; tenant isolation and opaque SecretRef fail closed; Alembic single head biw8_001; browser N/A; S8-Visual pending",
-  "next_gate": "BI-W9-06",
+  "last_green_gate": "BI-W9-06 RED module/hash; targeted13 cumulative111 migration-contract4 JSON compile diff GREEN; tenant isolation, exact refs, terms/Health/SourceReadiness and per-platform isolation fail closed; Alembic single head biw8_001; browser N/A; S8-Visual pending",
+  "next_gate": "BI-W9-07",
   "next_steps": [
-    "Review and implement BI-W9-06 capability version terms health readiness activation evaluator while all platform terms remain unverified and disabled",
+    "Review and implement BI-W9-07 three-platform synthetic/historical fixture, negative and cumulative regression seal without platform access",
+    "Retain real platform activation blocker until exact accepted current terms, fresh scoped 3/3 Health, current SourceReadiness and runtime authority exist",
     "Retain final S8-Visual eight-menu frontend-backend 1280/1440/1920 exact visual hard gate"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000351",
+  "project_revision": "AOS-000352",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos": "948291abf0372dff95b8c7faae0a02c2137bd178",
+    "aos": "40fd217b359f336e20fb2dfb82d1da46353f07c8",
     "docs": "163a5158239f73c0b419b0c145ae99bd60e0809a"
   },
   "source_files": [
