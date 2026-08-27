@@ -20,6 +20,24 @@
       ],
       "status": "ACTIVE",
       "task_id": "BI-W10-01-NATURAL-RUN-AFTER-RELOAD"
+    },
+    {
+      "base_revision": "AOS-000378",
+      "created_at": "2026-08-28T02:09:41+08:00",
+      "excluded_scope": [
+        "production-code;migrations;manual-pipeline-run;dlq-replay;real-business-data-mutation;provider-execution;external-effect;release"
+      ],
+      "expected_outputs": [
+        "P01 post-reload natural run exact read-only evidence, plan matrix, verification, Delivery Receipt and safe commits"
+      ],
+      "lease_expires_at": "2026-08-28T03:30:00+08:00",
+      "owner": "aos-main-development",
+      "schema": "aos-memory-task-receipt/v1",
+      "scope": [
+        ".evidence/workshop/2026-08-28-bi-w10-01-natural-sequence;docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+      ],
+      "status": "ACTIVE",
+      "task_id": "BI-W10-01-P01-NATURAL-RUN-CHECKPOINT"
     }
   ],
   "schema": "aos-memory-leases/v1"
