@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000359",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ec_live_executor.py",
+    "services/aos-api/aos_api/ec_normalizer.py",
+    "services/aos-api/tests/test_ec_live_executor.py",
+    "services/aos-api/tests/test_ec_normalizer.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform/m1@4b0b457f",
+    "docs/m1@c07b836"
+  ],
+  "completed_at": "2026-08-27T14:14:48+08:00",
+  "completed_revision": "AOS-000359",
+  "result": "BI_W10_01_NATURAL_SNAPSHOT_OBSERVATION_CODE_GREEN_RUNTIME_CRON_EVIDENCE_PENDING",
+  "risks": [
+    "P07 remains an independent transient MySQL connection fact pending a later natural run",
+    "no manual pipeline run, no DLQ replay, no real business-data mutation, no release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-NATURAL-SNAPSHOT-OBSERVATION-REPAIR",
+  "verification": [
+    "targeted executor/normalizer: 63 passed",
+    "ecom core/consistency/SourceReadiness cumulative: 135 passed",
+    "expanded current and git-archive baseline both preserve the same 18 historical failures; introduced failures 0",
+    "compileall and scoped diff-check: GREEN"
+  ]
+}
