@@ -18,26 +18,26 @@
     "S8-Visual"
   ],
   "current_phase": "BI-W10 natural Cron verification with BI-W11 full ecom cumulative repair loop active",
-  "delivery_status": "BI_W11_01_OPERATION_COMMAND_FIXTURES_GREEN_FULL_ECOM_AUDIT_REMAINING_56_BI_W10_4_OF_12_PENDING_NO_RELEASE",
+  "delivery_status": "BI_W11_01_STEP14_FIXTURES_48_GREEN_FULL_ECOM_AUDIT_REMAINING_51_BI_W10_4_OF_12_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W11-01-OPERATION-COMMAND-AUTHORITY-FIXTURE-REPAIR"
+      "ref": "BI-W11-01-STEP14-SOURCE-RUNTIME-FIXTURE-REPAIR"
     },
     {
       "kind": "test",
-      "ref": "operation-command-formerly-failing-22-passed"
+      "ref": "step14-5-passed"
     },
     {
       "kind": "test",
-      "ref": "operation-command-cumulative-24-passed"
+      "ref": "step14-adjacent-cumulative-48-passed"
     },
     {
       "kind": "audit",
-      "ref": "full-ecom-remaining-56-classified"
+      "ref": "full-ecom-remaining-51-classified"
     }
   ],
-  "evidence_cutoff": "2026-08-27T06:49:50+00:00",
+  "evidence_cutoff": "2026-08-27T15:13:01+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -56,19 +56,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-01 Operation command canonical snapshot fixtures: targeted 22 and cumulative 24 GREEN, 10 audit failures closed",
+  "last_green_gate": "BI-W11-01 Step14 runtime and derived CAS fixtures: targeted 5 and adjacent cumulative 48 GREEN",
   "next_gate": "BI-W11-01-SOURCE-ADAPTER-FIXTURE-REPAIR",
   "next_steps": [
-    "Repair SourceAdapter/runtime fixture failures in exact small file clusters, starting with Step14 and dataset sink",
+    "Repair remaining SourceAdapter/runtime fixture failures in exact small file clusters, next dataset sink",
     "Then close Bundle/honesty 2 and re-run all 1185 deterministic ecom/SourceReadiness tests",
     "Continue read-only natural Cron rechecks without manual replay or business-data mutation"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000364",
+  "project_revision": "AOS-000365",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "827242f7",
-    "docs": "4312656"
+    "aos-platform": "e29ea63b",
+    "docs": "ca57972"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -78,5 +78,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T14:50:37+08:00"
+  "updated_at": "2026-08-27T15:15:59+08:00"
 }
