@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000372",
+  "created_at": "2026-08-27T16:33:25+08:00",
+  "excluded_scope": [
+    "services/aos-api/aos_api",
+    "apps/web",
+    "real business data and runtime pipeline execution"
+  ],
+  "expected_outputs": [
+    "Close final two deterministic full-ecom fixture drifts without restoring demo execution or weakening bundle authority"
+  ],
+  "lease_expires_at": "2026-08-27T19:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/tests/test_ec_d2_bundle_install_uninstall_reinstall.py",
+    "services/aos-api/tests/test_ec_pipeline_honesty.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W11-01-BUNDLE-HONESTY-FIXTURE-REPAIR"
+}

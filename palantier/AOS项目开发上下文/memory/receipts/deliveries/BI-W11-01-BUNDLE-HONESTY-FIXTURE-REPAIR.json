@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000372",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_ec_d2_bundle_install_uninstall_reinstall.py",
+    "services/aos-api/tests/test_ec_pipeline_honesty.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "642bb154",
+    "3315b0a"
+  ],
+  "completed_at": "2026-08-27T16:53:36+08:00",
+  "completed_revision": "AOS-000372",
+  "result": "FULL_DETERMINISTIC_ECOM_SOURCEREADINESS_1185_GREEN",
+  "risks": [
+    "production and bundle content unchanged; no real bundle install; no real pipeline execution; no business data mutation; browser N/A"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-01-BUNDLE-HONESTY-FIXTURE-REPAIR",
+  "verification": [
+    "Bundle and trial honesty targeted 36/36 GREEN",
+    "full deterministic test_ec test_ecom test_source_readiness 1185/1185 GREEN"
+  ]
+}
