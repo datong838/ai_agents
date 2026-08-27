@@ -15,30 +15,31 @@
     "BI-W9-06",
     "BI-W9-07",
     "S8-Visual",
-    "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION"
+    "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION",
+    "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK"
   ],
-  "content_hash": "sha256:4c35059a74fa23f305b81a33711495177435569f18eddda2fc0d4693efb5f339",
-  "current_phase": "BI-W10-01 natural-run evidence recheck after BI-W11-02 exact eight-menu visual closure",
-  "delivery_status": "BI_W11_02_EIGHT_MENU_VISUAL_CANONICAL_GET_SECURITY_GREEN_BI_W10_RUNTIME_EVIDENCE_PENDING_NO_RELEASE",
+  "content_hash": "sha256:2232b260d309a3a8d182d05da1b5702c278aacd535ac76d1982026f2a71cbe6c",
+  "current_phase": "BI-W10-01 post-reload natural Cron evidence collection after exact eight-menu visual closure",
+  "delivery_status": "BI_W10_01_FIX_LOADED_READONLY_RECHECK_GREEN_POST_RELOAD_NATURAL_CRON_EVIDENCE_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION"
+      "ref": "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK"
     },
     {
       "kind": "test",
-      "ref": "web-255-files-2301-tests-and-backend-28-green"
+      "ref": "bi-w10-01-post-reload-targeted-72-green"
     },
     {
-      "kind": "browser",
-      "ref": "bi-w11-02-eight-menus-three-fresh-viewports-same-input-green"
+      "kind": "runtime",
+      "ref": "api-reloaded-after-4b0b457f-with-12-cron-worker-and-tunnel-ready"
     },
     {
-      "kind": "design_qa",
-      "ref": "bi-w11-02-p0-p1-p2-closed"
+      "kind": "source_readiness",
+      "ref": "post-reload-readonly-old-cutoff-4-of-12-ready-reconciliation-12-of-12-pass"
     }
   ],
-  "generated_at": "2026-08-27T18:42:45+08:00",
+  "generated_at": "2026-08-27T18:55:12+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -57,19 +58,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-02 eight-menu exact visual, frontend interaction and canonical GET safety gate GREEN at three fresh viewports",
-  "next_gate": "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK",
+  "last_green_gate": "BI-W10-01 current fix loaded, local API healthy and deterministic 72-test gate GREEN; runtime natural evidence remains pending",
+  "next_gate": "BI-W10-01-NATURAL-RUN-AFTER-RELOAD",
   "next_steps": [
-    "Independently re-read the latest natural Cron and SourceReadiness facts for org-org/dev-project without manual pipeline execution or retry",
-    "If BI-W10-01 same-cutoff evidence is GREEN, continue BI-W10-02; otherwise repair only deterministic code/config/test gaps and wait for the next natural run",
-    "Preserve BI-W11-02 formal dependency on BI-W10-06 despite the exact visual subtask being GREEN"
+    "Keep the current API and natural Cron worker running; observe the next P01-P12 run sequence without manual execution or replay",
+    "For each new post-reload run, read exact schedule-run, DLQ and same-cutoff SourceReadiness facts; repair only a newly evidenced deterministic gap",
+    "Advance to BI-W10-02 only after formal BI-W10-01 same-cutoff evidence is GREEN; preserve formal BI-W11 dependencies"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000375",
+  "project_revision": "AOS-000376",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "e1f22ecb",
-    "docs": "2767a61"
+    "aos-platform": "a96b12e4",
+    "docs": "c83ed5e"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

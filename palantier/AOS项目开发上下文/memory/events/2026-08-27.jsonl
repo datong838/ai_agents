@@ -149,3 +149,7 @@
 {"base_revision":"AOS-000374","occurred_at":"2026-08-27T18:15:11+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T18:41:20+08:00","result":"EIGHT_MENU_FRONTEND_VISUAL_CANONICAL_GET_SECURITY_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T18:42:45+08:00","project_revision":"AOS-000375","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000375","occurred_at":"2026-08-27T18:44:24+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T18:54:45+08:00","result":"BI_W10_01_FIX_LOADED_READONLY_RECHECK_GREEN_NEXT_NATURAL_CRON_EVIDENCE_PENDING","schema":"aos-memory-event/v1","task_id":"BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T18:55:12+08:00","project_revision":"AOS-000376","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000376","occurred_at":"2026-08-27T18:55:21+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-NATURAL-RUN-AFTER-RELOAD","type":"TASK_STARTED"}
