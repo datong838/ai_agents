@@ -17,24 +17,24 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "current_phase": "BI-W10 natural Cron verification with BI-W11 deterministic audit GREEN and fresh eight-menu visual gate next",
-  "delivery_status": "BI_W11_01_DETERMINISTIC_ECOM_1185_GREEN_BI_W10_4_OF_12_PENDING_NO_RELEASE",
+  "current_phase": "BI-W11-02 exact eight-menu visual remediation: shell and tabs GREEN, seven content views and three-viewports in progress",
+  "delivery_status": "BI_W11_02_SHELL_TABS_EXACT_GREEN_EIGHT_MENU_VISUAL_IN_PROGRESS_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W11-01-BUNDLE-HONESTY-FIXTURE-REPAIR"
+      "ref": "BI-W11-02-EXACT-1TO1-SHELL-TABS-REMEDIATION"
     },
     {
       "kind": "test",
-      "ref": "bundle-trial-honesty-36-passed"
+      "ref": "web-255-files-2300-tests-green"
     },
     {
-      "kind": "test",
-      "ref": "full-deterministic-ecom-sourcereadiness-1185-passed"
+      "kind": "browser",
+      "ref": "bi-w11-02-shell-tabs-fresh-same-input-1280"
     },
     {
-      "kind": "audit",
-      "ref": "full-ecom-failures-zero"
+      "kind": "design_qa",
+      "ref": "bi-w11-02-overall-failed-seven-views-pending"
     }
   ],
   "evidence_cutoff": "2026-08-27T16:53:36+08:00",
@@ -56,19 +56,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-01 deterministic ecom and SourceReadiness audit: 1185 of 1185 GREEN",
-  "next_gate": "BI-W11-02-EIGHT-MENU-FRESH-1TO1-VISUAL-GATE",
+  "last_green_gate": "BI-W11-02 shell context tabs and truthful empty inquiry scaffold exact geometry with Web 2300 GREEN",
+  "next_gate": "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION",
   "next_steps": [
-    "Harden BI-W11-02 to require fresh current-run eight-menu source-versus-implementation 1:1 visual evidence",
-    "Execute fresh browser capture and fix every P0 P1 P2 visual mismatch while preserving frontend and backend behavior",
-    "Continue read-only natural Cron rechecks without manual replay or business-data mutation"
+    "Compare and remediate overview, drivers, diagnostics, growth plan, effect review, evidence and data quality against the frozen source visual",
+    "Capture all eight menus at 1280x800, 1440x900 and 1920x1080 in same-input source/current comparisons",
+    "Keep P0 P1 P2 and final result failed until every visual and functional gate is closed"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000373",
+  "project_revision": "AOS-000374",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "642bb154",
-    "docs": "0c70c5a"
+    "aos-platform": "69cbc80e",
+    "docs": "601775f"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -78,5 +78,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T16:54:19+08:00"
+  "updated_at": "2026-08-27T18:13:36+08:00"
 }

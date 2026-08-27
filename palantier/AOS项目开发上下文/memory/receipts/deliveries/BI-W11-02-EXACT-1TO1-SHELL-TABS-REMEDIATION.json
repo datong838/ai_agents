@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000373",
+  "blockers": [
+    "No external blocker; remaining work is next serial implementation scope"
+  ],
+  "changed_files": [
+    "apps/web/src/shell/AppShell.tsx",
+    "apps/web/src/styles/00-shell.css",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "apps/web/src/components/workshop/EcommerceWorkshopShell.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1/design-qa.md"
+  ],
+  "commits": [
+    "aos-platform:69cbc80e",
+    "docs:601775f"
+  ],
+  "completed_at": "2026-08-27T18:12:46+08:00",
+  "completed_revision": "AOS-000373",
+  "result": "Shell/context/tabs and truthful empty inquiry scaffold aligned to source geometry at fresh 1280x720; overall eight-menu design QA remains failed pending seven views and three-viewports.",
+  "risks": [
+    "BI-W11-02 remains incomplete until all eight menus at 1280x800, 1440x900 and 1920x1080 have P0=P1=P2=0"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-02-EXACT-1TO1-SHELL-TABS-REMEDIATION",
+  "verification": [
+    "targeted Web 33/33 GREEN",
+    "Workshop Web full 255 files / 2300 tests GREEN",
+    "TypeScript and Vite production build GREEN",
+    "built-in browser same-input source/current comparison and real View Today Plan tab interaction GREEN"
+  ]
+}
