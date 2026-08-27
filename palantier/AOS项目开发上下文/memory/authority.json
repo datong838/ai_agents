@@ -17,8 +17,8 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "current_phase": "BI-W10 natural Cron verification with BI-W11 tenant-isolation and disposable TI-4 drill sealed",
-  "delivery_status": "BI_W11_TI4_DISPOSABLE_GREEN_TENANT_ISOLATION_241_PASSED_10_SKIPPED_BI_W10_AGGREGATE_4_OF_12_PENDING_NO_RELEASE",
+  "current_phase": "BI-W10 natural Cron verification with BI-W11 recovery and tenant-isolation preflights sealed",
+  "delivery_status": "BI_W11_RECOVERY_PREFLIGHT_GREEN_FRONTEND_27_BACKEND_83_BROWSER_READ_ONLY_GREEN_BI_W10_AGGREGATE_4_OF_12_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
@@ -41,15 +41,27 @@
       "ref": "BI-W11-04-PREFLIGHT"
     },
     {
+      "kind": "delivery_receipt",
+      "ref": "BI-W11-03-FLAG-RESTART-ROLLBACK-PREFLIGHT"
+    },
+    {
       "kind": "commit",
-      "ref": "a90c7c58"
+      "ref": "b21b3f3d"
     },
     {
       "kind": "test",
-      "ref": "tenant-isolation-241-passed-10-skipped"
+      "ref": "business-investigation-cumulative-83-passed"
+    },
+    {
+      "kind": "test",
+      "ref": "workshop-feature-flags-27-passed"
+    },
+    {
+      "kind": "browser",
+      "ref": "workshop-analyst-read-only-no-command-no-console-error"
     }
   ],
-  "evidence_cutoff": "2026-08-27T05:38:07+00:00",
+  "evidence_cutoff": "2026-08-27T05:54:10+00:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -68,18 +80,18 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-03 disposable TI-4 and cumulative tenant isolation: targeted 52+1, TI-4 53+3, cumulative 241+10, disposable database residue zero",
+  "last_green_gate": "BI-W11-03 feature flag kill/restart/rollback preflight: frontend 27, backend 83, TypeScript and built-in browser GREEN",
   "next_gate": "BI-W10-01",
   "next_steps": [
     "Read the remaining natural P01-P11 runtime facts without manual replay and repair only fresh reproducible failures",
-    "Continue BI-W11-03 feature-flag kill, restart and rollback preflight without real external effects"
+    "Consume fresh same-cutoff BI-W10 evidence before formal BI-W11-01 through BI-W11-05 release decision"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000358",
+  "project_revision": "AOS-000359",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "a90c7c58",
-    "docs": "a2889a3"
+    "aos-platform": "b21b3f3d",
+    "docs": "c85e93c"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -89,5 +101,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T13:41:11+08:00"
+  "updated_at": "2026-08-27T13:54:24+08:00"
 }
