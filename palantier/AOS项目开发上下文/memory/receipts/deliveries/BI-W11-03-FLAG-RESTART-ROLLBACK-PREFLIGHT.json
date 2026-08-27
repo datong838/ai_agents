@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000358",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform/m1@b21b3f3d1259f61b751e68bc2544fb5c1382e6a6"
+  ],
+  "completed_at": "2026-08-27T13:52:29+08:00",
+  "completed_revision": "AOS-000358",
+  "result": "BI_W11_FLAG_RESTART_ROLLBACK_PREFLIGHT_GREEN_BI_W10_AGGREGATE_4_OF_12_PENDING_NO_RELEASE",
+  "risks": [
+    "formal BI-W11-03 remains pending BI-W10 same-cutoff runtime evidence",
+    "NO_REAL_BUSINESS_DATA_WRITE/NO_EXTERNAL_EFFECT/NO_RELEASE"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-03-FLAG-RESTART-ROLLBACK-PREFLIGHT",
+  "verification": [
+    "frontend feature flag and tab suite: 27 passed",
+    "backend BI-W5/W6/W7/W8 cumulative: 83 passed, 7 existing warnings",
+    "TypeScript tsc -b: GREEN",
+    "built-in browser: tab roundtrip GREEN, fail-closed visible, command buttons 0, console errors 0"
+  ]
+}
