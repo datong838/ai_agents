@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000378",
+  "blockers": [
+    "NO_MANUAL_PIPELINE_RUN;NO_DLQ_REPLAY;NO_REAL_BUSINESS_DATA_MUTATION;NO_PROVIDER_EXECUTION;NO_EXTERNAL_EFFECT;NO_MIGRATION_APPLY;NO_RELEASE"
+  ],
+  "changed_files": [
+    ".evidence/workshop/2026-08-28-bi-w10-01-natural-sequence/p01-readonly-checkpoint.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform/m1@8f8d22f0",
+    "docs/m1@6209958"
+  ],
+  "completed_at": "2026-08-28T02:11:16+08:00",
+  "completed_revision": "AOS-000378",
+  "result": "BI_W10_01_P01_POST_RELOAD_NATURAL_RUN_GREEN_SEQUENCE_CONTINUES_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "P02-P12 still belong to the previous natural sequence until their new schedule points; do not claim same-cutoff 12/12"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-P01-NATURAL-RUN-CHECKPOINT",
+  "verification": [
+    "P01 latest natural run succeeded at 2026-08-27T18:00:04.481042Z with rowsWritten=1 and empty errorCode; source/projection aggregate counts match; dev-org canary 0/0; memory validate GREEN"
+  ]
+}
