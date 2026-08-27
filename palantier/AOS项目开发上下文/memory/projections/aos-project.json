@@ -16,30 +16,27 @@
     "BI-W9-07",
     "S8-Visual",
     "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION",
-    "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK"
+    "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK",
+    "BI-W10-01-P01-NATURAL-RUN-CHECKPOINT"
   ],
-  "content_hash": "sha256:e8705814f2d5df166165f51cdcadc0e96270047d38bbd2fbc9ae7f9998b24bd3",
-  "current_phase": "Workshop 八菜单视觉、功能与业务数据追溯已封板；BI-W10-01 继续自然 Cron 同截止面证据收集",
-  "delivery_status": "WORKSHOP_EIGHT_MENU_VISUAL_FUNCTION_DATA_TRACEABILITY_SEAL_GREEN_BI_W10_NATURAL_CRON_PENDING_NO_RELEASE",
+  "content_hash": "sha256:1d1854550d2cd4fe010cb150d2342e98b0ed0b0e045865e37ee5e679e59f42b3",
+  "current_phase": "BI-W10-01 修复加载后自然序列验收进行中；P01 新鲜自然运行 GREEN，等待 P02～P12 各自自然计划点",
+  "delivery_status": "BI_W10_01_P01_POST_RELOAD_NATURAL_RUN_GREEN_P02_P12_NATURAL_SEQUENCE_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "workshop-eight-menu-visual-function-data-seal-20260828"
+      "ref": "BI-W10-01-P01-NATURAL-RUN-CHECKPOINT"
     },
     {
-      "kind": "visual_qa",
-      "ref": ".evidence/workshop/2026-08-28-eight-menu-business-visual-seal/design-qa.md"
+      "kind": "natural_run",
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-01-natural-sequence/p01-readonly-checkpoint.md"
     },
     {
       "kind": "test",
-      "ref": "web-2310-of-2310-backend-30-of-30-build-green"
-    },
-    {
-      "kind": "traceability",
-      "ref": "qyh-workshop-traceability-v1"
+      "ref": "p01-probe-repeat-and-memory-validate-green"
     }
   ],
-  "generated_at": "2026-08-28T01:31:03+08:00",
+  "generated_at": "2026-08-28T02:12:58+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -58,19 +55,18 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "八菜单三视口逐页视觉对照、主控件实操、2310/2310 Web、30/30 backend、build 与栖月汇只读追溯 GREEN",
-  "next_gate": "BI-W10-01-NATURAL-RUN-AFTER-RELOAD",
+  "last_green_gate": "P01 2026-08-27T18:00:04.481042Z 自然运行 succeeded/rowsWritten=1；12 类 source/projection 聚合逐类相等；canary 0/0",
+  "next_gate": "BI-W10-01-P02-NATURAL-RUN-CHECKPOINT",
   "next_steps": [
-    "Keep the current API and natural Cron worker running; observe the next P01-P12 run sequence without manual execution or replay",
-    "For each new post-reload run, read exact schedule-run, DLQ and same-cutoff SourceReadiness facts; repair only a newly evidenced deterministic gap",
-    "Advance to BI-W10-02 only after formal BI-W10-01 same-cutoff evidence is GREEN; preserve formal BI-W11 dependencies"
+    "Wait for P02 at Asia/Shanghai 03:00 and read latest run, DLQ metadata, SourceReadiness and source/projection aggregates without manual execution",
+    "Continue P03-P12 at their existing natural schedule points; repair only a newly evidenced deterministic failure"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000378",
+  "project_revision": "AOS-000379",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "60e0c3ef",
-    "docs": "86ed441"
+    "aos-platform": "8f8d22f0",
+    "docs": "ee3b9c9"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
