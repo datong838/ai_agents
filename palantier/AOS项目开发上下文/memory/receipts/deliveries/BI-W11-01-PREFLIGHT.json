@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000355",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_data_os_store_185.py",
+    ".gitignore",
+    "scripts/.d2_6_runtime_ed25519.pem",
+    "scripts/.d3_runtime_ed25519.pem",
+    "services/aos-api/tests/asset_registry/test_knowledge_package_contracts.py",
+    "services/aos-api/tests/tenant_isolation/test_ti1_e3_rebaseline.py"
+  ],
+  "commits": [
+    "2b449122",
+    "8d595374",
+    "935139f",
+    "f6bfc4b",
+    "a1b3593",
+    "534cc14"
+  ],
+  "completed_at": "2026-08-27T12:35:04+08:00",
+  "completed_revision": "AOS-000355",
+  "result": "BI_W11_01_PREFLIGHT_TARGETED_MIGRATION_SECURITY_GREEN_FORMAL_GATE_PENDING_BI_W10_RUNTIME",
+  "risks": [
+    "BI-W11-01 formal completion still waits BI-W10-06; TI-4 historical stage suite remains 48 passed/9 failed because old pre-contract assertions are run against biw8_001 current head and will be isolated in BI-W11-03/04; no shared migration apply, pipeline execution, DLQ replay, external effect, or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-01-PREFLIGHT",
+  "verification": [
+    "business investigation targeted/cumulative 385 passed; consistency/source readiness/source security 148 passed; BI migration contracts 107 passed; security affected files 25 passed; alembic unique head biw8_001; scanner self-tests 9 passed and critical zero"
+  ]
+}
