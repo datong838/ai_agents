@@ -125,3 +125,14 @@
 {"base_revision":"AOS-000366","occurred_at":"2026-08-27T15:26:21+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-D1-SOURCE-DLQ-LINK-FIXTURE-REPAIR","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T15:32:00+08:00","result":"D1_SOURCE_DLQ_LINK_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_32","schema":"aos-memory-event/v1","task_id":"BI-W11-01-D1-SOURCE-DLQ-LINK-FIXTURE-REPAIR","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T15:32:37+08:00","project_revision":"AOS-000367","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000367","occurred_at":"2026-08-27T15:39:08+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P02-P03-LINK-AGGREGATOR-FIXTURE-REPAIR","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T15:53:55+08:00","result":"P02_P03_LINK_AGGREGATOR_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_30","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P02-P03-LINK-AGGREGATOR-FIXTURE-REPAIR","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T15:54:41+08:00","project_revision":"AOS-000368","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000368","occurred_at":"2026-08-27T15:57:55+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P04-CATEGORY-FIXTURE-REPAIR","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T16:02:52+08:00","result":"P04_CATEGORY_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_23","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P04-CATEGORY-FIXTURE-REPAIR","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T16:03:13+08:00","project_revision":"AOS-000369","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000369","occurred_at":"2026-08-27T16:05:01+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P05-ORDER-FIXTURE-REPAIR","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T16:12:27+08:00","result":"P05_ORDER_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_13","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P05-ORDER-FIXTURE-REPAIR","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T16:13:03+08:00","project_revision":"AOS-000370","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000370","occurred_at":"2026-08-27T16:15:00+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P06-ORDERLINE-FIXTURE-REPAIR","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T16:26:50+08:00","result":"P06_ORDERLINE_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_2","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P06-ORDERLINE-FIXTURE-REPAIR","type":"TASK_COMPLETED"}

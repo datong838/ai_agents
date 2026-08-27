@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000370",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_ec_d1_p06_orderline.py",
+    "services/aos-api/tests/test_ec_d1_p06_api_config.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "ef4c35eb",
+    "26bc2b9"
+  ],
+  "completed_at": "2026-08-27T16:26:50+08:00",
+  "completed_revision": "AOS-000370",
+  "result": "P06_ORDERLINE_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_2",
+  "risks": [
+    "production code unchanged; no real source read; no pipeline run; no business data mutation; browser N/A"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-01-P06-ORDERLINE-FIXTURE-REPAIR",
+  "verification": [
+    "P06 targeted 20/20 GREEN; cumulative Step14 Dataset D1 Source/DLQ P02-P06 184/184 GREEN"
+  ]
+}
