@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000354",
+  "created_at": "2026-08-27T11:39:57+08:00",
+  "excluded_scope": [
+    "real pipeline execution; DLQ replay; Case creation; real business data mutation; migration; external effect; release; unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "same-batch checkpoint-version idempotency regression fix, focused/cumulative tests, fresh read-only preflight evidence, Delivery Receipt"
+  ],
+  "lease_expires_at": "2026-08-28T12:00:00+00:00",
+  "owner": "m1-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs:119 BI-W10-01 section; services/aos-api/aos_api/ecom_core_models.py; services/aos-api/aos_api/ecom_consistency_store.py; services/aos-api/aos_api/routers/wave_ext.py; services/aos-api/tests/test_ecom_core_models.py; services/aos-api/tests/test_ecom_consistency_store.py; services/aos-api/tests/test_data_os_store_185.py; read-only SourceReadiness/DLQ/source-field probes"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-01"
+}

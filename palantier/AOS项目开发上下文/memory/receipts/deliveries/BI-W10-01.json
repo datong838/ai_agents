@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000354",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecom_core_models.py",
+    "services/aos-api/aos_api/ecom_consistency_store.py",
+    "services/aos-api/aos_api/routers/wave_ext.py",
+    "services/aos-api/tests/test_ecom_core_models.py",
+    "services/aos-api/tests/test_ecom_consistency_store.py",
+    "services/aos-api/tests/test_data_os_store_185.py"
+  ],
+  "commits": [
+    "09f76bed0359913209757b2837b804957a976872",
+    "a9158d1c138961a8b9f640e9c5cda14eb602f3bd",
+    "7d4dac9a3763c543bca77492a01b8dd410ac8061"
+  ],
+  "completed_at": "2026-08-27T12:12:55+08:00",
+  "completed_revision": "AOS-000354",
+  "result": "BI_W10_01_PREFLIGHT_CODE_AND_SECRET_EXPOSURE_REPAIRS_GREEN_RUNTIME_CRON_EVIDENCE_PENDING",
+  "risks": [
+    "SourceReadiness remains failed until post-fix natural Cron evidence; P07 previous connection failure was transient at current read-only probe; no manual pipeline run, DLQ replay, Case creation, migration, external effect, or release performed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01",
+  "verification": [
+    "idempotency targeted 81 passed; consistency/source-readiness cumulative 74 passed; public source projection focused 6 passed; compileall and diff-check green; real source GET forbidden field count zero; P07 bounded read-only probe 19 rows in 0.555s"
+  ]
+}
