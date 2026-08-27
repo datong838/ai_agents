@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000373",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1/baseline/source-inquiry-1440.png",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1/baseline/current-inquiry-1440.png",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1/design-qa.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "bc24df29",
+    "d7e743f"
+  ],
+  "completed_at": "2026-08-27T17:16:56+08:00",
+  "completed_revision": "AOS-000373",
+  "result": "BI_W11_02_FRESH_EXACT_1TO1_BASELINE_RED_REMEDIATION_REQUIRED_AND_ACTIVE",
+  "risks": [
+    "final result remains failed until route shell, tabs, eight menu bodies, three viewports, interactions and cumulative regression all pass"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-02-EIGHT-MENU-FRESH-1TO1-VISUAL-GATE",
+  "verification": [
+    "built-in browser fresh source and implementation capture; actual 1280x720 file dimensions verified; computed geometry and color measurements recorded"
+  ]
+}

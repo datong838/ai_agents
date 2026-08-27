@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000373",
+  "created_at": "2026-08-27T16:55:19+08:00",
+  "excluded_scope": [
+    "services/aos-api/migrations",
+    "real business data and external effects",
+    "release"
+  ],
+  "expected_outputs": [
+    "Fresh current-run exact 1:1 eight-menu source-versus-implementation browser acceptance with all P0 P1 P2 mismatches closed and frontend/backend behavior preserved"
+  ],
+  "lease_expires_at": "2026-08-28T02:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop",
+    "apps/web/src/api/ecommerceWorkshop",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W11-02-EIGHT-MENU-FRESH-1TO1-VISUAL-GATE"
+}
