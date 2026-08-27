@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000355",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/tenant_isolation/conftest.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "3841cbe",
+    "dc8bbd98",
+    "3e82dd6"
+  ],
+  "completed_at": "2026-08-27T12:48:58+08:00",
+  "completed_revision": "AOS-000355",
+  "result": "BI_W11_03_SHARED_SCHEMA_RECOVERED_TO_BIW8_HEAD_AND_TI4_DESTRUCTIVE_SUITE_ISOLATED",
+  "risks": [
+    "The historical TI-4 stage suite remains runnable only in a disposable database named *_ti4_test; formal BI-W11-03 drill still requires such an isolated database"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-03-SCHEMA-RECOVERY",
+  "verification": [
+    "alembic current and heads: biw8_001 (head)",
+    "W6/W7 and BI-W2 through BI-W8 key tables exist; inspected row counts are zero",
+    "live local org-org/dev-project investigation case list: HTTP 200 with 0 items",
+    "Business Investigation API targeted: 12 passed",
+    "TI-4 glob on shared database: 56 skipped; subsequent alembic current remains biw8_001 (head)"
+  ]
+}

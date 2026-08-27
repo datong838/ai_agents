@@ -90,3 +90,5 @@
 {"occurred_at":"2026-08-27T12:35:04+08:00","result":"BI_W11_01_PREFLIGHT_TARGETED_MIGRATION_SECURITY_GREEN_FORMAL_GATE_PENDING_BI_W10_RUNTIME","schema":"aos-memory-event/v1","task_id":"BI-W11-01-PREFLIGHT","type":"TASK_COMPLETED"}
 {"base_revision":"AOS-000355","occurred_at":"2026-08-27T12:35:28+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-02-PREFLIGHT","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T12:41:07+08:00","result":"BI_W11_02_PREFLIGHT_FRONTEND_TYPE_BUILD_AND_S8_EVIDENCE_REUSE_GREEN_FORMAL_GATE_PENDING_BI_W10_RUNTIME","schema":"aos-memory-event/v1","task_id":"BI-W11-02-PREFLIGHT","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000355","occurred_at":"2026-08-27T12:42:59+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-03-SCHEMA-RECOVERY","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T12:48:58+08:00","result":"BI_W11_03_SHARED_SCHEMA_RECOVERED_TO_BIW8_HEAD_AND_TI4_DESTRUCTIVE_SUITE_ISOLATED","schema":"aos-memory-event/v1","task_id":"BI-W11-03-SCHEMA-RECOVERY","type":"TASK_COMPLETED"}
