@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000376",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-27-bi-w10-01-natural-run-recovery-385/runtime-continuity.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform/m1@11f94802",
+    "docs/m1@659ba90"
+  ],
+  "completed_at": "2026-08-27T19:09:09+08:00",
+  "completed_revision": "AOS-000376",
+  "result": "RUNTIME_CONTINUITY_RECOVERY_GREEN_NATURAL_CRON_EVIDENCE_PENDING_NO_RELEASE",
+  "risks": [
+    "formal BI-W10-01 remains pending fresh post-reload natural runs",
+    "no manual pipeline run, DLQ replay, business mutation, migration, external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-WATCHDOG-RECOVERY-385",
+  "verification": [
+    "memory status/validate/gate GREEN and branch m1",
+    "GET /v1/health=200 on 8080 with listener PID 61359",
+    "GET /v1/schedules returned 12 enabled P01-P12 schedules",
+    "SourceReadiness remained honest at 4/12 ready and 12/12 reconciliation pass",
+    "post-reload DLQ additions=0 and targeted regression exited 0 twice"
+  ]
+}
