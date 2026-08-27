@@ -18,26 +18,26 @@
     "S8-Visual"
   ],
   "current_phase": "BI-W10 natural Cron verification with BI-W11 full ecom cumulative repair loop active",
-  "delivery_status": "BI_W11_01_D1_SOURCE_DLQ_LINK_FIXTURES_143_GREEN_FULL_ECOM_AUDIT_REMAINING_32_BI_W10_4_OF_12_PENDING_NO_RELEASE",
+  "delivery_status": "BI_W11_01_P02_P03_LINK_FIXTURES_115_GREEN_FULL_ECOM_AUDIT_REMAINING_30_BI_W10_4_OF_12_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W11-01-D1-SOURCE-DLQ-LINK-FIXTURE-REPAIR"
+      "ref": "BI-W11-01-P02-P03-LINK-AGGREGATOR-FIXTURE-REPAIR"
     },
     {
       "kind": "test",
-      "ref": "d1-source-dlq-link-37-passed"
+      "ref": "p02-p03-api-config-16-passed"
     },
     {
       "kind": "test",
-      "ref": "source-runtime-cumulative-143-passed"
+      "ref": "p02-p03-source-runtime-cumulative-115-passed"
     },
     {
       "kind": "audit",
-      "ref": "full-ecom-remaining-32-classified"
+      "ref": "full-ecom-remaining-30-classified"
     }
   ],
-  "evidence_cutoff": "2026-08-27T15:32:00+08:00",
+  "evidence_cutoff": "2026-08-27T15:54:41+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -56,19 +56,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-01 D1 Source, DLQ and dangling-link fixtures: targeted 37 and adjacent cumulative 143 GREEN",
-  "next_gate": "BI-W11-01-PIPELINE-FIXTURE-REPAIR",
+  "last_green_gate": "BI-W11-01 P02/P03 Link Aggregator fixtures: targeted 16 and cumulative 115 GREEN",
+  "next_gate": "BI-W11-01-P04-FIXTURE-REPAIR",
   "next_steps": [
-    "Repair remaining P02/P03/P04/P05/P06 fixture failures in exact small clusters",
+    "Repair remaining P04/P05/P06 fixture failures in exact small clusters",
     "Then close Bundle/honesty 2 and re-run all deterministic ecom/SourceReadiness tests",
     "Continue read-only natural Cron rechecks without manual replay or business-data mutation"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000367",
+  "project_revision": "AOS-000368",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "bf9c16f9",
-    "docs": "fe16276"
+    "aos-platform": "152ddd44",
+    "docs": "ca5f038"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -78,5 +78,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T15:32:37+08:00"
+  "updated_at": "2026-08-27T15:54:41+08:00"
 }
