@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000363",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/test_ecommerce_operation_command_observation_service.py",
+    "services/aos-api/tests/test_ecommerce_operation_command_service.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform/m1@827242f7",
+    "docs/m1@c2da246"
+  ],
+  "completed_at": "2026-08-27T14:49:50+08:00",
+  "completed_revision": "AOS-000363",
+  "result": "BI_W11_01_OPERATION_COMMAND_AUTHORITY_FIXTURES_24_GREEN_FULL_AUDIT_REMAINING_56_NO_RELEASE",
+  "risks": [
+    "full cumulative audit still has 56 classified test failures; no release claim"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-01-OPERATION-COMMAND-AUTHORITY-FIXTURE-REPAIR",
+  "verification": [
+    "two formerly failing Operation command files: 22 passed",
+    "Operation command contracts cumulative: 24 passed",
+    "10 of 66 full-audit failures closed; production code changes 0"
+  ]
+}
