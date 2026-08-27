@@ -17,8 +17,8 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "current_phase": "BI-W10 natural Cron verification with mutable snapshot observation repair sealed",
-  "delivery_status": "BI_W10_01_SNAPSHOT_OBSERVATION_CODE_GREEN_BI_W10_AGGREGATE_4_OF_12_PENDING_NO_RELEASE",
+  "current_phase": "BI-W10 natural Cron verification with BI-W11 ecom contract baseline reconciliation sealed",
+  "delivery_status": "BI_W11_01_LEGACY_EC_CONTRACT_RECONCILIATION_GREEN_BI_W10_AGGREGATE_4_OF_12_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
@@ -49,27 +49,31 @@
       "ref": "BI-W10-01-NATURAL-SNAPSHOT-OBSERVATION-REPAIR"
     },
     {
+      "kind": "delivery_receipt",
+      "ref": "BI-W11-01-LEGACY-EC-CONTRACT-RECONCILIATION"
+    },
+    {
       "kind": "commit",
-      "ref": "4b0b457f"
+      "ref": "070e4536"
     },
     {
       "kind": "test",
-      "ref": "snapshot-observation-targeted-63-passed"
+      "ref": "legacy-ecom-contract-targeted-10-passed"
     },
     {
       "kind": "test",
-      "ref": "ecom-source-readiness-cumulative-135-passed"
+      "ref": "ecom-authority-source-readiness-cumulative-63-passed"
     },
     {
       "kind": "test",
-      "ref": "expanded-baseline-introduced-failures-0"
+      "ref": "expanded-baseline-failures-reduced-18-to-16"
     },
     {
       "kind": "browser",
-      "ref": "workshop-analyst-read-only-no-command-no-console-error"
+      "ref": "not-applicable-no-page-router-visual-change"
     }
   ],
-  "evidence_cutoff": "2026-08-27T06:14:48+00:00",
+  "evidence_cutoff": "2026-08-27T06:27:40+00:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -88,19 +92,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W10-01 mutable snapshot observation repair: targeted 63 and cumulative 135 GREEN, introduced failures 0",
+  "last_green_gate": "BI-W11-01 legacy ecom authority contract reconciliation: targeted 10 and cumulative 63 GREEN, exact expanded failures reduced 18 to 16",
   "next_gate": "BI-W10-01",
   "next_steps": [
+    "Reconcile the remaining 16 legacy Schedule/JDBC environment assertions without weakening production fail-closed behavior",
     "Wait for the next natural P01-P12 Cron facts without manual replay and re-read SourceReadiness plus latest DLQ",
-    "Repair only fresh reproducible failures; P07 remains an independent connection fact",
     "Do not start BI-W10-02 until same-cutoff SourceReadiness and explicit bounded pilot authority are GREEN"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000360",
+  "project_revision": "AOS-000361",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "4b0b457f",
-    "docs": "ef9d743"
+    "aos-platform": "070e4536",
+    "docs": "8bacd4e"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -110,5 +114,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T14:16:39+08:00"
+  "updated_at": "2026-08-27T14:28:46+08:00"
 }

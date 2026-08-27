@@ -104,3 +104,6 @@
 {"base_revision":"AOS-000359","occurred_at":"2026-08-27T14:04:12+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-NATURAL-SNAPSHOT-OBSERVATION-REPAIR","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T14:14:48+08:00","result":"BI_W10_01_NATURAL_SNAPSHOT_OBSERVATION_CODE_GREEN_RUNTIME_CRON_EVIDENCE_PENDING","schema":"aos-memory-event/v1","task_id":"BI-W10-01-NATURAL-SNAPSHOT-OBSERVATION-REPAIR","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T14:16:39+08:00","project_revision":"AOS-000360","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000360","occurred_at":"2026-08-27T14:21:38+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-LEGACY-EC-CONTRACT-RECONCILIATION","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T14:27:40+08:00","result":"BI_W11_01_LEGACY_EC_CONTRACT_RECONCILIATION_GREEN_REMAINING_SCHEDULE_ENV_BASELINE_16_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W11-01-LEGACY-EC-CONTRACT-RECONCILIATION","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T14:28:46+08:00","project_revision":"AOS-000361","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
