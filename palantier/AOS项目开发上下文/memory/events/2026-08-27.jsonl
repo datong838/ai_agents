@@ -136,3 +136,5 @@
 {"occurred_at":"2026-08-27T16:13:03+08:00","project_revision":"AOS-000370","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000370","occurred_at":"2026-08-27T16:15:00+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P06-ORDERLINE-FIXTURE-REPAIR","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T16:26:50+08:00","result":"P06_ORDERLINE_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_2","schema":"aos-memory-event/v1","task_id":"BI-W11-01-P06-ORDERLINE-FIXTURE-REPAIR","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T16:27:35+08:00","project_revision":"AOS-000371","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-27T16:28:04+08:00","project_revision":"AOS-000372","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
