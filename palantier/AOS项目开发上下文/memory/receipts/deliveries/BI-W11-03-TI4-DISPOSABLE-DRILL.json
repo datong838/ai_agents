@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000357",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/o1_alias_migration.py",
+    "services/aos-api/aos_api/tenant_schema_lint.py",
+    "services/aos-api/tests/conftest.py",
+    "services/aos-api/tests/tenant_isolation/conftest.py",
+    "services/aos-api/tests/tenant_isolation",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "a90c7c58",
+    "10b5a17",
+    "a2889a3"
+  ],
+  "completed_at": "2026-08-27T13:40:20+08:00",
+  "completed_revision": "AOS-000357",
+  "result": "BI_W11_03_TI4_DISPOSABLE_DRILL_GREEN_TENANT_ISOLATION_241_PASSED_10_SKIPPED_NO_RELEASE",
+  "risks": [
+    "No real tenant read, shared schema mutation, pipeline/DLQ replay, provider call, external effect, browser surface change, or release."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-03-TI4-DISPOSABLE-DRILL",
+  "verification": [
+    "targeted tenant repair: 52 passed, 1 skipped",
+    "O1 alias unit: 5 passed",
+    "TI-4 disposable terminal drill: 53 passed, 3 skipped; remaining disposable databases=0",
+    "full tenant isolation with TI-4 enabled: 241 passed, 10 skipped",
+    "compileall and git diff check GREEN"
+  ]
+}
