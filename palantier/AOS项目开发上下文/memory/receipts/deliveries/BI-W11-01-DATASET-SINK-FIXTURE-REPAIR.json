@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000365",
+  "blockers": [
+    "BI-W10 natural Cron remains 4/12; full ecom deterministic audit has 39 legacy fixture failures remaining"
+  ],
+  "changed_files": [
+    "services/aos-api/tests/test_ec_d1_dataset_sink.py",
+    "services/aos-api/tests/test_ec_d1_dataset_sink_integration.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "c46ecece",
+    "af357a2"
+  ],
+  "completed_at": "2026-08-27T15:24:39+08:00",
+  "completed_revision": "AOS-000365",
+  "result": "DATASET_SINK_AUTHORITY_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_39",
+  "risks": [
+    "Production code unchanged; no real Source connection, manual Pipeline run, business-data mutation, external side effect, migration apply or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-01-DATASET-SINK-FIXTURE-REPAIR",
+  "verification": [
+    "Dataset sink targeted 22/22 GREEN; dataset sink plus Step14, JDBC/SSH, live executor and P08 cumulative 70/70 GREEN; diff check GREEN; browser N/A because no page change"
+  ]
+}

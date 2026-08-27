@@ -119,3 +119,5 @@
 {"base_revision":"AOS-000364","occurred_at":"2026-08-27T15:06:10+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-STEP14-SOURCE-RUNTIME-FIXTURE-REPAIR","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T15:13:01+08:00","result":"STEP14_RUNTIME_AND_DERIVED_CAS_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_51","schema":"aos-memory-event/v1","task_id":"BI-W11-01-STEP14-SOURCE-RUNTIME-FIXTURE-REPAIR","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T15:15:59+08:00","project_revision":"AOS-000365","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000365","occurred_at":"2026-08-27T15:20:12+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-DATASET-SINK-FIXTURE-REPAIR","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T15:24:39+08:00","result":"DATASET_SINK_AUTHORITY_FIXTURES_GREEN_REMAINING_FULL_ECOM_AUDIT_39","schema":"aos-memory-event/v1","task_id":"BI-W11-01-DATASET-SINK-FIXTURE-REPAIR","type":"TASK_COMPLETED"}
