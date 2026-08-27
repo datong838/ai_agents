@@ -1,0 +1,36 @@
+{
+  "base_revision": "AOS-000374",
+  "blockers": [
+    "No external development blocker; next serial task is cumulative pre-release audit"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1/design-qa.md",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1/final-1280x800",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1/final-1440x900",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1/final-1920x1080",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform:e1f22ecb",
+    "docs:2767a61"
+  ],
+  "completed_at": "2026-08-27T18:41:20+08:00",
+  "completed_revision": "AOS-000374",
+  "result": "EIGHT_MENU_FRONTEND_VISUAL_CANONICAL_GET_SECURITY_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Real tenant exact authority remains unavailable; visible values correctly stay unknown/blocked and this does not authorize Source read, Provider, migration, external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION",
+  "verification": [
+    "targeted frontend 29/29 GREEN",
+    "Workshop Web full 255 files / 2301 tests GREEN",
+    "TypeScript and Vite production build GREEN",
+    "backend Analyst/canonical/Business Investigation GET 28 passed",
+    "built-in browser eight source/current pairs at 1280x800, 1440x900 and 1920x1080 GREEN with zero horizontal overflow",
+    "keyboard ArrowLeft quality to evidence GREEN"
+  ]
+}

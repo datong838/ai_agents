@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000374",
+  "created_at": "2026-08-27T18:15:11+08:00",
+  "excluded_scope": [
+    "services/aos-api/migrations",
+    "real business data and external effects",
+    "release"
+  ],
+  "expected_outputs": [
+    "Seven analyst read-only views reproduced against frozen visual source with fresh same-input comparisons, targeted tests and preserved canonical safety semantics"
+  ],
+  "lease_expires_at": "2026-08-28T08:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "apps/web/src/shell/AppShell.tsx",
+    "apps/web/src/styles/00-shell.css",
+    "apps/web/src/api/ecommerceWorkshop",
+    "apps/web/src/test",
+    ".evidence/workshop/2026-08-27-bi-w11-02-visual-1to1",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION"
+}

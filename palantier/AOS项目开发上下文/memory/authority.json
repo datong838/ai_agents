@@ -15,29 +15,30 @@
     "BI-W9-05",
     "BI-W9-06",
     "BI-W9-07",
-    "S8-Visual"
+    "S8-Visual",
+    "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION"
   ],
-  "current_phase": "BI-W11-02 exact eight-menu visual remediation: shell and tabs GREEN, seven content views and three-viewports in progress",
-  "delivery_status": "BI_W11_02_SHELL_TABS_EXACT_GREEN_EIGHT_MENU_VISUAL_IN_PROGRESS_NO_RELEASE",
+  "current_phase": "BI-W10-01 natural-run evidence recheck after BI-W11-02 exact eight-menu visual closure",
+  "delivery_status": "BI_W11_02_EIGHT_MENU_VISUAL_CANONICAL_GET_SECURITY_GREEN_BI_W10_RUNTIME_EVIDENCE_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W11-02-EXACT-1TO1-SHELL-TABS-REMEDIATION"
+      "ref": "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION"
     },
     {
       "kind": "test",
-      "ref": "web-255-files-2300-tests-green"
+      "ref": "web-255-files-2301-tests-and-backend-28-green"
     },
     {
       "kind": "browser",
-      "ref": "bi-w11-02-shell-tabs-fresh-same-input-1280"
+      "ref": "bi-w11-02-eight-menus-three-fresh-viewports-same-input-green"
     },
     {
       "kind": "design_qa",
-      "ref": "bi-w11-02-overall-failed-seven-views-pending"
+      "ref": "bi-w11-02-p0-p1-p2-closed"
     }
   ],
-  "evidence_cutoff": "2026-08-27T16:53:36+08:00",
+  "evidence_cutoff": "2026-08-27T18:41:20+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -56,19 +57,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-02 shell context tabs and truthful empty inquiry scaffold exact geometry with Web 2300 GREEN",
-  "next_gate": "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION",
+  "last_green_gate": "BI-W11-02 eight-menu exact visual, frontend interaction and canonical GET safety gate GREEN at three fresh viewports",
+  "next_gate": "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK",
   "next_steps": [
-    "Compare and remediate overview, drivers, diagnostics, growth plan, effect review, evidence and data quality against the frozen source visual",
-    "Capture all eight menus at 1280x800, 1440x900 and 1920x1080 in same-input source/current comparisons",
-    "Keep P0 P1 P2 and final result failed until every visual and functional gate is closed"
+    "Independently re-read the latest natural Cron and SourceReadiness facts for org-org/dev-project without manual pipeline execution or retry",
+    "If BI-W10-01 same-cutoff evidence is GREEN, continue BI-W10-02; otherwise repair only deterministic code/config/test gaps and wait for the next natural run",
+    "Preserve BI-W11-02 formal dependency on BI-W10-06 despite the exact visual subtask being GREEN"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000374",
+  "project_revision": "AOS-000375",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "69cbc80e",
-    "docs": "601775f"
+    "aos-platform": "e1f22ecb",
+    "docs": "2767a61"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -78,5 +79,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T18:13:36+08:00"
+  "updated_at": "2026-08-27T18:42:45+08:00"
 }
