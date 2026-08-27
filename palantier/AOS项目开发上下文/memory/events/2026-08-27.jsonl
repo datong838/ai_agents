@@ -83,3 +83,6 @@
 {"base_revision":"AOS-000353","occurred_at":"2026-08-27T09:54:04+08:00","schema":"aos-memory-event/v1","task_id":"S8-Visual","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T11:33:46+08:00","result":"S8_VISUAL_EIGHT_MENU_FRONTEND_BACKEND_BROWSER_ACCEPTANCE_GREEN_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"S8-Visual","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T11:34:38+08:00","project_revision":"AOS-000354","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000354","occurred_at":"2026-08-27T11:39:57+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T12:12:55+08:00","result":"BI_W10_01_PREFLIGHT_CODE_AND_SECRET_EXPOSURE_REPAIRS_GREEN_RUNTIME_CRON_EVIDENCE_PENDING","schema":"aos-memory-event/v1","task_id":"BI-W10-01","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T12:14:19+08:00","project_revision":"AOS-000355","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

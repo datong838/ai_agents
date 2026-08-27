@@ -16,27 +16,27 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "content_hash": "sha256:d0f4c43bb27a8bb78ea7043f2e76b95ae17fab9ae5883401a4938a12871d30d7",
-  "current_phase": "BI-W10 real tenant read-only pilot readiness",
-  "delivery_status": "S8_VISUAL_EIGHT_MENU_FRONTEND_BACKEND_BROWSER_ACCEPTANCE_GREEN_BI_W10_PILOT_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:f52f90bf951700ac343ce92990ec827334075db8d948ff95a9890bda3ab2e06c",
+  "current_phase": "BI-W10 real tenant read-only pilot readiness repair and fresh Cron verification",
+  "delivery_status": "BI_W10_01_PREFLIGHT_CODE_AND_SECRET_EXPOSURE_REPAIRS_GREEN_SOURCE_READINESS_RUNTIME_FAILED_PENDING_POST_FIX_NATURAL_CRON_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "S8-Visual"
-    },
-    {
-      "kind": "browser",
-      "ref": ".evidence/workshop/2026-08-27-s8-visual-baseline"
+      "ref": "BI-W10-01"
     },
     {
       "kind": "test",
-      "ref": "web-targeted38-cumulative2298-backend30-build359"
+      "ref": "targeted81-cumulative74-source-public6"
+    },
+    {
+      "kind": "runtime",
+      "ref": "source-readiness-failed-old-cron-p07-readonly19"
     }
   ],
-  "generated_at": "2026-08-27T11:34:38+08:00",
+  "generated_at": "2026-08-27T12:14:19+08:00",
   "hard_boundaries": [
-    "No real platform mutation, SecretRef exposure, provider execution, external effect, migration apply, automatic retry, or release",
-    "org-org/dev-project is the only real tenant; dev-org/dev-project is isolation canary only; same-cutoff SourceReadiness/Health/Binding must be independently verified before pilot"
+    "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, migration apply, provider execution, external effect, automatic retry, or release",
+    "Never expose source credentials; org-org/dev-project is the only real tenant and dev-org/dev-project is isolation canary only"
   ],
   "incomplete": [
     "BI-W10-01",
@@ -51,17 +51,17 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "S8-Visual Web targeted38 cumulative2298 backend30 TypeScript/Vite359 diff GREEN; built-in browser eight menus, real fail-closed and GET-only positive 1280/1440/1920 no overflow",
+  "last_green_gate": "BI-W10-01 code repair: idempotency targeted81, consistency/source-readiness74, public-source focused6, forbidden source field count0, P07 bounded read-only19 rows; runtime SourceReadiness not green",
   "next_gate": "BI-W10-01",
   "next_steps": [
-    "Independently recheck org-org/dev-project SourceReadiness/Health/Binding and start BI-W10-01 only when the same-cutoff read-only pilot gate is GREEN; otherwise repair the owned readiness implementation/evidence path without bypassing safety gates"
+    "Keep BI-W10-02 closed; consume the next natural P12/P01 Cron receipt under a9158d1c and re-read SourceReadiness/DLQ, while continuing BI-W11-01 no-effect static and regression gates"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000354",
+  "project_revision": "AOS-000355",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "6aeb3eb4",
-    "docs": "7e87f19"
+    "aos-platform": "7d4dac9a",
+    "docs": "02f44f4"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
