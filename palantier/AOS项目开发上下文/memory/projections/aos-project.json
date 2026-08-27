@@ -16,28 +16,28 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "content_hash": "sha256:5dca4402ef1daa8be6dfefaf35a3638dcb54ce27374610a9f3d93b22476a2db4",
+  "content_hash": "sha256:fa8db422e940e713941df020880356a34d7fe3cb9f7d2ee932bbac1b6024b61b",
   "current_phase": "BI-W10 natural Cron verification with BI-W11 full ecom cumulative repair loop active",
-  "delivery_status": "BI_W11_01_P04_CATEGORY_FIXTURES_145_GREEN_FULL_ECOM_AUDIT_REMAINING_23_BI_W10_4_OF_12_PENDING_NO_RELEASE",
+  "delivery_status": "BI_W11_01_P05_ORDER_FIXTURES_164_GREEN_FULL_ECOM_AUDIT_REMAINING_13_BI_W10_4_OF_12_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W11-01-P04-CATEGORY-FIXTURE-REPAIR"
+      "ref": "BI-W11-01-P05-ORDER-FIXTURE-REPAIR"
     },
     {
       "kind": "test",
-      "ref": "p04-category-api-30-passed"
+      "ref": "p05-order-api-19-passed"
     },
     {
       "kind": "test",
-      "ref": "p02-p04-source-runtime-cumulative-145-passed"
+      "ref": "p02-p05-source-runtime-cumulative-164-passed"
     },
     {
       "kind": "audit",
-      "ref": "full-ecom-remaining-23-classified"
+      "ref": "full-ecom-remaining-13-classified"
     }
   ],
-  "generated_at": "2026-08-27T16:03:13+08:00",
+  "generated_at": "2026-08-27T16:13:03+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -56,19 +56,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-01 P04 Category fixtures: targeted 30 and cumulative 145 GREEN",
-  "next_gate": "BI-W11-01-P05-FIXTURE-REPAIR",
+  "last_green_gate": "BI-W11-01 P05 Order fixtures: targeted 19 and cumulative 164 GREEN",
+  "next_gate": "BI-W11-01-P06-FIXTURE-REPAIR",
   "next_steps": [
-    "Repair remaining P05/P06 fixture failures in exact small clusters",
+    "Repair remaining P06 fixture failures in one exact cluster",
     "Then close Bundle/honesty 2 and re-run all deterministic ecom/SourceReadiness tests",
     "Continue read-only natural Cron rechecks without manual replay or business-data mutation"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000369",
+  "project_revision": "AOS-000370",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "90f2d66d",
-    "docs": "f54a19b"
+    "aos-platform": "35176b5f",
+    "docs": "122d8cf"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
