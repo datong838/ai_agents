@@ -12,48 +12,56 @@
     "BI-W9-02",
     "BI-W9-03",
     "BI-W9-04",
-    "BI-W9-05"
-  ],
-  "current_phase": "BI-W9 AdapterPack implementation",
-  "delivery_status": "BI_W9_05_TENANT_BOUND_DISABLED_INSTANCE_OVERLAY_CODE_GREEN_NO_SECRET_RESOLUTION_NO_RELEASE",
-  "evidence": [
-    {
-      "kind": "receipt",
-      "ref": "BI-W9-05.json"
-    },
-    {
-      "kind": "tests",
-      "ref": "BI-W9-05-targeted26-cumulative98-migration-contract4-green"
-    },
-    {
-      "kind": "code",
-      "ref": "948291abf0372dff95b8c7faae0a02c2137bd178"
-    },
-    {
-      "kind": "docs",
-      "ref": "163a5158239f73c0b419b0c145ae99bd60e0809a"
-    }
-  ],
-  "evidence_cutoff": "2026-08-27T06:41:07+08:00",
-  "hard_boundaries": [
-    "NO_REAL_BUSINESS_DATA_WRITE; NO_SECRET_RESOLUTION; NO_SESSION_CREATION; NO_SCHEDULE_RUNTIME; NO_PROFILE_ACTIVATION; NO_PLATFORM_ACCESS; NO_EXTERNAL_EFFECT; NO_MIGRATION_APPLY; NO_RELEASE; FINAL_S8_EIGHT_MENU_VISUAL_FRONTEND_BACKEND_GATE_REQUIRED"
-  ],
-  "incomplete": [
+    "BI-W9-05",
     "BI-W9-06",
+    "BI-W9-07",
     "S8-Visual"
   ],
-  "last_green_gate": "BI-W9-05 RED import; targeted26 cumulative98 migration-contract4 JSON compile diff GREEN; tenant isolation and opaque SecretRef fail closed; Alembic single head biw8_001; browser N/A; S8-Visual pending",
-  "next_gate": "BI-W9-06",
+  "current_phase": "BI-W10 real tenant read-only pilot readiness",
+  "delivery_status": "S8_VISUAL_EIGHT_MENU_FRONTEND_BACKEND_BROWSER_ACCEPTANCE_GREEN_BI_W10_PILOT_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "evidence": [
+    {
+      "kind": "delivery_receipt",
+      "ref": "S8-Visual"
+    },
+    {
+      "kind": "browser",
+      "ref": ".evidence/workshop/2026-08-27-s8-visual-baseline"
+    },
+    {
+      "kind": "test",
+      "ref": "web-targeted38-cumulative2298-backend30-build359"
+    }
+  ],
+  "evidence_cutoff": "2026-08-27T03:33:46+00:00",
+  "hard_boundaries": [
+    "No real platform mutation, SecretRef exposure, provider execution, external effect, migration apply, automatic retry, or release",
+    "org-org/dev-project is the only real tenant; dev-org/dev-project is isolation canary only; same-cutoff SourceReadiness/Health/Binding must be independently verified before pilot"
+  ],
+  "incomplete": [
+    "BI-W10-01",
+    "BI-W10-02",
+    "BI-W10-03",
+    "BI-W10-04",
+    "BI-W10-05",
+    "BI-W10-06",
+    "BI-W11-01",
+    "BI-W11-02",
+    "BI-W11-03",
+    "BI-W11-04",
+    "BI-W11-05"
+  ],
+  "last_green_gate": "S8-Visual Web targeted38 cumulative2298 backend30 TypeScript/Vite359 diff GREEN; built-in browser eight menus, real fail-closed and GET-only positive 1280/1440/1920 no overflow",
+  "next_gate": "BI-W10-01",
   "next_steps": [
-    "Review and implement BI-W9-06 capability version terms health readiness activation evaluator while all platform terms remain unverified and disabled",
-    "Retain final S8-Visual eight-menu frontend-backend 1280/1440/1920 exact visual hard gate"
+    "Independently recheck org-org/dev-project SourceReadiness/Health/Binding and start BI-W10-01 only when the same-cutoff read-only pilot gate is GREEN; otherwise repair the owned readiness implementation/evidence path without bypassing safety gates"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000351",
+  "project_revision": "AOS-000354",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos": "948291abf0372dff95b8c7faae0a02c2137bd178",
-    "docs": "163a5158239f73c0b419b0c145ae99bd60e0809a"
+    "aos-platform": "6aeb3eb4",
+    "docs": "7e87f19"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -63,5 +71,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-27T06:41:48+08:00"
+  "updated_at": "2026-08-27T11:34:38+08:00"
 }

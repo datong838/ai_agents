@@ -1,0 +1,34 @@
+{
+  "base_revision": "AOS-000353",
+  "blockers": [
+    "no S8 implementation blocker; release remains independently NO_GO"
+  ],
+  "changed_files": [
+    "apps/web/vite.config.ts",
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.tsx",
+    "apps/web/src/components/workshop/BusinessInvestigationTab.test.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopShell.tsx",
+    "apps/web/src/components/workshop/EcommerceWorkshopShell.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-08-27-s8-visual-baseline",
+    "docs:119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform/m1@6aeb3eb4",
+    "docs/m1@7e87f19"
+  ],
+  "completed_at": "2026-08-27T11:33:46+08:00",
+  "completed_revision": "AOS-000353",
+  "result": "S8_VISUAL_EIGHT_MENU_FRONTEND_BACKEND_BROWSER_ACCEPTANCE_GREEN_NO_RELEASE",
+  "risks": [
+    "real platform/SourceReadiness/runtime/release authority remains outside this visual acceptance; W8-12 NO_GO remains unchanged"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "S8-Visual",
+  "verification": [
+    "Web targeted 38/38; Web cumulative 255 files/2298 tests; backend targeted/cumulative 30/30; TypeScript and Vite build 359 modules; diff-check GREEN",
+    "built-in browser: eight menus; positive GET-only contract 1280/1440/1920 no horizontal overflow; real authority-unavailable fail-closed; keyboard and details interaction GREEN"
+  ]
+}

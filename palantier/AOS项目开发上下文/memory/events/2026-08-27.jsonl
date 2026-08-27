@@ -74,3 +74,12 @@
 {"base_revision":"AOS-000350","occurred_at":"2026-08-27T06:36:51+08:00","schema":"aos-memory-event/v1","task_id":"BI-W9-05","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T06:41:07+08:00","result":"BI_W9_05_TENANT_BOUND_DISABLED_INSTANCE_OVERLAY_CODE_GREEN_NO_SECRET_RESOLUTION_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W9-05","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T06:41:48+08:00","project_revision":"AOS-000351","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000351","occurred_at":"2026-08-27T06:49:09+08:00","schema":"aos-memory-event/v1","task_id":"BI-W9-06","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T07:03:13+08:00","result":"BI_W9_06_FAIL_CLOSED_ACTIVATION_DECISION_CODE_GREEN_REAL_PLATFORM_ACTIVATION_BLOCKED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W9-06","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T07:04:09+08:00","project_revision":"AOS-000352","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000352","occurred_at":"2026-08-27T09:44:57+08:00","schema":"aos-memory-event/v1","task_id":"BI-W9-07","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T09:50:46+08:00","result":"BI_W9_07_THREE_PLATFORM_FIXTURE_REGRESSION_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W9-07","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T09:51:44+08:00","project_revision":"AOS-000353","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000353","occurred_at":"2026-08-27T09:54:04+08:00","schema":"aos-memory-event/v1","task_id":"S8-Visual","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T11:33:46+08:00","result":"S8_VISUAL_EIGHT_MENU_FRONTEND_BACKEND_BROWSER_ACCEPTANCE_GREEN_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"S8-Visual","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T11:34:38+08:00","project_revision":"AOS-000354","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
