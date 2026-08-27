@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000377",
+  "blockers": [
+    "NO_DB_DIRECT_READ;NO_REAL_BUSINESS_MUTATION;NO_PROVIDER_EXECUTION;NO_EXTERNAL_EFFECT;NO_MIGRATION_APPLY;NO_RELEASE"
+  ],
+  "changed_files": [
+    "apps/web/src/components/workshop/**",
+    "apps/web/src/shell/AppShell.tsx",
+    "apps/web/src/styles/00-shell.css",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "services/aos-api/tests/fixtures/business_investigation/qyh_workshop_traceability_v1.json",
+    "services/aos-api/tests/test_qyh_workshop_traceability.py",
+    ".evidence/workshop/2026-08-28-eight-menu-business-visual-seal/**"
+  ],
+  "commits": [
+    "60e0c3ef"
+  ],
+  "completed_at": "2026-08-28T01:29:21+08:00",
+  "completed_revision": "AOS-000377",
+  "result": "WORKSHOP_EIGHT_MENU_VISUAL_FUNCTION_DATA_TRACEABILITY_SEAL_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "visual reference demo data intentionally replaced by honest current/empty business state; no production release decision"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "workshop-eight-menu-visual-function-data-seal-20260828",
+  "verification": [
+    "Workshop Web 255 files 2310/2310; backend targeted 30/30; tsc/vite 359 modules; git diff check; eight pages reference-versus-actual at 1280x720 1440x900 1920x1080; zero application console errors; main controls and safe preflight functional"
+  ]
+}

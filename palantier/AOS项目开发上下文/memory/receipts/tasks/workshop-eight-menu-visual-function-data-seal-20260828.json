@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000377",
+  "created_at": "2026-08-28T01:24:15+08:00",
+  "excluded_scope": [
+    "real database writes;manual pipeline execution;provider execution;external effects;migration apply;release"
+  ],
+  "expected_outputs": [
+    "八菜单三视口视觉对照、主控件可工作、前后端与栖月汇只读分析追溯、全量回归、Delivery Receipt、authority CAS、Prime 回读、安全提交"
+  ],
+  "lease_expires_at": "2026-08-28T09:24:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/**;apps/web/src/shell/AppShell.tsx;apps/web/src/styles/00-shell.css;apps/web/src/styles/45-ecommerce-workshop.css;services/aos-api/tests/fixtures/business_investigation/qyh_workshop_traceability_v1.json;services/aos-api/tests/test_qyh_workshop_traceability.py;.evidence/workshop/2026-08-28-eight-menu-business-visual-seal/**;docs-plan-119;authority-cas-projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "workshop-eight-menu-visual-function-data-seal-20260828"
+}
