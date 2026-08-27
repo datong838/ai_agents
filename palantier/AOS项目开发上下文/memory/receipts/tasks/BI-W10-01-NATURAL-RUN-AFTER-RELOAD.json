@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000376",
+  "created_at": "2026-08-27T18:52:00+08:00",
+  "excluded_scope": [
+    "services/aos-api/migrations",
+    "manual pipeline execution, DLQ replay, real business data mutation, Provider, external effects and release"
+  ],
+  "expected_outputs": [
+    "Fresh natural Cron run, exact latest-run and DLQ facts, and same-cutoff SourceReadiness for org-org/dev-project after runtime loaded 4b0b457f"
+  ],
+  "lease_expires_at": "2026-08-29T16:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    ".evidence/workshop/2026-08-27-bi-w10-01-natural-run-recheck",
+    "services/aos-api/tests",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-01-NATURAL-RUN-AFTER-RELOAD"
+}

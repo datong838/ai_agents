@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000375",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-27-bi-w10-01-natural-run-recheck/runtime-reload-and-readonly-recheck.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform/m1@a96b12e4"
+  ],
+  "completed_at": "2026-08-27T18:52:00+08:00",
+  "completed_revision": "AOS-000376",
+  "result": "BI_W10_01_FIX_LOADED_READONLY_RECHECK_GREEN_NEXT_NATURAL_CRON_EVIDENCE_PENDING",
+  "risks": [
+    "4/12 SourceReadiness remains ready at the old natural-run cutoff; formal BI-W10-01 and BI-W10-02 remain gated on new post-reload natural evidence",
+    "P07 remains an independent connection-loss fact; no timeout widening or automatic retry was introduced",
+    "no manual pipeline run, DLQ replay, real business-data mutation, external effect, migration apply or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK",
+  "verification": [
+    "old API process started before 4b0b457f; new process started at 2026-08-27T18:48:58+08:00 from current m1",
+    "GET /v1/health=200; 12 staggered Cron schedules registered; startup SSH tunnel ready",
+    "GET SourceReadiness=4/12 ready, 8/12 failed, 12/12 reconciliation pass at old cutoff",
+    "executor/normalizer/Cron/SourceReadiness targeted regression: 72 passed"
+  ]
+}
