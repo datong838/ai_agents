@@ -16,28 +16,28 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "content_hash": "sha256:1fdaa4c08a8731da2a3ab78d58b18da8d1c21be80d8be46b1857429e9ac55d3c",
-  "current_phase": "BI-W10 natural Cron verification with BI-W11 full ecom cumulative repair loop active",
-  "delivery_status": "BI_W11_01_P06_ORDERLINE_FIXTURES_184_GREEN_FULL_ECOM_AUDIT_REMAINING_2_BI_W10_4_OF_12_PENDING_NO_RELEASE",
+  "content_hash": "sha256:82bcfd9396a55b0be480d86ebf1bd5de0e1d0afa9114cdfb31a6602a2d7ee892",
+  "current_phase": "BI-W10 natural Cron verification with BI-W11 deterministic audit GREEN and fresh eight-menu visual gate next",
+  "delivery_status": "BI_W11_01_DETERMINISTIC_ECOM_1185_GREEN_BI_W10_4_OF_12_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W11-01-P06-ORDERLINE-FIXTURE-REPAIR"
+      "ref": "BI-W11-01-BUNDLE-HONESTY-FIXTURE-REPAIR"
     },
     {
       "kind": "test",
-      "ref": "p06-orderline-api-20-passed"
+      "ref": "bundle-trial-honesty-36-passed"
     },
     {
       "kind": "test",
-      "ref": "p02-p06-source-runtime-cumulative-184-passed"
+      "ref": "full-deterministic-ecom-sourcereadiness-1185-passed"
     },
     {
       "kind": "audit",
-      "ref": "full-ecom-remaining-2-classified"
+      "ref": "full-ecom-failures-zero"
     }
   ],
-  "generated_at": "2026-08-27T16:28:04+08:00",
+  "generated_at": "2026-08-27T16:54:19+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -56,19 +56,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-01 P06 OrderLine fixtures: targeted 20 and cumulative 184 GREEN",
-  "next_gate": "BI-W11-01-BUNDLE-HONESTY-FIXTURE-REPAIR",
+  "last_green_gate": "BI-W11-01 deterministic ecom and SourceReadiness audit: 1185 of 1185 GREEN",
+  "next_gate": "BI-W11-02-EIGHT-MENU-FRESH-1TO1-VISUAL-GATE",
   "next_steps": [
-    "Close Bundle/honesty 2 in one exact fixture cluster",
-    "Then re-run the full deterministic ecom and SourceReadiness audit",
+    "Harden BI-W11-02 to require fresh current-run eight-menu source-versus-implementation 1:1 visual evidence",
+    "Execute fresh browser capture and fix every P0 P1 P2 visual mismatch while preserving frontend and backend behavior",
     "Continue read-only natural Cron rechecks without manual replay or business-data mutation"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000372",
+  "project_revision": "AOS-000373",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "ef4c35eb",
-    "docs": "22178eb"
+    "aos-platform": "642bb154",
+    "docs": "0c70c5a"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

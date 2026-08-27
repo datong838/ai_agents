@@ -140,3 +140,4 @@
 {"occurred_at":"2026-08-27T16:28:04+08:00","project_revision":"AOS-000372","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
 {"base_revision":"AOS-000372","occurred_at":"2026-08-27T16:33:25+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-BUNDLE-HONESTY-FIXTURE-REPAIR","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T16:53:36+08:00","result":"FULL_DETERMINISTIC_ECOM_SOURCEREADINESS_1185_GREEN","schema":"aos-memory-event/v1","task_id":"BI-W11-01-BUNDLE-HONESTY-FIXTURE-REPAIR","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-27T16:54:19+08:00","project_revision":"AOS-000373","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
