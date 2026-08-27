@@ -1,0 +1,35 @@
+{
+  "base_revision": "AOS-000356",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/routers/ecommerce_business_investigations.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_api.py",
+    "services/aos-api/tests/test_openapi_contract.py",
+    "services/aos-api/tests/test_domain_router_manifest.py",
+    "scripts/export_openapi.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "0cbd50bd",
+    "9aa29e5",
+    "b8149ff"
+  ],
+  "completed_at": "2026-08-27T13:08:45+08:00",
+  "completed_revision": "AOS-000356",
+  "result": "BI_W11_04_PREFLIGHT_P0_P1_ZERO_OPENAPI_CONSISTENCY_REPAIRED_FORMAL_GATE_PENDING_BI_W10",
+  "risks": [
+    "Formal BI-W11-04 remains pending the BI-W10 same-cutoff runtime chain; P12 success does not override the eight currently non-ready source pipelines",
+    "No release, provider execution, source replay, DLQ replay, migration apply, or real Business Investigation Case was performed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-04-PREFLIGHT",
+  "verification": [
+    "93 Task IDs = BI-W0A/B 16 + BI-W1-W11 77; DAG and 56 local links are complete",
+    "20 BI migrations form one chain from w7_006 through biw8_001 with no branch or missing revision",
+    "OpenAPI and runtime inventory are deterministic at 4485 route rows, 4475 unique operation pairs, 2696 paths, and 2523 schemas",
+    "API/OpenAPI/router manifest: 36 passed plus 2 subtests; adjacent BI consistency set: 34 passed",
+    "Natural P12 at 2026-08-27T05:00Z succeeded with 416 rows and no error or blocker; aggregate SourceReadiness remains 4 of 12 ready"
+  ]
+}
