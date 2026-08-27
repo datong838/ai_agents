@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000355",
+  "blockers": [],
+  "changed_files": [
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "749b53e"
+  ],
+  "completed_at": "2026-08-27T12:41:07+08:00",
+  "completed_revision": "AOS-000355",
+  "result": "BI_W11_02_PREFLIGHT_FRONTEND_TYPE_BUILD_AND_S8_EVIDENCE_REUSE_GREEN_FORMAL_GATE_PENDING_BI_W10_RUNTIME",
+  "risks": [
+    "Formal BI-W11-02 remains pending BI-W10-06 same-cutoff runtime acceptance; no release decision implied"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W11-02-PREFLIGHT",
+  "verification": [
+    "Workshop and Business Investigation frontend targeted: 7 files / 59 tests passed",
+    "Web full Vitest: 255 files / 2298 tests passed",
+    "TypeScript and Vite production build: 359 modules transformed",
+    "git diff 6aeb3eb4..HEAD -- apps/web is empty; S8 1280/1440/1920 built-in-browser evidence remains exact"
+  ]
+}

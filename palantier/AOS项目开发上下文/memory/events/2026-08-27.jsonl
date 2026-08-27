@@ -86,3 +86,7 @@
 {"base_revision":"AOS-000354","occurred_at":"2026-08-27T11:39:57+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-27T12:12:55+08:00","result":"BI_W10_01_PREFLIGHT_CODE_AND_SECRET_EXPOSURE_REPAIRS_GREEN_RUNTIME_CRON_EVIDENCE_PENDING","schema":"aos-memory-event/v1","task_id":"BI-W10-01","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-27T12:14:19+08:00","project_revision":"AOS-000355","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000355","occurred_at":"2026-08-27T12:16:59+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-01-PREFLIGHT","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T12:35:04+08:00","result":"BI_W11_01_PREFLIGHT_TARGETED_MIGRATION_SECURITY_GREEN_FORMAL_GATE_PENDING_BI_W10_RUNTIME","schema":"aos-memory-event/v1","task_id":"BI-W11-01-PREFLIGHT","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000355","occurred_at":"2026-08-27T12:35:28+08:00","schema":"aos-memory-event/v1","task_id":"BI-W11-02-PREFLIGHT","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-27T12:41:07+08:00","result":"BI_W11_02_PREFLIGHT_FRONTEND_TYPE_BUILD_AND_S8_EVIDENCE_REUSE_GREEN_FORMAL_GATE_PENDING_BI_W10_RUNTIME","schema":"aos-memory-event/v1","task_id":"BI-W11-02-PREFLIGHT","type":"TASK_COMPLETED"}
