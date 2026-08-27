@@ -16,28 +16,28 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "content_hash": "sha256:2693fcefb99e3c5d92a5307a2436b78834c3f8d15253602ead5a4b37fb3ef9c0",
+  "content_hash": "sha256:fc24c90874092ef84ae19befc8f82d8de1fcdd4babe9e4d6ee747eb8bf732959",
   "current_phase": "BI-W10 natural Cron verification with BI-W11 full ecom cumulative repair loop active",
-  "delivery_status": "BI_W11_01_STEP14_FIXTURES_48_GREEN_FULL_ECOM_AUDIT_REMAINING_51_BI_W10_4_OF_12_PENDING_NO_RELEASE",
+  "delivery_status": "BI_W11_01_DATASET_SINK_FIXTURES_70_GREEN_FULL_ECOM_AUDIT_REMAINING_39_BI_W10_4_OF_12_PENDING_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W11-01-STEP14-SOURCE-RUNTIME-FIXTURE-REPAIR"
+      "ref": "BI-W11-01-DATASET-SINK-FIXTURE-REPAIR"
     },
     {
       "kind": "test",
-      "ref": "step14-5-passed"
+      "ref": "dataset-sink-22-passed"
     },
     {
       "kind": "test",
-      "ref": "step14-adjacent-cumulative-48-passed"
+      "ref": "source-runtime-adjacent-cumulative-70-passed"
     },
     {
       "kind": "audit",
-      "ref": "full-ecom-remaining-51-classified"
+      "ref": "full-ecom-remaining-39-classified"
     }
   ],
-  "generated_at": "2026-08-27T15:15:59+08:00",
+  "generated_at": "2026-08-27T15:25:12+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -56,19 +56,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-01 Step14 runtime and derived CAS fixtures: targeted 5 and adjacent cumulative 48 GREEN",
+  "last_green_gate": "BI-W11-01 Dataset Sink canonical RID and executor fixtures: targeted 22 and adjacent cumulative 70 GREEN",
   "next_gate": "BI-W11-01-SOURCE-ADAPTER-FIXTURE-REPAIR",
   "next_steps": [
-    "Repair remaining SourceAdapter/runtime fixture failures in exact small file clusters, next dataset sink",
-    "Then close Bundle/honesty 2 and re-run all 1185 deterministic ecom/SourceReadiness tests",
+    "Repair remaining SourceAdapter/runtime fixture failures in exact small file clusters, next D1 negative, exit and source adapter",
+    "Then close P02/P03/P04/P05/P06 clusters and Bundle/honesty 2 before re-running all deterministic ecom/SourceReadiness tests",
     "Continue read-only natural Cron rechecks without manual replay or business-data mutation"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000365",
+  "project_revision": "AOS-000366",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "e29ea63b",
-    "docs": "ca57972"
+    "aos-platform": "c46ecece",
+    "docs": "4f2fb53"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
