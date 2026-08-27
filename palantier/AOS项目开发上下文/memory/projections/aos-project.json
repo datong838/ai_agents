@@ -16,34 +16,10 @@
     "BI-W9-07",
     "S8-Visual"
   ],
-  "content_hash": "sha256:ae385eb53e2ee62ee286f06bbfb5714b90327147b1f1752f09f0a85557ae2dec",
-  "current_phase": "BI-W10 natural Cron verification with BI-W11 ecom contract baseline reconciliation sealed",
-  "delivery_status": "BI_W11_01_LEGACY_EC_CONTRACT_RECONCILIATION_GREEN_BI_W10_AGGREGATE_4_OF_12_PENDING_NO_RELEASE",
+  "content_hash": "sha256:c423a210f354b4d6820a24be2cdd68f5df3874c5c7aa98fb82e9ee95e805f9ae",
+  "current_phase": "BI-W10 natural Cron verification with BI-W11 deterministic ecom baseline reconciliation sealed",
+  "delivery_status": "BI_W11_01_DETERMINISTIC_ECOM_BASELINE_ALL_GREEN_BI_W10_AGGREGATE_4_OF_12_PENDING_NO_RELEASE",
   "evidence": [
-    {
-      "kind": "delivery_receipt",
-      "ref": "BI-W11-01-PREFLIGHT"
-    },
-    {
-      "kind": "delivery_receipt",
-      "ref": "BI-W11-02-PREFLIGHT"
-    },
-    {
-      "kind": "delivery_receipt",
-      "ref": "BI-W11-03-SCHEMA-RECOVERY"
-    },
-    {
-      "kind": "delivery_receipt",
-      "ref": "BI-W11-03-TI4-DISPOSABLE-DRILL"
-    },
-    {
-      "kind": "delivery_receipt",
-      "ref": "BI-W11-04-PREFLIGHT"
-    },
-    {
-      "kind": "delivery_receipt",
-      "ref": "BI-W11-03-FLAG-RESTART-ROLLBACK-PREFLIGHT"
-    },
     {
       "kind": "delivery_receipt",
       "ref": "BI-W10-01-NATURAL-SNAPSHOT-OBSERVATION-REPAIR"
@@ -53,27 +29,31 @@
       "ref": "BI-W11-01-LEGACY-EC-CONTRACT-RECONCILIATION"
     },
     {
+      "kind": "delivery_receipt",
+      "ref": "BI-W11-01-SCHEDULE-EXECUTOR-FIXTURE-RECONCILIATION"
+    },
+    {
       "kind": "commit",
-      "ref": "070e4536"
+      "ref": "fac51986"
     },
     {
       "kind": "test",
-      "ref": "legacy-ecom-contract-targeted-10-passed"
+      "ref": "d4-schedule-history-lineage-health-25-passed"
     },
     {
       "kind": "test",
-      "ref": "ecom-authority-source-readiness-cumulative-63-passed"
+      "ref": "d4-ecom-authority-source-readiness-cumulative-88-passed"
     },
     {
       "kind": "test",
-      "ref": "expanded-baseline-failures-reduced-18-to-16"
+      "ref": "legacy-expanded-baseline-all-green"
     },
     {
       "kind": "browser",
       "ref": "not-applicable-no-page-router-visual-change"
     }
   ],
-  "generated_at": "2026-08-27T14:28:46+08:00",
+  "generated_at": "2026-08-27T14:32:11+08:00",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -92,19 +72,19 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "BI-W11-01 legacy ecom authority contract reconciliation: targeted 10 and cumulative 63 GREEN, exact expanded failures reduced 18 to 16",
+  "last_green_gate": "BI-W11-01 D4 synthetic schedule fixture: targeted 25 and cumulative 88 GREEN, previous 16 baseline failures closed",
   "next_gate": "BI-W10-01",
   "next_steps": [
-    "Reconcile the remaining 16 legacy Schedule/JDBC environment assertions without weakening production fail-closed behavior",
-    "Wait for the next natural P01-P12 Cron facts without manual replay and re-read SourceReadiness plus latest DLQ",
+    "Read the next natural P01-P12 Cron facts without manual replay and re-read SourceReadiness plus latest DLQ",
+    "Repair only fresh reproducible runtime failures; P07 connection loss remains independent until a new natural fact",
     "Do not start BI-W10-02 until same-cutoff SourceReadiness and explicit bounded pilot authority are GREEN"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000361",
+  "project_revision": "AOS-000362",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "070e4536",
-    "docs": "8bacd4e"
+    "aos-platform": "fac51986",
+    "docs": "0273693"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
