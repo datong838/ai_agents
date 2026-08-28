@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000401",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_provider_health_maintenance_startup.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_startup.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-startup-runtime-factory/acceptance.md"
+  ],
+  "commits": [
+    "26210589"
+  ],
+  "completed_at": "2026-08-28T22:27:28+08:00",
+  "completed_revision": "AOS-000401",
+  "result": "BI_W10_PROVIDER_HEALTH_STARTUP_RUNTIME_FACTORY_CODE_CONTROL_GREEN_INACTIVE_BY_DEFAULT_EXPLICIT_CALLABLES_ISOLATED_RUNTIME_ZERO_CONSTRUCTION_EFFECT_NO_RELEASE",
+  "risks": [
+    "Factory returns objects only and remains inactive by default; main.py/current install/runtime unchanged; no external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-STARTUP-RUNTIME-FACTORY",
+  "verification": [
+    "16/16 startup/runtime focused; 56/56 Provider Health focused; 534/534 cumulative; compileall/diff GREEN; API PID 68386 unchanged"
+  ]
+}

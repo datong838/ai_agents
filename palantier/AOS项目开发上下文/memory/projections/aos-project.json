@@ -1,33 +1,33 @@
 {
   "completed": [
-    "Startup preflight requires exact action-lease-v1 mode, fixed service identity/tenant and installed exact ActionType; default inactive; focused 51/51 and cumulative 529/529 GREEN"
+    "Inactive startup returns no runtime and zero DB read; GREEN factory requires explicit callables and builds isolated exact runtime with zero construction effects; focused 56/56 and cumulative 534/534 GREEN"
   ],
-  "content_hash": "sha256:971115a2555ab206c690758c8335c52cfd4268956bea5578048a6aba61f7c706",
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health 启动接线预检闭合，继续无激活启动工厂",
-  "delivery_status": "BI_W10_PROVIDER_HEALTH_RUNTIME_WIRING_PREFLIGHT_GREEN_DEFAULT_INACTIVE_SOURCE_READINESS_10_OF_12_NO_ACTIVATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:25575cfd6a0bbec4097b6ea8f209862b7b4392134f6f094c23fc27a88e2dd19a",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health 无激活启动工厂闭合，继续主启动路径失败关闭接线",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_STARTUP_RUNTIME_FACTORY_GREEN_INACTIVE_BY_DEFAULT_SOURCE_READINESS_10_OF_12_NO_ACTIVATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-runtime-wiring-preflight/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-startup-runtime-factory/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-28T22:12:49+08:00",
+  "generated_at": "2026-08-28T22:27:28+08:00",
   "hard_boundaries": [
     "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、Secret 解析、真实 Case/Run、业务写入、migration 或发布"
   ],
   "incomplete": [
-    "Startup does not yet construct the canonical runtime or integrate main.py; plugin remains uninstalled; natural P07/P08 failed"
+    "main.py still uses the historical default maintainer when legacy enabled; plugin remains uninstalled; natural P07/P08 failed"
   ],
-  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-RUNTIME-WIRING-PREFLIGHT",
-  "next_gate": "BI-W10-02-PROVIDER-HEALTH-STARTUP-RUNTIME-FACTORY",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-STARTUP-RUNTIME-FACTORY",
+  "next_gate": "BI-W10-02-PROVIDER-HEALTH-MAIN-STARTUP-WIRING",
   "next_steps": [
-    "Build an explicit startup factory that consumes the GREEN preflight and canonical refresh callables but remains inactive by default; no main.py wiring, restart or Provider call"
+    "Replace main startup selection with the canonical startup factory and only create the loop when factory returns a runtime; default current process remains inactive and is not restarted"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000401",
+  "project_revision": "AOS-000402",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "8693ecb9"
+    "aos-platform": "26210589"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
