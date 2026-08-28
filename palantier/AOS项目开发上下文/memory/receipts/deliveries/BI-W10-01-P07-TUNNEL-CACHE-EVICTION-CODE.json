@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000382",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/jdbc_connector_runtime.py",
+    "services/aos-api/tests/test_jdbc_connector_runtime.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "6062eb02",
+    "7b44110"
+  ],
+  "completed_at": "2026-08-28T14:16:45+08:00",
+  "completed_revision": "AOS-000382",
+  "result": "P07_DEAD_TUNNEL_CACHE_EXACT_EVICTION_CODE_GREEN_NATURAL_CRON_PENDING_NO_RETRY_NO_RELEASE",
+  "risks": [
+    "P07 code repair does not replace the next natural run; P08 missing run and P09 historical timing anomaly remain truthful"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-P07-TUNNEL-CACHE-EVICTION-CODE",
+  "verification": [
+    "JDBC runtime and cron slot targeted 27/27 GREEN",
+    "SourceAdapter live executor and SourceReadiness adjacent 61/61 GREEN",
+    "compileall and diff-check GREEN; PostgreSQL/application clock skew probe 15ms"
+  ]
+}

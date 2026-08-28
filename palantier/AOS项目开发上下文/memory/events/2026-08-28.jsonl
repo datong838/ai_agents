@@ -14,3 +14,8 @@
 {"base_revision":"AOS-000381","occurred_at":"2026-08-28T12:05:40+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P12-NATURAL-RUN-CHECKPOINT-20260828","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T13:04:11+08:00","result":"P12_NATURAL_CRON_GREEN_PAYMENT_210_OF_210_CRON_SLOT_GUARD_LOADED_NO_MANUAL_REPLAY_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P12-NATURAL-RUN-CHECKPOINT-20260828","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T13:05:16+08:00","project_revision":"AOS-000382","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000382","occurred_at":"2026-08-28T13:43:25+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-QYH-FUNCTIONAL-RECHECK-20260828","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T13:43:55+08:00","result":"QYH_FUNCTIONAL_ACCEPTANCE_GREEN_AT_READONLY_CUTOFF_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-QYH-FUNCTIONAL-RECHECK-20260828","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000382","occurred_at":"2026-08-28T14:16:10+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P07-TUNNEL-CACHE-EVICTION-CODE","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T14:16:45+08:00","result":"P07_DEAD_TUNNEL_CACHE_EXACT_EVICTION_CODE_GREEN_NATURAL_CRON_PENDING_NO_RETRY_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P07-TUNNEL-CACHE-EVICTION-CODE","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T14:17:40+08:00","project_revision":"AOS-000383","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
