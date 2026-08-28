@@ -1,0 +1,30 @@
+{
+  "base_revision": "AOS-000412",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/AnalystPage.tsx",
+    "apps/web/src/components/workshop/CustomerPage.tsx",
+    "apps/web/src/components/workshop/CustomerPage.test.tsx",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_contact_store.py",
+    "services/aos-api/aos_api/ecommerce_workshop_task_cockpit.py",
+    "services/aos-api/tests/aip/test_w6_08_customer_contact_store.py",
+    "services/aos-api/tests/test_ecommerce_workshop_task_cockpit.py",
+    ".evidence/workshop/2026-08-29-eight-menu-browser-visual-function-data-revalidation/acceptance.md"
+  ],
+  "commits": [
+    "e1389c9d"
+  ],
+  "completed_at": "2026-08-29T02:34:25+08:00",
+  "completed_revision": "AOS-000412",
+  "result": "WORKSHOP_EIGHT_MENU_BROWSER_VISUAL_FUNCTION_DATA_REVALIDATION_GREEN_QYH_GET_ONLY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "No external send/publish/provider effect, destructive business mutation, migration, pilot or release was authorized or performed; operational/release gates remain independent."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-EIGHT-MENU-BROWSER-VISUAL-FUNCTION-DATA-REVALIDATION",
+  "verification": [
+    "Built-in browser: 8 routes x 3 viewports, sidebar collapse/expand, primary tabs/actions, six-coworker popover, zero horizontal/vertical overflow and zero huge SVG regression GREEN",
+    "Qiyuehui org-org/dev-project GET-only: 8 canonical Workshop endpoints HTTP 200; task cockpit business projection excludes 24 internal AIP/logic records without deleting source data",
+    "Web full 255 files / 2314 tests; focused backend 38 passed; TypeScript, Vite build, compileall and diff-check GREEN"
+  ]
+}

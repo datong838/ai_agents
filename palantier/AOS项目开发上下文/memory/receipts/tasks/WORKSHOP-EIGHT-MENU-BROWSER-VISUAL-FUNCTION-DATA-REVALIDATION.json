@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000412",
+  "created_at": "2026-08-29T01:31:54+08:00",
+  "excluded_scope": [
+    "Fake business data, technical task IDs in business UI, external send/publish/provider effects without exact authority, destructive real business mutation, migration, release"
+  ],
+  "expected_outputs": [
+    "Eight-page same-viewport comparison, clicked interaction matrix, direct code fixes, focused and cumulative tests, browser screenshots, Qiyuehui read/write-safe evidence, Delivery Receipt, authority CAS, Prime readback"
+  ],
+  "lease_expires_at": "2026-08-29T07:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "Eight Workshop menu reference-vs-actual built-in-browser visual, interaction, API and Qiyuehui data trace revalidation; direct repair"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-EIGHT-MENU-BROWSER-VISUAL-FUNCTION-DATA-REVALIDATION"
+}
