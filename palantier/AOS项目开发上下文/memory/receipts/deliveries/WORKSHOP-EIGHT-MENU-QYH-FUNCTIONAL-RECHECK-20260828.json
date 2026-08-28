@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000382",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-28-eight-menu-visual-rework/acceptance.md"
+  ],
+  "commits": [
+    "f8c02b85"
+  ],
+  "completed_at": "2026-08-28T13:43:55+08:00",
+  "completed_revision": "AOS-000382",
+  "result": "QYH_FUNCTIONAL_ACCEPTANCE_GREEN_AT_READONLY_CUTOFF_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Overall SourceReadiness remains failed because P07 latest run failed and P08 current-day run is missing; P09 historical timing anomaly remains; no pilot or release claim"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-EIGHT-MENU-QYH-FUNCTIONAL-RECHECK-20260828",
+  "verification": [
+    "In-app Browser eight routes, all primary tabs, 8 sidebar collapse/expand, 6 colleague popovers, safe-preflight actions, no horizontal overflow or development IDs GREEN",
+    "Qiyuehui current read-only SourceReadiness at 2026-08-28T05:34:18Z: 12/12 source-projection delta zero; P07/P08/P09 anomalies preserved",
+    "Web focused 35/35, Web full 2312/2312, backend focused 26/26, Vite build 359 modules GREEN"
+  ]
+}

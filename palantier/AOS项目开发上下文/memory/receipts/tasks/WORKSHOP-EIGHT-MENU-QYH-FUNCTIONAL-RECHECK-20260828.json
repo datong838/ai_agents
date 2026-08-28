@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000382",
+  "created_at": "2026-08-28T13:43:25+08:00",
+  "excluded_scope": [
+    "real-business-write-provider-release-manual-pipeline-dlq-replay"
+  ],
+  "expected_outputs": [
+    "Fresh eight-menu browser interaction and Qiyuehui read-only source/projection acceptance evidence"
+  ],
+  "lease_expires_at": "2026-08-28T15:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    ".evidence/workshop/2026-08-28-eight-menu-visual-rework/acceptance.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-EIGHT-MENU-QYH-FUNCTIONAL-RECHECK-20260828"
+}
