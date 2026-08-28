@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000409",
+  "created_at": "2026-08-29T00:32:41+08:00",
+  "excluded_scope": [
+    "main.py; API route registration; plugin/ActionType/environment/database writes; Provider/Secret/readiness refresh; Proposal/Approval/Lease/Case/Run creation; P07/P08 manual run; migration; release"
+  ],
+  "expected_outputs": [
+    "production read-only owner adapter bundle for existing authorities with explicit Action authority and Binding readers"
+  ],
+  "lease_expires_at": "2026-08-29T08:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_provider_health_activation_owner_adapters.py; services/aos-api/tests/aip/test_aip_provider_health_activation_owner_adapters.py; BI-W0 plan §105; acceptance evidence; Receipt/authority/memory projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-PRODUCTION-OWNER-ADAPTERS"
+}

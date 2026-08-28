@@ -1,33 +1,33 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "七源 canonical reader factory 闭合：strict tenant/time/provider/denominator/env validation；专项 30/30、累计 555/555 GREEN"
+    "production owner adapters 闭合：七 owner read-once/cached，异常逐来源稳定失败且不泄露；专项 38/38、累计 563/563 GREEN"
   ],
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health canonical fact readers 闭合，继续生产只读 owner adapters",
-  "delivery_status": "BI_W10_PROVIDER_HEALTH_CANONICAL_FACT_READERS_GREEN_STRICT_SANITIZED_READ_ONLY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "Workshop 八菜单视觉/功能/数据复验继续；BI-W10 Provider Health production owner adapters 闭合，继续 exact Action authority 与 Binding readers",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_PRODUCTION_OWNER_ADAPTERS_GREEN_READ_ONCE_STABLE_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-29-bi-w10-provider-health-canonical-fact-readers/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-bi-w10-provider-health-production-owner-adapters/acceptance.md"
     }
   ],
-  "evidence_cutoff": "2026-08-29T00:30:14+08:00",
+  "evidence_cutoff": "2026-08-29T00:47:23+08:00",
   "hard_boundaries": [
-    "不得安装插件、写 ActionType/环境/数据库、调用 Provider/Secret/readiness、创建真实 Action authority/Case/Run、手工执行 P07/P08、迁移或发布"
+    "不得用默认 false/0 冒充未采集事实；不得绕过租户/安全预检进行外部发布、发送、Provider/Secret 调用、迁移或 release"
   ],
   "incomplete": [
-    "production owner adapters 尚未把当前 store/config metadata 统一接入 reader factory；当前 activation gates 仍 false"
+    "exact Action Proposal/Approval/Lease/Receipt 与 Binding owner readers 尚未接入；当前 activation gates 仍 false"
   ],
-  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-CANONICAL-FACT-READERS",
-  "next_gate": "BI-W10-02-PROVIDER-HEALTH-PRODUCTION-OWNER-ADAPTERS",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-PRODUCTION-OWNER-ADAPTERS",
+  "next_gate": "BI-W10-02-PROVIDER-HEALTH-EXACT-AUTHORITY-BINDING-READERS",
   "next_steps": [
-    "实现 production read-only owner adapters 与 deterministic audit entrypoint，保持当前运行时未激活且零外部调用"
+    "实现 exact Action authority 与 Binding read-only owner readers，再接 deterministic audit entrypoint；之后继续八菜单浏览器逐页视觉、功能、数据复验"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000409",
+  "project_revision": "AOS-000410",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "8f65f206"
+    "aos-platform": "c756d2f6"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -37,5 +37,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-29T00:30:58+08:00"
+  "updated_at": "2026-08-29T00:47:44+08:00"
 }

@@ -3,3 +3,6 @@
 {"base_revision":"AOS-000408","occurred_at":"2026-08-29T00:19:49+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROVIDER-HEALTH-CANONICAL-FACT-READERS","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-29T00:30:14+08:00","result":"BI_W10_PROVIDER_HEALTH_CANONICAL_FACT_READERS_GREEN_STRICT_SANITIZED_READ_ONLY_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROVIDER-HEALTH-CANONICAL-FACT-READERS","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-29T00:30:58+08:00","project_revision":"AOS-000409","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000409","occurred_at":"2026-08-29T00:32:41+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROVIDER-HEALTH-PRODUCTION-OWNER-ADAPTERS","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-29T00:47:23+08:00","result":"BI_W10_PROVIDER_HEALTH_PRODUCTION_OWNER_ADAPTERS_GREEN_READ_ONCE_STABLE_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROVIDER-HEALTH-PRODUCTION-OWNER-ADAPTERS","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-29T00:47:44+08:00","project_revision":"AOS-000410","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
