@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000389",
+  "blockers": [
+    "下一切片由canonical readiness求值服务刷新精确依赖，禁止硬改过期时间"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_authority.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_composition.py",
+    "services/aos-api/aos_api/aip_stage_template_authority.py",
+    "services/aos-api/aos_api/aip_responsibility_template_authority.py",
+    "bundles/solutions/ecommerce-growth/bundle.yaml",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_authority.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_composition.py",
+    "services/aos-api/tests/asset_registry/test_m5_ecommerce_bundle_contracts.py",
+    ".evidence/workshop/2026-08-28-bi-w10-stage-responsibility-authority/acceptance.md"
+  ],
+  "commits": [
+    "c8082880"
+  ],
+  "completed_at": "2026-08-28T19:02:10+08:00",
+  "completed_revision": "AOS-000389",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "CapabilityBinding/SkillBinding readiness当前过期，ResponsibilityPlan按规则保持draft；SourceReadiness 10/12，未创建Case/Run，无外部副作用"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-AIP-INVESTIGATION-STAGE-RESPONSIBILITY-AUTHORITY",
+  "verification": [
+    "34/34专项GREEN；16/16 bundle合同GREEN；710/710累计GREEN；真实租户幂等重入GREEN；负向租户隔离GREEN；compileall/diff-check GREEN"
+  ]
+}

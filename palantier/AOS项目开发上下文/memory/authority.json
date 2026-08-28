@@ -1,39 +1,35 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "AIP production composition tenant-scoped read-only resolver、granular runBlockers、412/412 累计回归 GREEN"
+    "D01 r2/D02 r2/D03 r4 exact Skill 选择、三阶段 frozen StageTemplate、六职责 draft ResponsibilityPlan、幂等重入与 710/710 累计回归 GREEN"
   ],
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 AIP 生产组合只读解析 GREEN，继续三阶段/职责权威与 P07/P08 自然窗口",
-  "delivery_status": "BI_W10_AIP_PRODUCTION_COMPOSITION_RESOLVER_GREEN_METADATA_AUTHORITIES_PENDING_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 三阶段与 Skill 选择权威 GREEN，继续 canonical Binding readiness 与职责冻结",
+  "delivery_status": "BI_W10_AIP_STAGE_SKILL_AUTHORITY_GREEN_RESPONSIBILITY_DRAFT_BINDING_READINESS_STALE_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "runtime",
-      "ref": "/Users/ddt/work/projects/ai_agent/aos-platform/.evidence/workshop/2026-08-28-bi-w10-aip-composition-resolver/acceptance.md"
-    },
-    {
-      "kind": "receipt",
-      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-02-AIP-PRODUCTION-COMPOSITION-RESOLVER.json"
+      "kind": "delivery",
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-stage-responsibility-authority/acceptance.md"
     }
   ],
-  "evidence_cutoff": "2026-08-28T09:49:27Z",
+  "evidence_cutoff": "2026-08-28T18:59:34+08:00",
   "hard_boundaries": [
     "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、真实 Case/Run、业务写入、migration 或发布"
   ],
   "incomplete": [
-    "D03 published Skill revision 选择权威、三阶段 StageTemplate、frozen ResponsibilityPlan 与新鲜 Binding readiness 尚未闭合",
+    "SkillBinding/CapabilityBinding readiness 已过期，ResponsibilityPlan 尚未 frozen",
     "P07/P08 下一自然窗口尚未到达，SourceReadiness 保持 10 ready / 2 failed"
   ],
-  "last_green_gate": "BI-W10-02-AIP-PRODUCTION-COMPOSITION-RESOLVER",
-  "next_gate": "BI-W10-02-AIP-INVESTIGATION-STAGE-RESPONSIBILITY-AUTHORITY",
+  "last_green_gate": "BI-W10-02-AIP-INVESTIGATION-STAGE-RESPONSIBILITY-AUTHORITY",
+  "next_gate": "BI-W10-02-AIP-BINDING-READINESS-REFRESH",
   "next_steps": [
-    "先方案化并实现 BI 三阶段模板、职责方案与 D03 明确版本选择权威，不猜测 latest，不改真实业务数据",
-    "保持 API 稳定运行，只读回读 P07/P08 下一自然 Run、DLQ 与同截止 SourceReadiness"
+    "使用 canonical CapabilityBinding/SkillBinding readiness 服务仅刷新生意探究 exact 依赖，逐项保留真实 blocker",
+    "readiness READY 后重新求值并冻结六职责计划；保持 API 稳定运行并只读监测 P07/P08 自然窗口"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000389",
+  "project_revision": "AOS-000390",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "72a9b15dbe23678f8fe9aa39b6c69432e091af41"
+    "m1": "c8082880"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -43,5 +39,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-28T18:33:00+08:00"
+  "updated_at": "2026-08-28T19:04:17+08:00"
 }

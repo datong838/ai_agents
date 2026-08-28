@@ -36,3 +36,9 @@
 {"base_revision":"AOS-000387","occurred_at":"2026-08-28T17:25:56+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROFILE-SCOPE-AUTHORITY","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T17:58:13+08:00","result":"IMPLEMENTED_GREEN","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROFILE-SCOPE-AUTHORITY","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T17:59:30+08:00","project_revision":"AOS-000388","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000388","occurred_at":"2026-08-28T18:03:02+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-PRODUCTION-COMPOSITION-RESOLVER","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T18:32:12+08:00","result":"AIP_PRODUCTION_COMPOSITION_RESOLVER_GREEN_GRANULAR_RUN_BLOCKERS_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-PRODUCTION-COMPOSITION-RESOLVER","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T18:33:00+08:00","project_revision":"AOS-000389","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000389","occurred_at":"2026-08-28T18:34:44+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-INVESTIGATION-STAGE-RESPONSIBILITY-AUTHORITY","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T19:02:10+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-INVESTIGATION-STAGE-RESPONSIBILITY-AUTHORITY","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T19:04:17+08:00","project_revision":"AOS-000390","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000389",
+  "created_at": "2026-08-28T18:34:44+08:00",
+  "excluded_scope": [
+    "No manual P01-P12 run, cron catch-up, DLQ replay, provider invocation, secret resolution, real Case/Run, business mutation, migration, or release"
+  ],
+  "expected_outputs": [
+    "Reviewed file-level plan; deterministic authority definitions; fail-closed resolver integration; targeted/cumulative tests; evidence; safe commit; Delivery Receipt; authority CAS; Prime readback"
+  ],
+  "lease_expires_at": "2026-08-29T13:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "Plan and implement deterministic BI investigation StageTemplate, ResponsibilityPlan, and explicit D03 Skill revision authority using existing governed AIP contracts; add tenant-safe tests and read-only verification"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-AIP-INVESTIGATION-STAGE-RESPONSIBILITY-AUTHORITY"
+}
