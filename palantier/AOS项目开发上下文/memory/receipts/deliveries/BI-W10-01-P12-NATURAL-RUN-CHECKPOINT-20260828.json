@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000381",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-28-qyh-natural-sequence/p12-natural-run.md",
+    "services/aos-api/aos_api/qyh_cron_scheduler.py",
+    "services/aos-api/tests/test_qyh_cron_scheduler.py"
+  ],
+  "commits": [
+    "1a8382f5",
+    "43767be0"
+  ],
+  "completed_at": "2026-08-28T13:04:11+08:00",
+  "completed_revision": "AOS-000381",
+  "result": "P12_NATURAL_CRON_GREEN_PAYMENT_210_OF_210_CRON_SLOT_GUARD_LOADED_NO_MANUAL_REPLAY_NO_RELEASE",
+  "risks": [
+    "P07 remains current connection failure; P08 has no 2026-08-28 natural run; P09 historical started-before-slot receipt remains anomalous; no replay, external mutation, canary, or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-P12-NATURAL-RUN-CHECKPOINT-20260828",
+  "verification": [
+    "P12 scheduledFor 2026-08-28T05:00:00Z succeeded rowsWritten=420; Payment source/projection 210/210; health 200 after reload; cron scheduler targeted 64/64 GREEN; Workshop traceability/API 26/26 GREEN"
+  ]
+}

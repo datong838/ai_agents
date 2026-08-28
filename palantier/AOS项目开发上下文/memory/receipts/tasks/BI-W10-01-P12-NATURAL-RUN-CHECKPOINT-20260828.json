@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000381",
+  "created_at": "2026-08-28T12:05:40+08:00",
+  "excluded_scope": [
+    "manual execution,replay,retry,external mutation,release,dev-org/dev-project positive data"
+  ],
+  "expected_outputs": [
+    "P12 natural cron evidence plus deterministic diagnosis for P08 missing run and P09 timing anomaly"
+  ],
+  "lease_expires_at": "2026-08-28T15:00:00+08:00",
+  "owner": "codex-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "read-only qyh natural schedule evidence P12 and schedule continuity diagnostics org-org/dev-project"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-01-P12-NATURAL-RUN-CHECKPOINT-20260828"
+}

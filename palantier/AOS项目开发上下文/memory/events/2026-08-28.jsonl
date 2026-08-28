@@ -11,3 +11,6 @@
 {"base_revision":"AOS-000380","occurred_at":"2026-08-28T12:01:09+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P11-NATURAL-RUN-CHECKPOINT-20260828","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T12:02:03+08:00","result":"P11_NATURAL_CRON_GREEN_AT_2026-08-28_CUTOFF_NO_MANUAL_REPLAY_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P11-NATURAL-RUN-CHECKPOINT-20260828","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T12:03:07+08:00","project_revision":"AOS-000381","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000381","occurred_at":"2026-08-28T12:05:40+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P12-NATURAL-RUN-CHECKPOINT-20260828","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T13:04:11+08:00","result":"P12_NATURAL_CRON_GREEN_PAYMENT_210_OF_210_CRON_SLOT_GUARD_LOADED_NO_MANUAL_REPLAY_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P12-NATURAL-RUN-CHECKPOINT-20260828","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T13:05:16+08:00","project_revision":"AOS-000382","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
