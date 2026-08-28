@@ -1,36 +1,35 @@
 {
   "completed": [
-    "D01 r2/D02 r2/D03 r4 exact Skill 选择、三阶段 frozen StageTemplate、六职责 draft ResponsibilityPlan、幂等重入与 710/710 累计回归 GREEN",
-    "required-only readiness 刷新仅评价 material.collect、strategy.plan、content.review 与 D01/D02/D03；6/6 fresh-skip 重入、192/192 累计回归 GREEN"
+    "Provider 健康维护已拆分进程开关与单次外呼授权；默认 deny-all，7/7+55/55+188/188 回归 GREEN"
   ],
-  "content_hash": "sha256:acac976506b9d315982a357bde2ec1c60d81721f7dfce55d94205cc678e0b631",
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 required-only Binding readiness 刷新闭合，继续自然 SourceReadiness 与剩余验收",
-  "delivery_status": "BI_W10_REQUIRED_ONLY_BINDING_REFRESH_GREEN_REQUIRED_TEXT_PROVIDER_HEALTH_STALE_PLAN_DRAFT_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:1e17e557b993838fedeec27aa542488b0a52431468abd14b3190e979c028af7e",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider 健康维护授权分层闭合，继续 Action 权威桥接与自然 SourceReadiness",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_MAINTENANCE_AUTHORIZATION_SPLIT_GREEN_REQUIRED_TEXT_PROVIDER_HEALTH_STALE_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
-      "ref": ".evidence/workshop/2026-08-28-bi-w10-required-binding-refresh-scope/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-maintenance-authority-guard/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-28T19:49:09+08:00",
+  "generated_at": "2026-08-28T20:10:25+08:00",
   "hard_boundaries": [
     "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、真实 Case/Run、业务写入、migration 或发布"
   ],
   "incomplete": [
-    "required text Provider Health 过期，CapabilityBinding/SkillBinding 为 blocked，ResponsibilityPlan 保持 draft",
+    "现有 Proposal/Approval/ExecutionLease/Receipt 尚未桥接到 Provider 健康维护授权回调；运行时继续拒绝 Provider 外呼",
     "P07/P08 下一自然窗口尚未到达，SourceReadiness 保持 10 ready / 2 failed"
   ],
-  "last_green_gate": "BI-W10-02-REQUIRED-BINDING-REFRESH-SCOPE",
-  "next_gate": "BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-AUTHORITY-GUARD",
+  "next_gate": "BI-W10-02-PROVIDER-HEALTH-ACTION-AUTHORITY-BRIDGE",
   "next_steps": [
-    "保持 API PID 68386 稳定，继续只读监测 P07/P08 下一自然窗口并按新事实最小修复",
-    "继续审查 BI-W10/BI-W11 可在无外部副作用下闭合的实际缺口并串行施工"
+    "实现 Provider health action 的 canonical authority bridge 与一次性 Receipt 语义，不启用或执行真实外呼",
+    "保持 API PID 68386 稳定，继续只读监测 P07/P08 下一自然窗口并按新事实最小修复"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000393",
+  "project_revision": "AOS-000394",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "m1": "4c5f010b"
+    "m1": "f17bd12e"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

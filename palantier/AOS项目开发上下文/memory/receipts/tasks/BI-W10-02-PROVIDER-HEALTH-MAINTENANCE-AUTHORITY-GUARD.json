@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000393",
+  "created_at": "2026-08-28T20:01:12+08:00",
+  "excluded_scope": [
+    "Provider calls, secret resolution, P01-P12 execution, DLQ replay, Case/Run creation, real business mutation, migration apply, release"
+  ],
+  "expected_outputs": [
+    "environment toggle cannot independently authorize Provider calls; canonical approval/lease boundary is explicit and test-covered"
+  ],
+  "lease_expires_at": "2026-08-29T07:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "AIP text Provider health maintenance authorization guard code, tests, plan and evidence"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-AUTHORITY-GUARD"
+}
