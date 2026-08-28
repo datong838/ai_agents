@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000398",
+  "blockers": [
+    "Exact ActionType installation and current runtime activation remain intentionally unperformed; natural P07/P08 remains failed 10/12"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_provider_health_maintenance_runtime.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_runtime.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-maintenance-runtime-assembly/acceptance.md"
+  ],
+  "commits": [
+    "13b896ae"
+  ],
+  "completed_at": "2026-08-28T21:36:53+08:00",
+  "completed_revision": "AOS-000398",
+  "result": "Explicit builder validates real-tenant executor and exact installed ActionType, uses isolated conformant registry, composes inbox/runner/maintainer, and performs zero refresh until one approved Lease exists",
+  "risks": [
+    "No main.py/global registry/live ActionType install/Provider/Secret/real data/migration/release effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-RUNTIME-ASSEMBLY",
+  "verification": [
+    "focused 32/32 passed",
+    "cumulative 251/251 passed",
+    "compileall GREEN",
+    "git diff --check GREEN",
+    "API PID 68386 unchanged and sole 8080 owner"
+  ]
+}
