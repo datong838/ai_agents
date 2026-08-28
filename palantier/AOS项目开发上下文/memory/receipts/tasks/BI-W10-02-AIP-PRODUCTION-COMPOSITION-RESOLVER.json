@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000388",
+  "created_at": "2026-08-28T18:03:02+08:00",
+  "excluded_scope": [
+    "manual P01-P12 execution, DLQ replay, credentials, Provider execution, production metadata mutation, real Case/Run creation, business mutation, migration apply, release"
+  ],
+  "expected_outputs": [
+    "tenant-scoped exact composition observation with stable blocker taxonomy",
+    "case selection distinguishes source, L1 and AIP composition readiness",
+    "tests, receipt, commit, authority CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-29T11:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs plan 119 section 85 AIP production composition read-only resolver",
+    "services/aos-api exact Logic StageTemplate SkillBinding ResponsibilityPlan lifecycle readers",
+    "Case selection runBlockers, tests and read-only evidence"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-AIP-PRODUCTION-COMPOSITION-RESOLVER"
+}

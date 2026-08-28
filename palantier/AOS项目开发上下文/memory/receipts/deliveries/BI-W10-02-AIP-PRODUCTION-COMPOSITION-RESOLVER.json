@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000388",
+  "blockers": [
+    "AIP_SKILL_REVISION_SELECTION_AMBIGUOUS",
+    "AIP_SKILL_BINDING_READINESS_STALE",
+    "AIP_INVESTIGATION_STAGE_TEMPLATE_MISSING",
+    "AIP_INVESTIGATION_RESPONSIBILITY_PLAN_MISSING",
+    "AIP_PRODUCTION_CONTEXT_REQUIRES_RUN"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_composition.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_case_selection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_composition.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_case_selection.py",
+    ".evidence/workshop/2026-08-28-bi-w10-aip-composition-resolver/acceptance.md"
+  ],
+  "commits": [
+    "72a9b15d"
+  ],
+  "completed_at": "2026-08-28T18:32:12+08:00",
+  "completed_revision": "AOS-000388",
+  "result": "AIP_PRODUCTION_COMPOSITION_RESOLVER_GREEN_GRANULAR_RUN_BLOCKERS_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "D03 revision remains ambiguous; binding readiness stale; BI stage/responsibility authorities absent; ProductionContext requires a real Run; P07/P08 remain 10/12 until next natural slots"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-AIP-PRODUCTION-COMPOSITION-RESOLVER",
+  "verification": [
+    "13/13 targeted GREEN; 412/412 cumulative GREEN; real/canary read-only probes GREEN; OpenAPI deterministic GREEN; compileall/diff-check GREEN"
+  ]
+}
