@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000406",
+  "created_at": "2026-08-28T23:43:15+08:00",
+  "excluded_scope": [
+    "any packet execution, plugin install, ActionType/env/database mutation, API restart, Secret resolution, Provider/readiness call, real Action authority, manual P07/P08, migration, release"
+  ],
+  "expected_outputs": [
+    "non-executable exact-revision change packet with ordered gates and fail-safe rollback"
+  ],
+  "lease_expires_at": "2026-08-29T12:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "deterministic Provider Health activation change and rollback packet, tests, evidence and memory closure"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-ACTIVATION-CHANGE-PACKET"
+}
