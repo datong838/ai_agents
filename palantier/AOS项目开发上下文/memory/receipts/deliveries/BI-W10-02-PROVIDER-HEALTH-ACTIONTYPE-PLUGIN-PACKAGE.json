@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000399",
+  "blockers": [],
+  "changed_files": [
+    "plugins/actions/provider-health-probe/manifest.json",
+    "services/aos-api/tests/aip/test_aip_provider_health_action_plugin.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-actiontype-plugin-package/acceptance.md"
+  ],
+  "commits": [
+    "80d2bf57"
+  ],
+  "completed_at": "2026-08-28T21:51:01+08:00",
+  "completed_revision": "AOS-000399",
+  "result": "BI_W10_PROVIDER_HEALTH_ACTIONTYPE_PLUGIN_PACKAGE_CODE_CONTROL_GREEN_AVAILABLE_NOT_INSTALLED_EXACT_SNAPSHOT_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Plugin package remains available but not installed; runtime stub; no provider or secret access; no release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-ACTIONTYPE-PLUGIN-PACKAGE",
+  "verification": [
+    "40/40 focused passed; 259/259 cumulative passed; JSON/compileall/diff GREEN; API PID 68386 unchanged"
+  ]
+}
