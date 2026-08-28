@@ -1,33 +1,33 @@
 {
   "completed": [
-    "Provider Health startup 精确要求已安装 canonical 插件；Action 插件写 API 要求 admin/owner，Provider Health 插件写入限制 org-org/dev-project；专项 32/32、累计 545/545。"
+    "Provider Health loop/provider-call/real-pilot 三道独立门、稳定缺失码、固定 3/3 与 12/12 分母及无敏感值公共结果已闭合；专项 8/8、累计 553/553。"
   ],
-  "content_hash": "sha256:a127fbcd74b5084b811fece0dca18f6f27e2c4f9c3058c214fe01dceecd5b064",
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health 安装权威守护闭合，继续部署/激活就绪包",
-  "delivery_status": "BI_W10_PROVIDER_HEALTH_INSTALLATION_AUTHORITY_GUARD_GREEN_CURRENT_PLUGIN_UNINSTALLED_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:423e7c809c39ab739eb50f57d60340cd9e9f4742cddbea02eb7a882604b69a9e",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health 三道激活预检闭合，继续精确变更/回滚包",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_DEPLOYMENT_ACTIVATION_PREFLIGHT_GREEN_CURRENT_LOOP_CALL_PILOT_NOT_READY_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-installation-authority-guard/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-deployment-activation-preflight/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-28T23:13:08+08:00",
+  "generated_at": "2026-08-28T23:41:02+08:00",
   "hard_boundaries": [
-    "不得安装当前插件、重启 API、解析 Secret、调用 Provider、手工执行 P07/P08、修改真实业务数据、迁移或发布。"
+    "不得安装当前插件、重启 API、解析 Secret、调用 Provider、伪造 Proposal/Approval/Lease/Receipt/Health/Binding、手工执行 P07/P08、修改真实业务数据、迁移或发布。"
   ],
   "incomplete": [
-    "当前插件未安装、canonical ActionType 不存在、canonical 环境键未齐、已部署 PID 尚不包含新提交、SourceReadiness 10/12 且 P07/P08 失败；无激活、重启或发布授权。"
+    "当前插件未安装、ActionType 与 canonical 环境缺失、已部署 revision 未证明、Health 0/3 fresh、SourceReadiness 10/12、Binding 与 Action authority 未证明；三道当前门均 false。"
   ],
-  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-INSTALLATION-AUTHORITY-GUARD",
-  "next_gate": "BI-W10-02-PROVIDER-HEALTH-DEPLOYMENT-ACTIVATION-PREFLIGHT",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-DEPLOYMENT-ACTIVATION-PREFLIGHT",
+  "next_gate": "BI-W10-02-PROVIDER-HEALTH-ACTIVATION-CHANGE-PACKET",
   "next_steps": [
-    "构建无副作用的部署/激活确定性预检与精确变更/回滚包；不安装、不重启、不调用 Provider。"
+    "形成与三道门精确绑定的、无执行副作用的变更/回滚包和逐步再验证顺序；不执行安装或重启。"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000405",
+  "project_revision": "AOS-000406",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "2cd75ff4"
+    "aos-platform": "01782375"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
