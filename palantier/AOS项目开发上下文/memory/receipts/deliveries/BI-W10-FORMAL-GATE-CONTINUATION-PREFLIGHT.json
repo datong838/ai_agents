@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000413",
+  "blockers": [],
+  "changed_files": [
+    "scripts/data/export_source_readiness_evidence.py",
+    "services/aos-api/tests/test_source_readiness_evidence.py",
+    ".evidence/workshop/2026-08-29-bi-w10-formal-gate-continuation-preflight/acceptance.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "39d72238"
+  ],
+  "completed_at": "2026-08-29T03:20:00+08:00",
+  "completed_revision": "AOS-000414",
+  "result": "BI_W10_FORMAL_GATE_CONTINUATION_PREFLIGHT_GREEN_SOURCE_READINESS_10_OF_12_NATURAL_P07_P08_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "P07/P08 require their next natural schedules; this task does not manually run, replay, create a Case/Run, call a Provider, migrate, or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-FORMAL-GATE-CONTINUATION-PREFLIGHT",
+  "verification": [
+    "SourceReadiness evidence runtime bootstrap 4/4 GREEN; /usr/bin/python3 CLI auto-switch GREEN",
+    "current ecommerce and SourceReadiness cumulative 1222/1222 GREEN",
+    "current GET-only SourceReadiness 10/12; new natural P01 run succeeded; P07/P08 unchanged",
+    "compileall and git diff check GREEN"
+  ]
+}
