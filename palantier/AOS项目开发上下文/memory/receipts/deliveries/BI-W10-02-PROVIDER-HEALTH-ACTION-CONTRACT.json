@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000394",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_provider_health_action.py",
+    "services/aos-api/aos_api/aip_action_policy.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_action.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-action-contract/acceptance.md"
+  ],
+  "commits": [
+    "466a5fdd"
+  ],
+  "completed_at": "2026-08-28T20:21:31+08:00",
+  "completed_revision": "AOS-000394",
+  "result": "BI_W10_PROVIDER_HEALTH_ACTION_CONTRACT_R2_CODE_CONTROL_GREEN_NO_REGISTRATION_NO_PROVIDER_CALL_NO_RELEASE",
+  "risks": [
+    "Contract is intentionally not registered or materialized; canonical ActionType/Adapter revision and execution bridge remain a separate controlled task"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-ACTION-CONTRACT",
+  "verification": [
+    "17/17 targeted; 36/36 Action adjacency; 188/188 BI cumulative; compileall; diff-check; PID 68386 stable; no Provider call"
+  ]
+}
