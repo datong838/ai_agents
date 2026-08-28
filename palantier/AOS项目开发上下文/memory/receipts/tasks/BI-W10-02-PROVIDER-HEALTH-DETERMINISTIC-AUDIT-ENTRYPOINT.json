@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000411",
+  "created_at": "2026-08-29T01:07:14+08:00",
+  "excluded_scope": [
+    "API route registration, main.py, database write, plugin install, ActionType write, Binding refresh, Secret resolution, Provider call, readiness refresh, P07/P08 manual execution, migration, release"
+  ],
+  "expected_outputs": [
+    "deterministic no-route production audit entrypoint, focused and cumulative tests, evidence, Delivery Receipt, authority CAS, Prime readback"
+  ],
+  "lease_expires_at": "2026-08-29T04:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "org-org/dev-project Provider Health deterministic read-only audit entrypoint, exact selection composition, sanitized result"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-DETERMINISTIC-AUDIT-ENTRYPOINT"
+}

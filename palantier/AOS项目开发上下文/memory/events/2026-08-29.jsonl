@@ -9,3 +9,6 @@
 {"base_revision":"AOS-000410","occurred_at":"2026-08-29T00:52:24+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROVIDER-HEALTH-EXACT-AUTHORITY-BINDING-READERS","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-29T01:04:05+08:00","result":"BI_W10_PROVIDER_HEALTH_EXACT_AUTHORITY_BINDING_READERS_GREEN_EXPLICIT_SELECTION_READ_ONLY_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROVIDER-HEALTH-EXACT-AUTHORITY-BINDING-READERS","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-29T01:04:05+08:00","project_revision":"AOS-000411","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000411","occurred_at":"2026-08-29T01:07:14+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROVIDER-HEALTH-DETERMINISTIC-AUDIT-ENTRYPOINT","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-29T01:28:40+08:00","result":"BI_W10_PROVIDER_HEALTH_DETERMINISTIC_AUDIT_ENTRYPOINT_GREEN_READ_ONLY_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-02-PROVIDER-HEALTH-DETERMINISTIC-AUDIT-ENTRYPOINT","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-29T01:28:58+08:00","project_revision":"AOS-000412","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

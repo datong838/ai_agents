@@ -1,33 +1,33 @@
 {
   "completed": [
-    "exact Action authority/Binding readers 闭合：显式选择、只读事务、共同 cutoff、专项 38/38、累计 578/578 GREEN"
+    "Deterministic no-route production audit entrypoint; exact selections; seven owners once; sanitized fail-closed result; regression repair; 607/607 GREEN"
   ],
-  "content_hash": "sha256:505055d01488d0bd166a6fa72185426dfbe0ee814c1534c41d443651fc04da75",
-  "current_phase": "Workshop 八菜单视觉/功能/数据复验继续；BI-W10 Provider Health exact Action authority/Binding readers 闭合，继续 deterministic audit entrypoint",
-  "delivery_status": "BI_W10_PROVIDER_HEALTH_EXACT_AUTHORITY_BINDING_READERS_GREEN_EXPLICIT_SELECTION_READ_ONLY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:9b763fedd114e264dde5481bc4576f2c24ce3ae511a625cbcde6bd74c908203b",
+  "current_phase": "BI-W10-02 deterministic production audit entrypoint GREEN; immediately execute eight-menu browser visual/function/data revalidation and direct repair",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_DETERMINISTIC_AUDIT_ENTRYPOINT_GREEN_READ_ONLY_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-29-bi-w10-provider-health-exact-authority-binding-readers/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-bi-w10-provider-health-deterministic-audit-entrypoint/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-29T01:04:05+08:00",
+  "generated_at": "2026-08-29T01:28:58+08:00",
   "hard_boundaries": [
-    "不得用任意 available binding 或空选择冒充 exact；外部发布/发送/Provider/Secret/迁移/release 仍需安全门与 Receipt"
+    "No fake business data, no technical task IDs in business UI, no external send/publish/provider effect without exact safety authority, no migration or release"
   ],
   "incomplete": [
-    "deterministic production audit entrypoint 尚未组合 expected refs 与 production owner bundle；八菜单仍需逐页浏览器视觉/功能/数据复验"
+    "Eight Workshop menu reference-vs-actual browser visual comparison, interaction checks, Qiyuehui data trace validation and direct fixes"
   ],
-  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-EXACT-AUTHORITY-BINDING-READERS",
-  "next_gate": "BI-W10-02-PROVIDER-HEALTH-DETERMINISTIC-AUDIT-ENTRYPOINT",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-DETERMINISTIC-AUDIT-ENTRYPOINT",
+  "next_gate": "WORKSHOP-EIGHT-MENU-BROWSER-VISUAL-FUNCTION-DATA-REVALIDATION",
   "next_steps": [
-    "组合无 route/无写的 deterministic production audit entrypoint，随后进入八菜单视觉稿与实际页逐页点击复验并直接修复"
+    "Open reference and actual pages one by one in built-in browser; click collapse/tabs/filters/overlays/buttons/empty/full states; repair visual/function/data issues immediately"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000411",
+  "project_revision": "AOS-000412",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "d0fd17b3"
+    "code": "b39bbd1b"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
