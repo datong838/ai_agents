@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000379",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/styles/00-shell.css",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-08-28-eight-menu-visual-rework/acceptance.md",
+    "docs/palantier/foundry/html/assets/demo.css",
+    "docs/palantier/foundry/html/workshop-task-cockpit.html"
+  ],
+  "commits": [
+    "856faeab",
+    "docs@1263a01"
+  ],
+  "completed_at": "2026-08-28T11:44:02+08:00",
+  "completed_revision": "AOS-000379",
+  "result": "VISUAL_REWORK_GREEN_QYH_FUNCTIONAL_ACCEPTANCE_GREEN_AT_READONLY_CUTOFF_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "P07 latest natural run failed tunnel connection; P08/P11 await next natural validation; not represented as same-cutoff SourceReadiness GREEN"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-EIGHT-MENU-VISUAL-QYH-REWORK-20260828",
+  "verification": [
+    "Web 255 files 2311 tests GREEN",
+    "Backend qyh/projection/workshop/source-readiness 30 tests GREEN",
+    "TypeScript and Vite build GREEN 359 modules",
+    "In-app Browser eight routes, 260px/48px collapse, no horizontal overflow, main controls safe",
+    "Six colleague popover hover/focus/click/Escape and safe bounds GREEN"
+  ]
+}

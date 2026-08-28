@@ -18,25 +18,26 @@
     "S8-Visual",
     "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION",
     "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK",
-    "BI-W10-01-P01-NATURAL-RUN-CHECKPOINT"
+    "BI-W10-01-P01-NATURAL-RUN-CHECKPOINT",
+    "WORKSHOP-EIGHT-MENU-VISUAL-QYH-REWORK-20260828"
   ],
-  "current_phase": "BI-W10-01 修复加载后自然序列验收进行中；P01 新鲜自然运行 GREEN，等待 P02～P12 各自自然计划点",
-  "delivery_status": "BI_W10_01_P01_POST_RELOAD_NATURAL_RUN_GREEN_P02_P12_NATURAL_SEQUENCE_PENDING_NO_RELEASE",
+  "current_phase": "Workshop 八菜单视觉返修与栖月汇只读功能自验收 GREEN；BI-W10-01 自然序列继续按既有计划只读核验",
+  "delivery_status": "EIGHT_MENU_VISUAL_REWORK_AND_QYH_READONLY_FUNCTIONAL_ACCEPTANCE_GREEN_BI_W10_01_NATURAL_SEQUENCE_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery_receipt",
-      "ref": "BI-W10-01-P01-NATURAL-RUN-CHECKPOINT"
+      "ref": "WORKSHOP-EIGHT-MENU-VISUAL-QYH-REWORK-20260828"
     },
     {
-      "kind": "natural_run",
-      "ref": ".evidence/workshop/2026-08-28-bi-w10-01-natural-sequence/p01-readonly-checkpoint.md"
+      "kind": "browser",
+      "ref": ".evidence/workshop/2026-08-28-eight-menu-visual-rework/acceptance.md"
     },
     {
       "kind": "test",
-      "ref": "p01-probe-repeat-and-memory-validate-green"
+      "ref": "web-2311-backend-30-build-359-green"
     }
   ],
-  "evidence_cutoff": "2026-08-27T18:06:31Z",
+  "evidence_cutoff": "2026-08-28T03:44:02Z",
   "hard_boundaries": [
     "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
     "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
@@ -55,18 +56,18 @@
     "BI-W11-04",
     "BI-W11-05"
   ],
-  "last_green_gate": "P01 2026-08-27T18:00:04.481042Z 自然运行 succeeded/rowsWritten=1；12 类 source/projection 聚合逐类相等；canary 0/0",
-  "next_gate": "BI-W10-01-P02-NATURAL-RUN-CHECKPOINT",
+  "last_green_gate": "八菜单 reference/actual 浏览器逐页复核、侧栏 260/48、六数字同事浮层、Web 2311/2311、后端专项 30/30、Build 359 modules GREEN",
+  "next_gate": "BI-W10-01-P11-NATURAL-RUN-CHECKPOINT",
   "next_steps": [
-    "Wait for P02 at Asia/Shanghai 03:00 and read latest run, DLQ metadata, SourceReadiness and source/projection aggregates without manual execution",
-    "Continue P03-P12 at their existing natural schedule points; repair only a newly evidenced deterministic failure"
+    "At P11 existing Asia/Shanghai 12:00 natural schedule, read latest run, DLQ metadata, SourceReadiness and source/projection aggregates without manual execution",
+    "Continue P07 and P08 only through newly evidenced deterministic repair or their next natural schedule; do not replay or fabricate freshness"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000379",
+  "project_revision": "AOS-000380",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "8f8d22f0",
-    "docs": "ee3b9c9"
+    "aos-platform": "856faeab",
+    "docs": "1263a01"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -76,5 +77,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-28T02:12:58+08:00"
+  "updated_at": "2026-08-28T11:44:50+08:00"
 }

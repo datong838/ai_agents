@@ -5,3 +5,6 @@
 {"base_revision":"AOS-000378","occurred_at":"2026-08-28T02:09:41+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P01-NATURAL-RUN-CHECKPOINT","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T02:11:16+08:00","result":"BI_W10_01_P01_POST_RELOAD_NATURAL_RUN_GREEN_SEQUENCE_CONTINUES_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P01-NATURAL-RUN-CHECKPOINT","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T02:12:58+08:00","project_revision":"AOS-000379","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000379","occurred_at":"2026-08-28T11:43:43+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-VISUAL-QYH-REWORK-20260828","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T11:44:02+08:00","result":"VISUAL_REWORK_GREEN_QYH_FUNCTIONAL_ACCEPTANCE_GREEN_AT_READONLY_CUTOFF_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-VISUAL-QYH-REWORK-20260828","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T11:44:50+08:00","project_revision":"AOS-000380","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
