@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000391",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_production_contract_store.py",
+    "services/aos-api/tests/test_w2b_production_contract_store.py",
+    ".evidence/workshop/2026-08-28-bi-w10-responsibility-coverage-scope-correction/acceptance.md"
+  ],
+  "commits": [
+    "831c4742"
+  ],
+  "completed_at": "2026-08-28T19:34:19+08:00",
+  "completed_revision": "AOS-000391",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "范围污染已关闭，但required Capability自身仍因真实Provider Health过期保持non-operational；未刷新Health或冻结计划"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-AIP-RESPONSIBILITY-COVERAGE-SCOPE-CORRECTION",
+  "verification": [
+    "35/35专项GREEN；204/204累计GREEN；真实租户required-only重算保持诚实blocked；负向租户隔离GREEN；diff-check GREEN"
+  ]
+}

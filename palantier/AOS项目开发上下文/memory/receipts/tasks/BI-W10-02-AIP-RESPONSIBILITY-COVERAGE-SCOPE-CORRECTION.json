@@ -1,0 +1,20 @@
+{
+  "base_revision": "AOS-000391",
+  "created_at": "2026-08-28T19:26:45+08:00",
+  "excluded_scope": [
+    "CapabilityBinding/SkillBinding状态写入、Provider Health、secret、Case/Run、Pipeline/Cron/DLQ、业务数据、migration、release"
+  ],
+  "expected_outputs": [
+    "Slot requiredCapabilityIds精确coverage计算与三类回归测试"
+  ],
+  "lease_expires_at": "2026-08-29T14:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_production_contract_store.py",
+    "services/aos-api/tests/test_w2b_production_contract_store.py",
+    ".evidence/workshop/2026-08-28-bi-w10-responsibility-coverage-scope-correction"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-AIP-RESPONSIBILITY-COVERAGE-SCOPE-CORRECTION"
+}

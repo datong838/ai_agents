@@ -45,3 +45,6 @@
 {"base_revision":"AOS-000390","occurred_at":"2026-08-28T19:05:46+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-BINDING-READINESS-REFRESH","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T19:22:50+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-BINDING-READINESS-REFRESH","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T19:23:19+08:00","project_revision":"AOS-000391","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000391","occurred_at":"2026-08-28T19:26:45+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-RESPONSIBILITY-COVERAGE-SCOPE-CORRECTION","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T19:34:19+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-RESPONSIBILITY-COVERAGE-SCOPE-CORRECTION","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T19:35:10+08:00","project_revision":"AOS-000392","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
