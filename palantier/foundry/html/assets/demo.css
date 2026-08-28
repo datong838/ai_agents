@@ -7601,3 +7601,16 @@ html, body {
   font-size: 11px;
   color: var(--p-text-muted);
 }
+/* Workshop 视觉稿必须支持离线 file:// 预览；不依赖 Tailwind CDN 才能约束 SVG。 */
+svg.w-3 { width: 0.75rem; }
+svg.h-3 { height: 0.75rem; }
+svg.w-3\.5 { width: 0.875rem; }
+svg.h-3\.5 { height: 0.875rem; }
+svg.w-4 { width: 1rem; }
+svg.h-4 { height: 1rem; }
+svg.w-5 { width: 1.25rem; }
+svg.h-5 { height: 1.25rem; }
+svg.w-8 { width: 2rem; }
+svg.h-8 { height: 2rem; }
+svg.w-10 { width: 2.5rem; }
+svg.h-10 { height: 2.5rem; }

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日常任务总控大屏 | AI操作系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/demo.css" />
+  <style>
+    /* 离线直接打开时 Tailwind CDN 可能不可用；关键图标尺寸必须由视觉稿自身保证。 */
+    svg.w-3 { width: 0.75rem; }
+    svg.h-3 { height: 0.75rem; }
+    svg.w-4 { width: 1rem; }
+    svg.h-4 { height: 1rem; }
+    svg.w-5 { width: 1.25rem; }
+    svg.h-5 { height: 1.25rem; }
+
+    /* === 本页专属样式 === */
+    .tc-root { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+
+    /* ① 顶部实时经营概览 */
+    .tc-overview-bar { background: var(--p-surface); border-bottom: 1px solid var(--p-border); padding: 10px 24px; display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+    .tc-ov-item { display: flex; flex-direction: column; gap: 1px; padding-right: 20px; border-right: 1px solid var(--p-divider); }
+    .tc-ov-item:last-child { border-right: none; }
+    .tc-ov-val { font-size: 20px; font-weight: 700; line-height: 1.1; }
+    .tc-ov-label { font-size: 10px; color: var(--p-text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .tc-ov-trend { font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; gap: 2px; }
+    .tc-ov-trend-up { color: var(--p-green); }
+    .tc-ov-trend-down { color: var(--p-red); }
+
+    /* ② 任务指令栏 */
+    .tc-cmd-bar { background: var(--p-blue-light); border-bottom: 1px solid var(--p-blue-border); padding: 8px 24px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .tc-cmd-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--p-blue); color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .tc-cmd-input { flex: 1; height: 34px; border: 1px solid var(--p-blue-border); border-radius: 4px; background: white; padding: 0 12px; font-size: 13px; color: var(--p-text); }
+    .tc-cmd-input:focus { outline: none; border-color: var(--p-blue); box-shadow: 0 0 0 3px rgba(43,108,176,0.1); }
+    .tc-cmd-btn { height: 34px; padding: 0 16px; background: var(--p-blue); color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .tc-cmd-btn:hover { background: var(--p-blue-hover); }
+    .tc-cmd-hints { display: flex; gap: 6px; font-size: 11px; color: var(--p-blue); }
+    .tc-cmd-hint { padding: 2px 8px; border: 1px solid var(--p-blue-border); border-radius: 10px; cursor: pointer; }
+    .tc-cmd-hint:hover { background: var(--p-blue); color: white; }
+
+    /* ③ 主体区域 2/3 + 1/3 */
+    .tc-body { flex: 1; display: flex; overflow: hidden; }
+    .tc-body-left { flex: 2; display: flex; flex-direction: column; border-right: 1px solid var(--p-border); overflow: hidden; }
+    .tc-body-right { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    /* 左栏内部：执行组 | 任务流 | 策划组 */
+    .tc-left-row { display: flex; flex: 1; overflow: hidden; }
+    .tc-col-role { width: 120px; flex-shrink: 0; background: var(--p-surface); border-right: 1px solid var(--p-divider); display: flex; flex-direction: column; }
+    .tc-col-tasks { flex: 1; overflow-y: auto; background: var(--p-bg); }
+
+    /* 角色组标题 */
+    .tc-role-group-label { padding: 8px 10px; font-size: 10px; font-weight: 700; color: var(--p-text-muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--p-divider); text-align: center; }
+
+    /* 角色卡片 */
+    .tc-role-card { padding: 10px 8px; border-bottom: 1px solid var(--p-divider); cursor: pointer; transition: background .15s; position: relative; }
+    .tc-role-card:hover { background: var(--p-surface-hover); }
+    .tc-role-card.is-active { background: var(--p-blue-light); }
+    .tc-role-card.is-active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--p-blue); }
+    .tc-role-avatar { width: 32px; height: 32px; border-radius: 50%; margin: 0 auto 4px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .tc-role-name { font-size: 11px; font-weight: 600; color: var(--p-text); text-align: center; }
+    .tc-role-status { display: flex; align-items: center; justify-content: center; gap: 3px; margin-top: 3px; font-size: 9px; color: var(--p-text-muted); }
+    .tc-role-dot { width: 5px; height: 5px; border-radius: 50%; }
+    .tc-role-dot-green { background: var(--p-green); }
+    .tc-role-dot-amber { background: var(--p-amber); }
+    .tc-role-dot-gray { background: var(--p-text-muted); }
+    .tc-role-count { font-size: 10px; color: var(--p-text-muted); text-align: center; margin-top: 2px; }
+
+    /* 数字同事 / 共享 Agent 专业信息卡 */
+    .tc-role-card:focus-visible, .tc-agent-chip:focus-visible { outline: 2px solid var(--p-blue); outline-offset: -2px; }
+    .tc-capability-tooltip { position: fixed; width: min(304px, calc(100vw - 24px)); max-height: calc(100vh - 180px); overflow-y: auto; overscroll-behavior: contain; padding: 14px 16px 13px; background: #FFFFFF; color: var(--p-text-secondary); border: 1px solid var(--p-blue-border); border-top: 3px solid var(--p-blue); border-radius: 8px; box-shadow: 0 12px 32px rgba(30, 64, 105, .16), 0 2px 8px rgba(30, 64, 105, .08); font-size: 11px; line-height: 1.55; z-index: 30; pointer-events: none; opacity: 0; transform: translateY(4px); transition: opacity .12s ease, transform .12s ease; }
+    .tc-capability-tooltip.is-visible { opacity: 1; transform: translateY(0); }
+    .tc-tooltip-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding-bottom: 9px; margin-bottom: 9px; border-bottom: 1px solid var(--p-divider); }
+    .tc-tooltip-title { font-size: 13px; font-weight: 700; color: var(--p-text); }
+    .tc-tooltip-subtitle { margin-top: 2px; font-size: 10px; color: var(--p-text-muted); }
+    .tc-tooltip-badge { flex-shrink: 0; padding: 2px 7px; border-radius: 10px; color: var(--p-blue); background: var(--p-blue-light); border: 1px solid var(--p-blue-border); font-size: 9px; font-weight: 600; }
+    .tc-tooltip-row { display: grid; grid-template-columns: 58px 1fr; gap: 8px; margin-top: 7px; }
+    .tc-tooltip-label { color: var(--p-text-muted); font-size: 10px; }
+    .tc-tooltip-value { color: var(--p-text-secondary); }
+
+    /* 当日任务流 */
+    .tc-tasks-header { padding: 10px 16px; background: var(--p-surface); border-bottom: 1px solid var(--p-border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
+    .tc-tasks-title { font-size: 13px; font-weight: 700; color: var(--p-text); display: flex; align-items: center; gap: 8px; }
+    .tc-tasks-count { font-size: 11px; color: var(--p-text-muted); background: var(--p-surface-hover); padding: 2px 8px; border-radius: 10px; }
+    .tc-tasks-filters { display: flex; gap: 4px; }
+    .tc-tasks-filter { font-size: 10px; padding: 3px 8px; border-radius: 10px; cursor: pointer; border: 1px solid var(--p-border); color: var(--p-text-tertiary); }
+    .tc-tasks-filter.is-active { background: var(--p-blue-light); border-color: var(--p-blue-border); color: var(--p-blue); }
+
+    /* 任务卡 */
+    .tc-task-card { background: var(--p-surface); margin: 8px 12px; border: 1px solid var(--p-border); border-radius: 4px; padding: 10px 12px; cursor: pointer; transition: all .15s; position: relative; }
+    .tc-task-card:hover { box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-color: var(--p-border-strong); }
+    .tc-task-card.is-active { border-color: var(--p-blue); box-shadow: 0 0 0 2px var(--p-blue-light); }
+    .tc-task-left-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 4px 0 0 4px; }
+
+    .tc-task-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .tc-task-title-row { display: flex; align-items: center; gap: 6px; }
+    .tc-task-id { font-size: 10px; font-weight: 700; color: var(--p-text-muted); font-family: 'SF Mono', monospace; }
+    .tc-task-name { font-size: 13px; font-weight: 500; color: var(--p-text); }
+    .tc-task-status-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
+
+    .tc-task-progress { margin: 6px 0; }
+    .tc-task-progress-bar { height: 5px; background: var(--p-divider); border-radius: 3px; overflow: hidden; }
+    .tc-task-progress-fill { height: 100%; border-radius: 3px; transition: width .3s; }
+
+    .tc-task-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--p-text-muted); }
+    .tc-task-assignee { display: flex; align-items: center; gap: 4px; }
+    .tc-task-assignee-dot { width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; }
+    .tc-task-wb-link { font-size: 10px; color: var(--p-blue); padding: 1px 6px; border: 1px solid var(--p-blue-border); border-radius: 8px; background: var(--p-blue-light); }
+    .tc-task-agent { font-size: 10px; color: var(--p-text-tertiary); display: flex; align-items: center; gap: 3px; }
+
+    /* 历史任务入口 */
+    .tc-history-entry { margin: 4px 12px 8px; border: 1px dashed var(--p-blue-border); border-radius: 4px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; background: var(--p-blue-light); }
+    .tc-history-entry:hover { background: var(--p-blue-light); border-style: solid; }
+    .tc-history-label { font-size: 12px; color: var(--p-blue); font-weight: 500; display: flex; align-items: center; gap: 6px; }
+    .tc-history-count { font-size: 11px; color: var(--p-text-muted); }
+
+    /* 右栏 — 复盘+经验 */
+    .tc-review-header { padding: 10px 16px; background: var(--p-surface); border-bottom: 1px solid var(--p-border); font-size: 13px; font-weight: 700; color: var(--p-text); }
+    .tc-review-body { flex: 1; overflow-y: auto; }
+    .tc-review-section { padding: 12px 16px; border-bottom: 1px solid var(--p-divider); }
+    .tc-review-section-title { font-size: 11px; font-weight: 700; color: var(--p-text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
+
+    .tc-review-item { background: var(--p-surface); border: 1px solid var(--p-border); border-radius: 4px; padding: 10px 12px; margin-bottom: 8px; }
+    .tc-review-item-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .tc-review-item-name { font-size: 12px; font-weight: 500; color: var(--p-text); }
+    .tc-review-tag { font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 6px; }
+    .tc-review-desc { font-size: 11px; color: var(--p-text-tertiary); line-height: 1.5; }
+
+    .tc-insight-card { background: var(--p-blue-light); border: 1px solid var(--p-blue-border); border-radius: 4px; padding: 10px 12px; margin-bottom: 8px; }
+    .tc-insight-label { font-size: 10px; font-weight: 700; color: var(--p-blue); margin-bottom: 4px; }
+    .tc-insight-text { font-size: 12px; color: var(--p-text); line-height: 1.5; }
+
+    .tc-wiki-card { background: var(--p-surface); border: 1px solid var(--p-border); border-radius: 4px; padding: 8px 10px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; font-size: 12px; }
+    .tc-wiki-icon { width: 24px; height: 24px; border-radius: 4px; background: var(--p-green-bg); color: var(--p-green); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+
+    /* ⑤ 共享技能 Agent 池 */
+    .tc-agent-bar { background: var(--p-surface); border-top: 1px solid var(--p-border); padding: 8px 24px; flex-shrink: 0; display: flex; align-items: center; gap: 0; overflow-x: auto; }
+    .tc-agent-label { font-size: 10px; font-weight: 700; color: var(--p-text-muted); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; margin-right: 16px; }
+    .tc-agent-chip { display: flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 16px; background: var(--p-bg); color: var(--p-text); font-size: 11px; white-space: nowrap; cursor: pointer; transition: all .15s; border: 1px solid var(--p-border); }
+    .tc-agent-chip:hover { background: var(--p-blue-light); color: var(--p-blue); border-color: var(--p-blue); }
+    .tc-agent-chip.is-busy { color: #B7791F; background: #FFFBEB; border-color: #F6E05E; }
+    .tc-agent-chip.is-idle { color: #276749; background: #F0FFF4; border-color: #9AE6B4; }
+    .tc-agent-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .tc-agent-dot-busy { background: #D69E2E; }
+    .tc-agent-dot-idle { background: #48BB78; }
+    .tc-agent-sep { width: 1px; height: 16px; background: var(--p-border); margin: 0 8px; flex-shrink: 0; }
+
+    /* ⑥ 底部预告栏 */
+    .tc-tomorrow-bar { background: var(--p-surface); border-top: 1px solid var(--p-border); padding: 8px 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; }
+    .tc-tomorrow-label { font-size: 11px; color: var(--p-text-muted); }
+    .tc-tomorrow-items { display: flex; gap: 16px; }
+    .tc-tomorrow-item { font-size: 12px; color: var(--p-text-secondary); display: flex; align-items: center; gap: 4px; }
+
+    /* @keyframes */
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .tc-pulse { animation: pulse 2s infinite; }
+  </style>
+</head>
+<body>
+<div class="p-app">
+  <!-- 全局深色导航 -->
+  <nav class="p-nav-global">
+    <div class="p-nav-global-top">
+      <div class="p-nav-g-item" title="菜单"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="首页"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="运营驾驶舱"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div>
+      <div class="p-nav-g-item is-active" title="总控大屏"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="14" rx="1"/><path d="M9 20h6M12 17v3" stroke-linecap="round"/></svg></div>
+      <div class="p-nav-g-item" title="应用"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+      <div class="p-nav-g-item" title="数据"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg></div>
+    </div>
+    <div class="p-nav-global-bottom">
+      <div class="p-nav-g-item" title="帮助"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-nav-g-item" title="设置"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </nav>
+
+  <!-- 主内容 -->
+  <div class="p-main">
+    <!-- 顶栏 -->
+    <header class="p-header">
+      <div class="p-header-left">
+        <div class="p-breadcrumb">
+          <a href="#">栖月汇微商城</a>
+          <span class="p-breadcrumb-sep">/</span>
+          <span>日常任务总控大屏</span>
+        </div>
+      </div>
+      <div class="p-header-center">
+        <div class="p-search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3" stroke-linecap="round"/></svg>
+          <input type="text" placeholder="搜索任务、同事、关键词…" />
+        </div>
+      </div>
+      <div class="p-header-right">
+        <span style="font-size: 12px; color: var(--p-text-muted); margin-right: 8px;">2026-08-11 周二</span>
+        <button class="p-btn p-btn-secondary p-btn-sm">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"/></svg>
+          日历视图
+        </button>
+      </div>
+    </header>
+
+    <div class="p-body">
+      <!-- 侧边栏 -->
+      <aside class="p-sidebar">
+<a href="index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>概览</span></a>
+<div class="p-sidebar-section-title">工作台</div>
+<div class="p-sidebar-section">
+<a href="workshop-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>经营参谋 · 增长指挥中心</span></a>
+<a href="workshop.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>应用列表</span></a>
+<a href="workshop-app-order.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>订单管理</span></a>
+<a href="workshop-module.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>风险告警管理</span></a>
+<a href="workshop-analyst.html" class="p-sidebar-item" onclick="sessionStorage.setItem('analystTab','situation')"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12h2M20 12h2M12 2v2M12 20v2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg><span>经营态势</span></a>
+<a href="workshop-task-cockpit.html" class="p-sidebar-item is-active"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="1"/><path d="M9 20h6M12 17v3" stroke-linecap="round"/></svg><span>日常任务总控大屏</span></a>
+<a href="workshop-content-campaign.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18M8 4v16M16 4v16" stroke-linecap="round"/></svg><span>内容与活动工作台</span></a>
+<a href="workshop-creator-outreach.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M11 20c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg><span>达人邀约驾驶舱</span></a>
+<a href="workshop-media-studio.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="1"/><path d="M22 8l-6 4 6 4V8z" fill="currentColor" stroke="none"/><path d="M5 9l4 3-4 3V9z" fill="currentColor" stroke="none"/><path d="M11 3v2M14 3v2M17 3v2M9 20v1M14 20v1" stroke-linecap="round"/></svg><span>多媒体内容生产</span></a>
+<a href="workshop-price-governance.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 7v6h-6" stroke-linecap="round"/></svg><span>价格治理驾驶舱</span></a>
+<a href="workshop-customer.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke-linecap="round"/></svg><span>客户关系工作台</span></a>
+<a href="workshop-aip-chat.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buddy · 智能助手</span></a>
+</div>
+<div class="p-sidebar-section-title">应用程序构建工具</div>
+<div class="p-sidebar-section">
+<a href="workshop-canvas.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>画布编辑</span></a><a href="workshop-widget-registry.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>组件注册表</span></a>
+<a href="workshop-variables.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16v12H4zM8 10h2v4H8zM14 10h2v4h-2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>变量管理器</span></a>
+<a href="workshop-styles.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>主题与样式</span></a>
+<a href="workshop-module-interface.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>模块接口</span></a>
+<a href="workshop-events.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>事件配置</span></a>
+<a href="workshop-publish.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>发布入口</span></a>
+</div>
+<div class="p-sidebar-section-title">AIP 决策引擎</div>
+<div class="p-sidebar-section">
+<div class="p-sidebar-subgroup-title">应用层</div>
+<a href="aip-assist.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>AIP 助手</span></a>
+<a href="agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H5l-3 3V11.5A8.5 8.5 0 0110.5 3h2A8.5 8.5 0 0121 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>对话机器人</span></a>
+<a href="aip-analyst.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>AIP 分析师</span></a>
+<div class="p-sidebar-subgroup-title">逻辑编排层</div>
+<a href="aip-logic.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>AIP 逻辑画布</span></a>
+<a href="aip-tools.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Agent 工具面板</span></a>
+<a href="aip-maturity.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h4v-4h4v-4h4V8h4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>成熟度楼梯</span></a>
+<div class="p-sidebar-subgroup-title">智能体</div>
+<a href="aip-capabilities.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4" stroke-linecap="round"/></svg><span>智能体插件</span></a>
+<div class="p-sidebar-subgroup-title">评测与治理</div>
+<a href="aip-evals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Evals 门控</span></a>
+<a href="aip-draft-inbox.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 13h4l2 3h4l2-3h4v6H4v-6zM4 13l2-8h12l2 8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft 审批台</span></a>
+<div class="p-sidebar-subgroup-title">决策谱系</div>
+<a href="aip-decision-lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>决策谱系</span></a>
+<a href="aip-observability.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12h6l3-9 3 18 3-9h3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可观测性</span></a>
+</div>
+<div class="p-sidebar-section-title">模型管理</div>
+<div class="p-sidebar-section">
+<a href="aip-model-catalog.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>模型目录</span></a>
+<a href="aip-model-providers.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型供应商</span></a>
+<a href="aip-model-router.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>模型路由</span></a>
+<a href="aip-capacity-management.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5" stroke-linecap="round"/><path d="M3 12a9 3 0 0018 0" stroke-linecap="round"/></svg><span>容量管理</span></a>
+</div>
+<div class="p-sidebar-section-title">本体 · 数字孪生</div>
+<div class="p-sidebar-section">
+<a href="ontology.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg><span>本体管理</span></a>
+<a href="workshop-object-view.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 12h6M15 7.5l-5 3M15 16.5l-5-3" stroke-linecap="round"/></svg><span>对象探索</span></a>
+<a href="ontology-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16l-5 7v5l-6 4v-9L4 4z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>本体提案</span></a>
+<a href="ontology-graph-health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>图谱健康度</span></a>
+<a href="ontology-wiki-index.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5" stroke-linecap="round"/></svg><span>活知识 Wiki</span></a>
+<a href="funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>OKF funnel</span></a>
+<a href="okf-funnel.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>OKF 概览</span></a>
+<a href="ontology-branches.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>分支管理</span></a>
+</div>
+<div class="p-sidebar-section-title">管道与数据治理</div>
+<div class="p-sidebar-section">
+<a href="pipeline-list.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>管道构建</span></a>
+<a href="pipeline-proposals.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>管道提案</span></a>
+<a href="schedules.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5M10 20a2 2 0 002-2h-2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>计划编辑器</span></a>
+<a href="builds.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>搭建</span></a>
+<a href="dataset.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18M9 10v9M15 10v9"/></svg><span>数据集预览</span></a>
+<a href="code-repositories.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>代码库</span></a>
+<a href="lineage.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6h5a3 3 0 013 3v0a3 3 0 01-3 3H8" stroke-linecap="round"/></svg><span>数据沿袭</span></a>
+<a href="health.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 12.5l7.5 7 7.5-7a4.5 4.5 0 10-6.4-6.4L12 7.6l-.6-.5A4.5 4.5 0 004.5 12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据健康</span></a>
+</div>
+<div class="p-sidebar-section-title">数据源与同步</div>
+<div class="p-sidebar-section">
+<a href="data-connection.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22v-5M9 7V2M15 7V2M7 13h10a2 2 0 002-2V7a5 5 0 00-10 0v4a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg><span>数据链接器</span></a>
+<a href="data-connection-agents.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span>边缘代理</span></a>
+<a href="sync.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg><span>同步配置</span></a>
+<a href="sync-routing.html" class="p-sidebar-item"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 7.5L10 16M17 7.5L14 16" stroke-linecap="round"/></svg><span>同步路由</span></a>
+</div>
+      </aside>
+
+      <!-- 内容区 -->
+      <main class="p-content" style="padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+
+    <div class="tc-root">
+      <!-- ① 实时经营概览 -->
+      <div class="tc-overview-bar">
+        <div class="tc-ov-item">
+          <div class="tc-ov-val" style="color: var(--p-text);">¥18,260</div>
+          <div class="tc-ov-label">今日GMV</div>
+          <div class="tc-ov-trend tc-ov-trend-up">↑ 12.5% vs 昨日</div>
+        </div>
+        <div class="tc-ov-item">
+          <div class="tc-ov-val" style="color: var(--p-text);">92</div>
+          <div class="tc-ov-label">今日订单</div>
+          <div class="tc-ov-trend tc-ov-trend-up">↑ 8</div>
+        </div>
+        <div class="tc-ov-item">
+          <div class="tc-ov-val" style="color: var(--p-text);">7</div>
+          <div class="tc-ov-label">达人邀约</div>
+          <div class="tc-ov-trend tc-ov-trend-up">↑ 3</div>
+        </div>
+        <div class="tc-ov-item">
+          <div class="tc-ov-val" style="color: var(--p-text);">5</div>
+          <div class="tc-ov-label">价格异常</div>
+          <div class="tc-ov-trend tc-ov-trend-down">↓ 2</div>
+        </div>
+        <div class="tc-ov-item">
+          <div class="tc-ov-val" style="color: var(--p-text);">9</div>
+          <div class="tc-ov-label">内容产出</div>
+          <div class="tc-ov-trend tc-ov-trend-up">↑ 4</div>
+        </div>
+        <div class="tc-ov-item">
+          <div class="tc-ov-val" style="color: var(--p-text);">2</div>
+          <div class="tc-ov-label">活动进行中</div>
+          <div class="tc-ov-trend" style="color: var(--p-text-muted);">— 持平</div>
+        </div>
+        <div class="tc-ov-item">
+          <div class="tc-ov-val" style="color: var(--p-text);">28</div>
+          <div class="tc-ov-label">今日任务总数</div>
+          <div class="tc-ov-trend" style="color: var(--p-text-muted);">派发28 · 执行12 · 完成8</div>
+        </div>
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 6px;">
+          <div class="tc-pulse" style="width: 8px; height: 8px; border-radius: 50%; background: var(--p-green);"></div>
+          <span style="font-size: 11px; color: var(--p-text-tertiary);">六数字同事在线</span>
+        </div>
+      </div>
+
+      <!-- ② 任务指令栏（临时追加） -->
+      <div class="tc-cmd-bar">
+        <div class="tc-cmd-icon">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <input type="text" class="tc-cmd-input" placeholder="描述任务需求，AI自动分配给数字同事并调度技能Agent…" />
+        <button class="tc-cmd-btn">下达</button>
+        <div class="tc-cmd-hints">
+          <span class="tc-cmd-hint">跟一下张姐的过敏投诉</span>
+          <span class="tc-cmd-hint">临时推一款滞销品</span>
+          <span class="tc-cmd-hint">拉一份本周比价报告</span>
+        </div>
+      </div>
+
+      <!-- ③ 主体：左2/3 + 右1/3 -->
+      <div class="tc-body">
+        <!-- 左2/3 -->
+        <div class="tc-body-left">
+          <div class="tc-left-row">
+            <!-- 执行组 -->
+            <div class="tc-col-role" style="border-right: 1px solid var(--p-border);">
+              <div class="tc-role-group-label">执行组</div>
+
+              <div class="tc-role-card" data-profile="客服专员">
+                <div class="tc-role-avatar" style="background: var(--p-red-bg);">🎧</div>
+                <div class="tc-role-name">客服专员</div>
+                <div class="tc-role-status">
+                  <div class="tc-role-dot tc-role-dot-green"></div>
+                  执行中
+                </div>
+                <div class="tc-role-count">1/1 进行中</div>
+              </div>
+
+              <div class="tc-role-card" data-profile="私域管家">
+                <div class="tc-role-avatar" style="background: var(--p-blue-bg);">💬</div>
+                <div class="tc-role-name">私域管家</div>
+                <div class="tc-role-status">
+                  <div class="tc-role-dot tc-role-dot-green"></div>
+                  执行中
+                </div>
+                <div class="tc-role-count">3/4 进行中</div>
+              </div>
+
+              <div class="tc-role-card is-active" style="position: relative;" data-profile="导购顾问">
+                <div class="tc-role-avatar" style="background: var(--p-amber-bg);">🛒</div>
+                <div class="tc-role-name">导购顾问</div>
+                <div class="tc-role-status">
+                  <div class="tc-role-dot tc-role-dot-amber"></div>
+                  待确认
+                </div>
+                <div class="tc-role-count">2/3 进行中</div>
+
+              </div>
+            </div>
+
+            <!-- 当日任务流 -->
+            <div class="tc-col-tasks">
+              <div class="tc-tasks-header">
+                <div class="tc-tasks-title">
+                  当日任务流 · 执行进度
+                  <span class="tc-tasks-count">28 项</span>
+                </div>
+                <div class="tc-tasks-filters">
+                  <div class="tc-tasks-filter is-active">全部</div>
+                  <div class="tc-tasks-filter">达人 7</div>
+                  <div class="tc-tasks-filter">价格 5</div>
+                  <div class="tc-tasks-filter">内容 9</div>
+                  <div class="tc-tasks-filter">订单 4</div>
+                  <div class="tc-tasks-filter">活动 3</div>
+                </div>
+              </div>
+
+              <!-- 任务卡 - 达人 -->
+              <div class="tc-task-card">
+                <div class="tc-task-left-bar" style="background: #E53E3E;"></div>
+                <div class="tc-task-top">
+                  <div class="tc-task-title-row">
+                    <span class="tc-task-id">DA-08</span>
+                    <span class="tc-task-name">达人「美妆小甜」沟通样寄送</span>
+                  </div>
+                  <span class="tc-task-status-badge" style="background: var(--p-green-bg); color: var(--p-green);">执行中</span>
+                </div>
+                <div class="tc-task-progress">
+                  <div class="tc-task-progress-bar">
+                    <div class="tc-task-progress-fill" style="width: 75%; background: var(--p-green);"></div>
+                  </div>
+                </div>
+                <div class="tc-task-bottom">
+                  <div class="tc-task-assignee">
+                    <div class="tc-task-assignee-dot" style="background: var(--p-red-bg); color: var(--p-red);">🎧</div>
+                    <span>客服专员</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <span class="tc-task-agent">
+                      <div class="tc-pulse" style="width: 5px; height: 5px; border-radius: 50%; background: var(--p-green);"></div>
+                      素材采集Agent
+                    </span>
+                    <span class="tc-task-wb-link">达人工作台</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 任务卡 - 内容（活跃任务） -->
+              <div class="tc-task-card is-active">
+                <div class="tc-task-left-bar" style="background: #805AD5;"></div>
+                <div class="tc-task-top">
+                  <div class="tc-task-title-row">
+                    <span class="tc-task-id">CN-03</span>
+                    <span class="tc-task-name">七夕种草图文 · 玫瑰精粹面霜</span>
+                  </div>
+                  <span class="tc-task-status-badge" style="background: var(--p-amber-bg); color: var(--p-amber);">待确认</span>
+                </div>
+                <div class="tc-task-progress">
+                  <div class="tc-task-progress-bar">
+                    <div class="tc-task-progress-fill" style="width: 60%; background: var(--p-amber);"></div>
+                  </div>
+                </div>
+                <div class="tc-task-bottom">
+                  <div class="tc-task-assignee">
+                    <div class="tc-task-assignee-dot" style="background: var(--p-amber-bg); color: var(--p-amber);">🛒</div>
+                    <span>导购顾问</span>
+                    <span style="color: var(--p-text-muted);">·</span>
+                    <span style="color: var(--p-text-muted);">需确认选品</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <span class="tc-task-agent">
+                      <div class="tc-pulse" style="width: 5px; height: 5px; border-radius: 50%; background: var(--p-amber);"></div>
+                      文案生成Agent · 等待确认
+                    </span>
+                    <span class="tc-task-wb-link">内容工作台</span>
+                    <span class="tc-task-wb-link">活动工作台</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 任务卡 - 价格 -->
+              <div class="tc-task-card">
+                <div class="tc-task-left-bar" style="background: #3182CE;"></div>
+                <div class="tc-task-top">
+                  <div class="tc-task-title-row">
+                    <span class="tc-task-id">PR-05</span>
+                    <span class="tc-task-name">全网比价扫描 · 维生素C安瓶异常</span>
+                  </div>
+                  <span class="tc-task-status-badge" style="background: var(--p-red-bg); color: var(--p-red);">自动扫描中</span>
+                </div>
+                <div class="tc-task-progress">
+                  <div class="tc-task-progress-bar">
+                    <div class="tc-task-progress-fill" style="width: 90%; background: var(--p-blue);"></div>
+                  </div>
+                </div>
+                <div class="tc-task-bottom">
+                  <div class="tc-task-assignee">
+                    <div class="tc-task-assignee-dot" style="background: var(--p-green-bg); color: var(--p-green);">📊</div>
+                    <span>数据参谋</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <span class="tc-task-agent">
+                      <div class="tc-pulse" style="width: 5px; height: 5px; border-radius: 50%; background: var(--p-blue);"></div>
+                      素材采集Agent · 爬取中
+                    </span>
+                    <span class="tc-task-wb-link">价格工作台</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 任务卡 - 订单 -->
+              <div class="tc-task-card">
+                <div class="tc-task-left-bar" style="background: #E53E3E;"></div>
+                <div class="tc-task-top">
+                  <div class="tc-task-title-row">
+                    <span class="tc-task-id">OM-01</span>
+                    <span class="tc-task-name">退款审批 · 过敏反应客诉 ¥199</span>
+                  </div>
+                  <span class="tc-task-status-badge" style="background: var(--p-amber-bg); color: var(--p-amber);">待审批</span>
+                </div>
+                <div class="tc-task-progress">
+                  <div class="tc-task-progress-bar">
+                    <div class="tc-task-progress-fill" style="width: 67%; background: var(--p-amber);"></div>
+                  </div>
+                </div>
+                <div class="tc-task-bottom">
+                  <div class="tc-task-assignee">
+                    <div class="tc-task-assignee-dot" style="background: var(--p-red-bg); color: var(--p-red);">🎧</div>
+                    <span>客服专员</span>
+                    <span style="color: var(--p-red);">·</span>
+                    <span style="color: var(--p-red);">截止 17:30</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <span class="tc-task-wb-link">运营驾驶舱</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 任务卡 - 活动 -->
+              <div class="tc-task-card">
+                <div class="tc-task-left-bar" style="background: #D69E2E;"></div>
+                <div class="tc-task-top">
+                  <div class="tc-task-title-row">
+                    <span class="tc-task-id">CP-02</span>
+                    <span class="tc-task-name">七夕促销活动方案 · 第三轮调优</span>
+                  </div>
+                  <span class="tc-task-status-badge" style="background: var(--p-green-bg); color: var(--p-green);">执行中</span>
+                </div>
+                <div class="tc-task-progress">
+                  <div class="tc-task-progress-bar">
+                    <div class="tc-task-progress-fill" style="width: 85%; background: var(--p-green);"></div>
+                  </div>
+                </div>
+                <div class="tc-task-bottom">
+                  <div class="tc-task-assignee">
+                    <div class="tc-task-assignee-dot" style="background: var(--p-amber-bg); color: var(--p-amber);">🎫</div>
+                    <span>活动策划师</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <span class="tc-task-agent">
+                      <div class="tc-pulse" style="width: 5px; height: 5px; border-radius: 50%; background: var(--p-green);"></div>
+                      策略规划Agent
+                    </span>
+                    <span class="tc-task-wb-link">活动工作台</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 任务卡 - 内容 -->
+              <div class="tc-task-card">
+                <div class="tc-task-left-bar" style="background: #805AD5;"></div>
+                <div class="tc-task-top">
+                  <div class="tc-task-title-row">
+                    <span class="tc-task-id">CN-05</span>
+                    <span class="tc-task-name">每日朋友圈内容 · 3条自动排期</span>
+                  </div>
+                  <span class="tc-task-status-badge" style="background: var(--p-green-bg); color: var(--p-green);">已完成</span>
+                </div>
+                <div class="tc-task-progress">
+                  <div class="tc-task-progress-bar">
+                    <div class="tc-task-progress-fill" style="width: 100%; background: var(--p-green);"></div>
+                  </div>
+                </div>
+                <div class="tc-task-bottom">
+                  <div class="tc-task-assignee">
+                    <div class="tc-task-assignee-dot" style="background: var(--p-green-bg); color: var(--p-green);">📝</div>
+                    <span>内容官</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; align-items: center;">
+                    <span class="tc-task-agent" style="color: var(--p-green);">文案生成Agent · 完成</span>
+                    <span class="tc-task-wb-link">内容工作台</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 历史任务入口 -->
+              <div class="tc-history-entry">
+                <div class="tc-history-label">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round"/></svg>
+                  历史任务 · 查看归档与复盘记录
+                </div>
+                <div class="tc-history-count">本周 186 项 · 复盘 42 篇 · 经验 28 条 →</div>
+              </div>
+            </div>
+
+            <!-- 策划组 -->
+            <div class="tc-col-role">
+              <div class="tc-role-group-label">策划组</div>
+
+              <div class="tc-role-card" data-profile="数据参谋">
+                <div class="tc-role-avatar" style="background: var(--p-green-bg);">📊</div>
+                <div class="tc-role-name">数据参谋</div>
+                <div class="tc-role-status">
+                  <div class="tc-role-dot tc-role-dot-green"></div>
+                  调度中
+                </div>
+                <div class="tc-role-count">5/5 已派发</div>
+              </div>
+
+              <div class="tc-role-card" data-profile="内容官">
+                <div class="tc-role-avatar" style="background: var(--p-purple-bg, #F3E8FF);">📝</div>
+                <div class="tc-role-name">内容官</div>
+                <div class="tc-role-status">
+                  <div class="tc-role-dot tc-role-dot-amber"></div>
+                  待确认
+                </div>
+                <div class="tc-role-count">5/8 进行中</div>
+              </div>
+
+              <div class="tc-role-card" data-profile="活动策划师">
+                <div class="tc-role-avatar" style="background: var(--p-amber-bg);">🎫</div>
+                <div class="tc-role-name">活动策划师</div>
+                <div class="tc-role-status">
+                  <div class="tc-role-dot tc-role-dot-green"></div>
+                  执行中
+                </div>
+                <div class="tc-role-count">0/2 待启动</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右1/3 — 复盘+经验沉淀 -->
+        <div class="tc-body-right">
+          <div class="tc-review-header">
+            复盘 · 经验沉淀
+            <span style="font-size: 11px; color: var(--p-text-muted); font-weight: normal; margin-left: 8px;">2026-08-11</span>
+          </div>
+          <div class="tc-review-body">
+            <!-- 今日已完成复盘 -->
+            <div class="tc-review-section">
+              <div class="tc-review-section-title">
+                今日复盘 · 8项已完成
+                <span style="color: var(--p-green); font-size: 10px;">✅ 有效 6 · ⚠ 待定 1 · ❌ 有害 1</span>
+              </div>
+
+              <div class="tc-review-item">
+                <div class="tc-review-item-top">
+                  <span class="tc-review-item-name">CN-05 · 朋友圈3条内容</span>
+                  <span class="tc-review-tag" style="background: var(--p-green-bg); color: var(--p-green);">✅ 有效</span>
+                </div>
+                <div class="tc-review-desc">阅读 230 ↑15% · 互动 18 · 经验已入库 ✅</div>
+              </div>
+
+              <div class="tc-review-item">
+                <div class="tc-review-item-top">
+                  <span class="tc-review-item-name">PR-03 · 拼多多价格异常处理</span>
+                  <span class="tc-review-tag" style="background: var(--p-green-bg); color: var(--p-green);">✅ 有效</span>
+                </div>
+                <div class="tc-review-desc">竞品恢复正价 · 我方无需跟价 · Episodic已记录</div>
+              </div>
+
+              <div class="tc-review-item">
+                <div class="tc-review-item-top">
+                  <span class="tc-review-item-name">MID-02 · 中差评挽回</span>
+                  <span class="tc-review-tag" style="background: var(--p-amber-bg); color: var(--p-amber);">⚠ 无结论</span>
+                </div>
+                <div class="tc-review-desc">挽回话术未触达 · 客户未回复 · 需人工判断</div>
+              </div>
+
+              <div class="tc-review-item">
+                <div class="tc-review-item-top">
+                  <span class="tc-review-item-name">AFT-03 · 过敏投诉误判</span>
+                  <span class="tc-review-tag" style="background: var(--p-red-bg); color: var(--p-red);">❌ 有害</span>
+                </div>
+                <div class="tc-review-desc">将正常咨询误判为过敏客诉 · 已标记Evals待修正</div>
+              </div>
+            </div>
+
+            <!-- AI 改进建议 -->
+            <div class="tc-review-section">
+              <div class="tc-review-section-title">AI 改进建议</div>
+
+              <div class="tc-insight-card">
+                <div class="tc-insight-label">💡 客服专员 · 过敏识别优化</div>
+                <div class="tc-insight-text">AFT-03 误判原因：客户提到"刺痛"但非实际过敏。建议在过敏SOP中增加"刺痛≠过敏"判断条件。已生成Wiki候选。</div>
+              </div>
+
+              <div class="tc-insight-card" style="background: var(--p-green-bg); border-color: var(--p-green-border);">
+                <div class="tc-insight-label" style="color: var(--p-green);">📈 内容官 · 最佳发布时间</div>
+                <div class="tc-insight-text">近7天数据显示朋友圈 10:00-11:00 互动率比 14:00 高 32%。建议调整默认排期时间。</div>
+              </div>
+            </div>
+
+            <!-- 经验入库 -->
+            <div class="tc-review-section" style="border-bottom: none;">
+              <div class="tc-review-section-title">
+                经验沉淀 Wiki · 今日入库
+                <span style="color: var(--p-text-muted); font-size: 10px;">可复用 3 · Episodic 7</span>
+              </div>
+
+              <div class="tc-wiki-card">
+                <div class="tc-wiki-icon">📖</div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 500; color: var(--p-text);">VIP3过敏处理SOP · v3</div>
+                  <div style="font-size: 11px; color: var(--p-text-muted);">客服专员 · 步骤优化 · 待审批</div>
+                </div>
+              </div>
+
+              <div class="tc-wiki-card">
+                <div class="tc-wiki-icon">📖</div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 500; color: var(--p-text);">拼多多跟价判断规则 · v2</div>
+                  <div style="font-size: 11px; color: var(--p-text-muted);">数据参谋 · 新增3条判断条件</div>
+                </div>
+              </div>
+
+              <div class="tc-wiki-card">
+                <div class="tc-wiki-icon">📖</div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 500; color: var(--p-text);">达人寄样跟进模板 · v1</div>
+                  <div style="font-size: 11px; color: var(--p-text-muted);">客服专员 · 从DA-08提取</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑤ 共享技能 Agent 池 -->
+      <div class="tc-agent-bar">
+        <div class="tc-agent-label">共享技能 Agent</div>
+        <div class="tc-agent-chip is-busy" data-profile="素材采集">
+          <div class="tc-agent-dot tc-agent-dot-busy"></div>
+          素材采集
+        </div>
+        <div class="tc-agent-chip is-busy" data-profile="策略规划">
+          <div class="tc-agent-dot tc-agent-dot-busy"></div>
+          策略规划
+        </div>
+        <div class="tc-agent-chip is-busy" data-profile="文案生成">
+          <div class="tc-agent-dot tc-agent-dot-busy"></div>
+          文案生成
+        </div>
+        <div class="tc-agent-chip is-idle" data-profile="脚本撰写">
+          <div class="tc-agent-dot tc-agent-dot-idle"></div>
+          脚本撰写
+        </div>
+        <div class="tc-agent-sep"></div>
+        <div class="tc-agent-chip is-idle" data-profile="语音合成">
+          <div class="tc-agent-dot tc-agent-dot-idle"></div>
+          语音合成
+        </div>
+        <div class="tc-agent-chip is-idle" data-profile="视频合成">
+          <div class="tc-agent-dot tc-agent-dot-idle"></div>
+          视频合成
+        </div>
+        <div class="tc-agent-sep"></div>
+        <div class="tc-agent-chip is-idle" data-profile="内容审核">
+          <div class="tc-agent-dot tc-agent-dot-idle"></div>
+          内容审核
+        </div>
+        <div class="tc-agent-chip is-idle" data-profile="直播编排">
+          <div class="tc-agent-dot tc-agent-dot-idle"></div>
+          直播编排
+        </div>
+        <div class="tc-agent-chip is-idle" data-profile="平台适配">
+          <div class="tc-agent-dot tc-agent-dot-idle"></div>
+          平台适配
+        </div>
+        <div class="tc-agent-sep"></div>
+        <div class="tc-agent-chip is-busy" data-profile="数据复盘">
+          <div class="tc-agent-dot tc-agent-dot-busy"></div>
+          数据复盘
+        </div>
+      </div>
+
+      <!-- ⑥ 明日预告 -->
+      <div class="tc-tomorrow-bar">
+        <div class="tc-tomorrow-label">
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; vertical-align: middle;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"/></svg>
+          明日预告 · 2026-08-12 周三
+        </div>
+        <div class="tc-tomorrow-items">
+          <div class="tc-tomorrow-item">
+            <span style="color: var(--p-blue);">●</span>
+            18项已排期（计划表）
+          </div>
+          <div class="tc-tomorrow-item">
+            <span style="color: var(--p-amber);">●</span>
+            3项待确认（需导购确认选品）
+          </div>
+          <div class="tc-tomorrow-item">
+            <span style="color: var(--p-red);">●</span>
+            阻塞 0项
+          </div>
+          <div class="tc-tomorrow-item">
+            <span style="color: var(--p-green);">●</span>
+            CN-05 朋友圈内容已预排
+          </div>
+          <div class="tc-tomorrow-item">
+            <span style="color: var(--p-green);">●</span>
+            CP-02 七夕方案待批准发布
+          </div>
+        </div>
+      </div>
+    </div>
+      </main>
+    </div>
+  </div>
+</div>
+<div class="tc-capability-tooltip" id="tc-capability-tooltip" role="tooltip" aria-hidden="true"></div>
+<script>
+  (() => {
+    const profiles = {
+      '客服专员': { kind: '数字同事', title: '客服专员', subtitle: '客户服务与售后风险处置专家', capability: '意图与情绪识别、订单与物流安全查询、售后分诊、投诉升级、满意度反哺', boundary: '最小验证后读取脱敏事实；输出回复或工单草稿，高风险事项转人工', agents: '素材采集 · 文案生成', state: '执行中 · 1/1 进行中' },
+      '私域管家': { kind: '数字同事', title: '私域管家', subtitle: '客户关系沉淀与生命周期运营专家', capability: '授权身份关联、可解释标签分层、触达排期、沉默召回、关系反馈', boundary: '仅使用 CustomerLite 受限投影；遵守渠道授权、频控与退订边界', agents: '素材采集 · 文案生成', state: '执行中 · 3/4 进行中' },
+      '导购顾问': { kind: '数字同事', title: '导购顾问', subtitle: '购物决策支持与转化优化专家', capability: '需求诊断、约束下商品推荐、成分属性解释、商品对比搭配、异议处理与促单', boundary: '推荐必须可解释并受库存、价格、禁忌与承诺边界约束；越界转人工', agents: '素材采集 · 策略规划 · 脚本撰写 · 直播编排', state: '待确认 · 2/3 进行中' },
+      '数据参谋': { kind: '数字同事 · 总调度', title: '数据参谋', subtitle: '经营洞察、任务编排与效果复盘专家', capability: '经营健康巡检、内外机会研究、增长方案、审批后任务拆解、执行监控、归因复盘', boundary: '建议必须有证据和时效；审批前只产出 Draft，派活须可追溯到经营事实或记忆', agents: '素材采集 · 策略规划 · 数据复盘', state: '调度中 · 5/5 已派发' },
+      '内容官': { kind: '数字同事', title: '内容官', subtitle: '全平台内容策略与生产编排专家', capability: '选题研究、人群与内容策略、图文文案、短视频策划、多平台适配、事实品牌合规审核、线索识别与归因', boundary: '所有内容先形成 Draft；事实、品牌、版权与平台规则通过审核后才能发布', agents: '素材采集 · 策略规划 · 文案生成 · 脚本撰写 · 语音合成 · 视频合成 · 内容审核 · 平台适配', state: '待确认 · 5/8 进行中' },
+      '活动策划师': { kind: '数字同事', title: '活动策划师', subtitle: '增长活动设计、协同与止损专家', capability: '机会目标、人群商品机制、预算毛利模拟、跨同事任务编排、执行监控止损、增量复盘', boundary: '方案受库存、毛利、预算、投诉与履约护栏约束；外部合作和高风险动作需审批', agents: '素材采集 · 策略规划 · 平台适配 · 数据复盘', state: '执行中 · 0/2 待启动' },
+      '素材采集': { kind: '共享专业 Agent', title: '素材采集 Agent', subtitle: '事实、数据与素材的统一采集入口', capability: '采集任务所需的历史、库存、竞品、达人、流量与内容素材', io: '任务目标 + 数据范围 → 带来源与时效的素材包', callers: '六数字同事通用', state: '忙碌 · 执行中' },
+      '策略规划': { kind: '共享专业 Agent', title: '策略规划 Agent', subtitle: '把目标与约束转成可执行策略', capability: '内容策略、活动策略与推荐策略制定，形成步骤、指标和停止条件', io: '目标 + 约束 + 证据 → 策略 Draft', callers: '内容官 · 活动策划师 · 导购顾问', state: '忙碌 · 执行中' },
+      '文案生成': { kind: '共享专业 Agent', title: '文案生成 Agent', subtitle: '跨场景文案草稿生产', capability: '标题、商品描述、种草推文、客服话术与私域触达文案', io: '产品事实 + 人群 + 平台风格 → 文案 Draft', callers: '内容官 · 客服专员 · 私域管家', state: '忙碌 · 执行中' },
+      '脚本撰写': { kind: '共享专业 Agent', title: '脚本撰写 Agent', subtitle: '短视频与直播叙事脚本生产', capability: '短视频钩子、口播、分镜、字幕、直播话术与互动脚本', io: '内容 Brief + 商品事实 → 脚本与分镜 Draft', callers: '内容官 · 导购顾问', state: '空闲 · 可调度' },
+      '语音合成': { kind: '共享专业 Agent', title: '语音合成 Agent', subtitle: '合规授权下的配音与旁白生成', capability: '将审定文本合成为指定音色、节奏和情绪的语音素材', io: '审定文本 + 授权音色参数 → 音频 Artifact', callers: '内容官', state: '空闲 · 可调度' },
+      '视频合成': { kind: '共享专业 Agent', title: '视频合成 Agent', subtitle: '视频素材装配与后期合成', capability: '按脚本完成镜头编排、字幕、配音、转场与规格化输出', io: '分镜 + 素材 + 音频 → 视频 Artifact', callers: '内容官', state: '空闲 · 可调度' },
+      '内容审核': { kind: '共享专业 Agent', title: '内容审核 Agent', subtitle: '事实、品牌、版权与合规质量门控', capability: '检查事实引用、敏感表述、品牌规范、素材授权和平台限制', io: '内容 Draft + 规则包 → 审核报告与修改项', callers: '内容官', state: '空闲 · 可调度' },
+      '直播编排': { kind: '共享专业 Agent', title: '直播编排 Agent', subtitle: '数字人直播流程与互动编排', capability: '排品、话术、节奏、问答、互动与异常停播节点编排', io: '商品池 + 直播目标 + 风险约束 → 直播 Runbook', callers: '导购顾问 · 活动策划师', state: '空闲 · 可调度' },
+      '平台适配': { kind: '共享专业 Agent', title: '平台适配 Agent', subtitle: '渠道格式、规则与标签转换', capability: '按各平台规格调整标题、正文、画幅、标签、挂载方式和发布检查项', io: '母版内容 + 平台规则 → 平台独立 Variant', callers: '内容官 · 活动策划师', state: '空闲 · 可调度' },
+      '数据复盘': { kind: '共享专业 Agent', title: '数据复盘 Agent', subtitle: '效果归因、趋势分析与经验候选生成', capability: 'ROI 计算、目标对照、效果归因、趋势识别和改进建议', io: '执行回执 + 指标 + 基线 → EffectReview / 记忆候选', callers: '数据参谋 · 活动策划师', state: '忙碌 · 执行中' }
+    };
+
+    const tooltip = document.getElementById('tc-capability-tooltip');
+    const triggers = Array.from(document.querySelectorAll('[data-profile]'));
+    let activeTrigger = null;
+
+    const row = (label, value) => value ? `<div class="tc-tooltip-row"><div class="tc-tooltip-label">${label}</div><div class="tc-tooltip-value">${value}</div></div>` : '';
+    const render = profile => `<div class="tc-tooltip-header"><div><div class="tc-tooltip-title">${profile.title}</div><div class="tc-tooltip-subtitle">${profile.subtitle}</div></div><span class="tc-tooltip-badge">${profile.kind}</span></div>${row('专业能力', profile.capability)}${row('工作边界', profile.boundary)}${row('输入 → 输出', profile.io)}${row('主要调用方', profile.callers)}${row('常用 Agent', profile.agents)}${row('当前状态', profile.state)}`;
+
+    const place = trigger => {
+      const rect = trigger.getBoundingClientRect();
+      const gap = 10;
+      const margin = 12;
+      const commandBottom = document.querySelector('.tc-cmd-bar')?.getBoundingClientRect().bottom ?? margin;
+      const capabilityTop = document.querySelector('.tc-agent-bar')?.getBoundingClientRect().top ?? (window.innerHeight - margin);
+      const safeTop = Math.max(margin, commandBottom + 8);
+      const safeBottom = Math.min(window.innerHeight - margin, capabilityTop - 8);
+      tooltip.style.maxHeight = `${Math.max(150, safeBottom - safeTop)}px`;
+      const tip = tooltip.getBoundingClientRect();
+      let left;
+      let top;
+      if (trigger.classList.contains('tc-agent-chip')) {
+        left = rect.left + rect.width / 2 - tip.width / 2;
+        top = rect.top - tip.height - gap;
+      } else {
+        const roomRight = window.innerWidth - rect.right;
+        left = roomRight >= tip.width + gap ? rect.right + gap : rect.left - tip.width - gap;
+        top = rect.top + rect.height / 2 - tip.height / 2;
+      }
+      tooltip.style.left = `${Math.max(margin, Math.min(left, window.innerWidth - tip.width - margin))}px`;
+      tooltip.style.top = `${Math.max(safeTop, Math.min(top, safeBottom - tip.height))}px`;
+    };
+
+    const show = trigger => {
+      const profile = profiles[trigger.dataset.profile];
+      if (!profile) return;
+      activeTrigger = trigger;
+      tooltip.innerHTML = render(profile);
+      tooltip.setAttribute('aria-hidden', 'false');
+      tooltip.classList.add('is-visible');
+      place(trigger);
+    };
+
+    const hide = trigger => {
+      if (trigger && activeTrigger !== trigger) return;
+      activeTrigger = null;
+      tooltip.classList.remove('is-visible');
+      tooltip.setAttribute('aria-hidden', 'true');
+    };
+
+    triggers.forEach((trigger, index) => {
+      trigger.tabIndex = 0;
+      trigger.setAttribute('aria-describedby', tooltip.id);
+      trigger.addEventListener('mouseenter', () => show(trigger));
+      trigger.addEventListener('mouseleave', () => hide(trigger));
+      trigger.addEventListener('focus', () => show(trigger));
+      trigger.addEventListener('blur', () => hide(trigger));
+    });
+    window.addEventListener('resize', () => activeTrigger && place(activeTrigger));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  })();
+</script>
+<script src="assets/demo.js"></script>
+<script src="assets/workshop-shell.js"></script>
+</body>
+</html>
