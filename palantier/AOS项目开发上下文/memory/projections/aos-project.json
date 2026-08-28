@@ -1,33 +1,33 @@
 {
   "completed": [
-    "Exact Action Lease consumer validates exact Action/Adapter and unique applied metadata-only Receipt; maintainer avoids duplicate refresh; focused 26/26 and cumulative 245/245 GREEN"
+    "Exact owner-scoped active Lease inbox handles zero/one/multiple/foreign/expired/drifted cases and preserves one Receipt/one fake refresh; focused 29/29 and cumulative 248/248 GREEN"
   ],
-  "content_hash": "sha256:c55144fcf144af5c693ad6a47de4b2373fad752c362f4a0e9faa31e17a4d67f1",
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health maintainer exact Lease/Receipt 消费桥接闭合，继续 Lease inbox 权威选择",
-  "delivery_status": "BI_W10_PROVIDER_HEALTH_MAINTENANCE_LEASE_BRIDGE_GREEN_SOURCE_READINESS_10_OF_12_NO_LIVE_REGISTRATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:5cd963dd0bc19adda2b6ab3d94584c2677845380dd5d47e26844eb5878824a02",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health maintainer exact Lease Inbox 闭合，继续显式运行时装配工厂",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_MAINTENANCE_LEASE_INBOX_GREEN_SOURCE_READINESS_10_OF_12_NO_LIVE_WIRING_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "code",
-      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-maintenance-lease-bridge/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-maintenance-lease-inbox/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-28T21:12:43+08:00",
+  "generated_at": "2026-08-28T21:25:38+08:00",
   "hard_boundaries": [
     "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、真实 Case/Run、业务写入、migration 或发布"
   ],
   "incomplete": [
-    "No live ActionType/Adapter registration, no runtime Lease source, natural P07/P08 remains failed"
+    "No runtime assembly or ActionType installation; natural P07/P08 remains failed"
   ],
-  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-LEASE-BRIDGE",
-  "next_gate": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-LEASE-INBOX",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-LEASE-INBOX",
+  "next_gate": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-RUNTIME-ASSEMBLY",
   "next_steps": [
-    "Implement fail-closed Lease inbox selector for already approved exact provider-health leases in disposable DB; no Provider call or runtime activation"
+    "Build explicit fail-closed runtime assembly factory with exact ActionType verification; do not activate current API or Provider"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000397",
+  "project_revision": "AOS-000398",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "m1": "9494301a"
+    "m1": "3c9b6e8b"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

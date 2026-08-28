@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000397",
+  "created_at": "2026-08-28T21:14:38+08:00",
+  "excluded_scope": [
+    "main.py/runtime registration/API restart/real Provider/Secret/Health/Case/Run/business writes/P01-P12/DLQ/migration/release"
+  ],
+  "expected_outputs": [
+    "Tenant-scoped exact active Lease inbox selects only one approved provider-health Lease for canonical consumer; zero/multiple/drifted/foreign leases fail closed"
+  ],
+  "lease_expires_at": "2026-08-28T17:30:00+00:00",
+  "owner": "codex-m1-solo",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_provider_health_maintenance_inbox.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_authority.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-maintenance-lease-inbox/acceptance.md",
+    "docs:119-BI-W0 plan section 94"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-LEASE-INBOX"
+}
