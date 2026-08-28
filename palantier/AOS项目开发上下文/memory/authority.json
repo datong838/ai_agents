@@ -1,33 +1,33 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "Provider Health ActionType exact plugin package discovered but not installed; snapshot/hash equality and no-secret config verified; focused 40/40 and cumulative 259/259 GREEN"
+    "Startup preflight requires exact action-lease-v1 mode, fixed service identity/tenant and installed exact ActionType; default inactive; focused 51/51 and cumulative 529/529 GREEN"
   ],
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health ActionType 插件包闭合，继续运行时接线预检",
-  "delivery_status": "BI_W10_PROVIDER_HEALTH_ACTIONTYPE_PLUGIN_PACKAGE_GREEN_AVAILABLE_NOT_INSTALLED_SOURCE_READINESS_10_OF_12_NO_ACTIVATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health 启动接线预检闭合，继续无激活启动工厂",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_RUNTIME_WIRING_PREFLIGHT_GREEN_DEFAULT_INACTIVE_SOURCE_READINESS_10_OF_12_NO_ACTIVATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-actiontype-plugin-package/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-runtime-wiring-preflight/acceptance.md"
     }
   ],
-  "evidence_cutoff": "2026-08-28T21:51:01+08:00",
+  "evidence_cutoff": "2026-08-28T22:12:29+08:00",
   "hard_boundaries": [
     "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、Secret 解析、真实 Case/Run、业务写入、migration 或发布"
   ],
   "incomplete": [
-    "Runtime is not wired or activated; plugin remains uninstalled; natural P07/P08 failed"
+    "Startup does not yet construct the canonical runtime or integrate main.py; plugin remains uninstalled; natural P07/P08 failed"
   ],
-  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-ACTIONTYPE-PLUGIN-PACKAGE",
-  "next_gate": "BI-W10-02-PROVIDER-HEALTH-RUNTIME-WIRING-PREFLIGHT",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-RUNTIME-WIRING-PREFLIGHT",
+  "next_gate": "BI-W10-02-PROVIDER-HEALTH-STARTUP-RUNTIME-FACTORY",
   "next_steps": [
-    "Preflight startup/runtime wiring conditions with explicit service principal, exact tenant, exact installed snapshot and separate authority mode; no activation or Provider call"
+    "Build an explicit startup factory that consumes the GREEN preflight and canonical refresh callables but remains inactive by default; no main.py wiring, restart or Provider call"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000400",
+  "project_revision": "AOS-000401",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "80d2bf57"
+    "aos-platform": "8693ecb9"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -37,5 +37,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-28T21:52:06+08:00"
+  "updated_at": "2026-08-28T22:12:49+08:00"
 }

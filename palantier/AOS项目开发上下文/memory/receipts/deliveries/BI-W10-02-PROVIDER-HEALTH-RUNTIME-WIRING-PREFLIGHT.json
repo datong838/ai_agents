@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000400",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_provider_health_maintenance_startup.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_startup.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_authority.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_runtime.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-runtime-wiring-preflight/acceptance.md"
+  ],
+  "commits": [
+    "8693ecb9"
+  ],
+  "completed_at": "2026-08-28T22:12:29+08:00",
+  "completed_revision": "AOS-000400",
+  "result": "BI_W10_PROVIDER_HEALTH_RUNTIME_WIRING_PREFLIGHT_CODE_CONTROL_GREEN_DEFAULT_INACTIVE_EXACT_AUTHORITY_IDENTITY_SNAPSHOT_NO_ACTIVATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Preflight only; main.py and current installation/runtime remain unchanged; no Provider, Secret, readiness or real data effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-RUNTIME-WIRING-PREFLIGHT",
+  "verification": [
+    "8/8 startup focused; 51/51 Provider Health focused; 529/529 cumulative; compileall/diff GREEN; API PID 68386 unchanged"
+  ]
+}
