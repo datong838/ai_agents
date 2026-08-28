@@ -1,0 +1,34 @@
+{
+  "base_revision": "AOS-000387",
+  "blockers": [
+    "P07/P08 next-natural-run evidence not yet available",
+    "AIP exact production composition not yet resolved"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_profile_catalog.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_case_selection.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_profile_catalog.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_case_selection.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    ".evidence/workshop/2026-08-28-bi-w10-profile-scope-authority/acceptance.md"
+  ],
+  "commits": [
+    "f203acb6"
+  ],
+  "completed_at": "2026-08-28T17:58:13+08:00",
+  "completed_revision": "AOS-000387",
+  "result": "IMPLEMENTED_GREEN",
+  "risks": [
+    "SourceReadiness remains 10/12 until P07/P08 next natural slots",
+    "AIP production composition remains unresolved and runCreatable=false"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROFILE-SCOPE-AUTHORITY",
+  "verification": [
+    "Profile catalog and Case selection 10/10 GREEN",
+    "API and OpenAPI targeted suite 39/39 GREEN",
+    "Business Investigation SourceReadiness OpenAPI cumulative 401/401 GREEN",
+    "real tenant and isolation canary read-only probes preserve exact tenant boundaries"
+  ]
+}

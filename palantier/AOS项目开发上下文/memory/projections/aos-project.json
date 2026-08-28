@@ -1,39 +1,39 @@
 {
   "completed": [
-    "Case 精确选择预检、写前五类 exact ref 复核与 OpenAPI 冻结合同闭合；58/58 累计、16/16 OpenAPI GREEN"
+    "L1 InvestigationProfile/Scope exact authority、Case/Run blocker 分层、401/401 累计回归 GREEN"
   ],
-  "content_hash": "sha256:38e0cf12d45d13620ae5a0cb6e4dfabbc32c418bb917296c781649cf02cd120e",
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Case 精确选择预检 GREEN，继续 Profile/Scope authority 与 P07/P08 自然窗口",
-  "delivery_status": "BI_W10_CASE_SELECTION_PREFLIGHT_GREEN_PROFILE_SCOPE_PENDING_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:b6782964a5153835c39321a2f000f55189a73ea5278be9f946f3bed5a363ef5a",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 L1 Profile/Scope authority GREEN，继续 AIP 生产组合解析与 P07/P08 自然窗口",
+  "delivery_status": "BI_W10_L1_PROFILE_SCOPE_AUTHORITY_GREEN_AIP_COMPOSITION_PENDING_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "runtime",
-      "ref": "/Users/ddt/work/projects/ai_agent/aos-platform/.evidence/workshop/2026-08-28-bi-w10-case-selection-preflight/acceptance.md"
+      "ref": "/Users/ddt/work/projects/ai_agent/aos-platform/.evidence/workshop/2026-08-28-bi-w10-profile-scope-authority/acceptance.md"
     },
     {
       "kind": "receipt",
-      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-CUTOVER-EXACT-SELECTION-PREFLIGHT.json"
+      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-02-PROFILE-SCOPE-AUTHORITY.json"
     }
   ],
-  "generated_at": "2026-08-28T17:24:24+08:00",
+  "generated_at": "2026-08-28T17:59:30+08:00",
   "hard_boundaries": [
     "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、真实 Case/Run、业务写入、migration 或发布"
   ],
   "incomplete": [
-    "生产 InvestigationProfile/InvestigationScope authority 尚未安装，真实 Case 未创建",
+    "AIP exact production composition 尚未解析，runCreatable=false",
     "P07/P08 下一自然窗口尚未到达，SourceReadiness 保持 10 ready / 2 failed"
   ],
-  "last_green_gate": "BI-W10-CUTOVER-EXACT-SELECTION-PREFLIGHT",
-  "next_gate": "BI-W10-02-PROFILE-SCOPE-AUTHORITY",
+  "last_green_gate": "BI-W10-02-PROFILE-SCOPE-AUTHORITY",
+  "next_gate": "BI-W10-02-AIP-PRODUCTION-COMPOSITION-RESOLVER",
   "next_steps": [
-    "实现生产 InvestigationProfile/Scope 只读 authority 与 exact resolver，不创建真实 Case/Run",
+    "实现只读 AIP production composition resolver，精确读取 Logic/StageTemplate/SkillBinding/ResponsibilityPlan 生命周期并失败关闭",
     "保持 API 稳定运行，只读回读 P07/P08 下一自然 Run、DLQ 与同截止 SourceReadiness"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000387",
+  "project_revision": "AOS-000388",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "5bc59b56aeb02e9900bdb2969494d4488f75f43c"
+    "aos-platform": "f203acb6ac36337c3d725da54afad88ebcf30e2d"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
