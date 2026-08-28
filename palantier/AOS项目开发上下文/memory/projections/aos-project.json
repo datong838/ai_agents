@@ -1,42 +1,34 @@
 {
   "completed": [
-    "P12 2026-08-28 13:00 Asia/Shanghai natural cron succeeded rows_written=420; Payment source/projection 210/210 quality and reconciliation pass; API reload health 200; cron slot integrity guard loaded",
-    "P07 dead SSH tunnel cache exact-identity eviction code GREEN at 6062eb02; no same-run retry; targeted 27/27 and adjacent 61/61 GREEN"
+    "Exact API PID/listener ownership guard delivered at 59864659; runtime PID 68386 owns sole 8080 listener, health 200, 12/12 schedules enabled",
+    "Provider maintenance is disabled in generic recovery; targeted 38/38 and adjacent 56/56 GREEN; SourceReadiness 10 ready/2 failed with 12/12 reconciliation pass"
   ],
-  "content_hash": "sha256:6878a52d4a1cc98fe381d2829e5e2f6e67cb91e3ea102fe6a2e8f9e9398e0e7a",
-  "current_phase": "Workshop 八菜单视觉与栖月汇只读功能自验收 GREEN；P07 失效隧道缓存精确驱逐代码 GREEN，继续 BI-W10-01 P08 调度连续性诊断",
-  "delivery_status": "P07_DEAD_TUNNEL_CACHE_EXACT_EVICTION_CODE_GREEN_NATURAL_CRON_PENDING_P08_CONTINUITY_DIAGNOSTIC_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:1538223d760e16839a1e5c163e4dc0dcfdf5f4586118d8b7d6b1d5503fa17511",
+  "current_phase": "Workshop 八菜单视觉与栖月汇只读功能自验收 GREEN；P08 API 运行态所有权守护 GREEN，继续 P07/P08 下一自然窗口回读",
+  "delivery_status": "P08_RUNTIME_RELOAD_GUARD_CODE_AND_RUNTIME_GREEN_NATURAL_P08_SLOT_PENDING_NO_CATCH_UP_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "delivery_receipt",
-      "ref": "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-01-P07-TUNNEL-CACHE-EVICTION-CODE.json"
-    },
-    {
-      "kind": "natural_cron",
-      "ref": ".evidence/workshop/2026-08-28-qyh-natural-sequence/p12-natural-run.md"
+      "kind": "receipt",
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-01-p08-runtime-reload-guard/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-28T14:17:40+08:00",
+  "generated_at": "2026-08-28T15:52:49+08:00",
   "hard_boundaries": [
-    "NO_MANUAL_PIPELINE_EXECUTION_NO_REPLAY_NO_RETRY_NO_EXTERNAL_MUTATION_NO_RELEASE"
+    "NO_MANUAL_PIPELINE_RUN/NO_DLQ_REPLAY/NO_REAL_BUSINESS_DATA_MUTATION/NO_PROVIDER_HEALTH_EXECUTION/NO_EXTERNAL_EFFECT/NO_MIGRATION/NO_RELEASE"
   ],
   "incomplete": [
-    "P07 requires the next natural run for runtime closure; P08 has no 2026-08-28 natural run record; P09 historical started-before-slot receipt remains anomalous"
+    "P07 next natural run and P08 next natural 09:00 run remain required; P09 historical early-start anomaly remains immutable"
   ],
-  "last_green_gate": "BI-W10-01-P07-TUNNEL-CACHE-EVICTION-CODE",
-  "next_gate": "BI-W10-01-P08-SCHEDULER-CONTINUITY-DIAGNOSTIC",
+  "last_green_gate": "BI-W10-01-P08-RUNTIME-RELOAD-GUARD",
+  "next_gate": "BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK",
   "next_steps": [
-    "Diagnose P08 scheduler runtime continuity with read-only process, schedule, run and log evidence; do not catch up or manually execute",
-    "Preserve P07/P08/P09 as independent facts and continue the next natural sequence without replay, retry, external mutation, or release"
+    "Keep exact runtime owner alive and read the next natural P07/P08 run, DLQ metadata and same-cutoff SourceReadiness without manual execution or replay"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000383",
+  "project_revision": "AOS-000384",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "6062eb02",
-    "aos-platform-cron-guard": "43767be0",
-    "aos-platform-docs": "7b44110",
-    "aos-platform-quality": "fa66c013"
+    "code": "59864659"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

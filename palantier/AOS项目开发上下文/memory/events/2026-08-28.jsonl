@@ -19,3 +19,6 @@
 {"base_revision":"AOS-000382","occurred_at":"2026-08-28T14:16:10+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P07-TUNNEL-CACHE-EVICTION-CODE","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T14:16:45+08:00","result":"P07_DEAD_TUNNEL_CACHE_EXACT_EVICTION_CODE_GREEN_NATURAL_CRON_PENDING_NO_RETRY_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P07-TUNNEL-CACHE-EVICTION-CODE","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T14:17:40+08:00","project_revision":"AOS-000383","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000383","occurred_at":"2026-08-28T15:50:27+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P08-RUNTIME-RELOAD-GUARD","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T15:51:41+08:00","result":"P08_RUNTIME_RELOAD_GUARD_CODE_AND_RUNTIME_GREEN_NATURAL_P08_SLOT_PENDING_NO_CATCH_UP_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P08-RUNTIME-RELOAD-GUARD","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T15:52:49+08:00","project_revision":"AOS-000384","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

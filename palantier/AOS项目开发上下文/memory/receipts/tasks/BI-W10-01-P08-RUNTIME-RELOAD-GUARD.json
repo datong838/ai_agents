@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000383",
+  "created_at": "2026-08-28T15:50:27+08:00",
+  "excluded_scope": [
+    "manual pipeline execution,DLQ replay,real business data mutation,Provider health execution,external effects,migration apply,release,w1-aip uncommitted scope"
+  ],
+  "expected_outputs": [
+    "Exact API PID/listener ownership guard, provider-maintenance-off recovery, tests, runtime readback, Delivery Receipt and memory CAS"
+  ],
+  "lease_expires_at": "2026-08-29T16:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "aos-platform:scripts/demo/api_runtime_guard.py,scripts/demo/ensure-api.sh,scripts/demo/tests/test_api_runtime_guard.py,.evidence/workshop/2026-08-28-bi-w10-01-p08-runtime-reload-guard;docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-01-P08-RUNTIME-RELOAD-GUARD"
+}

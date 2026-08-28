@@ -1,0 +1,29 @@
+{
+  "base_revision": "AOS-000383",
+  "blockers": [],
+  "changed_files": [
+    "scripts/demo/api_runtime_guard.py",
+    "scripts/demo/ensure-api.sh",
+    "scripts/demo/tests/test_api_runtime_guard.py",
+    ".evidence/workshop/2026-08-28-bi-w10-01-p08-runtime-reload-guard/acceptance.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "59864659"
+  ],
+  "completed_at": "2026-08-28T15:51:41+08:00",
+  "completed_revision": "AOS-000383",
+  "result": "P08_RUNTIME_RELOAD_GUARD_CODE_AND_RUNTIME_GREEN_NATURAL_P08_SLOT_PENDING_NO_CATCH_UP_NO_RELEASE",
+  "risks": [
+    "Initial pre-remediation startup inherited enabled provider maintenance and emitted 3 health probes; immediately disabled and verified 0 subsequent provider calls",
+    "P08 2026-08-28 natural slot remains historically missing; P07 failed and P09 timing anomaly remain unchanged; next natural evidence is still required"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-P08-RUNTIME-RELOAD-GUARD",
+  "verification": [
+    "runtime/JDBC/Cron targeted 38/38 GREEN",
+    "SourceAdapter/live executor/SourceReadiness adjacent 56/56 GREEN",
+    "exact PID 68386 owns sole 8080 listener; health 200; 12/12 schedules enabled; provider maintenance disabled after remediation",
+    "SourceReadiness 10 ready/2 failed and 12/12 reconciliation pass; source/projection equal; canary 0/0"
+  ]
+}
