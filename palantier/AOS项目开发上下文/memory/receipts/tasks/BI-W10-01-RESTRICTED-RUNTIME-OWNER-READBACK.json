@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000384",
+  "created_at": "2026-08-28T16:08:53+08:00",
+  "excluded_scope": [
+    "services/aos-api/migrations",
+    "manual-pipeline-execution-dlq-replay-real-data-mutation-provider-external-effects-release"
+  ],
+  "expected_outputs": [
+    "Restricted recovery environment can verify exact listener PID and launch identity without weakening normal ps-based command verification"
+  ],
+  "lease_expires_at": "2026-08-29T16:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "scripts/demo/api_runtime_guard.py",
+    "scripts/demo/ensure-api.sh",
+    "scripts/demo/tests/test_api_runtime_guard.py",
+    "services/aos-api/tests/aip/test_w2c_cron_guard.py",
+    ".evidence/workshop/2026-08-28-bi-w10-01-restricted-runtime-owner-readback"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-01-RESTRICTED-RUNTIME-OWNER-READBACK"
+}

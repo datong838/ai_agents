@@ -22,3 +22,7 @@
 {"base_revision":"AOS-000383","occurred_at":"2026-08-28T15:50:27+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P08-RUNTIME-RELOAD-GUARD","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T15:51:41+08:00","result":"P08_RUNTIME_RELOAD_GUARD_CODE_AND_RUNTIME_GREEN_NATURAL_P08_SLOT_PENDING_NO_CATCH_UP_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P08-RUNTIME-RELOAD-GUARD","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T15:52:49+08:00","project_revision":"AOS-000384","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000384","occurred_at":"2026-08-28T16:08:53+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-RESTRICTED-RUNTIME-OWNER-READBACK","type":"TASK_STARTED"}
+{"base_revision":"AOS-000384","occurred_at":"2026-08-28T16:09:36+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T16:24:14+08:00","result":"RESTRICTED_RUNTIME_OWNER_READBACK_GREEN_NATURAL_P07_P08_WINDOW_PENDING_NO_RESTART_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-RESTRICTED-RUNTIME-OWNER-READBACK","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T16:25:52+08:00","project_revision":"AOS-000385","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

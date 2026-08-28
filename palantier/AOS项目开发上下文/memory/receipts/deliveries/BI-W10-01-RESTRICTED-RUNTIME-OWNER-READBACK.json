@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000384",
+  "blockers": [],
+  "changed_files": [
+    "scripts/demo/api_runtime_guard.py",
+    "scripts/demo/ensure-api.sh",
+    "scripts/demo/tests/test_api_runtime_guard.py",
+    ".evidence/workshop/2026-08-28-bi-w10-01-restricted-runtime-owner-readback/acceptance.md"
+  ],
+  "commits": [
+    "d94394abe3293c29fb93316f7fdb4ebf12cb98f3"
+  ],
+  "completed_at": "2026-08-28T16:24:14+08:00",
+  "completed_revision": "AOS-000384",
+  "result": "RESTRICTED_RUNTIME_OWNER_READBACK_GREEN_NATURAL_P07_P08_WINDOW_PENDING_NO_RESTART_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "P07 natural run remains failed and P08 current natural slot has not produced a successful run; no manual run or external effect authorized"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-RESTRICTED-RUNTIME-OWNER-READBACK",
+  "verification": [
+    "17/17 runtime guard tests GREEN; 78/78 cumulative JDBC/Cron/SourceReadiness tests GREEN; actual exact owner PID 68386 GREEN; ensure-api no-restart already-up GREEN"
+  ]
+}
