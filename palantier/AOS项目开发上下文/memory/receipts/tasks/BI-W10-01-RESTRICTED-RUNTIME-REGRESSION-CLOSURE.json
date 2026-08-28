@@ -1,0 +1,19 @@
+{
+  "base_revision": "AOS-000385",
+  "created_at": "2026-08-28T16:32:54+08:00",
+  "excluded_scope": [
+    "manual-pipeline-cron-catch-up-dlq-replay-provider-call-business-write-migration-release"
+  ],
+  "expected_outputs": [
+    "Cumulative runtime and SourceReadiness regression is environment-isolated and fully GREEN"
+  ],
+  "lease_expires_at": "2026-08-29T10:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/tests/aip/test_w2c_cron_guard.py",
+    ".evidence/workshop/2026-08-28-bi-w10-01-restricted-runtime-owner-readback/acceptance.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-01-RESTRICTED-RUNTIME-REGRESSION-CLOSURE"
+}

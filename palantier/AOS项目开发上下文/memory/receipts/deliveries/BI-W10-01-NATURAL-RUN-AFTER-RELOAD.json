@@ -1,0 +1,17 @@
+{
+  "base_revision": "AOS-000376",
+  "blockers": [],
+  "changed_files": [],
+  "commits": [],
+  "completed_at": "2026-08-28T16:32:36+08:00",
+  "completed_revision": "AOS-000385",
+  "result": "SUPERSEDED_BY_P07_P08_NEXT_NATURAL_SLOT_READBACK_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "P07/P08 natural window remains pending; no manual execution authorized"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-NATURAL-RUN-AFTER-RELOAD",
+  "verification": [
+    "Scope transferred to active BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK after exact runtime reload guard and SourceReadiness 10 ready / 2 failed readback"
+  ]
+}

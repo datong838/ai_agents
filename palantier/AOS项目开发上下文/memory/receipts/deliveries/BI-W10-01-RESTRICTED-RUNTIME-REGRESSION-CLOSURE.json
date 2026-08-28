@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000385",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/tests/aip/test_w2c_cron_guard.py",
+    ".evidence/workshop/2026-08-28-bi-w10-01-restricted-runtime-owner-readback/acceptance.md"
+  ],
+  "commits": [
+    "567d23b7d2bf8be1501bfb973a5eac765268bbf7"
+  ],
+  "completed_at": "2026-08-28T16:33:33+08:00",
+  "completed_revision": "AOS-000385",
+  "result": "CUMULATIVE_RUNTIME_SOURCE_READINESS_109_GREEN_TEST_ISOLATION_CLOSED_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "P07/P08 next natural schedule remains pending; no manual run, replay, provider call, business write, migration or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-RESTRICTED-RUNTIME-REGRESSION-CLOSURE",
+  "verification": [
+    "109/109 cumulative tests GREEN; shell syntax, compileall and diff-check GREEN; API PID 68386 unchanged; SourceReadiness cutoff 2026-08-28T08:27:29.536453Z remains 10 ready / 2 failed"
+  ]
+}

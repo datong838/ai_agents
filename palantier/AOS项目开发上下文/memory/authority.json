@@ -1,10 +1,10 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "受限恢复环境将 EPERM 正确解释为进程存活，并仅在唯一监听 PID 与 services/aos-api cwd 精确一致时允许命令行不可读回退；17/17 专项与 78/78 累计测试 GREEN，API 未重启"
+    "受限恢复环境运行态身份守护及 Cron/Provider 测试隔离闭合；109/109 累计回归 GREEN，API PID 68386 未重启"
   ],
-  "current_phase": "Workshop 八菜单视觉与栖月汇只读功能自验收 GREEN；受限恢复环境运行态身份回读 GREEN，继续 P07/P08 下一自然窗口回读",
-  "delivery_status": "RESTRICTED_RUNTIME_OWNER_READBACK_GREEN_NATURAL_P07_P08_WINDOW_PENDING_NO_RESTART_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "Workshop 八菜单视觉与栖月汇只读功能自验收 GREEN；受限运行态累计回归 109/109 GREEN，继续 P07/P08 下一自然窗口回读",
+  "delivery_status": "CUMULATIVE_RUNTIME_SOURCE_READINESS_109_GREEN_NATURAL_P07_P08_WINDOW_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "runtime",
@@ -12,26 +12,26 @@
     },
     {
       "kind": "receipt",
-      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-01-RESTRICTED-RUNTIME-OWNER-READBACK.json"
+      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-01-RESTRICTED-RUNTIME-REGRESSION-CLOSURE.json"
     }
   ],
-  "evidence_cutoff": "2026-08-28T08:17:38Z",
+  "evidence_cutoff": "2026-08-28T08:27:29.536453Z",
   "hard_boundaries": [
-    "只读核验；不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、业务写入、Provider 外部调用、migration 或发布"
+    "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、业务写入、migration 或发布"
   ],
   "incomplete": [
-    "P07 最新自然运行仍失败；P08 当日自然窗口尚无成功 Run，SourceReadiness 保持 10 ready / 2 failed"
+    "P07/P08 下一自然调度窗口尚未到达，SourceReadiness 保持 10 ready / 2 failed"
   ],
-  "last_green_gate": "BI-W10-01-RESTRICTED-RUNTIME-OWNER-READBACK",
+  "last_green_gate": "BI-W10-01-RESTRICTED-RUNTIME-REGRESSION-CLOSURE",
   "next_gate": "BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK",
   "next_steps": [
-    "保持现有 API 稳定运行，按自然调度事实回读 P07/P08；不手工执行 Pipeline、不补跑 Cron、不重放 DLQ"
+    "保持现有 API 稳定运行，只读等待并回读 P07/P08 下一自然 Run、DLQ 与同截止 SourceReadiness；不得手工补跑"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000385",
+  "project_revision": "AOS-000386",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "d94394abe3293c29fb93316f7fdb4ebf12cb98f3"
+    "aos-platform": "567d23b7d2bf8be1501bfb973a5eac765268bbf7"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -41,5 +41,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-28T16:25:52+08:00"
+  "updated_at": "2026-08-28T16:34:31+08:00"
 }

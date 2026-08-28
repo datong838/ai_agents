@@ -26,3 +26,7 @@
 {"base_revision":"AOS-000384","occurred_at":"2026-08-28T16:09:36+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T16:24:14+08:00","result":"RESTRICTED_RUNTIME_OWNER_READBACK_GREEN_NATURAL_P07_P08_WINDOW_PENDING_NO_RESTART_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-RESTRICTED-RUNTIME-OWNER-READBACK","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T16:25:52+08:00","project_revision":"AOS-000385","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-28T16:32:36+08:00","result":"SUPERSEDED_BY_P07_P08_NEXT_NATURAL_SLOT_READBACK_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"BI-W10-01-NATURAL-RUN-AFTER-RELOAD","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000385","occurred_at":"2026-08-28T16:32:54+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-RESTRICTED-RUNTIME-REGRESSION-CLOSURE","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T16:33:33+08:00","result":"CUMULATIVE_RUNTIME_SOURCE_READINESS_109_GREEN_TEST_ISOLATION_CLOSED_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"BI-W10-01-RESTRICTED-RUNTIME-REGRESSION-CLOSURE","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T16:34:31+08:00","project_revision":"AOS-000386","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
