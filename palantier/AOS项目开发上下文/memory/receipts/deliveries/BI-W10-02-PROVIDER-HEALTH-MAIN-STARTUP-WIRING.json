@@ -1,0 +1,24 @@
+{
+  "base_revision": "AOS-000402",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/main.py",
+    "services/aos-api/aos_api/aip_provider_health_maintenance.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_main_startup.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-main-startup-wiring/acceptance.md"
+  ],
+  "commits": [
+    "558e390f"
+  ],
+  "completed_at": "2026-08-28T22:48:38+08:00",
+  "completed_revision": "AOS-000402",
+  "result": "BI_W10_PROVIDER_HEALTH_MAIN_STARTUP_WIRING_CODE_CONTROL_GREEN_CANONICAL_FACTORY_ONLY_INACTIVE_OR_PREFLIGHT_FAILURE_ZERO_TASK_NO_CURRENT_ACTIVATION_NO_RELEASE",
+  "risks": [
+    "Code wiring only; current process and plugin/database/runtime environment unchanged; no external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-MAIN-STARTUP-WIRING",
+  "verification": [
+    "33/33 focused; 539/539 cumulative; compileall/diff GREEN; API PID 68386 unchanged"
+  ]
+}
