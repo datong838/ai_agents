@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000392",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_readiness.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_readiness.py",
+    ".evidence/workshop/2026-08-28-bi-w10-required-binding-refresh-scope/acceptance.md"
+  ],
+  "commits": [
+    "4c5f010b"
+  ],
+  "completed_at": "2026-08-28T19:48:17+08:00",
+  "completed_revision": "AOS-000392",
+  "result": "BI_W10_REQUIRED_ONLY_BINDING_REFRESH_GREEN_REQUIRED_TEXT_PROVIDER_HEALTH_STALE_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "required text Provider Health remains stale; ResponsibilityPlan remains draft/blocked; no Provider call or business effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-REQUIRED-BINDING-REFRESH-SCOPE",
+  "verification": [
+    "6/6 targeted; 192/192 cumulative; compileall; diff-check; org-org 6 item canonical refresh + 6/6 fresh-skip; dev-org fail-closed"
+  ]
+}

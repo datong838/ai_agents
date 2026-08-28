@@ -48,3 +48,6 @@
 {"base_revision":"AOS-000391","occurred_at":"2026-08-28T19:26:45+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-RESPONSIBILITY-COVERAGE-SCOPE-CORRECTION","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-28T19:34:19+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"BI-W10-02-AIP-RESPONSIBILITY-COVERAGE-SCOPE-CORRECTION","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-28T19:35:10+08:00","project_revision":"AOS-000392","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000392","occurred_at":"2026-08-28T19:38:02+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-02-REQUIRED-BINDING-REFRESH-SCOPE","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-28T19:48:17+08:00","result":"BI_W10_REQUIRED_ONLY_BINDING_REFRESH_GREEN_REQUIRED_TEXT_PROVIDER_HEALTH_STALE_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-02-REQUIRED-BINDING-REFRESH-SCOPE","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-28T19:49:09+08:00","project_revision":"AOS-000393","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

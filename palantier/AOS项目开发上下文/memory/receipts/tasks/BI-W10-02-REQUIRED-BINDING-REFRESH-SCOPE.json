@@ -1,0 +1,20 @@
+{
+  "base_revision": "AOS-000392",
+  "created_at": "2026-08-28T19:38:02+08:00",
+  "excluded_scope": [
+    "Provider Health/probe、Case/Run/Pipeline/Cron/DLQ、真实业务数据、迁移、发布"
+  ],
+  "expected_outputs": [
+    "required-only binding readiness refresh scope with tests and evidence"
+  ],
+  "lease_expires_at": "2026-08-29T15:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_readiness.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_readiness.py",
+    ".evidence/workshop/2026-08-28-bi-w10-required-binding-refresh-scope"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-REQUIRED-BINDING-REFRESH-SCOPE"
+}
