@@ -1,33 +1,33 @@
 {
   "completed": [
-    "main lifespan only consumes canonical startup factory; inactive or failed preflight creates zero task; GREEN uses factory-built maintainer; focused 33/33 and cumulative 539/539 GREEN"
+    "Provider Health startup 精确要求已安装 canonical 插件；Action 插件写 API 要求 admin/owner，Provider Health 插件写入限制 org-org/dev-project；专项 32/32、累计 545/545。"
   ],
-  "content_hash": "sha256:f41f4da5a0f950e26f941540c02cf80ae3520c9e2e706a5a21332fe8143327a5",
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health 主启动路径 canonical factory 接线闭合，继续激活就绪审计",
-  "delivery_status": "BI_W10_PROVIDER_HEALTH_MAIN_STARTUP_WIRING_GREEN_CANONICAL_FACTORY_ONLY_SOURCE_READINESS_10_OF_12_NO_CURRENT_ACTIVATION_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:a127fbcd74b5084b811fece0dca18f6f27e2c4f9c3058c214fe01dceecd5b064",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Provider Health 安装权威守护闭合，继续部署/激活就绪包",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_INSTALLATION_AUTHORITY_GUARD_GREEN_CURRENT_PLUGIN_UNINSTALLED_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-main-startup-wiring/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-28-bi-w10-provider-health-installation-authority-guard/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-28T22:49:56+08:00",
+  "generated_at": "2026-08-28T23:13:08+08:00",
   "hard_boundaries": [
-    "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、Secret 解析、真实 Case/Run、业务写入、migration 或发布"
+    "不得安装当前插件、重启 API、解析 Secret、调用 Provider、手工执行 P07/P08、修改真实业务数据、迁移或发布。"
   ],
   "incomplete": [
-    "Current plugin remains uninstalled, current process remains inactive, and natural P07/P08 SourceReadiness remains failed; activation/restart is not authorized"
+    "当前插件未安装、canonical ActionType 不存在、canonical 环境键未齐、已部署 PID 尚不包含新提交、SourceReadiness 10/12 且 P07/P08 失败；无激活、重启或发布授权。"
   ],
-  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-MAIN-STARTUP-WIRING",
-  "next_gate": "BI-W10-02-PROVIDER-HEALTH-ACTIVATION-READINESS-AUDIT",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-INSTALLATION-AUTHORITY-GUARD",
+  "next_gate": "BI-W10-02-PROVIDER-HEALTH-DEPLOYMENT-ACTIVATION-PREFLIGHT",
   "next_steps": [
-    "Audit exact current activation prerequisites without installing plugin, changing runtime environment, restarting API, invoking Provider, or writing real business data; convert every missing prerequisite into an owned serial implementation task"
+    "构建无副作用的部署/激活确定性预检与精确变更/回滚包；不安装、不重启、不调用 Provider。"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000404",
+  "project_revision": "AOS-000405",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "558e390f"
+    "aos-platform": "2cd75ff4"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

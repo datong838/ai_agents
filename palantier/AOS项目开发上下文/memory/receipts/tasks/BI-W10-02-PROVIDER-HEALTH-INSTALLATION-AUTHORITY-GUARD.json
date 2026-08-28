@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000404",
+  "created_at": "2026-08-28T22:57:37+08:00",
+  "excluded_scope": [
+    "current-plugin-installation",
+    "current-database-mutation",
+    "api-process-restart",
+    "provider-network",
+    "secret-resolution",
+    "real-business-data",
+    "migration",
+    "release"
+  ],
+  "expected_outputs": [
+    "Enabled startup requires the canonical plugin to be installed and contract exact before ActionType read",
+    "Action plugin mutation endpoints require admin or owner and provider-health installation is restricted to the canonical tenant",
+    "Inactive and rejected paths perform zero plugin/database mutation",
+    "Focused and cumulative regression evidence"
+  ],
+  "lease_expires_at": "2026-08-29T05:00:00+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_provider_health_maintenance_startup.py",
+    "services/aos-api/aos_api/routers/wave_ext.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_startup.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_action_plugin.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-installation-authority-guard/acceptance.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md#100"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-INSTALLATION-AUTHORITY-GUARD"
+}
