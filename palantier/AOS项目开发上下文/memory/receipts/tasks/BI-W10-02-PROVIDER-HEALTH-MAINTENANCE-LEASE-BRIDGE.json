@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000396",
+  "created_at": "2026-08-28T20:57:35+08:00",
+  "excluded_scope": [
+    "runtime registration/API restart/real Provider/Secret/Health/Case/Run/business writes/P01-P12/DLQ/migration/release"
+  ],
+  "expected_outputs": [
+    "Exact Action Lease consumer bridges maintainer to one immutable applied metadata-only Receipt without duplicate Provider refresh; tests and evidence"
+  ],
+  "lease_expires_at": "2026-08-28T17:00:00+00:00",
+  "owner": "codex-m1-solo",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_provider_health_maintenance.py",
+    "services/aos-api/aos_api/aip_provider_health_maintenance_authority.py",
+    "services/aos-api/tests/test_aip_provider_health_maintenance.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_authority.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-maintenance-lease-bridge/acceptance.md",
+    "docs:119-BI-W0 plan section 93"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-LEASE-BRIDGE"
+}

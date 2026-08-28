@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000396",
+  "blockers": [
+    "Natural P07/P08 SourceReadiness remains failed 10/12; code path not activated"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_provider_health_maintenance.py",
+    "services/aos-api/aos_api/aip_provider_health_maintenance_authority.py",
+    "services/aos-api/tests/test_aip_provider_health_maintenance.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_maintenance_authority.py",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-maintenance-lease-bridge/acceptance.md"
+  ],
+  "commits": [
+    "9494301a"
+  ],
+  "completed_at": "2026-08-28T21:11:17+08:00",
+  "completed_revision": "AOS-000396",
+  "result": "Canonical maintainer consumed exact Action Lease/Receipt once; replay retained one Attempt/Receipt and one fake refresh; no legacy duplicate refresh",
+  "risks": [
+    "No live runtime registration or Lease source; no Provider/Secret/real data/migration/release effect"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-MAINTENANCE-LEASE-BRIDGE",
+  "verification": [
+    "focused 26/26 passed",
+    "cumulative 245/245 passed",
+    "compileall GREEN",
+    "git diff --check GREEN",
+    "API PID 68386 unchanged and sole 8080 owner"
+  ]
+}
