@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000410",
+  "created_at": "2026-08-29T00:52:24+08:00",
+  "excluded_scope": [
+    "main.py; API routes; plugin/ActionType/environment/DB writes; binding refresh; Provider/Secret; Proposal/Approval/Lease/Receipt creation; P07/P08 manual run; migration; release"
+  ],
+  "expected_outputs": [
+    "exact read-only Action Proposal/Approval/Lease/Receipt and explicit expected Binding-set owner readers"
+  ],
+  "lease_expires_at": "2026-08-29T08:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/aip_provider_health_activation_authority_readers.py; services/aos-api/tests/aip/test_aip_provider_health_activation_authority_readers.py; BI-W0 plan §106; acceptance evidence; Receipt/authority/memory projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-EXACT-AUTHORITY-BINDING-READERS"
+}

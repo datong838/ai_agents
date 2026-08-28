@@ -1,33 +1,33 @@
 {
   "completed": [
-    "production owner adapters 闭合：七 owner read-once/cached，异常逐来源稳定失败且不泄露；专项 38/38、累计 563/563 GREEN"
+    "exact Action authority/Binding readers 闭合：显式选择、只读事务、共同 cutoff、专项 38/38、累计 578/578 GREEN"
   ],
-  "content_hash": "sha256:d877db913663f6d88495f5bfbe601ba6791e9f9e2a0c3a298dfdfc37f44dffb1",
-  "current_phase": "Workshop 八菜单视觉/功能/数据复验继续；BI-W10 Provider Health production owner adapters 闭合，继续 exact Action authority 与 Binding readers",
-  "delivery_status": "BI_W10_PROVIDER_HEALTH_PRODUCTION_OWNER_ADAPTERS_GREEN_READ_ONCE_STABLE_FAIL_CLOSED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:505055d01488d0bd166a6fa72185426dfbe0ee814c1534c41d443651fc04da75",
+  "current_phase": "Workshop 八菜单视觉/功能/数据复验继续；BI-W10 Provider Health exact Action authority/Binding readers 闭合，继续 deterministic audit entrypoint",
+  "delivery_status": "BI_W10_PROVIDER_HEALTH_EXACT_AUTHORITY_BINDING_READERS_GREEN_EXPLICIT_SELECTION_READ_ONLY_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-29-bi-w10-provider-health-production-owner-adapters/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-bi-w10-provider-health-exact-authority-binding-readers/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-29T00:47:44+08:00",
+  "generated_at": "2026-08-29T01:04:05+08:00",
   "hard_boundaries": [
-    "不得用默认 false/0 冒充未采集事实；不得绕过租户/安全预检进行外部发布、发送、Provider/Secret 调用、迁移或 release"
+    "不得用任意 available binding 或空选择冒充 exact；外部发布/发送/Provider/Secret/迁移/release 仍需安全门与 Receipt"
   ],
   "incomplete": [
-    "exact Action Proposal/Approval/Lease/Receipt 与 Binding owner readers 尚未接入；当前 activation gates 仍 false"
+    "deterministic production audit entrypoint 尚未组合 expected refs 与 production owner bundle；八菜单仍需逐页浏览器视觉/功能/数据复验"
   ],
-  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-PRODUCTION-OWNER-ADAPTERS",
-  "next_gate": "BI-W10-02-PROVIDER-HEALTH-EXACT-AUTHORITY-BINDING-READERS",
+  "last_green_gate": "BI-W10-02-PROVIDER-HEALTH-EXACT-AUTHORITY-BINDING-READERS",
+  "next_gate": "BI-W10-02-PROVIDER-HEALTH-DETERMINISTIC-AUDIT-ENTRYPOINT",
   "next_steps": [
-    "实现 exact Action authority 与 Binding read-only owner readers，再接 deterministic audit entrypoint；之后继续八菜单浏览器逐页视觉、功能、数据复验"
+    "组合无 route/无写的 deterministic production audit entrypoint，随后进入八菜单视觉稿与实际页逐页点击复验并直接修复"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000410",
+  "project_revision": "AOS-000411",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "c756d2f6"
+    "aos-platform": "d0fd17b3"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
