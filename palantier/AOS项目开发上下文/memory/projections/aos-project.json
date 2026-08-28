@@ -1,73 +1,37 @@
 {
   "completed": [
-    "BI-W8-01",
-    "BI-W8-02",
-    "BI-W8-03",
-    "BI-W8-04",
-    "BI-W8-05",
-    "BI-W8-06",
-    "BI-W8-07",
-    "BI-W9-01",
-    "BI-W9-02",
-    "BI-W9-03",
-    "BI-W9-04",
-    "BI-W9-05",
-    "BI-W9-06",
-    "BI-W9-07",
-    "S8-Visual",
-    "BI-W11-02-EXACT-1TO1-SEVEN-VIEWS-REMEDIATION",
-    "BI-W10-01-NATURAL-RUN-EVIDENCE-RECHECK",
-    "BI-W10-01-P01-NATURAL-RUN-CHECKPOINT",
-    "WORKSHOP-EIGHT-MENU-VISUAL-QYH-REWORK-20260828"
+    "P11 2026-08-28 12:00 Asia/Shanghai natural cron succeeded rows_written=20",
+    "ProductReview source/projection 5/5 and isolation canary 0/0"
   ],
-  "content_hash": "sha256:24c3a20cd2bbbc2635b335feca2d112af314c917eeec4c7081b3cb6df8d1145e",
-  "current_phase": "Workshop 八菜单视觉返修与栖月汇只读功能自验收 GREEN；BI-W10-01 自然序列继续按既有计划只读核验",
-  "delivery_status": "EIGHT_MENU_VISUAL_REWORK_AND_QYH_READONLY_FUNCTIONAL_ACCEPTANCE_GREEN_BI_W10_01_NATURAL_SEQUENCE_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:ba3fd9c18add73e05cad5a019d04246824ea6e71d8579b47531e2afd45aa0e12",
+  "current_phase": "Workshop 八菜单视觉与栖月汇只读功能自验收 GREEN；P11 当日自然 Cron GREEN，BI-W10-01 继续 P12 与 P08 诊断",
+  "delivery_status": "EIGHT_MENU_VISUAL_AND_QYH_READONLY_FUNCTIONAL_GREEN_P11_NATURAL_CRON_GREEN_BI_W10_01_SEQUENCE_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "delivery_receipt",
-      "ref": "WORKSHOP-EIGHT-MENU-VISUAL-QYH-REWORK-20260828"
-    },
-    {
-      "kind": "browser",
-      "ref": ".evidence/workshop/2026-08-28-eight-menu-visual-rework/acceptance.md"
-    },
-    {
-      "kind": "test",
-      "ref": "web-2311-backend-30-build-359-green"
+      "kind": "natural_cron",
+      "ref": ".evidence/workshop/2026-08-28-qyh-natural-sequence/p11-natural-run.md"
     }
   ],
-  "generated_at": "2026-08-28T11:44:50+08:00",
+  "generated_at": "2026-08-28T12:03:07+08:00",
   "hard_boundaries": [
-    "No manual real pipeline execution, DLQ replay, Case creation, real business mutation, provider execution, external effect, automatic retry, or release",
-    "TI-4 write and migration drills require a disposable database named *_ti4_test; never run them against the shared development database",
-    "Never expose source credentials; org-org/dev-project is the only real tenant and dev-org/dev-project is isolation canary only"
+    "NO_MANUAL_PIPELINE_EXECUTION_NO_REPLAY_NO_RETRY_NO_EXTERNAL_MUTATION_NO_RELEASE"
   ],
   "incomplete": [
-    "BI-W10-01",
-    "BI-W10-02",
-    "BI-W10-03",
-    "BI-W10-04",
-    "BI-W10-05",
-    "BI-W10-06",
-    "BI-W11-01",
-    "BI-W11-02",
-    "BI-W11-03",
-    "BI-W11-04",
-    "BI-W11-05"
+    "P07 current natural run connection failure remains truthful",
+    "P08 has no 2026-08-28 natural run record; diagnose without manual replay",
+    "P12 2026-08-28 natural run pending"
   ],
-  "last_green_gate": "八菜单 reference/actual 浏览器逐页复核、侧栏 260/48、六数字同事浮层、Web 2311/2311、后端专项 30/30、Build 359 modules GREEN",
-  "next_gate": "BI-W10-01-P11-NATURAL-RUN-CHECKPOINT",
+  "last_green_gate": "BI-W10-01-P11-NATURAL-RUN-CHECKPOINT",
+  "next_gate": "BI-W10-01-P12-NATURAL-RUN-CHECKPOINT",
   "next_steps": [
-    "At P11 existing Asia/Shanghai 12:00 natural schedule, read latest run, DLQ metadata, SourceReadiness and source/projection aggregates without manual execution",
-    "Continue P07 and P08 only through newly evidenced deterministic repair or their next natural schedule; do not replay or fabricate freshness"
+    "Observe P12 natural cron at 13:00 Asia/Shanghai and diagnose P08 missed schedule without manual execution"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000380",
+  "project_revision": "AOS-000381",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "856faeab",
-    "docs": "1263a01"
+    "aos-platform": "fb0297d7",
+    "aos-platform-visual": "856faeab"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

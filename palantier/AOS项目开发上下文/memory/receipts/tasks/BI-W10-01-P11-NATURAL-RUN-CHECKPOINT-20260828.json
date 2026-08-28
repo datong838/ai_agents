@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000380",
+  "created_at": "2026-08-28T12:01:09+08:00",
+  "excluded_scope": [
+    "manual execution,replay,retry,external mutation,release,dev-org/dev-project"
+  ],
+  "expected_outputs": [
+    "P11 natural cron run evidence with source/projection reconciliation and no external effect"
+  ],
+  "lease_expires_at": "2026-08-28T14:00:00+08:00",
+  "owner": "codex-m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "read-only qyh natural schedule evidence P11 org-org/dev-project"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-01-P11-NATURAL-RUN-CHECKPOINT-20260828"
+}

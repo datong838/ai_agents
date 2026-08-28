@@ -1,0 +1,21 @@
+{
+  "base_revision": "AOS-000380",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-28-qyh-natural-sequence/p11-natural-run.md"
+  ],
+  "commits": [
+    "fb0297d7"
+  ],
+  "completed_at": "2026-08-28T12:02:03+08:00",
+  "completed_revision": "AOS-000380",
+  "result": "P11_NATURAL_CRON_GREEN_AT_2026-08-28_CUTOFF_NO_MANUAL_REPLAY_NO_RELEASE",
+  "risks": [
+    "P07 remains connection-failed; P08 has no 2026-08-28 natural run record; P12 current natural run pending"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-P11-NATURAL-RUN-CHECKPOINT-20260828",
+  "verification": [
+    "P11 cron succeeded rows_written=20; ProductReview source/projection=5/5; canary=0/0; 61 targeted tests passed"
+  ]
+}
