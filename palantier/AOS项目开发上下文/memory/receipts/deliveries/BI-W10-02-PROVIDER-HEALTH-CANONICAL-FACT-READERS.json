@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000408",
+  "blockers": [
+    "no engineering blocker; continue production read-only owner adapters"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_provider_health_activation_fact_readers.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_activation_fact_readers.py",
+    ".evidence/workshop/2026-08-29-bi-w10-provider-health-canonical-fact-readers/acceptance.md",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform=8f65f206"
+  ],
+  "completed_at": "2026-08-29T00:30:14+08:00",
+  "completed_revision": "AOS-000408",
+  "result": "BI_W10_PROVIDER_HEALTH_CANONICAL_FACT_READERS_GREEN_STRICT_SANITIZED_READ_ONLY_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "readers define strict canonical snapshots but production owner adapters remain to be wired; no activation authority is implied"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-CANONICAL-FACT-READERS",
+  "verification": [
+    "focused 30/30; cumulative 555/555; compileall GREEN; diff-check GREEN"
+  ]
+}
