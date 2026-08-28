@@ -1,37 +1,39 @@
 {
   "completed": [
-    "受限恢复环境运行态身份守护及 Cron/Provider 测试隔离闭合；109/109 累计回归 GREEN，API PID 68386 未重启"
+    "Case 精确选择预检、写前五类 exact ref 复核与 OpenAPI 冻结合同闭合；58/58 累计、16/16 OpenAPI GREEN"
   ],
-  "content_hash": "sha256:b6a14106d65e6866720a9273ebb599a3e850001ffddbcb6272c75a4d092c4d70",
-  "current_phase": "Workshop 八菜单视觉与栖月汇只读功能自验收 GREEN；受限运行态累计回归 109/109 GREEN，继续 P07/P08 下一自然窗口回读",
-  "delivery_status": "CUMULATIVE_RUNTIME_SOURCE_READINESS_109_GREEN_NATURAL_P07_P08_WINDOW_PENDING_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:38e0cf12d45d13620ae5a0cb6e4dfabbc32c418bb917296c781649cf02cd120e",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 Case 精确选择预检 GREEN，继续 Profile/Scope authority 与 P07/P08 自然窗口",
+  "delivery_status": "BI_W10_CASE_SELECTION_PREFLIGHT_GREEN_PROFILE_SCOPE_PENDING_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "runtime",
-      "ref": "/Users/ddt/work/projects/ai_agent/aos-platform/.evidence/workshop/2026-08-28-bi-w10-01-restricted-runtime-owner-readback/acceptance.md"
+      "ref": "/Users/ddt/work/projects/ai_agent/aos-platform/.evidence/workshop/2026-08-28-bi-w10-case-selection-preflight/acceptance.md"
     },
     {
       "kind": "receipt",
-      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-01-RESTRICTED-RUNTIME-REGRESSION-CLOSURE.json"
+      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-CUTOVER-EXACT-SELECTION-PREFLIGHT.json"
     }
   ],
-  "generated_at": "2026-08-28T16:34:31+08:00",
+  "generated_at": "2026-08-28T17:24:24+08:00",
   "hard_boundaries": [
-    "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、业务写入、migration 或发布"
+    "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、真实 Case/Run、业务写入、migration 或发布"
   ],
   "incomplete": [
-    "P07/P08 下一自然调度窗口尚未到达，SourceReadiness 保持 10 ready / 2 failed"
+    "生产 InvestigationProfile/InvestigationScope authority 尚未安装，真实 Case 未创建",
+    "P07/P08 下一自然窗口尚未到达，SourceReadiness 保持 10 ready / 2 failed"
   ],
-  "last_green_gate": "BI-W10-01-RESTRICTED-RUNTIME-REGRESSION-CLOSURE",
-  "next_gate": "BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK",
+  "last_green_gate": "BI-W10-CUTOVER-EXACT-SELECTION-PREFLIGHT",
+  "next_gate": "BI-W10-02-PROFILE-SCOPE-AUTHORITY",
   "next_steps": [
-    "保持现有 API 稳定运行，只读等待并回读 P07/P08 下一自然 Run、DLQ 与同截止 SourceReadiness；不得手工补跑"
+    "实现生产 InvestigationProfile/Scope 只读 authority 与 exact resolver，不创建真实 Case/Run",
+    "保持 API 稳定运行，只读回读 P07/P08 下一自然 Run、DLQ 与同截止 SourceReadiness"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000386",
+  "project_revision": "AOS-000387",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "567d23b7d2bf8be1501bfb973a5eac765268bbf7"
+    "aos-platform": "5bc59b56aeb02e9900bdb2969494d4488f75f43c"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
