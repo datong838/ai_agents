@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000395",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/aip_provider_health_action.py",
+    "services/aos-api/aos_api/aip_provider_health_action_authority.py",
+    "services/aos-api/aos_api/aip_action_execution.py",
+    "services/aos-api/aos_api/aip_action_models.py",
+    "services/aos-api/tests/aip/test_aip_provider_health_action_authority.py",
+    "packages/contracts/openapi/v1.generated.json",
+    "packages/contracts/openapi/v1.inventory.json",
+    ".evidence/workshop/2026-08-28-bi-w10-provider-health-action-authority-bridge/acceptance.md"
+  ],
+  "commits": [
+    "dc09fa5d"
+  ],
+  "completed_at": "2026-08-28T20:50:53+08:00",
+  "completed_revision": "AOS-000395",
+  "result": "Provider Health Action 已通过 code-backed ActionType/AdapterRevision 接入既有 Proposal→Approval→ExecutionLease→Attempt→Receipt 权威链；仅隔离测试注册 fake，无真实 Provider/Secret/生产写。",
+  "risks": [
+    "Live runtime intentionally remains unregistered; Provider Health/SourceReadiness remains 10/12 until exact approved natural operational execution exists."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-ACTION-AUTHORITY-BRIDGE",
+  "verification": [
+    "14/14 targeted; 58/58 Action adjacency; 458/458 BI/SourceReadiness/production/OpenAPI cumulative; 16/16 OpenAPI; compileall/diff-check GREEN; RUNTIME_OWNER_EXACT PID 68386"
+  ]
+}

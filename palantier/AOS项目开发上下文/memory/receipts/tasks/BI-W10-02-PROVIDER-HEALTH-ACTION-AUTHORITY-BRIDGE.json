@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000395",
+  "created_at": "2026-08-28T20:25:07+08:00",
+  "excluded_scope": [
+    "真实 Provider/Secret 调用; P01-P12 手工执行; Cron 补跑; DLQ replay; 真实业务数据写入; API 重启; migration; release"
+  ],
+  "expected_outputs": [
+    "精确 ActionType/AdapterRevision 契约与隔离测试库 Proposal→Approval→Lease→Attempt→Receipt 证据；假探测器仅一次调用，重放不重复；无真实外部副作用"
+  ],
+  "lease_expires_at": "2026-08-28T15:00:00+00:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "docs/.../119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md; services/aos-api/aos_api/aip_provider_health_action.py; services/aos-api/aos_api/aip_provider_health_action_authority.py; services/aos-api/tests/aip/test_aip_provider_health_action_authority.py; .evidence/workshop/2026-08-28-bi-w10-provider-health-action-authority-bridge/**"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-PROVIDER-HEALTH-ACTION-AUTHORITY-BRIDGE"
+}
