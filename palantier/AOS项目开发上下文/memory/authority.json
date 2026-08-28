@@ -3,15 +3,15 @@
   "completed": [
     "D01 r2/D02 r2/D03 r4 exact Skill 选择、三阶段 frozen StageTemplate、六职责 draft ResponsibilityPlan、幂等重入与 710/710 累计回归 GREEN"
   ],
-  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 三阶段与 Skill 选择权威 GREEN，继续 canonical Binding readiness 与职责冻结",
-  "delivery_status": "BI_W10_AIP_STAGE_SKILL_AUTHORITY_GREEN_RESPONSIBILITY_DRAFT_BINDING_READINESS_STALE_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "Workshop 栖月汇只读验收 GREEN；BI-W10 exact Binding canonical 刷新闭合，继续修正职责 coverage 并处理真实 Health 门",
+  "delivery_status": "BI_W10_BINDING_READINESS_EVALUATOR_GREEN_REAL_RESULT_PROVIDER_HEALTH_STALE_RESPONSIBILITY_DRAFT_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "delivery",
       "ref": ".evidence/workshop/2026-08-28-bi-w10-stage-responsibility-authority/acceptance.md"
     }
   ],
-  "evidence_cutoff": "2026-08-28T18:59:34+08:00",
+  "evidence_cutoff": "2026-08-28T19:22:50+08:00",
   "hard_boundaries": [
     "不得手工执行真实租户 Pipeline、Cron catch-up、DLQ replay、Provider 外部调用、真实 Case/Run、业务写入、migration 或发布"
   ],
@@ -19,14 +19,14 @@
     "SkillBinding/CapabilityBinding readiness 已过期，ResponsibilityPlan 尚未 frozen",
     "P07/P08 下一自然窗口尚未到达，SourceReadiness 保持 10 ready / 2 failed"
   ],
-  "last_green_gate": "BI-W10-02-AIP-INVESTIGATION-STAGE-RESPONSIBILITY-AUTHORITY",
-  "next_gate": "BI-W10-02-AIP-BINDING-READINESS-REFRESH",
+  "last_green_gate": "BI-W10-02-AIP-BINDING-READINESS-REFRESH",
+  "next_gate": "BI-W10-02-AIP-RESPONSIBILITY-COVERAGE-SCOPE-CORRECTION",
   "next_steps": [
-    "使用 canonical CapabilityBinding/SkillBinding readiness 服务仅刷新生意探究 exact 依赖，逐项保留真实 blocker",
-    "readiness READY 后重新求值并冻结六职责计划；保持 API 稳定运行并只读监测 P07/P08 自然窗口"
+    "只让每个职责的requiredCapabilityIds参与coverage与operational blocker计算，非required SkillBinding依赖不得污染职责冻结判定",
+    "保持API进程稳定并继续只读监测P07/P08自然窗口；Provider Health必须经真实安全门取得，不伪造或延长TTL"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000390",
+  "project_revision": "AOS-000391",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
     "m1": "c8082880"
@@ -39,5 +39,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-28T19:04:17+08:00"
+  "updated_at": "2026-08-28T19:23:19+08:00"
 }

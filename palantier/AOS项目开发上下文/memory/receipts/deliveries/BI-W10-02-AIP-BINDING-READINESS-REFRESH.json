@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000390",
+  "blockers": [
+    "下一切片修正职责coverage对非required CapabilityBinding的过宽耦合；Provider Health仍须独立真实安全门"
+  ],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_readiness.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_authority.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_readiness.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_authority.py",
+    ".evidence/workshop/2026-08-28-bi-w10-aip-binding-readiness-refresh/acceptance.md"
+  ],
+  "commits": [
+    "13587723"
+  ],
+  "completed_at": "2026-08-28T19:22:50+08:00",
+  "completed_revision": "AOS-000390",
+  "result": "COMPLETED_GREEN",
+  "risks": [
+    "Provider Health真实证据已过期，9 CapabilityBinding和3 SkillBinding诚实保持blocked，ResponsibilityPlan未冻结；无Provider调用和外部副作用"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-02-AIP-BINDING-READINESS-REFRESH",
+  "verification": [
+    "35/35专项GREEN；201/201累计GREEN；真实租户首次12项canonical求值、立即重入12/12 fresh-skip；负向租户隔离GREEN；compileall/diff-check GREEN"
+  ]
+}

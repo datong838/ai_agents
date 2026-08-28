@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000390",
+  "created_at": "2026-08-28T19:05:46+08:00",
+  "excluded_scope": [
+    "真实 BusinessInvestigationCase/Run、Pipeline/Cron/DLQ、Provider/secret、业务数据、migration、release"
+  ],
+  "expected_outputs": [
+    "精确 CapabilityBinding/SkillBinding canonical readiness 刷新服务",
+    "readiness 逐项回读、职责计划条件冻结、租户隔离测试与证据"
+  ],
+  "lease_expires_at": "2026-08-29T13:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_readiness.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_authority.py",
+    "services/aos-api/aos_api/ecommerce_business_investigation_aip_composition.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_readiness.py",
+    "services/aos-api/tests/test_ecommerce_business_investigation_aip_authority.py",
+    ".evidence/workshop/2026-08-28-bi-w10-aip-binding-readiness-refresh",
+    "bundles/solutions/ecommerce-growth/bundle.yaml"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-02-AIP-BINDING-READINESS-REFRESH"
+}
