@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000382",
+  "created_at": "2026-08-28T14:08:00+08:00",
+  "excluded_scope": [
+    "services/aos-api/migrations",
+    "manual-pipeline-execution-dlq-replay-auto-retry-timeout-increase-real-data-mutation-provider-external-effects-release"
+  ],
+  "expected_outputs": [
+    "P07 dead SSH tunnel cache exact-identity eviction without same-run retry",
+    "Targeted and adjacent JDBC runtime regression",
+    "Delivery Receipt and AOS authority projection"
+  ],
+  "lease_expires_at": "2026-08-28T18:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/jdbc_connector_runtime.py",
+    "services/aos-api/tests/test_jdbc_connector_runtime.py",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md",
+    "docs/palantier/AOS项目开发上下文/memory/receipts/tasks/BI-W10-01-P07-TUNNEL-CACHE-EVICTION.json",
+    "docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/BI-W10-01-P07-TUNNEL-CACHE-EVICTION.json"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-01-P07-TUNNEL-CACHE-EVICTION"
+}
