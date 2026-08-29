@@ -1,0 +1,37 @@
+{
+  "base_revision": "AOS-000422",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/ecommerce_workshop_catalog.py",
+    "services/aos-api/aos_api/ecommerce_workshop_contracts.py",
+    "services/aos-api/alembic/versions/wcat_001_aip_feature_activation.py",
+    "services/aos-api/tests/asset_registry/test_ecommerce_workshop_catalog.py",
+    "services/aos-api/tests/asset_registry/test_wcat_001_aip_feature_activation.py",
+    "apps/web/src/api/ecommerceWorkshop/contracts.ts",
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    ".evidence/workshop/2026-08-29-catalog-authority-browser/acceptance.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "207b0505",
+    "61a47707",
+    "4d2072a4",
+    "3f02a136",
+    "docs:f8a8ca6"
+  ],
+  "completed_at": "2026-08-29T17:37:28+08:00",
+  "completed_revision": "AOS-000422",
+  "result": "CATALOG_DEPENDENCY_EXACT_READERS_CODE_TEST_BROWSER_GREEN_FAIL_CLOSED_NO_MIGRATION_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "wcat_001 is prepared but not executed; no AIP feature activation rows were created",
+    "Modules remain fail-closed until every required dependency has exact tenant authority"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-MODULE-CATALOG-DEPENDENCY-READERS-20260829",
+  "verification": [
+    "Workshop/API catalog targeted cumulative 247/247 GREEN",
+    "Web cumulative 255 files 2321/2321 GREEN on same dependencyRefs frontend HEAD",
+    "Alembic unique head wcat_001",
+    "Built-in browser eight canonical routes, sidebar toggle, business tabs, six-colleague popover and safe preflight GREEN"
+  ]
+}

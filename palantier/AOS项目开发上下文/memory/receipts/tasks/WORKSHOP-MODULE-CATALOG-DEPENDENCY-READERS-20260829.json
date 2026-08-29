@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000422",
+  "created_at": "2026-08-29T16:38:46+08:00",
+  "excluded_scope": [
+    "Fake availability, source/business mutation, Pipeline run or replay, Provider call, migration, external effect or release"
+  ],
+  "expected_outputs": [
+    "Section 126 implementation, exact dependency refs, fail-closed tests, browser evidence, Delivery Receipt and authority closure"
+  ],
+  "lease_expires_at": "2026-08-30T20:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "Tenant-scoped Workshop module catalog dependency readiness readers for data scopes, objects, capability bindings and AIP features; tests and browser revalidation"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-MODULE-CATALOG-DEPENDENCY-READERS-20260829"
+}

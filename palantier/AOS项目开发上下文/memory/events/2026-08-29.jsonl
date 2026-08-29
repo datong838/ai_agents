@@ -32,3 +32,10 @@
 {"base_revision":"AOS-000418","occurred_at":"2026-08-29T10:21:50+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-SEVEN-MENU-REAL-DATA-FUNCTION-TRACE-20260829","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-29T10:43:26+08:00","result":"SEVEN_MENU_CANONICAL_DATA_UI_FUNCTION_TRACE_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-SEVEN-MENU-REAL-DATA-FUNCTION-TRACE-20260829","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-29T10:44:30+08:00","project_revision":"AOS-000419","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000419","occurred_at":"2026-08-29T11:23:59+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-29T15:56:59+08:00","project_revision":"AOS-000420","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-29T16:33:44+08:00","project_revision":"AOS-000421","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-29T16:34:04+08:00","project_revision":"AOS-000422","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-29T16:36:55+08:00","result":"PRIMARY_EIGHT_MENU_BLUEPRINT_CURRENT_1280_BROWSER_FUNCTION_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000422","occurred_at":"2026-08-29T16:38:46+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-MODULE-CATALOG-DEPENDENCY-READERS-20260829","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-29T17:37:28+08:00","result":"CATALOG_DEPENDENCY_EXACT_READERS_CODE_TEST_BROWSER_GREEN_FAIL_CLOSED_NO_MIGRATION_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"WORKSHOP-MODULE-CATALOG-DEPENDENCY-READERS-20260829","type":"TASK_COMPLETED"}
