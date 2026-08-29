@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000419",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-29-eight-menu-blueprint-exact-visual-recheck/acceptance.md",
+    "apps/web/src/components/workshop/AnalystPage.test.tsx",
+    "apps/web/src/components/workshop/ContentCampaignPage.test.tsx",
+    "apps/web/src/components/workshop/ContentCampaignPage.tsx",
+    "apps/web/src/components/workshop/CreatorGrowthPage.test.tsx",
+    "apps/web/src/components/workshop/CreatorGrowthPage.tsx",
+    "apps/web/src/components/workshop/businessInvestigationFeatureFlags.ts",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform:a65caa02",
+    "docs:bea1877"
+  ],
+  "completed_at": "2026-08-29T15:55:11+08:00",
+  "completed_revision": "AOS-000419",
+  "result": "PRIMARY_EIGHT_MENU_BLUEPRINT_CURRENT_1280_BROWSER_FUNCTION_GREEN",
+  "risks": [
+    "Only the built-in browser 1280x720 viewport is fresh in this delivery; production release and external effects remain independently gated"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829",
+  "verification": [
+    "Eight formal blueprint and current-page screenshot pairs captured in the built-in browser at 1280x720; all current pages have scrollWidth=clientWidth=1280",
+    "All eight primary menus and their 7 operations slices, 3 content views, 5 creator stages, 3 media tabs, 8 analyst tabs, 3 price tabs and 4 customer tabs were clicked and verified",
+    "Sidebar collapse/expand and safe action feedback are functional; no demo business facts or external effects were produced",
+    "Web full regression 255 files / 2321 tests, TypeScript and production build GREEN"
+  ]
+}
