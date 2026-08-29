@@ -2,38 +2,35 @@
   "authority_owner": "aos-main-development",
   "completed": [
     "BI-W10 current natural SourceReadiness exact readback at 2026-08-29T12:38:47.489467Z",
-    "BI-W10 sanitized transport failure classification and projection"
+    "BI-W10 sanitized transport failure classification and projection",
+    "BI-W10 P10 current SSH transport path diagnosis"
   ],
-  "current_phase": "BI-W10 去敏传输错误分类已闭合；继续 P10 当前 SSH_CONNECT_TIMEOUT 确定性路径诊断与安全修复",
-  "delivery_status": "BI_W10_SANITIZED_TRANSPORT_ERROR_CLASSIFICATION_CODE_SCHEDULER_SOURCE_READINESS_GREEN_NO_REPLAY",
+  "current_phase": "BI-W10 P10 当前 SSH 传输路径诊断已闭合；继续八菜单 SourceReadiness 中文业务语义与稳定失败可解释性",
+  "delivery_status": "P10_CURRENT_SSH_TRANSPORT_PATH_GREEN_HISTORICAL_RUN_REMAINS_FAILED_NO_REPLAY",
   "evidence": [
     {
-      "kind": "current_readback",
-      "ref": ".evidence/workshop/2026-08-29-bi-w10-current-natural-readback/acceptance.md"
-    },
-    {
-      "kind": "code_acceptance",
-      "ref": ".evidence/workshop/2026-08-29-bi-w10-sanitized-transport-error-classification/acceptance.md"
+      "kind": "p10_current_transport",
+      "ref": ".evidence/workshop/2026-08-29-bi-w10-p10-current-transport-diagnosis/acceptance.md"
     }
   ],
-  "evidence_cutoff": "2026-08-29T13:00:28+00:00",
+  "evidence_cutoff": "2026-08-29T13:04:42.328124+00:00",
   "hard_boundaries": [
     "no manual/replay P01-P12; no catch-up; no automatic retry or timeout expansion; no Provider/Secret/PII; no real business mutation; no migration/release"
   ],
   "incomplete": [
     "P03/P07/P10 later natural run success and P12 later natural slot remain unproven"
   ],
-  "last_green_gate": "stable sanitized executor classification + durable ScheduleRun persistence + canonical SourceReadiness projection + 53/53 targeted + 133/133 cumulative",
-  "next_gate": "load classification in current API owner; diagnose and close deterministic P10 SSH transport path without replay/retry/timeout expansion, then continue eight-menu natural data trace",
+  "last_green_gate": "API owner 40708 loaded 45104fe9 + SSH startup prebuild 1/1 GREEN + local listener + health 200 + immutable P10 failed run retained",
+  "next_gate": "replace business-facing raw SourceReadiness status/blocker codes with Chinese semantics and stable latest-run diagnosis while retaining audit details and fail-closed counts",
   "next_steps": [
-    "restart current development API owner safely to load 45104fe9, then diagnose P10 SSH_CONNECT_TIMEOUT without manual pipeline run"
+    "review SourceReadinessPanel business-language contract, add plan/tests/minimal UI fix, and validate in built-in browser"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000427",
+  "project_revision": "AOS-000428",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "45104fe9",
-    "docs": "54620f8"
+    "aos-platform": "1d532e55",
+    "docs": "4b76ad8"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -43,5 +40,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-29T21:01:12+08:00"
+  "updated_at": "2026-08-29T21:06:52+08:00"
 }

@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000427",
+  "created_at": "2026-08-29T21:02:39+08:00",
+  "excluded_scope": [
+    "manual-or-replay-P01-P12;catch-up;automatic-retry;timeout-expansion;provider-call;secret-or-raw-endpoint-disclosure;source-data-query-or-mutation;real-business-data-mutation;migration;release"
+  ],
+  "expected_outputs": [
+    "current API owner loads stable classifier; P10 SSH path read-only diagnosis; deterministic code/config issue fixed with tests if found; otherwise exact external transport fact without stopping; Delivery Receipt; CAS; Prime readback"
+  ],
+  "lease_expires_at": "2026-08-29T17:02:22.331303+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/jdbc_connector_runtime.py;services/aos-api/aos_api/ec_live_executor.py;services/aos-api/aos_api/phase5_pipeline_bootstrap.py;services/aos-api/aos_api/main.py;services/aos-api/tests/test_jdbc_connector_runtime.py;services/aos-api/tests/test_ec_live_executor.py;.evidence/workshop/2026-08-29-bi-w10-p10-current-transport-diagnosis;/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-P10-SSH-CONNECT-TIMEOUT-CURRENT-PATH-DIAGNOSIS-20260829"
+}

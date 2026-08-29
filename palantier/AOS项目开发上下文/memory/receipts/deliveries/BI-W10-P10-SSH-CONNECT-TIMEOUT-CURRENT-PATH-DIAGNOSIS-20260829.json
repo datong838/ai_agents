@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000427",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-29-bi-w10-p10-current-transport-diagnosis/acceptance.md",
+    "/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "1d532e55",
+    "4b76ad8"
+  ],
+  "completed_at": "2026-08-29T21:06:00+08:00",
+  "completed_revision": "AOS-000427",
+  "result": "P10_CURRENT_SSH_TRANSPORT_PATH_GREEN_HISTORICAL_RUN_REMAINS_FAILED_NO_REPLAY",
+  "risks": [
+    "当前 tunnel 活性不等于 P10 ready；下一自然运行才是新 SourceReadiness 权威；无 replay/retry/timeout change/source query/business mutation/migration/release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-P10-SSH-CONNECT-TIMEOUT-CURRENT-PATH-DIAGNOSIS-20260829",
+  "verification": [
+    "API PID 40708 loaded 45104fe9；SSH startup prebuild 1442ms 1/1 GREEN；local listener alive；/v1/health 200；canonical P10 old run remains failed/0 rows"
+  ]
+}
