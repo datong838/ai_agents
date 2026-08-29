@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000428",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/SourceReadinessPanel.tsx",
+    "apps/web/src/components/workshop/SourceReadinessPanel.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-08-29-source-readiness-chinese-diagnosis/acceptance.md",
+    "/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "5358a5f1",
+    "6eaae4a"
+  ],
+  "completed_at": "2026-08-29T21:29:49+08:00",
+  "completed_revision": "AOS-000428",
+  "result": "SOURCE_READINESS_CHINESE_DIAGNOSIS_CODE_TEST_BROWSER_GREEN_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "No backend readiness change, no P01-P12 run/replay, no Provider/secret/business mutation/migration/release; visual technical context remains hidden in 1:1 mode"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-SOURCE-READINESS-CHINESE-DIAGNOSIS-20260829",
+  "verification": [
+    "focused 4/4; related 67/67; Web 2325/2325; TypeScript/build; built-in browser eight-menu shared current qyh snapshot"
+  ]
+}
