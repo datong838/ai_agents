@@ -2,38 +2,41 @@
   "authority_owner": "aos-main-development",
   "completed": [
     "WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829",
-    "WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829"
+    "WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829",
+    "WORKSHOP-MODULE-CATALOG-DEPENDENCY-READERS-20260829"
   ],
-  "current_phase": "Workshop 八菜单依赖权威可解释性闭环",
-  "delivery_status": "EIGHT_MENU_QYH_SOURCE_TO_BROWSER_FUNCTION_ACCEPTANCE_GREEN_FAIL_CLOSED_READINESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "Workshop module catalog 权威激活与剩余依赖闭环",
+  "delivery_status": "CATALOG_DEPENDENCY_EXACT_READERS_CODE_TEST_BROWSER_GREEN_FAIL_CLOSED_NO_MIGRATION_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-29-eight-menu-qyh-end-to-end-function-acceptance/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-catalog-authority-browser/acceptance.md"
     },
     {
       "kind": "receipt",
-      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829.json"
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-MODULE-CATALOG-DEPENDENCY-READERS-20260829.json"
     }
   ],
-  "evidence_cutoff": "2026-08-29T16:28:48+08:00",
+  "evidence_cutoff": "2026-08-29T17:37:28+08:00",
   "hard_boundaries": [
-    "No manual P01-P12 run or replay; no fake facts, credential output, Provider call, migration, external effect or release bypass"
+    "No manual P01-P12 run or replay; no fake facts, credential output, Provider call, unapproved migration, external effect or release bypass"
   ],
   "incomplete": [
-    "八菜单 module catalog 当前对 required objects/capabilities/AIP/data scopes 无差别 unknown，待 canonical readers 精确解析；P03/P07/P10/P12 运行 readiness 与发布决定继续独立守门"
+    "AIP FeatureActivation 迁移尚未执行且没有激活记录；部分 Workshop domain object 与 CapabilityBinding 仍无 exact tenant authority，模块按合同失败关闭",
+    "P03/P07/P10/P12 运行 readiness 与发布决定继续由自然 Receipt 和独立安全门裁决"
   ],
-  "last_green_gate": "八菜单内置浏览器逐页逐控件验收；Web 91/91、API 106/106；统一运营与客户正式来源数量守恒",
-  "next_gate": "为八菜单 module catalog 建立可核验 canonical dependency readers，消除无差别 unknown 且不伪造 available",
+  "last_green_gate": "DataScope/ObjectType/CapabilityBinding/AIP FeatureActivation exact readers；API 247/247；八菜单内置浏览器逐页逐控件 GREEN",
+  "next_gate": "建立受控 AIP FeatureActivation 管理合同并继续核对非 Ontology Workshop 对象的 canonical authority；不得以表存在或 Bundle 声明提升 readiness",
   "next_steps": [
-    "先完善第 126 节依赖权威 reader 施工包，再补失败测试、最小实现与八页浏览器复验"
+    "先补受控 AIP FeatureActivation command/service 测试与最小实现，不执行真实迁移或补造激活事实",
+    "继续核对 requiredObjects 中非 Ontology 类型的 canonical contract authority 并逐项接入 exact ref"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000422",
+  "project_revision": "AOS-000423",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "140081d7",
-    "docs": "fa689cf"
+    "aos-platform": "3f02a136",
+    "docs": "fb4c490"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -43,5 +46,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-29T16:34:04+08:00"
+  "updated_at": "2026-08-29T17:40:13+08:00"
 }
