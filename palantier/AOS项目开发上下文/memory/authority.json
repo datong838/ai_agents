@@ -1,34 +1,39 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829"
+    "WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829",
+    "WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829"
   ],
-  "current_phase": "Workshop 八菜单栖月汇端到端功能验收",
-  "delivery_status": "PRIMARY_EIGHT_MENU_BLUEPRINT_CURRENT_1280_BROWSER_FUNCTION_GREEN_WEB_2321_OF_2321_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "Workshop 八菜单依赖权威可解释性闭环",
+  "delivery_status": "EIGHT_MENU_QYH_SOURCE_TO_BROWSER_FUNCTION_ACCEPTANCE_GREEN_FAIL_CLOSED_READINESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-29-eight-menu-blueprint-exact-visual-recheck/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-eight-menu-qyh-end-to-end-function-acceptance/acceptance.md"
+    },
+    {
+      "kind": "receipt",
+      "ref": "palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829.json"
     }
   ],
-  "evidence_cutoff": "2026-08-29T15:55:11+08:00",
+  "evidence_cutoff": "2026-08-29T16:28:48+08:00",
   "hard_boundaries": [
     "No manual P01-P12 run or replay; no fake facts, credential output, Provider call, migration, external effect or release bypass"
   ],
   "incomplete": [
-    "八菜单栖月汇真实数据端到端功能与数据语义逐项验收尚待本串行下一波执行；P03/P07 自然 readiness 与发布决定保持独立"
+    "八菜单 module catalog 当前对 required objects/capabilities/AIP/data scopes 无差别 unknown，待 canonical readers 精确解析；P03/P07/P10/P12 运行 readiness 与发布决定继续独立守门"
   ],
-  "last_green_gate": "八个一级菜单 source/current 1280x720 新鲜截图成对；所有业务页签、侧栏折叠与安全动作浏览器可工作；Web 2321/2321 GREEN",
-  "next_gate": "从八个页面沿 API、领域 authority、数据源逐项追溯栖月汇真实数据，闭合可安全修复的数据与功能缺口",
+  "last_green_gate": "八菜单内置浏览器逐页逐控件验收；Web 91/91、API 106/106；统一运营与客户正式来源数量守恒",
+  "next_gate": "为八菜单 module catalog 建立可核验 canonical dependency readers，消除无差别 unknown 且不伪造 available",
   "next_steps": [
-    "启动 WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829，逐页追溯 GET/read-model/组件并修复确定性缺口"
+    "先完善第 126 节依赖权威 reader 施工包，再补失败测试、最小实现与八页浏览器复验"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000420",
+  "project_revision": "AOS-000422",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "a65caa02",
-    "docs": "f9ad4fd"
+    "aos-platform": "140081d7",
+    "docs": "fa689cf"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -38,5 +43,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-29T15:56:59+08:00"
+  "updated_at": "2026-08-29T16:34:04+08:00"
 }
