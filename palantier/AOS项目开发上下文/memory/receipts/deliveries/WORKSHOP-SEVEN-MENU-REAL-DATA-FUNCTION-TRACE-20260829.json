@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000418",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-29-seven-menu-real-data-function-trace/acceptance.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform:36ee62c9",
+    "docs:4b72f4b"
+  ],
+  "completed_at": "2026-08-29T10:43:26+08:00",
+  "completed_revision": "AOS-000418",
+  "result": "SEVEN_MENU_CANONICAL_DATA_UI_FUNCTION_TRACE_GREEN",
+  "risks": [
+    "P03/P07 natural readiness and release decision remain independent and unchanged"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-SEVEN-MENU-REAL-DATA-FUNCTION-TRACE-20260829",
+  "verification": [
+    "Canonical read models match browser: operations 219/210/9/0; other formal business views are exact empty/blocked states",
+    "Built-in browser clicked all seven pages, views and primary actions with zero external effect",
+    "Web full regression 255 files and 2319/2319 tests GREEN"
+  ]
+}

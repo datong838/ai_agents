@@ -1,34 +1,34 @@
 {
   "completed": [
-    "P03/P07 当前失败诊断：失败均早于对应修复，当前代码未发现新的确定性缺陷"
+    "WORKSHOP-SEVEN-MENU-REAL-DATA-FUNCTION-TRACE-20260829"
   ],
-  "content_hash": "sha256:1ef3e917954810e3da7bade0e7f9fc9b1e2597e9d9ed4e1acfa5ab9ca38a7b9f",
-  "current_phase": "Workshop 八菜单正式来源—读模型—前端组件—浏览器功能追溯",
-  "delivery_status": "P03_P07_FAILURES_PREDATE_CURRENT_REMEDIATIONS_TARGETED_71_GREEN_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:2a3871294a36081426284e7edee90c1ce5a6971db42d784a1c9007a3084da99f",
+  "current_phase": "Workshop 八菜单视觉稿—实际页逐屏精确复审",
+  "delivery_status": "SEVEN_MENU_CANONICAL_DATA_UI_FUNCTION_TRACE_GREEN_WEB_2319_OF_2319_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-29-bi-w10-p03-p07-current-failure-diagnosis/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-seven-menu-real-data-function-trace/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-29T10:21:10+08:00",
+  "generated_at": "2026-08-29T10:44:30+08:00",
   "hard_boundaries": [
-    "No manual P01-P12 run or DLQ replay; no source/business mutation, credential output, Provider, migration, external effect or release bypass"
+    "No manual P01-P12 run or replay; no fake facts, source/business mutation, Provider, migration, external effect or release bypass"
   ],
   "incomplete": [
-    "SourceReadiness 仍为 10/12；不得用旧失败或测试 GREEN 推进 BI-W10-02、外部效果或发布"
+    "P03/P07 仍待下一自然运行独立裁决；不得推进外部效果或发布"
   ],
-  "last_green_gate": "P03/P07 失败时序与当前修复加载关系精确闭合；当前 owner 包含 a5e42ccc/29013ba6；专项 71/71 GREEN",
-  "next_gate": "继续客户之外七菜单的真实来源、canonical GET、前端组件与浏览器交互逐页追溯；P03/P07 由下一自然 run 独立裁决",
+  "last_green_gate": "七页面 canonical 读模型与浏览器数据/交互逐项一致；统一运营 219/210/9/0；Web 2319/2319 GREEN",
+  "next_gate": "按八份视觉稿逐页逐组件精确比对布局、字号、颜色、比例、浮层、折叠和多视口；确定性偏差立即修复并浏览器重验",
   "next_steps": [
-    "逐页核对总控、内容、运营、达人、媒体、经营参谋、价格的正式来源、读模型、UI 数据与组件动作，发现缺陷立即修复"
+    "启动 WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829，并在内置浏览器逐屏对照正式视觉稿"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000418",
+  "project_revision": "AOS-000419",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "5ef9268f",
-    "docs": "0a96c29"
+    "aos-platform": "36ee62c9",
+    "docs": "4b72f4b"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
