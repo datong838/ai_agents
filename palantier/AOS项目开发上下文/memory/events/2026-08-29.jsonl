@@ -15,3 +15,12 @@
 {"base_revision":"AOS-000412","occurred_at":"2026-08-29T01:31:54+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-BROWSER-VISUAL-FUNCTION-DATA-REVALIDATION","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-29T02:34:25+08:00","result":"WORKSHOP_EIGHT_MENU_BROWSER_VISUAL_FUNCTION_DATA_REVALIDATION_GREEN_QYH_GET_ONLY_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-BROWSER-VISUAL-FUNCTION-DATA-REVALIDATION","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-29T02:35:46+08:00","project_revision":"AOS-000413","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-29T03:23:55+08:00","project_revision":"AOS-000414","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-29T04:21:35+08:00","result":"SOURCE_READBACK_FOUND_P03_SSH_RUNTIME_DEFECT_SCOPE_EXPANDED","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000414","occurred_at":"2026-08-29T04:21:36+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-SSH-TUNNEL-LIFECYCLE-REMEDIATION","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-29T04:43:45+08:00","result":"CODE_RUNTIME_GREEN_SOURCE_READINESS_HONEST_9_OF_12_NATURAL_P03_P07_P08_PENDING_NO_MANUAL_REPLAY_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"BI-W10-01-SSH-TUNNEL-LIFECYCLE-REMEDIATION","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-29T04:45:29+08:00","project_revision":"AOS-000415","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000415","occurred_at":"2026-08-29T04:49:11+08:00","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P04-P06-NATURAL-SLOT-READBACK","type":"TASK_STARTED"}
+{"base_revision":"AOS-000415","occurred_at":"2026-08-29T09:54:46+08:00","schema":"aos-memory-event/v1","task_id":"BI-WORKSHOP-EIGHT-MENU-CUSTOMER-P08-ACCEPTANCE-20260829","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-29T09:55:09+08:00","result":"八菜单浏览器视觉与功能复验闭合；客户页水合 P08 自然正式来源 54、披露 0；六数字同事浮层对齐常用 Agent；无业务写入或外部副作用","schema":"aos-memory-event/v1","task_id":"BI-WORKSHOP-EIGHT-MENU-CUSTOMER-P08-ACCEPTANCE-20260829","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-29T09:56:31+08:00","project_revision":"AOS-000416","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000415",
+  "created_at": "2026-08-29T09:54:46+08:00",
+  "excluded_scope": [
+    "手工运行或重放 P01-P12、客户身份解析、触达、Provider、业务写入、迁移、发布或外部副作用"
+  ],
+  "expected_outputs": [
+    "代码与方案提交、专项及累计回归、八页浏览器点击证据、Delivery Receipt、authority CAS 和 Prime 回读"
+  ],
+  "lease_expires_at": "2026-08-29T13:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "八菜单内置浏览器视觉与功能复验、CustomerLite P08 真实来源只读水合、严格 count-only 契约和证据闭环"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-WORKSHOP-EIGHT-MENU-CUSTOMER-P08-ACCEPTANCE-20260829"
+}

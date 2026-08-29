@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000415",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/ecommerceWorkshop/parser.ts",
+    "apps/web/src/components/workshop/CustomerPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_source_reader.py",
+    "services/aos-api/aos_api/ecommerce_workshop_customer.py",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_contracts.py",
+    "services/aos-api/aos_api/ecommerce_workshop_customer_reader.py",
+    "services/aos-api/aos_api/routers/ecommerce_workshop.py",
+    ".evidence/workshop/2026-08-29-eight-menu-browser-functional-acceptance/acceptance.md"
+  ],
+  "commits": [
+    "1925c890",
+    "docs:0cf5027"
+  ],
+  "completed_at": "2026-08-29T09:55:09+08:00",
+  "completed_revision": "AOS-000415",
+  "result": "八菜单浏览器视觉与功能复验闭合；客户页水合 P08 自然正式来源 54、披露 0；六数字同事浮层对齐常用 Agent；无业务写入或外部副作用",
+  "risks": [
+    "CustomerLite 来源可读不等于客户可披露；同意、用途、留存、触达、Provider、迁移与发布门保持关闭"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-WORKSHOP-EIGHT-MENU-CUSTOMER-P08-ACCEPTANCE-20260829",
+  "verification": [
+    "专项 30/30；API 累计 201/201；Web 累计 304/304；TypeScript/production build/compileall/diff-check GREEN；内置浏览器八页唯一 H1/overflow 0/active nav/页签与安全动作逐项通过",
+    "org-org/dev-project P08 自然来源 54、披露 0；dev-org/dev-project 无自然成功运行并失败关闭"
+  ]
+}

@@ -1,22 +1,22 @@
 {
   "leases": [
     {
-      "base_revision": "AOS-000384",
-      "created_at": "2026-08-28T16:09:36+08:00",
+      "base_revision": "AOS-000415",
+      "created_at": "2026-08-29T04:49:11+08:00",
       "excluded_scope": [
-        "manual pipeline execution, DLQ replay, source payload copy, credential read, business mutation, provider execution, migration apply, release"
+        "Manual pipeline execution, DLQ replay, schedule time change, source payload or credential output, source/business mutation, Provider call, migration, release"
       ],
       "expected_outputs": [
-        "P07/P08 next natural slot evidence and exact continuation decision"
+        "Natural P04-P06 exact evidence and immediate code/test/runtime remediation for any deterministic defect; no inferred GREEN"
       ],
-      "lease_expires_at": "2026-08-29T10:30:00+08:00",
+      "lease_expires_at": "2026-08-30T10:30:00+08:00",
       "owner": "aos-main-development",
       "schema": "aos-memory-task-receipt/v1",
       "scope": [
-        "org-org/dev-project read-only P07/P08 latest Run, DLQ metadata, SourceReadiness, reconciliation, API runtime ownership"
+        "Exact m1 runtime continuity, P04-P06 next natural schedule run/DLQ/SourceReadiness GET-only readback, deterministic failure diagnosis and minimal remediation if new exact evidence identifies a code defect"
       ],
       "status": "ACTIVE",
-      "task_id": "BI-W10-01-P07-P08-NEXT-NATURAL-SLOT-READBACK"
+      "task_id": "BI-W10-01-P04-P06-NATURAL-SLOT-READBACK"
     }
   ],
   "schema": "aos-memory-leases/v1"
