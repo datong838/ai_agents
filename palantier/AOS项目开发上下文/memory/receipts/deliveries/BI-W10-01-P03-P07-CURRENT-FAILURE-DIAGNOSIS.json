@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000417",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-29-bi-w10-p03-p07-current-failure-diagnosis/acceptance.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform:5ef9268f",
+    "docs:0a96c29"
+  ],
+  "completed_at": "2026-08-29T10:20:22+08:00",
+  "completed_revision": "AOS-000417",
+  "result": "P03_P07_FAILURES_PREDATE_CURRENT_REMEDIATIONS_NO_NEW_CODE_DEFECT",
+  "risks": [
+    "P03/P07 readiness remains failed until their next natural runs; old failures are not promoted or replayed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-P03-P07-CURRENT-FAILURE-DIAGNOSIS",
+  "verification": [
+    "P03 failure 04:00 predates a5e42ccc 04:41 managed SSH hardening",
+    "P07 failure 08:00 predates 29013ba6 08:15 exact tunnel eviction",
+    "current API owner started 09:33 and targeted JDBC/P03/P07/Cron/SourceReadiness tests 71/71 passed"
+  ]
+}
