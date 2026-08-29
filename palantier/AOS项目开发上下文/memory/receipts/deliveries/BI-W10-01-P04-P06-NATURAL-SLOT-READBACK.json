@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000415",
+  "blockers": [
+    "P03_LATEST_NATURAL_RUN_FAILED",
+    "P07_LATEST_NATURAL_RUN_FAILED"
+  ],
+  "changed_files": [
+    ".evidence/workshop/2026-08-29-bi-w10-p04-p06-natural-readback/acceptance.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform:e4fedb32",
+    "docs:0b6f3a6"
+  ],
+  "completed_at": "2026-08-29T10:11:29+08:00",
+  "completed_revision": "AOS-000416",
+  "result": "P04_P05_P06_NATURAL_SOURCE_READINESS_READY",
+  "risks": [
+    "Overall SourceReadiness remains 10/12 because P03 and P07 latest natural runs are failed; no BI-W10-02 authorization"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-01-P04-P06-NATURAL-SLOT-READBACK",
+  "verification": [
+    "canonical SourceReadiness repeatable-read snapshot: P04 11/11 ready; P05 124/124 ready; P06 234/234 ready",
+    "negative canary dev-org/dev-project: P04-P06 no run, 0/0, blocked",
+    "SourceReadiness targeted tests 8/8 passed"
+  ]
+}

@@ -1,23 +1,4 @@
 {
-  "leases": [
-    {
-      "base_revision": "AOS-000415",
-      "created_at": "2026-08-29T04:49:11+08:00",
-      "excluded_scope": [
-        "Manual pipeline execution, DLQ replay, schedule time change, source payload or credential output, source/business mutation, Provider call, migration, release"
-      ],
-      "expected_outputs": [
-        "Natural P04-P06 exact evidence and immediate code/test/runtime remediation for any deterministic defect; no inferred GREEN"
-      ],
-      "lease_expires_at": "2026-08-30T10:30:00+08:00",
-      "owner": "aos-main-development",
-      "schema": "aos-memory-task-receipt/v1",
-      "scope": [
-        "Exact m1 runtime continuity, P04-P06 next natural schedule run/DLQ/SourceReadiness GET-only readback, deterministic failure diagnosis and minimal remediation if new exact evidence identifies a code defect"
-      ],
-      "status": "ACTIVE",
-      "task_id": "BI-W10-01-P04-P06-NATURAL-SLOT-READBACK"
-    }
-  ],
+  "leases": [],
   "schema": "aos-memory-leases/v1"
 }

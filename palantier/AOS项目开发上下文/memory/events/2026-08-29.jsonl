@@ -24,3 +24,5 @@
 {"base_revision":"AOS-000415","occurred_at":"2026-08-29T09:54:46+08:00","schema":"aos-memory-event/v1","task_id":"BI-WORKSHOP-EIGHT-MENU-CUSTOMER-P08-ACCEPTANCE-20260829","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-29T09:55:09+08:00","result":"八菜单浏览器视觉与功能复验闭合；客户页水合 P08 自然正式来源 54、披露 0；六数字同事浮层对齐常用 Agent；无业务写入或外部副作用","schema":"aos-memory-event/v1","task_id":"BI-WORKSHOP-EIGHT-MENU-CUSTOMER-P08-ACCEPTANCE-20260829","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-29T09:56:31+08:00","project_revision":"AOS-000416","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"occurred_at":"2026-08-29T10:11:29+08:00","result":"P04_P05_P06_NATURAL_SOURCE_READINESS_READY","schema":"aos-memory-event/v1","task_id":"BI-W10-01-P04-P06-NATURAL-SLOT-READBACK","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-29T10:12:22+08:00","project_revision":"AOS-000417","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

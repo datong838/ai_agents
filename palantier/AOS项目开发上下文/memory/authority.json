@@ -1,34 +1,34 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "八菜单浏览器视觉与功能复验、六数字同事浮层常用 Agent 对齐、CustomerLite P08 count-only 真实来源水合和零 PII 披露"
+    "P04～P06 自然时槽与同快照 source/projection 精确回收"
   ],
-  "current_phase": "Workshop 八菜单真实数据与功能验收；BI-W10 readiness 持续推进",
-  "delivery_status": "WORKSHOP_EIGHT_MENU_BROWSER_FUNCTIONAL_CUSTOMER_P08_SOURCE_COUNT_GREEN_BI_W10_SOURCE_READINESS_NOT_PROMOTED_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "BI-W10 SourceReadiness 自然时槽回收与 Workshop 八菜单数据功能追溯",
+  "delivery_status": "BI_W10_P04_P06_NATURAL_SOURCE_READINESS_GREEN_OVERALL_10_OF_12_P03_P07_FAILED_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-29-eight-menu-browser-functional-acceptance/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-bi-w10-p04-p06-natural-readback/acceptance.md"
     }
   ],
-  "evidence_cutoff": "2026-08-29T09:55:09+08:00",
+  "evidence_cutoff": "2026-08-29T10:04:33+08:00",
   "hard_boundaries": [
-    "No manual pipeline run or DLQ replay; no customer identity resolution, source/business mutation, Provider, migration, real external effect or release bypass"
+    "No manual P01-P12 run or DLQ replay; no source/business mutation, secret output, Provider, migration, external effect or release bypass"
   ],
   "incomplete": [
-    "本次未把 P08 自然来源成功提升为整体 SourceReadiness、触达、Provider、试点或发布许可；其余正式 authority 继续按自身截止面判定"
+    "整体 SourceReadiness 10/12；P03 与 P07 最新自然 run failed，尚未授权 BI-W10-02、Provider、外部效果或发布"
   ],
-  "last_green_gate": "八页内置浏览器唯一 H1/overflow 0/active nav/页签与安全动作 GREEN；P08 CustomerLite 正式来源 54、披露 0；专项 30/30、API 201/201、Web 304/304、build GREEN",
-  "next_gate": "继续其余七菜单的来源到页面可追溯与安全动作实测；BI-W10 formal pilot 仍须 fresh exact 12/12 SourceReadiness 与既有安全 authority",
+  "last_green_gate": "P04/P05/P06 canonical SourceReadiness ready：11/11、124/124、234/234；quality/reconciliation pass；负向租户 0/0 blocked；专项 8/8 GREEN",
+  "next_gate": "继续 P03/P07 当前实现与自然失败诊断，同时串行推进不依赖 12/12 的八菜单来源到页面功能追溯；BI-W10-02 仍需 fresh exact 12/12",
   "next_steps": [
-    "继续逐页追溯其余七菜单正式来源、前后端合同与安全动作结果；发现确定性缺陷立即最小修复并复验"
+    "诊断 P03/P07 最新失败是否仍有确定性实现缺陷；有则当场修复，无则继续八菜单其余数据功能追溯并消费下一自然 Receipt"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000416",
+  "project_revision": "AOS-000417",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "1925c890",
-    "docs": "0cf5027"
+    "aos-platform": "e4fedb32",
+    "docs": "0b6f3a6"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -38,5 +38,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-29T09:56:31+08:00"
+  "updated_at": "2026-08-29T10:12:22+08:00"
 }
