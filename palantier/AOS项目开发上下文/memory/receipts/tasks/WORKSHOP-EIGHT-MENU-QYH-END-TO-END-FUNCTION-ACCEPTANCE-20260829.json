@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000420",
+  "created_at": "2026-08-29T16:02:00+08:00",
+  "excluded_scope": [
+    "Manual P01-P12 run or replay, credential or PII output, fake/demo business facts, source/business mutation, Provider call, migration, external effect, release"
+  ],
+  "expected_outputs": [
+    "Eight-page qyh source-to-browser trace matrix, deterministic fixes if needed, tests, browser evidence and delivery closure"
+  ],
+  "lease_expires_at": "2026-08-30T20:00:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "GET-only org-org/dev-project trace across qyh source knowledge, SourceReadiness, eight canonical Workshop APIs, Web parsers/components and built-in-browser interactions; repair every deterministic in-scope mismatch"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829"
+}
