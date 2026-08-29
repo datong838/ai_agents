@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000431",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/pages/StudioPage.tsx",
+    "apps/web/src/pages/W3BPageInteraction.test.tsx",
+    "apps/web/src/pages/s2/DocumentIntelligencePage.tsx",
+    "apps/web/src/pages/s2/DocumentIntelligencePage.component.test.tsx",
+    "apps/web/src/pages/s2/aip.tsx",
+    "apps/web/src/pages/s2/toolsInvokeContext.ts",
+    "apps/web/src/pages/s2/toolsInvokeContext.test.ts",
+    "services/aos-api/aos_api/tool_runtime.py",
+    "services/aos-api/tests/test_os_substance.py",
+    ".evidence/aip/2026-08-29-remaining-twenty-page-operability-audit/acceptance.md",
+    "docs:palantier/20_tech/电商平台接入/AIP通用能力实施方案/130-AIP接管后剩余波次权威对账与开发明细.md"
+  ],
+  "commits": [
+    "aos-platform/m1@c32736cd",
+    "docs/m1@c395eec"
+  ],
+  "completed_at": "2026-08-29T22:32:34+08:00",
+  "completed_revision": "AOS-000431",
+  "result": "AIP_REMAINING_TWENTY_PAGE_OPERABILITY_GREEN_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "development control-plane and read-only evidence only; no Provider, secret resolution, production traffic, true business mutation, migration or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "AIP-REMAINING-TWENTY-PAGE-OPERABILITY-AUDIT-20260829",
+  "verification": [
+    "built-in browser twenty pages; Studio six coworkers; exact Order/niushop:1:1 total=1; Analyst 50 rows and four views; Eval 10/10; Web 256 files/2328 tests; API 7 tests; build 362 modules"
+  ]
+}

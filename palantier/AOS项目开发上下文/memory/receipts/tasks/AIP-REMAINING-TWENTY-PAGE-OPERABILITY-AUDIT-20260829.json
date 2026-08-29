@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000431",
+  "created_at": "2026-08-29T22:01:03+08:00",
+  "excluded_scope": [
+    "provider-call,plaintext-secret-resolution,production-traffic-switch,true-business-mutation,migration-apply,release"
+  ],
+  "expected_outputs": [
+    "twenty-page browser control matrix, deterministic dead-control fixes, tests, evidence, delivery receipt, authority CAS, memory and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-29T20:01:02.791906+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "remaining twenty AIP sidebar pages Web/API/tests/evidence/docs isolated browser operability audit and minimal deterministic fixes"
+  ],
+  "status": "ACTIVE",
+  "task_id": "AIP-REMAINING-TWENTY-PAGE-OPERABILITY-AUDIT-20260829"
+}

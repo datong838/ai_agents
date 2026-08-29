@@ -65,3 +65,9 @@
 {"base_revision":"AOS-000429","occurred_at":"2026-08-29T21:32:46+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-OPERABILITY-AUDIT-20260829","type":"TASK_STARTED"}
 {"occurred_at":"2026-08-29T21:44:12+08:00","result":"EIGHT_MENU_PRIMARY_AND_DEEP_CONTROLS_BROWSER_OPERABLE_NO_REPRODUCIBLE_DEAD_CONTROL_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"WORKSHOP-EIGHT-MENU-OPERABILITY-AUDIT-20260829","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-08-29T21:44:12+08:00","project_revision":"AOS-000430","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000430","occurred_at":"2026-08-29T21:47:21+08:00","schema":"aos-memory-event/v1","task_id":"AIP-MODEL-MANAGEMENT-FIVE-PAGE-OPERABILITY-AUDIT-20260829","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-29T21:59:19+08:00","result":"AIP_MODEL_MANAGEMENT_FIVE_PAGE_OPERABILITY_REVALIDATED_GREEN_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"AIP-MODEL-MANAGEMENT-FIVE-PAGE-OPERABILITY-AUDIT-20260829","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-29T21:59:52+08:00","project_revision":"AOS-000431","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000431","occurred_at":"2026-08-29T22:01:03+08:00","schema":"aos-memory-event/v1","task_id":"AIP-REMAINING-TWENTY-PAGE-OPERABILITY-AUDIT-20260829","type":"TASK_STARTED"}
+{"occurred_at":"2026-08-29T22:32:34+08:00","result":"AIP_REMAINING_TWENTY_PAGE_OPERABILITY_GREEN_NO_EXTERNAL_EFFECT","schema":"aos-memory-event/v1","task_id":"AIP-REMAINING-TWENTY-PAGE-OPERABILITY-AUDIT-20260829","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-08-29T22:34:01+08:00","project_revision":"AOS-000432","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

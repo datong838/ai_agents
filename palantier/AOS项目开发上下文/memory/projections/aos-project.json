@@ -1,34 +1,34 @@
 {
   "completed": [
-    "model catalog/providers/router/capacity/runtime controls independently revalidated"
+    "AIP remaining twenty pages browser operability and exact read contracts revalidated"
   ],
-  "content_hash": "sha256:ff236ee281c0741606a0256ba6a2187293494631fa771574569905d13825f19c",
-  "current_phase": "AIP 模型管理五页面可操作性独立复验闭合；进入其余 AIP 页面逐控件真实功能审计",
-  "delivery_status": "AIP_MODEL_MANAGEMENT_FIVE_PAGE_OPERABILITY_REVALIDATED_GREEN_NO_EXTERNAL_EFFECT",
+  "content_hash": "sha256:7f966635d10956759e90b5bb5d4684c2e7c1885b2c1ace27d97a0a23a698af46",
+  "current_phase": "AIP 全侧栏逐页可操作性复验闭合；进入 Workshop 八菜单当前代码当前数据全链路复验",
+  "delivery_status": "AIP_REMAINING_TWENTY_PAGE_OPERABILITY_GREEN_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
       "kind": "browser",
-      "ref": ".evidence/aip/2026-08-29-model-management-five-page-operability-audit/acceptance.md"
+      "ref": ".evidence/aip/2026-08-29-remaining-twenty-page-operability-audit/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-29T21:59:52+08:00",
+  "generated_at": "2026-08-29T22:34:01+08:00",
   "hard_boundaries": [
     "no Provider call, plaintext secret resolution, production traffic switch, true business mutation, migration apply or release"
   ],
   "incomplete": [
-    "remaining AIP sidebar pages still require isolated browser click audit against static or dead controls"
+    "Workshop eight business menus require another current browser visual-control-data trace pass after AIP changes"
   ],
-  "last_green_gate": "main 4dd0d2ea + docs d4e78c4 + built-in browser route/circuit CAS v4, opaque secretRef v3, runtime refresh + Web 2325 + API 42 + build 362 modules",
-  "next_gate": "AIP-REMAINING-TWENTY-PAGE-OPERABILITY-AUDIT-20260829",
+  "last_green_gate": "main c32736cd + docs c395eec + built-in browser 20/20 pages + Web 2328 + API 7 + build 362 modules",
+  "next_gate": "WORKSHOP-EIGHT-MENU-CURRENT-FULL-TRACE-AUDIT-20260829",
   "next_steps": [
-    "register remaining twenty-page AIP audit and click every visible primary/deep control; repair first deterministic dead control"
+    "register Workshop eight-menu current full trace audit; compare blueprints, click every business control and trace canonical real-tenant reads"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000431",
+  "project_revision": "AOS-000432",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "code": "aos-platform/m1@4dd0d2ea",
-    "docs": "docs/m1@d4e78c4"
+    "code": "aos-platform/m1@c32736cd",
+    "docs": "docs/m1@c395eec"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
