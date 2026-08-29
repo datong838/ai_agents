@@ -1,34 +1,34 @@
 {
   "completed": [
-    "WORKSHOP-EIGHT-MENU-CURRENT-BROWSER-TRACEABILITY-20260829"
+    "BI-W10 current natural SourceReadiness exact readback at 2026-08-29T12:38:47.489467Z"
   ],
-  "content_hash": "sha256:cadcacfc00ce572b7967d37cbb034e52e78128059f75a39a4cc236478b7b514d",
-  "current_phase": "Workshop 八菜单当前浏览器功能与数据追溯已闭合；继续 BI-W10 自然运行与最终发布门",
-  "delivery_status": "CURRENT_BROWSER_FUNCTION_DATA_TRACEABILITY_GREEN_NO_EXTERNAL_EFFECT",
+  "content_hash": "sha256:4683fb07ec1561761e0a688d89ba70e8c40d64d1ab3517d807b920a448c1debc",
+  "current_phase": "BI-W10 当前自然 SourceReadiness 精确回读已闭合；继续去敏稳定失败分类施工",
+  "delivery_status": "CURRENT_NATURAL_SOURCE_READINESS_EXACT_FACTS_VERIFIED_8_READY_3_FAILED_1_STALE_NO_MANUAL_REPLAY",
   "evidence": [
     {
-      "kind": "browser_acceptance",
-      "ref": ".evidence/workshop/2026-08-29-eight-menu-current-browser/acceptance.md"
+      "kind": "current_readback",
+      "ref": ".evidence/workshop/2026-08-29-bi-w10-current-natural-readback/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-29T20:33:57+08:00",
+  "generated_at": "2026-08-29T20:47:00+08:00",
   "hard_boundaries": [
-    "No manual P01-P12 run/replay, fake facts, plaintext secrets, real Provider call, external effect, unapproved migration execution or release bypass"
+    "no manual/replay P01-P12; no catch-up; no timeout expansion; no Provider/Secret/PII; no real business mutation; no migration/release"
   ],
   "incomplete": [
-    "BI-W10 真实自然运行、Provider Health、正式试点与 BI-W11 发布决定仍须各自当前证据；当前八菜单 GREEN 不替代这些安全门"
+    "P03/P07/P10 later natural run success and P12 later natural slot remain unproven"
   ],
-  "last_green_gate": "八菜单内置浏览器逐页逐控件；Web 256/2324；TypeScript/build；Workshop+SourceReadiness API 241；正式租户/canary 隔离 GREEN",
-  "next_gate": "只读回读当前 SourceReadiness 与自然运行 Receipt；确定性代码缺陷立即修复，但不手工运行/重放 P01-P12、不调用 Provider、不产生外部副作用或发布",
+  "last_green_gate": "canonical GET + exact latest run/DLQ readback + tenant canary + schedule continuity readback",
+  "next_gate": "stable sanitized transport failure codes persisted into natural ScheduleRun and projected by SourceReadiness; no retry/replay/timeout change",
   "next_steps": [
-    "读取当前十二来源与 P03/P07 自然运行事实；若仍失败则诊断并修确定性缺陷，若自然证据已闭合则继续正式门验收"
+    "implement stable sanitized transport error classification with tests and no external effect"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000425",
+  "project_revision": "AOS-000426",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "43270348",
-    "docs": "296cd1c"
+    "aos-platform": "d107bcd5",
+    "docs": "84660d8"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

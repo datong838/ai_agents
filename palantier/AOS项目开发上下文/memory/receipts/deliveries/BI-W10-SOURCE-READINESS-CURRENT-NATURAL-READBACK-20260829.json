@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000425",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-29-bi-w10-current-natural-readback/acceptance.md",
+    "/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform:d107bcd5",
+    "docs:84660d8"
+  ],
+  "completed_at": "2026-08-29T20:45:48+08:00",
+  "completed_revision": "AOS-000425",
+  "result": "CURRENT_NATURAL_SOURCE_READINESS_EXACT_FACTS_VERIFIED_8_READY_3_FAILED_1_STALE_NO_MANUAL_REPLAY",
+  "risks": [
+    "P03/P07/P10 still require later natural-run success; P12 requires later natural slot; no state was forged or replayed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-SOURCE-READINESS-CURRENT-NATURAL-READBACK-20260829",
+  "verification": [
+    "memory status/validate GREEN at AOS-000425",
+    "canonical SourceReadiness GET checkedAt 2026-08-29T12:38:47.489467Z: 8 ready, 3 failed, 1 stale",
+    "P03/P07/P10 latest run and DLQ metadata GET; P12 schedule history GET",
+    "dev-org/dev-project isolation canary stayed tenant-local blocked 0/0",
+    "12/12 schedules enabled; current API owner start time independently verified"
+  ]
+}
