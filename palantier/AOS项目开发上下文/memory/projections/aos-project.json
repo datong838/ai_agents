@@ -1,34 +1,34 @@
 {
   "completed": [
-    "WORKSHOP-SEVEN-MENU-REAL-DATA-FUNCTION-TRACE-20260829"
+    "WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829"
   ],
-  "content_hash": "sha256:2a3871294a36081426284e7edee90c1ce5a6971db42d784a1c9007a3084da99f",
-  "current_phase": "Workshop 八菜单视觉稿—实际页逐屏精确复审",
-  "delivery_status": "SEVEN_MENU_CANONICAL_DATA_UI_FUNCTION_TRACE_GREEN_WEB_2319_OF_2319_SOURCE_READINESS_10_OF_12_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:fdefe7472ae8c45bb9f8a568714831a75bcbda696f5bd05d0da627159fff39cd",
+  "current_phase": "Workshop 八菜单栖月汇端到端功能验收",
+  "delivery_status": "PRIMARY_EIGHT_MENU_BLUEPRINT_CURRENT_1280_BROWSER_FUNCTION_GREEN_WEB_2321_OF_2321_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "acceptance",
-      "ref": ".evidence/workshop/2026-08-29-seven-menu-real-data-function-trace/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-eight-menu-blueprint-exact-visual-recheck/acceptance.md"
     }
   ],
-  "generated_at": "2026-08-29T10:44:30+08:00",
+  "generated_at": "2026-08-29T15:56:59+08:00",
   "hard_boundaries": [
-    "No manual P01-P12 run or replay; no fake facts, source/business mutation, Provider, migration, external effect or release bypass"
+    "No manual P01-P12 run or replay; no fake facts, credential output, Provider call, migration, external effect or release bypass"
   ],
   "incomplete": [
-    "P03/P07 仍待下一自然运行独立裁决；不得推进外部效果或发布"
+    "八菜单栖月汇真实数据端到端功能与数据语义逐项验收尚待本串行下一波执行；P03/P07 自然 readiness 与发布决定保持独立"
   ],
-  "last_green_gate": "七页面 canonical 读模型与浏览器数据/交互逐项一致；统一运营 219/210/9/0；Web 2319/2319 GREEN",
-  "next_gate": "按八份视觉稿逐页逐组件精确比对布局、字号、颜色、比例、浮层、折叠和多视口；确定性偏差立即修复并浏览器重验",
+  "last_green_gate": "八个一级菜单 source/current 1280x720 新鲜截图成对；所有业务页签、侧栏折叠与安全动作浏览器可工作；Web 2321/2321 GREEN",
+  "next_gate": "从八个页面沿 API、领域 authority、数据源逐项追溯栖月汇真实数据，闭合可安全修复的数据与功能缺口",
   "next_steps": [
-    "启动 WORKSHOP-EIGHT-MENU-BLUEPRINT-EXACT-VISUAL-RECHECK-20260829，并在内置浏览器逐屏对照正式视觉稿"
+    "启动 WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829，逐页追溯 GET/read-model/组件并修复确定性缺口"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000419",
+  "project_revision": "AOS-000420",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "aos-platform": "36ee62c9",
-    "docs": "4b72f4b"
+    "aos-platform": "a65caa02",
+    "docs": "f9ad4fd"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
