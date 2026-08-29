@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000424",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-29-eight-menu-current-browser/acceptance.md",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/components/workshop/OperationsPage.test.tsx",
+    "services/aos-api/aos_api/ecommerce_operation_commands.py",
+    "/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "43270348",
+    "296cd1c"
+  ],
+  "completed_at": "2026-08-29T20:32:25+08:00",
+  "completed_revision": "AOS-000424",
+  "result": "CURRENT_BROWSER_FUNCTION_DATA_TRACEABILITY_GREEN_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "当前结果不代表 SourceReadiness 全绿、真实试点、Provider、业务写入、外部副作用、迁移或发布授权"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-EIGHT-MENU-CURRENT-BROWSER-TRACEABILITY-20260829",
+  "verification": [
+    "内置浏览器逐页点击八菜单；Web 256 files/2324 tests；TypeScript/build GREEN；Workshop+SourceReadiness API 241 passed；运营专项 22 passed；正式租户/canary GET-only 隔离 GREEN"
+  ]
+}
