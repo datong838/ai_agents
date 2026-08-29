@@ -1,34 +1,39 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "BI-W10 current natural SourceReadiness exact readback at 2026-08-29T12:38:47.489467Z"
+    "BI-W10 current natural SourceReadiness exact readback at 2026-08-29T12:38:47.489467Z",
+    "BI-W10 sanitized transport failure classification and projection"
   ],
-  "current_phase": "BI-W10 当前自然 SourceReadiness 精确回读已闭合；继续去敏稳定失败分类施工",
-  "delivery_status": "CURRENT_NATURAL_SOURCE_READINESS_EXACT_FACTS_VERIFIED_8_READY_3_FAILED_1_STALE_NO_MANUAL_REPLAY",
+  "current_phase": "BI-W10 去敏传输错误分类已闭合；继续 P10 当前 SSH_CONNECT_TIMEOUT 确定性路径诊断与安全修复",
+  "delivery_status": "BI_W10_SANITIZED_TRANSPORT_ERROR_CLASSIFICATION_CODE_SCHEDULER_SOURCE_READINESS_GREEN_NO_REPLAY",
   "evidence": [
     {
       "kind": "current_readback",
       "ref": ".evidence/workshop/2026-08-29-bi-w10-current-natural-readback/acceptance.md"
+    },
+    {
+      "kind": "code_acceptance",
+      "ref": ".evidence/workshop/2026-08-29-bi-w10-sanitized-transport-error-classification/acceptance.md"
     }
   ],
-  "evidence_cutoff": "2026-08-29T12:38:47.489467+00:00",
+  "evidence_cutoff": "2026-08-29T13:00:28+00:00",
   "hard_boundaries": [
-    "no manual/replay P01-P12; no catch-up; no timeout expansion; no Provider/Secret/PII; no real business mutation; no migration/release"
+    "no manual/replay P01-P12; no catch-up; no automatic retry or timeout expansion; no Provider/Secret/PII; no real business mutation; no migration/release"
   ],
   "incomplete": [
     "P03/P07/P10 later natural run success and P12 later natural slot remain unproven"
   ],
-  "last_green_gate": "canonical GET + exact latest run/DLQ readback + tenant canary + schedule continuity readback",
-  "next_gate": "stable sanitized transport failure codes persisted into natural ScheduleRun and projected by SourceReadiness; no retry/replay/timeout change",
+  "last_green_gate": "stable sanitized executor classification + durable ScheduleRun persistence + canonical SourceReadiness projection + 53/53 targeted + 133/133 cumulative",
+  "next_gate": "load classification in current API owner; diagnose and close deterministic P10 SSH transport path without replay/retry/timeout expansion, then continue eight-menu natural data trace",
   "next_steps": [
-    "implement stable sanitized transport error classification with tests and no external effect"
+    "restart current development API owner safely to load 45104fe9, then diagnose P10 SSH_CONNECT_TIMEOUT without manual pipeline run"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000426",
+  "project_revision": "AOS-000427",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "aos-platform": "d107bcd5",
-    "docs": "84660d8"
+    "aos-platform": "45104fe9",
+    "docs": "54620f8"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -38,5 +43,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-29T20:47:00+08:00"
+  "updated_at": "2026-08-29T21:01:12+08:00"
 }

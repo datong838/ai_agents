@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000426",
+  "created_at": "2026-08-29T20:48:04+08:00",
+  "excluded_scope": [
+    "manual-or-replay-P01-P12;catch-up;automatic-retry;timeout-expansion;provider-call;secret-or-raw-exception-disclosure;real-business-data-mutation;migration;release"
+  ],
+  "expected_outputs": [
+    "stable sanitized transport error codes persisted and projected; no raw exception; targeted and cumulative regression; Delivery Receipt; authority CAS; memory sync/validate/gate and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-30T00:37:12+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "services/aos-api/aos_api/phase5_pipeline_engine.py;services/aos-api/aos_api/qyh_cron_scheduler.py;services/aos-api/aos_api/source_readiness.py;services/aos-api/tests/test_ec_pipeline_honesty.py;services/aos-api/tests/test_qyh_cron_scheduler.py;services/aos-api/tests/test_source_readiness_source.py;.evidence/workshop/2026-08-29-bi-w10-sanitized-transport-errors;/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "BI-W10-SANITIZED-TRANSPORT-ERROR-CLASSIFICATION-20260829"
+}

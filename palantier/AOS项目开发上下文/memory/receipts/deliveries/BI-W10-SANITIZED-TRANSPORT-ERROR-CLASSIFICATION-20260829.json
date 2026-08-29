@@ -1,0 +1,28 @@
+{
+  "base_revision": "AOS-000426",
+  "blockers": [],
+  "changed_files": [
+    "services/aos-api/aos_api/phase5_pipeline_engine.py",
+    "services/aos-api/aos_api/qyh_cron_scheduler.py",
+    "services/aos-api/tests/test_ec_pipeline_honesty.py",
+    "services/aos-api/tests/test_qyh_cron_scheduler.py",
+    "services/aos-api/tests/test_source_readiness_source.py",
+    ".evidence/workshop/2026-08-29-bi-w10-sanitized-transport-error-classification/acceptance.md",
+    "/Users/ddt/work/projects/ai_agent/docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "45104fe9",
+    "54620f8"
+  ],
+  "completed_at": "2026-08-29T21:00:28+08:00",
+  "completed_revision": "AOS-000426",
+  "result": "BI_W10_SANITIZED_TRANSPORT_ERROR_CLASSIFICATION_CODE_SCHEDULER_SOURCE_READINESS_GREEN_NO_REPLAY",
+  "risks": [
+    "稳定码只作用于后续自然运行；当前8 ready/3 failed/1 stale不可追溯改判；无重试/重放/补跑/超时放宽/Provider/Secret/PII/业务写入/迁移/发布"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "BI-W10-SANITIZED-TRANSPORT-ERROR-CLASSIFICATION-20260829",
+  "verification": [
+    "专项53/53；EC/JDBC/Cron/SourceReadiness累计133/133；compileall/diff-check GREEN；Alembic wcat_003 head；API owner continuity；无页面改动 browser N/A"
+  ]
+}
