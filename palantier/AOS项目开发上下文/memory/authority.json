@@ -1,34 +1,34 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "AIP remaining twenty pages browser operability and exact read contracts revalidated"
+    "WORKSHOP-EIGHT-MENU-CURRENT-FULL-TRACE-AUDIT-20260829"
   ],
-  "current_phase": "AIP 全侧栏逐页可操作性复验闭合；进入 Workshop 八菜单当前代码当前数据全链路复验",
-  "delivery_status": "AIP_REMAINING_TWENTY_PAGE_OPERABILITY_GREEN_NO_EXTERNAL_EFFECT",
+  "current_phase": "AOS_CURRENT_UI_FUNCTION_DATA_CONTINUATION",
+  "delivery_status": "WORKSHOP_EIGHT_MENU_CURRENT_FULL_TRACE_GREEN_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
       "kind": "browser",
-      "ref": ".evidence/aip/2026-08-29-remaining-twenty-page-operability-audit/acceptance.md"
+      "ref": ".evidence/workshop/2026-08-29-eight-menu-current-full-trace-audit/acceptance.md"
     }
   ],
-  "evidence_cutoff": "2026-08-29T14:32:34Z",
+  "evidence_cutoff": "2026-08-29T23:02:23+08:00",
   "hard_boundaries": [
-    "no Provider call, plaintext secret resolution, production traffic switch, true business mutation, migration apply or release"
+    "No Provider, no plaintext secret resolution, no production traffic switch, no true business mutation, no manual pipeline replay, no migration apply, no release"
   ],
   "incomplete": [
-    "Workshop eight business menus require another current browser visual-control-data trace pass after AIP changes"
+    "AOS-REMAINING-SIDEBAR-CURRENT-OPERABILITY-AUDIT-20260829"
   ],
-  "last_green_gate": "main c32736cd + docs c395eec + built-in browser 20/20 pages + Web 2328 + API 7 + build 362 modules",
-  "next_gate": "WORKSHOP-EIGHT-MENU-CURRENT-FULL-TRACE-AUDIT-20260829",
+  "last_green_gate": "WORKSHOP_EIGHT_MENU_CURRENT_FULL_TRACE_GREEN_NO_EXTERNAL_EFFECT",
+  "next_gate": "AOS-REMAINING-SIDEBAR-CURRENT-OPERABILITY-AUDIT-20260829",
   "next_steps": [
-    "register Workshop eight-menu current full trace audit; compare blueprints, click every business control and trace canonical real-tenant reads"
+    "Continue current built-in-browser click audit for every remaining AOS sidebar route; repair deterministic dead controls, visual regressions and frontend/backend trace gaps immediately"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000432",
+  "project_revision": "AOS-000433",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "aos-platform/m1@c32736cd",
-    "docs": "docs/m1@c395eec"
+    "docs": "e7f0b7d",
+    "main": "eec327d8"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -38,5 +38,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-29T22:34:01+08:00"
+  "updated_at": "2026-08-29T23:03:25+08:00"
 }

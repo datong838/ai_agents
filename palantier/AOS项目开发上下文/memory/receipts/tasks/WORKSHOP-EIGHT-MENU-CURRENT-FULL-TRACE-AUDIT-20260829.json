@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000432",
+  "created_at": "2026-08-29T22:35:55+08:00",
+  "excluded_scope": [
+    "Provider call,plaintext secret resolution,production traffic switch,true business mutation,migration apply,release"
+  ],
+  "expected_outputs": [
+    "eight-menu blueprint comparison, click matrix, canonical real-tenant trace, minimal fixes, tests, browser evidence, delivery receipt, authority CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-29T20:35:00+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "Workshop eight business menus current Web/API/tests/evidence/docs visual-control-real-tenant trace audit and deterministic minimal fixes"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-EIGHT-MENU-CURRENT-FULL-TRACE-AUDIT-20260829"
+}
