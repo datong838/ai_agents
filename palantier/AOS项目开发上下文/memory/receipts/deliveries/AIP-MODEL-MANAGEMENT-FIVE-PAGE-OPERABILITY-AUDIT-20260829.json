@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000430",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/aip/2026-08-29-model-management-five-page-operability-audit/acceptance.md",
+    "docs:palantier/20_tech/电商平台接入/AIP通用能力实施方案/130-AIP接管后剩余波次权威对账与开发明细.md"
+  ],
+  "commits": [
+    "aos-platform/m1@4dd0d2ea",
+    "docs/m1@d4e78c4"
+  ],
+  "completed_at": "2026-08-29T21:59:19+08:00",
+  "completed_revision": "AOS-000430",
+  "result": "AIP_MODEL_MANAGEMENT_FIVE_PAGE_OPERABILITY_REVALIDATED_GREEN_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "control-plane green only; Provider Health remains expired; 0/3 runtime routes; no external call or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "AIP-MODEL-MANAGEMENT-FIVE-PAGE-OPERABILITY-AUDIT-20260829",
+  "verification": [
+    "built-in browser five pages; route draft v4; circuit draft v4; opaque secretRef v3; runtime timestamps advanced; Web 256 files/2325 tests; API 42 tests; build 362 modules"
+  ]
+}

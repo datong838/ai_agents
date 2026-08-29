@@ -1,34 +1,34 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "八菜单逐控件业务功能自验收"
+    "model catalog/providers/router/capacity/runtime controls independently revalidated"
   ],
-  "current_phase": "八菜单逐控件可操作性复验闭合；转入 AIP 模型管理五页面真实功能复验与静态壳整改",
-  "delivery_status": "EIGHT_MENU_PRIMARY_AND_DEEP_CONTROLS_BROWSER_OPERABLE_NO_REPRODUCIBLE_DEAD_CONTROL_NO_EXTERNAL_EFFECT",
+  "current_phase": "AIP 模型管理五页面可操作性独立复验闭合；进入其余 AIP 页面逐控件真实功能审计",
+  "delivery_status": "AIP_MODEL_MANAGEMENT_FIVE_PAGE_OPERABILITY_REVALIDATED_GREEN_NO_EXTERNAL_EFFECT",
   "evidence": [
     {
       "kind": "browser",
-      "ref": ".evidence/workshop/2026-08-29-eight-menu-operability-audit/acceptance.md"
+      "ref": ".evidence/aip/2026-08-29-model-management-five-page-operability-audit/acceptance.md"
     }
   ],
   "evidence_cutoff": "2026-08-29T13:37:00Z",
   "hard_boundaries": [
-    "No provider call, secret resolution, production traffic switch, true business mutation, migration apply or release"
+    "no Provider call, plaintext secret resolution, production traffic switch, true business mutation, migration apply or release"
   ],
   "incomplete": [
-    "AIP 模型目录、供应商、路由、容量和运行就绪页面仍需按用户截图逐页核验真实功能"
+    "remaining AIP sidebar pages still require isolated browser click audit against static or dead controls"
   ],
-  "last_green_gate": "main 0f77641c + docs 94a07de + built-in-browser isolated click matrix across all eight menus and deep business views",
-  "next_gate": "AIP-MODEL-MANAGEMENT-FIVE-PAGE-OPERABILITY-AUDIT-20260829: catalog/providers/router/capacity/readiness browser click and API trace, then fix first reproducible static or dead control",
+  "last_green_gate": "main 4dd0d2ea + docs d4e78c4 + built-in browser route/circuit CAS v4, opaque secretRef v3, runtime refresh + Web 2325 + API 42 + build 362 modules",
+  "next_gate": "AIP-REMAINING-TWENTY-PAGE-OPERABILITY-AUDIT-20260829",
   "next_steps": [
-    "register AIP five-page audit Receipt, review current plan and 46b2bffa implementation, then use built-in browser to click every visible management control and repair the first deterministic gap"
+    "register remaining twenty-page AIP audit and click every visible primary/deep control; repair first deterministic dead control"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000430",
+  "project_revision": "AOS-000431",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "docs": "94a07de",
-    "main": "0f77641c"
+    "code": "aos-platform/m1@4dd0d2ea",
+    "docs": "docs/m1@d4e78c4"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -38,5 +38,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-08-29T21:44:12+08:00"
+  "updated_at": "2026-08-29T21:59:52+08:00"
 }

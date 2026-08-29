@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000430",
+  "created_at": "2026-08-29T21:47:21+08:00",
+  "excluded_scope": [
+    "provider-call,plaintext-secret-resolution,production-traffic-switch,true-business-mutation,migration-apply,release"
+  ],
+  "expected_outputs": [
+    "five pages browser click matrix, deterministic dead-control fixes, tests, evidence, delivery receipt, authority CAS, memory and Prime readback"
+  ],
+  "lease_expires_at": "2026-08-29T17:47:20.831702+00:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "aip-model-catalog,providers,router,capacity,runtime web/api/tests/evidence/docs browser operability audit and minimal deterministic fixes"
+  ],
+  "status": "ACTIVE",
+  "task_id": "AIP-MODEL-MANAGEMENT-FIVE-PAGE-OPERABILITY-AUDIT-20260829"
+}
