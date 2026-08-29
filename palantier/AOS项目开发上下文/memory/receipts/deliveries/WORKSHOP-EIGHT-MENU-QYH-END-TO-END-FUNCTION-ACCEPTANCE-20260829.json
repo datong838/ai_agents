@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000420",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-08-29-eight-menu-qyh-end-to-end-function-acceptance/acceptance.md",
+    ".evidence/workshop/2026-08-29-eight-menu-qyh-end-to-end-function-acceptance/browser-1280x720/*.png",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/119-BI-W0经营参谋生意探究全量开发清单与波次实施计划.md"
+  ],
+  "commits": [
+    "aos-platform:140081d7",
+    "docs:2d39eb6"
+  ],
+  "completed_at": "2026-08-29T16:28:48+08:00",
+  "completed_revision": "AOS-000420",
+  "result": "EIGHT_MENU_QYH_SOURCE_TO_BROWSER_FUNCTION_ACCEPTANCE_GREEN_WITH_FAIL_CLOSED_SOURCE_READINESS",
+  "risks": [
+    "P03 and P07 await their next natural schedules after the deployed tunnel fixes; P10 latest natural run ended in bounded CONNECT_TIMEOUT; P12 missed its natural window during process discontinuity. None grants external-effect or release permission."
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-EIGHT-MENU-QYH-END-TO-END-FUNCTION-ACCEPTANCE-20260829",
+  "verification": [
+    "Built-in browser 1280x720 visited all eight menus, clicked every business tab, sidebar collapse/expand, six coworker popovers and safe action controls; no page-level horizontal overflow",
+    "Operations counts reconcile at orders 50, orderLines 50, inventory source 50/attached 41/unmatched 9, shipments 19 and payments 50; customer source counts remain input 54/unknown 54/eligible 0",
+    "Web targeted regression 10 files / 91 tests GREEN; API targeted regression 11 files / 106 tests GREEN",
+    "No P01-P12 replay, source mutation, Provider call, migration, external effect or release occurred"
+  ]
+}
