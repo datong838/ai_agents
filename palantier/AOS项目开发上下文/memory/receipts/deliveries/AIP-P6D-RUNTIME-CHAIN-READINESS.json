@@ -1,0 +1,34 @@
+{
+  "base_revision": "AOS-000444",
+  "blockers": [
+    "P7 and P8 remain next; external effect and release remain unauthorized"
+  ],
+  "changed_files": [
+    ".evidence/aip/2026-09-01-p6-model-runtime/p6d-plan.md",
+    ".evidence/aip/2026-09-01-p6-model-runtime/p6d-verification.md",
+    ".evidence/aip/2026-09-01-p6-model-runtime/p6d-browser.png",
+    "apps/web/src/api/aipModelRuntime/contracts.ts",
+    "apps/web/src/api/aipModelRuntime/index.ts",
+    "apps/web/src/api/aipModelRuntime/parser.ts",
+    "apps/web/src/api/aipModelRuntime/parser.test.ts",
+    "apps/web/src/pages/s2/ModelRuntimePage.tsx",
+    "apps/web/src/pages/s2/ModelRuntimePage.test.tsx",
+    "services/aos-api/aos_api/aip_model_runtime_contracts.py",
+    "services/aos-api/aos_api/routers/aip_model_runtime.py",
+    "services/aos-api/tests/aip/test_aip_model_runtime_api.py"
+  ],
+  "commits": [
+    "5e2250f2"
+  ],
+  "completed_at": "2026-09-01T20:06:58+08:00",
+  "completed_revision": "AOS-000444",
+  "result": "AIP_P6D_RUNTIME_CHAIN_READINESS_CODE_BROWSER_GREEN_CONTROLLED_TRIAL_DISABLED_BY_EXACT_GATE_NO_EXTERNAL_EFFECT",
+  "risks": [
+    "No Provider call, no plaintext secret, no real business mutation, no runtime route switch, no migration, no release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "AIP-P6D-RUNTIME-CHAIN-READINESS",
+  "verification": [
+    "Backend runtime 20 passed; P6 cumulative 40 passed; Web 66 passed; TypeScript, production build, diff-check and built-in-browser GREEN"
+  ]
+}
