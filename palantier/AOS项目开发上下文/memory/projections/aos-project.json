@@ -1,43 +1,46 @@
 {
   "completed": [
-    "AIP-P6D-RUNTIME-CHAIN-READINESS"
+    "AIP-P7-SIX-COLLEAGUES-DOCUMENT-INTELLIGENCE-CROSS-PAGE",
+    "AIP-P8-CUMULATIVE-PRODUCT-ACCEPTANCE"
   ],
-  "content_hash": "sha256:e0894dd88cdef0efe1c4dede40e96ef55e1a5ceb2276a8bffc5a9187a8860ea0",
-  "current_phase": "AIP_FULL_MENU_PRODUCT_REMEDIATION_P7",
-  "delivery_status": "AIP_P6D_RUNTIME_CHAIN_READINESS_CODE_BROWSER_GREEN_P7_IN_PROGRESS_NO_EXTERNAL_EFFECT",
+  "content_hash": "sha256:d7acdb993cc12e72cbe9126e11ca174ecd1cfdbb5e6d1d9c7aa207f1063354c3",
+  "current_phase": "AIP_FULL_MENU_PRODUCT_REMEDIATION_COMPLETE",
+  "delivery_status": "AIP_P0_TO_P8_132_OF_132_CODE_BROWSER_CONTRACT_DUAL_TENANT_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "delivery",
-      "ref": "memory/receipts/deliveries/AIP-P6D-RUNTIME-CHAIN-READINESS.json"
+      "kind": "browser",
+      "ref": ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance/p8-page-matrix-initial.json"
     },
     {
       "kind": "browser",
-      "ref": ".evidence/aip/2026-09-01-p6-model-runtime/p6d-verification.md"
+      "ref": ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance/p8-viewport-accessibility.json"
     },
     {
-      "kind": "commit",
-      "ref": "5e2250f2"
+      "kind": "verification",
+      "ref": ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance/p8-verification-progress.md"
+    },
+    {
+      "kind": "contract",
+      "ref": ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance/p8-contract-trace.md"
     }
   ],
-  "generated_at": "2026-09-01T20:12:31+08:00",
+  "generated_at": "2026-09-02T07:07:58+08:00",
   "hard_boundaries": [
-    "No Provider calls, protected Secret resolution, production traffic switch, real business mutation, migration, external effect, or release; org-org/dev-project remains read-only evidence scope and dev-org/dev-project remains isolation canary only"
+    "No Provider call, secret resolution, real customer contact, business publication, migration, route switch or release"
   ],
   "incomplete": [
-    "AIP-P7-SIX-COLLEAGUES-DOCUMENT-INTELLIGENCE-CROSS-PAGE",
-    "AIP-P8-CUMULATIVE-PRODUCT-ACCEPTANCE",
     "EXTERNAL_EFFECT_AND_RELEASE_NOT_AUTHORIZED"
   ],
-  "last_green_gate": "AIP_P6D_RUNTIME_CHAIN_READINESS_CODE_BROWSER_GREEN",
-  "next_gate": "AIP_P7_SIX_COLLEAGUES_DOCUMENT_INTELLIGENCE_CROSS_PAGE_GREEN",
+  "last_green_gate": "AIP_P8_CUMULATIVE_PRODUCT_ACCEPTANCE_GREEN",
+  "next_gate": "USER_ACCEPTANCE_AND_EXPLICIT_EXTERNAL_EFFECT_RELEASE_DECISION",
   "next_steps": [
-    "Implement P7 six digital-colleague business loops and document-intelligence cross-page handoff, then continue P8 serially"
+    "User product acceptance against P8 evidence; keep Provider, external effect, migration and release gates closed unless separately authorized"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000446",
+  "project_revision": "AOS-000448",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "main": "5e2250f2"
+    "code": "8a6c551c"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

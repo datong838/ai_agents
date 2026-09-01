@@ -1,0 +1,32 @@
+{
+  "base_revision": "AOS-000447",
+  "blockers": [
+    "External effect and release remain unauthorized and were not part of P8 acceptance"
+  ],
+  "changed_files": [
+    "apps/web/src/interactionHonestyManifest.ts",
+    "apps/web/src/interactionHonestyManifest.test.ts",
+    ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance",
+    "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/164-AIP全菜单业务可用性缺陷总控与分批整改清单.md"
+  ],
+  "commits": [
+    "d957745b",
+    "8a6c551c"
+  ],
+  "completed_at": "2026-09-02T07:05:29+08:00",
+  "completed_revision": "AOS-000447",
+  "result": "AIP_P8_CUMULATIVE_PRODUCT_ACCEPTANCE_CODE_BROWSER_CONTRACT_DUAL_TENANT_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "risks": [
+    "Document template authority remains process-runtime durable only; no migration performed",
+    "No Provider call, secret resolution, real contact, publish, reprice, send, route switch or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "AIP-P8-CUMULATIVE-PRODUCT-ACCEPTANCE",
+  "verification": [
+    "Web 270 files / 2410 tests GREEN",
+    "API AIP core 114 passed",
+    "TypeScript noEmit and Vite production build 367 modules GREEN",
+    "Built-in browser 25/25 pages, 3317 controls, 3 viewports and 200 percent scale GREEN",
+    "org-org real analyst and six colleague scenarios GREEN; dev-org isolation GREEN"
+  ]
+}

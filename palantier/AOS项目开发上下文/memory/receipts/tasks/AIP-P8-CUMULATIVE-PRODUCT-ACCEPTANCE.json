@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000447",
+  "created_at": "2026-09-02T02:08:23+08:00",
+  "excluded_scope": [
+    "plugins/ops,database-migrations,real-business-write,provider-call,secret-resolution,external-effect,release"
+  ],
+  "expected_outputs": [
+    "25-page browser acceptance, contract-authority trace, org-org facts, dev-org isolation, responsive-accessibility regression, Delivery Receipt and memory closure"
+  ],
+  "lease_expires_at": "2026-09-04T00:00:00+08:00",
+  "owner": "codex-main-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web,services/aos-api,.evidence/aip/2026-09-02-p8-cumulative-product-acceptance,docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/164-AIP全菜单业务可用性缺陷总控与分批整改清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "AIP-P8-CUMULATIVE-PRODUCT-ACCEPTANCE"
+}
