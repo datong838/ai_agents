@@ -1,7 +1,7 @@
 # 工作台八菜单视觉、功能、数据全量缺陷清单与串行修复波次
 
 > 审计日期：2026-08-30
-> 状态：`PRODUCT_ACCEPTANCE_REOPENED / R1_8_OF_8 / TOTAL_12_OF_81 / R2_IN_PROGRESS / NO_RELEASE`
+> 状态：`PRODUCT_ACCEPTANCE_REOPENED / R2_2_OF_6 / TOTAL_14_OF_81 / R2_IN_PROGRESS / NO_RELEASE`
 > 正向业务租户：仅 `org-org/dev-project`（栖月汇微商城）
 > 负向隔离 canary：`dev-org/dev-project`，不得作为正向完成证据
 > 与原 96 项关系：原 W0～W8 的 `96/96` 仅表示历史工程合同清单已闭合；本清单是用户浏览器验收重新发现的产品缺陷修复账本，不改写也不合并原 96 个编号。
@@ -91,12 +91,67 @@
 
 ### R2 · 栖月汇真实数据与 canonical authority 基座（6 项）
 
-- [ ] `R2-01` 固化 `org-org/dev-project` 当前数据快照与同截止时间 SourceReadiness；当前可见事实为 9/12 ready、2 failed、1 stale，不得写成全绿。
-- [ ] `R2-02` 建立八页“页面字段→API 字段→领域 authority→真实源/Receipt”追溯表，缺 exact ref 的字段必须诚实为空或禁用。
+- [x] `R2-01` 固化 `org-org/dev-project` 当前数据快照与同截止时间 SourceReadiness；实时事实为 9/12 ready、3 failed、0 stale，不得写成全绿。证据：`.evidence/workshop/2026-09-02-r2-real-tenant-baseline/source-readiness-summary.json`。
+- [x] `R2-02` 建立八页“页面字段→API 字段→领域 authority→真实源/Receipt”追溯表，缺 exact ref 的字段必须诚实为空或禁用。证据：本节 R2 八页追溯矩阵与 `.evidence/workshop/2026-09-02-r2-real-tenant-baseline/eight-page-traceability-summary.json`。
 - [ ] `R2-03` 补齐工作台内部需要的 canonical authority/Store/reader；能在本系统内解决的缺口不得长期以“等待别人交付”代替实现。
 - [ ] `R2-04` 统一 loading/empty/blocked/partial/ready/conflict 状态；已有真实切片时不得因为另一个切片 blocked 而把整页显示成死页面。
 - [ ] `R2-05` 为允许的工作台内部写操作建立 preview→confirm→Receipt→readback 闭环和幂等保护；真实外部动作继续失败关闭。
 - [ ] `R2-06` 建立 `dev-org/dev-project` 隔离负向回归，证明无跨租户泄漏，但不把负向 canary 当正向业务完成证据。
+
+### R2 文件级施工包（2026-09-02）
+
+#### R2-A · 同截止事实与追溯基线（R2-01、R2-02）
+
+1. `aos-platform/.evidence/workshop/2026-09-02-r2-real-tenant-baseline/`
+   - 只保存 `org-org/dev-project` 的聚合计数、状态、cutoff、技术引用类型和 Receipt 是否存在；不保存客户明细、凭证或业务敏感字段。
+   - 对 `dev-org/dev-project` 只保存 0 数据/租户回显/拒绝结果，不把 canary 当正向完成证据。
+2. 本清单文档
+   - 固化八页“页面区块→canonical API→authority/reader→真实源/Receipt→当前状态”的追溯矩阵。
+   - 实时事实变化必须改写旧口径；不得把 2026-08-30 的 `9 ready / 2 failed / 1 stale` 沿用为当前结论。
+3. 只读核验入口
+   - `GET /v1/ecommerce-workshop/source-readiness`
+   - `GET /v1/ecommerce-workshop/views/task-cockpit|operations|content-campaign|creator-growth|media-studio|analyst|price-governance|customer`
+   - 所有正向读取必须使用 `org-org/dev-project`，并校验 tenant echo、cutoff、分页计数、authority refs 与 Receipt。
+
+#### R2-B · canonical authority、统一状态和内部 Receipt（R2-03～R2-06）
+
+1. 后端候选范围（审计确认缺口后再取最小集合）
+   - `services/aos-api/aos_api/ecommerce_workshop_*_contracts.py`
+   - `services/aos-api/aos_api/ecommerce_workshop_*_source_reader.py`
+   - `services/aos-api/aos_api/ecommerce_workshop_*_store.py`
+   - `services/aos-api/aos_api/routers/ecommerce_workshop.py`
+   - 对应 `services/aos-api/tests/test_w*_ecommerce_workshop*.py` 与 tenant isolation 测试。
+2. Web 候选范围（不跨入单页 1:1 视觉重做）
+   - `apps/web/src/api/ecommerceWorkshop/contracts.ts`、`parser.ts`、`client.ts` 与测试。
+   - `apps/web/src/components/workshop/` 下公共状态/Receipt 组件及八页最小接入点。
+3. 状态规则
+   - `loading` 只表示请求进行中；`empty` 表示 authority 已可读且集合为空；`partial` 表示至少一个真实切片可用；`blocked` 只约束缺失切片或动作；`conflict` 必须显示冲突来源；`ready` 必须有 exact refs。
+   - 页面级 readiness 不得覆盖切片级可用事实。统一运营的六个 ready 切片、经营参谋的 overview/quality、客户的 54 条输入都必须可见。
+4. 内部写规则
+   - 仅允许本系统内部草稿、计划、评审、任务、版本和 Receipt；全部按 `preview→confirm→Receipt→readback`，相同 idempotency key 不得产生第二份 authority。
+   - Provider、消息发送、调价、退款、发货、发布和客户触达不在 R2 放行。
+5. 验收顺序
+   - 合同/Store/reader 专项测试 → 路由/租户隔离 → Web parser/状态组件 → 累计 API/Web 回归 → 内置浏览器八页状态与数据追溯 → 方案一致性复审 → Receipt/提交/CAS/Prime 回读。
+
+### R2 当前事实快照（2026-09-02 21:03 +08:00）
+
+- canonical SourceReadiness cutoff：`2026-09-02T13:03:22.840394Z`；总状态 `failed`；当前为 **9 ready / 3 failed / 0 stale**。
+- 三个失败流水线：商品、商品 SKU、履约；均为最新运行未成功且质量检查失败，但对账检查通过。该事实替代旧的“2 failed / 1 stale”口径。
+- 真实源聚合：店铺 1、商品 57、SKU 62、类目 11、订单 124、订单行 234、履约 19、客户轻量投影 54、小程序 3、系统配置 39、商品评价 5、支付 210。
+- 八页读取均为 HTTP 200 且 tenant echo 为 `org-org/dev-project`；页面层仍存在以下差异：任务 3 条；统一运营 210 条且 6 个切片 ready、operationCases blocked；内容/达人/媒体/价格 authority 缺口；经营参谋 overview 与 quality ready；客户 54 条输入存在但 5 类领域 authority 缺失。
+
+### R2 八页追溯矩阵（基线）
+
+| 页面 | canonical API | 当前可追溯 authority/真实源 | 当前业务可见事实 | R2 缺口 |
+|---|---|---|---|---|
+| 日常任务总控 | `/views/task-cockpit` | Task/Run 当前投影；业务上下文按独立 SourceReadiness cutoff | 3 条任务 | 补 task item exact refs 与 Receipt 追溯，不把独立 cutoff 警告当整页阻断 |
+| 内容与活动 | `/views/content-campaign` | 当前无 CampaignRevision/CalendarEntry/MasterContentIntent exact ref | 0 条 | 建立三类内部 authority、reader 与版本 Receipt |
+| 统一运营 | `/views/operations` | Order、OrderLine、ProductSku、Shipment、Payment、AfterSales exact refs + Receipt | 210 条；六切片 ready | 建立 OperationCase 内部 authority；页面默认展示 ready 切片 |
+| 达人邀约 | `/views/creator-growth` | 当前无 Candidate/Outreach/Contract/Delivery/Relationship exact ref | 0 条 | 建立五阶段内部 authority/reader |
+| 多媒体生产 | `/views/media-studio` | EvidencePack 存在；上下文/执行/交付 authority 缺失 | 0 条 | 建立内部生命周期与发布 Proposal authority，不放行 Provider |
+| 经营参谋 | `/views/analyst` | SourceReadiness、MetricDefinition/Observation、Quality/Reconciliation refs + Receipt | 10 项；overview/quality ready | 保留真实指标；补 Case/Run/plan/evidence authority，维持非因果边界 |
+| 价格治理 | `/views/price-governance` | 当前无 PriceCase/竞品/计划 exact root | 0 条 | 建立内部 PriceCase/观察/计划 authority，不放行调价 |
+| 客户关系 | `/views/customer` | CustomerLiteSourceWindow + Receipt | 输入 54，四视图均 blocked | 建立 Consent/Segment/Journey/Dialogue/OutreachBatch authority并保留隐私边界 |
 
 ### R3 · 日常任务总控大屏（7 项）
 
@@ -211,7 +266,7 @@
 | 8 | R7 | 价格治理 + 客户关系 | 11 | 两页内部功能、合规数据、视觉闭合 |
 | 9 | R8 | 跨页任务、复盘、Wiki 与上下文 | 5 | 八页之间形成可追溯业务闭环 |
 | 10 | R9 | 累计浏览器、功能、数据、Receipt/Prime 验收 | 8 | 81/81，用户产品验收；发布门另判 |
-| **合计** |  |  | **81** | 当前 **12/81**；R1 已封板，自动进入 R2 |
+| **合计** |  |  | **81** | 当前 **14/81**；R2-01/02 已闭合，继续 R2-03～06 |
 
 ## 6. 候选施工文件
 
