@@ -96,7 +96,7 @@
 - [x] `R2-03` 补齐工作台内部需要的 canonical authority/Store/reader；已修复 RLS 建立后再设置只读事务导致的 PostgreSQL `ActiveSqlTransaction`，只读连接现于首条 SQL 前固定 `REPEATABLE READ + READ ONLY`，闭合写连接于首条 SQL 前固定 `SERIALIZABLE`；正式空表现在返回可信空而非读取失败。专项与累计回归 75/75、8/8、250/250，五页内置浏览器验收通过，证据：`.evidence/workshop/2026-09-03-r2-canonical-read-transaction/verification.json` 与同目录截图；实现提交 `ee82a6ca`。
 - [x] `R2-04` 统一 loading/empty/blocked/partial/ready/conflict 状态；已有真实切片时不得因为另一个切片 blocked 而把整页显示成死页面。已由公共状态推导与首选切片工具覆盖七个业务页；专项 66/66、Web 累计 271 files / 2416 tests、TypeScript、生产构建和八页内置浏览器交互验收 GREEN。证据：`.evidence/workshop/2026-09-03-r2-unified-state-model/verification.json`；实现提交 `9625a416`。
 - [x] `R2-05` 为允许的工作台内部写操作建立 preview→confirm→Receipt→readback 闭环和幂等保护；真实外部动作继续失败关闭。后端相关累计 60/60、Web 专项 47/47、Web 累计 271 files / 2419 tests、TypeScript/生产构建、内置浏览器只读验收 GREEN；证据：`.evidence/workshop/2026-09-03-r2-internal-write-receipt/verification.json`。
-- [ ] `R2-06` 建立 `dev-org/dev-project` 隔离负向回归，证明无跨租户泄漏，但不把负向 canary 当正向业务完成证据。
+- [x] `R2-06` 建立 `dev-org/dev-project` 隔离负向回归，证明无跨租户泄漏，但不把负向 canary 当正向业务完成证据。后端 24 项隔离矩阵、前端单请求租户快照与八页响应回显校验、正反租户浏览器验收均已闭合；实现提交 `dc527fab`、`b9d805e2`。
 
 ### R2 文件级施工包（2026-09-02）
 
@@ -161,6 +161,34 @@
 - confirm 仍由既有 Proposal / Approval / active ExecutionLease / ActionReceipt / OperationAuthorityReceipt 权威控制；Web 客户端按 confirm Receipt 再读取 observation，并校验命令与 Receipt 精确对应。
 - `refund` 未进入 preview/confirm 命令联合类型和路由；本轮未创建真实业务记录、未取得新 Lease、未调用 Adapter/Provider、未触发退款、发货、调价、发布、消息或客户触达。
 - 内置浏览器在 `org-org/dev-project` 只读复核统一运营驾驶舱，确认 7 类正式业务视图、来源 219、已挂接 210、待核对 9、冲突 0，页面和完整侧栏无回退。
+
+##### R2-06 租户隔离负向回归精确施工范围（2026-09-03）
+
+1. `org-org/dev-project` 只作为正向真实业务读取目标；`dev-org/dev-project` 只作为负向隔离 canary。负向结果只证明不可见、拒绝或租户回显隔离，绝不计入八页业务完成量。
+2. 八个工作台 canonical GET 必须仅从当前 `Principal` 取得 org/project；URL query/body 注入其他租户一律 `VALIDATION`，返回 envelope 的 tenant 与请求 principal 不一致时一律失败关闭。
+3. 五类内部命令的 preview/confirm 同时校验顶层 revision、原对象、成员与迁移对象的 tenant；跨租户请求必须在 Action Control、Store、Adapter、Provider 之前拒绝，Receipt 数量保持 0。
+4. Web 八页 parser/client 必须拒绝跨租户 envelope，不得把 `dev-org` 数据并入 `org-org`；缓存键、重新读取和页间上下文不得弱化 tenant identity。
+5. 本子项精确代码与证据范围：
+   - 新增 `services/aos-api/tests/test_ecommerce_workshop_tenant_isolation_regression.py`，集中覆盖八页 GET、租户注入、命令 preview/confirm 和零副作用；
+   - `apps/web/src/api/ecommerceWorkshop/parser.test.ts`、`client.test.ts` 仅在发现矩阵缺口时补最小测试，不重写业务页面；
+   - `.evidence/workshop/2026-09-03-r2-tenant-isolation/` 只保存租户回显、状态码、聚合数量与测试结果，不保存客户/订单明细；
+   - 若测试暴露生产缺陷，只修改直接责任的 reader/router/parser，先补失败用例再最小修复。
+6. 验收顺序：八页 principal scope 矩阵 → query/body 注入矩阵 → command nested-ref 漂移矩阵 → Web parser/client 漂移矩阵 → PostgreSQL/RLS 相关累计回归 → 内置浏览器分别核对正向租户与负向 canary → Receipt/CAS/Prime 回读；全程不产生真实业务写入或外部动作。
+
+##### R2-06B Web 响应租户绑定补充施工范围（2026-09-03）
+
+1. 后端八页 Principal scope 与既有内部命令隔离矩阵已通过；继续审查发现 Web client 虽使用会话租户请求，但调用严格 parser 时未传入同一请求快照的 expected tenant。该缺口必须在 R2-06 内闭合，不能留给单页波次。
+2. client 每次请求只读取一次 auth headers，并从同一份 `X-Org-Id` / `X-Project-Id` 快照提取 expected tenant；请求发送与响应 parser 必须绑定同一 tenant，避免会话切换竞态或恶意/错误响应混入。
+3. 仅对八个主页面 canonical GET 和 Operations 命令 readiness/preview/confirm/observation 建立该绑定；不改变 URL、不增加租户 query/body、不改变现有认证头，也不修改页面布局和业务状态推导。
+4. 自定义 client 若没有完整 tenant headers，继续兼容现有纯 parser/网络测试；生产 `tenantAuthHeaders` 始终提供完整 tenant。半套 tenant header 必须在发请求前失败关闭。
+5. 增加 client 回归：八页响应 tenant 漂移全部拒绝；请求期间会话 header provider 只调用一次；命令 preview/confirm/observation 同样拒绝漂移。随后执行 parser/client 专项、Web 累计回归和内置浏览器正向只读复核。
+
+##### R2-06 封板核验记录（2026-09-03）
+
+- 后端新增集中隔离回归，覆盖八页 canonical GET 的 Principal 透传与八条 query tenant 注入拒绝；24/24 GREEN，相关后端累计 83/83 GREEN。
+- Web client 以单次请求读取的鉴权头形成 tenant snapshot；半套租户头在网络请求前拒绝，带 tenant 的成功响应与快照不一致时对 GET/POST 统一失败关闭。parser/client 专项 50/50、Workshop 前端矩阵 330/330、Web 累计 2422/2422、TypeScript 与生产构建 GREEN。
+- 内置浏览器正向使用 `org-org/dev-project`，统一运营显示 7 个视图、来源 219、已挂接 210、待核对 9、冲突 0；负向切换到 `dev-org/dev-project` 后仅显示“模块未安装”，未出现栖月汇业务数据，随后恢复正向租户。
+- 全程未修改真实业务数据，未调用 Adapter/Provider，未触发退款、发货、调价、发布、消息或客户触达。证据位于 `.evidence/workshop/2026-09-03-r2-tenant-isolation/`。
 
 1. 后端候选范围（审计确认缺口后再取最小集合）
    - `services/aos-api/aos_api/ecommerce_workshop_*_contracts.py`
@@ -313,7 +341,7 @@
 | 8 | R7 | 价格治理 + 客户关系 | 11 | 两页内部功能、合规数据、视觉闭合 |
 | 9 | R8 | 跨页任务、复盘、Wiki 与上下文 | 5 | 八页之间形成可追溯业务闭环 |
 | 10 | R9 | 累计浏览器、功能、数据、Receipt/Prime 验收 | 8 | 81/81，用户产品验收；发布门另判 |
-| **合计** |  |  | **81** | 当前 **17/81**；R2-01/02/03/04/05 已闭合，继续 R2-06 |
+| **合计** |  |  | **81** | 当前 **18/81**；R0～R2 已闭合，继续 R3-01 |
 
 ## 6. 候选施工文件
 
