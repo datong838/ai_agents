@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000448",
+  "created_at": "2026-09-02T08:28:05+08:00",
+  "excluded_scope": [
+    "real-business-write,provider-call,secret-resolution,migration,release,unrelated-dirty-files"
+  ],
+  "expected_outputs": [
+    "R0 4/4: product acceptance reopened, exact visual sources with hashes, five-column construction matrix, protected file and regression scope, Delivery Receipt, authority CAS and Prime readback"
+  ],
+  "lease_expires_at": "2026-09-02T12:00:00+08:00",
+  "owner": "codex-main-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "D-waves/WORKSHOP-EIGHT-MENU-PRODUCT-DEFECT-REMEDIATION-八菜单视觉功能数据全量缺陷清单.md,D-waves/WORKSHOP-R0-八菜单产品验收重开与精确施工包.md,D-waves/00-工作台长任务开发计划总清单.md,shared-memory task/delivery receipts and authority projections"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-R0-PRODUCT-ACCEPTANCE-REOPEN-EXACT-CONSTRUCTION"
+}
