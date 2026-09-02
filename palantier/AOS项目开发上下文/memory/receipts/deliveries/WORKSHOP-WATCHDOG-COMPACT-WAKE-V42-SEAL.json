@@ -1,0 +1,26 @@
+{
+  "base_revision": "AOS-000449",
+  "blockers": [],
+  "changed_files": [
+    "scripts/long-task-watchdog/watchdog.py",
+    "scripts/long-task-watchdog/test_watchdog.py",
+    "scripts/long-task-watchdog/README.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/25-Workshop长任务Watchdog恢复闭环与权限ADR.md"
+  ],
+  "commits": [
+    "2f2014c9",
+    "docs:91e4067"
+  ],
+  "completed_at": "2026-09-02T13:04:16+08:00",
+  "completed_revision": "AOS-000449",
+  "result": "GREEN",
+  "risks": [
+    "No Ack schema, episode match, branch, lease or permission gate semantics changed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-WATCHDOG-COMPACT-WAKE-V42-SEAL",
+  "verification": [
+    "python3 -m unittest -q:64/64 GREEN",
+    "wake_sequence 435 compact injection observed"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000449",
+  "blockers": [],
+  "changed_files": [
+    "scripts/long-task-watchdog/watchdog.py",
+    "scripts/long-task-watchdog/test_watchdog.py",
+    "scripts/long-task-watchdog/README.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/25-Workshop长任务Watchdog恢复闭环与权限ADR.md"
+  ],
+  "commits": [],
+  "completed_at": "2026-09-02T12:49:29+08:00",
+  "completed_revision": "AOS-000449",
+  "result": "Watchdog V4.2 compact two-line visible wake prompt implemented; episode/Ack/safety machine contract retained",
+  "risks": [
+    "No Ack schema, episode match, permission preflight, lease, branch, or safety semantics changed"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-WATCHDOG-COMPACT-WAKE-V42",
+  "verification": [
+    "python3 -m unittest -v test_watchdog.py: 64/64 GREEN",
+    "real config prompt preview: exact two visible lines plus compact machine protocol, 1226 chars"
+  ]
+}
