@@ -1,7 +1,7 @@
 # 工作台八菜单视觉、功能、数据全量缺陷清单与串行修复波次
 
 > 审计日期：2026-08-30
-> 状态：`PRODUCT_ACCEPTANCE_REOPENED / R2_2_OF_6 / TOTAL_14_OF_81 / R2_IN_PROGRESS / NO_RELEASE`
+> 状态：`PRODUCT_ACCEPTANCE_REOPENED / R2_3_OF_6 / TOTAL_15_OF_81 / R2_IN_PROGRESS / NO_RELEASE`
 > 正向业务租户：仅 `org-org/dev-project`（栖月汇微商城）
 > 负向隔离 canary：`dev-org/dev-project`，不得作为正向完成证据
 > 与原 96 项关系：原 W0～W8 的 `96/96` 仅表示历史工程合同清单已闭合；本清单是用户浏览器验收重新发现的产品缺陷修复账本，不改写也不合并原 96 个编号。
@@ -93,7 +93,7 @@
 
 - [x] `R2-01` 固化 `org-org/dev-project` 当前数据快照与同截止时间 SourceReadiness；实时事实为 9/12 ready、3 failed、0 stale，不得写成全绿。证据：`.evidence/workshop/2026-09-02-r2-real-tenant-baseline/source-readiness-summary.json`。
 - [x] `R2-02` 建立八页“页面字段→API 字段→领域 authority→真实源/Receipt”追溯表，缺 exact ref 的字段必须诚实为空或禁用。证据：本节 R2 八页追溯矩阵与 `.evidence/workshop/2026-09-02-r2-real-tenant-baseline/eight-page-traceability-summary.json`。
-- [ ] `R2-03` 补齐工作台内部需要的 canonical authority/Store/reader；能在本系统内解决的缺口不得长期以“等待别人交付”代替实现。
+- [x] `R2-03` 补齐工作台内部需要的 canonical authority/Store/reader；已修复 RLS 建立后再设置只读事务导致的 PostgreSQL `ActiveSqlTransaction`，只读连接现于首条 SQL 前固定 `REPEATABLE READ + READ ONLY`，闭合写连接于首条 SQL 前固定 `SERIALIZABLE`；正式空表现在返回可信空而非读取失败。专项与累计回归 75/75、8/8、250/250，五页内置浏览器验收通过，证据：`.evidence/workshop/2026-09-03-r2-canonical-read-transaction/verification.json` 与同目录截图；实现提交 `ee82a6ca`。
 - [ ] `R2-04` 统一 loading/empty/blocked/partial/ready/conflict 状态；已有真实切片时不得因为另一个切片 blocked 而把整页显示成死页面。
 - [ ] `R2-05` 为允许的工作台内部写操作建立 preview→confirm→Receipt→readback 闭环和幂等保护；真实外部动作继续失败关闭。
 - [ ] `R2-06` 建立 `dev-org/dev-project` 隔离负向回归，证明无跨租户泄漏，但不把负向 canary 当正向业务完成证据。
@@ -120,9 +120,9 @@
 1. 已确认不是“无人交付 authority”，而是 canonical Store 的公共只读事务初始化顺序错误：`db.connect(scope)` 已执行客户端编码与租户 RLS 上下文后，部分 reader 再执行 `SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY`，PostgreSQL 会以 `ActiveSqlTransaction` 拒绝，随后被页面聚合器失败关闭为 authority 缺失。
 2. 修复必须保留三条边界：事务开始前建立 `REPEATABLE READ + READ ONLY`；进入事务后再设置 `aos_runtime` 与 `org_id/project_id`；写 Store 继续使用原连接路径，禁止把全部租户事务误设为只读。
 3. 本子项精确代码范围：
-   - `services/aos-api/aos_api/db.py`：新增显式只读连接入口，不改变既有写连接默认行为。
-   - Workshop 八页当前会消费的 canonical reader/store：`ecommerce_operations_object_reader.py`、`ecommerce_inventory_reader.py`、`ecommerce_aftersale_event_reader.py`、`ecommerce_operation_case_store.py`、`ecommerce_content_campaign_authority_store.py`、`ecommerce_workshop_creator_growth_store.py`、`ecommerce_workshop_creator_prepare_store.py`、`ecommerce_workshop_creator_lifecycle_store.py`、`ecommerce_workshop_price_research_store.py`、`ecommerce_workshop_price_disposition_store.py`、`ecommerce_workshop_customer_source_reader.py`、`ecommerce_workshop_customer_lifecycle_store.py`、`ecommerce_workshop_three_module_closure_store.py`。
-   - 对应 Store/reader 单元测试以及新的公共只读连接顺序回归测试。
+   - `services/aos-api/aos_api/db.py`：增加显式的 `connect_read_only` 和 `connect_serializable` 连接入口，在首条 SQL 之前由 psycopg 设置事务特征；原 `connect` 仍保持可写默认语义。
+   - 将已经在八页 canonical GET 及内部 authority 回读路径上的运营对象、库存、售后、OperationCase、内容活动、达人增长/准备/生命周期、价格研究/处置、客户源/生命周期与三模块闭环 Store/Reader 接入正确的事务入口；依赖注入的测试连接继续可控，不改写入行为。
+   - 增补公共连接顺序、Store、Service 与 Router 专项测试；真实回读须证明空表返回 `ready + empty`，权限/租户/表异常仍逐切片失败关闭。
 4. 本子项只修复内部 canonical 读取与回读，不创建演示业务数据，不触发 Provider、消息、调价、退款、发货、发布或客户触达；栖月汇真实数据只读验证继续使用 `org-org/dev-project`，`dev-org/dev-project` 仅作隔离负向证据。
 
 1. 后端候选范围（审计确认缺口后再取最小集合）
@@ -276,7 +276,7 @@
 | 8 | R7 | 价格治理 + 客户关系 | 11 | 两页内部功能、合规数据、视觉闭合 |
 | 9 | R8 | 跨页任务、复盘、Wiki 与上下文 | 5 | 八页之间形成可追溯业务闭环 |
 | 10 | R9 | 累计浏览器、功能、数据、Receipt/Prime 验收 | 8 | 81/81，用户产品验收；发布门另判 |
-| **合计** |  |  | **81** | 当前 **14/81**；R2-01/02 已闭合，继续 R2-03～06 |
+| **合计** |  |  | **81** | 当前 **15/81**；R2-01/02/03 已闭合，继续 R2-04～06 |
 
 ## 6. 候选施工文件
 
