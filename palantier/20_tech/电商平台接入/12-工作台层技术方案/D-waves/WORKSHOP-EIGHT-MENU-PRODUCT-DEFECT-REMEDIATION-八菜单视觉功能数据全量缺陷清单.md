@@ -95,7 +95,7 @@
 - [x] `R2-02` 建立八页“页面字段→API 字段→领域 authority→真实源/Receipt”追溯表，缺 exact ref 的字段必须诚实为空或禁用。证据：本节 R2 八页追溯矩阵与 `.evidence/workshop/2026-09-02-r2-real-tenant-baseline/eight-page-traceability-summary.json`。
 - [x] `R2-03` 补齐工作台内部需要的 canonical authority/Store/reader；已修复 RLS 建立后再设置只读事务导致的 PostgreSQL `ActiveSqlTransaction`，只读连接现于首条 SQL 前固定 `REPEATABLE READ + READ ONLY`，闭合写连接于首条 SQL 前固定 `SERIALIZABLE`；正式空表现在返回可信空而非读取失败。专项与累计回归 75/75、8/8、250/250，五页内置浏览器验收通过，证据：`.evidence/workshop/2026-09-03-r2-canonical-read-transaction/verification.json` 与同目录截图；实现提交 `ee82a6ca`。
 - [x] `R2-04` 统一 loading/empty/blocked/partial/ready/conflict 状态；已有真实切片时不得因为另一个切片 blocked 而把整页显示成死页面。已由公共状态推导与首选切片工具覆盖七个业务页；专项 66/66、Web 累计 271 files / 2416 tests、TypeScript、生产构建和八页内置浏览器交互验收 GREEN。证据：`.evidence/workshop/2026-09-03-r2-unified-state-model/verification.json`；实现提交 `9625a416`。
-- [ ] `R2-05` 为允许的工作台内部写操作建立 preview→confirm→Receipt→readback 闭环和幂等保护；真实外部动作继续失败关闭。
+- [x] `R2-05` 为允许的工作台内部写操作建立 preview→confirm→Receipt→readback 闭环和幂等保护；真实外部动作继续失败关闭。后端相关累计 60/60、Web 专项 47/47、Web 累计 271 files / 2419 tests、TypeScript/生产构建、内置浏览器只读验收 GREEN；证据：`.evidence/workshop/2026-09-03-r2-internal-write-receipt/verification.json`。
 - [ ] `R2-06` 建立 `dev-org/dev-project` 隔离负向回归，证明无跨租户泄漏，但不把负向 canary 当正向业务完成证据。
 
 ### R2 文件级施工包（2026-09-02）
@@ -141,6 +141,26 @@
 - 混合切片默认选择“有数据的 ready → 任一 ready → conflict → 其余”，不再由单个 blocked 切片把整页降级成死页面。
 - `empty / blocked / partial / unknown / conflict` 均保留页面结构；`conflict` 单独呈现为告警态，权限拒绝与读取失败仍失败关闭。
 - 八页内置浏览器逐页验证完整菜单、租户追溯、重新读取入口和关键页签/卡片交互；没有写入真实业务数据，也没有触发外部动作。
+
+##### R2-05 内部写操作闭环精确施工范围（2026-09-03）
+
+1. 复用现有 Operations canonical Action Proposal / Approval / ExecutionLease / ActionReceipt 与 OperationAuthorityReceipt，不新建第二套任务、审批或回执权威；本子项只补齐工作台缺失的“精确预览”契约和确认绑定。
+2. 五类允许的内部 authority 命令（分类事件、创建运营工单、调整工单成员、管理服务时限、停止自动化）先提交同租户 exact 请求做无副作用 preview；服务端返回 canonical preview hash。confirm 必须携带该 hash，且重新计算后完全一致，才能进入现有 exact Action 链。
+3. confirm 继续要求有效 Proposal、Approval 与 active ExecutionLease；成功只返回 canonical ActionReceipt + OperationAuthorityReceipt，随后由现有 observation GET 按 proposal/lease readback。相同 Idempotency-Key 只能回放同一结果，不得创建第二份 authority。
+4. 退款、发货、库存调整、调价、消息发送、内容发布、客户触达等外部动作不增加 preview/confirm 入口，继续失败关闭；preview 本身不得写业务 authority、取得 Lease、执行 Adapter 或触发 Provider。
+5. 本子项精确代码范围：
+   - `services/aos-api/aos_api/ecommerce_operation_command_contracts.py`、`ecommerce_operation_command_service.py`、`routers/ecommerce_workshop.py`；
+   - `services/aos-api/tests/test_ecommerce_operation_command_service.py`、`test_ecommerce_workshop_api.py` 及必要的命令契约/路由专项测试；
+   - `apps/web/src/api/ecommerceWorkshop/contracts.ts`、`parser.ts`、`client.ts` 与对应测试，为后续 R3～R8 页面接入提供同一受控入口；
+   - 不改八页视觉结构，不创建栖月汇演示业务记录，不修改真实业务数据。
+6. 验收顺序：preview 纯函数/租户/actor/内容漂移测试 → confirm hash/Proposal/Approval/Lease/幂等/Receipt 测试 → refund 无入口与外部动作零调用测试 → Web parser/client 测试 → API/Web 累计回归 → 内置浏览器确认统一运营页面无回退 → Receipt/CAS/Prime 回读。
+
+##### R2-05 封板核验记录（2026-09-03）
+
+- 五类内部 authority 命令均已形成确定性 preview hash；confirm 必须携带完全一致的 hash 和 Idempotency-Key，漂移请求在进入 canonical Action 链前拒绝。
+- confirm 仍由既有 Proposal / Approval / active ExecutionLease / ActionReceipt / OperationAuthorityReceipt 权威控制；Web 客户端按 confirm Receipt 再读取 observation，并校验命令与 Receipt 精确对应。
+- `refund` 未进入 preview/confirm 命令联合类型和路由；本轮未创建真实业务记录、未取得新 Lease、未调用 Adapter/Provider、未触发退款、发货、调价、发布、消息或客户触达。
+- 内置浏览器在 `org-org/dev-project` 只读复核统一运营驾驶舱，确认 7 类正式业务视图、来源 219、已挂接 210、待核对 9、冲突 0，页面和完整侧栏无回退。
 
 1. 后端候选范围（审计确认缺口后再取最小集合）
    - `services/aos-api/aos_api/ecommerce_workshop_*_contracts.py`
@@ -293,7 +313,7 @@
 | 8 | R7 | 价格治理 + 客户关系 | 11 | 两页内部功能、合规数据、视觉闭合 |
 | 9 | R8 | 跨页任务、复盘、Wiki 与上下文 | 5 | 八页之间形成可追溯业务闭环 |
 | 10 | R9 | 累计浏览器、功能、数据、Receipt/Prime 验收 | 8 | 81/81，用户产品验收；发布门另判 |
-| **合计** |  |  | **81** | 当前 **16/81**；R2-01/02/03/04 已闭合，继续 R2-05～06 |
+| **合计** |  |  | **81** | 当前 **17/81**；R2-01/02/03/04/05 已闭合，继续 R2-06 |
 
 ## 6. 候选施工文件
 
