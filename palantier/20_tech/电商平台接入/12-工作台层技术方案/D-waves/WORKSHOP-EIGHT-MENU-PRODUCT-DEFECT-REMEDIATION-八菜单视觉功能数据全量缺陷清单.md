@@ -1,7 +1,7 @@
 # 工作台八菜单视觉、功能、数据全量缺陷清单与串行修复波次
 
 > 审计日期：2026-08-30
-> 状态：`PRODUCT_ACCEPTANCE_REOPENED / R2_3_OF_6 / TOTAL_15_OF_81 / R2_IN_PROGRESS / NO_RELEASE`
+> 状态：`PRODUCT_ACCEPTANCE_REOPENED / R2_4_OF_6 / TOTAL_16_OF_81 / R2_IN_PROGRESS / NO_RELEASE`
 > 正向业务租户：仅 `org-org/dev-project`（栖月汇微商城）
 > 负向隔离 canary：`dev-org/dev-project`，不得作为正向完成证据
 > 与原 96 项关系：原 W0～W8 的 `96/96` 仅表示历史工程合同清单已闭合；本清单是用户浏览器验收重新发现的产品缺陷修复账本，不改写也不合并原 96 个编号。
@@ -94,7 +94,7 @@
 - [x] `R2-01` 固化 `org-org/dev-project` 当前数据快照与同截止时间 SourceReadiness；实时事实为 9/12 ready、3 failed、0 stale，不得写成全绿。证据：`.evidence/workshop/2026-09-02-r2-real-tenant-baseline/source-readiness-summary.json`。
 - [x] `R2-02` 建立八页“页面字段→API 字段→领域 authority→真实源/Receipt”追溯表，缺 exact ref 的字段必须诚实为空或禁用。证据：本节 R2 八页追溯矩阵与 `.evidence/workshop/2026-09-02-r2-real-tenant-baseline/eight-page-traceability-summary.json`。
 - [x] `R2-03` 补齐工作台内部需要的 canonical authority/Store/reader；已修复 RLS 建立后再设置只读事务导致的 PostgreSQL `ActiveSqlTransaction`，只读连接现于首条 SQL 前固定 `REPEATABLE READ + READ ONLY`，闭合写连接于首条 SQL 前固定 `SERIALIZABLE`；正式空表现在返回可信空而非读取失败。专项与累计回归 75/75、8/8、250/250，五页内置浏览器验收通过，证据：`.evidence/workshop/2026-09-03-r2-canonical-read-transaction/verification.json` 与同目录截图；实现提交 `ee82a6ca`。
-- [ ] `R2-04` 统一 loading/empty/blocked/partial/ready/conflict 状态；已有真实切片时不得因为另一个切片 blocked 而把整页显示成死页面。
+- [x] `R2-04` 统一 loading/empty/blocked/partial/ready/conflict 状态；已有真实切片时不得因为另一个切片 blocked 而把整页显示成死页面。已由公共状态推导与首选切片工具覆盖七个业务页；专项 66/66、Web 累计 271 files / 2416 tests、TypeScript、生产构建和八页内置浏览器交互验收 GREEN。证据：`.evidence/workshop/2026-09-03-r2-unified-state-model/verification.json`；实现提交 `9625a416`。
 - [ ] `R2-05` 为允许的工作台内部写操作建立 preview→confirm→Receipt→readback 闭环和幂等保护；真实外部动作继续失败关闭。
 - [ ] `R2-06` 建立 `dev-org/dev-project` 隔离负向回归，证明无跨租户泄漏，但不把负向 canary 当正向业务完成证据。
 
@@ -124,6 +124,23 @@
    - 将已经在八页 canonical GET 及内部 authority 回读路径上的运营对象、库存、售后、OperationCase、内容活动、达人增长/准备/生命周期、价格研究/处置、客户源/生命周期与三模块闭环 Store/Reader 接入正确的事务入口；依赖注入的测试连接继续可控，不改写入行为。
    - 增补公共连接顺序、Store、Service 与 Router 专项测试；真实回读须证明空表返回 `ready + empty`，权限/租户/表异常仍逐切片失败关闭。
 4. 本子项只修复内部 canonical 读取与回读，不创建演示业务数据，不触发 Provider、消息、调价、退款、发货、发布或客户触达；栖月汇真实数据只读验证继续使用 `org-org/dev-project`，`dev-org/dev-project` 仅作隔离负向证据。
+
+##### R2-04 统一页面状态模型精确施工范围（2026-09-03）
+
+1. 公共状态模型统一为 `loading / empty / blocked / partial / ready / conflict`：`empty` 与 `blocked` 仍保留可浏览的页面结构，`partial` 必须保留已可用切片，`conflict` 必须显式呈现冲突来源；权限拒绝、读取失败与未安装继续失败关闭。
+2. 新增公共切片判定工具，按“有数据的 ready → 任一 ready → conflict → blocked/unknown”的顺序选择初始视图；页面级状态由全部切片共同推导，不得再由单个 blocked 切片覆盖可用事实，也不得把可信空伪装成普通 ready。
+3. 本子项精确代码范围：
+   - `apps/web/src/components/workshop/AsyncStateBoundary.tsx` 及测试；
+   - 新增 `apps/web/src/components/workshop/workshopViewState.ts` 及测试；
+   - `OperationsPage.tsx`、`ContentCampaignPage.tsx`、`CreatorGrowthPage.tsx`、`MediaStudioPage.tsx`、`AnalystPage.tsx`、`PriceGovernancePage.tsx`、`CustomerPage.tsx` 的最小状态接入与既有页面测试；任务总控页已有独立 stale/empty 状态机，只做累计回归，不重写其交接命令状态。
+4. 验收必须覆盖：混合 ready/blocked 时默认打开真实可用切片并显示 partial；全 ready 且零记录显示可信 empty；全 blocked 显示 blocked 但页面导航仍可操作；conflict 显示来源且不吞掉可浏览内容；八页浏览器回读不得出现死页面或把缺失值伪装为零。
+5. 本子项只统一展示与选择策略，不创建业务记录、不放行工作台内部写操作，也不触发 Provider、消息、调价、退款、发货、发布或客户触达。
+
+##### R2-04 封板核验记录（2026-09-03）
+
+- 混合切片默认选择“有数据的 ready → 任一 ready → conflict → 其余”，不再由单个 blocked 切片把整页降级成死页面。
+- `empty / blocked / partial / unknown / conflict` 均保留页面结构；`conflict` 单独呈现为告警态，权限拒绝与读取失败仍失败关闭。
+- 八页内置浏览器逐页验证完整菜单、租户追溯、重新读取入口和关键页签/卡片交互；没有写入真实业务数据，也没有触发外部动作。
 
 1. 后端候选范围（审计确认缺口后再取最小集合）
    - `services/aos-api/aos_api/ecommerce_workshop_*_contracts.py`
@@ -276,7 +293,7 @@
 | 8 | R7 | 价格治理 + 客户关系 | 11 | 两页内部功能、合规数据、视觉闭合 |
 | 9 | R8 | 跨页任务、复盘、Wiki 与上下文 | 5 | 八页之间形成可追溯业务闭环 |
 | 10 | R9 | 累计浏览器、功能、数据、Receipt/Prime 验收 | 8 | 81/81，用户产品验收；发布门另判 |
-| **合计** |  |  | **81** | 当前 **15/81**；R2-01/02/03 已闭合，继续 R2-04～06 |
+| **合计** |  |  | **81** | 当前 **16/81**；R2-01/02/03/04 已闭合，继续 R2-05～06 |
 
 ## 6. 候选施工文件
 
