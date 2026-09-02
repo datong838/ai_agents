@@ -115,6 +115,16 @@
 
 #### R2-B · canonical authority、统一状态和内部 Receipt（R2-03～R2-06）
 
+##### R2-03 根因复核与精确施工范围（2026-09-02）
+
+1. 已确认不是“无人交付 authority”，而是 canonical Store 的公共只读事务初始化顺序错误：`db.connect(scope)` 已执行客户端编码与租户 RLS 上下文后，部分 reader 再执行 `SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY`，PostgreSQL 会以 `ActiveSqlTransaction` 拒绝，随后被页面聚合器失败关闭为 authority 缺失。
+2. 修复必须保留三条边界：事务开始前建立 `REPEATABLE READ + READ ONLY`；进入事务后再设置 `aos_runtime` 与 `org_id/project_id`；写 Store 继续使用原连接路径，禁止把全部租户事务误设为只读。
+3. 本子项精确代码范围：
+   - `services/aos-api/aos_api/db.py`：新增显式只读连接入口，不改变既有写连接默认行为。
+   - Workshop 八页当前会消费的 canonical reader/store：`ecommerce_operations_object_reader.py`、`ecommerce_inventory_reader.py`、`ecommerce_aftersale_event_reader.py`、`ecommerce_operation_case_store.py`、`ecommerce_content_campaign_authority_store.py`、`ecommerce_workshop_creator_growth_store.py`、`ecommerce_workshop_creator_prepare_store.py`、`ecommerce_workshop_creator_lifecycle_store.py`、`ecommerce_workshop_price_research_store.py`、`ecommerce_workshop_price_disposition_store.py`、`ecommerce_workshop_customer_source_reader.py`、`ecommerce_workshop_customer_lifecycle_store.py`、`ecommerce_workshop_three_module_closure_store.py`。
+   - 对应 Store/reader 单元测试以及新的公共只读连接顺序回归测试。
+4. 本子项只修复内部 canonical 读取与回读，不创建演示业务数据，不触发 Provider、消息、调价、退款、发货、发布或客户触达；栖月汇真实数据只读验证继续使用 `org-org/dev-project`，`dev-org/dev-project` 仅作隔离负向证据。
+
 1. 后端候选范围（审计确认缺口后再取最小集合）
    - `services/aos-api/aos_api/ecommerce_workshop_*_contracts.py`
    - `services/aos-api/aos_api/ecommerce_workshop_*_source_reader.py`
