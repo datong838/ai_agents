@@ -1,0 +1,8 @@
+{"occurred_at":"2026-09-03T00:59:50+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-03-CANONICAL-READ-TRANSACTION","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-09-03T01:06:13+08:00","project_revision":"AOS-000454","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000454","occurred_at":"2026-09-03T01:21:54+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-04-UNIFIED-STATE-MODEL","type":"TASK_STARTED"}
+{"occurred_at":"2026-09-03T02:15:43+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-04-UNIFIED-STATE-MODEL","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-09-03T02:18:38+08:00","project_revision":"AOS-000455","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000455","occurred_at":"2026-09-03T02:31:59+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-05-INTERNAL-WRITE-RECEIPT","type":"TASK_STARTED"}
+{"occurred_at":"2026-09-03T06:24:30+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-05-INTERNAL-WRITE-RECEIPT","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-09-03T06:26:23+08:00","project_revision":"AOS-000456","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

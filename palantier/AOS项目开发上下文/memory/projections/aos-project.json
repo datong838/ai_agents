@@ -1,45 +1,34 @@
 {
   "completed": [
-    "AIP_P0_TO_P8_132_OF_132",
-    "WORKSHOP_ENGINEERING_W0_TO_W8_96_OF_96",
-    "WORKSHOP_R0_4_OF_4"
+    "R2-05 internal command preview-confirm-Receipt-readback; backend 60/60; Web 47/47 and cumulative 2419/2419; browser GREEN; total 17/81"
   ],
-  "content_hash": "sha256:204b714f86dabcb9e4c6a2165b90957246f87fa78becd08eb58a3f8d9f946654",
-  "current_phase": "WORKSHOP_EIGHT_MENU_PRODUCT_REMEDIATION_R0_COMPLETE",
-  "delivery_status": "WORKSHOP_PRODUCT_ACCEPTANCE_REOPENED_R0_4_OF_4_TOTAL_4_OF_81_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "content_hash": "sha256:4a6fa2644e2775ddf030bf76f3dfcac39441ca0108d0b446a7ef050e9eb335a2",
+  "current_phase": "WORKSHOP_PRODUCT_REMEDIATION_R2",
+  "delivery_status": "WORKSHOP_R2_01_02_03_04_05_INTERNAL_WRITE_RECEIPT_GREEN_R2_06_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "plan",
-      "ref": "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-R0-八菜单产品验收重开与精确施工包.md"
-    },
-    {
-      "kind": "delivery_receipt",
-      "ref": "docs:palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-R0-PRODUCT-ACCEPTANCE-REOPEN-EXACT-CONSTRUCTION.json"
+      "kind": "verification",
+      "ref": ".evidence/workshop/2026-09-03-r2-internal-write-receipt/verification.json"
     }
   ],
-  "generated_at": "2026-09-02T08:44:07+08:00",
+  "generated_at": "2026-09-03T06:26:23+08:00",
   "hard_boundaries": [
-    "NO_REAL_BUSINESS_MUTATION",
-    "NO_PROVIDER_CALL",
-    "NO_SECRET_RESOLUTION",
-    "NO_MIGRATION",
-    "NO_RELEASE"
+    "org-org/dev-project only for positive evidence; dev-org/dev-project negative canary only; no Provider/message/reprice/refund/shipment/publish/customer-contact effect; no release"
   ],
   "incomplete": [
-    "WORKSHOP_R1_TO_R9_77_TASKS",
-    "WORKSHOP_USER_PRODUCT_ACCEPTANCE",
-    "RELEASE_DECISION"
+    "R2-06 tenant isolation; R3-R9 product remediation"
   ],
-  "last_green_gate": "WORKSHOP_R0_EXACT_CONSTRUCTION_PACKAGE_GREEN",
-  "next_gate": "WORKSHOP_R1_GLOBAL_SHELL_FULL_NAVIGATION",
+  "last_green_gate": "WORKSHOP_R2_05_INTERNAL_WRITE_PREVIEW_CONFIRM_RECEIPT_READBACK_GREEN",
+  "next_gate": "WORKSHOP_R2_06_TENANT_ISOLATION_NEGATIVE_REGRESSION",
   "next_steps": [
-    "Execute R1 serially: canonical full navigation, scroll-to-bottom parity, collapse persistence, top bar and fixed-region remediation, shared button semantics, shell regression and built-in browser acceptance."
+    "Start WORKSHOP-R2-06-TENANT-ISOLATION on m1; dev-org/dev-project negative canary only"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000449",
+  "project_revision": "AOS-000456",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "docs": "ddb59ea"
+    "docs": "097dad4",
+    "web": "17668b29"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
