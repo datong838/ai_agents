@@ -1,46 +1,45 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "AIP-P7-SIX-COLLEAGUES-DOCUMENT-INTELLIGENCE-CROSS-PAGE",
-    "AIP-P8-CUMULATIVE-PRODUCT-ACCEPTANCE"
+    "AIP_P0_TO_P8_132_OF_132",
+    "WORKSHOP_ENGINEERING_W0_TO_W8_96_OF_96",
+    "WORKSHOP_R0_4_OF_4"
   ],
-  "current_phase": "AIP_FULL_MENU_PRODUCT_REMEDIATION_COMPLETE",
-  "delivery_status": "AIP_P0_TO_P8_132_OF_132_CODE_BROWSER_CONTRACT_DUAL_TENANT_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "WORKSHOP_EIGHT_MENU_PRODUCT_REMEDIATION_R0_COMPLETE",
+  "delivery_status": "WORKSHOP_PRODUCT_ACCEPTANCE_REOPENED_R0_4_OF_4_TOTAL_4_OF_81_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
-      "kind": "browser",
-      "ref": ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance/p8-page-matrix-initial.json"
+      "kind": "plan",
+      "ref": "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-R0-八菜单产品验收重开与精确施工包.md"
     },
     {
-      "kind": "browser",
-      "ref": ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance/p8-viewport-accessibility.json"
-    },
-    {
-      "kind": "verification",
-      "ref": ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance/p8-verification-progress.md"
-    },
-    {
-      "kind": "contract",
-      "ref": ".evidence/aip/2026-09-02-p8-cumulative-product-acceptance/p8-contract-trace.md"
+      "kind": "delivery_receipt",
+      "ref": "docs:palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-R0-PRODUCT-ACCEPTANCE-REOPEN-EXACT-CONSTRUCTION.json"
     }
   ],
-  "evidence_cutoff": "2026-09-02T07:05:29+08:00",
+  "evidence_cutoff": "2026-09-02T08:37:48+08:00",
   "hard_boundaries": [
-    "No Provider call, secret resolution, real customer contact, business publication, migration, route switch or release"
+    "NO_REAL_BUSINESS_MUTATION",
+    "NO_PROVIDER_CALL",
+    "NO_SECRET_RESOLUTION",
+    "NO_MIGRATION",
+    "NO_RELEASE"
   ],
   "incomplete": [
-    "EXTERNAL_EFFECT_AND_RELEASE_NOT_AUTHORIZED"
+    "WORKSHOP_R1_TO_R9_77_TASKS",
+    "WORKSHOP_USER_PRODUCT_ACCEPTANCE",
+    "RELEASE_DECISION"
   ],
-  "last_green_gate": "AIP_P8_CUMULATIVE_PRODUCT_ACCEPTANCE_GREEN",
-  "next_gate": "USER_ACCEPTANCE_AND_EXPLICIT_EXTERNAL_EFFECT_RELEASE_DECISION",
+  "last_green_gate": "WORKSHOP_R0_EXACT_CONSTRUCTION_PACKAGE_GREEN",
+  "next_gate": "WORKSHOP_R1_GLOBAL_SHELL_FULL_NAVIGATION",
   "next_steps": [
-    "User product acceptance against P8 evidence; keep Provider, external effect, migration and release gates closed unless separately authorized"
+    "Execute R1 serially: canonical full navigation, scroll-to-bottom parity, collapse persistence, top bar and fixed-region remediation, shared button semantics, shell regression and built-in browser acceptance."
   ],
   "project": "AOS",
-  "project_revision": "AOS-000448",
+  "project_revision": "AOS-000449",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "code": "8a6c551c"
+    "docs": "ddb59ea"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -50,5 +49,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-09-02T07:07:58+08:00"
+  "updated_at": "2026-09-02T08:44:07+08:00"
 }

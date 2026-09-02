@@ -3,3 +3,6 @@
 {"base_revision":"AOS-000447","occurred_at":"2026-09-02T02:08:23+08:00","schema":"aos-memory-event/v1","task_id":"AIP-P8-CUMULATIVE-PRODUCT-ACCEPTANCE","type":"TASK_STARTED"}
 {"occurred_at":"2026-09-02T07:05:29+08:00","result":"AIP_P8_CUMULATIVE_PRODUCT_ACCEPTANCE_CODE_BROWSER_CONTRACT_DUAL_TENANT_GREEN_NO_EXTERNAL_EFFECT_NO_RELEASE","schema":"aos-memory-event/v1","task_id":"AIP-P8-CUMULATIVE-PRODUCT-ACCEPTANCE","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-09-02T07:07:58+08:00","project_revision":"AOS-000448","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000448","occurred_at":"2026-09-02T08:28:05+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R0-PRODUCT-ACCEPTANCE-REOPEN-EXACT-CONSTRUCTION","type":"TASK_STARTED"}
+{"occurred_at":"2026-09-02T08:37:48+08:00","result":"R0 4/4 complete: Workshop product acceptance explicitly reopened at total 4/81; exact eight visual sources and hashes, five-column component matrix, R1 file/regression scope and protected dirty scope sealed.","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R0-PRODUCT-ACCEPTANCE-REOPEN-EXACT-CONSTRUCTION","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-09-02T08:44:07+08:00","project_revision":"AOS-000449","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

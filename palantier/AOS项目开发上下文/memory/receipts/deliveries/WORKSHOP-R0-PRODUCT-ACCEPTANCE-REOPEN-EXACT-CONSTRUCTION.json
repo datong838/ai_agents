@@ -1,0 +1,25 @@
+{
+  "base_revision": "AOS-000448",
+  "blockers": [
+    "none for R1 internal shell remediation"
+  ],
+  "changed_files": [
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/00-工作台长任务开发计划总清单.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-EIGHT-MENU-PRODUCT-DEFECT-REMEDIATION-八菜单视觉功能数据全量缺陷清单.md",
+    "docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-R0-八菜单产品验收重开与精确施工包.md"
+  ],
+  "commits": [
+    "docs:ddb59ea"
+  ],
+  "completed_at": "2026-09-02T08:37:48+08:00",
+  "completed_revision": "AOS-000448",
+  "result": "R0 4/4 complete: Workshop product acceptance explicitly reopened at total 4/81; exact eight visual sources and hashes, five-column component matrix, R1 file/regression scope and protected dirty scope sealed.",
+  "risks": [
+    "R1-R9 remain 77 tasks; no product completion, external effect, migration or release authorized"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-R0-PRODUCT-ACCEPTANCE-REOPEN-EXACT-CONSTRUCTION",
+  "verification": [
+    "checklist exactly 4 checked plus 77 unchecked equals 81; Markdown links exist; git diff --check GREEN; visual source SHA-256 frozen; no application code or real data changed"
+  ]
+}
