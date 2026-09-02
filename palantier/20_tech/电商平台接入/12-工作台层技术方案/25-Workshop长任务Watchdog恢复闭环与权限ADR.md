@@ -617,3 +617,20 @@ Watchdog 已在 V4.0 切换为 `aos-platform/m1` 单人串行主线，并要求�
 - 本波没有读取 w1-aip 未提交工作区，没有修改业务数据、migration、平台配置、Secret、Session、schedule 或发布状态。
 
 实施结论：`V4_1_LOCAL_CONFIG_GREEN / CURRENT_EPISODE_PERMISSION_STILL_BLOCKED / NEXT_REAL_EPISODE_ACCEPTANCE_REQUIRED`。
+# V4.2 用户可见唤醒输入压缩（2026-09-02）
+
+## 决策
+
+Watchdog 仍然仅有唤醒权，但注入同一对话的用户可见文本压缩为两句：
+
+1. `接续前面中断 继续Loop下去`；
+2. `每一波都执行“复习上位方案→细化当前波文件级清单→实现最小改动→专项测试→累计回归→浏览器验收→方案/代码一致性复审→证据与上下文更新→进入下一波”。；外加 独立 prime agent独立长记忆支持`。
+
+为了不丢失 episode 闭环，两句之后只保留一个紧凑的机器协议块，包含 `episode_id/trigger/wake_sequence/wake_started_at/expected_branch/ack_command`。权限、Git、Lease、Receipt、memory 三门、安全与连续波次要求不再重复刷屏，由两个稳定引用承载：本 ADR 和仓库 `AGENTS.md`。
+
+## 不变安全性
+
+- 压缩只改变唤醒 prompt 的长度，不改 Ack schema、episode 匹配、分支/权限预检、防重入、退避或状态机。
+- 恢复后仍必须实时回读 authority、01/06、Git、Receipt、Lease、memory status/validate/gate 与真实数据。
+- `resumed-progress` 仍必须有非空且不同于当前任务的 `next_task`；每波继续写 Delivery Receipt、安全提交、authority CAS 和 Prime 回读。
+- 桌面通知与 `visible-status.json` 仍仅携带非敏感状态，不包含凭据、客户数据或证据正文。
