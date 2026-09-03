@@ -332,6 +332,25 @@
 - 内置浏览器在 `org-org/dev-project`、`/workshop/cockpit` 逐一点击十项：十个 CapabilityRevision 均可回读，其中七项具有 exact Skill→Logic→数字同事贡献链；语音合成、视频合成、直播编排当前没有 canonical 关系，页面明确不补造。单行横向滚动、详情关闭和 Escape 均可工作，未覆盖明日预告。
 - 专项测试 `25/25`、Web 累计回归 `271 files / 2430 tests`、生产构建 `369 modules` GREEN；证据位于 `.evidence/workshop/2026-09-03-r3-cockpit-shared-capability-chain/`。
 - 结论：`WORKSHOP_R3_05_COCKPIT_SHARED_CAPABILITY_CHAIN_GREEN`。本项没有修改业务数据或触发外部副作用；下一项自动进入 `R3-06` 右侧今日复盘、AI 改进建议与 Wiki 今日入库。
+- 封板补记（2026-09-03 23:32，接续执行者）：原执行者在第 7/8 步中断，第 8/8 步由接续执行者完成。接续前独立重跑专项 `25/25`、Web 累计回归 `271 files / 2430 tests`、TypeScript 与生产构建，全部 GREEN，未采信上一执行者报数。Delivery Receipt 已落 `WORKSHOP-R3-05-COCKPIT-SHARED-CAPABILITY-CHAIN.json`，authority CAS 至 `AOS-000462`，`memory sync --apply --prime` 后七条强一致投影均 CURRENT，R3-05 租约已释放。
+
+#### R3-06 右侧复盘三段精确施工范围（2026-09-03）
+
+1. 正式视觉源仍以 `docs/palantier/foundry/html/workshop-task-cockpit.html` 右 1/3 栏为准，恢复三段固定结构：`今日复盘`、`AI 改进建议`、`经验沉淀 Wiki · 今日入库`。视觉稿中的「有效 6 · 待定 1 · 有害 1」、`CN-05 朋友圈3条内容`、`AFT-03 过敏投诉误判`、`VIP3过敏处理SOP · v3` 等全部是示例文案，**一律不得复制到实现**。
+2. 三段数据只来自 canonical 权威，各自独立读取、独立失败关闭，任一段失败不得影响 KPI、下达带、任务流、六数字同事浮层与十项能力带：
+   - `今日复盘`：复用已解析的 Task Cockpit core `items` 与 `taskCutoff`，按 `taskCutoff` 当日筛选处于终态的业务任务（`completed`/`failed`/`cancelled`/`rolled_back`），并以 `run.status` 与 `run.finishedAt` 作为执行记录归因。**效果结论（有效/无结论/有害）属于 EffectReview/Eval 语义，当前 core 响应不提供逐任务 EffectReview，因此一律显示「尚无可验证效果结论」，不得用 `run.status=succeeded` 冒充「有效」，也不得用 `failed` 冒充「有害」。**
+   - `AI 改进建议`：独立读取 `GET /v1/aip/memory-authority/improvement-observations`，消费 `ImprovementObservation` 的 `conclusion`（`improved`/`unchanged`/`regressed`/`insufficient_evidence`）、`metrics`、`quality`（`measured`/`estimated`/`unknown`）、`limitations`、`cutoffAt`、`observationHash` 与 `agentInstanceRef`。`quality != measured` 或 `conclusion = insufficient_evidence` 时必须显式标注证据不足，不得把观察写成结论。
+   - `经验沉淀 Wiki · 今日入库`：独立读取 `GET /v1/aip/memory-authority/candidates` 与 `GET /v1/aip/memory-authority/memories`，按 `createdAt` 当日统计 `MemoryCandidate`（`pending`/`quarantined`/`rejected`/`approved`/`promoted`）与 `MemoryAuthorityItem`（`item` + `revision`）。隔离项必须显示 `quarantine_reasons`，不得只报总数。
+3. 三段均为只读呈现。不得提交 `MemoryCandidate`、不得审批或 promote、不得写 Wiki、不创建 Plan/TaskRun、不派发、不发送、不发布、不改价、不调用 Provider。canonical 侧 `submitCandidate`/`approveCandidate`/`promoteCandidate`/`publishWiki` 一律不接线。
+4. 空态与失败态必须可信：三段标题作为固定产品结构始终可见；无当日数据时显示「今日没有可回读的复盘/改进观察/入库记录」；读取失败时显示权威读取失败并保留段落，不回退到 blocker 列表、不补造条目。当前 `task-cockpit-visual-review` 仅渲染 blockers 的单段实现被三段结构取代，blockers 降为「复盘所需数据缺口」的可展开明细，不占据整段。
+5. 文件级范围（严格限定，禁止扩散）：
+   - `apps/web/src/components/workshop/TaskCockpitPage.tsx`：三段结构、并行独立读取、当日筛选、失败关闭与可访问详情。
+   - `apps/web/src/components/workshop/TaskCockpitPage.test.tsx`：覆盖三段顺序与固定可见、当日筛选、无效果结论不冒充、观察证据不足标注、隔离原因可见、三段各自读取失败、零外部副作用。
+   - `apps/web/src/api/aipMemoryAuthority/client.ts` 与 `client.test.ts`（新增）：改进观察、记忆候选与记忆条目的只读 SDK 与契约校验。
+   - `apps/web/src/styles/45-ecommerce-workshop.css`：按视觉源恢复右 1/3 栏三段纵向分区与段内独立滚动，不抬高或覆盖共享能力带与明日预告。
+   - `.evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki/`：保存专项、累计回归、构建与内置浏览器三段证据。
+   - **明确排除**：`apps/web/src/api/ecommerceWorkshop/parser.ts` 及其测试（含用户未提交内容，禁止读改）；`apps/web/src/pages/s2/ModelRuntimePage.test.tsx` 与 `services/aos-api/tests/test_ecommerce_*operations*.py`（非本门未提交改动，保留不动）。
+6. 验收顺序（固定八步节拍）：复习上位方案 → 细化本节文件级清单 → 最小改动实现 → 专项组件与 SDK 测试 → Web 累计回归与生产构建 → 内置浏览器在 `org-org/dev-project` 逐段核对三段结构、当日筛选、证据标注与失败态 → 方案/代码一致性复审 → Delivery Receipt、authority CAS、`memory sync --apply --prime`、validate/gate 与 Prime 长记忆回读 → 自动进入 `R3-07`。
 
 ### R4 · 内容与活动 + 统一运营（12 项）
 
