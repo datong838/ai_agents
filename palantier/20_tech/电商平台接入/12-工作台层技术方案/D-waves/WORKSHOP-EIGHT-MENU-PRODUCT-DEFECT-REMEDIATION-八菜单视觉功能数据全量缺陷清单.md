@@ -313,6 +313,19 @@
 - 专项测试 `23/23`、Web 累计回归 `2428/2428`、生产构建 GREEN；证据位于 `.evidence/workshop/2026-09-03-r3-cockpit-colleague-popovers/`。
 - 结论：`WORKSHOP_R3_04_COCKPIT_COLLEAGUE_POPOVERS_GREEN`。本项没有创建 Plan/TaskRun、派发、发送、发布、改价或 Provider 调用；下一项为 `R3-05` 十项共享原子能力与贡献链。
 
+#### R3-05 十项共享原子能力与贡献链精确施工范围（2026-09-03）
+
+1. 正式能力集合固定为已评审的十个 canonical Capability ID：`material.collect`、`strategy.plan`、`copy.generate`、`script.compose`、`speech.synthesize`、`video.compose`、`content.review`、`live.orchestrate`、`platform.adapt`、`performance.review`；产品名称依次为素材采集、策略规划、文案生成、脚本撰写、语音合成、视频合成、内容审核、直播编排、平台适配、数据复盘。十项是跨工作台复用的 capability 分类，不伪造十个固定运行实例。
+2. 页面必须独立读取当前租户 `/v1/aip/capability-catalog` 和 `/v1/aip/agent-registry`：能力状态来自 canonical CapabilityRevision；Skill、Logic 和数字同事关系只由 SkillTemplate 的 `requiredCapabilities`、`canonicalLogicId` 与 AgentTemplate/Instance 组合。不得再用 Task blocker dependency 推导能力，也不得把两个泛化依赖标签冒充十项能力。
+3. 能力带保持视觉稿单行十胶囊和内部横向滚动；每项以颜色和中文状态区分可用、能力受限、暂停使用、暂不可用、待核对。点击胶囊打开可访问详情，展示 exact Capability revision、关联 Skill、Logic、数字同事及“任务总控贡献”说明；没有 canonical 关系时明确显示没有可验证关系，不补造引用。
+4. 读取能力或数字同事目录失败时，十项产品名称仍作为固定产品目录可见，但状态统一为待核对且详情说明权威读取失败；失败不能回退为 blocker dependency，也不能影响任务总控、下达、筛选和六数字同事浮层。
+5. 文件级范围：
+   - `apps/web/src/components/workshop/TaskCockpitPage.tsx`：并行读取 capability/agent catalog、十项确定性关联、能力胶囊与详情交互。
+   - `apps/web/src/components/workshop/TaskCockpitPage.test.tsx`：覆盖十项顺序、真实状态、Skill/Logic/数字同事关系、无关系、读取失败、点击/关闭和零外部副作用。
+   - `apps/web/src/styles/45-ecommerce-workshop.css`：恢复视觉稿单行十胶囊、状态色、横向滚动及不抬高底部能力带。
+   - `.evidence/workshop/2026-09-03-r3-cockpit-shared-capability-chain/`：保存专项、累计、构建和内置浏览器十项点击证据。
+6. 验收顺序：能力目录与组件专项测试 → Web 累计回归与生产构建 → 内置浏览器在 `org-org/dev-project` 核对十项状态并点击查看贡献链 → 方案/实现一致性复审 → Delivery Receipt、authority CAS、memory sync/validate/gate 与 Prime 回读 → 自动进入 R3-06。
+
 ### R4 · 内容与活动 + 统一运营（12 项）
 
 #### 内容与活动工作台（6 项）
