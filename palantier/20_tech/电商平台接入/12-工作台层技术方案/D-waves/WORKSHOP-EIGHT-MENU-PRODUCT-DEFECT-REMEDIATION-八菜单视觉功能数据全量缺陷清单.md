@@ -235,7 +235,7 @@
 - [x] `R3-03` 实现任务输入→安全预检→内部任务草稿/Task→数字同事分派→Receipt→列表回读闭环；无条件时按钮明确禁用，不得只显示提示。
 - [x] `R3-04` 完整实现 6 个数字同事卡片及介绍浮层：职责、边界、常用 Agent、当前状态；浮层尺寸、锚点、遮挡、滚动和关闭行为与视觉稿一致。
 - [x] `R3-05` 恢复 10 个共享原子能力/Agent 标签，展示真实可用性和“原子 Skill→Logic→数字同事→工作台贡献”关系，不以两个泛化标签代替。
-- [ ] `R3-06` 恢复右侧三段：今日复盘、AI 改进建议、经验沉淀 Wiki·今日入库；数据来自真实 Task/Run/Eval/Wiki，不能复制视觉稿示例。
+- [x] `R3-06` 恢复右侧三段：今日复盘、AI 改进建议、经验沉淀 Wiki·今日入库；数据来自真实 Task/Run/Eval/Wiki，不能复制视觉稿示例。
 - [ ] `R3-07` 修复底部能力带与明日预告遮挡、任务列表滚动、数字同事列可见性，并完成真实栖月汇任务的创建、筛选、详情、复盘和回读自验收。
 
 #### R3-01 视觉结构精确施工范围（2026-09-03）
@@ -361,6 +361,16 @@
 - 专项测试 `31/31`（含 6 项新增，先 RED 后 GREEN）、Web 累计回归 `271 files / 2436 tests`、`tsc` 无错误、生产构建 GREEN；证据位于 `.evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki/`。
 - 遗留：本租户今日无改进观察与入库记录，有数据分支仅由专项测试覆盖；任务卡片约 430 行的 Run 状态词表既有缺陷按最小改动未动，留待后续波次。
 - 结论：`WORKSHOP_R3_06_COCKPIT_REVIEW_ADVICE_WIKI_GREEN`。本项没有修改业务数据或触发外部副作用；下一项进入 `R3-07`。
+
+#### R3-07 第 1/8 步调研结论（2026-09-04）
+
+内置浏览器（CDP 只读）在 `org-org/dev-project`、`/workshop/cockpit`、1280×720 实测几何，证据 `.evidence/workshop/2026-09-04-r3-cockpit-layout-and-task-loop/layout-report.json`：
+
+1. **当前不存在遮挡**：`skills × taskColumn`、`skills × roleColumn`、`skills × review`、`tomorrow × skills`、`tomorrow × taskColumn` 五项重叠检测全部为 `false`。能力带 `599→649`、明日预告 `649→683`、三列 `174→598`，纵向严格相邻不重叠；`surface` 底 `683` 在视口 `720` 内。
+2. **数字同事列完整可见**：6 张卡片，最后一张底边 `526`，低于能力带顶边 `599`，`lastColleagueCardFullyVisible = true`；`roleColumn` 未溢出（`scrollHeight = clientHeight = 424`）。
+3. **滚动容器已就位但未被触发**：`roleColumn`、`taskColumn`、`review` 的 `overflow-y` 均为 `auto`，但当前内容都未溢出（`verticallyScrollable = false`），`documentScrollable = false`，页面无外层滚动。
+4. **结论：遮挡与滚动无法在当前数据量下被证伪**。任务流只有 4 张卡片，`taskColumn` 424px 恰好装下。要真正验证"能力带与明日预告不被遮挡、任务列表在列内独立滚动、数字同事列保持可见"，必须让任务流溢出，即需要显著多于 4 条的正式业务任务。
+5. **门禁**：R3-07 后半段"完成真实栖月汇任务的创建、筛选、详情、复盘和回读自验收"需要在 `org-org/dev-project` 写入正式业务任务。这与"不补造业务数据"的常设军规直接冲突——为压测布局而批量造任务就是补造业务数据。因此 R3-07 在取得用户对"写入哪些真实业务任务、写入多少条"的明确授权前不进入第 3/8 步实现。本次只完成第 1/8 步只读测量，未创建任何任务、未提交任何表单。
 
 ### R4 · 内容与活动 + 统一运营（12 项）
 
