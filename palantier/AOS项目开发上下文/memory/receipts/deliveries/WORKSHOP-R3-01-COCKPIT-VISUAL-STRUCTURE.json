@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000457",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    ".evidence/workshop/2026-09-03-r3-cockpit-visual-structure/verification.json"
+  ],
+  "commits": [
+    "c27611ef"
+  ],
+  "completed_at": "2026-09-03T08:44:42+08:00",
+  "completed_revision": "AOS-000457",
+  "result": "WORKSHOP_R3_01_COCKPIT_VISUAL_STRUCTURE_GREEN",
+  "risks": [
+    "R3-02 through R3-07 remain incomplete; no external effect or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-R3-01-COCKPIT-VISUAL-STRUCTURE",
+  "verification": [
+    "focused 19/19; web cumulative 2423/2423; production build GREEN; in-app browser 1280x720 geometry and top/full/bottom screenshots GREEN"
+  ]
+}

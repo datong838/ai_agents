@@ -6,3 +6,11 @@
 {"base_revision":"AOS-000455","occurred_at":"2026-09-03T02:31:59+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-05-INTERNAL-WRITE-RECEIPT","type":"TASK_STARTED"}
 {"occurred_at":"2026-09-03T06:24:30+08:00","result":"COMPLETED_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-05-INTERNAL-WRITE-RECEIPT","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-09-03T06:26:23+08:00","project_revision":"AOS-000456","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000456","occurred_at":"2026-09-03T06:33:10+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-06-TENANT-ISOLATION","type":"TASK_STARTED"}
+{"occurred_at":"2026-09-03T06:57:13+08:00","result":"BACKEND_TENANT_ISOLATION_MATRIX_GREEN_FRONTEND_RESPONSE_BINDING_PENDING","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-06-TENANT-ISOLATION","type":"TASK_COMPLETED"}
+{"base_revision":"AOS-000456","occurred_at":"2026-09-03T06:58:37+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-06B-FRONTEND-TENANT-BINDING","type":"TASK_STARTED"}
+{"occurred_at":"2026-09-03T07:52:15+08:00","result":"FRONTEND_CANONICAL_RESPONSE_TENANT_BINDING_GREEN_R2_COMPLETE","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R2-06B-FRONTEND-TENANT-BINDING","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-09-03T07:55:31+08:00","project_revision":"AOS-000457","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000457","occurred_at":"2026-09-03T08:07:05+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R3-01-COCKPIT-VISUAL-STRUCTURE","type":"TASK_STARTED"}
+{"occurred_at":"2026-09-03T08:44:42+08:00","result":"WORKSHOP_R3_01_COCKPIT_VISUAL_STRUCTURE_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R3-01-COCKPIT-VISUAL-STRUCTURE","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-09-03T08:52:28+08:00","project_revision":"AOS-000458","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}

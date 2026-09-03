@@ -1,0 +1,22 @@
+{
+  "base_revision": "AOS-000457",
+  "created_at": "2026-09-03T08:07:05+08:00",
+  "excluded_scope": [
+    "real business data; Provider/Adapter; external side effects; unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "WORKSHOP_R3_01_COCKPIT_VISUAL_STRUCTURE_GREEN"
+  ],
+  "lease_expires_at": "2026-09-03T10:30:00+08:00",
+  "owner": "codex-m1-serial",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-09-03-r3-cockpit-visual-structure/",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-EIGHT-MENU-PRODUCT-DEFECT-REMEDIATION-八菜单视觉功能数据全量缺陷清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-R3-01-COCKPIT-VISUAL-STRUCTURE"
+}
