@@ -1,38 +1,38 @@
 {
   "completed": [
-    "R0-R2 and R3-01 through R3-04 closed; 22/81; six accessible anchored digital-colleague profile popovers, focused 23/23, web 2428/2428, build and in-app browser GREEN"
+    "R0-R2 and R3-01 through R3-05 closed; 23/81; ten canonical shared capabilities with contribution chain, focused 25/25, Web 271 files 2430/2430, TypeScript and production build GREEN"
   ],
-  "content_hash": "sha256:286f97a04f88da770924261d13d835ac1955abf9574deacd19e26ca7bbc48714",
+  "content_hash": "sha256:94c856703ffc6a056d9b7e2a75a793ff39333379334743de5c65fb1940ad7df0",
   "current_phase": "WORKSHOP_PRODUCT_REMEDIATION_R3",
-  "delivery_status": "WORKSHOP_R0_R1_R2_R3_01_R3_02_R3_03_R3_04_COMPLETE_22_OF_81_R3_05_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "WORKSHOP_R0_R1_R2_R3_01_R3_02_R3_03_R3_04_R3_05_COMPLETE_23_OF_81_R3_06_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "verification",
-      "ref": ".evidence/workshop/2026-09-03-r3-cockpit-colleague-popovers/verification.md"
+      "ref": ".evidence/workshop/2026-09-03-r3-cockpit-shared-capability-chain/verification.md"
     },
     {
       "kind": "delivery",
-      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-R3-04-COCKPIT-COLLEAGUE-POPOVERS.json"
+      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-R3-05-COCKPIT-SHARED-CAPABILITY-CHAIN.json"
     }
   ],
-  "generated_at": "2026-09-03T21:25:46+08:00",
+  "generated_at": "2026-09-03T23:32:53+08:00",
   "hard_boundaries": [
-    "No external effect, no release, no fabricated business data; org-org/dev-project only and current Principal scopes all writes"
+    "No external effect, no release, no fabricated business data; only org-org/dev-project canonical reads"
   ],
   "incomplete": [
-    "R3-05 through R9; 59 tasks remain"
+    "R3-06 through R9; 58 tasks remain"
   ],
-  "last_green_gate": "WORKSHOP_R3_04_COCKPIT_COLLEAGUE_POPOVERS_GREEN",
-  "next_gate": "WORKSHOP_R3_05_COCKPIT_SHARED_CAPABILITY_CHAIN",
+  "last_green_gate": "WORKSHOP_R3_05_COCKPIT_SHARED_CAPABILITY_CHAIN_GREEN",
+  "next_gate": "WORKSHOP_R3_06_COCKPIT_REVIEW_ADVICE_WIKI",
   "next_steps": [
-    "Execute R3-05 ten shared atomic capability labels and Skill-to-Logic-to-colleague-to-workbench contribution chain, then continue R3 serially"
+    "Execute R3-06 right-column today review, AI improvement advice and Wiki today-intake sourced from canonical Task/Run/Eval/Wiki; no visual-mock sample data; no external side effect"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000461",
+  "project_revision": "AOS-000462",
   "projection_schema": "aos-memory-projection/v1",
   "source_commits": {
-    "docs": "f526217",
-    "web": "49e93ddf"
+    "docs": "faed058",
+    "web": "512d2a18"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",

@@ -23,3 +23,6 @@
 {"base_revision":"AOS-000460","occurred_at":"2026-09-03T19:37:29+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R3-04-COCKPIT-COLLEAGUE-POPOVERS","type":"TASK_STARTED"}
 {"occurred_at":"2026-09-03T21:21:32+08:00","result":"WORKSHOP_R3_04_COCKPIT_COLLEAGUE_POPOVERS_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R3-04-COCKPIT-COLLEAGUE-POPOVERS","type":"TASK_COMPLETED"}
 {"occurred_at":"2026-09-03T21:25:46+08:00","project_revision":"AOS-000461","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
+{"base_revision":"AOS-000461","occurred_at":"2026-09-03T21:45:56+08:00","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R3-05-COCKPIT-SHARED-CAPABILITY-CHAIN","type":"TASK_STARTED"}
+{"occurred_at":"2026-09-03T23:32:36+08:00","result":"WORKSHOP_R3_05_COCKPIT_SHARED_CAPABILITY_CHAIN_GREEN","schema":"aos-memory-event/v1","task_id":"WORKSHOP-R3-05-COCKPIT-SHARED-CAPABILITY-CHAIN","type":"TASK_COMPLETED"}
+{"occurred_at":"2026-09-03T23:32:53+08:00","project_revision":"AOS-000462","schema":"aos-memory-event/v1","type":"AUTHORITY_UPDATED"}
