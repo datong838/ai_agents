@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000463",
+  "blockers": [],
+  "changed_files": [
+    ".evidence/workshop/2026-09-04-r3-cockpit-layout-and-task-loop/built-in-browser-report.json",
+    ".evidence/workshop/2026-09-04-r3-cockpit-layout-and-task-loop/verification.md"
+  ],
+  "commits": [
+    "e16d6ef5",
+    "26a37c1"
+  ],
+  "completed_at": "2026-09-04T01:38:00+08:00",
+  "completed_revision": "AOS-000463",
+  "result": "WORKSHOP_R3_07_COCKPIT_LAYOUT_TASK_LOOP_GREEN",
+  "risks": [
+    "no real business data mutation; no external effect; no migration; no release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-R3-07-COCKPIT-LAYOUT-TASK-LOOP",
+  "verification": [
+    "focused 31/31; cumulative 271 files 2436 tests; build green; built-in browser three viewports and interaction loop green"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000462",
+  "created_at": "2026-09-04T00:02:03+08:00",
+  "excluded_scope": [
+    "apps/web/src/api/ecommerceWorkshop/parser.ts;apps/web/src/api/ecommerceWorkshop/parser.test.ts;apps/web/src/pages/s2/ModelRuntimePage.test.tsx;services/aos-api/tests/test_ecommerce_operation_command_service.py;services/aos-api/tests/test_ecommerce_workshop_operations_api.py;memory candidate submit, approve, promote, wiki publish;real external actions;Provider calls;release"
+  ],
+  "expected_outputs": [
+    "three canonical right-column sections: today review from Task/Run terminal states without fabricated effect conclusions, AI improvement advice from ImprovementObservation with evidence-quality labelling, Wiki today-intake from MemoryCandidate and MemoryAuthorityItem with quarantine reasons; tests; browser evidence; receipt; CAS; Prime readback"
+  ],
+  "lease_expires_at": "2026-09-04T08:00:00+08:00",
+  "owner": "m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx;apps/web/src/components/workshop/TaskCockpitPage.test.tsx;apps/web/src/api/aipMemoryAuthority/client.ts;apps/web/src/api/aipMemoryAuthority/client.test.ts;apps/web/src/styles/45-ecommerce-workshop.css;.evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki;docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-EIGHT-MENU-PRODUCT-DEFECT-REMEDIATION-八菜单视觉功能数据全量缺陷清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-R3-06-COCKPIT-REVIEW-ADVICE-WIKI"
+}

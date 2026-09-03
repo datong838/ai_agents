@@ -1,0 +1,33 @@
+{
+  "base_revision": "AOS-000462",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki/verification.md",
+    ".evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki/browser-report.json",
+    ".evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki/verify-browser.mjs",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-EIGHT-MENU-PRODUCT-DEFECT-REMEDIATION-八菜单视觉功能数据全量缺陷清单.md"
+  ],
+  "commits": [
+    "4dd02d82"
+  ],
+  "completed_at": "2026-09-04T00:17:52+08:00",
+  "completed_revision": "AOS-000462",
+  "result": "R3-06 GREEN：任务总控右侧恢复视觉稿三段固定结构（今日复盘 / AI 改进建议 / 经验沉淀 Wiki 今日入库），三段各自独立读取 canonical 权威并独立失败关闭。今日复盘由 Task Cockpit core items 与 taskCutoff 派生当日终态任务；因 core 不按任务暴露 EffectReview/Eval，一律显示尚无可验证效果结论，未用 run.status=succeeded 冒充有效、未用 failed 冒充有害。AI 改进建议读 ImprovementObservation，对 insufficient_evidence 或 quality!=measured 显式标注证据不足并展开 limitations。Wiki 今日入库读 MemoryCandidate 与 MemoryAuthorityItem，隔离项必显 quarantineReasons。复用既有 AipMemorySdk 未新增 client，按 R3-05 模式注入可选 memoryClient prop。blockers 由占据整段降为可展开数据缺口。新增 RUN_STATUS_LABELS 修正 Run 状态误套任务状态词表。只读零副作用：未接线候选提交/审批/promote/Wiki 发布，未创建 Plan/TaskRun，未调用 Provider。",
+  "risks": [
+    "三段当前均为真实空态：本租户今日没有 ImprovementObservation、MemoryCandidate 与当日入库 MemoryAuthorityItem，有数据分支仅由专项测试覆盖，尚未取得真实数据的浏览器截图",
+    "既有任务卡片（TaskCockpitPage.tsx 约 430 行）仍把 Run 状态套 TASK_STATUS_LABELS，succeeded 会显示待核对；属既有缺陷，本波按最小改动未动，留待后续波次",
+    "开发期 React.StrictMode 导致三个读取各请求两次；scenarioRequest 序号守卫已防旧响应覆盖，与既有取数行为一致，非本波回归"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-R3-06-COCKPIT-REVIEW-ADVICE-WIKI",
+  "verification": [
+    "专项 vitest run TaskCockpitPage.test.tsx => 31 passed (31)，其中 6 项为本波新增，先 RED 后 GREEN",
+    "Web 累计回归 vitest run => 271 files / 2436 tests passed",
+    "tsc --noEmit => 无错误；vite build => built in 2.02s",
+    "CDP 内置浏览器只读验收 org-org/dev-project /workshop/cockpit => sectionCount=3、标题与 aria-label 一致、forbiddenSampleText=[]、writeControls=[]、KPI 带在位、共享能力带仍 10 项",
+    "浏览器网络观测 => improvement-observations / candidates / memories 均 GET 200 返回 []，证明三段空态属实而非静默失败"
+  ]
+}

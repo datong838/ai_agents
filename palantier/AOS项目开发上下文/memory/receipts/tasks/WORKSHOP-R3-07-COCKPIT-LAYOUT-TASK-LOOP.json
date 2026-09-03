@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000463",
+  "created_at": "2026-09-04T01:32:11+08:00",
+  "excluded_scope": [
+    "aos-platform-w1-aip;real-business-data;external-effects;migration;release"
+  ],
+  "expected_outputs": [
+    "R3-07 browser layout, task interaction, cumulative regression evidence and delivery receipt"
+  ],
+  "lease_expires_at": "2026-09-04T08:00:00+08:00",
+  "owner": "m1",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "aos-platform:.evidence/workshop/2026-09-04-r3-cockpit-layout-and-task-loop;docs:palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-EIGHT-MENU-PRODUCT-DEFECT-REMEDIATION-八菜单视觉功能数据全量缺陷清单.md"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-R3-07-COCKPIT-LAYOUT-TASK-LOOP"
+}
