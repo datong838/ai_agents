@@ -1,34 +1,39 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "R2-05 internal command preview-confirm-Receipt-readback; backend 60/60; Web 47/47 and cumulative 2419/2419; browser GREEN; total 17/81"
+    "R0-R2 closed; 18/81; R2 tenant isolation backend 83/83, Web 2422/2422, positive and negative browser canary GREEN"
   ],
-  "current_phase": "WORKSHOP_PRODUCT_REMEDIATION_R2",
-  "delivery_status": "WORKSHOP_R2_01_02_03_04_05_INTERNAL_WRITE_RECEIPT_GREEN_R2_06_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "current_phase": "WORKSHOP_PRODUCT_REMEDIATION_R3",
+  "delivery_status": "WORKSHOP_R0_R1_R2_COMPLETE_18_OF_81_R3_01_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "verification",
-      "ref": ".evidence/workshop/2026-09-03-r2-internal-write-receipt/verification.json"
+      "ref": ".evidence/workshop/2026-09-03-r2-tenant-isolation/backend-verification.json"
+    },
+    {
+      "kind": "verification",
+      "ref": ".evidence/workshop/2026-09-03-r2-tenant-isolation/frontend-verification.json"
     }
   ],
-  "evidence_cutoff": "2026-09-03T06:24:30+08:00",
+  "evidence_cutoff": "2026-09-03T07:52:15+08:00",
   "hard_boundaries": [
     "org-org/dev-project only for positive evidence; dev-org/dev-project negative canary only; no Provider/message/reprice/refund/shipment/publish/customer-contact effect; no release"
   ],
   "incomplete": [
-    "R2-06 tenant isolation; R3-R9 product remediation"
+    "R3-R9 product remediation; 63 tasks remain"
   ],
-  "last_green_gate": "WORKSHOP_R2_05_INTERNAL_WRITE_PREVIEW_CONFIRM_RECEIPT_READBACK_GREEN",
-  "next_gate": "WORKSHOP_R2_06_TENANT_ISOLATION_NEGATIVE_REGRESSION",
+  "last_green_gate": "WORKSHOP_R2_TENANT_ISOLATION_GREEN",
+  "next_gate": "WORKSHOP_R3_01_COCKPIT_VISUAL_STRUCTURE",
   "next_steps": [
-    "Start WORKSHOP-R2-06-TENANT-ISOLATION on m1; dev-org/dev-project negative canary only"
+    "Start WORKSHOP-R3-01-COCKPIT-VISUAL-STRUCTURE on m1"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000456",
+  "project_revision": "AOS-000457",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "docs": "097dad4",
-    "web": "17668b29"
+    "backend": "dc527fab",
+    "docs": "a60d26c",
+    "web": "b9d805e2"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -38,5 +43,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-09-03T06:26:23+08:00"
+  "updated_at": "2026-09-03T07:55:31+08:00"
 }
