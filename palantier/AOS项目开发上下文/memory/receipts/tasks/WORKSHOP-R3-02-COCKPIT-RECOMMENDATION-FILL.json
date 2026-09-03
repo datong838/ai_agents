@@ -1,0 +1,23 @@
+{
+  "base_revision": "AOS-000458",
+  "created_at": "2026-09-03T09:25:51+08:00",
+  "excluded_scope": [
+    "real business mutation, external effects, release, unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "WORKSHOP_R3_02_COCKPIT_RECOMMENDATION_FILL_GREEN"
+  ],
+  "lease_expires_at": "2026-09-03T11:30:00+08:00",
+  "owner": "aos-main-development",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/api/ecommerceWorkshop",
+    "services/aos-api/app",
+    "services/aos-api/tests",
+    ".evidence/workshop/2026-09-03-r3-cockpit-recommendation-fill"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-R3-02-COCKPIT-RECOMMENDATION-FILL"
+}
