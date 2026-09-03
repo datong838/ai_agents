@@ -234,7 +234,7 @@
 - [x] `R3-02` 恢复“下达”右侧经营参谋推荐任务；点击推荐项必须自动填入任务输入框，允许用户继续编辑后下达。
 - [x] `R3-03` 实现任务输入→安全预检→内部任务草稿/Task→数字同事分派→Receipt→列表回读闭环；无条件时按钮明确禁用，不得只显示提示。
 - [x] `R3-04` 完整实现 6 个数字同事卡片及介绍浮层：职责、边界、常用 Agent、当前状态；浮层尺寸、锚点、遮挡、滚动和关闭行为与视觉稿一致。
-- [ ] `R3-05` 恢复 10 个共享原子能力/Agent 标签，展示真实可用性和“原子 Skill→Logic→数字同事→工作台贡献”关系，不以两个泛化标签代替。
+- [x] `R3-05` 恢复 10 个共享原子能力/Agent 标签，展示真实可用性和“原子 Skill→Logic→数字同事→工作台贡献”关系，不以两个泛化标签代替。
 - [ ] `R3-06` 恢复右侧三段：今日复盘、AI 改进建议、经验沉淀 Wiki·今日入库；数据来自真实 Task/Run/Eval/Wiki，不能复制视觉稿示例。
 - [ ] `R3-07` 修复底部能力带与明日预告遮挡、任务列表滚动、数字同事列可见性，并完成真实栖月汇任务的创建、筛选、详情、复盘和回读自验收。
 
@@ -325,6 +325,13 @@
    - `apps/web/src/styles/45-ecommerce-workshop.css`：恢复视觉稿单行十胶囊、状态色、横向滚动及不抬高底部能力带。
    - `.evidence/workshop/2026-09-03-r3-cockpit-shared-capability-chain/`：保存专项、累计、构建和内置浏览器十项点击证据。
 6. 验收顺序：能力目录与组件专项测试 → Web 累计回归与生产构建 → 内置浏览器在 `org-org/dev-project` 核对十项状态并点击查看贡献链 → 方案/实现一致性复审 → Delivery Receipt、authority CAS、memory sync/validate/gate 与 Prime 回读 → 自动进入 R3-06。
+
+#### R3-05 闭合记录（2026-09-03）
+
+- 实现提交：`512d2a18`。底部能力带固定呈现十项 canonical Capability；状态来自 CapabilityRevision，详情关系只由 SkillTemplate、Logic 与 AgentTemplate 组成，目录失败和无关系均保持可信空态。
+- 内置浏览器在 `org-org/dev-project`、`/workshop/cockpit` 逐一点击十项：十个 CapabilityRevision 均可回读，其中七项具有 exact Skill→Logic→数字同事贡献链；语音合成、视频合成、直播编排当前没有 canonical 关系，页面明确不补造。单行横向滚动、详情关闭和 Escape 均可工作，未覆盖明日预告。
+- 专项测试 `25/25`、Web 累计回归 `271 files / 2430 tests`、生产构建 `369 modules` GREEN；证据位于 `.evidence/workshop/2026-09-03-r3-cockpit-shared-capability-chain/`。
+- 结论：`WORKSHOP_R3_05_COCKPIT_SHARED_CAPABILITY_CHAIN_GREEN`。本项没有修改业务数据或触发外部副作用；下一项自动进入 `R3-06` 右侧今日复盘、AI 改进建议与 Wiki 今日入库。
 
 ### R4 · 内容与活动 + 统一运营（12 项）
 
