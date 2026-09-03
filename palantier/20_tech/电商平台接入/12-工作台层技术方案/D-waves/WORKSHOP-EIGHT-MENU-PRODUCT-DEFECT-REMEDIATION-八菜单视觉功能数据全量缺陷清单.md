@@ -232,7 +232,7 @@
 
 - [x] `R3-01` 按视觉稿恢复 KPI 顶栏、下达区、执行组、中央任务流、策划组、右侧复盘、底部共享能力和明日预告的完整比例与层级。
 - [x] `R3-02` 恢复“下达”右侧经营参谋推荐任务；点击推荐项必须自动填入任务输入框，允许用户继续编辑后下达。
-- [ ] `R3-03` 实现任务输入→安全预检→内部任务草稿/Task→数字同事分派→Receipt→列表回读闭环；无条件时按钮明确禁用，不得只显示提示。
+- [x] `R3-03` 实现任务输入→安全预检→内部任务草稿/Task→数字同事分派→Receipt→列表回读闭环；无条件时按钮明确禁用，不得只显示提示。
 - [ ] `R3-04` 完整实现 6 个数字同事卡片及介绍浮层：职责、边界、常用 Agent、当前状态；浮层尺寸、锚点、遮挡、滚动和关闭行为与视觉稿一致。
 - [ ] `R3-05` 恢复 10 个共享原子能力/Agent 标签，展示真实可用性和“原子 Skill→Logic→数字同事→工作台贡献”关系，不以两个泛化标签代替。
 - [ ] `R3-06` 恢复右侧三段：今日复盘、AI 改进建议、经验沉淀 Wiki·今日入库；数据来自真实 Task/Run/Eval/Wiki，不能复制视觉稿示例。
@@ -275,6 +275,23 @@
 - 内置浏览器在 `org-org/dev-project`、`/workshop/cockpit` 实测三项推荐均位于“下达”按钮右侧且同时可见；点击“复盘订单与商品规模”回填“复盘栖月汇微商城的57 个商品、5 条商品评价的经营表现并整理问题清单”，继续追加“按渠道拆分”成功。下达带保持 53px，四栏和底部区未被挤压。
 - 专项测试 `21/21`、Web 累计回归 `2425/2425`、TypeScript 与生产构建 GREEN；证据位于 `.evidence/workshop/2026-09-03-r3-cockpit-recommendation-fill/`。
 - 结论：`WORKSHOP_R3_02_COCKPIT_RECOMMENDATION_FILL_GREEN`。本项没有创建 Task、数字同事分派或外部副作用；下一项为 `R3-03` 内部任务闭环。
+
+#### R3-03 内部业务任务闭环精确施工范围（2026-09-03）
+
+1. 继续复用 `/v1/aip/tasks` 与 PostgreSQL `aip_task` 作为唯一 Task 权威，不新增工作台本地任务表、不把页面状态或 `localStorage` 当权威；新任务类型固定为 `ecommerce.workshop.business_task`，标题只能使用用户输入的中文业务表达。
+2. “下达”必须是两阶段显式流程：首次点击完成标题清理、长度与业务语义校验，并给出建议承接数字同事；再次点击才携带唯一 `Idempotency-Key` 创建内部 `pending` Task。空输入、纯开发编号或重复提交不得创建任务；canonical Task API 对工作台业务任务再次校验任务类型、中文业务标题和 `goal.workshopAssignment`，不能只信任浏览器预检。
+3. 建议承接角色按业务关键词确定，并写入 Task `goal.workshopAssignment`；它只表示 `requested` 的建议绑定，不宣称 AgentInstance 已解析、已取得 Lease、已启动或已完成。经营参谋推荐携带的定义、观测与数据截止精确引用同时写入 `goal.sourceEvidence`，用户编辑后的普通任务允许该引用为空。
+4. 服务端返回的 canonical `TaskSnapshot` 组成任务受理回执，页面至少展示 Task ID、版本、状态、建议承接数字同事与受理时间；回执出现后必须重新读取 Task Cockpit，并以新 Task 在当前租户列表中可见作为闭环完成条件。创建成功但列表暂未可见时明确显示“正在核对”，不能冒充闭环。
+5. 本波只创建内部 Task，不创建 Plan/TaskRun，不派发外部渠道，不发送、不发布、不改价、不调用 Provider；所有租户范围继续仅由当前 Principal 决定。
+6. 文件级范围：`services/aos-api/aos_api/aip_task_models.py` 与新增定向合同测试负责服务端二次校验；`apps/web/src/api/aipTasks/client.ts`、`apps/web/src/api/aipTasks/contracts.ts`、`apps/web/src/components/workshop/TaskCockpitPage.tsx` 及对应测试负责两阶段预检、幂等创建、Receipt 呈现和列表回读；必要样式仅追加到 `apps/web/src/styles/45-ecommerce-workshop.css`，不改动当前存在未提交工作的 `ecommerceWorkshop/parser.ts` 与其测试。
+7. 验收顺序：AIP Tasks SDK 契约测试与 Task Cockpit 专项测试 → Web 累计回归与生产构建 → 内置浏览器用 `org-org/dev-project` 完成真实内部业务任务的预检、确认、回执和列表回读 → 方案一致性复审 → Delivery Receipt、authority CAS、memory sync/validate/gate 与 Prime 回读 → 自动进入 R3-04。
+
+#### R3-03 闭合记录（2026-09-03）
+
+- 工作台复用 canonical `/v1/aip/tasks`，以两阶段显式确认创建 `ecommerce.workshop.business_task`；浏览器与服务端共同拒绝空白、非中文、开发编号和技术实施任务，受控六数字同事只记录为 `requested` 建议承接。
+- 内置浏览器在 `org-org/dev-project` 创建 `task-3243ee1e1ee54acc8845`：版本 1、`pending`、建议导购顾问承接；创建后重新读取任务总控，任务流和明日预告均回读成功。受理提示位于下达带内，不再覆盖 KPI 或任务区。
+- 后端合同 `8/8`、前端专项 `26/26`、后端相关回归 `20/20`、Web 累计回归 `2428/2428`、TypeScript 与生产构建 GREEN；证据位于 `.evidence/workshop/2026-09-03-r3-cockpit-internal-task-loop/`。
+- 结论：`WORKSHOP_R3_03_COCKPIT_INTERNAL_TASK_LOOP_GREEN`。本项没有创建 Plan/TaskRun，也没有派发、发送、发布、改价或 Provider 调用；下一项为 `R3-04` 六数字同事卡片与介绍浮层。
 
 ### R4 · 内容与活动 + 统一运营（12 项）
 
@@ -379,7 +396,7 @@
 | 8 | R7 | 价格治理 + 客户关系 | 11 | 两页内部功能、合规数据、视觉闭合 |
 | 9 | R8 | 跨页任务、复盘、Wiki 与上下文 | 5 | 八页之间形成可追溯业务闭环 |
 | 10 | R9 | 累计浏览器、功能、数据、Receipt/Prime 验收 | 8 | 81/81，用户产品验收；发布门另判 |
-| **合计** |  |  | **81** | 当前 **20/81**；R0～R2、R3-01～R3-02 已闭合，继续 R3-03 |
+| **合计** |  |  | **81** | 当前 **21/81**；R0～R2、R3-01～R3-03 已闭合，继续 R3-04 |
 
 ## 6. 候选施工文件
 
