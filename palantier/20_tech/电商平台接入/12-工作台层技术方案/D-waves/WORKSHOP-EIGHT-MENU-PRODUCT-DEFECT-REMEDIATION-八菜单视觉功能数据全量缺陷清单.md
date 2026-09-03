@@ -346,11 +346,21 @@
 5. 文件级范围（严格限定，禁止扩散）：
    - `apps/web/src/components/workshop/TaskCockpitPage.tsx`：三段结构、并行独立读取、当日筛选、失败关闭与可访问详情。
    - `apps/web/src/components/workshop/TaskCockpitPage.test.tsx`：覆盖三段顺序与固定可见、当日筛选、无效果结论不冒充、观察证据不足标注、隔离原因可见、三段各自读取失败、零外部副作用。
-   - `apps/web/src/api/aipMemoryAuthority/client.ts` 与 `client.test.ts`（新增）：改进观察、记忆候选与记忆条目的只读 SDK 与契约校验。
+   - **不新增 SDK**：`apps/web/src/api/aipMemory/client.ts` 的 `AipMemorySdk` 已提供 `improvementObservations()`、`candidates()`、`memories()` 三个只读方法，契约类型 `MemoryImprovementObservation`、`MemoryCandidate`、`MemoryAuthorityItem` 已存在于同目录 `contracts.ts`。R3-06 直接复用，按 R3-05 的 `capabilityClient` 注入模式新增可选 `memoryClient` prop，不重复造客户端。
    - `apps/web/src/styles/45-ecommerce-workshop.css`：按视觉源恢复右 1/3 栏三段纵向分区与段内独立滚动，不抬高或覆盖共享能力带与明日预告。
    - `.evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki/`：保存专项、累计回归、构建与内置浏览器三段证据。
    - **明确排除**：`apps/web/src/api/ecommerceWorkshop/parser.ts` 及其测试（含用户未提交内容，禁止读改）；`apps/web/src/pages/s2/ModelRuntimePage.test.tsx` 与 `services/aos-api/tests/test_ecommerce_*operations*.py`（非本门未提交改动，保留不动）。
 6. 验收顺序（固定八步节拍）：复习上位方案 → 细化本节文件级清单 → 最小改动实现 → 专项组件与 SDK 测试 → Web 累计回归与生产构建 → 内置浏览器在 `org-org/dev-project` 逐段核对三段结构、当日筛选、证据标注与失败态 → 方案/代码一致性复审 → Delivery Receipt、authority CAS、`memory sync --apply --prime`、validate/gate 与 Prime 长记忆回读 → 自动进入 `R3-07`。
+
+#### R3-06 闭合记录（2026-09-04）
+
+- 实现提交：`4dd02d82`。右侧恢复视觉稿三段固定结构（今日复盘 / AI 改进建议 / 经验沉淀 Wiki · 今日入库），三段各自独立读取 canonical 权威、独立失败关闭，任一段失败不影响 KPI、下达带、任务流、六数字同事浮层与十项能力带。
+- 关键口径：因 core 响应不按任务暴露 EffectReview/Eval，今日复盘一律显示「尚无可验证效果结论」，未用 `run.status=succeeded` 冒充「有效」、未用 `failed` 冒充「有害」；改进观察对 `insufficient_evidence` 或 `quality != measured` 显式标注证据不足并展开 `limitations`；隔离候选必显 `quarantineReasons`。原先占据整段的 blockers 降为「复盘所需数据缺口 N 项」可展开明细。
+- 未新增 SDK：复用既有 `AipMemorySdk` 的 `improvementObservations()`／`candidates()`／`memories()`，按 R3-05 模式注入可选 `memoryClient` prop。复审中另发现并修正 Run 状态误套任务状态词表的问题（新增 `RUN_STATUS_LABELS`）。
+- 内置浏览器（CDP 只读）在 `org-org/dev-project`、`/workshop/cockpit` 实测：三段标题与 `aria-label` 一致且顺序正确，示例文案检测为空，写入控件为零，KPI 带与十项能力带无回归；三个 canonical 接口均 `GET 200` 返回 `[]`，证明当前三段空态属实而非静默失败。
+- 专项测试 `31/31`（含 6 项新增，先 RED 后 GREEN）、Web 累计回归 `271 files / 2436 tests`、`tsc` 无错误、生产构建 GREEN；证据位于 `.evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki/`。
+- 遗留：本租户今日无改进观察与入库记录，有数据分支仅由专项测试覆盖；任务卡片约 430 行的 Run 状态词表既有缺陷按最小改动未动，留待后续波次。
+- 结论：`WORKSHOP_R3_06_COCKPIT_REVIEW_ADVICE_WIKI_GREEN`。本项没有修改业务数据或触发外部副作用；下一项进入 `R3-07`。
 
 ### R4 · 内容与活动 + 统一运营（12 项）
 
