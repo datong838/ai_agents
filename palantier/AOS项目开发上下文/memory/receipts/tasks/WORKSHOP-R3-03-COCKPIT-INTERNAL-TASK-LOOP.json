@@ -1,0 +1,18 @@
+{
+  "base_revision": "AOS-000459",
+  "created_at": "2026-09-03T15:47:23+08:00",
+  "excluded_scope": [
+    "external effects, provider execution, publish, send, reprice, unrelated dirty files"
+  ],
+  "expected_outputs": [
+    "safe preflight, internal task create, colleague assignment, receipt, list readback, tests and browser evidence"
+  ],
+  "lease_expires_at": "2026-09-03T20:00:00+00:00",
+  "owner": "codex-m1-sole-developer",
+  "schema": "aos-memory-task-receipt/v1",
+  "scope": [
+    "TaskCockpit frontend plus canonical ecommerce workshop internal task API and focused tests"
+  ],
+  "status": "ACTIVE",
+  "task_id": "WORKSHOP-R3-03-COCKPIT-INTERNAL-TASK-LOOP"
+}

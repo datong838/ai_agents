@@ -1,0 +1,31 @@
+{
+  "base_revision": "AOS-000459",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/api/aipTasks/client.ts",
+    "apps/web/src/api/aipTasks/client.test.ts",
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    "services/aos-api/aos_api/aip_task_models.py",
+    "services/aos-api/tests/test_workshop_business_task_contract.py",
+    ".evidence/workshop/2026-09-03-r3-cockpit-internal-task-loop",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-EIGHT-MENU-PRODUCT-DEFECT-REMEDIATION-八菜单视觉功能数据全量缺陷清单.md"
+  ],
+  "commits": [
+    "13b244c8",
+    "38ced29"
+  ],
+  "completed_at": "2026-09-03T19:32:31+08:00",
+  "completed_revision": "AOS-000459",
+  "result": "WORKSHOP_R3_03_COCKPIT_INTERNAL_TASK_LOOP_GREEN",
+  "risks": [
+    "internal Task only; no Plan, TaskRun, dispatch, send, publish, reprice, Provider call or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-R3-03-COCKPIT-INTERNAL-TASK-LOOP",
+  "verification": [
+    "backend contract 8/8; frontend focused 26/26; backend related 20/20; web regression 2428/2428; TypeScript and production build GREEN",
+    "in-app browser org-org/dev-project created task-3243ee1e1ee54acc8845 version 1 pending; second-confirm, Receipt and task-list readback GREEN; notice does not cover KPI"
+  ]
+}
