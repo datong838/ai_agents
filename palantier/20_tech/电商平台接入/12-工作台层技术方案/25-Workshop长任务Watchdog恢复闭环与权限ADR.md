@@ -634,3 +634,27 @@ Watchdog 仍然仅有唤醒权，但注入同一对话的用户可见文本压�
 - 恢复后仍必须实时回读 authority、01/06、Git、Receipt、Lease、memory status/validate/gate 与真实数据。
 - `resumed-progress` 仍必须有非空且不同于当前任务的 `next_task`；每波继续写 Delivery Receipt、安全提交、authority CAS 和 Prime 回读。
 - 桌面通知与 `visible-status.json` 仍仅携带非敏感状态，不包含凭据、客户数据或证据正文。
+
+## V4.3 m1 Prime 确定性同步最小权限修复（2026-09-04）
+
+### 触发事实
+
+`AOS-000464` 已由 m1 CAS 推进，01/06、project-shared 与 WorkBuddy 强一致投影均为 CURRENT，但 Prime 三项强一致投影仍停在 `AOS-000463`。`memory-sync --apply --prime` 在创建 Codex eventual note 的原子临时文件时返回 `Operation not permitted`，尚未进入 Prime Harness 写入；因此 `memory-gate.can_change_state=false`，R4-C01 不得登记 Lease 或编码。
+
+### 最小权限裁决
+
+- 保留 `sandbox_mode=workspace-write`、`expected_branch=m1`、network、Ack、1800 秒复核以及全部租户/迁移/外部副作用/发布门。
+- 只增加确定性同步器实际使用的两个精确目录：`/Users/ddt/.codex/memories/extensions/ad_hoc/notes` 与 `/Users/ddt/.prime/agent`。
+- 不授权 `/Users/ddt/.codex`、`/Users/ddt/.prime` 或用户主目录；Codex 目录仅允许写 authority 派生的 eventual note，Prime 目录仅允许官方同步器持有共享锁、备份、原子更新 Harness 与版本账本。
+- 投影不能反写 authority；同步前后必须校验 authority revision/content hash、Prime 单调版本、精确回读与 memory status/validate/gate。
+- 当前已启动 episode 的 sandbox 权限冻结；配置修复只对下一次 Watchdog 恢复 turn 生效。
+
+### 验收门
+
+1. 配置 revision 升级为 `aos-sole-developer-watchdog-v4.3-20260904`，两个精确 root 各出现一次，JSON 与 mode-0600 校验通过；
+2. Watchdog 权限与命令测试、Python 编译和文档 diff check GREEN；
+3. 下一真实 episode 的 permission preflight 必须回读两个 root 可写，并实际完成 `memory-sync --apply --prime`；
+4. Prime 独立代理复核三项强投影均为 `AOS-000464/CURRENT`，随后 memory status/validate/gate 全部 GREEN；
+5. 未达到第 3、4 项前，不登记 R4-C01 Lease、不修改页面代码、不写真实业务数据。
+
+实施前复审：该修复只补齐 m1 已有确定性同步职责所需的最小文件范围，不增加业务、迁移、平台、Secret、外部副作用或发布权限，结论 `APPROVED_FOR_MINIMAL_LOCAL_CONFIG_REPAIR`。
