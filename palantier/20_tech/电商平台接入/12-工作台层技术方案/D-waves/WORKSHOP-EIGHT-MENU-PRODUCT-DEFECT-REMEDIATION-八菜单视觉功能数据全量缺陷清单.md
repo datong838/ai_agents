@@ -359,7 +359,7 @@
 - 未新增 SDK：复用既有 `AipMemorySdk` 的 `improvementObservations()`／`candidates()`／`memories()`，按 R3-05 模式注入可选 `memoryClient` prop。复审中另发现并修正 Run 状态误套任务状态词表的问题（新增 `RUN_STATUS_LABELS`）。
 - 内置浏览器（CDP 只读）在 `org-org/dev-project`、`/workshop/cockpit` 实测：三段标题与 `aria-label` 一致且顺序正确，示例文案检测为空，写入控件为零，KPI 带与十项能力带无回归；三个 canonical 接口均 `GET 200` 返回 `[]`，证明当前三段空态属实而非静默失败。
 - 专项测试 `31/31`（含 6 项新增，先 RED 后 GREEN）、Web 累计回归 `271 files / 2436 tests`、`tsc` 无错误、生产构建 GREEN；证据位于 `.evidence/workshop/2026-09-03-r3-cockpit-review-advice-wiki/`。
-- 遗留：本租户今日无改进观察与入库记录，有数据分支仅由专项测试覆盖；任务卡片约 430 行的 Run 状态词表既有缺陷按最小改动未动，留待后续波次。
+- 数据说明：本租户今日无改进观察与入库记录，有数据分支由专项测试覆盖；任务卡片 Run 状态已统一使用 `RUN_STATUS_LABELS`，不再泄露英文状态或误套任务状态词表。
 - 结论：`WORKSHOP_R3_06_COCKPIT_REVIEW_ADVICE_WIKI_GREEN`。本项没有修改业务数据或触发外部副作用；下一项进入 `R3-07`。
 
 #### R3-07 第 1/8 步调研结论（2026-09-04）
@@ -369,8 +369,17 @@
 1. **当前不存在遮挡**：`skills × taskColumn`、`skills × roleColumn`、`skills × review`、`tomorrow × skills`、`tomorrow × taskColumn` 五项重叠检测全部为 `false`。能力带 `599→649`、明日预告 `649→683`、三列 `174→598`，纵向严格相邻不重叠；`surface` 底 `683` 在视口 `720` 内。
 2. **数字同事列完整可见**：6 张卡片，最后一张底边 `526`，低于能力带顶边 `599`，`lastColleagueCardFullyVisible = true`；`roleColumn` 未溢出（`scrollHeight = clientHeight = 424`）。
 3. **滚动容器已就位但未被触发**：`roleColumn`、`taskColumn`、`review` 的 `overflow-y` 均为 `auto`，但当前内容都未溢出（`verticallyScrollable = false`），`documentScrollable = false`，页面无外层滚动。
-4. **结论：遮挡与滚动无法在当前数据量下被证伪**。任务流只有 4 张卡片，`taskColumn` 424px 恰好装下。要真正验证"能力带与明日预告不被遮挡、任务列表在列内独立滚动、数字同事列保持可见"，必须让任务流溢出，即需要显著多于 4 条的正式业务任务。
-5. **门禁**：R3-07 后半段"完成真实栖月汇任务的创建、筛选、详情、复盘和回读自验收"需要在 `org-org/dev-project` 写入正式业务任务。这与"不补造业务数据"的常设军规直接冲突——为压测布局而批量造任务就是补造业务数据。因此 R3-07 在取得用户对"写入哪些真实业务任务、写入多少条"的明确授权前不进入第 3/8 步实现。本次只完成第 1/8 步只读测量，未创建任何任务、未提交任何表单。
+4. **当前数据事实**：任务流只有 4 张卡片，`taskColumn` 424px 恰好装下；因此生产页面只能证明当前数据下无重叠，不能单靠增加真实业务任务来压测布局。
+5. **继续施工口径**：不为视觉压测补造业务数据。组件层以不少于 8 条 canonical 形状任务构造确定性溢出场景，验证任务列独立滚动、六数字同事列和底部两带保持固定且互不遮挡；内置浏览器在 `org-org/dev-project` 使用当前真实任务验证筛选、详情、复盘、回读与布局几何。创建链路沿用 R3-03 已闭合的专项测试和 Receipt 证据，本项不重复写入真实业务数据，也不把真实数据量不足作为停止施工条件。
+
+#### R3-07 布局与真实任务回读精确施工范围（2026-09-04）
+
+1. **固定层级**：主面板必须由指标带、下达带、四列任务板、十项共享能力带、明日预告依次组成；任务板独占剩余高度，底部两带参与正常 Flex 布局，不得用 fixed/absolute 覆盖任务或数字同事。
+2. **独立滚动**：任务流、数字同事列与右侧复盘列各自 `min-height: 0; overflow-y: auto`；用溢出组件场景断言任务列可滚动且滚动不改变页面外层、数字同事列、能力带和明日预告的位置。
+3. **真实回读**：内置浏览器只在 `org-org/dev-project` 操作当前 canonical 任务，逐项验证状态筛选、任务卡详情、今日复盘、重新读取及 URL/租户保持；不得以开发编号或方案文本补造业务项。
+4. **创建链复核**：复用 R3-03 的 `createTask` 契约、Receipt 与错误回读测试，重新跑专项回归；本波不为压测新增真实业务任务，不触发发布、发送、退款、调价或 Provider 外部副作用。
+5. **文件级范围**：优先只改 `apps/web/src/components/workshop/TaskCockpitPage.test.tsx` 补充溢出与交互回归；仅当测试证明布局实现有缺陷时，才最小修改 `TaskCockpitPage.tsx` 或 `apps/web/src/styles/45-ecommerce-workshop.css`。证据写入 `.evidence/workshop/2026-09-04-r3-cockpit-layout-and-task-loop/`。
+6. **验收顺序**：专项测试 → Web 累计回归与生产构建 → 内置浏览器真实租户逐项点击与三视口几何 → 方案/代码一致性复审 → Delivery Receipt、authority CAS、Prime memory sync/validate/gate → 自动进入 `R4-C01`。
 
 ### R4 · 内容与活动 + 统一运营（12 项）
 
