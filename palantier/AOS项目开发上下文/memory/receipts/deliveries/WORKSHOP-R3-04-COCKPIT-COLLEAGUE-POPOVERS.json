@@ -1,0 +1,27 @@
+{
+  "base_revision": "AOS-000460",
+  "blockers": [],
+  "changed_files": [
+    "apps/web/src/components/workshop/TaskCockpitPage.tsx",
+    "apps/web/src/components/workshop/TaskCockpitPage.test.tsx",
+    "apps/web/src/styles/45-ecommerce-workshop.css",
+    ".evidence/workshop/2026-09-03-r3-cockpit-colleague-popovers",
+    "docs/palantier/20_tech/电商平台接入/12-工作台层技术方案/D-waves/WORKSHOP-EIGHT-MENU-PRODUCT-DEFECT-REMEDIATION-八菜单视觉功能数据全量缺陷清单.md"
+  ],
+  "commits": [
+    "49e93ddf",
+    "f526217"
+  ],
+  "completed_at": "2026-09-03T21:21:32+08:00",
+  "completed_revision": "AOS-000460",
+  "result": "WORKSHOP_R3_04_COCKPIT_COLLEAGUE_POPOVERS_GREEN",
+  "risks": [
+    "frontend presentation and interaction only; no Plan, TaskRun, dispatch, send, publish, reprice, Provider call or release"
+  ],
+  "schema": "aos-memory-delivery-receipt/v1",
+  "task_id": "WORKSHOP-R3-04-COCKPIT-COLLEAGUE-POPOVERS",
+  "verification": [
+    "frontend focused 23/23; web regression 2428/2428; production build GREEN",
+    "in-app browser org-org/dev-project opened all six colleague profiles; narrow viewport non-overlap and shopping-advisor deep-link GREEN"
+  ]
+}

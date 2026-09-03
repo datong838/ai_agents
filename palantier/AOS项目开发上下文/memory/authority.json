@@ -1,38 +1,38 @@
 {
   "authority_owner": "aos-main-development",
   "completed": [
-    "R0-R2 and R3-01 through R3-03 closed; 21/81; canonical internal Task two-confirm, Receipt and list readback, focused 34/34, cumulative 2448 checks, build and in-app browser GREEN"
+    "R0-R2 and R3-01 through R3-04 closed; 22/81; six accessible anchored digital-colleague profile popovers, focused 23/23, web 2428/2428, build and in-app browser GREEN"
   ],
   "current_phase": "WORKSHOP_PRODUCT_REMEDIATION_R3",
-  "delivery_status": "WORKSHOP_R0_R1_R2_R3_01_R3_02_R3_03_COMPLETE_21_OF_81_R3_04_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
+  "delivery_status": "WORKSHOP_R0_R1_R2_R3_01_R3_02_R3_03_R3_04_COMPLETE_22_OF_81_R3_05_IN_PROGRESS_NO_EXTERNAL_EFFECT_NO_RELEASE",
   "evidence": [
     {
       "kind": "verification",
-      "ref": ".evidence/workshop/2026-09-03-r3-cockpit-internal-task-loop/verification.md"
+      "ref": ".evidence/workshop/2026-09-03-r3-cockpit-colleague-popovers/verification.md"
     },
     {
       "kind": "delivery",
-      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-R3-03-COCKPIT-INTERNAL-TASK-LOOP.json"
+      "ref": "/Users/ddt/work/projects/ai_agent/docs/palantier/AOS项目开发上下文/memory/receipts/deliveries/WORKSHOP-R3-04-COCKPIT-COLLEAGUE-POPOVERS.json"
     }
   ],
-  "evidence_cutoff": "2026-09-03T19:32:31+08:00",
+  "evidence_cutoff": "2026-09-03T21:21:32+08:00",
   "hard_boundaries": [
     "No external effect, no release, no fabricated business data; org-org/dev-project only and current Principal scopes all writes"
   ],
   "incomplete": [
-    "R3-04 through R9; 60 tasks remain"
+    "R3-05 through R9; 59 tasks remain"
   ],
-  "last_green_gate": "WORKSHOP_R3_03_COCKPIT_INTERNAL_TASK_LOOP_GREEN",
-  "next_gate": "WORKSHOP_R3_04_COCKPIT_COLLEAGUE_POPOVERS",
+  "last_green_gate": "WORKSHOP_R3_04_COCKPIT_COLLEAGUE_POPOVERS_GREEN",
+  "next_gate": "WORKSHOP_R3_05_COCKPIT_SHARED_CAPABILITY_CHAIN",
   "next_steps": [
-    "Execute R3-04 six digital-colleague cards and accessible anchored profile popovers, then continue R3 serially"
+    "Execute R3-05 ten shared atomic capability labels and Skill-to-Logic-to-colleague-to-workbench contribution chain, then continue R3 serially"
   ],
   "project": "AOS",
-  "project_revision": "AOS-000460",
+  "project_revision": "AOS-000461",
   "schema": "aos-memory-authority/v1",
   "source_commits": {
-    "docs": "38ced29",
-    "web": "13b244c8"
+    "docs": "f526217",
+    "web": "49e93ddf"
   },
   "source_files": [
     "docs/多对话共享记忆机制.md",
@@ -42,5 +42,5 @@
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/16-AIP全量开发清单统一评审与封板结论.md",
     "docs/palantier/20_tech/电商平台接入/AIP通用能力实施方案/全量开发清单/17-AIP上位方案目标全量覆盖矩阵.md"
   ],
-  "updated_at": "2026-09-03T19:33:44+08:00"
+  "updated_at": "2026-09-03T21:25:46+08:00"
 }
